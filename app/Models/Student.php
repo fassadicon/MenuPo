@@ -7,5 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    protected $table = 'students';
     use HasFactory;
+
+    public function guardian() {
+        return $this->belongsTo(Guardian::class, 'parent_id', 'id');
+    }
+
+    public function admin() {
+        return $this->belongsTo(Admin::class, 'created_by', 'id');
+    }
+
+    public function purchase()
+    {
+        return $this->hasOne(Purchase::class, 'student_id', 'id');
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class, 'student_id', 'id');
+    }
 }

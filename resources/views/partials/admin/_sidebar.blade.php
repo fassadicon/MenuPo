@@ -1,23 +1,23 @@
 {{-- SideBar --}}
 <aside id="sidebar" class="sidebar">
 
-  <ul class="sidebar-nav" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
-          <a class="nav-link " href="/admin/dashboard">
-              <i class="bi bi-grid"></i>
-              <span>Dashboard</span>
-          </a>
-      </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link " href="/admin/dashboard">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
-              <i class="bi bi-grid"></i>
-              <span>Scanner</span>
-          </a>
-      </li><!-- End Scanner Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/orders/scanner">
+                <i class="bi bi-grid"></i>
+                <span>Scanner</span>
+            </a>
+        </li><!-- End Scanner Nav -->
 
-      {{-- <li class="nav-item">
+        {{-- <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
     <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
@@ -164,51 +164,57 @@
   </ul>
 </li><!-- End Charts Nav --> --}}
 
-      <li class="nav-item">
-          <!-- User Management Nav -->
-          <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-              <i class="bi bi-gem"></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-              <li>
-                  <a href="icons-bootstrap.html">
-                      <i class="bi bi-circle"></i><span>Admin</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="icons-remix.html">
-                      <i class="bi bi-circle"></i><span>Parents</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="icons-boxicons.html">
-                      <i class="bi bi-circle"></i><span>Students</span>
-                  </a>
-              </li>
-          </ul>
-      </li><!-- End User Management Nav -->
+        <li class="nav-item">
+            <!-- User Management Nav -->
+            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-gem"></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="/admin/admins">
+                        <i class="bi bi-circle"></i><span>Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/guardians">
+                        <i class="bi bi-circle"></i><span>Parents</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/students">
+                        <i class="bi bi-circle"></i><span>Students</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End User Management Nav -->
 
-      <li class="nav-heading">Food Item Management</li>
+        <li class="nav-heading">Food Item Management</li>
 
-      <li class="nav-item">
-          {{-- <a class="nav-link collapsed" href="users-profile.html">
+        <li class="nav-item">
+            {{-- <a class="nav-link collapsed" href="users-profile.html">
     <i class="bi bi-person"></i>
     <span>Food Item Management</span>
   </a> --}}
-          <a href="/admin/foods" class="nav-link collapsed">
-              <i class="bi bi-person"></i>
-              <span>Food Item Management</span>
-          </a>
-      </li><!-- End Profile Page Nav -->
+            <a href="/admin/foods" class="nav-link collapsed">
+                <i class="bi bi-person"></i>
+                <span>Food Item Management</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-          <a class="nav-link collapsed" href="pages-faq.html">
-              <i class="bi bi-question-circle"></i>
-              <span>Survey Ma</span>
-          </a>
-      </li><!-- End F.A.Q Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Survey Management</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
+        <li class="nav-item">
+            <a href="/admin/menu" class="nav-link collapsed" href="pages-faq.html">
+                <i class="fas fa-utensils"></i>
+                <span>Menu Management</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
 
-      <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="pages-contact.html">
               <i class="bi bi-envelope"></i>
               <span>Contact</span>
@@ -241,9 +247,9 @@
               <i class="bi bi-file-earmark"></i>
               <span>Blank</span>
           </a>
-      </li><!-- End Blank Page Nav -->
+      </li><!-- End Blank Page Nav --> --}}
 
-  </ul>
+    </ul>
 
 </aside>
 {{-- End Sidebar --}}

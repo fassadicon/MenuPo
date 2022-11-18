@@ -17,26 +17,29 @@ return new class extends Migration
             $table->id();
             
             // Basic Food Information
-            $table->string('name', 50);
-            $table->string('description', 100)->nullable();
-            $table->string('type', 20)->default('others');
-            $table->string('image')->nullable();
-            $table->decimal('price', $precision = 10, $scale = 2)->default('0.00');
-            $table->integer('stock')->default('0');
-            $table->integer('menuStatus')->default('0');
-
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->integer('type')->default(0);
+            
+            $table->decimal('price', 10, 2);
+            $table->integer('stock');
             // Nutritional Data
-            $table->double('servingSize', 10, 2)->default('0.00');;
+            $table->double('servingSize', 10, 2)->nullable();
             $table->double('calcKcal', 10, 2)->nullable();
             $table->double('calcTotFat', 10, 2)->nullable();
             $table->double('calcSatFat', 10, 2)->nullable();
             $table->double('calcSugar', 10, 2)->nullable();
+            $table->double('calcSodium', 10, 2)->nullable();
             $table->double('grade', 10, 2)->nullable();
-            
+            $table->string('image')->nullable();
             // Logs
             $table->timestamps();
-            $table->foreignId('user_id')->constrained();
-            // onDelete('cascade') -> will delete the listings of that user
+            $table->softDeletes();
+            $table->unsignedBigInteger('philfct_id')->nullable();
+            $table->foreign('philfct_id')->references('id')->on('philfcts');
+            $table->foreignId('created_by')->constrained('admins');
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id')->on('admins');
         });
     }
 

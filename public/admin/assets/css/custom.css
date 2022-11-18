@@ -1,0 +1,11 @@
+/* DataTable  Highlight */
+td.highlight {
+  background-color: whitesmoke !important;
+}
+
+/* DataTable Buttons */
+.fred {
+  background-color: blue !important;
+  color: white !important;
+  border-color: transparent;
+}

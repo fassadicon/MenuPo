@@ -26,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     {
         // If you don't want to set $fillable in every model in Form Inputs
         Model::unguard();
+        date_default_timezone_set('Asia/Singapore');
     }
 }

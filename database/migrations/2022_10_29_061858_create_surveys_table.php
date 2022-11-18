@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('role')->default('0');
+        Schema::create('surveys', function (Blueprint $table) {
+            $table->id();
+            $table->integer('rate')->length(1);
+            $table->string('choices');
+            $table->string('suggestions');
+            $table->timestamps();
+            $table->foreignId('parent_id')->constrained('parents');
         });
     }
 
@@ -25,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
+        Schema::dropIfExists('surveys');
     }
 };
