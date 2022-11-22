@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    <div>
+        <br>
+        <img src='data:image/png;base64,{{$test}}'>
+        <br>
+    </div>
+
     <div class="card">
         <!-- Card Body -->
         <div class="card-body">

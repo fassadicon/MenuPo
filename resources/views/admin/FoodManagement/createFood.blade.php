@@ -182,6 +182,7 @@
                 return $.get(routeFindPhilFCT, {
                     query: query
                 }, function(data) {
+                    console.log(data)
                     return process(data);
                 });
             },

@@ -1,4 +1,7 @@
 <x-admin.layout>
+
+
+
     {{-- Stock Modal --}}
     <div class="modal fade" id="stockModal" tabindex="-1" aria-labelledby="stockModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -90,9 +93,6 @@
         </div>
     </div>
     <p>Menu Management</p>
-    <div class="container">
-        <p>add menu button here</p>
-    </div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="cookedMeals-tab" data-bs-toggle="tab"
@@ -1427,7 +1427,7 @@
                     $('#stockModal').modal('hide');
                     $('#stockModal form')[0].reset();
                     console.log(response);
-                  
+
                 },
                 error: function(error) {
                     console.log(error);

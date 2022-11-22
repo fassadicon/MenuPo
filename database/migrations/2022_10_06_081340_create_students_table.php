@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->foreignId('parent_id')->constrained('parents');
+            // $table->unsignedBigInteger('parent_id')->nullable();
+            // $table->foreign('parent_id')->references('id')->on('guardians');
             $table->integer('LRN')->nullable();
             $table->string('grade');
             $table->string('section');

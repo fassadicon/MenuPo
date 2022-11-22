@@ -72,7 +72,7 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-               
+
             </div>
             <div class="col-6">
                 {{-- Serving Size --}}
@@ -145,8 +145,8 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-                 {{-- Color --}}
-                 <div class="mb-6">
+                {{-- Color --}}
+                <div class="mb-6">
                     <label for="color" class="inline-block text-lg mb-2">color</label>
                     <input id="color" type="text" class="border border-gray-200 rounded p-2 w-full"
                         name="description" placeholder="Example: A violet, long, and delicious delicacy of Arsenio"

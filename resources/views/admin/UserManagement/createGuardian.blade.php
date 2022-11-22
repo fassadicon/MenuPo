@@ -2,7 +2,7 @@
     <header class="text-center">
         <h2 class="text-2xl font-bold uppercase mb-1">Create Parent Account</h2>
     </header>
-    <form method="POST" action="/admin/guardians/create/store" enctype="multipart/form-data">
+    <form method="POST" action="/admin/guardians/store" enctype="multipart/form-data">
         {{-- @csrf -> prevents scripting attacks --}}
         @csrf
         <div class="row">
@@ -123,7 +123,7 @@
                         <div class="mb-6">
                             <label for="sex" class="inline-block text-lg mb-2">sex</label>
                             <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
-                                placeholder="Example: Eggplant" value="{{ old('sex') }}" />
+                                placeholder="Example: M, F" value="{{ old('sex') }}" />
 
                             @error('sex')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -163,20 +163,20 @@
                     return process(data);
                 });
             },
-            afterSelect: function(item) {
-                computeGrade(item);
-                $('body').on('keyup', '#servingSize', function() {
-                    var foodID = $('#name').data('name');
-                    $.get("{{ url('/checkPhilFCTitem') }}", function(data) {
-                        if (data != null) {
-                            computeGrade(data);
-                        } else {
-                            alert('Null!');
-                        }
-                    })
-                });
-                return item;
-            }
+            // afterSelect: function(item) {
+            //     computeGrade(item);
+            //     $('body').on('keyup', '#servingSize', function() {
+            //         var foodID = $('#name').data('name');
+            //         $.get("{{ url('/checkPhilFCTitem') }}", function(data) {
+            //             if (data != null) {
+            //                 computeGrade(data);
+            //             } else {
+            //                 alert('Null!');
+            //             }
+            //         })
+            //     });
+            //     return item;
+            // }
             // updater: function(item) {
             //     computeGrade(item);
             //     return item;
@@ -184,123 +184,5 @@
         });
 
 
-
-        function computeGrade(result) {
-            // Getting Base Nutritional Details per 100 g 
-            var type = $('#type').val();
-
-            if (type == "Beverages") {
-                alert("Gawin mo ako!");
-            } else {
-                // Base Nutritional Data
-                var baseServingSize = 100;
-                var baseKcal = result.kcal;
-                var baseTotFat = result.totFat;
-                var baseSatFat = result.satFat;
-                var baseSugar = result.sugar;
-                var baseSodium = result.sodium;
-
-                // Computation based on specific serving size
-                var servingSize = $('#servingSize').val();
-                var computeSize = servingSize / baseServingSize;
-
-                // Calculated Nutrient Data
-                var calcKcal = (computeSize * baseKcal);
-                var calcTotFat = (computeSize * baseTotFat);
-                var calcSatFat = (computeSize * baseSatFat);
-                var calcSugar = (computeSize * baseSugar);
-                var calcSodium = (computeSize * baseSodium);
-
-                // Base Criteria
-                var greenTotFat = computeSize * 3;
-                var greenSatFat = computeSize * 1.5;
-                var greenSugar = computeSize * 5;
-                var greenSodium = computeSize * 120;
-                var amberTotFat = computeSize * 17.5;
-                var amberSatFat = computeSize * 5;
-                var amberSugar = computeSize * 22.5;
-                var amberSodium = computeSize * 600;
-                var redTotFat = computeSize * 21;
-                var redSatFat = computeSize * 6;
-                var redSugar = computeSize * 27;
-                var redSodium = computeSize * 720;
-
-                // Point System
-                var green = 1,
-                    amber = 2,
-                    red = 3;
-
-                // Food Grade Evaluation
-                var pointsTotFat = 0,
-                    pointsSatFat = 0,
-                    pointsSugar = 0,
-                    pointsSodium = 0;
-                // Calculated Total Fat Evaluation
-                if (calcTotFat <= greenTotFat) {
-                    pointsTotFat += green;
-                } else if (calcTotFat <= amberTotFat) {
-                    pointsTotFat += amber;
-                } else if (calcTotFat <= redTotFat) {
-                    pointsTotFat += red;
-                } else {
-                    pointsTotFat += 0;
-                }
-                // Calculated Saturated Fat Evaluation
-                if (calcSatFat <= greenSatFat) {
-                    pointsSatFat += green;
-                } else if (calcSatFat <= amberSatFat) {
-                    pointsSatFat += amber;
-                } else if (calcSatFat <= redSatFat) {
-                    pointsSatFat += red;
-                } else {
-                    pointsSatFat += 0;
-                }
-                // Calculated Sugar Evaluation
-                if (calcSugar <= greenSugar) {
-                    pointsSugar += green;
-                } else if (calcSugar <= amberSugar) {
-                    pointsSugar += amber;
-                } else if (calcSugar <= redSugar) {
-                    pointsSugar += red;
-                } else {
-                    pointsSugar += 0;
-                }
-                // Calculated Sodium Evaluation
-                if (calcSodium <= greenSodium) {
-                    pointsSodium += green;
-                } else if (calcSodium <= amberSodium) {
-                    pointsSodium += amber;
-                } else if (calcSodium <= redSodium) {
-                    pointsSodium += red;
-                } else {
-                    pointsSodium += 0;
-                }
-                // alert("Total Fat: " + pointsTotFat + "\n" + "Sat Fat: " + pointsSatFat + "\n" + "Sugar: " + pointsSugar +
-                //     "\n" + "Sodium: " + pointsSodium);
-                // Food Color Evaluation
-                var totalPoints = pointsTotFat + pointsSatFat + pointsSugar + pointsSodium;
-                var color = null;
-                if (totalPoints <= 0) {
-                    color = 'gray';
-                } else if (totalPoints <= 6) {
-                    color = 'green';
-                } else if (totalPoints <= 9) {
-                    color = 'amber';
-                } else if (totalPoints <= 12) {
-                    color = 'red';
-                } else {
-                    color = null;
-                }
-
-                // Display Results
-                $('#calcKcal').val(calcKcal);
-                $('#calcTotFat').val(calcTotFat);
-                $('#calcSatFat').val(calcSatFat);
-                $('#calcSugar').val(calcSugar);
-                $('#calcSodium').val(calcSodium);
-                $('#grade').val(totalPoints);
-                $('#description').val(color);
-            }
-        }
     </script>
 </x-admin.layout>

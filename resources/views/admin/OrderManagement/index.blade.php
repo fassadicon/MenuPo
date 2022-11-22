@@ -163,6 +163,7 @@
             },
             error: function(error) {
                 Swal.fire({
+                    title: 'The student have no order/s for today. Do you want to proceed to Walk-in Order?',
                     text: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
                     icon: "warning",
                     html: '<button type="button" role="button" tabindex="0" class="bg-dark text-white rounded py-2 px-4 hover:bg-black">' +

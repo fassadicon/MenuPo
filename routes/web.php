@@ -32,6 +32,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/qrcode', function () {
+//     return QrCode::size(300)->generate('A basic example of QR code!');
+// });
+
 Route::get('/test', [TestController::class, 'index']);
 Route::get('/testData', [TestController::class, 'getData'])->name('test.chart');
 
@@ -104,16 +108,21 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // End of Admin-enclosed Routes
 
     // <----------- USER CONTROLLER -----------> //
-    // Create Parent Account
+    // Parent Account Management
     // Show Creation Form
     Route::get('/guardians/create', [GuardianController::class, 'create']);
     // Store Parent Account
-    Route::post('/guardians/create/store', [GuardianController::class, 'store']);
+    Route::post('/guardians/store', [GuardianController::class, 'store']);
     //  Get Parent Table
-    Route::get('/guardiansList', [GuardianController::class, 'index'])->name('guardians.index');
-    // Get Students Table
+    Route::get('/guardians', [GuardianController::class, 'index'])->name('guardians.index');
+    // Student Account Management
     Route::get('/students', [StudentController::class, 'index'])->name('students.index');
-    // Get Admin Table
+    Route::get('/students/{id}/view', [StudentController::class, 'view'])->name('student.view');
+    Route::get('/students/create', [StudentController::class, 'create']);
+    Route::post('/students/create/store', [StudentController::class, 'store']);
+    Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
+    Route::put('/students/{student}', [StudentController::class, 'update']);
+    // Admin Account Management
     Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
 
 
@@ -127,6 +136,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 Route::get('/autocomplete-search', [AutocompleteController::class, 'autocompleteSearch']);
 Route::get('/autocomplete-search-foods', [AutocompleteController::class, 'autocompleteSearchFoods']);
 Route::get('/getPhilFCTFood/{name}/view', [AutocompleteController::class, 'getPhilFCTFood']);
+Route::get('/autocomplete-search-parents', [AutocompleteController::class, 'getParent']);
 // Route::get('/check-philfct/{name}/view', [AutocompleteController::class, 'checkPhilFCTitem']);
 // END OF ALL ADMIN ROUTES
 

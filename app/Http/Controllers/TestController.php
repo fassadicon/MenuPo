@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Imagick;
 use DataTables;
 use Carbon\Carbon;
 use App\Models\Food;
 use App\Models\Menu;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\Guardian;
-use App\Models\Purchase;
+use App\Models\Student;
 
 // use Yajra\DataTables\DataTables as DataTables;
+use App\Models\Guardian;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Html\SearchPane;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TestController extends Controller
 {
@@ -43,7 +47,24 @@ class TestController extends Controller
         //     ->get();
         // $foods = Food::get()->pluck('name');
         // $foods = json_decode($foods);
-        return view('admin.test');
+        // $im = new Imagick(public_path('admin/foods/9pKj74GAOi9UurQi9VXT57ASdIVZpjg483GHLEnl.PNG'));
+        // /* Thumbnail the image */
+        // $im->thumbnailImage(200, null);
+
+        // return view('admin.test', compact('im'));
+        // $test = Student::latest()->get(['id'])->value('id');
+        // ->merge(public_path('storage/admin/menupoLogo.png'),.3, true)
+        // Generate (string $data, string $filename = null)
+        $studentID = 0;
+        $test = QrCode::size(300)->errorCorrection('H')
+            ->format('png')
+            ->merge('storage/admin/MenuPoLogoQR.png', .3, true)
+            ->generate($studentID);
+        $student = 'admin/qrs/' . $studentID . '.png';
+        Storage::disk('public')->put($student, $test);
+        // $QRPNG = '/admin/qrs/img-' . time() . '.png';
+        // Storage::disk('public')->put($QRPNG, $test); //storage/app/public/img/qr-code/img-1557309130.png
+        return view('admin.test', compact('test'));
     }
 
     // if (totalPoints <= 0) {
@@ -59,7 +80,7 @@ class TestController extends Controller
     // }
 
     public function getData()
-    {   
+    {
         $labels = ['Green', 'Amber', 'Red'];
         $greens = Food::where('grade', '>', 0)->where('grade', '<=', 6);
         $greensCount = $greens->count();

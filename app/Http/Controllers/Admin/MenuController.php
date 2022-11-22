@@ -25,7 +25,7 @@ class MenuController extends Controller
             // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
             ->where(function ($query) {
                 $query->where('status', 1)
-                    ->whereDate('displayed_at', Carbon::now()->format('Y-m-d'))
+                    ->whereDate('displayed_at', '=', Carbon::now()->format('Y-m-d'))
                     ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
                     ->whereHas('food', function ($query) {
                         $query->where('type', 3);
@@ -39,7 +39,7 @@ class MenuController extends Controller
                         $query->where('type', 3);
                     });
             })
-             // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
+            // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
             // get distinct food id 
             ->groupBy('food_id')
             // ->orderBy('food_id')
@@ -94,11 +94,11 @@ class MenuController extends Controller
             // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
             ->where(function ($query) {
                 $query->where('status', 1)
-                ->whereDate('displayed_at', Carbon::now()->format('Y-m-d'))
-                ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
-                ->whereHas('food', function ($query) {
-                    $query->where('type', 2);
-                });
+                    ->whereDate('displayed_at', Carbon::now()->format('Y-m-d'))
+                    ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
+                    ->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    });
             })
             ->orWhere(function ($query) {
                 $query->where('status', 0)

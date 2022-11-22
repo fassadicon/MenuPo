@@ -163,7 +163,7 @@
     </li>
   </ul>
 </li><!-- End Charts Nav --> --}}
-
+        {{-- 
         <li class="nav-item">
             <!-- User Management Nav -->
             <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
@@ -186,8 +186,23 @@
                     </a>
                 </li>
             </ul>
-        </li><!-- End User Management Nav -->
+        </li><!-- End User Management Nav --> --}}
 
+        <li>
+            <a href="/admin/admins" class="nav-link collapsed">
+                <i class="bi bi-circle"></i><span>Admin</span>
+            </a>
+        </li>
+        <li>
+            <a href="/admin/guardians" class="nav-link collapsed">
+                <i class="bi bi-circle"></i><span>Parents</span>
+            </a>
+        </li>
+        <li>
+            <a href="/admin/students" class="nav-link collapsed">
+                <i class="bi bi-circle"></i><span>Students</span>
+            </a>
+        </li>
         <li class="nav-heading">Food Item Management</li>
 
         <li class="nav-item">

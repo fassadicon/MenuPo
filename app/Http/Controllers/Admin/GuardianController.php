@@ -75,40 +75,8 @@ class GuardianController extends Controller
             'user_id' => $user_id,
             'created_by' => $created_by
         ];
-        $test = Guardian::create($parent);
-        
+        Guardian::create($parent);
 
-        // $formFields = $request->validate([
-        //     //  'name' => ['required', Rule::unique('foods', 'name')],
-
-        //     'name' => 'required',
-        //     // viewVariableName => ['required OR etc.', Rule::unique(tableName, columnName), format e.g. 'email']
-        //     // 'email' => ['required', 'email']
-        //     'description' => 'nullable',
-        //     'type' => 'required',
-        //     'price' => 'required',
-        //     'stock' => 'required',
-        //     'menuStatus' => 'required',
-        //     'servingSize' => 'nullable',
-        //     'calcKcal' => 'nullable',
-        //     'calcTotFat' => 'nullable',
-        //     'calcSatFat' => 'nullable',
-        //     'calcSugar' => 'nullable',
-        //     'calcSodium' => 'nullable',
-        //     'grade' => 'nullable',
-        // ]);
-
-        // // 'image' => ''
-        // if ($request->hasFile('image')) {
-        //     $formFields['image'] = $request->file('image')->store('admin/foods', 'public');
-        // }
-
-        // $formFields['user_id'] = auth()->id();
-
-        // User::create($formFields);
-
-        // Session::flash('message', 'messageBody');
-        // return redirect('/admin/foods')->with('message', 'Food created successfully!');
-        return $test;
+        return redirect('/admin/guardians');
     }
 }

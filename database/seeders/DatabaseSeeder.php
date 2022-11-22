@@ -94,6 +94,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-05-01',
                 'created_by' => 1,
                 'user_id' => 2,
+                'image' => 'admin/admins/1.png'
             ],
             [
                 'id' => 3,
@@ -104,7 +105,8 @@ class DatabaseSeeder extends Seeder
                 'sex' => 'F',
                 'created_at' => '2022-05-01',
                 'created_by' => 2,
-                'user_id' => 4
+                'user_id' => 4,
+                'image' => 'admin/admins/2.png'
             ],
             [
                 'id' => 4,
@@ -115,7 +117,8 @@ class DatabaseSeeder extends Seeder
                 'sex' => 'M',
                 'created_at' => '2022-05-01',
                 'created_by' => 2,
-                'user_id' => 5
+                'user_id' => 5,
+                'image' => 'admin/admins/3.png'
             ]
         ];
         User::insert($adminUser);
@@ -160,7 +163,8 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'user_id' => 3,
-                'created_by' => 2
+                'created_by' => 2,
+                'image' => 'admin/parents/1.png'
             ],
             [
                 'firstName' => 'Byron James',
@@ -172,7 +176,8 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'user_id' => 6,
-                'created_by' => 2
+                'created_by' => 2,
+                'image' => 'admin/parents/2.png'
             ],
             [
                 'firstName' => 'Emmanuel',
@@ -184,7 +189,8 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'user_id' => 7,
-                'created_by' => 2
+                'created_by' => 2,
+                'image' => 'admin/parents/3.png'
             ]
         ];
         User::insert($parentUser);
@@ -205,7 +211,9 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'parent_id' => 1,
-                'created_by' => 2
+                'created_by' => 2,
+                'QR' => 'admin/qrs/1.png',
+                'image' => 'admin/students/1.png'
             ],
             [
                 'grade' => 4,
@@ -219,7 +227,9 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'parent_id' => 1,
-                'created_by' => 2
+                'created_by' => 2,
+                'QR' => 'admin/qrs/2.png',
+                'image' => 'admin/students/2.png'
             ],
             [
                 'grade' => 4,
@@ -233,7 +243,9 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'parent_id' => 2,
-                'created_by' => 2
+                'created_by' => 2,
+                'QR' => 'admin/qrs/3.png',
+                'image' => 'admin/students/3.png'
             ],
             [
                 'grade' => 4,
@@ -247,7 +259,9 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'parent_id' => 3,
-                'created_by' => 2
+                'created_by' => 2,
+                'QR' => 'admin/qrs/4.png',
+                'image' => 'admin/students/4.png'
             ],
             [
                 'grade' => 4,
@@ -261,7 +275,9 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'parent_id' => 3,
-                'created_by' => 2
+                'created_by' => 2,
+                'QR' => 'admin/qrs/5.png',
+                'image' => 'admin/students/5.png'
             ]
         ];
         Student::insert($students);
