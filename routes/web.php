@@ -108,13 +108,20 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // End of Admin-enclosed Routes
 
     // <----------- USER CONTROLLER -----------> //
+    // Admin Account Management
+    Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
+    Route::get('/admins/{id}/view', [AdminController::class, 'view'])->name('admins.view');
+    Route::get('/admins/create', [AdminController::class, 'create']);
+    Route::post('/admins/store', [AdminController::class, 'store']);
+    Route::get('/admins/{admin}/edit', [AdminController::class, 'edit']);
+    Route::put('/admins/{admin}', [AdminController::class, 'update']);
     // Parent Account Management
-    // Show Creation Form
-    Route::get('/guardians/create', [GuardianController::class, 'create']);
-    // Store Parent Account
-    Route::post('/guardians/store', [GuardianController::class, 'store']);
-    //  Get Parent Table
     Route::get('/guardians', [GuardianController::class, 'index'])->name('guardians.index');
+    Route::get('/guardians/{id}/view', [GuardianController::class, 'view'])->name('guardian.view');
+    Route::get('/guardians/create', [GuardianController::class, 'create']);
+    Route::post('/guardians/store', [GuardianController::class, 'store']);
+    Route::get('/guardians/{guardian}/edit', [GuardianController::class, 'edit']);
+    Route::put('/guardians/{guardian}', [GuardianController::class, 'update']);
     // Student Account Management
     Route::get('/students', [StudentController::class, 'index'])->name('students.index');
     Route::get('/students/{id}/view', [StudentController::class, 'view'])->name('student.view');
@@ -122,10 +129,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('/students/create/store', [StudentController::class, 'store']);
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
     Route::put('/students/{student}', [StudentController::class, 'update']);
-    // Admin Account Management
-    Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
-
-
+    
     // REPORTS, GRAPHS, and INFORMATION
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');
     Route::get('/reports/countFoodsBasedInColor/{type}', [ReportsController::class, 'countFoodsBasedInColor'])->name('reports.countFoodsBasedInColor');

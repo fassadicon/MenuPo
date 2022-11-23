@@ -48,6 +48,113 @@
             </tfoot>
         </table>
     </div>
+
+    {{-- Parent Account Details Modal --}}
+    <div class="modal fade" id="viewStudentInfoModal" tabindex="-1" aria-labelledby="viewStudentInfoModal"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="viewStudentInfoModalLabel"></h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="studentID" id="studentID">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <label for="email">Email</label>
+                                <p id="email" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="recoveryEmail">Recovery Email</label>
+                                <p id="recoveryEmail" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="students">Students</label>
+                                <div id="students"></div>
+                            </div>
+
+                        </div>
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <label for="firstName">First Name</label>
+                                <p id="firstName" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName">Last Name</label>
+                                <p id="lastName" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="middleName">Middle Name</label>
+                                <p id="middleName" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="suffix">Suffix</label>
+                                <p id="suffix" class="form-control"></p>
+                            </div>
+
+                        </div>
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <label for="sex">Sex</label>
+                                <p id="sex" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="birthDate">Birth Date</label>
+                                <p id="birthDate" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address">Address</label>
+                                <p id="address" class="form-control"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="created_by">Created By</label>
+                            <p id="created_by" class="form-control"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="created_at">Created At</label>
+                            <p id="created_at" class="form-control"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updated_by">Last Updated By</label>
+                            <p id="updated_by" class="form-control"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updated_at">Last Updated At</label>
+                            <p id="updated_at" class="form-control"></p>
+                        </div>
+                    </div>
+                    {{--  <div class="mb-3">
+                            <label for="">Description</label>
+                            <p id="description" class="form-control"></p>
+                        </div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Profile Picture Modal --}}
+    <div class="modal fade" id="viewImgModal" tabindex="-1" aria-labelledby="viewImgModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewImgModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="foodID" id="foodID">
+                    <div class="mb-3">
+                        <img src="" alt="" id="image" class="form-control" width="100"
+                            height="200" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- DataTable Resources Scripts --}}
     @include('partials.admin._DataTableScripts')
     {{-- Scripts --}}
@@ -206,22 +313,6 @@
                         searchable: false
                     }
                 ],
-                    // <th>ID</th> 0
-                    // <th>FN</th> 1
-                    // <th>LN</th> 2
-                    // <th>MN</th> 3
-                    // <th>Suffix</th> 4
-                    // <th>Students</th> 5
-                    // <th>Email</th> 6
-                    // <th>Recovery Email</th> 7
-                    // <th>Sex</th> 8
-                    // <th>Address</th> 9
-                    // <th>Birth Date</th> 10
-                    // <th>Status</th> 11
-                    // <th>Created At</th> 12
-                    // <th>Updated At</th> 13
-                    // <th>Created By</th> 14
-                    // <th>Options</th>
                 columnDefs: [{
                         target: 4,
                         visible: false,
@@ -266,6 +357,53 @@
                 ],
 
             });
+
+            // View Student Picture Modal
+            $('body').on('click', '.viewImage', function() {
+                var guardianID = $(this).data('id');
+                $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
+                    $('#viewImgModalLabel').text('Image of ' + data.guardian.firstName + ' ' + data
+                        .guardian.lastName);
+                    $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.guardian
+                        .image);
+                    $('#viewImgModal').modal('show');
+                })
+            });
+            // View Student Details Modal
+            $('body').on('click', '.viewParentDetails', function() {
+                var guardianID = $(this).data('id');
+                $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
+                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data.guardian
+                        .firstName + ' ' + data
+                        .guardian.lastName);
+                    $('#email').text(data.guardian.user.email);
+                    $('#recoveryEmail').text(data.guardian.user.recoveryEmail);
+                    $('#firstName').text(data.guardian.firstName);
+                    $('#lastName').text(data.guardian.lastName);
+                    $('#middleName').text(data.guardian.middleName);
+                    $('#suffix').text(data.guardian.suffix);
+                    $('#sex').text(data.guardian.sex);
+                    $('#address').text(data.guardian.sex);
+                    $('#birthDate').text(data.guardian.birthDate);
+                    $('#created_at').text(data.created_atFormatted);
+                    $('#updated_at').text(data.updated_atFormatted);
+                    $('#created_by').text(data.guardian.admin.firstName + ' ' + data.guardian.admin
+                        .lastName);
+                    $('#updated_by').text(data.updatedByAdminName);
+                    $('#viewStudentInfoModal').modal('show');
+
+                    var studentsHTML = '';
+                    $('#students').html('');
+                    $.each(data.guardian.students, function(i, value) {
+                        studentsHTML += '<p>' + value.firstName + ' ' + value.lastName +
+                            '</p>';
+                    });
+                    $('#students').append(studentsHTML);
+
+                })
+            });
+
+            // End of Scripts
         });
     </script>
 
