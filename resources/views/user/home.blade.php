@@ -2,4 +2,4 @@
 
 
 
-
+<x-user.layout/>
