@@ -23,8 +23,8 @@ class OrderController extends Controller
     public function index(Request $request) 
     {
         // Initialize Datatable Values
-        $orders = Order::latest()
-        ->get();
+        $orders = Order::all()
+        ->sortBy('purchase_id');
 
         if ($request->ajax()) {
             return DataTables::of($orders)

@@ -219,12 +219,18 @@
                       name: 'id'
                   },
                   {//1
-                      data: 'parent_id',
-                      name: 'parent_id'
+                        data: 'parent.firstName',
+                        name: 'parent_id',
+                        render: function(data, type, row) {
+                            return row.parent.firstName + ' ' + row.parent.lastName;
+                        }
                   },
                   { //2
-                      data: 'student_id',
-                      name: 'student_id'
+                      data: 'student.firstName',
+                      name: 'student_id',
+                      render: function(data, type, row) {
+                            return row.student.firstName + ' ' + row.student.lastName;
+                        }
                   },
                   {//3
                       data: 'totalKcal',
