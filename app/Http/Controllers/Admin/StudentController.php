@@ -124,7 +124,7 @@ class StudentController extends Controller
         }
         $formFields['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
         if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('admin/foods', 'public');
+            $formFields['image'] = $request->file('image')->store('admin/students', 'public');
         }
         $student->update($formFields);
 
