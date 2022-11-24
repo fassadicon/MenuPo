@@ -4,18 +4,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 // Admin Controllers
-use App\Http\Controllers\Admin\GuardianController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\FoodController;
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\MenuSuggestionController;
-use App\Http\Controllers\Admin\ReportsController;
-
-use App\Http\Controllers\Admin\ScannerController;
-use App\Http\Controllers\Admin\DashboardController;
-
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AutocompleteController;
+use App\Http\Controllers\Admin\ReportsController;
+use App\Http\Controllers\Admin\ScannerController;
+
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\GuardianController;
+
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MenuSuggestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,3 +147,8 @@ Route::get('/autocomplete-search-parents', [AutocompleteController::class, 'getP
 
 // Show Food Management Section
 Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
+
+
+//User /////////////////////////////////////////////////////////////////
+
+Route::get('user/home', [HomeController::class, 'index']);
