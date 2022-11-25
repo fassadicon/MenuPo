@@ -11,12 +11,15 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AutocompleteController;
 use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\ScannerController;
+use App\Http\Controllers\Admin\PurchasesController;
 
+use App\Http\Controllers\Admin\CompletedController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\GuardianController;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,8 +109,12 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/orders/scanner/{id}/view', [ScannerController::class, 'view']);
     // Complete order
     Route::post('/orders/scanner/{sid}/{pid}/complete', [ScannerController::class, 'complete']);
-    // End of Admin-enclosed Routes
-
+    // Pending/Unpaid Orders
+    Route::get('/orders/pendings', [PurchasesController::class, 'index'])->name('pendings.index');
+    // Orders Placed
+    Route::get('/orders/placed', [OrderController::class, 'index'])->name('orders.index');
+    // Completed Orders
+    Route::get('/orders/completed', [PurchasesController::class, 'completedOrders'])->name('completed.completedOrders');
     // <----------- USER CONTROLLER -----------> //
     // Admin Account Management
     Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');

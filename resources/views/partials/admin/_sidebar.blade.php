@@ -229,6 +229,36 @@
             </a>
         </li><!-- End F.A.Q Page Nav -->
 
+        <li class="nav-heading">Order Management</li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/">
+              <i class="bi bi-grid"></i>
+              <span>Walk-In POS</span>
+          </a>
+      </li><!-- End Walk-In POS Nav -->
+
+        <li class="nav-item">
+          <a href="/admin/orders/pendings" class="nav-link collapsed">
+              <i class="bi bi-grid"></i>
+              <span>To Claim Orders</span>
+          </a>
+        </li><!-- End Paid/To Claim Nav -->
+      <li class="nav-item">
+        <a href="/admin/orders/placed" class="nav-link collapsed">
+            <i class="fas fa-utensils"></i>
+            <span>Placed Orders</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="/admin/orders/completed" class="nav-link collapsed" >
+          <i class="bi bi-grid"></i>
+          <span>Completed Orders</span>
+        </a>
+      </li><!-- End Completed Orders Nav -->
+
+
         {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="pages-contact.html">
               <i class="bi bi-envelope"></i>
