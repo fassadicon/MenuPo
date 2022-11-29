@@ -12,10 +12,10 @@ class POSController extends Controller
 {
     public function index(){
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, auth()->user()->id]);
-        $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [auth()->user()->id]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, 1]);
+        $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
 
-        return view('users.pos', [
+        return view('user.pos', [
             'foods' => Food::all(),
             'notifs' => $notifications,
             'students' => $students
