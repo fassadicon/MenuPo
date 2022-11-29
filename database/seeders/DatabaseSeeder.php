@@ -582,7 +582,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 4,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => null
+                'image' => 'admin/foods/spaghetti.jpg'
             ],
             [
                 'id' => 2,
@@ -602,7 +602,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 4,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/jO9BxaA4YnEGJKwrZ9fJly8PdV050qGQUCVVqmhG.jpg'
+                'image' => 'admin/foods/rice.jpg'
             ],
             [
                 'id' => 3,
@@ -622,7 +622,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => null
+                'image' => 'admin/foods/hotdog.jpg'
             ],
             [
                 'id' => 4,
@@ -642,7 +642,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 7,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => null
+                'image' => 'admin/foods/corned-beef.jpg'
             ],
             [
                 'id' => 5,
@@ -662,7 +662,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => null
+                'image' => 'admin/foods/luncheon meat.jpg'
             ],
             [
                 'id' => 6,
@@ -682,7 +682,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => null
+                'image' => 'admin/foods/maling.jpeg'
             ],
             [
                 'id' => 7,
@@ -702,7 +702,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => null,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/f9TGILl7QGvcfTjhek46teoo4H4ZUJbgTvYir7lk.jpg'
+                'image' => 'admin/foods/fried-chicken.jpg'
             ],
             [
                 'id' => 8,
@@ -722,7 +722,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => null
+                'image' => 'admin/foods/longganisa.jpg'
             ],
             [
                 'id' => 9,
@@ -742,7 +742,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 4,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => null
+                'image' => 'admin/foods/goto.jpg'
             ],
             [
                 'id' => 10,
@@ -762,7 +762,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 7,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/9Q4jdARgFWSCEQ7bUadFvUNWc2N6NF0Glo7jTvn9.jpg'
+                'image' => 'admin/foods/pork-siomai.jpg'
             ],
             [
                 'id' => 11,
@@ -772,7 +772,7 @@ class DatabaseSeeder extends Seeder
                 'calcSatFat' => 4.75,
                 'calcSugar' => 0,
                 'calcSodium' => 0,
-                'description' => 'one serving of pork siopao',
+                'description' => 'Pork Siopao Bola Bola',
                 'type' => 2,
                 'price' => 15,
                 'servingSize' => 100,
@@ -782,7 +782,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 6,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/je63C556Yvey05TuDDKYW8hNsQgW1PFY2moJgDHW.jpg'
+                'image' => 'admin/foods/pork-siopao.jpeg'
             ],
             [
                 'id' => 12,
@@ -802,7 +802,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/rZH3mvnX8UB6Hq6Ozmeoa9jXOm9dqnhxQfzymkfH.jpg'
+                'image' => 'admin/foods/tocino.jpg'
             ],
             [
                 'id' => 13,
@@ -822,7 +822,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 7,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/zOJOuL6wYG5k0AnNRAcpCQAC3QWnNwUJ5WXZE2mW.png'
+                'image' => 'admin/foods/ham.jpg'
             ],
             [
                 'id' => 14,
@@ -842,7 +842,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 7,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/GdIoPpclSPdII2lKrHJbJAN8gludM67e7VhL5hh5.jpg'
+                'image' => 'admin/foods/boiled-egg.jpg'
             ],
             [
                 'id' => 15,
@@ -862,7 +862,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => null
+                'image' => 'admin/foods/hotdog.jpg'
             ],
             [
                 'id' => 16,
@@ -882,7 +882,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/lNdfPwA9KryUmvOBdq8PWP1JnBFuN2UrtZJXU53Y.jpg'
+                'image' => 'admin/foods/turon.jpg'
             ],
             [
                 'id' => 17,
@@ -902,7 +902,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/ekSwfiTRPA6gLxqlVJTinpKz661Pzx9JK6tbSc1R.jpg'
+                'image' => 'admin/foods/zesto-grape.jpg'
             ],
             [
                 'id' => 18,
@@ -922,7 +922,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/9pKj74GAOi9UurQi9VXT57ASdIVZpjg483GHLEnl.png'
+                'image' => 'admin/foods/zesto-guava.png'
             ],
             [
                 'id' => 19,
@@ -942,7 +942,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 6,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/duo90djmkotGY08F9Nd47ni4N5EQyRoeMFdle60E.jpg'
+                'image' => 'admin/foods/zesto-strawberry.jpg'
             ],
             [
                 'id' => 20,
@@ -962,7 +962,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/J1rToNz3wZbAHLRYO8sG0CRqdXWHZjvjcmns8bz5.jpg'
+                'image' => 'admin/foods/buko-juice.jpg'
             ],
             [
                 'id' => 21,
@@ -982,7 +982,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 8,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/uOhYEy9oGXS4oxrLjQVqHD5XdnitjOYuGXmIGMjh.png'
+                'image' => 'admin/foods/coco-honey.png'
             ],
             [
                 'id' => 22,
@@ -1002,7 +1002,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/WJsx3zkAjX6u11r7klWKcfzfv2po3sSjR0SFFKaL.jpg'
+                'image' => 'admin/foods/curly-tops.jpg'
             ],
             [
                 'id' => 23,
@@ -1022,7 +1022,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 11,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/kwxRFgzr3STAUs1yFS7QtEaBQuNyviCEwsqwSuWY.jpg'
+                'image' => 'admin/foods/peanut-brittle.jpg'
             ],
             [
                 'id' => 24,
@@ -1042,7 +1042,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/chopsuey.jpg'
             ],
             [
                 'id' => 25, 
@@ -1062,7 +1062,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/pork-bbq.jpg'
             ],
             [
                 'id' => 26, 
@@ -1082,7 +1082,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 4,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/kikyam.jpg'
             ],
             [
                 'id' => 27, 
@@ -1102,7 +1102,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/daing-na-bangus.jpg'
             ],
             [
                 'id' => 28, 
@@ -1122,7 +1122,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/inihaw-bangus.jpg'
             ],
             [
                 'id' => 29, 
@@ -1142,11 +1142,11 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 8,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/lechon-manok.jpg'
             ],
             [
                 'id' => 30, 
-                'name' => 'Embotido',
+                'name' => 'Embutido',
                 'calcKcal' => 164,
                 'calcTotFat' => 8.5,
                 'calcSatFat' => 3.4,
@@ -1162,7 +1162,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/embutido.jpg'
             ],
             [
                 'id' => 31, 
@@ -1182,7 +1182,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 7,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/chicken-nuggets.jpg'
             ],
             [
                 'id' => 32, 
@@ -1202,7 +1202,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 7,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/corned-beef.jpg'
             ],
             [
                 'id' => 33, 
@@ -1222,7 +1222,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/chicharon.jpg'
             ],
             [
                 'id' => 34, 
@@ -1242,7 +1242,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 8,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/lechon-kawali.jpg'
             ],
             [
                 'id' => 35, 
@@ -1262,7 +1262,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/polvoron.jpg'
             ],
             [
                 'id' => 36, 
@@ -1282,7 +1282,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 6,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/pork-siopao.jpeg'
             ],
             [
                 'id' => 37, 
@@ -1302,7 +1302,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 4,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/champorado.jpg'
             ],
             [
                 'id' => 38, 
@@ -1322,7 +1322,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/yakult.jpg'
             ],
             [
                 'id' => 39, 
@@ -1342,7 +1342,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 6,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/pritong-baka.jpg'
             ],
             [
                 'id' => 40, 
@@ -1362,7 +1362,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 8,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/pritong-liempo.jpg'
             ],
             [
                 'id' => 41, 
@@ -1382,7 +1382,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 7,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/banana-cue.jpg'
             ],
             [
                 'id' => 42, 
@@ -1402,7 +1402,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/maruya.jpg'
             ],
             [
                 'id' => 43, 
@@ -1422,7 +1422,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/banana-latundan.jpg'
             ],
             [
                 'id' => 44, 
@@ -1442,7 +1442,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/banana-lakatan.png'
             ],
             [
                 'id' => 45, 
@@ -1462,7 +1462,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/red-apple.jpg'
             ],
             [
                 'id' => 46, 
@@ -1482,7 +1482,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/chips-cheese.jpg'
             ],
             [
                 'id' => 47, 
@@ -1502,7 +1502,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/cornchips-bbq.png'
             ],
             [
                 'id' => 48, 
@@ -1522,7 +1522,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/cornchips-nachos.jpg'
             ],
             [
                 'id' => 49, 
@@ -1542,7 +1542,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/cornchips-natural.jpg'
             ],
             [
                 'id' => 50, 
@@ -1562,7 +1562,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 9,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/potato-chips-cheese.png'
             ],
             [
                 'id' => 51, 
@@ -1582,7 +1582,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/fishda.png'
             ],
             [
                 'id' => 52, 
@@ -1602,7 +1602,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 10,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/prawn-crackers.png'
             ],
             [
                 'id' => 53, 
@@ -1622,7 +1622,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/delmonte-apple.jpg'
             ],
             [
                 'id' => 54, 
@@ -1642,7 +1642,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 6,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/zesto-mango.jpg'
             ],
             [
                 'id' => 55, 
@@ -1662,7 +1662,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/delmonte-orange.jpg'
             ],
             [
                 'id' => 56, 
@@ -1682,7 +1682,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/zesto-orange.png'
             ],
             [
                 'id' => 57, 
@@ -1702,7 +1702,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/cola-softdrinks.png'
             ],
             [
                 'id' => 58, 
@@ -1722,7 +1722,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/orange-softdrinks.png'
             ],
             [
                 'id' => 59, 
@@ -1742,7 +1742,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/chocolate-drink.jpg'
             ],
             [
                 'id' => 60, 
@@ -1762,7 +1762,7 @@ class DatabaseSeeder extends Seeder
                 'stock' => 40,
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
-                'image' => 'admin/foods/pXWFQGOmYKkwJHcGmx9eHc26tuDRFVWwUwctBZvc.jpg'
+                'image' => 'admin/foods/soybean-drink.jpeg'
             ]
 
 
