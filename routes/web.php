@@ -4,22 +4,31 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 // Admin Controllers
+use App\Http\Controllers\User\POSController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\MenuController;
+
 use App\Http\Controllers\Admin\FoodController;
-use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\AutocompleteController;
-use App\Http\Controllers\Admin\ReportsController;
-use App\Http\Controllers\Admin\ScannerController;
-use App\Http\Controllers\Admin\PurchasesController;
-
-use App\Http\Controllers\Admin\CompletedController;
-use App\Http\Controllers\Admin\StudentController;
-use App\Http\Controllers\Admin\GuardianController;
-
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\HealthController;
+use App\Http\Controllers\User\SurveyController;
+
+use App\Http\Controllers\AutocompleteController;
+use App\Http\Controllers\User\PaymentController;
+use App\Http\Controllers\User\UserAccController;
+use App\Http\Controllers\Admin\ReportsController;
+
+// User Controllers
+use App\Http\Controllers\Admin\ScannerController;
+use App\Http\Controllers\Admin\StudentController;
+
+use App\Http\Controllers\Admin\GuardianController;
+use App\Http\Controllers\Admin\CompletedController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PurchasesController;
+use App\Http\Controllers\User\CartSummaryController;
+use App\Http\Controllers\Admin\MenuSuggestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +77,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // <----------- MENU CONTROLLER -----------> //
     // DataTables
-    Route::get('/menu', [MenuController::class, 'cookedMeals'])->name('menu.index');
+    Route::get('/menu', [MenuController::class, 'cookedMeals'])->name('menu.indexAdmin');
     Route::get('/menu/snacks', [MenuController::class, 'snacks'])->name('menu.snacks');
     Route::get('/menu/beverages', [MenuController::class, 'beverages'])->name('menu.beverages');
     Route::get('/menu/others', [MenuController::class, 'others'])->name('menu.others');
@@ -131,9 +140,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
     Route::get('/admins/{id}/view', [AdminController::class, 'view'])->name('admins.view');
     Route::get('/admins/create', [AdminController::class, 'create']);
-    Route::post('/admins/store', [AdminController::class, 'store']);
+    Route::post('/admins/store', [AdminController::class, 'store'])->name('admins.store');
     Route::get('/admins/{admin}/edit', [AdminController::class, 'edit']);
-    Route::put('/admins/{admin}', [AdminController::class, 'update']);
+    Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
     // Parent Account Management
     Route::get('/guardians', [GuardianController::class, 'index'])->name('guardians.index');
     Route::get('/guardians/{id}/view', [GuardianController::class, 'view'])->name('guardian.view');
@@ -169,4 +178,62 @@ Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
 
 //User /////////////////////////////////////////////////////////////////
 
-Route::get('user/home', [HomeController::class, 'index']);
+    //Home
+    Route::get('user/home', [HomeController::class, 'index']);
+
+    //Health Module
+    Route::get('/user/health/{anak}', [HealthController::class, 'index'])
+        ->name(name:'health.index');
+    Route::post('/user/health/remove-restrict', [HealthController::class, 'removeRestrict'])
+        ->name(name:'health.remove-restrict');
+    
+    //User-Account Page
+    Route::get('user/user-account', [UserAccController::class, 'index']);
+
+    //Menu Page
+    Route::get('/user/menu/{student}', [MenuController::class, 'index'])
+        ->name(name:'menu.index');
+
+    Route::get('/user/menu-landing', [MenuController::class, 'landing'])
+        ->name(name:'menu.landing');
+    Route::post('/user/menu/addtocart', [MenuController::class, 'addtocart']);
+    Route::post('/user/menu/addtorestrict', [MenuController::class, 'addtorestrict']);
+
+    //Cart Summarry
+    Route::get('user/cart-summary/{anak}', [CartSummaryController::class, 'index'])
+        ->name(name:'cart-summary.index');
+    Route::post('/user/cart-summary/update-cart-add', [CartSummaryController::class, 'add']);
+    Route::post('/user/cart-summary/update-cart-minus', [CartSummaryController::class, 'minus']);
+    Route::post('/user/cart-summary/update-cart-delete', [CartSummaryController::class, 'delete']);
+
+    //Survey Page
+    Route::get('users/survey', [SurveyController::class, 'index']);
+    Route::post('/users/survey-submit', [SurveyController::class, 'store'])
+    ->name(name:'survey.store');
+
+    //Payment Page
+    Route::post('/user/payment', [PaymentController::class, 'index']);
+        //Receipt
+        Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
+        Route::get('user/receipt', [PaymentController::class, 'receipt']);
+
+    //Point of sale
+    Route::get('/pos', [POSController::class, 'index']);
+
+    Route::post('/add-to-cart', [POSController::class, 'addtocart']);
+    Route::post('/update-cart-add', [POSController::class, 'add']);
+    Route::post('/update-cart-minus', [POSController::class, 'minus']);
+    Route::post('/update-cart-delete', [POSController::class, 'delete']);
+    Route::post('/pos/payment', [PaymentController::class, 'pospayment'])
+            ->name(name:'pos.order');
+    
+    //New Post
+    Route::get('newpost', [NewPostController::class, 'index']);
+    Route::get('newpost/view', [NewPostController::class, 'viewpost']);
+    Route::post('newpost-store', [NewPostController::class, 'store']);
+
+    // Sample
+    Route::get('sample', [HomeController::class, 'sample']);
+
+    
+

@@ -20,8 +20,9 @@
                     <th>Birth Date</th>
                     <th>Status</th>
                     <th>Created At</th>
-                    <th>Updated At</th>
                     <th>Created By</th>
+                    <th>Updated At</th>
+                    <th>Last Updated By</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -42,8 +43,9 @@
                     <th>Birth Date</th>
                     <th>Status</th>
                     <th>Created At</th>
-                    <th>Updated At</th>
                     <th>Created By</th>
+                    <th>Updated At</th>
+                    <th>Last Updated By</th>
                 </tr>
             </tfoot>
         </table>
@@ -236,74 +238,98 @@
                         });
                 },
                 columns: [{
-                        data: 'guardian.id',
-                        name: 'guardian.id'
+                        data: 'id',
+                        name: 'id'
                     },
                     {
-                        data: 'guardian.firstName',
-                        name: 'guardian.firstName',
+                        data: 'firstName',
+                        name: 'firstName',
                     },
                     {
-                        data: 'guardian.lastName',
-                        name: 'guardian.lastName'
+                        data: 'lastName',
+                        name: 'lastName'
                     },
                     {
-                        data: 'guardian.middleName',
-                        name: 'guardian.middleName',
-                    },
-                    {
-                        data: 'guardian.suffix',
-                        name: 'guardian.suffix',
-                    },
-                    {
-                        data: 'guardian.students',
-                        name: 'guardian.students',
+                        data: 'middleName',
+                        name: 'middleName',
                         render: function(data, type, row) {
-                            return $.map(data, function(value, i) {
-                                return value.firstName + ' ' + value.lastName;
-                            }).join(', ');
+                            return data == null ? 'N/A' : data;
                         }
                     },
                     {
-                        data: 'email',
-                        name: 'email',
+                        data: 'suffix',
+                        name: 'suffix',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
-                        data: 'recoveryEmail',
-                        name: 'recoveryEmail',
+                        data: 'students',
+                        name: 'students',
+                        render: function(data, type, row) {
+                            return $.map(data, function(value, i) {
+                                return value.firstName + ' ' + value.lastName;
+                            }).join('<br>');
+                        }
                     },
                     {
-                        data: 'guardian.sex',
-                        name: 'guardian.sex',
+                        data: 'user.email',
+                        name: 'user.email',
                     },
                     {
-                        data: 'guardian.address',
-                        name: 'guardian.address',
+                        data: 'user.recoveryEmail',
+                        name: 'user.recoveryEmail',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
-                        data: 'guardian.birthDate',
-                        name: 'guardian.birthDate',
+                        data: 'sex',
+                        name: 'sex',
                     },
                     {
-                        data: 'guardian.status',
-                        name: 'guardian.status',
+                        data: 'address',
+                        name: 'address',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    {
+                        data: 'birthDate',
+                        name: 'birthDate',
+                    },
+                    {
+                        data: 'status',
+                        name: 'status',
                         render: function(data, type, row) {
                             return data == 1 ? 'Active' : 'Inactive';
                         }
                     },
                     {
-                        data: 'guardian.created_at',
-                        name: 'guardian.created_at',
+                        data: 'created_at_formatted',
+                        name: 'created_at_formatted',
                     },
                     {
-                        data: 'guardian.updated_at',
-                        name: 'guardian.updated_at',
-                    },
-                    {
-                        data: 'guardian.admin.firstName',
-                        name: 'guardian.admin',
+                        data: 'created_by_name.firstName',
+                        name: 'created_by_name.firstName',
                         render: function(data, type, row) {
-                            return row.guardian.admin.firstName + ' ' + row.guardian.admin.lastName;
+                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                                .lastName;
+                        }
+                    },
+                    {
+                        data: 'updated_at_formatted',
+                        name: 'updated_at_formatted',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    {
+                        data: 'updated_by_name',
+                        name: 'updated_by_name',
+                        render: function(data, type, row) {
+                            return row.updated_by_name.firstName == null ? 'N/A' : row
+                                .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
                     },
                     {
@@ -350,6 +376,10 @@
                         visible: false,
                     },
                     {
+                        target: 15,
+                        visible: false,
+                    },
+                    {
                         targets: -1,
                         data: null,
                         defaultContent: '<button>Click!</button>',
@@ -362,10 +392,11 @@
             $('body').on('click', '.viewImage', function() {
                 var guardianID = $(this).data('id');
                 $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
-                    $('#viewImgModalLabel').text('Image of ' + data.guardian.firstName + ' ' + data
-                        .guardian.lastName);
-                    $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.guardian
-                        .image);
+                    $('#viewImgModalLabel').text('Image of ' + data.firstName + ' ' + data
+                    .lastName);
+                    data.image != null ? $('#image').attr('src', "{{ URL::asset('storage/') }}" +
+                        '/' + data.image) : $('#image').attr('src',
+                        "{{ URL::asset('storage/admin/userNoImage.png') }}");
                     $('#viewImgModal').modal('show');
                 })
             });
@@ -373,28 +404,33 @@
             $('body').on('click', '.viewParentDetails', function() {
                 var guardianID = $(this).data('id');
                 $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
-                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data.guardian
-                        .firstName + ' ' + data
-                        .guardian.lastName);
-                    $('#email').text(data.guardian.user.email);
-                    $('#recoveryEmail').text(data.guardian.user.recoveryEmail);
-                    $('#firstName').text(data.guardian.firstName);
-                    $('#lastName').text(data.guardian.lastName);
-                    $('#middleName').text(data.guardian.middleName);
-                    $('#suffix').text(data.guardian.suffix);
-                    $('#sex').text(data.guardian.sex);
-                    $('#address').text(data.guardian.sex);
-                    $('#birthDate').text(data.guardian.birthDate);
-                    $('#created_at').text(data.created_atFormatted);
-                    $('#updated_at').text(data.updated_atFormatted);
-                    $('#created_by').text(data.guardian.admin.firstName + ' ' + data.guardian.admin
-                        .lastName);
-                    $('#updated_by').text(data.updatedByAdminName);
+                    $.each(data, function(i, e) {
+                        if (data[i] == null) data[i] = 'N/A';
+                    });
+                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data
+                        .firstName + ' ' + data.lastName);
+                    $('#email').text(data.user.email);
+                    $('#recoveryEmail').text(data.user.recoveryEmail);
+                    $('#firstName').text(data.firstName);
+                    $('#lastName').text(data.lastName);
+                    $('#middleName').text(data.middleName);
+                    $('#suffix').text(data.suffix);
+                    $('#sex').text(data.sex);
+                    $('#address').text(data.address);
+                    $('#birthDate').text(data.birthDate);
+                    $('#created_at').text(data.created_at_formatted);
+                    $('#updated_at').text(data.updated_at_formatted);
+                    $('#created_by').text(data.created_by_name.firstName + ' ' + data
+                        .created_by_name.lastName)
+                    data.updated_by_name.firstName == null ? $('#updated_by').text('N/A') : $(
+                        '#updated_by').text(data
+                        .updated_by_name.firstName + ' ' + data
+                        .updated_by_name.lastName);
                     $('#viewStudentInfoModal').modal('show');
 
                     var studentsHTML = '';
                     $('#students').html('');
-                    $.each(data.guardian.students, function(i, value) {
+                    $.each(data.students, function(i, value) {
                         studentsHTML += '<p>' + value.firstName + ' ' + value.lastName +
                             '</p>';
                     });

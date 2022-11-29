@@ -8,16 +8,27 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Guardian;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\StoreParentRequest;
+use App\Http\Requests\Admin\UpdateParentRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables as DataTables;
 
 class GuardianController extends Controller
 {
     public function index(Request $request)
     {
-        $guardians = User::with(['guardian', 'guardian.students', 'guardian.admin'])->where('role', 0)->get();
-
+        $guardians = Guardian::with('students', 'user')->get();
+        foreach ($guardians as $guardian) {
+            $guardian['created_by_name'] = Admin::where('id', $guardian->created_by)->first();
+            $guardian['updated_by_name'] = $guardian->updated_by == null ? 'N/A' : Admin::where('id', $guardian->updated_by)->first();
+            // $guardian->updated_by == null ? $guardian['updated_by_name'] = 'N/A' : $guardian['updated_by_name'] = Admin::where('id', $guardian->updated_by)->first();
+            $guardian['created_at_formatted'] = Carbon::parse($guardian->created_at)->format('M d, Y');
+            $guardian['updated_at_formatted'] = Carbon::parse($guardian->updated_at)->format('M d, Y');
+        }
         if ($request->ajax()) {
             return DataTables::of($guardians)
                 ->addIndexColumn()
@@ -42,13 +53,14 @@ class GuardianController extends Controller
         return view('admin.UserManagement.parent', compact('guardians'));
     }
 
-    public function view($id) {
-        $guardian = Guardian::where('user_id', $id)->first()->load('admin', 'students', 'user');
-        $admin = Admin::where('id', $guardian->updated_by)->get(['firstName', 'lastName']);
-        $created_atFormatted = Carbon::parse($guardian->created_at)->format('M d, Y');
-        $updated_atFormatted = Carbon::parse($guardian->updated_at)->format('M d, Y');
-        $updatedByAdminName = $admin->value('firstName') . ' ' . $admin->value('lastName');
-        return response()->json(['guardian' => $guardian, 'created_atFormatted' => $created_atFormatted, 'updated_atFormatted' => $updated_atFormatted, 'updatedByAdminName' => $updatedByAdminName]);
+    public function view($id)
+    {
+        $guardian = Guardian::where('id', $id)->first()->load('students', 'user');
+        $guardian['created_at_formatted'] = Carbon::parse($guardian->created_at)->format('M d, Y');
+        $guardian['updated_at_formatted'] = Carbon::parse($guardian->updated_at)->format('M d, Y');
+        $guardian['updated_by_name'] = Admin::where('id', $guardian->updated_by)->first();
+        $guardian['created_by_name'] = Admin::where('id', $guardian->created_by)->first();
+        return response()->json($guardian);
     }
 
     // Show Create Form
@@ -58,62 +70,51 @@ class GuardianController extends Controller
     }
 
     // Create parent User
-    public function store(Request $request)
+    public function store(StoreParentRequest $request)
     {
-        // Create User
-        $user = [
-            'email' => $request->email,
-            'recoveryEmail' => $request->recoveryEmail,
-            'password' => $request->password
-        ];
-        User::create($user);
-        // Get Latest User Row to Match the Latest Parent Row
-        $user_id = User::latest()->get(['id'])->value('id');
-        // Created by
-        $adminUser = auth()->id();
-        $created_by = Admin::where('user_id', $adminUser)->get(['id'])->value('id');
-        // Create Parent
-        $parent = [
-            'firstName' => $request->firstName,
-            'lastName' => $request->lastName,
-            'middleName' => $request->middleName,
-            'address' => $request->address,
-            'suffix' => $request->suffix,
-            'sex' => $request->sex,
-            'birthDate' => $request->birthDate,
-            'status' => 1,
-            'user_id' => $user_id,
-            'created_by' => $created_by
-        ];
+        $guardian = $request->safe()->except([
+            'email', 
+            'recoveryEmail'
+        ]);
+        $guardian['status'] = 1;
+        $guardian['created_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
         if ($request->hasFile('image')) {
-            $parent['image'] = $request->file('image')->store('admin/parents', 'public');
+            $guardian['image'] = $request->file('image')->store('admin/parents', 'public');
         }
-        Guardian::create($parent);
-
+        $userCredentials = $request->safe()->only([
+            'email', 
+            'recoveryEmail'
+        ]);
+        $userCredentials['password'] = Hash::make(Str::random(8));
+        $userCredentials['role'] = 1;
+        $user = User::create($userCredentials);
+        $guardian['user_id'] = $user->id;
+        Guardian::create($guardian);
         return redirect('/admin/guardians');
     }
 
-    public function edit(Guardian $guardian) {
+    public function edit(Guardian $guardian)
+    {
         return view('admin.UserManagement.editGuardian', ['guardian' => $guardian]);
     }
 
-    public function update(Request $request, Guardian $guardian) {
-        $formFields = $request->validate([
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'middleName' => 'nullable',
-            'suffix' => 'nullable',
-            'sex' => 'required',
-            'birthDate' => 'required',
-            'address' => 'nullable',
+    public function update(UpdateParentRequest $request, Guardian $guardian)
+    {
+        $parentCredentials = $request->safe()->except([
+            'email', 
+            'recoveryEmail'
         ]);
-        $formFields['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
+        $parentCredentials['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
         if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('admin/parents', 'public');
+            $parentCredentials['image'] = $request->file('image')->store('admin/parents', 'public');
         }
-        $guardian->update($formFields);
-
+        $userCredentials = $request->safe()->only([
+            'email', 
+            'recoveryEmail'
+        ]);
+        $user = User::where('id', $guardian->user_id);
+        $user->update($userCredentials);
+        $guardian->update($parentCredentials);
         return redirect('/admin/guardians');
-
     }
 }
