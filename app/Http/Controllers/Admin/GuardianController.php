@@ -8,15 +8,18 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Guardian;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables as DataTables;
 
 class GuardianController extends Controller
 {
     public function index(Request $request)
     {
-        $guardians = User::with(['guardian', 'guardian.students', 'guardian.admin'])->where('role', 0)->get();
+        $guardians = Guardian::with('adminUpdated', 'admin', 'students', 'user')->get();
 
         if ($request->ajax()) {
             return DataTables::of($guardians)
@@ -42,8 +45,9 @@ class GuardianController extends Controller
         return view('admin.UserManagement.parent', compact('guardians'));
     }
 
-    public function view($id) {
-        $guardian = Guardian::where('user_id', $id)->first()->load('admin', 'students', 'user');
+    public function view($id)
+    {
+        $guardian = Guardian::where('id', $id)->first()->load('students', 'user', 'admin', 'adminUpdated');
         $admin = Admin::where('id', $guardian->updated_by)->get(['firstName', 'lastName']);
         $created_atFormatted = Carbon::parse($guardian->created_at)->format('M d, Y');
         $updated_atFormatted = Carbon::parse($guardian->updated_at)->format('M d, Y');
@@ -60,19 +64,21 @@ class GuardianController extends Controller
     // Create parent User
     public function store(Request $request)
     {
-        // Create User
-        $user = [
-            'email' => $request->email,
-            'recoveryEmail' => $request->recoveryEmail,
-            'password' => $request->password
-        ];
-        User::create($user);
-        // Get Latest User Row to Match the Latest Parent Row
-        $user_id = User::latest()->get(['id'])->value('id');
-        // Created by
-        $adminUser = auth()->id();
-        $created_by = Admin::where('user_id', $adminUser)->get(['id'])->value('id');
-        // Create Parent
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255|unique:users',
+            'recoveryEmail' => 'nullable|string|email|max:255|unique:users',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'middleName' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'suffix' => 'nullable|string|max:255',
+            'sex' => 'required|max:1',
+            'birthDate' => 'required|date',
+            'image' => 'nullable|image|max:2000'
+        ]);
+        if ($validator->fails()) {
+            return redirect('admin/admins/create')->withInput()->withErrors($validator);
+        }
         $parent = [
             'firstName' => $request->firstName,
             'lastName' => $request->lastName,
@@ -82,38 +88,56 @@ class GuardianController extends Controller
             'sex' => $request->sex,
             'birthDate' => $request->birthDate,
             'status' => 1,
-            'user_id' => $user_id,
-            'created_by' => $created_by
+            'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         ];
         if ($request->hasFile('image')) {
-            $parent['image'] = $request->file('image')->store('admin/parents', 'public');
+            $parent['image'] = $request->file('image')->store('admin/admins', 'public');
         }
+        $password = Str::random(8);
+        $userCredentials = [
+            'email' => $request->email,
+            'recoveryEmail' => $request->recoveryEmail,
+            'password' => Hash::make($password),
+            'role' => 1
+        ];
+        $user = User::create($userCredentials);
+        $parent['user_id'] = $user->id;
         Guardian::create($parent);
-
         return redirect('/admin/guardians');
     }
 
-    public function edit(Guardian $guardian) {
+    public function edit(Guardian $guardian)
+    {
         return view('admin.UserManagement.editGuardian', ['guardian' => $guardian]);
     }
 
-    public function update(Request $request, Guardian $guardian) {
-        $formFields = $request->validate([
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'middleName' => 'nullable',
-            'suffix' => 'nullable',
-            'sex' => 'required',
-            'birthDate' => 'required',
-            'address' => 'nullable',
+    public function update(Request $request, Guardian $guardian)
+    {
+        $validator = Validator::make($request->all(), [
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'middleName' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'suffix' => 'nullable|string|max:255',
+            'sex' => 'required|max:1',
+            'birthDate' => 'required|date',
+            'image' => 'nullable|image|max:2000'
         ]);
-        $formFields['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
-        if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('admin/parents', 'public');
+        if ($validator->fails()) {
+            return redirect('admin/admins/' . $guardian->id . '/edit')->withInput()->withErrors($validator);
         }
-        $guardian->update($formFields);
-
+        $guardian->firstName = $request->firstName;
+        $guardian->lastName = $request->lastName;
+        $guardian->middleName = $request->middleName;
+        $guardian->address = $request->address;
+        $guardian->suffix = $request->suffix;
+        $guardian->sex = $request->sex;
+        $guardian->birthDate = $request->birthDate;
+        $guardian->updated_by = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
+        if ($request->hasFile('image')) {
+            $guardian->image = $request->file('image')->store('admin/admins', 'public');
+        }
+        $guardian->save();
         return redirect('/admin/guardians');
-
     }
 }

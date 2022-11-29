@@ -129,9 +129,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
     Route::get('/admins/{id}/view', [AdminController::class, 'view'])->name('admins.view');
     Route::get('/admins/create', [AdminController::class, 'create']);
-    Route::post('/admins/store', [AdminController::class, 'store']);
+    Route::post('/admins/store', [AdminController::class, 'store'])->name('admins.store');
     Route::get('/admins/{admin}/edit', [AdminController::class, 'edit']);
-    Route::put('/admins/{admin}', [AdminController::class, 'update']);
+    Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
     // Parent Account Management
     Route::get('/guardians', [GuardianController::class, 'index'])->name('guardians.index');
     Route::get('/guardians/{id}/view', [GuardianController::class, 'view'])->name('guardian.view');
