@@ -246,10 +246,16 @@
                     {
                         data: 'middleName',
                         name: 'middleName',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
                         data: 'suffix',
                         name: 'suffix',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
                         data: 'user.email',
@@ -258,6 +264,9 @@
                     {
                         data: 'user.recoveryEmail',
                         name: 'user.recoveryEmail',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : row.user.recoveryEmail;
+                        }
                     },
                     {
                         data: 'sex',
@@ -266,6 +275,9 @@
                     {
                         data: 'address',
                         name: 'address',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
                         data: 'birthDate',
@@ -279,27 +291,33 @@
                         }
                     },
                     {
-                        data: 'created_at',
-                        name: 'created_at',
+                        data: 'created_at_formatted',
+                        name: 'created_at_formatted',
 
                     },
                     {
                         data: 'created_by',
                         name: 'created_by',
                         render: function(data, type, row) {
-                            return row.user.admin.firstName + ' ' + row.user.admin.lastName;
+                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                                .lastName;
                         }
                     },
                     {
-                        data: 'updated_at',
-                        name: 'updated_at',
+                        data: 'updated_at_formatted',
+                        name: 'updated_at_formatted',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
                         data: 'updated_by',
                         name: 'updated_by',
                         render: function(data, type, row) {
-                            return row.user.admin.firstName + ' ' + row.user.admin.lastName;
+                            return row.updated_by_name.firstName == null ? 'N/A' : row
+                                .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
+
                     },
                     {
                         data: 'action',
@@ -345,6 +363,10 @@
                         visible: false,
                     },
                     {
+                        target: 14,
+                        visible: false,
+                    },
+                    {
                         targets: -1,
                         data: null,
                         defaultContent: '<button>Click!</button>',
@@ -357,37 +379,41 @@
             $('body').on('click', '.viewImage', function() {
                 var adminID = $(this).data('id');
                 $.get("{{ url('admin/admins/') }}" + '/' + adminID + '/view', function(data) {
-                    $('#viewImgModalLabel').text('Image of ' + data.admin.firstName + ' ' + data
-                        .admin.lastName);
-                    if (data.admin.image != null ) {
-                        $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.admin
-                    .image);
-                    } else {
-                        $('#image').attr('src', "{{ URL::asset('storage/admin/userNoImage.png') }}");
-                    }
-                    
+                    $('#viewImgModalLabel').text('Image of ' + data.firstName + ' ' + data
+                        .lastName);
+                    data.image != null ? $('#image').attr('src', "{{ URL::asset('storage/') }}" +
+                        '/' + data.image) : $('#image').attr('src',
+                        "{{ URL::asset('storage/admin/userNoImage.png') }}");
                     $('#viewImgModal').modal('show');
                 })
             });
             // View Student Details Modal
             $('body').on('click', '.viewAdminDetails', function() {
-                var guardianID = $(this).data('id');
-                $.get("{{ url('admin/admins/') }}" + '/' + guardianID + '/view', function(data) {
-                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data.admin
-                        .firstName + ' ' + data.admin.lastName);
-                    $('#email').text(data.admin.user.email);
-                    $('#recoveryEmail').text(data.admin.user.recoveryEmail);
-                    $('#firstName').text(data.admin.firstName);
-                    $('#lastName').text(data.admin.lastName);
-                    $('#middleName').text(data.admin.middleName);
-                    $('#suffix').text(data.admin.suffix);
-                    $('#sex').text(data.admin.sex);
-                    $('#address').text(data.admin.address);
-                    $('#birthDate').text(data.admin.birthDate);
-                    $('#created_at').text(data.created_atFormatted);
-                    $('#updated_at').text(data.updated_atFormatted);
-                    $('#created_by').text(data.createdByAdminName);
-                    $('#updated_by').text(data.updatedByAdminName);
+                var adminID = $(this).data('id');
+                $.get("{{ url('admin/admins/') }}" + '/' + adminID + '/view', function(data) {
+                    $.each(data, function(i, e) {
+                        if (data[i] == null)
+                            data[i] = "N/A";
+                    });
+                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data
+                        .firstName + ' ' + data.lastName);
+                    $('#email').text(data.user.email);
+                    $('#recoveryEmail').text(data.user.recoveryEmail);
+                    $('#firstName').text(data.firstName);
+                    $('#lastName').text(data.lastName);
+                    $('#middleName').text(data.middleName);
+                    $('#sex').text(data.sex);
+                    $('#suffix').text(data.suffix);
+                    $('#address').text(data.address);
+                    $('#birthDate').text(data.birthDate);
+                    $('#created_at').text(data.created_at_formatted);
+                    $('#updated_at').text(data.updated_at_formatted);
+                    $('#created_by').text(data.created_by_name.firstName + ' ' + data
+                        .created_by_name.lastName)
+                    data.updated_by_name.firstName == null ? $('#updated_by').text('N/A') : $(
+                        '#updated_by').text(data
+                        .updated_by_name.firstName + ' ' + data
+                        .updated_by_name.lastName);
                     $('#viewStudentInfoModal').modal('show');
                 })
             });

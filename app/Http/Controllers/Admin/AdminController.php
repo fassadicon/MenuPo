@@ -22,7 +22,13 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         // Get Admin Accounts
-        $admins = Admin::with('user', 'user.admin')->get();
+        $admins = Admin::with('user')->get();
+        foreach ($admins as $admin) {
+            $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
+            $admin->updated_by == null ? $admin['updated_by_name'] = 'N/A' : $admin['updated_by_name'] = Admin::where('id', $admin->updated_by)->first();
+            $admin['created_at_formatted'] = Carbon::parse($admin->created_at)->format('M d, Y');
+            $admin['updated_at_formatted'] = Carbon::parse($admin->updated_at)->format('M d, Y');
+        }
         // Return Data Tables
         if ($request->ajax()) {
             return DataTables::of($admins)
@@ -47,13 +53,11 @@ class AdminController extends Controller
     public function view($id)
     {
         $admin = Admin::where('id', $id)->first()->load('user');
-        $adminCreatedBy = Admin::where('id', $admin->created_by)->get(['firstName', 'lastName']);
-        $createdByAdminName = $adminCreatedBy->value('firstName') . ' ' . $adminCreatedBy->value('lastName');
-        $adminUpdatedBy = Admin::where('id', $admin->updated_by)->get(['firstName', 'lastName']);
-        $updatedByAdminName = $adminUpdatedBy->value('firstName') . ' ' . $adminUpdatedBy->value('lastName');
-        $created_atFormatted = Carbon::parse($admin->created_at)->format('M d, Y');
-        $updated_atFormatted = Carbon::parse($admin->updated_at)->format('M d, Y');   
-        return response()->json(['admin' => $admin, 'created_atFormatted' => $created_atFormatted, 'updated_atFormatted' => $updated_atFormatted, 'updatedByAdminName' => $updatedByAdminName, 'createdByAdminName' => $createdByAdminName]);
+        $admin['created_at_formatted'] = Carbon::parse($admin->created_at)->format('M d, Y');
+        $admin['updated_at_formatted'] = Carbon::parse($admin->updated_at)->format('M d, Y');
+        $admin['updated_by_name'] = Admin::where('id', $admin->updated_by)->first();
+        $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
+        return response()->json($admin);
     }
 
     // Show Create Form
@@ -66,7 +70,7 @@ class AdminController extends Controller
     public function store(CreatAdminRequest $request)
     {
         $admin = $request->safe()->except([
-            'email', 
+            'email',
             'recoveryEmail'
         ]);
         $admin['status'] = 1;
@@ -75,7 +79,7 @@ class AdminController extends Controller
             $admin['image'] = $request->file('image')->store('admin/admins', 'public');
         }
         $userCredentials = $request->safe()->only([
-            'email', 
+            'email',
             'recoveryEmail'
         ]);
         $userCredentials['password'] = Hash::make(Str::random(8));
@@ -94,7 +98,7 @@ class AdminController extends Controller
     public function update(UpdateAdminRequest $request, Admin $admin)
     {
         $adminCredentials = $request->safe()->except([
-            'email', 
+            'email',
             'recoveryEmail'
         ]);
         $adminCredentials['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
@@ -102,7 +106,7 @@ class AdminController extends Controller
             $adminCredentials['image'] = $request->file('image')->store('admin/admins', 'public');
         }
         $userCredentials = $request->safe()->only([
-            'email', 
+            'email',
             'recoveryEmail'
         ]);
         $user = User::where('id', $admin->user_id);

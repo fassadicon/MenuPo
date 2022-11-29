@@ -77,7 +77,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // <----------- MENU CONTROLLER -----------> //
     // DataTables
-    Route::get('/menu', [MenuController::class, 'cookedMeals'])->name('menu.index');
+    Route::get('/menu', [MenuController::class, 'cookedMeals'])->name('menu.indexAdmin');
     Route::get('/menu/snacks', [MenuController::class, 'snacks'])->name('menu.snacks');
     Route::get('/menu/beverages', [MenuController::class, 'beverages'])->name('menu.beverages');
     Route::get('/menu/others', [MenuController::class, 'others'])->name('menu.others');

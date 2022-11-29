@@ -1920,8 +1920,6 @@ class DatabaseSeeder extends Seeder
         $payments = [
             [
                 'id' => 1,
-                'parent_id' => 1,
-                'student_id' => 1,
                 'method' => 'GCash',
                 'referenceNo' => 123456789
             ]
