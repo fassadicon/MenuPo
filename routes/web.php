@@ -111,10 +111,21 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('/orders/scanner/{sid}/{pid}/complete', [ScannerController::class, 'complete']);
     // Pending/Unpaid Orders
     Route::get('/orders/pendings', [PurchasesController::class, 'index'])->name('pendings.index');
+    // Pending/Unpaid Orders Modal
+    Route::get('/orders/pendings/{id}/view', [PurchasesController::class, 'viewPending'])->name('pendings.viewPending');
     // Orders Placed
     Route::get('/orders/placed', [OrderController::class, 'index'])->name('orders.index');
+    // Orders Placed Modal
+    Route::get('/orders/placed/{id}/view', [OrderController::class, 'view'])->name('orders.view');
     // Completed Orders
     Route::get('/orders/completed', [PurchasesController::class, 'completedOrders'])->name('completed.completedOrders');
+    // Completed Orders Modal
+    Route::get('/orders/completed/{id}/view', [PurchasesController::class, 'viewCompleted'])->name('completed.viewCompleted');
+    // Soft Delete Completed Orders
+    Route::get('/orders/completed/{id}/delete', [PurchasesController::class, 'deleteCompleted'])->name('completed.deleteCompleted');
+    // Soft Delete Trash View
+    Route::get('/orders/completed/trash', [PurchasesController::class, 'trashCompleted'])->name('completed.trashCompleted');
+
     // <----------- USER CONTROLLER -----------> //
     // Admin Account Management
     Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');

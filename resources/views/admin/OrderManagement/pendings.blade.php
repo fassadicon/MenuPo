@@ -66,7 +66,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="purchaseID" id="purchaseID">
-                    <div class="mb-3">
+                    <div class="row mb-3">
                         <label for="">Parent Name</label>
                         <p id="parent_id" class="form-control"></p>
                     </div>
@@ -119,6 +119,7 @@
             </div>
         </div>
     </div>
+
 
 
     @include('partials.admin._DataTableScripts')
@@ -230,7 +231,7 @@
                       name: 'student_id',
                       render: function(data, type, row) {
                             return row.student.firstName + ' ' + row.student.lastName;
-                        }
+                      }
                   },
                   {//3
                       data: 'totalKcal',
@@ -280,13 +281,11 @@
                       data: 'updated_at',
                       name: 'updated_at',
                   },
-                  
                   { //16
                       data: 'served_by',
                       name: 'served_by',
                   },
-                  
-                  { // 17
+                  { // 18
                       data: 'action',
                       name: 'action',
                       orderable: false,
@@ -364,12 +363,12 @@
         });
 
         // View Pending Order Data Modal
-       $('body').on('click', '.viewPurchase', function() {
-           var orderID = $(this).data('id');
-           $.get("{{ url('admin/orders/pendings') }}" + '/' + purchaseID + '/view', function(data) {
+       $('body').on('click', '.viewPending', function() {
+           var purchaseID = $(this).data('id');
+           $.get("{{ url('/orders/pendings') }}" + '/' + purchaseID + '/view', function(data) {
                $('#viewPurchaseInfoModal').modal('show');
                $('#parent_id').text(data.parent.id);
-               $('#student_id').text(data.student.id);
+               $('#student_id').text(data.student.id;
                $('#totalKcal').text(data.totalKcal);
                $('#totalTotFat').text(data.totalTotFat);
                $('#totalSatFat').text(data.totalSatFat);
@@ -386,6 +385,12 @@
            })
        });
 
+       // Confirm Order Payment
+       $('body').on('click', '.confirmPayment', function() {
+           var purchaseID = $(this).data('id');
+           $.('#purchase_id').val(purchaseID);
+           $.('#confirmPurchaseCenter').modal('show');
+       });
        // Mark Pending Order as Paid
     //    $('body').on('click', '.viewPurchase', function() {
     //        var orderID = $(this).data('id');

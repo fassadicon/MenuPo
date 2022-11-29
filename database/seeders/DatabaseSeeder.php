@@ -1607,7 +1607,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-26'
+                'created_at' => '2022-11-27'
             ]
 
         ];
