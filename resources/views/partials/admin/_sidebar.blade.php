@@ -245,7 +245,7 @@
           </a>
         </li><!-- End Paid/To Claim Nav -->
       <li class="nav-item">
-        <a href="/admin/orders/" class="nav-link collapsed">
+        <a href="/admin/orders/placed" class="nav-link collapsed">
             <i class="fas fa-utensils"></i>
             <span>Placed Orders</span>
         </a>

@@ -5,8 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <meta name="csrf-token" content="{{ csrf_token() }}" /> 
-    
-  
+
       <!-- Favicons -->
       <link href="img/favicon/favicon.ico" rel="icon">
       <link href="img/favicon/apple-touch-icon.ico" rel="apple-touch-icon">
@@ -17,11 +16,7 @@
       <meta name="keywords" content="" />
       <meta name="author" content="" />
 
-      <!-- Template Main CSS File -->
-      {{-- <link href="{{asset('user/assets/css/main.css')}}" rel="stylesheet"> --}}
-      {{-- <link rel="stylesheet" type="text/css" href="{{ url('css/order.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url('css/main.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url('css/health-module.css') }}"> --}}
+     
       <link rel="stylesheet" type="text/css" href="{{ url('css/main.css') }}">
 
       <!--Replace with your tailwind.css once created-->
@@ -43,7 +38,30 @@
       {{-- Html2Canvas --}}
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       
-      @vite(['resources/css/app.css', 'resources/js/app.js'])
+      {{-- tailwind --}}
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                          sm: '360px',
+                          md: '768px',
+                          lg: '976px',
+                          xl: '1440px',
+                        },
+                extend: {
+                    colors: {
+                    primary: 'hsl(46, 100%, 50%)', // #ffc300
+                    primaryLight: 'hsl(46, 100%, 80%)', 	// #ffe799
+                    primaryDark: 'hsl(46, 100%, 45%)', //	#e6b000
+                    secondary: 'hsl(219, 46%, 24%)',  // #213559
+                    secondaryLight:  'hsl(218, 31%, 31%)', // #374968
+                            }
+                        },
+                    },
+                 };
+      </script>
+      {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
       <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
       <style>
@@ -167,17 +185,17 @@
              
     
               <ul class="hidden md:flex space-x-6 leading-9 font-bold text-secondary">
-                <li><a href="/users/home" class="hover:text-white">Home</a></li>
-                <li><a href="/users/menu-landing" class="hover:text-white">Menu</a></li>
+                <li><a href="/user/home" class="hover:text-white">Home</a></li>
+                <li><a href="/user/menu-landing" class="hover:text-white">Menu</a></li>
                 <li class="flex relative group">
                   <a href="#" class="mr-1 hover:text-black">Student</a> 
                   <i class="fa-solid fa-chevron-down fa-2xs pt-3"></i>
                   <!-- Submenu starts -->
 
                   <ul class="absolute bg-white p-3 w-36 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
-                    {{-- @foreach ($studs as $student)
-                        <li class="text-sm hover:bg-slate-100 leading-8 my-3"><a href="/users/health/{{$student->id}}"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->stud_FN}}</a></li>
-                    @endforeach --}}
+                    @foreach ($studs as $student)
+                      <li class="text-sm hover:bg-slate-100 leading-8 my-3"><a href="/user/health/{{$student->id}}"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
+                    @endforeach
                   </ul>
                   <!-- Submenu ends -->
                 </li>
@@ -223,7 +241,7 @@
                   <i class="fa-solid fa-chevron-down fa-2xs pt-3 hidden"></i>
                   <!-- Submenu starts -->
                   <ul class="absolute bg-white p-3 w-52 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50 right-0">
-                    <li class="text-sm hover:bg-slate-100 leading-8"><a href="/users/user-account">Account Info</a></li>
+                    <li class="text-sm hover:bg-slate-100 leading-8"><a href="/user/user-account">Account Info</a></li>
                     {{-- @php
                         $currentTime = \Carbon\Carbon::now('Asia/Singapore')->toTimeString();
                         if($currentTime > '12:42:00' && $currentTime < '12:44:00'){
