@@ -273,7 +273,7 @@ class DatabaseSeeder extends Seeder
                 'sex' => 'F',
                 'birthDate' => '2012-09-17',
                 'status' => 1,
-                'created_at' => '2022-06-01',
+                'created_at' => '2022-06-02',
                 'parent_id' => 3,
                 'created_by' => 2,
                 'QR' => 'admin/qrs/5.png',
