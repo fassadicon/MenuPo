@@ -19,7 +19,13 @@ class StudentController extends Controller
 {
     public function index(Request $request)
     {
-        $students = Student::get()->load('guardian', 'admin');
+        $students = Student::get()->load('guardian');
+        foreach ($students as $student) {
+            $student['created_by_name'] = Admin::where('id', $student->created_by)->first();
+            $student['updated_by_name'] = $student->updated_by == null ? 'N/A' : Admin::where('id', $student->updated_by)->first();
+            $student['created_at_formatted'] = Carbon::parse($student->created_at)->format('M d, Y');
+            $student['updated_at_formatted'] = Carbon::parse($student->updated_at)->format('M d, Y');
+        }
 
         if ($request->ajax()) {
             return DataTables::of($students)
@@ -49,12 +55,12 @@ class StudentController extends Controller
     }
 
     public function view($id) {
-        $student = Student::where('id', $id)->first()->load('admin', 'guardian');
-        $admin = Admin::where('id', $student->updated_by)->get(['firstName', 'lastName']);
-        $created_atFormatted = Carbon::parse($student->created_at)->format('M d, Y');
-        $updated_atFormatted = Carbon::parse($student->updated_at)->format('M d, Y');
-        $updatedByAdminName = $admin->value('firstName') . ' ' . $admin->value('lastName');
-        return response()->json(['student' => $student, 'created_atFormatted' => $created_atFormatted, 'updated_atFormatted' => $updated_atFormatted, 'updatedByAdminName' => $updatedByAdminName]);
+        $student = Student::where('id', $id)->first()->load('guardian');
+        $student['created_at_formatted'] = Carbon::parse($student->created_at)->format('M d, Y');
+        $student['updated_at_formatted'] = Carbon::parse($student->updated_at)->format('M d, Y');
+        $student['updated_by_name'] = Admin::where('id', $student->updated_by)->first();
+        $student['created_by_name'] = Admin::where('id', $student->created_by)->first();
+        return response()->json($student);
     }
 
     // Show Create Form
@@ -65,25 +71,19 @@ class StudentController extends Controller
 
     public function store(StoreStudentRequest $request)
     {   
-        $student = $request->safe()->except(['parent']);
-        $student['status'] = 1;
-        $student['created_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
-        if ($request->hasFile('image')) {
-            $admin['image'] = $request->file('image')->store('admin/students', 'public');
-        }
+        $student = $request->safe()->merge([
+            'status' => 1,
+            'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+            ])->except(['parent']);
+        if ($request->hasFile('image'))
+            $student['image'] = $request->file('image')->store('admin/students', 'public');
         $parentName = $request->parent;
         $student['parent_id'] = substr($parentName, strpos($parentName, ":") + 1);
-        if ($request->hasFile('image')) {
-            $student['image'] = $request->file('image')->store('admin/students', 'public');
-        }
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
-        $test = QrCode::size(300)->errorCorrection('H')
-            ->format('png')
-            ->merge('storage/admin/MenuPoLogoQR.png', .3, true)
+        $test = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)
             ->generate($studentID);
         $student['QR'] = 'admin/qrs/' . $studentID . '.png';
         Storage::disk('public')->put($student['QR'], $test);
-        dd($student);
         Student::create($student);
         return redirect('admin/students');
     }
@@ -92,34 +92,16 @@ class StudentController extends Controller
         return view('admin.UserManagement.editStudent', ['student' => $student]);
     }
 
-    public function update(Request $request, Student $student) {
-        $formFields = $request->validate([
-            'LRN' => 'required',
-            'grade' => 'required',
-            'section' => 'required',
-            'adviser' => 'required',
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'middleName' => 'nullable',
-            'suffix' => 'nullable',
-            'sex' => 'required',
-            'birthDate' => 'required',
-            'middleName' => 'required',
-            'height' => 'nullable',
-            'weight' => 'nullable',
-            'BMI' => 'nullable'
-        ]);
+    public function update(UpdateStudentRequest $request, Student $student) {
+        $studentCredentials = $request->safe()->merge([
+            'status' => 1,
+            'updated_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+            ])->except(['parent']);
+        if ($request->hasFile('image'))
+            $studentCredentials['image'] = $request->file('image')->store('admin/students', 'public');
         $parentName = $request->parent;
-        if (preg_match('~[0-9]+~', $parentName)) {
-            $formFields['parent_id'] = substr($parentName, strpos($parentName, ":") + 1);
-        }
-        $formFields['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
-        if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('admin/students', 'public');
-        }
-        $student->update($formFields);
-
+        $studentCredentials['parent_id'] = substr($parentName, strpos($parentName, ":") + 1);
+        $student->update($studentCredentials);
         return redirect('/admin/students');
-
     }
 }
