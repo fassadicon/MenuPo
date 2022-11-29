@@ -18,6 +18,10 @@ class Guardian extends Model
         return $this->belongsTo(Admin::class, 'created_by', 'id');
     }
 
+    public function adminUpdated() {
+        return $this->belongsTo(Admin::class, 'updated_by', 'id');
+    }
+
     public function student()
     {
         return $this->hasOne(Student::class, 'parent_id', 'id');

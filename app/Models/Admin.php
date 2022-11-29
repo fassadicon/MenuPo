@@ -36,4 +36,14 @@ class Admin extends Model
         return $this->hasMany(Parent::class, 'created_by', 'id');
     }
 
+    public function parentUpdated()
+    {
+        return $this->hasOne(Parent::class, 'updated_by', 'id');
+    }
+
+    public function parentsUpdated()
+    {
+        return $this->hasMany(Parent::class, 'updated_by', 'id');
+    }
 }
+

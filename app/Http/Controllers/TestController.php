@@ -23,48 +23,27 @@ class TestController extends Controller
 {
     public function index()
     {
-        // $users = User::where('role', 0)->get();
-        // $purchases = Purchase::all();
-        // $menus = Menu::with('food.orders.purchase', 'food')
-        //     // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
-        //     ->where(function ($query) {
-        //         $query->where('status', 'Temporary')
-        //             ->whereDate('expiring_at', '>', Carbon::now()->format('Y-m-d'));
-        //     })
-        //     ->orWhere(function ($query) {
-        //         $query->where('status', 'Default')
-        //             ->WhereNull('expiring_at');
-        //     })
-        //     // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
-        //     ->whereHas('food', function ($query) {
-        //         $query->where('type', 'like', '%Cooked Meal%');
-        //     })
-        //     ->whereHas('food.orders.purchase', function ($query) {
-        //         $query->where('paymentStatus', 'like', '%paid%');
-        //     })
-        //     // ORDER BY ISNULL(expiring_at), expiring_at DESC
-        //     ->orderByRaw('ISNULL(expiring_at), expiring_at ASC')
-        //     ->get();
-        // $foods = Food::get()->pluck('name');
-        // $foods = json_decode($foods);
-        // $im = new Imagick(public_path('admin/foods/9pKj74GAOi9UurQi9VXT57ASdIVZpjg483GHLEnl.PNG'));
-        // /* Thumbnail the image */
-        // $im->thumbnailImage(200, null);
+        // $foods = Purchase::with('orders', 'orders.food')
+        // ->whereHas('orders', function ($query) {
+        //     $query->where('purchase_id', 2);
+        // })->get();
 
-        // return view('admin.test', compact('im'));
-        // $test = Student::latest()->get(['id'])->value('id');
-        // ->merge(public_path('storage/admin/menupoLogo.png'),.3, true)
-        // Generate (string $data, string $filename = null)
-        $studentID = 0;
-        $test = QrCode::size(300)->errorCorrection('H')
-            ->format('png')
-            ->merge('storage/admin/MenuPoLogoQR.png', .3, true)
-            ->generate($studentID);
-        $student = 'admin/qrs/' . $studentID . '.png';
-        Storage::disk('public')->put($student, $test);
-        // $QRPNG = '/admin/qrs/img-' . time() . '.png';
-        // Storage::disk('public')->put($QRPNG, $test); //storage/app/public/img/qr-code/img-1557309130.png
-        return view('admin.test', compact('test'));
+        $Allfoods = Food::with('order.purchase')
+        ->whereHas('order.purchase', function ($query) {
+            $query->where('parent_id', 1);
+        })->get();
+        $foods = $Allfoods->avg('grade');
+        // $foods = array();
+        // // $foods[] = $orders->food->grade;
+        // foreach ($orders as $order) {
+        //     $foods[] = $order->food->grade;
+        // }
+
+        // $foods = $orders->food->grade;
+        // foreach($orders as $key => $order) {
+        //     $foods[$key] = $order->food->grade;
+        // }
+        return view('admin.test', compact('foods'));
     }
 
     // if (totalPoints <= 0) {

@@ -20,8 +20,9 @@
                     <th>Birth Date</th>
                     <th>Status</th>
                     <th>Created At</th>
-                    <th>Updated At</th>
                     <th>Created By</th>
+                    <th>Updated At</th>
+                    <th>Last Updated By</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -42,8 +43,9 @@
                     <th>Birth Date</th>
                     <th>Status</th>
                     <th>Created At</th>
-                    <th>Updated At</th>
                     <th>Created By</th>
+                    <th>Updated At</th>
+                    <th>Last Updated By</th>
                 </tr>
             </tfoot>
         </table>
@@ -236,74 +238,81 @@
                         });
                 },
                 columns: [{
-                        data: 'guardian.id',
-                        name: 'guardian.id'
+                        data: 'id',
+                        name: 'id'
                     },
                     {
-                        data: 'guardian.firstName',
-                        name: 'guardian.firstName',
+                        data: 'firstName',
+                        name: 'firstName',
                     },
                     {
-                        data: 'guardian.lastName',
-                        name: 'guardian.lastName'
+                        data: 'lastName',
+                        name: 'lastName'
                     },
                     {
-                        data: 'guardian.middleName',
-                        name: 'guardian.middleName',
+                        data: 'middleName',
+                        name: 'middleName',
                     },
                     {
-                        data: 'guardian.suffix',
-                        name: 'guardian.suffix',
+                        data: 'suffix',
+                        name: 'suffix',
                     },
                     {
-                        data: 'guardian.students',
-                        name: 'guardian.students',
+                        data: 'students',
+                        name: 'students',
                         render: function(data, type, row) {
                             return $.map(data, function(value, i) {
                                 return value.firstName + ' ' + value.lastName;
-                            }).join(', ');
+                            }).join('<br>');
                         }
                     },
                     {
-                        data: 'email',
-                        name: 'email',
+                        data: 'user.email',
+                        name: 'user.email',
                     },
                     {
-                        data: 'recoveryEmail',
-                        name: 'recoveryEmail',
+                        data: 'user.recoveryEmail',
+                        name: 'user.recoveryEmail',
                     },
                     {
-                        data: 'guardian.sex',
-                        name: 'guardian.sex',
+                        data: 'sex',
+                        name: 'sex',
                     },
                     {
-                        data: 'guardian.address',
-                        name: 'guardian.address',
+                        data: 'address',
+                        name: 'address',
                     },
                     {
-                        data: 'guardian.birthDate',
-                        name: 'guardian.birthDate',
+                        data: 'birthDate',
+                        name: 'birthDate',
                     },
                     {
-                        data: 'guardian.status',
-                        name: 'guardian.status',
+                        data: 'status',
+                        name: 'status',
                         render: function(data, type, row) {
                             return data == 1 ? 'Active' : 'Inactive';
                         }
                     },
                     {
-                        data: 'guardian.created_at',
-                        name: 'guardian.created_at',
+                        data: 'created_at',
+                        name: 'created_at',
                     },
                     {
-                        data: 'guardian.updated_at',
-                        name: 'guardian.updated_at',
-                    },
-                    {
-                        data: 'guardian.admin.firstName',
-                        name: 'guardian.admin',
+                        data: 'admin.firstName',
+                        name: 'admin.name',
                         render: function(data, type, row) {
-                            return row.guardian.admin.firstName + ' ' + row.guardian.admin.lastName;
+                            return row.admin.firstName + ' ' + row.admin.lastName;
+                        }
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at',
+                    },
+                    {
+                        data: 'admin_updated',
+                        name: 'admin_updated',
+                        render: function(data, type, row) {
+                            return data.firstName;
                         }
                     },
                     {
@@ -313,48 +322,48 @@
                         searchable: false
                     }
                 ],
-                columnDefs: [{
-                        target: 4,
-                        visible: false,
-                    },
-                    {
-                        target: 7,
-                        visible: false,
-                    },
-                    {
-                        target: 8,
-                        visible: false,
-                    },
-                    {
-                        target: 9,
-                        visible: false,
-                    },
-                    {
-                        target: 10,
-                        visible: false,
-                    },
-                    {
-                        target: 11,
-                        visible: false,
-                    },
-                    {
-                        target: 12,
-                        visible: false,
-                    },
-                    {
-                        target: 13,
-                        visible: false,
-                    },
-                    {
-                        target: 14,
-                        visible: false,
-                    },
-                    {
-                        targets: -1,
-                        data: null,
-                        defaultContent: '<button>Click!</button>',
-                    },
-                ],
+                // columnDefs: [{
+                //         target: 4,
+                //         visible: false,
+                //     },
+                //     {
+                //         target: 7,
+                //         visible: false,
+                //     },
+                //     {
+                //         target: 8,
+                //         visible: false,
+                //     },
+                //     {
+                //         target: 9,
+                //         visible: false,
+                //     },
+                //     {
+                //         target: 10,
+                //         visible: false,
+                //     },
+                //     {
+                //         target: 11,
+                //         visible: false,
+                //     },
+                //     {
+                //         target: 12,
+                //         visible: false,
+                //     },
+                //     {
+                //         target: 13,
+                //         visible: false,
+                //     },
+                //     {
+                //         target: 14,
+                //         visible: false,
+                //     },
+                //     {
+                //         targets: -1,
+                //         data: null,
+                //         defaultContent: '<button>Click!</button>',
+                //     },
+                // ],
 
             });
 
@@ -389,7 +398,8 @@
                     $('#updated_at').text(data.updated_atFormatted);
                     $('#created_by').text(data.guardian.admin.firstName + ' ' + data.guardian.admin
                         .lastName);
-                    $('#updated_by').text(data.updatedByAdminName);
+                    $('#updated_by').text(data.guardian.admin_updated.firstName + ' ' + data.guardian.admin_updated
+                        .lastName);
                     $('#viewStudentInfoModal').modal('show');
 
                     var studentsHTML = '';

@@ -1,8 +1,8 @@
 <x-admin.layout>
     <header class="text-center">
-        <h2 class="text-2xl font-bold uppercase mb-1">Create Parent Account</h2>
+        <h2 class="text-2xl font-bold uppercase mb-1">Create Admin Account</h2>
     </header>
-    <form method="POST" action="/admin/guardians/store" enctype="multipart/form-data">
+    <form method="POST" action="/admin/admins/store" enctype="multipart/form-data">
         {{-- @csrf -> prevents scripting attacks --}}
         @csrf
         <div class="row">
@@ -15,17 +15,6 @@
                         name="email" placeholder="Example: JuanDelaCruz@gmail.com" value="{{ old('email') }}" />
 
                     @error('email')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-                {{-- password --}}
-                <div class="mb-6">
-                    <label for="password" class="inline-block text-lg mb-2">Password</label>
-                    <input id="password" type="text" class="border border-gray-200 rounded p-2 w-full"
-                        name="password"
-                        value="{{ old('password') }}" />
-
-                    @error('password')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
@@ -45,7 +34,7 @@
                     <input type="text" class="border border-gray-200 rounded p-2 w-full" name="address"
                         placeholder="Example: B2 L8 Buena Homes, subd., Malanday, San Mateo, Rizal" value="{{ old('address') }}" />
 
-                    @error('sex')
+                    @error('address')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
@@ -122,7 +111,7 @@
                         {{-- Sex --}}
                         <div class="mb-6">
                             <label for="sex" class="inline-block text-lg mb-2">sex</label>
-                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
+                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="sex"
                                 placeholder="Example: M, F" value="{{ old('sex') }}" />
 
                             @error('sex')
@@ -137,10 +126,10 @@
             <div class="d-flex justify-content-center col-12">
                 <div class="mb-6">
                     <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
-                        Create Parent Account
+                        Create Admin Account
                     </button>
 
-                    <a href="/admin/guardian" class="text-black ml-4"> Back </a>
+                    <a href="/admin/admins" class="text-black ml-4"> Back </a>
                 </div>
             </div>
         </div>
