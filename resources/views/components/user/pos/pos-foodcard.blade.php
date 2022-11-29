@@ -3,8 +3,8 @@
 
 <div class="max-w-xs w-56 mx-8 mb-2 rounded-lg shadow-lg">
     <div class="relative flex mb-2">
-      <img class="w-48 h-48 " src="{{$food->image}}"
-    alt="Image" />
+      <img class="w-48 h-48 " src="{{ $food->image ? asset('storage/' . $food->image) : asset('storage/admin/userNoImage.png') }}""
+      alt="Image" />
 
     @php
       if($food->grade > 0  && $food->grade < 6)

@@ -179,13 +179,13 @@
               <a class="toggleColour text-secondary no-underline hover:no-underline font-bold text-2xl flex lg:text-4xl" 
               href="#"
               >
-              <img class="h-10 fill-current align-middle" width="50.502" src="{{ asset('user/assets/img/logo.png') }}">
-              <img class="h-12 fill-current align-left" width="50.502" src="{{ asset('images/school-logo.png') }}">
+              <img class="h-10 fill-current align-middle" width="50.502" src="{{ asset('storage/admin/school-images/MenuPoLogoQR.png') }}">
+              <img class="h-12 fill-current align-left" width="50.502" src="{{ asset('storage/admin/school-images/school-logo.png') }}">
             </a>
              
     
               <ul class="hidden md:flex space-x-6 leading-9 font-bold text-secondary">
-                <li><a href="/user/home" class="hover:text-white">Home</a></li>
+                <li><a href="/user/home" class="hover:text-white">Home</a></li> 
                 <li><a href="/user/menu-landing" class="hover:text-white">Menu</a></li>
                 <li class="flex relative group">
                   <a href="#" class="mr-1 hover:text-black">Student</a> 

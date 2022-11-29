@@ -98,7 +98,7 @@
           <!-- Main Menu Hero Content -->
           <div
             class="container max-w-lg px-4 py-32 mx-auto text-left bg-center bg-no-repeat bg-cover md:max-w-none md:text-center"
-            style="background-image: url('{{ asset('images/canteen-img.jpg') }}')">
+            style="background-image: url('{{ asset('storage/admin/school-images/canteen-img.jpg') }}')">
            
           </div>
           <!-- End Main Menu Hero Content -->

@@ -1,5 +1,6 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
-<x-user.layout. :studs="$students" :notifs="$notifs">
+
+<x-user.layout :studs="$students" :notifs="$notifs">
 
 {{-- For livewire styles --}}
 @livewireStyles
@@ -131,37 +132,37 @@
         <label for="tab4">Others</label>
 
         {{-- Rice Meals --}}
-        <x-user.card.card-tabs.card-tab-riceMeal>
+        <x-user.cards.card-tabs.card-tab-riceMeal>
             @foreach($foods as $food)
                 @if($food->type == 3)
-                    <x-user.cards.food-card :food="$food" :studs="$students" :restricts="$restricts"/>   
+                    <x-user.pos.pos-foodcard :food="$food" />   
                 @endif
             @endforeach
-          </x-user.card.card-tabs.card-tab-riceMeal>
+          </x-user.cards.card-tabs.card-tab-riceMeal>
 
-          <x-user.card.card-tabs.card-tab-fried>
+          <x-user.cards.card-tabs.card-tab-fried>
             @foreach($foods as $food)
                 @if($food->type == 2)
-                    <x-user.cards.food-card :food="$food" :studs="$students" :restricts="$restricts"/>  
+                    <x-user.pos.pos-foodcard :food="$food" />  
                 @endif
             @endforeach
-          </x-user.card.card-tabs.card-tab-fried>
+          </x-user.cards.card-tabs.card-tab-fried>
 
-          <x-user.card.card-tabs.card-tab-drinks>
+          <x-user.cards.card-tabs.card-tab-drinks>
             @foreach($foods as $food)
                 @if($food->type == 1)
-                    <x-user.cards.food-card :food="$food" :studs="$students" :restricts="$restricts"/>  
+                    <x-user.pos.pos-foodcard :food="$food" />  
                 @endif
             @endforeach
-          </x-user.card.card-tabs.card-tab-drinks>
+          </x-user.cards.card-tabs.card-tab-drinks>
 
-          <x-user.card.card-tabs.card-tab-snacks>
+          <x-user.cards.card-tabs.card-tab-snacks>
             @foreach($foods as $food)
                 @if($food->type == 0)
-                    <x-user.cards.food-card :food="$food" :studs="$students" :restricts="$restricts"/>  
+                    <x-user.pos.pos-foodcard :food="$food" />  
                 @endif
             @endforeach
-          </x-user.card.card-tabs.card-tab-snacks>
+          </x-user.cards.card-tabs.card-tab-snacks>
     
   
       </main>
