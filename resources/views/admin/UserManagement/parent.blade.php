@@ -252,10 +252,16 @@
                     {
                         data: 'middleName',
                         name: 'middleName',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
                         data: 'suffix',
                         name: 'suffix',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
                         data: 'students',
@@ -273,6 +279,9 @@
                     {
                         data: 'user.recoveryEmail',
                         name: 'user.recoveryEmail',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
                         data: 'sex',
@@ -281,6 +290,9 @@
                     {
                         data: 'address',
                         name: 'address',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
                         data: 'birthDate',
@@ -294,25 +306,30 @@
                         }
                     },
                     {
-                        data: 'created_at',
-                        name: 'created_at',
+                        data: 'created_at_formatted',
+                        name: 'created_at_formatted',
                     },
                     {
-                        data: 'admin.firstName',
-                        name: 'admin.name',
+                        data: 'created_by_name.firstName',
+                        name: 'created_by_name.firstName',
                         render: function(data, type, row) {
-                            return row.admin.firstName + ' ' + row.admin.lastName;
+                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                                .lastName;
                         }
                     },
                     {
-                        data: 'updated_at',
-                        name: 'updated_at',
+                        data: 'updated_at_formatted',
+                        name: 'updated_at_formatted',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     {
-                        data: 'admin_updated',
-                        name: 'admin_updated',
+                        data: 'updated_by_name',
+                        name: 'updated_by_name',
                         render: function(data, type, row) {
-                            return data.firstName;
+                            return row.updated_by_name.firstName == null ? 'N/A' : row
+                                .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
                     },
                     {
@@ -322,48 +339,52 @@
                         searchable: false
                     }
                 ],
-                // columnDefs: [{
-                //         target: 4,
-                //         visible: false,
-                //     },
-                //     {
-                //         target: 7,
-                //         visible: false,
-                //     },
-                //     {
-                //         target: 8,
-                //         visible: false,
-                //     },
-                //     {
-                //         target: 9,
-                //         visible: false,
-                //     },
-                //     {
-                //         target: 10,
-                //         visible: false,
-                //     },
-                //     {
-                //         target: 11,
-                //         visible: false,
-                //     },
-                //     {
-                //         target: 12,
-                //         visible: false,
-                //     },
-                //     {
-                //         target: 13,
-                //         visible: false,
-                //     },
-                //     {
-                //         target: 14,
-                //         visible: false,
-                //     },
-                //     {
-                //         targets: -1,
-                //         data: null,
-                //         defaultContent: '<button>Click!</button>',
-                //     },
-                // ],
+                columnDefs: [{
+                        target: 4,
+                        visible: false,
+                    },
+                    {
+                        target: 7,
+                        visible: false,
+                    },
+                    {
+                        target: 8,
+                        visible: false,
+                    },
+                    {
+                        target: 9,
+                        visible: false,
+                    },
+                    {
+                        target: 10,
+                        visible: false,
+                    },
+                    {
+                        target: 11,
+                        visible: false,
+                    },
+                    {
+                        target: 12,
+                        visible: false,
+                    },
+                    {
+                        target: 13,
+                        visible: false,
+                    },
+                    {
+                        target: 14,
+                        visible: false,
+                    },
+                    {
+                        target: 15,
+                        visible: false,
+                    },
+                    {
+                        targets: -1,
+                        data: null,
+                        defaultContent: '<button>Click!</button>',
+                    },
+                ],
 
             });
 
@@ -371,10 +392,11 @@
             $('body').on('click', '.viewImage', function() {
                 var guardianID = $(this).data('id');
                 $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
-                    $('#viewImgModalLabel').text('Image of ' + data.guardian.firstName + ' ' + data
-                        .guardian.lastName);
-                    $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.guardian
-                        .image);
+                    $('#viewImgModalLabel').text('Image of ' + data.firstName + ' ' + data
+                    .lastName);
+                    data.image != null ? $('#image').attr('src', "{{ URL::asset('storage/') }}" +
+                        '/' + data.image) : $('#image').attr('src',
+                        "{{ URL::asset('storage/admin/userNoImage.png') }}");
                     $('#viewImgModal').modal('show');
                 })
             });
@@ -382,29 +404,33 @@
             $('body').on('click', '.viewParentDetails', function() {
                 var guardianID = $(this).data('id');
                 $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
-                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data.guardian
-                        .firstName + ' ' + data
-                        .guardian.lastName);
-                    $('#email').text(data.guardian.user.email);
-                    $('#recoveryEmail').text(data.guardian.user.recoveryEmail);
-                    $('#firstName').text(data.guardian.firstName);
-                    $('#lastName').text(data.guardian.lastName);
-                    $('#middleName').text(data.guardian.middleName);
-                    $('#suffix').text(data.guardian.suffix);
-                    $('#sex').text(data.guardian.sex);
-                    $('#address').text(data.guardian.sex);
-                    $('#birthDate').text(data.guardian.birthDate);
-                    $('#created_at').text(data.created_atFormatted);
-                    $('#updated_at').text(data.updated_atFormatted);
-                    $('#created_by').text(data.guardian.admin.firstName + ' ' + data.guardian.admin
-                        .lastName);
-                    $('#updated_by').text(data.guardian.admin_updated.firstName + ' ' + data.guardian.admin_updated
-                        .lastName);
+                    $.each(data, function(i, e) {
+                        if (data[i] == null) data[i] = 'N/A';
+                    });
+                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data
+                        .firstName + ' ' + data.lastName);
+                    $('#email').text(data.user.email);
+                    $('#recoveryEmail').text(data.user.recoveryEmail);
+                    $('#firstName').text(data.firstName);
+                    $('#lastName').text(data.lastName);
+                    $('#middleName').text(data.middleName);
+                    $('#suffix').text(data.suffix);
+                    $('#sex').text(data.sex);
+                    $('#address').text(data.address);
+                    $('#birthDate').text(data.birthDate);
+                    $('#created_at').text(data.created_at_formatted);
+                    $('#updated_at').text(data.updated_at_formatted);
+                    $('#created_by').text(data.created_by_name.firstName + ' ' + data
+                        .created_by_name.lastName)
+                    data.updated_by_name.firstName == null ? $('#updated_by').text('N/A') : $(
+                        '#updated_by').text(data
+                        .updated_by_name.firstName + ' ' + data
+                        .updated_by_name.lastName);
                     $('#viewStudentInfoModal').modal('show');
 
                     var studentsHTML = '';
                     $('#students').html('');
-                    $.each(data.guardian.students, function(i, value) {
+                    $.each(data.students, function(i, value) {
                         studentsHTML += '<p>' + value.firstName + ' ' + value.lastName +
                             '</p>';
                     });

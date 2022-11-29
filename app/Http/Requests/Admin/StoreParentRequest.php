@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAdminRequest extends FormRequest
+class StoreParentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UpdateAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|max:255|unique:users,email,' . $this->admin->user->id,
-            'recoveryEmail' => 'nullable|email|max:255|unique:users,recoveryEmail,' . $this->admin->user->id,
+            'email' =>  'required|string|email|max:255|unique:users',
+            'recoveryEmail' => 'nullable|string|email|max:255|unique:users',
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'middleName' => 'nullable|string|max:255',

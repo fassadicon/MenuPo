@@ -18,7 +18,7 @@ class Guardian extends Model
         return $this->belongsTo(Admin::class, 'created_by', 'id');
     }
 
-    public function adminUpdated() {
+    public function admin_updated() {
         return $this->belongsTo(Admin::class, 'updated_by', 'id');
     }
 

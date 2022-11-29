@@ -116,10 +116,16 @@
                     <div class="col-4">
                         {{-- Sex --}}
                         <div class="mb-6">
-                            <label for="sex" class="inline-block text-lg mb-2">sex</label>
-                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="sex"
-                                placeholder="Example: M, F" value="{{ old('sex') }}" />
-
+                            <label for="sex" class="inline-block text-lg mb-2">sex</label><br>
+                                <input id="default-radio-1" type="radio" value="M" @if(old('sex')) checked @endif name="sex"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-1"
+                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+                                <input id="default-radio-2" type="radio" value="F" @if(old('sex')) checked @endif
+                                    name="sex"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-2"
+                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
                             @error('sex')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -143,7 +149,6 @@
 
             </div>
             <div class="col-4">
-                {{-- recoveryEmail --}}
                 <div class="mb-6">
                     <label for="height" class="inline-block text-lg mb-2"> Height (cm)</label>
                     <input type="number" class="border border-gray-200 rounded p-2 w-full" name="height"
@@ -160,16 +165,6 @@
                         placeholder="Example: 63.5" value="{{ old('weight') }}" />
 
                     @error('weight')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-                {{-- recoveryEmail --}}
-                <div class="mb-6">
-                    <label for="BMI" class="inline-block text-lg mb-2"> BMI</label>
-                    <input type="number" class="border border-gray-200 rounded p-2 w-full" name="BMI"
-                        placeholder="" value="{{ old('BMI') }}" />
-
-                    @error('BMI')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>

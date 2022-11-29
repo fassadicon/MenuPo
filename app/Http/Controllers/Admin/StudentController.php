@@ -8,6 +8,8 @@ use App\Models\Admin;
 use App\Models\Student;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\StoreStudentRequest;
+use App\Http\Requests\Admin\UpdateStudentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -61,26 +63,14 @@ class StudentController extends Controller
         return view('admin.UserManagement.createStudent');
     }
 
-    public function store(Request $request)
-    {
-        // dd($request->all());
-        $student = [
-            'LRN' => $request->LRN,
-            'grade' => $request->grade,
-            'section' => $request->section,
-            'adviser' => $request->adviser,
-            'firstName' => $request->firstName,
-            'lastName' => $request->lastName,
-            'middleName' => $request->middleName,
-            'suffix' => $request->suffix,
-            'sex' => $request->sex,
-            'birthDate' => $request->birthDate,
-            'status' => 1,
-            'height' => $request->height,
-            'weight' => $request->weight,
-            'BMI' => $request->BMI,
-            'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
-        ];
+    public function store(StoreStudentRequest $request)
+    {   
+        $student = $request->safe()->except(['parent']);
+        $student['status'] = 1;
+        $student['created_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
+        if ($request->hasFile('image')) {
+            $admin['image'] = $request->file('image')->store('admin/students', 'public');
+        }
         $parentName = $request->parent;
         $student['parent_id'] = substr($parentName, strpos($parentName, ":") + 1);
         if ($request->hasFile('image')) {
@@ -93,6 +83,7 @@ class StudentController extends Controller
             ->generate($studentID);
         $student['QR'] = 'admin/qrs/' . $studentID . '.png';
         Storage::disk('public')->put($student['QR'], $test);
+        dd($student);
         Student::create($student);
         return redirect('admin/students');
     }

@@ -33,7 +33,7 @@ class CreatAdminRequest extends FormRequest
             'suffix' => 'nullable|string|max:255',
             'sex' => 'required|max:1',
             'birthDate' => 'required|date',
-            'image' => 'nullable|image|max:2000'
+            'image' => 'nullable|image|max:2048'
         ];
     }
 }

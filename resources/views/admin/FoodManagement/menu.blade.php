@@ -678,7 +678,7 @@
             serverSide: true,
             ajax: {
                 type: "GET",
-                url: "{{ route('menu.index') }}",
+                url: "{{ route('menu.indexAdmin') }}",
             },
             // Footer Sorting
             initComplete: function() {

@@ -9,32 +9,20 @@
         <div class="row">
             <div class="col-6">
                 <div class="mb-6">
-                    <label for="firstName" class="inline-block text-lg mb-2">Email Name</label>
-                    {{-- Bring Step to 2 Decimal Places --}}
-                    <input type="text" class="border border-gray-200 rounded p-2 w-full" name="firstName"
+                    <label for="email" class="inline-block text-lg mb-2">Email Name</label>
+                    <input type="email" class="border border-gray-200 rounded p-2 w-full" name="email"
                         value="{{ $guardian->user->email }}" />
 
-                    @error('firstName')
+                    @error('email')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="firstName" class="inline-block text-lg mb-2">Recovery Name</label>
-                    {{-- Bring Step to 2 Decimal Places --}}
-                    <input type="text" class="border border-gray-200 rounded p-2 w-full" name="firstName"
+                    <label for="recoveryEmail" class="inline-block text-lg mb-2">Recovery Email</label>
+                    <input type="email" class="border border-gray-200 rounded p-2 w-full" name="recoveryEmail"
                         value="{{ $guardian->user->recoveryEmail }}" />
 
-                    @error('firstName')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-6">
-                    <label for="firstName" class="inline-block text-lg mb-2">Recovery Name</label>
-                    {{-- Bring Step to 2 Decimal Places --}}
-                    <input type="text" class="border border-gray-200 rounded p-2 w-full" name="firstName"
-                        value="{{ $guardian->user->password }}" />
-
-                    @error('firstName')
+                    @error('recoveryEmail')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
@@ -86,10 +74,16 @@
                     <div class="col-4">
                         {{-- Sex --}}
                         <div class="mb-6">
-                            <label for="sex" class="inline-block text-lg mb-2">sex</label>
-                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="sex"
-                                placeholder="Example: M, F" value="{{ $guardian->sex }}" />
-
+                            <label for="sex" class="inline-block text-lg mb-2">sex</label><br>
+                                <input id="default-radio-1" type="radio" value="M" @if($guardian->sex == "M") checked @endif name="sex"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-1"
+                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+                                <input id="default-radio-2" type="radio" value="F" @if($guardian->sex == "F") checked @endif
+                                    name="sex"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-2"
+                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
                             @error('sex')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
