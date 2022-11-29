@@ -1,9 +1,44 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!--Replace with your tailwind.css once created-->
+    <script src="https://kit.fontawesome.com/d00886c359.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+      />
+      <meta name="csrf-token" content="{{ csrf_token() }}" /> 
 
-<x-user.layout :studs="$students" :notifs="$notifs">
+    {{-- For google charts --}}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-{{-- For livewire styles --}}
-@livewireStyles
+    {{-- Sweet Alert --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {{-- Html2Canvas --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                          sm: '360px',
+                          md: '768px',
+                          lg: '976px',
+                          xl: '1440px',
+                        },
+                extend: {
+                    colors: {
+                    primary: 'hsl(46, 100%, 50%)', // #ffc300
+                    primaryLight: 'hsl(46, 100%, 80%)', 	// #ffe799
+                    primaryDark: 'hsl(46, 100%, 45%)', //	#e6b000
+                    secondary: 'hsl(219, 46%, 24%)',  // #213559
+                    secondaryLight:  'hsl(218, 31%, 31%)', // #374968
+                            }
+                        },
+                    },
+                 };
+      </script>
 
 <style>
     #tsum-tabs h1 {
@@ -168,9 +203,6 @@
       </main>
       <x-user.pos.sidebar-cart />
     </div>
-
-@livewireScripts
-</x-user.layout>
 
 {{-- Sweet Alert Scripts --}}
 <script>
