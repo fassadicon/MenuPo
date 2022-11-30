@@ -320,7 +320,7 @@
                               </svg>
                           </span>
                           <span class="tracking-wide float-left">Restricted Food Items</span>
-                          <a href="/users/menu/{{$anak->id}}"><span class="tracking-wide float-right">Back to menu</span></a>
+                          <a href="/user/menu/{{$anak->id}}"><span class="tracking-wide float-right">Back to menu</span></a>
                       </div>
 
                       <div class="my-4"></div>
