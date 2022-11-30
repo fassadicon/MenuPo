@@ -246,7 +246,6 @@
                 showConfirmButton: false,
                 timer: 700
               });
-              // $('.cart-counter').load(location.href + " .cart-counter");
               $('.foods').load(location.href + " .foods");
               
             }
