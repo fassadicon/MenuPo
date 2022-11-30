@@ -3,7 +3,7 @@
 
 
 
-<x-user.layout :studs="$students" :notifs="$notifs" >
+<x-user.layout :studs="$students" :notifs="$notifications">
 
     <x-user.user-account.page-content :purchases="$purchases" :studs="$students" :grade="$grades"/>
 

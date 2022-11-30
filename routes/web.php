@@ -213,7 +213,7 @@ Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
     Route::post('/update-cart-add', [POSController::class, 'add']);
     Route::post('/update-cart-minus', [POSController::class, 'minus']);
     Route::post('/update-cart-delete', [POSController::class, 'delete']);
-    Route::post('/pos/payment', [PaymentController::class, 'pospayment'])
+    Route::post('/pos/payment', [POSController::class, 'pospayment'])
             ->name(name:'pos.order');
     
     //New Post

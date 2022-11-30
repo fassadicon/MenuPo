@@ -9,7 +9,7 @@
             <p class="font-semibold text-gray-900 text-lg">091234567890</p>
         </div>
 
-        <a class="p-1 border-solid border-2 border-black rounded-lg text-lg bg-primary" href="/user /receipt">
+        <a class="p-1 border-solid border-2 border-black rounded-lg text-lg bg-primary" href="/user/receipt">
             Confirm
         </a>
     </div>

@@ -1,5 +1,5 @@
 
-<x-user.layout :studs="$students">
+<x-user.layout :studs="$students" :notifs="$notifications">
     
         <x-user.home.carousel></x-test.user.home.carousel>
 

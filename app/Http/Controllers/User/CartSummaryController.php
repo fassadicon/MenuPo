@@ -13,11 +13,11 @@ class CartSummaryController extends Controller
 {
     public function index(Student $anak){
         
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, 1]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
 
         return view('user.cart-summary', [
-            'notifs' => $notifications,
+            'notifications' => $notifications,
             'anak' => $anak,
             'students' => $students
             
@@ -29,7 +29,7 @@ class CartSummaryController extends Controller
         $food_id = $request->input('food-id');
 
         $item = Food::findOrFail($food_id);
-        $rice = Food::findOrFail(13);
+        $rice = Food::findOrFail(2);
 
         if($item->type == 3){
             Cart::add(
@@ -75,7 +75,7 @@ class CartSummaryController extends Controller
         $food_id = $request->input('food-id');
 
         $item = Food::findOrFail($food_id);
-        $rice = Food::findOrFail(13);
+        $rice = Food::findOrFail(2);
         $content = Cart::content();
         $rice_rowId = 0;
 

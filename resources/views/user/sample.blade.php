@@ -1,6 +1,6 @@
 
 
-<x-user.layout :studs="$students">
+<x-user.layout :studs="$students" :notifs="$notifications">
     <div class="h-screen">
         <br><br><br><br><br>
         <div class="h-80 w-3/4 border-2 border-solid mx-auto">

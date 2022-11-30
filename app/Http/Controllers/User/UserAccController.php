@@ -13,7 +13,7 @@ class UserAccController extends Controller
 
         $purchase_his = DB::select('SELECT * FROM purchases WHERE parent_id = ?', [1]); 
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, 1]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
 
@@ -49,7 +49,7 @@ class UserAccController extends Controller
         $chart_data = "['Healthy', $grade_count[0]], ['Moderately Healthy', $grade_count[1]], ['Not Healthy', $grade_count[2]]";
 
         return view('user.user-account', [
-            'notifs' => $notifications,
+            'notifications' => $notifications,
             'students' => $student,
             'chart_data' => $chart_data,
             'grades' => $grade_count,

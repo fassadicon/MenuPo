@@ -18,13 +18,13 @@ class MenuController extends Controller
         // dd(Cart::content());
         //Cart::destroy();
         $restricts = $student->stud_restriction;
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, 1]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         $anaks = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
         
         return view('user.menu', [
             'anak' => $student,
             'foods' => Food::all(),
-            'notifs' => $notifications,
+            'notifications' => $notifications,
             'students' => $anaks,
             'restricts' => $restricts
         ]);
@@ -34,10 +34,10 @@ class MenuController extends Controller
     //For landing page
     public function landing(){
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, 1]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
         return view('user.menu-landing', [
-            'notifs' => $notifications,
+            'notifications' => $notifications,
             'students' => $student
         ]);
 
@@ -48,7 +48,7 @@ class MenuController extends Controller
         $food_id = $request->input('food-id');
 
         $item = Food::findOrFail($food_id);
-        $rice = Food::findOrFail(13);
+        $rice = Food::findOrFail(2);
 
         if($item->type == 3){
             Cart::add(

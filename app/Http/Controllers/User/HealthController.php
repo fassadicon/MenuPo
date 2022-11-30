@@ -16,7 +16,7 @@ class HealthController extends Controller
 
         $restrict = array();
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, 1]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
 
         $purchase = DB::select('SELECT * FROM purchases WHERE parent_id = ? && student_id = ?', [1, $anak->id]);
         
@@ -53,7 +53,7 @@ class HealthController extends Controller
         return view('user.health', [
             'students' => $student,
             'restricts' => $restrict,
-            'notifs' => $notifications,
+            'notifications' => $notifications,
             'purchases' => $purchase,
             'anaks' => $anak,
             'purchase_info' => $purchase_info,

@@ -209,7 +209,7 @@
                   <i class="fa-solid fa-chevron-down fa-2xs pt-3"></i>
                   <ul class="absolute bg-white p-3 w-96 -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
                      <h3 class="text-xl">Notifications</h3>
-                      {{-- @if ($notifs == null)
+                      @if ($notifs == null)
                         <div class="if-null text-center">
                             <p>No notifications</p>
                         </div>
@@ -217,7 +217,7 @@
                         @foreach ($notifs as $notif)
                           <x-user.notif-modal.notif-modal :notif="$notif" />
                         @endforeach
-                      @endif --}}
+                      @endif
                       {{-- @if(empty($notifs))
                           <div class="if-null text-center">
                               <p>No notifications</p>
