@@ -15,9 +15,8 @@ class MenuController extends Controller
 {
     public function index(Student $student){
 
-        // dd(Cart::content());
-        //Cart::destroy();
-        $restricts = $student->stud_restriction;
+        
+        $restricts = $student->restriction;
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         $anaks = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
         
@@ -95,17 +94,7 @@ class MenuController extends Controller
 
         $restrict = DB::select('SELECT restriction FROM students WHERE id = ?' , [$anak_id]);
         $restrict = $restrict[0]->restriction;
-
-        // $contain = Str::contains($restrict, $food_id);
-
-        // if($contain){
-        //     // $id = $restrict;
-        //     // $this->dispatchBrowserEvent('show-add2restrict-error');
-        // }
-        // else{
-        //     $id = $restrict.$food_id . ',';
-        //     // $this->dispatchBrowserEvent('show-add2restrict-success');
-        // }
+        
         $id = $restrict.$food_id . ',';
         DB::update('UPDATE students SET restriction = ? where id = ?', [$id, $anak_id]);
         // Student::where('id', $this->stud_id)->update(['restriction'=>$id]);

@@ -1,12 +1,18 @@
+
 {{-- Topbar --}}
 <header id="header" class="header fixed-top d-flex align-items-center">
 
   <div class="d-flex align-items-center justify-content-between">
-      <a href="/" class="logo d-flex align-items-center">
-          <img src="{{ asset('assets/img/no-image.png') }}" alt="">
-          <span class="d-none d-lg-block">MenuPo</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
+      {{-- <i class="bi bi-list toggle-sidebar-btn"></i> --}}
+      {{-- <a href="/" class="logo d-flex align-items-center">
+        <img src="{{ asset('admin/assets/img/favicon-32x32.png') }}" alt="">
+        <span class="d-none d-lg-block">Menu<span id="span-white">Po</span></span>
+    </a> --}}
+      <label class="switch">
+        <input type="checkbox" class="toggle-sidebar-btn">
+        <span class="slider"></span>
+      </label>
+      
   </div><!-- End Logo -->
 
   {{-- <div class="search-bar">
