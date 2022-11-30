@@ -1,91 +1,116 @@
 <x-admin.layout>
-    <h1 class="h3">Orders</h1>
+
+    <h1 class="h3">Completed Orders</h1>
 
     <div class="container">
-        <div align="left"><a href="/admin/orders/completed/trash" class="btn btn-warning mb-2">Past Orders</a></div>
-        <table class="table table-bordered table-sm" id="orderTable">
+        <div align="left"><a href="/admin/orders/completed/" class="btn btn-warning mb-2">Back</a></div>
+        <table class="table table-bordered table-sm" id="completedTable">
     
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Purchase ID</th>
-                    <th>Food ID</th>
-                    <th>Quantity</th>
-                    <th>Amount</th>
-                    <th>Kcal</th>
+                    <th>ID</th>
+                    <th>Parent ID</th>
+                    <th>Student ID</th>
+                    <th>Total kcal</th>
                     <th>Total Fat</th>
-                    <th>Saturated Fat</th>
-                    <th>Sugar</th>
-                    <th>Sodium</th>
+                    <th>Total SatFat</th>
+                    <th>Total Sugar</th>
+                    <th>Total Sodium</th>
+                    <th>Total Amount</th>
+                    <th>Payment ID</th>
+                    <th>Payment Status</th>
+                    <th>Claim Status</th>
+                    <th>Type</th>
+                    <th>Date Ordered</th>
+                    <th>Updated at</th>
+                    <th>Admin in charge</th>
                     <th>Options</th>
+                    {{-- <th>Grade</th>
+                    <th>Created By</th> --}}
+                    {{-- <th width="50px"><button type="button" name="bulk_delete" id="bulk_delete"
+                            class="btn btn-danger">Delete</button></th> --}}
                 </tr>
             </thead>
             <tbody>
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Purchase ID</th>
-                    <th>Food ID</th>
-                    <th>Quantity</th>
-                    <th>Amount</th>
-                    <th>Kcal</th>
+                    <th>ID</th>
+                    <th>Parent ID</th>
+                    <th>Student ID</th>
+                    <th>Total kcal</th>
                     <th>Total Fat</th>
-                    <th>Saturated Fat</th>
-                    <th>Sugar</th>
-                    <th>Sodium</th>
+                    <th>Total SatFat</th>
+                    <th>Total Sugar</th>
+                    <th>Total Sodium</th>
+                    <th>Total Amount</th>
+                    <th>Payment ID</th>
+                    <th>Payment Status</th>
+                    <th>Claim Status</th>
+                    <th>Type</th>
+                    <th>Date Ordered</th>
+                    <th>Updated at</th>
+                    <th>Admin in charge</th>
                     <th>Options</th>
                 </tr>
             </tfoot>
         </table>
     </div>
 
-
-    {{-- View Order Nutrient Modal --}}
-    <div class="modal fade" id="viewOrderInfoModal" tabindex="-1" aria-labelledby="viewOrderInfoModal" aria-hidden="true">
+    {{-- View Purchase Info Modal --}}
+    <div class="modal fade" id="viewPurchaseInfoModal" tabindex="-1" aria-labelledby="viewPurchaseInfoModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="viewOrderModalLabel">Purchase Details</h5>
+                    <h5 class="modal-title" id="viewPurchaseInfoModalLabel">Purchase Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="orderID" id="orderID">
+                    <input type="hidden" name="purchaseID" id="purchaseID">
                     <div class="mb-3">
-                        <label for="">Purchase ID</label>
-                        <p id="purchase_id" class="form-control"></p>
+                        <label for="">Parent Name</label>
+                        <p id="parent_id" class="form-control"></p>
                     </div>
                     <div class="mb-3">
-                        <label for="">Food ID</label>
-                        <p id="food_id" class="form-control"></p>
+                        <label for="">Student Name</label>
+                        <p id="parent_id" class="form-control"></p>
+                    </div>
+                    <input type="hidden" id="totalKcal">
+                    <input type="hidden" id="totalTotFat">
+                    <input type="hidden" id="totalSatFat">
+                    <input type="hidden" id="totalSugar">
+                    <input type="hidden" id="totalSodium">
+                    <div class="mb-3">
+                        <label for="">Total Amount</label>
+                        <p id="totalAmount" class="form-control"></p>
                     </div>
                     <div class="mb-3">
-                        <label for="">Quantity</label>
-                        <p id="quantity" class="form-control"></p>
+                        <label for="">Payment ID</label>
+                        <p id="payment_id" class="form-control"></p>
                     </div>
                     <div class="mb-3">
-                        <label for="">Amount</label>
-                        <p id="amount" class="form-control"></p>
+                        <label for="">Payment Status</label>
+                        <p id="paymentStatus" class="form-control"></p>
                     </div>
                     <div class="mb-3">
-                        <label for="">Kcal</label>
-                        <p id="kcal" class="form-control"></p>
+                        <label for="">Claim Status</label>
+                        <p id="claimStatus" class="form-control"></p>
                     </div>
                     <div class="mb-3">
-                        <label for="">Total Fat</label>
-                        <p id="totFat" class="form-control"></p>
+                        <label for="">Type</label>
+                        <p id="type" class="form-control"></p>
                     </div>
                     <div class="mb-3">
-                        <label for="">Saturated Fat</label>
-                        <p id="satFat" class="form-control"></p>
+                        <label for="">Ordered at:</label>
+                        <p id="created_at" class="form-control"></p>
                     </div>
                     <div class="mb-3">
-                        <label for="">Sugar</label>
-                        <p id="sugar" class="form-control"></p>
+                        <label for="">Claimed at:</label>
+                        <p id="updated_at" class="form-control"></p>
                     </div>
                     <div class="mb-3">
-                        <label for="">Sodium</label>
-                        <p id="sodium" class="form-control"></p>
+                        <label for="">Served By:</label>
+                        <p id="served_by" class="form-control"></p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -106,7 +131,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        var table = $('#orderTable').DataTable({
+        var table = $('#completedTable').DataTable({
             dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-4'f><'col-sm-12 col-md-3'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -152,7 +177,7 @@
             serverSide: true,
             ajax: {
                 type: "GET",
-                url: "{{ route('orders.index') }}",
+                url: "{{ route('completed.trash') }}",
                 // data: function(d) {
 
                 // },
@@ -195,43 +220,73 @@
                       name: 'id'
                   },
                   {//1
-                      data: 'purchase_id',
-                      name: 'purchase_id'
+                        data: 'parent.firstName',
+                        name: 'parent_id',
+                        render: function(data, type, row) {
+                            return row.parent.firstName + ' ' + row.parent.lastName;
+                        }
                   },
                   { //2
-                      data: 'food.name',
-                      name: 'food_id'
+                      data: 'student.firstName',
+                      name: 'student_id',
+                      render: function(data, type, row) {
+                            return row.student.firstName + ' ' + row.student.lastName;
+                      }
                   },
                   {//3
-                      data: 'quantity',
-                      name: 'quantity'
+                      data: 'totalKcal',
+                      name: 'totalKcal'
                   },
                   {//4
-                      data: 'amount',
-                      name: 'amount'
+                      data: 'totalTotFat',
+                      name: 'totalTotFat'
                   },
                   {//5
-                      data: 'kcal',
-                      name: 'kcal',
+                      data: 'totalSatFat',
+                      name: 'totalSatFat',
                   },
                   {//6
-                      data: 'totFat',
-                      name: 'totFat',
+                      data: 'totalSugar',
+                      name: 'totalSugar',
                   },
                   { //7
-                      data: 'satFat',
-                      name: 'satFat',
+                      data: 'totalSodium',
+                      name: 'totalSodium',
                   },
                   {//8
-                      data: 'sugar',
-                      name: 'sugar',
+                      data: 'totalAmount',
+                      name: 'totalAmount',
                   },
                   {//9
-                      data: 'sodium',
-                      name: 'sodium',
+                      data: 'payment_id',
+                      name: 'payment_id',
+                  },
+                  {//10
+                      data: 'paymentStatus',
+                      name: 'paymentStatus',
+                  },
+                  {//11
+                      data: 'claimStatus',
+                      name: 'claimStatus',
+                  },
+                  {//12
+                      data: 'type',
+                      name: 'type',
+                  },
+                  { // 13
+                      data: 'created_at',
+                      name: 'created_at',
+                  },
+                  { // 14
+                      data: 'updated_at',
+                      name: 'updated_at',
+                  },
+                  { //16
+                      data: 'served_by',
+                      name: 'served_by',
                   },
                   
-                  { // 10
+                  { // 17
                       data: 'action',
                       name: 'action',
                       orderable: false,
@@ -247,6 +302,14 @@
               columnDefs: [{
                   "defaultContent": "-",
                   "targets": "_all"
+                  },
+                  {
+                     target: 3,
+                     visible: false,
+                  },
+                  {
+                     target: 4,
+                     visible: false,
                   },
                   {
                      target: 5,
@@ -268,7 +331,30 @@
                      target: 9,
                      visible: false,
                   },
+                  {
+                     target: 12,
+                     visible: false,
+                  },
                   
+                //   {
+                //      target: 12,
+                //      visible: false,
+                //   },
+                //   {
+                //      target: 13,
+                //      visible: false,
+                //      searchable: false,
+                //   },
+                  {
+                     target: 14,
+                     visible: false,
+                     searchable: false,
+                  },
+                //   {
+                //      target: 15,
+                //      visible: false,
+                //      searchable: false,
+                //   },
                   {
                       targets: -1,
                       data: null,
@@ -278,19 +364,25 @@
         });
 
         // View Pending Order Data Modal
-       $('body').on('click', '.viewOrder', function() {
-           var orderID = $(this).data('id');
-           $.get("{{ url('admin/orders/') }}" + '/' + orderID + '/view', function(data) {
-               $('#viewOrderInfoModal').modal('show');
-               $('#purchase_id').text(data.purchase_id);
-               $('#food_id').text(data.food_id);
-               $('#quantity').text(data.quantity);
-               $('#amount').text(data.amount);
-               $('#kcal').text(data.kcal);
-               $('#totFat').text(data.totFat);
-               $('#satFat').text(data.satFat);
-               $('#sugar').text(data.sugar);
-               $('#sodium').text(data.sodium);
+       $('body').on('click', '.viewCompleted', function() {
+           var purchaseID = $(this).data('id');
+           $.get("{{ url('admin/orders/completed') }}" + '/' + purchaseID + '/view', function(data) {
+               $('#viewPurchaseInfoModal').modal('show');
+               $('#parent_id').text(data.parent.id);
+               $('#student_id').text(data.student.name);
+               $('#totalKcal').text(data.totalKcal);
+               $('#totalTotFat').text(data.totalTotFat);
+               $('#totalSatFat').text(data.totalSatFat);
+               $('#totalSugar').text(data.totalSugar);
+               $('#totalSodium').text(data.totalSodium);
+               $('#totalAmount').text(data.totalAmount);
+               $('#payment_id').text(data.payment_id);
+               $('#paymentStatus').text(data.paymentStatus);
+               $('#claimStatus').text(data.claimStatus);
+               $('#type').text(data.type);
+               $('#created_at').text(data.created_at);
+               $('#updated_at').text(data.updated_at);
+               $('#served_by').text(data.served_by);
            })
        });
 

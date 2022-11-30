@@ -26,6 +26,7 @@
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th>Created by</th>
+                    <th>Last Updated by</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -52,6 +53,7 @@
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th>Created by</th>
+                    <th>Last Updated by</th>
                 </tr>
             </tfoot>
         </table>
@@ -317,11 +319,17 @@
                     },
                     { // 8
                         data: 'middleName',
-                        name: 'middleName'
+                        name: 'middleName',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     { // 9
                         data: 'suffix',
-                        name: 'suffix'
+                        name: 'suffix',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     { // 10
                         data: 'sex',
@@ -341,31 +349,52 @@
                     { // 13
                         data: 'height',
                         name: 'height',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     { // 14
                         data: 'weight',
                         name: 'weight',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     { // 15
                         data: 'BMI',
                         name: 'BMI',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     { // 18
-                        data: 'created_at',
-                        name: 'created_at',
+                        data: 'created_at_formatted',
+                        name: 'created_at_formatted',
                     },
                     { // 19
-                        data: 'updated_at',
-                        name: 'updated_at',
+                        data: 'updated_at_formatted',
+                        name: 'updated_at_formatted',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
                     },
                     { // 20
-                        data: 'created_by',
-                        name: 'created_by',
+                        data: 'created_by_name.firstName',
+                        name: 'created_by_name.firstName',
                         render: function(data, type, row) {
-                            return row.admin.firstName + ' ' + row.admin.lastName;
+                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                                .lastName;
                         }
                     },
                     { // 21
+                        data: 'updated_by_name',
+                        name: 'updated_by_name',
+                        render: function(data, type, row) {
+                            return row.updated_by_name.firstName == null ? 'N/A' : row
+                                .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
+                        }
+                    },
+                    { // 22
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -446,10 +475,8 @@
             $('body').on('click', '.viewQR', function() {
                 var studentID = $(this).data('id');
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
-                    $('#viewQRModalLabel').text('Image of ' + data.student.firstName + ' ' + data
-                        .student.lastName);
-                    $('#imageQR').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.student
-                        .QR);
+                    $('#viewQRModalLabel').text('Image of ' + data.firstName + ' ' + data.lastName);
+                    $('#imageQR').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.QR);
                     $('#viewQRModal').modal('show');
                 })
             });
@@ -457,10 +484,8 @@
             $('body').on('click', '.viewImage', function() {
                 var studentID = $(this).data('id');
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
-                    $('#viewImgModalLabel').text('QR Code of ' + data.student.firstName + ' ' + data
-                        .student.lastName);
-                    $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.student
-                        .image);
+                    $('#viewImgModalLabel').text('QR Code of ' + data.firstName + ' ' + data.lastName);
+                    $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.image);
                     $('#viewImgModal').modal('show');
                 })
             });
@@ -468,27 +493,31 @@
             $('body').on('click', '.viewStudentDetails', function() {
                 var studentID = $(this).data('id');
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
-                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data.student.firstName + ' ' + data
-                        .student.lastName);
-                    $('#parent').text(data.student.guardian.firstName + ' ' + data.student.guardian.lastName);
-                    $('#LRN').text(data.student.LRN);
-                    $('#grade').text(data.student.grade);
-                    $('#section').text(data.student.section);
-                    $('#adviser').text(data.student.adviser);
-                    $('#firstName').text(data.student.firstName);
-                    $('#lastName').text(data.student.lastName);
-                    $('#middleName').text(data.student.middleName);
-                    $('#suffix').text(data.student.suffix);
-                    $('#sex').text(data.student.sex);
-                    $('#birthDate').text(data.student.birthDate);
-                    $('#height').text(data.student.height);
-                    $('#weight').text(data.student.weight);
-                    $('#BMI').text(data.student.BMI);
-                    $('#created_at').text(data.created_atFormatted);
-                    $('#updated_at').text(data.updated_atFormatted);
-                    $('#created_by').text(data.student.admin.firstName + ' ' + data.student.admin
-                        .lastName);
-                    $('#updated_by').text(data.updatedByAdminName);
+                    $.each(data, function(i, e) {
+                        if (data[i] == null) data[i] = 'N/A';
+                    });
+                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data.firstName + ' ' + data.lastName);
+                    $('#parent').text(data.guardian.firstName + ' ' + data.guardian.lastName);
+                    $('#LRN').text(data.LRN);
+                    $('#grade').text(data.grade);
+                    $('#section').text(data.section);
+                    $('#adviser').text(data.adviser);
+                    $('#firstName').text(data.firstName);
+                    $('#lastName').text(data.lastName);
+                    $('#middleName').text(data.middleName);
+                    $('#suffix').text(data.suffix);
+                    $('#sex').text(data.sex);
+                    $('#birthDate').text(data.birthDate);
+                    $('#height').text(data.height);
+                    $('#weight').text(data.weight);
+                    $('#BMI').text(data.BMI);
+                    $('#created_at').text(data.created_at_formatted);
+                    $('#updated_at').text(data.updated_at_formatted);
+                    $('#created_by').text(data.created_by_name.firstName + ' ' + data.created_by_name.lastName);
+                    data.updated_by_name.firstName == null ? $('#updated_by').text('N/A') : $(
+                        '#updated_by').text(data
+                        .updated_by_name.firstName + ' ' + data
+                        .updated_by_name.lastName);
                     $('#viewStudentInfoModal').modal('show');
                 })
             });

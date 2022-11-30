@@ -24,7 +24,8 @@ class OrderController extends Controller
     {
         // Initialize Datatable Values
         $orders = Order::all()
-        ->sortBy('purchase_id');
+        ->sortBy('purchase_id')
+        ->load('food', 'purchase');
 
         if ($request->ajax()) {
             return DataTables::of($orders)
@@ -45,5 +46,11 @@ class OrderController extends Controller
 
         // return view
         return view('admin.OrderManagement.orders', compact('orders'));
+    }
+
+    public function view($id)
+    {
+        return Order::where('id', $id)->first()
+        ->load('purchases', 'food');
     }
 }
