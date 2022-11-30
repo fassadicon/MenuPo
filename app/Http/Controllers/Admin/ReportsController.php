@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Food;
 use App\Models\Order;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -49,5 +50,12 @@ class ReportsController extends Controller
         $data[1] = $ambersCount;
         $data[2] = $redsCount;
         return response()->json(['labels' => $labels, 'data' => $data]);
+    }
+
+    public function mostSuggested() {
+        $foodItems = Survey::pluck('suggestions')->toArray();
+        $vals = array_values(array_count_values($foodItems));
+        $names = array_count_values($foodItems);
+        return response()->json(['labels' => $foodItems, 'data' => $vals]);
     }
 }

@@ -175,6 +175,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');
     Route::get('/reports/countFoodsBasedInColor/{type}', [ReportsController::class, 'countFoodsBasedInColor'])->name('reports.countFoodsBasedInColor');
     Route::get('/reports/aveGradePerType/{type}', [ReportsController::class, 'aveGradePerType'])->name('reports.aveGradePerType');
+    Route::get('/reports/suggestions', [ReportsController::class, 'mostSuggested'])->name('reports.mostSuggested');
 });
 
 
