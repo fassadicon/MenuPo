@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
                 'id' => 1,
                 'email' => 'super@admin.com',
                 'recoveryEmail' => 'super@recover.com',
-                'password' => bcrypt('qwe'),
+                'password' => bcrypt('qwe21344'),
                 'role' => 2,
                 'created_at' => '2022-05-01'
             ],
@@ -60,27 +60,27 @@ class DatabaseSeeder extends Seeder
         $adminUser = [
             [
                 'id' => 2,
-                'email' => 'test@admin.com',
-                'recoveryEmail' => 'admin@recover.com',
-                'password' => bcrypt('123'),
+                'email' => 'glenreyes@gmail.com',
+                'recoveryEmail' => 'abyglen@gmail.com',
+                'password' => bcrypt('123glenreyes'),
                 'role' => 1,
-                'created_at' => '2022-05-01'
+                'created_at' => '2022-08-01'
             ],
             [
                 'id' => 4,
                 'email' => 'delcjoshua10@gmail.com',
-                'recoveryEmail' => 'admin@recover.com',
-                'password' => bcrypt('123'),
+                'recoveryEmail' => 'delcjoshua1987@gmail.com',
+                'password' => bcrypt('4456PRINCE'),
                 'role' => 1,
-                'created_at' => '2022-05-01',
+                'created_at' => '2022-08-01',
             ],
             [
                 'id' => 5,
                 'email' => 'jportugaliza@gmail.com',
-                'recoveryEmail' => 'admin@recover.com',
-                'password' => bcrypt('123'),
+                'recoveryEmail' => 'ebbieryn10@gmail.com',
+                'password' => bcrypt('lydiaportugaliza10'),
                 'role' => 1,
-                'created_at' => '2022-05-01'
+                'created_at' => '2022-08-01'
             ],
         ];
         $admin = [
@@ -88,10 +88,11 @@ class DatabaseSeeder extends Seeder
                 'id' => 2,
                 'firstName' => 'Glen',
                 'lastName' => 'Reyes',
+                'middleName' => 'Cruz',
                 'birthDate' => '2022-05-01',
                 'status' => 1,
-                'sex' => 'M',
-                'created_at' => '2022-05-01',
+                'sex' => 'F',
+                'created_at' => '2022-08-01',
                 'created_by' => 1,
                 'user_id' => 2,
                 'image' => 'admin/admins/1.png'
@@ -100,9 +101,10 @@ class DatabaseSeeder extends Seeder
                 'id' => 3,
                 'firstName' => 'Joshua',
                 'lastName' => 'Dela Cruz',
+                'middleName' => 'Martinez',
                 'birthDate' => '2022-05-01',
                 'status' => 1,
-                'sex' => 'F',
+                'sex' => 'M',
                 'created_at' => '2022-05-01',
                 'created_by' => 2,
                 'user_id' => 4,
@@ -112,10 +114,11 @@ class DatabaseSeeder extends Seeder
                 'id' => 4,
                 'firstName' => 'Lydia',
                 'lastName' => 'Portugaliza',
+                'middleName' => 'Santos',
                 'birthDate' => '2022-05-01',
                 'status' => 1,
-                'sex' => 'M',
-                'created_at' => '2022-05-01',
+                'sex' => 'F',
+                'created_at' => '2022-08-02',
                 'created_by' => 2,
                 'user_id' => 5,
                 'image' => 'admin/admins/3.png'
@@ -129,27 +132,147 @@ class DatabaseSeeder extends Seeder
         $parentUser = [
             [
                 'id' => 3,
-                'email' => 'test@parent.com',
-                'recoveryEmail' => 'parent@recover.com',
-                'password' => bcrypt('zxc'),
+                'email' => 'karenreyes1993@gmail.com',
+                'recoveryEmail' => 'titoko@gmail.com',
+                'password' => bcrypt('zxc433'),
                 'role' => 0,
-                'created_at' => '2022-06-01'
+                'created_at' => '2022-08-01'
             ],
             [
                 'id' => 6,
                 'email' => 'byronjames@gmail.com',
                 'recoveryEmail' => 'titoko@gmail.com',
-                'password' => bcrypt('zxc'),
+                'password' => bcrypt('mylabs1999'),
                 'role' => 0,
-                'created_at' => '2022-06-01'
+                'created_at' => '2022-08-01'
             ],
             [
                 'id' => 7,
                 'email' => 'salao_emman@gmail.com',
                 'recoveryEmail' => 'delcjoshua1987@gmail.com',
-                'password' => bcrypt('zxc'),
+                'password' => bcrypt('salao5572'),
                 'role' => 0,
-                'created_at' => '2022-06-01'
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 8,
+                'email' => 'charlene_ruiz@gmail.com',
+                'recoveryEmail' => 'charlenever2@gmail.com',
+                'password' => bcrypt('charlene1990'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 9,
+                'email' => 'mariannedevera@gmail.com',
+                'recoveryEmail' => 'timdevera@gmail.com',
+                'password' => bcrypt('deverafam100'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 10,
+                'email' => 'karlos61@gmail.com',
+                'recoveryEmail' => 'lancejosephem@gmail.com',
+                'password' => bcrypt('karlospassqt'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 11,
+                'email' => 'veronicaoffice@gmail.com',
+                'recoveryEmail' => 'daysussette@gmail.com',
+                'password' => bcrypt('ver5567X2'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 12,
+                'email' => 'arleneolivares@gmail.com',
+                'recoveryEmail' => 'myflower10@gmail.com',
+                'password' => bcrypt('luzvimindaom'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 13,
+                'email' => 'kristinefelix@gmail.com',
+                'recoveryEmail' => 'iamartist@gmail.com',
+                'password' => bcrypt('rtyfelix100'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 14,
+                'email' => 'kimdewa@gmail.com',
+                'recoveryEmail' => 'kimdelacruz1981@gmail.com',
+                'password' => bcrypt('rtx990series'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 15,
+                'email' => 'georgenavarro@gmail.com',
+                'recoveryEmail' => 'erikanavarro@gmail.com',
+                'password' => bcrypt('george5432X'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 16,
+                'email' => 'cristalynmarcayda@gmail.com',
+                'recoveryEmail' => 'sharmainmarcayda@gmail.com',
+                'password' => bcrypt('marcaydafam'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 17,
+                'email' => 'harnansingh@gmail.com',
+                'recoveryEmail' => 'harnaazsingh@gmail.com',
+                'password' => bcrypt('harnanurvashi'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 18,
+                'email' => 'rominafernandez@gamil.com',
+                'recoveryEmail' => 'danterres1999@gmail.com',
+                'password' => bcrypt('brt556NN'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 19,
+                'email' => 'arnoldbantayan@gmail.com',
+                'recoveryEmail' => 'georgebantayan@gmail.com',
+                'password' => bcrypt('fromBantayan'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 20,
+                'email' => 'katherinehicana99@gmail.com',
+                'recoveryEmail' => 'katherinejoyce@gmail.com',
+                'password' => bcrypt('kathdeleen1989'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 21,
+                'email' => 'mardelavera@gmail.com',
+                'recoveryEmail' => 'mardelavera2@gmail.com',
+                'password' => bcrypt('martrinity4ev'),
+                'role' => 0,
+                'created_at' => '2022-08-01'
+            ],
+            [
+                'id' => 22,
+                'email' => 'juliuscesar@gmail.com',
+                'recoveryEmail' => 'juliiusoffice@gmail.com',
+                'password' => bcrypt('jul877XTX'),
+                'role' => 0,
+                'created_at' => '2022-08-02'
             ],
         ];
         $parents = [
@@ -158,13 +281,14 @@ class DatabaseSeeder extends Seeder
                 'lastName' => 'Reyes',
                 'middleName' => 'Dela Cruz',
                 'sex' => 'F',
-                'address' => 'Pacita Complex, San Pedro, Laguna',
+                'address' => 'Teresa, Rizal',
                 'birthDate' => '1993-07-23',
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'user_id' => 3,
                 'created_by' => 2,
-                'image' => 'admin/parents/1.png'
+                'image' => 'admin/parents/1.png',
+                'suffix' => null
             ],
             [
                 'firstName' => 'Byron James',
@@ -172,12 +296,13 @@ class DatabaseSeeder extends Seeder
                 'middleName' => 'Regalado',
                 'sex' => 'M',
                 'address' => 'Villa Milagros, Rodriguez, Rizal',
-                'birthDate' => '1993-07-23',
+                'birthDate' => '1996-10-18',
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'user_id' => 6,
                 'created_by' => 2,
-                'image' => 'admin/parents/2.png'
+                'image' => 'admin/parents/2.png',
+                'suffix' => null
             ],
             [
                 'firstName' => 'Emmanuel',
@@ -185,13 +310,225 @@ class DatabaseSeeder extends Seeder
                 'middleName' => 'Noveno Cruz',
                 'sex' => 'M',
                 'address' => 'San Mateo, Rizal',
-                'birthDate' => '1993-07-23',
+                'birthDate' => '1982-10-21',
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'user_id' => 7,
                 'created_by' => 2,
-                'image' => 'admin/parents/3.png'
-            ]
+                'image' => 'admin/parents/3.png',
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Charlene',
+                'lastName' => 'Dimaranan',
+                'middleName' => 'Sarinas',
+                'sex' => 'F',
+                'address' => 'Industrial Valley, Marikina',
+                'birthDate' => '1989-01-19',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 8,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Marianne',
+                'lastName' => 'Dela Vera',
+                'middleName' => 'Cruz',
+                'sex' => 'M',
+                'address' => 'San Mateo, Rizal',
+                'birthDate' => '1990-10-22',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 9,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Karlos',
+                'lastName' => 'Espin',
+                'middleName' => 'Mercado',
+                'sex' => 'M',
+                'address' => 'Sitio GSIS, San Mateo, Rizal',
+                'birthDate' => '1987-01-10',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 10,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Veronica',
+                'lastName' => 'Asilo',
+                'middleName' => 'Marcayda',
+                'sex' => 'M',
+                'address' => 'Villa San Mateo 6, San Mateo, Rizal',
+                'birthDate' => '1982-12-19',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 11,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Luzviminda',
+                'lastName' => 'Olivares',
+                'middleName' => 'Martin',
+                'sex' => 'M',
+                'address' => 'Burgos, Rodriguez. Rizal',
+                'birthDate' => '1988-07-07',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 12,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Joseph',
+                'lastName' => 'Madrigal',
+                'middleName' => 'Felix',
+                'sex' => 'M',
+                'address' => 'Easterview Park, San Mateo, Rizal',
+                'birthDate' => '1991-01-20',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 13,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => 'Jr'
+            ],
+            [
+                'firstName' => 'Kim',
+                'lastName' => 'Dela Cruz',
+                'middleName' => 'Sarmiento',
+                'sex' => 'M',
+                'address' => 'Sitio GSIS, San Mateo, Rizal',
+                'birthDate' => '1981-10-19',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 14,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'George',
+                'lastName' => 'Navarro',
+                'middleName' => 'Sevillo',
+                'sex' => 'M',
+                'address' => 'Liamzon Subd. San Mateo, Rizal',
+                'birthDate' => '1984-11-17',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 15,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Maricris',
+                'lastName' => 'Marcayda',
+                'middleName' => 'Deseo',
+                'sex' => 'F',
+                'address' => 'Monte Brisa, Rodriguez, Rizal',
+                'birthDate' => '1986-02-09',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 16,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Harnan',
+                'lastName' => 'Singh',
+                'middleName' => 'Rautela',
+                'sex' => 'M',
+                'address' => 'San Mateo, Rizal',
+                'birthDate' => '1982-02-15',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 17,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Romina',
+                'lastName' => 'Fernandez',
+                'middleName' => 'Alatiit',
+                'sex' => 'F',
+                'address' => 'Divine Mercy Village, San Mateo, Rizal',
+                'birthDate' => '1990-04-19',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 18,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Arnold',
+                'lastName' => 'Bantayan',
+                'middleName' => 'Magnaye',
+                'sex' => 'M',
+                'address' => 'Monte Brisa, Rodriguez, Rizal',
+                'birthDate' => '1989-01-21',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 19,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => 'II'
+            ],
+            [
+                'firstName' => 'Katherine',
+                'lastName' => 'Hicana',
+                'middleName' => 'Sison',
+                'sex' => 'F',
+                'address' => 'Villa San Mateo 5, San Mateo, Rizal',
+                'birthDate' => '1990-10-09',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 20,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Marielle',
+                'lastName' => 'Delavera',
+                'middleName' => 'Rodriguez',
+                'sex' => 'F',
+                'address' => 'Liamzon Subd. San Mateo, Rizal',
+                'birthDate' => '1987-01-10',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 21,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+            [
+                'firstName' => 'Julius Cesar',
+                'lastName' => 'Fugen',
+                'middleName' => 'Mabano',
+                'sex' => 'M',
+                'address' => 'Patiis Road, San Mateo, Rizal',
+                'birthDate' => '1981-09-17',
+                'status' => 1,
+                'created_at' => '2022-06-01',
+                'user_id' => 22,
+                'created_by' => 2,
+                'image' => null,
+                'suffix' => null
+            ],
+          
         ];
         User::insert($parentUser);
         Guardian::insert($parents);
@@ -239,7 +576,7 @@ class DatabaseSeeder extends Seeder
                 'lastName' => 'Ramos',
                 'middleName' => 'Fernandez',
                 'sex' => 'F',
-                'birthDate' => '2012-09-17',
+                'birthDate' => '2011-05-10',
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'parent_id' => 2,
@@ -255,7 +592,7 @@ class DatabaseSeeder extends Seeder
                 'lastName' => 'Salao',
                 'middleName' => 'Sy',
                 'sex' => 'F',
-                'birthDate' => '2012-09-17',
+                'birthDate' => '2012-12-21',
                 'status' => 1,
                 'created_at' => '2022-06-01',
                 'parent_id' => 3,
@@ -271,14 +608,94 @@ class DatabaseSeeder extends Seeder
                 'lastName' => 'Dimaranan',
                 'middleName' => 'Sarinas',
                 'sex' => 'F',
-                'birthDate' => '2012-09-17',
+                'birthDate' => '2012-05-19',
                 'status' => 1,
                 'created_at' => '2022-06-02',
-                'parent_id' => 3,
+                'parent_id' => 4,
                 'created_by' => 2,
                 'QR' => 'admin/qrs/5.png',
                 'image' => 'admin/students/5.png'
-            ]
+            ],
+            [
+                'grade' => 4,
+                'section' => 'Sampaguita',
+                'adviser' => 'Abigayle Ramos',
+                'firstName' => 'Jessie Rayye',
+                'lastName' => 'Dela Vera',
+                'middleName' => 'Cruz',
+                'sex' => 'M',
+                'birthDate' => '2012-10-20',
+                'status' => 1,
+                'created_at' => '2022-06-02',
+                'parent_id' => 5,
+                'created_by' => 2,
+                'QR' => null,
+                'image' => null
+            ],
+             [
+                'grade' => 4,
+                'section' => 'Sampaguita',
+                'adviser' => 'Abigayle Ramos',
+                'firstName' => 'Lance Joseph',
+                'lastName' => 'Espin',
+                'middleName' => 'Morales',
+                'sex' => 'M',
+                'birthDate' => '2010-04-27',
+                'status' => 1,
+                'created_at' => '2022-06-02',
+                'parent_id' => 6,
+                'created_by' => 2,
+                'QR' => 'admin/qrs/7.png',
+                'image' => null
+            ],
+            [
+                'grade' => 4,
+                'section' => 'Sampaguita',
+                'adviser' => 'Abigayle Ramos',
+                'firstName' => 'Rachelle Trixielyn',
+                'lastName' => 'Asilo',
+                'middleName' => 'Marcayda',
+                'sex' => 'F',
+                'birthDate' => '2012-08-10',
+                'status' => 1,
+                'created_at' => '2022-06-02',
+                'parent_id' => 7,
+                'created_by' => 2,
+                'QR' => null,
+                'image' => null
+            ],
+            [
+                'grade' => 4,
+                'section' => 'Sampaguita',
+                'adviser' => 'Abigayle Ramos',
+                'firstName' => 'Robert Tristan',
+                'lastName' => 'Asilo',
+                'middleName' => 'Marcayda',
+                'sex' => 'M',
+                'birthDate' => '2012-08-10',
+                'status' => 1,
+                'created_at' => '2022-06-02',
+                'parent_id' => 7,
+                'created_by' => 2,
+                'QR' => null,
+                'image' => null
+            ],
+            [
+                'grade' => 4,
+                'section' => 'Sampaguita',
+                'adviser' => 'Abigayle Ramos',
+                'firstName' => 'Genevive Rozarie',
+                'lastName' => 'Olivares',
+                'middleName' => 'Martin',
+                'sex' => 'F',
+                'birthDate' => '2013-06-19',
+                'status' => 1,
+                'created_at' => '2022-06-02',
+                'parent_id' => 8,
+                'created_by' => 2,
+                'QR' => null,
+                'image' => null
+            ],
         ];
         Student::insert($students);
 
@@ -358,7 +775,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 3
             ],
             [
-                'id' => 3, 
+                'id' => 3,
                 'philfct_id' => null,
                 'name' => 'Fried Chicken',
                 'kcal' => 226,
@@ -368,7 +785,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 698
             ],
             [
-                'id' => 4, 
+                'id' => 4,
                 'philfct_id' => null,
                 'name' => 'Pork Siomai',
                 'kcal' => 298,
@@ -378,7 +795,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 291
             ],
             [
-                'id' => 5, 
+                'id' => 5,
                 'philfct_id' => null,
                 'name' => 'Pork Siopao',
                 'kcal' => 294,
@@ -388,7 +805,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 0
             ],
             [
-                'id' => 6, 
+                'id' => 6,
                 'philfct_id' => null,
                 'name' => 'Tocino',
                 'kcal' => 206,
@@ -398,7 +815,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1037
             ],
             [
-                'id' => 7, 
+                'id' => 7,
                 'philfct_id' => null,
                 'name' => 'Sweet Ham',
                 'kcal' => 117,
@@ -408,7 +825,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1208
             ],
             [
-                'id' => 8, 
+                'id' => 8,
                 'philfct_id' => null,
                 'name' => 'Boiled Chicken Egg',
                 'kcal' => 166,
@@ -418,7 +835,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 136
             ],
             [
-                'id' => 9, 
+                'id' => 9,
                 'philfct_id' => null,
                 'name' => 'Turon',
                 'kcal' => 259,
@@ -428,7 +845,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 89
             ],
             [
-                'id' => 10, 
+                'id' => 10,
                 'philfct_id' => null,
                 'name' => 'Zesto Grape Flavor',
                 'kcal' => 90,
@@ -438,7 +855,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 14
             ],
             [
-                'id' => 11, 
+                'id' => 11,
                 'philfct_id' => null,
                 'name' => 'Zesto Guava Flavor',
                 'kcal' => 92,
@@ -448,7 +865,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 14
             ],
             [
-                'id' => 12, 
+                'id' => 12,
                 'philfct_id' => null,
                 'name' => 'Zesto Strawberry Flavor',
                 'kcal' => 100,
@@ -458,7 +875,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 10
             ],
             [
-                'id' => 13, 
+                'id' => 13,
                 'philfct_id' => null,
                 'name' => 'Buko Juice',
                 'kcal' => 78,
@@ -468,7 +885,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 14
             ],
             [
-                'id' => 14, 
+                'id' => 14,
                 'philfct_id' => null,
                 'name' => 'Coco honet biscuit',
                 'kcal' => 63.42,
@@ -478,7 +895,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1.12
             ],
             [
-                'id' => 15, 
+                'id' => 15,
                 'philfct_id' => null,
                 'name' => 'Curly tops',
                 'kcal' => 25.9,
@@ -488,7 +905,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 0.5
             ],
             [
-                'id' => 16, 
+                'id' => 16,
                 'philfct_id' => null,
                 'name' => 'Peanut Brittle',
                 'kcal' => 118.32,
@@ -498,7 +915,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 101.76
             ],
             [
-                'id' => 17, 
+                'id' => 17,
                 'philfct_id' => null,
                 'name' => 'Chopsuey',
                 'kcal' => 70,
@@ -1045,7 +1462,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/chopsuey.jpg'
             ],
             [
-                'id' => 25, 
+                'id' => 25,
                 'name' => 'Pork BBQ',
                 'calcKcal' => 408,
                 'calcTotFat' => 29,
@@ -1065,7 +1482,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/pork-bbq.jpg'
             ],
             [
-                'id' => 26, 
+                'id' => 26,
                 'name' => 'Kikyam',
                 'calcKcal' => 129,
                 'calcTotFat' => 2.1,
@@ -1085,7 +1502,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/kikyam.jpg'
             ],
             [
-                'id' => 27, 
+                'id' => 27,
                 'name' => 'Pritong Bangus',
                 'calcKcal' => 188,
                 'calcTotFat' => 10.4,
@@ -1105,7 +1522,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/daing-na-bangus.jpg'
             ],
             [
-                'id' => 28, 
+                'id' => 28,
                 'name' => 'Inihaw na bangus',
                 'calcKcal' => 137,
                 'calcTotFat' => 4.8,
@@ -1125,7 +1542,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/inihaw-bangus.jpg'
             ],
             [
-                'id' => 29, 
+                'id' => 29,
                 'name' => 'Lechong Manok',
                 'calcKcal' => 226,
                 'calcTotFat' => 12,
@@ -1145,7 +1562,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/lechon-manok.jpg'
             ],
             [
-                'id' => 30, 
+                'id' => 30,
                 'name' => 'Embutido',
                 'calcKcal' => 164,
                 'calcTotFat' => 8.5,
@@ -1165,7 +1582,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/embutido.jpg'
             ],
             [
-                'id' => 31, 
+                'id' => 31,
                 'name' => 'Chicken Nuggets',
                 'calcKcal' => 220,
                 'calcTotFat' => 11.2,
@@ -1185,7 +1602,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/chicken-nuggets.jpg'
             ],
             [
-                'id' => 32, 
+                'id' => 32,
                 'name' => 'Corned Beef',
                 'calcKcal' => 168,
                 'calcTotFat' => 10.7,
@@ -1205,7 +1622,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/corned-beef.jpg'
             ],
             [
-                'id' => 33, 
+                'id' => 33,
                 'name' => 'Chicharon',
                 'calcKcal' => 591,
                 'calcTotFat' => 36.5,
@@ -1225,7 +1642,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/chicharon.jpg'
             ],
             [
-                'id' => 34, 
+                'id' => 34,
                 'name' => 'Lechon Kawali',
                 'calcKcal' => 245,
                 'calcTotFat' => 21.8,
@@ -1245,7 +1662,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/lechon-kawali.jpg'
             ],
             [
-                'id' => 35, 
+                'id' => 35,
                 'name' => 'Polvoron',
                 'calcKcal' => 469,
                 'calcTotFat' => 16.4,
@@ -1265,7 +1682,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/polvoron.jpg'
             ],
             [
-                'id' => 36, 
+                'id' => 36,
                 'name' => 'Pork Siopao',
                 'calcKcal' => 294,
                 'calcTotFat' => 11.2,
@@ -1285,7 +1702,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/pork-siopao.jpeg'
             ],
             [
-                'id' => 37, 
+                'id' => 37,
                 'name' => 'Champorado',
                 'calcKcal' => 97,
                 'calcTotFat' => 0.2,
@@ -1305,7 +1722,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/champorado.jpg'
             ],
             [
-                'id' => 38, 
+                'id' => 38,
                 'name' => 'Yakult',
                 'calcKcal' => 71,
                 'calcTotFat' => 0.2,
@@ -1325,7 +1742,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/yakult.jpg'
             ],
             [
-                'id' => 39, 
+                'id' => 39,
                 'name' => 'Pritong Baka',
                 'calcKcal' => 152,
                 'calcTotFat' => 6.4,
@@ -1345,7 +1762,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/pritong-baka.jpg'
             ],
             [
-                'id' => 40, 
+                'id' => 40,
                 'name' => 'Pritong Liempo',
                 'calcKcal' => 245,
                 'calcTotFat' => 21.8,
@@ -1365,7 +1782,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/pritong-liempo.jpg'
             ],
             [
-                'id' => 41, 
+                'id' => 41,
                 'name' => 'Banana Cue',
                 'calcKcal' => 183,
                 'calcTotFat' => 2.6,
@@ -1385,7 +1802,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/banana-cue.jpg'
             ],
             [
-                'id' => 42, 
+                'id' => 42,
                 'name' => 'Maruya',
                 'calcKcal' => 240,
                 'calcTotFat' => 3.9,
@@ -1405,7 +1822,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/maruya.jpg'
             ],
             [
-                'id' => 43, 
+                'id' => 43,
                 'name' => 'Banana Latundan',
                 'calcKcal' => 105,
                 'calcTotFat' => 0.3,
@@ -1425,7 +1842,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/banana-latundan.jpg'
             ],
             [
-                'id' => 44, 
+                'id' => 44,
                 'name' => 'Banana Lakatan',
                 'calcKcal' => 126,
                 'calcTotFat' => 0.2,
@@ -1445,7 +1862,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/banana-lakatan.png'
             ],
             [
-                'id' => 45, 
+                'id' => 45,
                 'name' => 'Red Apple',
                 'calcKcal' => 67,
                 'calcTotFat' => 0.1,
@@ -1465,7 +1882,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/red-apple.jpg'
             ],
             [
-                'id' => 46, 
+                'id' => 46,
                 'name' => 'Chips cheese flavor',
                 'calcKcal' => 489,
                 'calcTotFat' => 24.1,
@@ -1485,7 +1902,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/chips-cheese.jpg'
             ],
             [
-                'id' => 47, 
+                'id' => 47,
                 'name' => 'Corn chips BBQ Flavor',
                 'calcKcal' => 535,
                 'calcTotFat' => 30.7,
@@ -1505,7 +1922,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/cornchips-bbq.png'
             ],
             [
-                'id' => 48, 
+                'id' => 48,
                 'name' => 'Corn chips Nachos Flavor',
                 'calcKcal' => 528,
                 'calcTotFat' => 30,
@@ -1525,7 +1942,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/cornchips-nachos.jpg'
             ],
             [
-                'id' => 49, 
+                'id' => 49,
                 'name' => 'Corn chips Natural Flavor',
                 'calcKcal' => 527,
                 'calcTotFat' => 29.1,
@@ -1545,7 +1962,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/cornchips-natural.jpg'
             ],
             [
-                'id' => 50, 
+                'id' => 50,
                 'name' => 'Potato Chips cheese flavor',
                 'calcKcal' => 540,
                 'calcTotFat' => 33.4,
@@ -1565,7 +1982,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/potato-chips-cheese.png'
             ],
             [
-                'id' => 51, 
+                'id' => 51,
                 'name' => 'Fishda Kroepeck',
                 'calcKcal' => 502,
                 'calcTotFat' => 27,
@@ -1585,7 +2002,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/fishda.png'
             ],
             [
-                'id' => 52, 
+                'id' => 52,
                 'name' => 'Oishi prawn crackers',
                 'calcKcal' => 502,
                 'calcTotFat' => 27,
@@ -1605,7 +2022,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/prawn-crackers.png'
             ],
             [
-                'id' => 53, 
+                'id' => 53,
                 'name' => 'Del monte apple flavor',
                 'calcKcal' => 100,
                 'calcTotFat' => 0.4,
@@ -1625,7 +2042,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/delmonte-apple.jpg'
             ],
             [
-                'id' => 54, 
+                'id' => 54,
                 'name' => 'Zesto Mango Flavor',
                 'calcKcal' => 114,
                 'calcTotFat' => 0.4,
@@ -1645,7 +2062,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/zesto-mango.jpg'
             ],
             [
-                'id' => 55, 
+                'id' => 55,
                 'name' => 'Del Monte Orange and Pineapple Flavor',
                 'calcKcal' => 94,
                 'calcTotFat' => 0.4,
@@ -1665,7 +2082,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/delmonte-orange.jpg'
             ],
             [
-                'id' => 56, 
+                'id' => 56,
                 'name' => 'Zesto Orange Flavor',
                 'calcKcal' => 86,
                 'calcTotFat' => 0.4,
@@ -1685,7 +2102,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/zesto-orange.png'
             ],
             [
-                'id' => 57, 
+                'id' => 57,
                 'name' => 'Cola Softdrinks',
                 'calcKcal' => 82,
                 'calcTotFat' => 0.2,
@@ -1705,7 +2122,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/cola-softdrinks.png'
             ],
             [
-                'id' => 58, 
+                'id' => 58,
                 'name' => 'Royal Orange Softdrinks',
                 'calcKcal' => 92,
                 'calcTotFat' => 0,
@@ -1725,7 +2142,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/orange-softdrinks.png'
             ],
             [
-                'id' => 59, 
+                'id' => 59,
                 'name' => 'Soyabean Chocolate Drink',
                 'calcKcal' => 152,
                 'calcTotFat' => 0.6,
@@ -1745,7 +2162,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'admin/foods/chocolate-drink.jpg'
             ],
             [
-                'id' => 60, 
+                'id' => 60,
                 'name' => 'Soyabean Drink',
                 'calcKcal' => 102,
                 'calcTotFat' => 0.16,
@@ -2528,30 +2945,30 @@ class DatabaseSeeder extends Seeder
                 'sugar' => 4.2,
                 'sodium' => 1.12
             ],
-            [
-                'id' => 17,
-                'purchase_id' => 8,
-                'food_id' => 25,
-                'quantity' => 2,
-                'amount' => 50.00,
-                'kcal' => 199,
-                'totFat' => 3,
-                'satFat' => 1.35,
-                'sugar' => 4.1,
-                'sodium' => 357
-            ],
-            [
-                'id' => 18,
-                'purchase_id' => 9,
-                'food_id' => 30,
-                'quantity' => 1,
-                'amount' => 50.00,
-                'kcal' => 226,
-                'totFat' => 12,
-                'satFat' => 4.07,
-                'sugar' => 1.5,
-                'sodium' => 716
-            ],
+            // [ duplicated
+            //     'id' => 17,
+            //     'purchase_id' => 8,
+            //     'food_id' => 25,
+            //     'quantity' => 2,
+            //     'amount' => 50.00,
+            //     'kcal' => 199,
+            //     'totFat' => 3,
+            //     'satFat' => 1.35,
+            //     'sugar' => 4.1,
+            //     'sodium' => 357
+            // ],
+            // [
+            //     'id' => 18,
+            //     'purchase_id' => 9,
+            //     'food_id' => 30,
+            //     'quantity' => 1,
+            //     'amount' => 50.00,
+            //     'kcal' => 226,
+            //     'totFat' => 12,
+            //     'satFat' => 4.07,
+            //     'sugar' => 1.5,
+            //     'sodium' => 716
+            // ],
             [
                 'id' => 17,
                 'purchase_id' => 8,
@@ -3032,8 +3449,8 @@ class DatabaseSeeder extends Seeder
                 'sugar' => 0.7,
                 'sodium' => 520
             ]
-            
-            
+
+
         ];
         Order::insert($orders);
     }
