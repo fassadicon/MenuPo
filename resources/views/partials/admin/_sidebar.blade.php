@@ -3,16 +3,24 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+
+          <li id="nav-item-logo" class="nav-item">
+            <a href="/" class="logo d-flex align-items-center">
+              <img src="{{ asset('admin/assets/img/favicon-32x32.png') }}" alt="">
+              <span class="d-none d-lg-block">Menu<span id="span-primary">Po</span></span>
+          </a>
+        </li><!-- End Logo -->
+
         <li class="nav-item">
-            <a class="nav-link " href="/admin/dashboard">
-                <i class="bi bi-grid"></i>
+            <a class="nav-link collapsed" href="/admin/dashboard" id="sidebarLink">
+              <i class="fa-solid fa-border-all"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/admin/orders/scanner">
-                <i class="bi bi-grid"></i>
+            <a class="nav-link collapsed" href="/admin/orders/scanner" id="sidebarLink">
+              <i class="fa-solid fa-qrcode"></i>
                 <span>Scanner</span>
             </a>
         </li><!-- End Scanner Nav -->
@@ -188,19 +196,21 @@
             </ul>
         </li><!-- End User Management Nav --> --}}
 
+        <li class="nav-heading">Accounts Management</li>
+
         <li>
-            <a href="/admin/admins" class="nav-link collapsed">
-                <i class="bi bi-circle"></i><span>Admin</span>
+            <a href="/admin/admins" class="nav-link collapsed" id="sidebarLink">
+              <i class="fa-solid fa-user-plus"></i><span>Admin</span>
             </a>
         </li>
         <li>
-            <a href="/admin/guardians" class="nav-link collapsed">
-                <i class="bi bi-circle"></i><span>Parents</span>
+            <a href="/admin/guardians" class="nav-link collapsed" id="sidebarLink">
+              <i class="fa-solid fa-user-plus"></i></i><span>Parents</span>
             </a>
         </li>
         <li>
-            <a href="/admin/students" class="nav-link collapsed">
-                <i class="bi bi-circle"></i><span>Students</span>
+            <a href="/admin/students" class="nav-link collapsed" id="sidebarLink">
+              <i class="fa-solid fa-user-plus"></i><span>Students</span>
             </a>
         </li>
         <li class="nav-heading">Food Item Management</li>
@@ -210,21 +220,21 @@
     <i class="bi bi-person"></i>
     <span>Food Item Management</span>
   </a> --}}
-            <a href="/admin/foods" class="nav-link collapsed">
-                <i class="bi bi-person"></i>
+            <a href="/admin/foods" class="nav-link collapsed" id="sidebarLink">
+              <i class="fa-solid fa-bars-progress"></i>
                 <span>Food Item Management</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
+            <a class="nav-link collapsed" href="pages-faq.html" id="sidebarLink">
+              <i class="fa-solid fa-bars-progress"></i>
                 <span>Survey Management</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
         <li class="nav-item">
-            <a href="/admin/menu" class="nav-link collapsed" href="pages-faq.html">
-                <i class="fas fa-utensils"></i>
+            <a href="/admin/menu" class="nav-link collapsed" href="pages-faq.html" id="sidebarLink">
+              <i class="fa-solid fa-bars-progress"></i>
                 <span>Menu Management</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
@@ -232,28 +242,28 @@
         <li class="nav-heading">Order Management</li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="/">
-              <i class="bi bi-grid"></i>
+          <a class="nav-link collapsed" href="/" id="sidebarLink">
+            <i class="fa-solid fa-person-chalkboard"></i>
               <span>Walk-In POS</span>
           </a>
       </li><!-- End Walk-In POS Nav -->
 
         <li class="nav-item">
-          <a href="/admin/orders/pendings" class="nav-link collapsed">
-              <i class="bi bi-grid"></i>
+          <a href="/admin/orders/pendings" class="nav-link collapsed" id="sidebarLink">
+            <i class="fa-solid fa-person-circle-exclamation"></i>
               <span>To Claim Orders</span>
           </a>
         </li><!-- End Paid/To Claim Nav -->
       <li class="nav-item">
-        <a href="/admin/orders/placed" class="nav-link collapsed">
-            <i class="fas fa-utensils"></i>
+        <a href="/admin/orders/placed" class="nav-link collapsed" id="sidebarLink">
+          <i class="fa-solid fa-bars"></i>
             <span>Placed Orders</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a href="/admin/orders/completed" class="nav-link collapsed" >
-          <i class="bi bi-grid"></i>
+        <a href="/admin/orders/completed" class="nav-link collapsed" id="sidebarLink">
+          <i class="fa-solid fa-list"></i>
           <span>Completed Orders</span>
         </a>
       </li><!-- End Completed Orders Nav -->
@@ -298,3 +308,7 @@
 
 </aside>
 {{-- End Sidebar --}}
+
+<script>
+
+</script>

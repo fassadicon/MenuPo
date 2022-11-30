@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Favicons -->
-<link href="{{ asset('admin/assets/img/favicon.png') }}" rel="icon">
+<link href="{{ asset('admin/assets/img/favicon-32x32.png') }}" rel="icon">
 <link href="{{ asset('admin/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
