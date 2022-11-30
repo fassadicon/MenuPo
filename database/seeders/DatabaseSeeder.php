@@ -10,6 +10,7 @@ use App\Models\Admin;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Philfct;
+use App\Models\Survey;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Student;
 use App\Models\Guardian;
@@ -522,7 +523,7 @@ class DatabaseSeeder extends Seeder
                 'address' => 'Patiis Road, San Mateo, Rizal',
                 'birthDate' => '1981-09-17',
                 'status' => 1,
-                'created_at' => '2022-06-01',
+                'created_at' => '2022-06-02',
                 'user_id' => 22,
                 'created_by' => 2,
                 'image' => null,
@@ -3694,5 +3695,299 @@ class DatabaseSeeder extends Seeder
 
         ];
         Order::insert($orders);
+
+        DB::table('surveys')->delete();
+        $surveys = [
+            [
+                'id' => 1,
+                'name' => 'Karen Reyes',
+                'rating' => 5,
+                'suggestions' => 'Sinigang na Manok',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 1
+            ],
+            [
+                'id' => 2,
+                'name' => 'Romina Fernandez',
+                'rating' => 4,
+                'suggestions' => 'Shanghai',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 14
+            ],
+            [
+                'id' => 3,
+                'name' => 'Byron Ramos',
+                'rating' => 4,
+                'suggestions' => 'Sinigang na Baka',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 2
+            ],
+            [
+                'id' => 4,
+                'name' => 'Luzviminda Olivares',
+                'rating' => 5,
+                'suggestions' => 'Adobong Isaw',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 8
+            ],
+            [
+                'id' => 5,
+                'name' => null,
+                'rating' => 4,
+                'suggestions' => 'Carbonara',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 4
+            ],
+            [
+                'id' => 6,
+                'name' => null,
+                'rating' => 5,
+                'suggestions' => 'Ginisang Munggo',
+                'comment' => null,
+                'created_at' => '2022-1-18',
+                'parent_id' => 3
+            ],
+            [
+                'id' => 7,
+                'name' => null,
+                'rating' => 5,
+                'suggestions' => 'Carbonara',
+                'comment' => null,
+                'created_at' => '2022-1-18',
+                'parent_id' => 11
+            ],
+            [
+                'id' => 8,
+                'name' => null,
+                'rating' => 5,
+                'suggestions' => 'Menudo',
+                'comment' => null,
+                'created_at' => '2022-1-18',
+                'parent_id' => 6
+            ],
+            [
+                'id' => 9,
+                'name' => 'Marianne Dela Vera',
+                'rating' => 5,
+                'suggestions' => 'Afritada',
+                'comment' => null,
+                'created_at' => '2022-1-18',
+                'parent_id' => 5
+            ],
+            [
+                'id' => 10,
+                'name' => null,
+                'rating' => 4,
+                'suggestions' => 'Mechado',
+                'comment' => null,
+                'created_at' => '2022-1-18',
+                'parent_id' => 7
+            ],
+            [
+                'id' => 11,
+                'name' => null,
+                'rating' => 3,
+                'suggestions' => 'Nilaga',
+                'comment' => null,
+                'created_at' => '2022-1-20',
+                'parent_id' => 14
+            ],
+            [
+                'id' => 12,
+                'name' => 'Karlos Espin',
+                'rating' => 5,
+                'suggestions' => 'Tinolang Manok',
+                'comment' => null,
+                'created_at' => '2022-1-20',
+                'parent_id' => 12
+            ],
+            [
+                'id' => 13,
+                'name' => 'Katherine Hicana',
+                'rating' => 5,
+                'suggestions' => 'Nilagang Baka',
+                'comment' => null,
+                'created_at' => '2022-1-18',
+                'parent_id' => 16
+            ],
+            [
+                'id' => 14,
+                'name' => 'Joseph Madrigal',
+                'rating' => 5,
+                'suggestions' => 'Ginisang Munggo',
+                'comment' => null,
+                'created_at' => '2022-1-22',
+                'parent_id' => 9
+            ],
+            [
+                'id' => 15,
+                'name' => null,
+                'rating' => 3,
+                'suggestions' => 'Beef Brisket',
+                'comment' => null,
+                'created_at' => '2022-1-22',
+                'parent_id' => 10
+            ],
+            [
+                'id' => 16,
+                'name' => 'Charlene Dimaranan',
+                'rating' => null,
+                'suggestions' => 'Adobo',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 4
+            ],
+            [
+                'id' => 17,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Chicken Curry',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 8
+            ],
+            [
+                'id' => 18,
+                'name' => 'Karlos Espin',
+                'rating' => null,
+                'suggestions' => 'Carbonara',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 6
+            ],
+            [
+                'id' => 19,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Carbonara',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 11
+            ],
+            [
+                'id' => 20,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Ginisang Munggo',
+                'comment' => null,
+                'created_at' => '2022-1-17',
+                'parent_id' => 16
+            ],
+            [
+                'id' => 21,
+                'name' => 'Karen Reyes',
+                'rating' => 5,
+                'suggestions' => 'Sinigang na Manok',
+                'comment' => '2nd week na po to sinigang na manok',
+                'created_at' => '2022-1-17',
+                'parent_id' => 1
+            ],
+            [
+                'id' => 22,
+                'name' => 'Joseph Madrigal',
+                'rating' => null,
+                'suggestions' => 'Ginisang Sitaw',
+                'comment' => null,
+                'created_at' => '2022-1-18',
+                'parent_id' => 9
+            ],
+            [
+                'id' => 23,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Chicken Nuggets',
+                'comment' => null,
+                'created_at' => '2022-1-18',
+                'parent_id' => 18
+            ],
+            [
+                'id' => 24,
+                'name' => 'Romina Fernandez',
+                'rating' => null,
+                'suggestions' => 'Pork and Beans',
+                'comment' => null,
+                'created_at' => '2022-1-19',
+                'parent_id' => 14
+            ],
+            [
+                'id' => 25,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Nilaga',
+                'comment' => null,
+                'created_at' => '2022-1-19',
+                'parent_id' => 7
+            ],
+            [
+                'id' => 26,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Spaghetti',
+                'comment' => null,
+                'created_at' => '2022-1-19',
+                'parent_id' => 2
+            ],
+            [
+                'id' => 27,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Adobong Manok',
+                'comment' => null,
+                'created_at' => '2022-1-19',
+                'parent_id' => 5
+            ],
+            [
+                'id' => 28,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Ginisang Sitaw',
+                'comment' => null,
+                'created_at' => '2022-1-20',
+                'parent_id' => 3
+            ],
+            [
+                'id' => 29,
+                'name' => 'Julius Fugen',
+                'rating' => null,
+                'suggestions' => 'Adobo',
+                'comment' => null,
+                'created_at' => '2022-1-20',
+                'parent_id' => 18
+            ],
+            [
+                'id' => 30,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Munggo',
+                'comment' => null,
+                'created_at' => '2022-1-21',
+                'parent_id' => 15
+            ],
+            [
+                'id' => 31,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Menudo',
+                'comment' => null,
+                'created_at' => '2022-1-21',
+                'parent_id' => 10
+            ],
+            [
+                'id' => 32,
+                'name' => null,
+                'rating' => null,
+                'suggestions' => 'Carbonara',
+                'comment' => null,
+                'created_at' => '2022-1-22',
+                'parent_id' => 12
+            ]
+
+        ];
+        Survey::insert($surveys);
     }
 }

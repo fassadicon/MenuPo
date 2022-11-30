@@ -10,6 +10,11 @@
 --------------------------------------------------------------*/
 :root {
     scroll-behavior: smooth;
+    --primary: #ffc300;
+    --primaryLight: #ffe799;
+    --primaryDark: #e6b000;
+    --secondary: #213559;
+    --secondaryLight: #374968;
 }
 
 body {
@@ -381,12 +386,12 @@ h6 {
 }
 
 .logo img {
-    max-height: 26px;
+    max-height: 32px;
     margin-right: 6px;
 }
 
 .logo span {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
     color: #012970;
     font-family: "Nunito", sans-serif;
@@ -397,7 +402,8 @@ h6 {
     z-index: 997;
     height: 60px;
     box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-    background-color: #fff;
+    background-color: var(--primary);
+    /* clip-path: polygon(0 0, 24% 2%, 46% 100%, 0 100%); */
     padding-left: 20px;
     /* Toggle Sidebar Button */
     /* Search Bar */
@@ -624,9 +630,11 @@ h6 {
     padding: 20px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #aab7cf transparent;
+    scrollbar-color: var(--primaryLight) transparent;
     box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-    background-color: #fff;
+    border-top-right-radius: 80px;
+    background-image: linear-gradient(30deg , var(--primary), var(--primaryLight));
+    background-color: var(--primaryLight);
 }
 
 @media (max-width: 1199px) {
@@ -642,7 +650,7 @@ h6 {
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background-color: #aab7cf;
+    background-color: #f6f9ff;
 }
 
 @media (min-width: 1200px) {
@@ -688,9 +696,9 @@ h6 {
 .sidebar-nav .nav-heading {
     font-size: 11px;
     text-transform: uppercase;
-    color: #899bbd;
+    color: var(--secondary);
     font-weight: 600;
-    margin: 10px 0 5px 15px;
+    margin: 15px 0 15px 15px;
 }
 
 .sidebar-nav .nav-link {
@@ -698,9 +706,9 @@ h6 {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #4154f1;
+    color: var(--primary);
     transition: 0.3;
-    background: #f6f9ff;
+    background: var(--primaryLight);
     padding: 10px 15px;
     border-radius: 4px;
 }
@@ -708,25 +716,37 @@ h6 {
 .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
-    color: #4154f1;
+    color: var(--primary);
 }
 
 .sidebar-nav .nav-link.collapsed {
-    color: #012970;
-    background: #fff;
+    color: var(--secondary);
+    background: var(--primaryLight);
+    -webkit-border-radius: 40px 0px 0px 40px;
+    -moz-border-radius: 40px 0px 0px 40px;
+    border-radius: 40px 0px 0px 40px;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-    color: #899bbd;
+    color: var(--secondary);
 }
 
 .sidebar-nav .nav-link:hover {
-    color: #4154f1;
+    color: var(--primary);
+    margin-right: 0%;
     background: #f6f9ff;
+    width: 20em;
+    -webkit-transition: background-color 0.3s linear;
+    -moz-transition: background-color 0.3s linear;
+    -o-transition: background-color 0.3s linear;
+    transition: background-color 0.3s linear;
+    -webkit-border-radius: 40px 0px 0px 40px;
+    -moz-border-radius: 40px 0px 0px 40px;
+    border-radius: 40px 0px 0px 40px;
 }
 
 .sidebar-nav .nav-link:hover i {
-    color: #4154f1;
+    color: var(--primary);
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -749,7 +769,7 @@ h6 {
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    color: #012970;
+    color: var(--secondary);
     transition: 0.3;
     padding: 10px 0 10px 40px;
     transition: 0.3s;
@@ -764,11 +784,11 @@ h6 {
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-    color: #4154f1;
+    color: var(--primary);
 }
 
 .sidebar-nav .nav-content a.active i {
-    background-color: #4154f1;
+    background-color: var(--primary);
 }
 
 /*--------------------------------------------------------------
@@ -1256,3 +1276,87 @@ h6 {
     font-size: 13px;
     color: #012970;
 }
+
+/*--------------------------------------------------------------
+# Additional Changes in UI
+--------------------------------------------------------------*/
+#nav-item-logo{
+    margin-bottom: 30px;
+}
+#span-primary{
+    color: var(--secondaryLight);
+    font-weight: 800;
+}
+
+/* custom toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 34px;
+   }
+   
+   .switch input {
+    display: none;
+   }
+   
+   .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0E6EB8;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+   }
+   
+   .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    right: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+   }
+   
+   input:checked + .slider {
+    background-color: #213559;
+   }
+   
+   input:focus + .slider {
+    box-shadow: 0 0 1px #374968;
+   }
+   
+   input:checked + .slider:before {
+    -webkit-transform: translateX(-26px);
+    -ms-transform: translateX(-26px);
+    transform: translateX(-85px);
+   }
+   
+   /*------ ADDED CSS ---------*/
+   .slider:after {
+    content: 'HIDE';
+    color: white;
+    display: block;
+    position: absolute;
+    padding-right: 4px;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
+   }
+   
+   input:checked + .slider:after {
+    content: 'SHOW';
+   }
+   
+
+   
