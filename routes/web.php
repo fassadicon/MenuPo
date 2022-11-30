@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 // Admin Controllers
-use App\Http\Controllers\User\POSController;
+use App\Http\Controllers\Admin\POSController;
 use App\Http\Controllers\User\HomeController;
-use App\Http\Controllers\User\MenuController;
+use App\Http\Controllers\Admin\MenuController;
+// use App\Http\Controllers\User\MenuController;
 
 use App\Http\Controllers\Admin\FoodController;
 use App\Http\Controllers\Admin\AdminController;
@@ -112,6 +113,14 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Autocomplete search for PhilFCT
 
     // <----------- ORDER CONTROLLER -----------> //
+      //Point of sale
+    Route::get('/pos', [POSController::class, 'index']);
+    Route::post('/add-to-cart', [POSController::class, 'addtocart']);
+    Route::post('/update-cart-add', [POSController::class, 'add']);
+    Route::post('/update-cart-minus', [POSController::class, 'minus']);
+    Route::post('/update-cart-delete', [POSController::class, 'delete']);
+    Route::post('/pos/payment', [POSController::class, 'pospayment'])
+            ->name(name:'pos.order');
     // Show Scanner Section
     Route::get('/orders/scanner', [ScannerController::class, 'index']);
     // Scan QR Code

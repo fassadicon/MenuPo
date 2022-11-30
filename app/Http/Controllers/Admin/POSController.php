@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Food;
 use App\Models\Order;
@@ -19,7 +19,7 @@ class POSController extends Controller
 
     public function index(){
         
-        return view('user.pos', [
+        return view('admin.OrderManagement.pos', [
             'foods' => Food::all()
         ]);
     }
@@ -40,7 +40,7 @@ class POSController extends Controller
         }
 
         $payment = new Payment;
-        $payment->method = "Gcash";
+        $payment->method = "Walk-in";
         $payment->referenceNo = 123456789;
         $payment->save();
         
@@ -85,7 +85,7 @@ class POSController extends Controller
         
         Cart::destroy();
 
-        return redirect('/pos');
+        return redirect('/admin/pos');
     }
 
     public function addtocart(Request $request){

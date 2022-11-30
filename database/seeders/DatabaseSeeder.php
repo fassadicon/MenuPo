@@ -522,7 +522,7 @@ class DatabaseSeeder extends Seeder
                 'address' => 'Patiis Road, San Mateo, Rizal',
                 'birthDate' => '1981-09-17',
                 'status' => 1,
-                'created_at' => '2022-06-01',
+                'created_at' => '2022-06-02',
                 'user_id' => 22,
                 'created_by' => 2,
                 'image' => null,
