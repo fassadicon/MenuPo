@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 // Admin Controllers
-use App\Http\Controllers\User\POSController;
+use App\Http\Controllers\Admin\POSController;
 use App\Http\Controllers\User\HomeController;
-use App\Http\Controllers\User\MenuController;
-
 use App\Http\Controllers\Admin\FoodController;
+
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\User\HealthController;
@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\ScannerController;
 use App\Http\Controllers\Admin\StudentController;
 
+use App\Http\Controllers\User\UserMenuController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\CompletedController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -112,6 +113,14 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Autocomplete search for PhilFCT
 
     // <----------- ORDER CONTROLLER -----------> //
+      //Point of sale
+    Route::get('/pos', [POSController::class, 'index']);
+    Route::post('/add-to-cart', [POSController::class, 'addtocart']);
+    Route::post('/update-cart-add', [POSController::class, 'add']);
+    Route::post('/update-cart-minus', [POSController::class, 'minus']);
+    Route::post('/update-cart-delete', [POSController::class, 'delete']);
+    Route::post('/pos/payment', [POSController::class, 'pospayment'])
+            ->name(name:'pos.order');
     // Show Scanner Section
     Route::get('/orders/scanner', [ScannerController::class, 'index']);
     // Scan QR Code
@@ -166,6 +175,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');
     Route::get('/reports/countFoodsBasedInColor/{type}', [ReportsController::class, 'countFoodsBasedInColor'])->name('reports.countFoodsBasedInColor');
     Route::get('/reports/aveGradePerType/{type}', [ReportsController::class, 'aveGradePerType'])->name('reports.aveGradePerType');
+    Route::get('/reports/suggestions', [ReportsController::class, 'mostSuggested'])->name('reports.mostSuggested');
 });
 
 
@@ -195,13 +205,13 @@ Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
     Route::get('user/user-account', [UserAccController::class, 'index']);
 
     //Menu Page
-    Route::get('/user/menu/{student}', [MenuController::class, 'index'])
+    Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])
         ->name(name:'menu.index');
 
-    Route::get('/user/menu-landing', [MenuController::class, 'landing'])
+    Route::get('/user/menu-landing', [UserMenuController::class, 'landing'])
         ->name(name:'menu.landing');
-    Route::post('/user/menu/addtocart', [MenuController::class, 'addtocart']);
-    Route::post('/user/menu/addtorestrict', [MenuController::class, 'addtorestrict']);
+    Route::post('/user/menu/addtocart', [UserMenuController::class, 'addtocart']);
+    Route::post('/user/menu/addtorestrict', [UserMenuController::class, 'addtorestrict']);
 
     //Cart Summarry
     Route::get('user/cart-summary/{anak}', [CartSummaryController::class, 'index'])

@@ -2,6 +2,7 @@
     <div class="card">
         <!-- NCs -->
         <div class="card-body">
+            <h1>Percentage of Existing Food Items in the Inventory based on Food Grade (Color)</h1>
             <div class="row">
                 <div class="col-3">
                     <canvas id="NC_CookedMeals"></canvas>
@@ -18,6 +19,7 @@
             </div>
         </div> <!-- NCs -->
         <div class="card-body">
+            <h1>Percentage of Bought Food Items based on Food Grade (Color)</h1>
             <div class="row">
                 <div class="col-3">
                     <canvas id="NB_CookedMeals"></canvas>
@@ -31,6 +33,14 @@
                 <div class="col-3">
                   <canvas id="NB_Others"></canvas>
               </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <h1>Percentage of Bought Food Items based on Food Grade (Color)</h1>
+            <div class="row">
+                <div class="col-3">
+                    <canvas id="suggestions"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -100,7 +110,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: '% of Cooked Meals based on Color'
+                                text: 'Cooked Meals'
                             }
                         },
                         cutoutPercentage: 80,
@@ -163,7 +173,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: '% of Snacks based on Grade Color'
+                                text: 'Snacks'
                             }
                         },
                         cutoutPercentage: 80,
@@ -226,7 +236,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: '% of Beverages based on Grade Color'
+                                text: 'Beverages'
                             }
                         },
                         cutoutPercentage: 80,
@@ -289,7 +299,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: '% of Other Food Items based on Grade Color'
+                                text: 'Other Food Items'
                             }
                         },
                         cutoutPercentage: 80,
@@ -352,7 +362,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Count of Bought Food Items by Grade Color'
+                                text: 'Cooked Meals'
                             }
                         },
                         cutoutPercentage: 80,
@@ -415,7 +425,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Count of Bought Snacks by Grade Color'
+                                text: 'Snacks'
                             }
                         },
                         cutoutPercentage: 80,
@@ -478,7 +488,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Count of Bought Beverages by Grade Color'
+                                text: 'Beverages'
                             }
                         },
                         cutoutPercentage: 80,
@@ -530,6 +540,70 @@
                             xPadding: 15,
                             yPadding: 15,
                             displayColors: false,
+                            caretPadding: 10,
+                            callbacks: 
+                        },
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: 'rgb(255, 99, 132)'
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Other Food Items'
+                            }
+                        },
+                        cutoutPercentage: 80,
+                    },
+                });
+
+            },
+        };
+        NB_Others.init();
+    })(jQuery);
+    // Suggestions
+    (function($) {
+        var suggestions = {
+            init: function() {
+                this.ajaxGetPostMonthlyData();
+            },
+            ajaxGetPostMonthlyData: function() {
+                var urlPath = "{{ route('reports.mostSuggested') }}";
+                var request = $.ajax({
+                    method: "GET",
+                    url: urlPath,
+                });
+                request.done(function(response) {
+                    suggestions.createCompletedJobsChart(response);
+                });
+            },
+            createCompletedJobsChart: function(response) {
+                var ctx = document.getElementById("suggestions");
+                var myPieChart = new Chart(ctx, {
+                    type: "doughnut",
+                    data: {
+                        labels: null,
+                        datasets: [{
+                            label: "Count of Bought Cooked Meals by Grade Color",
+                            data: response.data,
+                            backgroundColor: generateColors(response.data.length),
+                            hoverBackgroundColor: generateColors(response.data.length),
+                            hoverBorderColor: "rgba(234, 236, 244, 1)",
+                            borderWidth: 5
+                        }, ],
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        tooltips: {
+                            backgroundColor: "rgb(255,255,255)",
+                            bodyFontColor: "#858796",
+                            borderColor: "#dddfeb",
+                            borderWidth: 1,
+                            xPadding: 15,
+                            yPadding: 15,
+                            displayColors: false,
                             caretPadding: 10
                         },
                         legend: {
@@ -541,7 +615,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Count of Bought Other Food Items by Grade Color'
+                                text: 'November 2022'
                             }
                         },
                         cutoutPercentage: 80,
@@ -550,6 +624,6 @@
 
             },
         };
-        NB_Others.init();
+        suggestions.init();
     })(jQuery);
 </script>
