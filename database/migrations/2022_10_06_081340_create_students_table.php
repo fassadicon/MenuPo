@@ -32,6 +32,7 @@ return new class extends Migration
             $table->double('height')->nullable();
             $table->double('weight')->nullable();
             $table->double('BMI')->nullable();
+            $table->string('restriction')->nullable();
             $table->string('image')->nullable();
             $table->string('QR')->nullable();
             // Logs

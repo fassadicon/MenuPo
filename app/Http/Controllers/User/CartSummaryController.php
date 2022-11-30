@@ -105,7 +105,7 @@ class CartSummaryController extends Controller
 
         $item = Food::findOrFail($food_id);
         $content = Cart::content();
-        $rice = Food::findOrFail(13);
+        $rice = Food::findOrFail(2);
         $rice_rowId = 0;
         $rice_qty = 0;
 

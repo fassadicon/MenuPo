@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
-class MenuController extends Controller
+class UserMenuController extends Controller
 {
     public function index(Student $student){
 
@@ -89,6 +89,7 @@ class MenuController extends Controller
     }
 
     public function addtorestrict(Request $request){
+        
         $food_id = $request->input('food-id');
         $anak_id = $request->input('anak-id');
 
@@ -97,7 +98,6 @@ class MenuController extends Controller
         
         $id = $restrict.$food_id . ',';
         DB::update('UPDATE students SET restriction = ? where id = ?', [$id, $anak_id]);
-        // Student::where('id', $this->stud_id)->update(['restriction'=>$id]);
         
         return response()->json(['status' => 'Success']);
     }

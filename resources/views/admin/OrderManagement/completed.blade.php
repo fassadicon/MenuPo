@@ -281,6 +281,7 @@
                       data: 'updated_at',
                       name: 'updated_at',
                   },
+                  
                   { //16
                       data: 'served_by',
                       name: 'served_by',
@@ -369,7 +370,7 @@
            var purchaseID = $(this).data('id');
            $.get("{{ url('admin/orders/completed') }}" + '/' + purchaseID + '/view', function(data) {
                $('#viewPurchaseInfoModal').modal('show');
-               $('#parent_id').text(data.parent.id);
+               $('#parent_id').text(data.parent.firstName);
                $('#student_id').text(data.student.id);
                $('#totalKcal').text(data.totalKcal);
                $('#totalTotFat').text(data.totalTotFat);

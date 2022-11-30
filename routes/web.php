@@ -6,10 +6,9 @@ use App\Http\Controllers\TestController;
 // Admin Controllers
 use App\Http\Controllers\Admin\POSController;
 use App\Http\Controllers\User\HomeController;
-use App\Http\Controllers\Admin\MenuController;
-// use App\Http\Controllers\User\MenuController;
-
 use App\Http\Controllers\Admin\FoodController;
+
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\User\HealthController;
@@ -24,6 +23,7 @@ use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\ScannerController;
 use App\Http\Controllers\Admin\StudentController;
 
+use App\Http\Controllers\User\UserMenuController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\CompletedController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -140,13 +140,13 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Completed Orders Modal
     Route::get('/orders/completed/{id}/view', [PurchasesController::class, 'viewCompleted'])->name('completed.viewCompleted');
     // Confirm Payment
-    Route::get('updatePayment', 'PurchaseController@updatePayment');
+    Route::get('/orders/pendings/{id}/confirm', [PurchasesController::class, 'confirm']);
     // Soft Delete Completed Orders
-    Route::get('/orders/completed/{id}/delete', [PurchasesController::class, 'deleteCompleted'])->name('completed.deleteCompleted');
+    Route::get('/orders/completed/{id}/delete', [PurchasesController::class, 'delete'])->name('completed.delete');
     // Soft Delete Trash View
-    Route::get('/orders/completed/trash', [PurchasesController::class, 'trashCompleted'])->name('completed.trashCompleted');
+    Route::get('/orders/completed/trash', [PurchasesController::class, 'trash'])->name('completed.trash');
     // Soft Delete Trash View Modal
-    Route::get('/orders/completed/{id}/trash', [PurchasesController::class, 'viewtrashCompleted'])->name('completed.viewtrashCompleted');
+    Route::get('/orders/completed/{id}/trash', [PurchasesController::class, 'viewtrash'])->name('completed.viewtrash');
    
     // <----------- USER CONTROLLER -----------> //
     // Admin Account Management
@@ -175,6 +175,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');
     Route::get('/reports/countFoodsBasedInColor/{type}', [ReportsController::class, 'countFoodsBasedInColor'])->name('reports.countFoodsBasedInColor');
     Route::get('/reports/aveGradePerType/{type}', [ReportsController::class, 'aveGradePerType'])->name('reports.aveGradePerType');
+    Route::get('/reports/suggestions', [ReportsController::class, 'mostSuggested'])->name('reports.mostSuggested');
 });
 
 
@@ -204,13 +205,13 @@ Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
     Route::get('user/user-account', [UserAccController::class, 'index']);
 
     //Menu Page
-    Route::get('/user/menu/{student}', [MenuController::class, 'index'])
+    Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])
         ->name(name:'menu.index');
 
-    Route::get('/user/menu-landing', [MenuController::class, 'landing'])
+    Route::get('/user/menu-landing', [UserMenuController::class, 'landing'])
         ->name(name:'menu.landing');
-    Route::post('/user/menu/addtocart', [MenuController::class, 'addtocart']);
-    Route::post('/user/menu/addtorestrict', [MenuController::class, 'addtorestrict']);
+    Route::post('/user/menu/addtocart', [UserMenuController::class, 'addtocart']);
+    Route::post('/user/menu/addtorestrict', [UserMenuController::class, 'addtorestrict']);
 
     //Cart Summarry
     Route::get('user/cart-summary/{anak}', [CartSummaryController::class, 'index'])

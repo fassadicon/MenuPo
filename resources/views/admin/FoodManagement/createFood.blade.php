@@ -21,7 +21,7 @@
                 <div class="mb-6">
                     <label for="description" class="inline-block text-lg mb-2">Description</label>
                     <input id="description" type="text" class="border border-gray-200 rounded p-2 w-full"
-                        name="description" placeholder="Example: A violet, long, and delicious delicacy of Arsenio"
+                        name="description" placeholder=""
                         value="{{ old('description') }}" />
 
                     @error('description')

@@ -177,7 +177,7 @@
             serverSide: true,
             ajax: {
                 type: "GET",
-                url: "{{ route('completed.trashCompleted') }}",
+                url: "{{ route('completed.trash') }}",
                 // data: function(d) {
 
                 // },
