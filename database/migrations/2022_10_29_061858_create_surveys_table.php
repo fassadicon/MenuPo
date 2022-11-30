@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
-            $table->integer('rate')->length(1);
-            $table->string('choices');
+            $table->string('name')->nullable();
+            $table->integer('rating')->length(1)->nullable();
             $table->string('suggestions');
-            $table->timestamps();
+            $table->string('comment')->nullable();
+            $table->timestamp('created_at');
             $table->foreignId('parent_id')->constrained('parents');
         });
     }

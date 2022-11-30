@@ -280,7 +280,7 @@
         // View Pending Order Data Modal
        $('body').on('click', '.viewOrder', function() {
            var orderID = $(this).data('id');
-           $.get("{{ url('admin/orders/') }}" + '/' + orderID + '/view', function(data) {
+           $.get("{{ url('admin/orders/placed/') }}" + '/' + orderID + '/view', function(data) {
                $('#viewOrderInfoModal').modal('show');
                $('#purchase_id').text(data.purchase_id);
                $('#food_id').text(data.food_id);
