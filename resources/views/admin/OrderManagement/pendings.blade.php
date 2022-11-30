@@ -285,7 +285,7 @@
                       data: 'served_by',
                       name: 'served_by',
                   },
-                  { // 18
+                  { // 17
                       data: 'action',
                       name: 'action',
                       orderable: false,
@@ -385,34 +385,25 @@
            })
        });
 
-       // Confirm Order Payment
-       $('body').on('click', '.confirmPayment', function() {
-           var purchaseID = $(this).data('id');
-           $.('#purchase_id').val(purchaseID);
-           $.('#confirmPurchaseCenter').modal('show');
-       });
-       // Mark Pending Order as Paid
-    //    $('body').on('click', '.viewPurchase', function() {
-    //        var orderID = $(this).data('id');
-    //        $.get("{{ url('admin/orders/pendings') }}" + '/' + purchaseID + '/view', function(data) {
-    //            $('#viewPurchaseInfoModal').modal('show');
-    //            $('#parent_id').text(data.parent.name);
-    //            $('#student_id').text(data.student.name);
-    //            $('#totalKcal').text(data.totalKcal);
-    //            $('#totalTotFat').text(data.totalTotFat);
-    //            $('#totalSatFat').text(data.totalSatFat);
-    //            $('#totalSugar').text(data.totalSugar);
-    //            $('#totalSodium').text(data.totalSodium);
-    //            $('#totalAmount').text(data.totalAmount);
-    //            $('#payment_id').text(data.payment_id);
-    //            $('#paymentStatus').text(data.paymentStatus);
-    //            $('#claimStatus').text(data.claimStatus);
-    //            $('#type').text(data.type);
-    //            $('#created_at').text(data.created_at);
-    //            $('#updated_at').text(data.updated_at);
-    //            $('#served_by').text(data.served_by);
-    //        })
-    //    });
+
+       $('body').on('click', '.confirmPayment', function(){
+        $('.confirmPayment').change(function(){
+            var id = $(this).data('id')
+            var paymentStatus = $(this) == true ? 1 : 0;
+            
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '/updatePayment',
+                data: {'paymentStatus': paymentStatus, 'id': id},
+                success: function(data){
+                    console.log(data.success);
+                }
+            });
+        }) 
+           
+     })
     });
     </script>
 
