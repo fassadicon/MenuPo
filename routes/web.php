@@ -134,7 +134,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/orders/completed/{id}/delete', [PurchasesController::class, 'deleteCompleted'])->name('completed.deleteCompleted');
     // Soft Delete Trash View
     Route::get('/orders/completed/trash', [PurchasesController::class, 'trashCompleted'])->name('completed.trashCompleted');
-
+    // Soft Delete Trash View Modal
+    Route::get('/orders/completed/{id}/trash', [PurchasesController::class, 'viewtrashCompleted'])->name('completed.viewtrashCompleted');
+   
     // <----------- USER CONTROLLER -----------> //
     // Admin Account Management
     Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
