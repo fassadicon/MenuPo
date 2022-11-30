@@ -2912,7 +2912,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 14,
                 'purchase_id' => 7,
-                'food_id' => 25,
+                'food_id' => 24,
                 'quantity' => 1,
                 'amount' => 25.00,
                 'kcal' => 199,
@@ -2972,7 +2972,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 17,
                 'purchase_id' => 8,
-                'food_id' => 25,
+                'food_id' => 24,
                 'quantity' => 2,
                 'amount' => 50.00,
                 'kcal' => 199,
@@ -2984,7 +2984,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 18,
                 'purchase_id' => 9,
-                'food_id' => 30,
+                'food_id' => 29,
                 'quantity' => 1,
                 'amount' => 50.00,
                 'kcal' => 226,
@@ -2996,7 +2996,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 19,
                 'purchase_id' => 9,
-                'food_id' => 65,
+                'food_id' => 47,
                 'quantity' => 1,
                 'amount' => 12.00,
                 'kcal' => 114,
@@ -3008,7 +3008,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 20,
                 'purchase_id' => 10,
-                'food_id' => 46,
+                'food_id' => 41,
                 'quantity' => 1,
                 'amount' => 15.00,
                 'kcal' => 183,
@@ -3056,7 +3056,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 24,
                 'purchase_id' => 12,
-                'food_id' => 34,
+                'food_id' => 32,
                 'quantity' => 1,
                 'amount' => 35.00,
                 'kcal' => 168,
@@ -3068,7 +3068,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 25,
                 'purchase_id' => 12,
-                'food_id' => 38,
+                'food_id' => 36,
                 'quantity' => 1,
                 'amount' => 35.00,
                 'kcal' => 294,
@@ -3080,7 +3080,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 26,
                 'purchase_id' => 12,
-                'food_id' => 40,
+                'food_id' => 38,
                 'quantity' => 1,
                 'amount' => 12.00,
                 'kcal' => 71,
@@ -3092,7 +3092,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 27,
                 'purchase_id' => 12,
-                'food_id' => 50,
+                'food_id' => 44,
                 'quantity' => 1,
                 'amount' => 5.00,
                 'kcal' => 126,
@@ -3104,7 +3104,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 28,
                 'purchase_id' => 13,
-                'food_id' => 31,
+                'food_id' => 30,
                 'quantity' => 1,
                 'amount' => 45.00,
                 'kcal' => 164,
@@ -3116,7 +3116,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 29,
                 'purchase_id' => 13,
-                'food_id' => 57,
+                'food_id' => 46,
                 'quantity' => 2,
                 'amount' => 15.00,
                 'kcal' => 540,
@@ -3128,7 +3128,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 30,
                 'purchase_id' => 13,
-                'food_id' => 67,
+                'food_id' => 56,
                 'quantity' => 1,
                 'amount' => 12.00,
                 'kcal' => 86,
@@ -3140,7 +3140,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 31,
                 'purchase_id' => 14,
-                'food_id' => 25,
+                'food_id' => 24,
                 'quantity' => 1,
                 'amount' => 25.00,
                 'kcal' => 70,
@@ -3152,19 +3152,19 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 32,
                 'purchase_id' => 14,
-                'food_id' => 68,
+                'food_id' => 52,
                 'quantity' => 1,
-                'amount' => 20.00,
-                'kcal' => 92,
-                'totFat' => 0.6,
-                'satFat' => 0.04,
-                'sugar' => 16.2,
-                'sodium' => 4
+                'amount' => 15.00,
+                'kcal' => 502,
+                'totFat' => 27,
+                'satFat' => 20.26,
+                'sugar' => 0.2,
+                'sodium' => 729
             ],
             [
                 'id' => 33,
                 'purchase_id' => 15,
-                'food_id' => 28,
+                'food_id' => 27,
                 'quantity' => 1,
                 'amount' => 50.00,
                 'kcal' => 188,
@@ -3176,7 +3176,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 34,
                 'purchase_id' => 15,
-                'food_id' => 65,
+                'food_id' => 54,
                 'quantity' => 1,
                 'amount' => 12.00,
                 'kcal' => 114,
@@ -3188,7 +3188,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 35,
                 'purchase_id' => 16,
-                'food_id' => 38,
+                'food_id' => 36,
                 'quantity' => 2,
                 'amount' => 35.00,
                 'kcal' => 294,
@@ -3236,19 +3236,19 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 39,
                 'purchase_id' => 17,
-                'food_id' => 23,
+                'food_id' => 22,
                 'quantity' => 1,
-                'amount' => 10.00,
-                'kcal' => 370,
-                'totFat' => 1.4,
-                'satFat' => 0.87,
-                'sugar' => 62.1,
-                'sodium' => 173
+                'amount' => 3.00,
+                'kcal' => 25.9,
+                'totFat' => 0.8235,
+                'satFat' => 2.58,
+                'sugar' => 0.5,
+                'sodium' => 0.5
             ],
             [
                 'id' => 40,
                 'purchase_id' => 18,
-                'food_id' => 33,
+                'food_id' => 31,
                 'quantity' => 1,
                 'amount' => 35.00,
                 'kcal' => 220,
@@ -3260,7 +3260,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 41,
                 'purchase_id' => 18,
-                'food_id' => 40,
+                'food_id' => 38,
                 'quantity' => 2,
                 'amount' => 12.00,
                 'kcal' => 71,
@@ -3272,7 +3272,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 42,
                 'purchase_id' => 18,
-                'food_id' => 46,
+                'food_id' => 41,
                 'quantity' => 1,
                 'amount' => 15.00,
                 'kcal' => 183,
@@ -3284,7 +3284,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 43,
                 'purchase_id' => 19,
-                'food_id' => 38,
+                'food_id' => 36,
                 'quantity' => 1,
                 'amount' => 35.00,
                 'kcal' => 294,
@@ -3296,7 +3296,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 44,
                 'purchase_id' => 19,
-                'food_id' => 71,
+                'food_id' => 59,
                 'quantity' => 1,
                 'amount' => 25.00,
                 'kcal' => 152,
@@ -3308,7 +3308,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 45,
                 'purchase_id' => 20,
-                'food_id' => 38,
+                'food_id' => 36,
                 'quantity' => 1,
                 'amount' => 35.00,
                 'kcal' => 294,
@@ -3332,7 +3332,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 47,
                 'purchase_id' => 20,
-                'food_id' => 39,
+                'food_id' => 37,
                 'quantity' => 1,
                 'amount' => 20.00,
                 'kcal' => 97,
@@ -3344,7 +3344,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 48,
                 'purchase_id' => 21,
-                'food_id' => 26,
+                'food_id' => 25,
                 'quantity' => 1,
                 'amount' => 40.00,
                 'kcal' => 408,
@@ -3356,7 +3356,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 49,
                 'purchase_id' => 21,
-                'food_id' => 70,
+                'food_id' => 58,
                 'quantity' => 1,
                 'amount' => 20.00,
                 'kcal' => 92,
@@ -3380,7 +3380,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 51,
                 'purchase_id' => 23,
-                'food_id' => 35,
+                'food_id' => 33,
                 'quantity' => 1,
                 'amount' => 30.00,
                 'kcal' => 591,
@@ -3404,7 +3404,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 53,
                 'purchase_id' => 24,
-                'food_id' => 46,
+                'food_id' => 41,
                 'quantity' => 1,
                 'amount' => 15.00,
                 'kcal' => 183,
@@ -3416,7 +3416,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 54,
                 'purchase_id' => 25,
-                'food_id' => 28,
+                'food_id' => 27,
                 'quantity' => 1,
                 'amount' => 50.00,
                 'kcal' => 188,
@@ -3440,7 +3440,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 56,
                 'purchase_id' => 25,
-                'food_id' => 33,
+                'food_id' => 31,
                 'quantity' => 1,
                 'amount' => 35.00,
                 'kcal' => 220,
