@@ -179,7 +179,7 @@
               <a class="toggleColour text-secondary no-underline hover:no-underline font-bold text-2xl flex lg:text-4xl" 
               href="#"
               >
-              <img class="h-10 fill-current align-middle" width="50.502" src="{{ asset('storage/admin/logo-32X32.png') }}">
+              <img class="h-10 fill-current align-middle" width="50.502" src="{{ asset('storage/admin/school-images/logo-32X32.png') }}">
               <img class="h-12 fill-current align-left" width="50.502" src="{{ asset('storage/admin/school-images/school-logo.png') }}">
             </a>
              
@@ -194,7 +194,7 @@
 
                   <ul class="absolute bg-white p-3 w-36 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
                     @foreach ($studs as $student)
-                      <li class="text-sm hover:bg-slate-100 leading-8 my-3"><a href="/user/health/{{$student->id}}"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
+                      <li class="text-sm hover:bg-slate-100 leading-8 my-3"><a href="/user/health/{{$student->id}}"><img src="{{ asset('storage/admin/userNoImage.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
                     @endforeach
                   </ul>
                   <!-- Submenu ends -->
@@ -237,7 +237,7 @@
                   </ul>
                 </li>
                 <li class="flex relative group ">
-                  <a href="#" class="mr-1  hover:text-white"><img id="desktop-icon" src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-12 h-12 border-4 rounded-full hover:border-blue-600"></a> 
+                  <a href="#" class="mr-1  hover:text-white"><img id="desktop-icon" src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="w-12 h-12 border-4 rounded-full hover:border-blue-600"></a> 
                   <i class="fa-solid fa-chevron-down fa-2xs pt-3 hidden"></i>
                   <!-- Submenu starts -->
                   <ul class="absolute bg-white p-3 w-52 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50 right-0">
@@ -267,7 +267,7 @@
               <a href="#" class="hover:text-white text-secondary"><i class="fa-solid fa-envelope fa-fw fa-xl "></i></a>
             </div>
             <button id="mobile-icon" onclick="changeMyColor()" class="md:hidden w-12 h-12 mx-2 border-4 rounded-full hover:border-blue-600">
-              <img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="rounded-full"> <i onclick="changeIcon(this)" class="fa-solid fa-bars invisible"></i>
+              <img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="rounded-full"> <i onclick="changeIcon(this)" class="fa-solid fa-bars invisible"></i>
             </button> 
             
             </div>
