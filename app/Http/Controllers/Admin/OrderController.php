@@ -53,4 +53,6 @@ class OrderController extends Controller
         return Order::where('id', $id)->first()
         ->load('purchases', 'food');
     }
+
+    
 }

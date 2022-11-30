@@ -2,7 +2,7 @@
     <h1 class="h3">Orders</h1>
 
     <div class="container">
-        <div align="left"><a href="/admin/orders/completed/trash" class="btn btn-warning mb-2">Past Orders</a></div>
+        {{-- <div align="left"><a href="/admin/orders/completed/trash" class="btn btn-warning mb-2">Past Orders</a></div> --}}
         <table class="table table-bordered table-sm" id="orderTable">
     
             <thead>

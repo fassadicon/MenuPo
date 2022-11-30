@@ -1,9 +1,9 @@
 <x-admin.layout>
 
-    <h1 class="h3">Completed Orders</h1>
+    <h1 class="h3">Archived Purchases</h1>
 
     <div class="container">
-        <div align="left"><a href="/admin/orders/completed/" class="btn btn-warning mb-2">Back</a></div>
+        <div align="left"><a href="/orders/completed/" class="btn btn-warning mb-2">Back</a></div>
         <table class="table table-bordered table-sm" id="completedTable">
     
             <thead>
@@ -177,7 +177,7 @@
             serverSide: true,
             ajax: {
                 type: "GET",
-                url: "{{ route('completed.trash') }}",
+                url: "{{ route('completed.trashCompleted') }}",
                 // data: function(d) {
 
                 // },
@@ -364,7 +364,7 @@
         });
 
         // View Pending Order Data Modal
-       $('body').on('click', '.viewCompleted', function() {
+       $('body').on('click', '.viewTrashed', function() {
            var purchaseID = $(this).data('id');
            $.get("{{ url('admin/orders/completed') }}" + '/' + purchaseID + '/view', function(data) {
                $('#viewPurchaseInfoModal').modal('show');
