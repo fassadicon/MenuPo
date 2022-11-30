@@ -10,12 +10,12 @@ class SurveyController extends Controller
 {
     public function index(){
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, 1]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         $currentTime = \Carbon\Carbon::now('Asia/Singapore')->toTimeString();
         $anaks = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
 
         return view('user.survey',[
-            'notifs' => $notifications,
+            'notifications' => $notifications,
             'students' => $anaks
         ]);
     }
@@ -25,7 +25,7 @@ class SurveyController extends Controller
         $choices = $request->more_choices;
         $choices = implode(',', $choices);
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, auth()->user()->id]);
+        // $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
 
         // $survey = new Surveys;
         // $survey->user_id = auth()->user()->id;

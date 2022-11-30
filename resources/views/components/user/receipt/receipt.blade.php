@@ -41,7 +41,7 @@
         </div>
         <div class="text-center">
             <button onclick="doCapture()" class=" bg-[#ffc300] hover:bg-blue-900 hover:text-white text-black font-bold py-2 px-4 rounded">Download Receipt</button>
-            <a href="/users/user-account" class=" bg-blue-900 hover:bg-[#ffc300] hover:text-black text-white font-bold py-2 px-4 rounded">Confirm</a>
+            <a href="/user/user-account" class=" bg-blue-900 hover:bg-[#ffc300] hover:text-black text-white font-bold py-2 px-4 rounded">Confirm</a>
         </div>
     </div>
 </div>

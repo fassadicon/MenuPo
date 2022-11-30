@@ -11,23 +11,18 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function index(){
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
 
         return view('user.home', [
-            'students' => $student
+            'students' => $student,
+            'notifications' => $notifications
         ]);
     }
 
     public function sample(){
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
-
-        // $healthy = Order::where('parent_id', 1)
-        // ->where(function($q){
-        //     $q->where('grade', 4)
-        //     ->orWhere('grade', 5)
-        //     ->orWhere('grade', 6);
-        // })->count();
-
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
 
         $sample = Order::whereHas('purchase', function($q){
             $q->where('parent_id', '=', 1);
@@ -44,7 +39,8 @@ class HomeController extends Controller
         
         
         return view('user.sample', [
-            'students' => $student
+            'students' => $student,
+            'notifications' => $notifications
         ]);
     }
 }

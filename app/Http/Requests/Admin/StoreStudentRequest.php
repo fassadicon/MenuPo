@@ -27,7 +27,7 @@ class StoreStudentRequest extends FormRequest
             // 'parent_id' =>  'required|string|max:255|exists:parents,id',
             'parent' =>  'required|string|max:255',
             'LRN' => 'required|numeric',
-            'grade' => 'required|numeric|max:20',
+            'grade' => 'required|numeric|max:6',
             'section' => 'required|string|max:255',
             'adviser' => 'required|string|max:255',
             'firstName' => 'required|string|max:255',

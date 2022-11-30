@@ -10,22 +10,22 @@ class NewPostController extends Controller
 {
     public function index(){
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, auth()->user()->id]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [auth()->user()->id]);
 
         return view('users.newpost', [
-            'notifs' => $notifications,
+            'notifications' => $notifications,
             'students' => $students
         ]);
     }
 
     public function viewpost(){
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE status = ? && user_id = ? ORDER BY created_at DESC', [1, auth()->user()->id]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
         $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [auth()->user()->id]);
 
         return view('users.home-post', [
-            'notifs' => $notifications,
+            'notifications' => $notifications,
             'students' => $students
         ]);
     }

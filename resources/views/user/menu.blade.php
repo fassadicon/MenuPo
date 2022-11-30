@@ -1,7 +1,7 @@
 
 
 
-<x-user.layout :studs="$students" :notifs="$notifs">
+<x-user.layout :studs="$students" :notifs="$notifications">
 
     <style>
         #tsum-tabs h1 {

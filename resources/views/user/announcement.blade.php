@@ -3,7 +3,7 @@
 
 
 
-<x-user.layout.layout3 :studs="$students" :notifs="$notifs">
+<x-user.layout :studs="$students" :notifs="$notifications">
     <br><br><br>
     <br><br>
 

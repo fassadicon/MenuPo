@@ -25,7 +25,6 @@ class GuardianController extends Controller
         foreach ($guardians as $guardian) {
             $guardian['created_by_name'] = Admin::where('id', $guardian->created_by)->first();
             $guardian['updated_by_name'] = $guardian->updated_by == null ? 'N/A' : Admin::where('id', $guardian->updated_by)->first();
-            // $guardian->updated_by == null ? $guardian['updated_by_name'] = 'N/A' : $guardian['updated_by_name'] = Admin::where('id', $guardian->updated_by)->first();
             $guardian['created_at_formatted'] = Carbon::parse($guardian->created_at)->format('M d, Y');
             $guardian['updated_at_formatted'] = Carbon::parse($guardian->updated_at)->format('M d, Y');
         }

@@ -1,6 +1,6 @@
 
 
 
-<x-user.layout :studs="$students" :notifs="$notifs">
+<x-user.layout :studs="$students" :notifs="$notifications">
     <x-user.parent-survey.survey />
 </x-user.layout>
