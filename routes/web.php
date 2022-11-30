@@ -130,6 +130,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/orders/completed', [PurchasesController::class, 'completedOrders'])->name('completed.completedOrders');
     // Completed Orders Modal
     Route::get('/orders/completed/{id}/view', [PurchasesController::class, 'viewCompleted'])->name('completed.viewCompleted');
+    // Confirm Payment
+    Route::get('updatePayment', 'PurchaseController@updatePayment');
     // Soft Delete Completed Orders
     Route::get('/orders/completed/{id}/delete', [PurchasesController::class, 'deleteCompleted'])->name('completed.deleteCompleted');
     // Soft Delete Trash View
