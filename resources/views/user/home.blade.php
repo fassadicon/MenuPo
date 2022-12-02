@@ -6,7 +6,7 @@
         <!-- Hero section starts -->
         <x-user.home.hero-section></x-test.user.home.hero-section>
         <x-user.home.gallery></x-test.user.home.gallery>
-        <x-user.home.infographic-head></x-test.user.home.infographic-head>
+        <x-user.home.infographic-head :image="$image"></x-test.user.home.infographic-head>
 
 </x-user.layout>
 

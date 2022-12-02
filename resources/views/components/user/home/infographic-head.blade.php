@@ -1,4 +1,4 @@
-
+@props(['image'])
 <style>
     .gradient2 {
   background-image: linear-gradient(
@@ -35,12 +35,12 @@
             {{-- item 1 --}}
             <div class="w-full md:w-1/2 lg:w-1/4 mb-4 lg:mb-0">
               <a href="#" class="h-72 md:h-96 block group relative mx-2 overflow-hidden shadow-lg">
-                <img src="{{ asset('user/assets/img/dost-img.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
+                <img src="{{$image[0]->image}}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
                 <div class="absolute gradient2 transition duration-300 group-hover:bg-black group-hover:opacity-90 w-full h-72 md:h-96 z-10"></div>
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">DOST FNRI PHILFCT (Philippine Food Composition Table)</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">{{$image[0]->title}}</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
@@ -55,12 +55,12 @@
             {{-- item 2 --}}
             <div class="h-72 md:h-96 w-full md:w-1/2 lg:w-1/4 mb-4 lg:mb-0">
               <a href="#" class="h-72 md:h-96 block group relative mx-2 overflow-hidden shadow-lg">
-                <img src="{{ asset('user/assets/img/infographic-img-2.jpg') }}"class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
+                <img src="{{$image[1]->image}}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
                 <div class="absolute gradient2 transition duration-300 group-hover:bg-black group-hover:opacity-90 w-full h-72 md:h-96 z-100"></div>
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">UK Food Traffic Light and know more about food grade, recommended food nutrient intake</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">{{$image[1]->title}}</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
@@ -73,12 +73,12 @@
             {{-- item 3 --}}
             <div class="h-72 md:h-96 w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
               <a href="#" class="h-72 md:h-96 block group relative mx-2 overflow-hidden shadow-lg">
-                <img src="{{ asset('user/assets/img/infographic-img-1.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
+                <img src="{{$image[2]->image}}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
                 <div class="absolute gradient2 transition duration-300 group-hover:bg-black group-hover:opacity-90 w-full h-72 md:h-96 z-10"></div>
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Learn more about health tips for elementary students</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">{{$image[2]->title}}</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
@@ -91,12 +91,12 @@
             {{-- item 4 --}}
             <div class="h-72 md:h-96 w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
               <a href="#" class="h-72 md:h-96 block group relative mx-2 overflow-hidden shadow-lg">
-                <img src="{{ asset('user/assets/img/infographic-img-3.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
+                <img src="{{$image[3]->image}}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
                 <div class="absolute gradient2 transition duration-300 group-hover:bg-black group-hover:opacity-90 w-full h-72 md:h-96 z-10"></div>
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">How to be a healthy parent for your child</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">{{$image[3]->title}}</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
