@@ -68,6 +68,21 @@ class PurchasesController extends Controller
         return view('admin.OrderManagement.pendings', compact('purchases'));
     }
 
+    public function viewPending($id)
+    {
+        return Purchase::where('id', $id)->first()
+        ->load('orders', 'parent', 'student', 'admin');
+        
+    }
+
+    public function confirm($id)
+    {
+       Purchase::where('id', $id)
+       ->update(['paymentStatus' => 1]);
+
+       return redirect('/admin/orders/pendings');
+    }
+
     public function completedOrders(Request $request) 
     {
         // Initialize Datatable Values
@@ -84,7 +99,7 @@ class PurchasesController extends Controller
                     
                     $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewCompleted"><i class="bi bi-info-lg"></i></a>';
 
-                    $btn = $btn . ' <a href="/admin/orders/completed' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-warning btn-sm"><i class="bi bi-archive"></i></a>';
+                    $btn = $btn . ' <a href="/admin/orders/completed/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-warning btn-sm"><i class="bi bi-archive"></i></a>';
                     
                     // $btn = $btn. '<a href="/admin/pendings/update' data-id="' . $row->id . '" data-toggle="toggle" data-orginal-title="Data" class="toggle-class" type="checkbox"  '" data-onstyle="success" data-offstyle="danger" data-on="Active" data-off="InActive" {{$purchase->paymentStatus ? 'checked' : ''}}>';
                      return $btn;
@@ -112,12 +127,7 @@ class PurchasesController extends Controller
         return view('admin.OrderManagement.completed', compact('purchases'));
     }
 
-    public function viewPending($id)
-    {
-        return Purchase::where('id', $id)->first()
-        ->load('orders', 'parent', 'student', 'admin');
-        
-    }
+    
 
     public function viewCompleted($id)
     {
@@ -125,23 +135,16 @@ class PurchasesController extends Controller
         ->load('orders', 'parent', 'student', 'admin');
     }
 
-    public function updatePayment(Request $request)
-    {
-        $purchase = Purchase::find($request->id);
-        $purchase->paymentStatus = $request->paymentStatus;
-        $purchase->save();
+    
 
-        return response()->json(['success'=>'Order Marked as Paid']);
-    }
-
-    public function deleteCompleted($id)
+    public function delete($id)
     {
         $purchase = Purchase::where('id', $id)->first();
         $purchase->delete();
         return redirect()->back();
     }
 
-    public function trashCompleted(Request $request)
+    public function trash(Request $request)
     {
         $purchases = Purchase::onlyTrashed()->get()
         ->load('orders', 'parent', 'student', 'admin');
@@ -165,12 +168,14 @@ class PurchasesController extends Controller
         }
 
         // return view
-        return view('admin.OrderManagement.trash', compact('purchases'));
+        return view('admin.OrderManagement.archivedOrders', compact('purchases'));
     }
 
-    public function viewtrashCompleted($id)
+    public function viewtrash($id)
     {
         return Purchase::where('id', $id)->first()
         ->load('orders', 'parent', 'student', 'admin');
     }
+
+    
 }

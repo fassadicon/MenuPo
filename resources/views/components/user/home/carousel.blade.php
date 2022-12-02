@@ -1,14 +1,14 @@
 <div class="swiper mySwiper">
   <div class="swiper-logo">
     <div class="w-full justify-center items-center md:text-left">
-      <img class="lg:transform lg:scale-125 w-48 md:w-48" src="{{ asset('user/assets/img/school-logo.png') }}" />
+      <img class="lg:transform lg:scale-125 w-48 md:w-48" src="{{ asset('storage/admin/school-images/school-logo.png') }}" />
     </div>
   </div>
     <div class="swiper-wrapper">
       <div class="swiper-slide h-96">
         <img
           class="object-cover block w-full lg:object-cover h-96 z-0 "
-          src="https://images3.alphacoders.com/848/848902.jpg"
+          src="{{ asset('storage/admin/school-images/school-pic1.jpg') }}"
           alt="apple watch photo"
         />
         <x-user.home.svg-wave></x-user.home.svg-wave>
@@ -16,7 +16,7 @@
       <div class="swiper-slide h-96">
         <img
           class="object-cover block w-full lg:object-cover h-96 z-0"
-          src="https://images5.alphacoders.com/906/906320.jpg"
+          src="{{ asset('storage/admin/school-images/school-pic2.jpg') }}"
           alt="apple watch photo"
         />
         <x-user.home.svg-wave></x-user.home.svg-wave>
@@ -24,7 +24,7 @@
       <div class="swiper-slide h-96">
         <img
           class="object-cover block w-full lg:object-cover h-96 z-0"
-          src="https://wallpapers.com/images/hd/twice-in-yankees-cap-vbb9aiyfw2mmcbuh.jpg"
+          src="{{ asset('storage/admin/school-images/school-pic3.jpg') }}"
           alt="apple watch photo"
         />
         <x-user.home.svg-wave></x-user.home.svg-wave>

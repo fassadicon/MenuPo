@@ -385,25 +385,14 @@
            })
        });
 
+    //    $('body').on('click', '.confirmPayment', function() {
+    //     var $pid = $('#id').val();
+    //     $.get("{{ url('/orders/pendings') }}" + $pid + '/confirm', function(data) {
 
-       $('body').on('click', '.confirmPayment', function(){
-        $('.confirmPayment').change(function(){
-            var id = $(this).data('id')
-            var paymentStatus = $(this) == true ? 1 : 0;
-            
+    //     })
 
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '/updatePayment',
-                data: {'paymentStatus': paymentStatus, 'id': id},
-                success: function(data){
-                    console.log(data.success);
-                }
-            });
-        }) 
-           
-     })
+    //     })
+       
     });
     </script>
 

@@ -141,13 +141,13 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Completed Orders Modal
     Route::get('/orders/completed/{id}/view', [PurchasesController::class, 'viewCompleted'])->name('completed.viewCompleted');
     // Confirm Payment
-    Route::get('updatePayment', 'PurchaseController@updatePayment');
+    Route::get('/orders/pendings/{id}/confirm', [PurchasesController::class, 'confirm']);
     // Soft Delete Completed Orders
-    Route::get('/orders/completed/{id}/delete', [PurchasesController::class, 'deleteCompleted'])->name('completed.deleteCompleted');
+    Route::get('/orders/completed/{id}/delete', [PurchasesController::class, 'delete'])->name('completed.delete');
     // Soft Delete Trash View
-    Route::get('/orders/completed/trash', [PurchasesController::class, 'trashCompleted'])->name('completed.trashCompleted');
+    Route::get('/orders/completed/trash', [PurchasesController::class, 'trash'])->name('completed.trash');
     // Soft Delete Trash View Modal
-    Route::get('/orders/completed/{id}/trash', [PurchasesController::class, 'viewtrashCompleted'])->name('completed.viewtrashCompleted');
+    Route::get('/orders/completed/{id}/trash', [PurchasesController::class, 'viewtrash'])->name('completed.viewtrash');
    
     // <----------- USER CONTROLLER -----------> //
     // Admin Account Management
