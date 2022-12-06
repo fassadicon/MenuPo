@@ -7,7 +7,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\POSController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\FoodController;
-
+use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PurchasesController;
 use App\Http\Controllers\User\CartSummaryController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +55,6 @@ Route::get('/test', [TestController::class, 'index']);
 Route::get('/testData', [TestController::class, 'getData'])->name('test.chart');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // <------------------- ALL ADMIN ROUTES -------------------> //
@@ -176,6 +176,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/countFoodsBasedInColor/{type}', [ReportsController::class, 'countFoodsBasedInColor'])->name('reports.countFoodsBasedInColor');
     Route::get('/reports/aveGradePerType/{type}', [ReportsController::class, 'aveGradePerType'])->name('reports.aveGradePerType');
     Route::get('/reports/suggestions', [ReportsController::class, 'mostSuggested'])->name('reports.mostSuggested');
+
+    // Survey
+    Route::get('/reports/survey', [SurveyReportController::class, 'index']);
+    Route::get('/reports/survey/canteenRating', [SurveyReportController::class, 'rating'])->name('reports.survey.rating');
+    Route::get('/reports/survey/suggestions', [SurveyReportController::class, 'suggestions'])->name('reports.survey.suggestions');
 });
 
 
@@ -242,9 +247,9 @@ Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
             ->name(name:'pos.order');
     
     //New Post
-    Route::get('newpost', [NewPostController::class, 'index']);
-    Route::get('newpost/view', [NewPostController::class, 'viewpost']);
-    Route::post('newpost-store', [NewPostController::class, 'store']);
+    // Route::get('newpost', [NewPostController::class, 'index']);
+    // Route::get('newpost/view', [NewPostController::class, 'viewpost']);
+    // Route::post('newpost-store', [NewPostController::class, 'store']);
 
     // Sample
     Route::get('sample', [HomeController::class, 'sample']);

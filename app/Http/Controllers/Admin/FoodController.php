@@ -12,6 +12,8 @@ use App\Models\Purchase;
 
 // use DataTables;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\StoreFoodRequest;
+use App\Http\Requests\Admin\UpdateFoodRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -22,8 +24,13 @@ class FoodController extends Controller
     public function index(Request $request)
     {
         // Initialize DataTable Values
-        $foods = Food::latest()->get()->load('admin');
-
+        $foods = Food::with('admin')->where('deleted_at', null)->get();
+        foreach ($foods as $food) {
+            $food['created_by_name'] = Admin::where('id', $food->created_by)->first();
+            $food->updated_by == null ? $food['updated_by_name'] = 'N/A' : $food['updated_by_name'] = Admin::where('id', $food->updated_by)->first();
+            $food['created_at_formatted'] = Carbon::parse($food->created_at)->format('M d, Y');
+            $food['updated_at_formatted'] = Carbon::parse($food->updated_at)->format('M d, Y');
+        }
         if ($request->ajax()) {
             return DataTables::of($foods)
                 ->addIndexColumn()
@@ -57,24 +64,14 @@ class FoodController extends Controller
 
     public function view($id)
     {
-        // $foodID = Menu::select('food_id')->where('id', $id)->value('food_id');
-        // return Food::where('id', $foodID)->first()->load('admin');
-        $food = Food::where('id', $id)->first()->load('admin');
-        $admin = Admin::where('id', $food->updated_by)->get(['firstName', 'lastName']);
-        $created_atFormatted = Carbon::parse($food->created_at)->format('M d, Y');
-        $updated_atFormatted = Carbon::parse($food->updated_at)->format('M d, Y');
-        $updatedByAdminName = $admin->value('firstName') . ' ' . $admin->value('lastName');
-        return response()->json(['food' => $food, 'created_atFormatted' => $created_atFormatted, 'updated_atFormatted' => $updated_atFormatted, 'updatedByAdminName' => $updatedByAdminName]);
-        // return Food::where('id', $id)->first()->load('admin');
+        $food = Food::where('id', $id)->first();
+        $food['created_at_formatted'] = Carbon::parse($food->created_at)->format('M d, Y');
+        $food['updated_at_formatted'] = Carbon::parse($food->updated_at)->format('M d, Y');
+        $food['updated_by_name'] = Admin::where('id', $food->updated_by)->first();
+        $food['created_by_name'] = Admin::where('id', $food->created_by)->first();
+        return response()->json($food);
     }
 
-    // public function foods(Request $request) {
-    //     $info = [
-    //         "draw" => $request->draw,
-    //         "data" => [],
-    //         "total" =>0,
-    //     ];
-    // }
     // Show Create Form
     public function create()
     {
@@ -82,38 +79,12 @@ class FoodController extends Controller
     }
 
     // Create Food Item
-    public function store(Request $request)
+    public function store(StoreFoodRequest $request)
     {
-        $formFields = $request->validate([
-            //  'name' => ['required', Rule::unique('foods', 'name')],
-
-            'name' => 'required',
-            // viewVariableName => ['required OR etc.', Rule::unique(tableName, columnName), format e.g. 'email']
-            // 'email' => ['required', 'email']
-            'description' => 'nullable',
-            'type' => 'required',
-            'price' => 'required',
-            'stock' => 'required',
-            'servingSize' => 'nullable',
-            'calcKcal' => 'nullable',
-            'calcTotFat' => 'nullable',
-            'calcSatFat' => 'nullable',
-            'calcSugar' => 'nullable',
-            'calcSodium' => 'nullable',
-            'grade' => 'nullable',
-        ]);
-
-        // 'image' => ''
-        if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('admin/foods', 'public');
-        }
-
-        $formFields['created_by'] = auth()->id();
-
-        Food::create($formFields);
-
-        // Session::flash('message', 'messageBody');
-        // return redirect('/admin/foods')->with('message', 'Food created successfully!');
+        $food = $request->safe()->merge(['created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')])->toArray();
+        if ($request->hasFile('image'))
+            $food['image'] = $request->file('image')->store('admin/foods', 'public');
+        Food::create($food);
         return redirect('/admin/foods');
     }
 
@@ -124,33 +95,12 @@ class FoodController extends Controller
     }
 
     // Update Food Item
-    public function update(Request $request, Food $food)
+    public function update(UpdateFoodRequest $request, Food $food)
     {
-        $formFields = $request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
-            'type' => 'required',
-            'price' => 'required',
-            'stock' => 'required',
-            'servingSize' => 'nullable',
-            'calcKcal' => 'nullable',
-            'calcTotFat' => 'nullable',
-            'calcSatFat' => 'nullable',
-            'calcSugar' => 'nullable',
-            'calcSodium' => 'nullable',
-            'grade' => 'nullable',
-            'philfct_id' => 'nullable',
-        ]);
-
-        $formFields['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
-        if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('admin/foods', 'public');
-        }
-        $food->update($formFields);
-
-        // Session::flash('message', 'messageBody');
-        // return redirect('/admin/foods');
+        $foodCredentials = $request->safe()->merge(['updated_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')])->toArray();
+        if ($request->hasFile('image'))
+            $foodCredentials['image'] = $request->file('image')->store('admin/foods', 'public');
+        $food->update($foodCredentials);
         return redirect('/admin/foods');
-        // return back()->with('message', 'Listing updated successfully!');
     }
 }

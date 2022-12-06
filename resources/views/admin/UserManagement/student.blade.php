@@ -380,14 +380,14 @@
                     },
                     { // 20
                         data: 'created_by_name.firstName',
-                        name: 'created_by_name.firstName',
+                        name: 'created_by_name',
                         render: function(data, type, row) {
                             return row.created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;
                         }
                     },
                     { // 21
-                        data: 'updated_by_name',
+                        data: 'updated_by_name.firstName',
                         name: 'updated_by_name',
                         render: function(data, type, row) {
                             return row.updated_by_name.firstName == null ? 'N/A' : row
