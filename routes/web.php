@@ -15,14 +15,15 @@ use App\Http\Controllers\User\HealthController;
 use App\Http\Controllers\User\SurveyController;
 
 use App\Http\Controllers\AutocompleteController;
+use App\Http\Controllers\User\NewPostController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\UserAccController;
-use App\Http\Controllers\Admin\ReportsController;
 
 // User Controllers
+use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\ScannerController;
-use App\Http\Controllers\Admin\StudentController;
 
+use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\User\UserMenuController;
 use App\Http\Controllers\Admin\GuardianController;
 use App\Http\Controllers\Admin\CompletedController;

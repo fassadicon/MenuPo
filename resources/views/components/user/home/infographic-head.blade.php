@@ -1,4 +1,4 @@
-
+@props(['image'])
 <style>
     .gradient2 {
   background-image: linear-gradient(
@@ -40,7 +40,7 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">DOST FNRI PHILFCT (Philippine Food Composition Table)</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
@@ -60,7 +60,7 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">UK Food Traffic Light and know more about food grade, recommended food nutrient intake</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
@@ -78,7 +78,7 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Learn more about health tips for elementary students</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
@@ -96,7 +96,7 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">How to be a healthy parent for your child</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
                     </div>
                   </div>
                   <div class="h-1/2">

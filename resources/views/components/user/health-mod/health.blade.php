@@ -170,7 +170,7 @@
                     </div>
                 @elseif($yellow_warning)
                     <div class="flex relative group">
-                        <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
+                        <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primary rounded-full mr-6">
                             <i class="fa-solid fa-triangle-exclamation"></i>
                         </div>
                         <ul class="absolute bg-white p-3 w-40 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">

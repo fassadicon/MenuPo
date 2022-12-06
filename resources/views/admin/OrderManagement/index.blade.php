@@ -81,7 +81,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 d-flex flex-row justify-content-center">
-                <a href="#" class="btn btn-secondary btn-lg">
+                <a href="/admin/pos" class="btn btn-secondary btn-lg">
                     Proceed to Manual Order
                     <!-- <i class="fas fa-check"></i> -->
                 </a>

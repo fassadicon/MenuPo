@@ -1,156 +1,78 @@
 @props(['anak'])
 
-<div class="h-screen w-screen"> 
-       
-    <div class="h-screen cartsummary">
-        <div class="py-12">
-        
-        <div class="max-w-md mx-auto bg-blue-900 mt-20 shadow-lg rounded-lg  md:max-w-5xl">
-            <div class="md:flex ">
-                <div class="w-full p-4 px-5 py-5">
-                    <div class="md:grid md:grid-cols-3  ">
-                        @php
-                            $items = Cart::content();
-    
-                            $totalCal = 0;
-                            $totalAmount = 0;
-    
-                        @endphp
-    
-                        @foreach ($items as $val)
-                            @php
-                                $price = $val->price * $val->qty;
-                                $totalAmount = Cart::priceTotal();
-                            @endphp
-                        @endforeach
-                        
-                        <div class="col-span-2 p-5 cartdetails">
-                            <h1 class="text-xl font-medium text-yellow-400 ">Shopping Cart</h1>
-                        
-                            <div class="flex justify-between items-center mt-3 text-white">
-                                
-                                    <span class="w-20 ml-20" >Item</span>
-                                    <span class="ml-24">Quantity</span>
-                                    <span class="mr-10">Price</span>
-                            </div>
-                            @php
-                                $items = Cart::content();
-                        
-                                $totalCal = 0;
-                                $totalAmount = 0;
-                        
-                            @endphp
-                            <div class="h-60 overflow-y-scroll">
-                                @foreach ($items as $val)
-                                    @php
-                                        $price = $val->price * $val->qty;
-                                        $totalAmount = Cart::priceTotal();
-                                    
-                                    @endphp
-                                    <div class=" flex justify-between items-center mt-3">
-                                        <div class="flex items-center">
-                                            <img src="https://i.pinimg.com/564x/80/78/e4/8078e4a7626f514eccbf8a82b361579e.jpg" width="60" class="rounded-full ">
-                            
-                                            <div class="flex flex-col ml-3">
-                                                <span class="md:text-md font-medium text-white">{{$val->name}}</span>
-                                                <span class="text-xs font-light text-gray-400">{{'#'.$val->id}}</span>  
-                                            </div>
-                            
-                                        </div>
-                            
-                                        <div class="flex justify-center items-center">
-                                            <div class="pr-10 flex ">
-                                                @if ($val->id != 13)
-                                                    <button class="minusQty font-semibold text-white" id="minus<%=count++%>" value="{{$val->id}}" name="{{$val->id}}" ><i class="fa-solid fa-circle-minus"></i></button>
-                                                @endif
-                                            
-                                                <span class="text-l text-white px-2 mx-2" >{{$val->qty}}</span>
-                                                
-                                                @if ($val->id != 13)
-                                                    <button class="addQty font-semibold text-white" id="add<%=count++%>" value="{{$val->id}}" name="{{$val->id}}" ><i class="fa-solid fa-circle-plus"></i></button>
-                                                @endif
-                                                
-                                            </div>
-                                            
-                                            
-                            
-                                            <div class="pr-8 flex">
-                                                <span class="text-m font-medium text-white">{{'₱'.$price.'.00'}}</span>
-                                                {{-- @livewire('order-summ-price', ['food_id' => $val->id, 'price' => $price]); --}}
-                                            </div>
-                            
-                                            <div>
-                                                @if ($val->id != 13)
-                                                    <button type="submit" class="font-semibold text-white" id="del<%=count++%>" value="{{$val->id}}" name="rem-btn" >&times;</button>
-                                                @endif
-                                            </div>
-                            
-                                        </div>
-                            
-                                    </div>
-                                
-                                @endforeach
-                            </div>
-                            
-                        
-                            <div class="flex justify-between items-center mt-6 pt-6 border-t"> 
-                                <div class="flex items-center">
-                                    <a href="/user/menu/{{$anak->id}}">
-                                        <i class="fa fa-arrow-left text-sm pr-2 text-yellow-400"></i>
-                                        <span class="text-md  font-medium text-yellow-400">Continue Shopping</span>
-                                    </a>
-                                    
+@php
+    $items = Cart::content();
+@endphp
+    <div class="cartItems h-screen">
+        <br><br><br><br><br>
+        <div class="text-center mb-4">
+            <p class="text-xl font-bold">Cart Summary</p>
+        </div>
+        <div class="w-10/12 h-3/4 mx-auto md:w-2/3 md:flex">
+            <div class="h-3/4 justify-center p-4 overflow-y-scroll md:w-2/3 md:h-full">
+                @foreach ($items as $val)
+                    <div class="flex shadow rounded-lg">
+                        <div class="w-full h-28 flex">
+                            <img class="m-4 rounded-full w-20 h-20" src="{{ $val->options->image ? asset('storage/' . $val->options->image ) : asset('storage/admin/userNoImage.png') }}""
+                            alt="Image">
+                            <div class="">
+                                <div class="">
+                                    <p class="text-lg font-bold mt-2 break-words">{{$val->name}}</p>
+                                    <p class="text-sm break-words">Qty: {{$val->qty}}</p>
                                 </div>
-                        
-                                
-                                
-                            </div>  
+                                <div>
+                                    <p>Price: {{$val->price * $val->qty}}</p>
+                                </div>
+                            </div>
+                           
                         </div>
-                        
-                        <form action="/user/payment" method="POST">
-                            @csrf
-                            <div class="h-full p-3 bg-yellow-400 rounded overflow-visible">
-    
-                                <div class="header-title items-end pb-3">
-                                    <span class="text-lg font-bold text-blue-900">Order Summary</span>
-                                </div>
-    
-                                <div class="subtotal items-end">
-                                    <span class="text-lg font-bold text-blue-900">Payment Option:</span>
-                                    <span class="text-lg font-bold text-blue-900 float-right">GCash</span>
-                                    
-                                </div>
-                                <div class="subtotal items-end">
-                                    <span class="text-lg font-bold text-blue-900">Anak: </span>
-                                    <span class="text-lg font-bold text-blue-900 float-right">{{$anak->stud_FN.' '.$anak->stud_LN}}</span>
-                                    <input type="hidden" name="anak_id" id="anak_id" value="{{$anak->id}}">
-                                    
-                                </div>
-    
-                                <div class="subtotal items-end mt-52">
-                                    <span class="text-lg font-bold text-blue-900">Subtotal:</span>
-                                    {{-- @livewire('order-summ-sub-total', ['total_amount' => $totalAmount]) --}}
-                                    <span class="subtotal text-lg font-bold text-blue-900 float-right">₱{{$totalAmount}}</span>
-                                </div>
-    
+                        <div class="w-12 h-28 text-center md:w-40">
                             
-                                @if(Cart::content()->count() != 0)
-                                
-                                    <div class="button">
-                                        <button type="submit" class="h-12 w-full bg-blue-900 rounded mt-3  focus:outline-none font-bold text-yellow-400 hover:bg-blue-600">Check Out</button>
-                                    </div>
-                                
-                                @endif
-                                
-                            </div>   
-                        </form>    
-                    </div>~
-                    
-                   
-               </div>
+                            @if ($val->id != 2)
+                                <button class="w-full h-8 mt-1" id="minus<%=count++%>" value="{{$val->id}}">-</button>
+                                <button class="w-full h-8 mt-1" id="del<%=count++%>" value="{{$val->id}}">X</button>
+                                <button class="w-full h-8 mt-1" id="add<%=count++%>" value="{{$val->id}}">+</button>
+                            @else
+                                <button class="w-full h-8 mt-1"></button>
+                                <button class="w-full h-8 mt-1"></button>
+                                <button class="w-full h-8 mt-1"></button>
+                            @endif
+                           
+                        </div>
+                    </div>
+                @endforeach
             </div>
+            <form class="relative h-1/4 bg-zinc-50  shadow md:ml-4 md:h-80 md:w-1/3" action="/user/payment" method="POST">
+                @csrf
+                <div >
+                    <div class="hidden md:block subtotal h-40 items-end w-full p-2">
+                        <span class="text-xl font-bold">Payment Details</span>
+    
+                        <div class="subtotal h-8 mt-8 items-end w-full">
+                            <span class="text-lg">Parent Name:</span>
+                            <span class="text-lg font-bold float-right">Post Malone</span>
+                        </div>
+    
+                        <div class="subtotal h-8 items-end w-full">
+                            <span class="text-lg">Student Name: </span>
+                            <span class="text-lg font-bold float-right">{{$anak->firstName.' '.$anak->lastName}}</span>
+                            <input type="hidden" name="anak_id" id="anak_id" value="{{$anak->id}}">
+                        </div>
+                    </div>
+                    <div class="subtotal h-8 items-end w-full p-2">
+                        <span class="text-lg">Payment Option:</span>
+                        <span class="text-lg font-bold float-right">GCash</span>
+                    </div>
+                    <div class="subtotal h-8 items-end w-full p-2">
+                        <span class="text-lg">Total Amount:</span>
+                        <span class="text-lg font-bold float-right">{{Cart::priceTotal()}}</span>
+                    </div>
+                    <div class="absolute button w-full bottom-0 mb-2">
+                        <button type="submit" class="h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Check Out</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        </div>
-    </div> 
+    
+    </div>
    
-</div>

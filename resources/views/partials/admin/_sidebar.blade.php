@@ -242,7 +242,7 @@
         <li class="nav-heading">Order Management</li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="/" id="sidebarLink">
+          <a class="nav-link collapsed" href="/admin/pos" id="sidebarLink">
             <i class="fa-solid fa-person-chalkboard"></i>
               <span>Walk-In POS</span>
           </a>
