@@ -7,8 +7,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\POSController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\FoodController;
-use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\User\HealthController;
@@ -30,8 +30,10 @@ use App\Http\Controllers\Admin\CompletedController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PurchasesController;
 use App\Http\Controllers\User\CartSummaryController;
+use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\CompositionsReportController;
+use App\Http\Controllers\Admin\StudentNutrientReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -180,8 +182,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Survey
     Route::get('/reports/survey', [SurveyReportController::class, 'index']);
-    Route::get('/reports/survey/canteenRating', [SurveyReportController::class, 'rating'])->name('reports.survey.rating');
-    Route::get('/reports/survey/suggestions', [SurveyReportController::class, 'suggestions'])->name('reports.survey.suggestions');
+    Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
+    Route::get('/reports/nutrientConsumption', [StudentNutrientReportController::class, 'index']);
 });
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Charts;
 
+use App\Models\Survey;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class CanteenRatingChart
@@ -16,9 +17,15 @@ class CanteenRatingChart
     public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
     {
         return $this->chart->donutChart()
-            ->setTitle('Top 3 scorers of the team.')
-            ->setSubtitle('Season 2021.')
-            ->setDataset([20, 24, 30])
-            ->setLabels(['Player 7', 'Player 10', 'Player 9']);
+            ->setTitle("Parents' Canteen Rating")
+            ->setLabels([1, 2, 3, 4, 5])
+            ->addData([
+                Survey::where('rating', 1)->count(),
+                Survey::where('rating', 2)->count(),
+                Survey::where('rating', 3)->count(),
+                Survey::where('rating', 4)->count(),
+                Survey::where('rating', 5)->count(),
+            ])
+            ->setToolbar(true);
     }
 }
