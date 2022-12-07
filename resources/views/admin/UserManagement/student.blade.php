@@ -387,7 +387,7 @@
                         }
                     },
                     { // 21
-                        data: 'updated_by_name.firstName',
+                        data: 'updated_by_name',
                         name: 'updated_by_name',
                         render: function(data, type, row) {
                             return row.updated_by_name.firstName == null ? 'N/A' : row

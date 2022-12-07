@@ -152,7 +152,7 @@
                 <div class="mb-6">
                     <label for="height" class="inline-block text-lg mb-2"> Height (cm)</label>
                     <input type="number" class="border border-gray-200 rounded p-2 w-full" name="height"
-                        placeholder="Example: 175" value="{{ old('height') }}" />
+                        placeholder="Example: 175" step=".01" value="{{ old('height') }}" />
 
                     @error('height')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -162,7 +162,7 @@
                 <div class="mb-6">
                     <label for="weight" class="inline-block text-lg mb-2"> Weight (kg)</label>
                     <input type="number" class="border border-gray-200 rounded p-2 w-full" name="weight"
-                        placeholder="Example: 63.5" value="{{ old('weight') }}" />
+                        placeholder="Example: 63.5" step=".01" value="{{ old('weight') }}" />
 
                     @error('weight')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

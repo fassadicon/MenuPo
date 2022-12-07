@@ -27,8 +27,10 @@ class PurchasesController extends Controller
         // $todayDate = Carbon::now();
 
         $purchases = Purchase::where('claimStatus', 0)
+        ->where('created_at', '2022-12-01') // Palitan ng today()
+        // ->where('paymentStatus', 1)
         ->get()
-        ->load('orders', 'parent', 'student', 'admin');
+        ->load('orders', 'orders.food', 'parent', 'student', 'admin');
 
         
         if ($request->ajax()) {
