@@ -18,23 +18,26 @@
                 {{ $averageCalorieConsumptionChart->script() }}
             </div>
             <div class="col-6">
-                {{-- <h1>{{$collection}}</h1> --}}
-                {{-- <h1>{{round($collection->avg('totalKcal'), 2)}}</h1> --}}
-                {{-- <h1>{{round($collection->avg('totalTotFat'), 2)}}</h1>
-                <h1>{{round($collection->avg('totalSatFat'), 2)}}</h1>
-                <h1>{{round($collection->avg('totalSugar'), 2)}}</h1>
-                <h1>{{round($collection->avg('totalSodium'), 2)}}</h1> --}}
+                {!! $averageRecommendedNutrientConsumptionChart->container() !!}
+
+                <script src="{{ $averageRecommendedNutrientConsumptionChart->cdn() }}"></script>
+
+                {{ $averageRecommendedNutrientConsumptionChart->script() }}
+            </div>
+            <h1>Count: {{ $test }}</h1> 
+            <div class="col-6">
                 @foreach ($collection as $item)
-                    <h1>Purchase ID: {{ $item->id}}</h1>
+                    <h1>Purchase ID: {{ $item->id }}</h1>
                     <h1>Name: {{ $item->student->firstName }}</h1>
                     <h1>Bdate: {{ $item->student->birthDate }}</h1>
-                    <h1>Total Kcal: {{ $item->totalKcal}}</h1>
-                    <h1>Percantage Consumed: {{ 
-                    $item->totalKcal
-                    }}</h1>
-                    
+                    <h1>Total Kcal: {{ $item->totalKcal }}</h1>
+                    <h1>Percantage Consumed: {{ $item->totalKcal }}</h1>
                 @endforeach
-                {{-- {{ $test }} --}}
+            </div>
+            <div class="col-6">
+                @foreach ($testArray as $item)
+                    <h1>Purchase ID: {{ $item }}</h1>
+                @endforeach
             </div>
 
         </div>
