@@ -1,167 +1,141 @@
-@props(['anak'])
 
-@php
-    $items = Cart::content();
-@endphp
-
-<x-user.layout :studs="$students" :notifs="$notifications">
-    <div class="cartItems h-screen">
-        <br><br><br><br><br>
-        <div class="text-center mb-4">
-            <p class="text-xl font-bold">Cart Summary</p>
+<x-user.layout2 :studs="$students" :adminNotifs="$adminNotifs">
+    <br><br><br>
+    <br><br>
+    <div class="form">
+        
+        <div class="text-center">
+            <p class="text-2xl font-bold text-primary"><u>Edit account details</u></p>
         </div>
-        <div class="w-10/12 h-3/4 mx-auto md:w-2/3 md:flex">
-            <div class="h-3/4 justify-center p-4 overflow-y-scroll md:w-2/3 md:h-full">
-                @foreach ($items as $val)
-                    <div class="flex shadow rounded-lg">
-                        <div class="w-full h-28 flex">
-                            <img class="m-4 rounded-full w-20 h-20" src="{{ $val->options->image ? asset('storage/' . $val->options->image ) : asset('storage/admin/userNoImage.png') }}""
-                            alt="Image">
-                            <div class="">
-                                <div class="">
-                                    <p class="text-lg font-bold mt-2 break-words">{{$val->name}}</p>
-                                    <p class="text-sm break-words">Qty: {{$val->qty}}</p>
-                                </div>
-                                <div>
-                                    <p>Price: {{$val->price * $val->qty}}</p>
-                                </div>
-                            </div>
-                           
-                        </div>
-                        <div class="w-12 h-28 text-center md:w-40">
-                            
-                            @if ($val->id != 2)
-                                <button class="w-full h-8 mt-1" id="minus<%=count++%>" value="{{$val->id}}">-</button>
-                                <button class="w-full h-8 mt-1" id="del<%=count++%>" value="{{$val->id}}">X</button>
-                                <button class="w-full h-8 mt-1" id="add<%=count++%>" value="{{$val->id}}">+</button>
-                            @else
-                                <button class="w-full h-8 mt-1"></button>
-                                <button class="w-full h-8 mt-1"></button>
-                                <button class="w-full h-8 mt-1"></button>
-                            @endif
-                           
-                        </div>
+        <form class="mx-auto h-auto w-full md:w-1/3" action="/saveUpdate" method="POST">
+            @csrf
+            <div class="p-4 h-full">
+                
+                <label class="font-bold" for="">Given Name</label>
+                @error('firstName')
+                    <p class="text-red-500">{{$message}}</p>
+                @enderror
+                <input class="mb-2 w-full rounded-lg" type="text" name="firstName" id="firstName">
+
+
+                <label class="font-bold" for="">Middle Name</label>
+                @error('middleName')
+                    <p class="text-red-500">{{$message}}</p>
+                @enderror
+                <input class="mb-2 w-full rounded-lg" type="text" name="middleName" id="middleName">
+                
+
+                <label class="font-bold" for="">Last Name</label>
+                @error('lastName')
+                    <p class="text-red-500">{{$message}}</p>
+                @enderror
+                <input class="mb-2 w-full rounded-lg" type="text" name="lastName" id="lastName">
+                
+
+                <div class="flex mb-2">
+                    <div class="mr-2">
+                        <label class="font-bold" for="">Suffix</label>
+                        @error('suffix')
+                            <p class="text-red-500">{{$message}}</p>
+                        @enderror
+                        <input class="w-full rounded-lg" type="text" name="suffix" id="suffix">
+                        
                     </div>
-                @endforeach
-            </div>
-            <form class="relative h-1/4 bg-zinc-50  shadow md:ml-4 md:h-80 md:w-1/3" action="/user/payment" method="POST">
-                @csrf
-                <div >
-                    <div class="hidden md:block subtotal h-40 items-end w-full p-2">
-                        <span class="text-xl font-bold">Payment Details</span>
-    
-                        <div class="subtotal h-8 mt-8 items-end w-full">
-                            <span class="text-lg">Parent Name:</span>
-                            <span class="text-lg font-bold float-right">Post Malone</span>
-                        </div>
-    
-                        <div class="subtotal h-8 items-end w-full">
-                            <span class="text-lg">Student Name: </span>
-                            <span class="text-lg font-bold float-right">{{$anak->firstName.' '.$anak->lastName}}</span>
-                            <input type="hidden" name="anak_id" id="anak_id" value="{{$anak->id}}">
-                        </div>
-                    </div>
-                    <div class="subtotal h-8 items-end w-full p-2">
-                        <span class="text-lg">Payment Option:</span>
-                        <span class="text-lg font-bold float-right">GCash</span>
-                    </div>
-                    <div class="subtotal h-8 items-end w-full p-2">
-                        <span class="text-lg">Total Amount:</span>
-                        <span class="text-lg font-bold float-right">{{Cart::priceTotal()}}</span>
-                    </div>
-                    <div class="absolute button w-full bottom-0 mb-2">
-                        <button type="submit" class="h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Check Out</button>
+                    <div>
+                        <label for="gender" class="mb-2 font-bold">Gender</label>
+                        @error('gender')
+                            <p class="text-red-500">{{$message}}</p>
+                        @enderror
+                        <select id="gender" name="gender" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <option value="M">M</option>
+                            <option value="F">F</option>
+                            <option value="PNS">Prefer not to say</option>
+                        </select>
                     </div>
                 </div>
-            </form>
-        </div>
-    
+                
+                <label class="font-bold" for="">Contact No</label>
+                @error('contact')
+                    <p class="text-red-500">{{$message}}</p>
+                @enderror
+                <input class="mb-2 w-full rounded-lg" type="text" name="contact" id="contact">
+                
+
+                <label class="font-bold" for="">Current Address</label>
+                @error('address')
+                    <p class="text-red-500">{{$message}}</p>
+                @enderror
+                <input class="mb-2 w-full rounded-lg" type="text" name="address" id="address">
+                
+
+                <label class="font-bold" for="">Email</label>
+                @error('email')
+                    <p class="text-red-500">{{$message}}</p>
+                @enderror
+                <input class="mb-2 w-full rounded-lg" type="text" name="email" id="email">
+                
+
+                <label class="font-bold" for="">Birthday</label>
+                @error('birthday')
+                    <p class="text-red-500">{{$message}}</p>
+                @enderror
+                <input class="w-full rounded-lg" type="date" name="birthday" id="birthday">
+                
+
+            </div>
+            <button
+                type = "submit"
+                class="saveUpdate mt-8 block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                Submit
+            </button>
+        </form>
+        
     </div>
-   
-</x-user.layout>
+
+</x-user.layout2>
 
 <script>
-    
-    //For add button
-    $(document).on('click', 'button[id^="add"]',  function(e){
-        e.preventDefault();
+      //For saving the update
+//   $(document).on('click', '.saveUpdate',  function(e){
+//         e.preventDefault();
 
-        var food_id = $(this).val();
+//         var firstName = document.getElementById('firstName').value;
+//         var middleName = document.getElementById('middleName').value;
+//         var lastName = document.getElementById('lastName').value;
+//         var suffix = document.getElementById('suffix').value;
+//         var gender = document.getElementById('gender').value;
+//         var contact = document.getElementById('contact').value;
+//         var address = document.getElementById('address').value;
+//         var email = document.getElementById('email').value;
+//         var birthday = document.getElementById('birthday').value;
 
-        console.log(food_id);
+//         console.log(firstName);
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+//         $.ajaxSetup({
+//             headers: {
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//             }
+//         });
 
-        $.ajax({
-            method: "POST",
-            url: "update-cart-add",
-            data: {"food-id":food_id},
-            success: function(response){
-                //window.location.reload();
-                $('.cartItems').load(location.href + " .cartItems");
-                // $('.cartsummary').load(location.href + " .cartsummary");
-                // $('.subtotal').load(location.href + " .subtotal");
-            }
-        })
-    });
-
-    //For minus button
-    $(document).on('click', 'button[id^="minus"]',  function(e){
-        e.preventDefault();
-
-        var food_id = $(this).val();
-        console.log(food_id);
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-            method: "POST",
-            url: "update-cart-minus",
-            data: {"food-id":food_id},
-            success: function(response){
-                //window.location.reload();
-                $('.cartItems').load(location.href + " .cartItems");
-                // $('.cartsummary').load(location.href + " .cartsummary");
-                // $('.subtotal').load(location.href + " .subtotal");
-
-            }
-        })
-    });
-
-    //For delete button
-    $(document).on('click', 'button[id^="del"]',  function(e){
-        e.preventDefault();
-
-        var food_id = $(this).val();
-        console.log(food_id);
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-            method: "POST",
-            url: "update-cart-delete",
-            data: {"food-id":food_id},
-            success: function(response){
-                //window.location.reload();
-                $('.cartItems').load(location.href + " .cartItems");
-                // $('.cartsummary').load(location.href + " .cartsummary");
-                // $('.subtotal').load(location.href + " .subtotal");
-
-            }
-        })
-    });
+//         $.ajax({
+//             method: "POST",
+//             url: 'saveUpdate',
+//             data: {
+//                 "firstName":firstName, 
+//                 "middleName":middleName, 
+//                 "lastName":lastName, 
+//                 "suffix":suffix, 
+//                 "gender":gender, 
+//                 "contact":contact, 
+//                 "address":address, 
+//                 "email":email, 
+//                 "birthday":birthday, },
+        
+//             success:function(data){
+//                 $('.form').load(location.href + " .form");
+                
+//             }
+//         })
+//     });
 
 </script>
-    

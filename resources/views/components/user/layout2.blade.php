@@ -28,6 +28,7 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
         />
+
       {{-- Flowbite JS--}}
       <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
 
@@ -207,29 +208,95 @@
 
               <ul class="hidden md:flex space-x-6 leading-9 font-bold text-secondary">
                 <li class="allNotifs flex relative group">
+                  
                   <a href="#" class="hover:text-black"><i class="fa-solid fa-envelope fa-fw fa-xl"></i></a>
-                 @if ($notifs != null)
-                  <i class="fa-solid fa-circle text-red-700"></i>
-                 @endif
+                  @if ($adminNotifs != null)
+                    <i class="fa-solid fa-circle text-red-700"></i>
+                  @endif
+
                   <ul class="absolute bg-white p-3 w-96  -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
                      <h3 class="text-xl">Notifications</h3>
-                     <div class="h-96 overflow-y-scroll" >
-                        @if ($notifs == null)
-                          <div class="if-null text-center">
-                              <p>No notifications</p>
-                          </div>
-                        @else
-                          @foreach ($notifs as $notif)
-                            <x-user.notif-modal.notif-modal :notif="$notif" />
-                          @endforeach
-                        @endif
+
+                     {{-- Inside of the notification --}}
+                     <div class="h-44 text-center mt-4">
+                        
+                      {{-- Order Changes Button --}}
+                        <button id="orderButton" data-dropdown-toggle="orders" class="text-secondary mb-4 w-full border-2 border-solid font-medium rounded-lg text-sm px-4 py-2.5 text-center hover:bg-zinc-200" type="button">Order changes</button>
+                        <!-- Dropdown menu -->
+                        <div id="orders" class="hidden border-2 border-solid z-10 w-96 bg-white rounded divide-y ">
+                            <ul class="py-4 h-80 overflow-y-scroll text-sm text-gray-700" aria-labelledby="dropdownDefault">
+                              <div class="notif-wrapper pl-3 mb-2 ">
+                                @foreach ($adminNotifs as $notif)
+                                  @if ($notif->type == 1)
+                                  <div class="h-20 flex hover:bg-gray-200 hover:cursor-pointer">
+                                    <div class="w-24 h-16 notif-image pl-4 mt-2">
+                                      <img class="w-full h-full rounded-full" src="https://i.pinimg.com/564x/49/6f/1d/496f1d78e07b43c2975522de90ce8504.jpg" alt="profile_pic" >
+                                    </div>
+                                
+                                    <div class="w-full h-16 mt-4 notif-modal-body modal-body" id="notif-body">
+                                      <p style="font-size: 15px;">{{$notif->title}}</p>
+                                      <p style="opacity: 0.5; font-size: 15px;">{{\Carbon\Carbon::parse($notif->created_at)->diffForHumans()}}</p>
+                                    </div>
+                                  </div>
+                                  @endif
+                                @endforeach
+                              </div>
+                            </ul>
+                        </div>
+                        {{-- End of Orders Changes Button --}}
+
+                      {{-- Menu Changes Button --}}
+                        <button id="menuButton" data-dropdown-toggle="menu" class="text-secondary mb-4 w-full border-2 border-solid font-medium rounded-lg text-sm px-4 py-2.5 text-center hover:bg-zinc-200" type="button">Menu changes</button>
+                        <!-- Dropdown menu -->
+                        <div id="menu" class="hidden z-10 border-2 border-solid w-96 bg-white rounded divide-y ">
+                            <ul class="py-4 h-80 overflow-y-scroll text-sm text-gray-700" aria-labelledby="dropdownDefault">
+                              <div class="notif-wrapper pl-3 mb-2 ">
+                                @foreach ($adminNotifs as $notif)
+                                  @if ($notif->type == 2)
+                                  <div class="h-20 flex hover:bg-gray-200 hover:cursor-pointer">
+                                    <div class="w-24 h-16 notif-image pl-4 mt-2">
+                                      <img class="w-full h-full rounded-full" src="https://i.pinimg.com/564x/49/6f/1d/496f1d78e07b43c2975522de90ce8504.jpg" alt="profile_pic" >
+                                    </div>
+                                
+                                    <div class="w-full h-16 mt-4 notif-modal-body modal-body" id="notif-body">
+                                      <p style="font-size: 15px;">{{$notif->title}}</p>
+                                      <p style="opacity: 0.5; font-size: 15px;">{{\Carbon\Carbon::parse($notif->created_at)->diffForHumans()}}</p>
+                                    </div>
+                                  </div>
+                                  @endif
+                                @endforeach
+                              </div>
+                            </ul>
+                        </div>
+                        {{-- End of Menu Changes Button --}}
+
+                      {{-- Archives Changes Button --}}
+                        <button id="archiveButton" data-dropdown-toggle="archives" class="text-secondary w-full border-2 border-solid font-medium rounded-lg text-sm px-4 py-2.5 text-center hover:bg-zinc-200" type="button">Archive changes</button>
+                        <!-- Dropdown menu -->
+                        <div id="archives" class="hidden z-10 border-2 border-solid w-96 bg-white rounded divide-y ">
+                            <ul class="py-4 h-80 overflow-y-scroll text-sm text-gray-700" aria-labelledby="dropdownDefault">
+                              <div class="notif-wrapper pl-3 mb-2 ">
+                                @foreach ($adminNotifs as $notif)
+                                  @if ($notif->type == 3)
+                                  <div class="h-20 flex hover:bg-gray-200 hover:cursor-pointer">
+                                    <div class="w-24 h-16 notif-image pl-4 mt-2">
+                                      <img class="w-full h-full rounded-full" src="https://i.pinimg.com/564x/49/6f/1d/496f1d78e07b43c2975522de90ce8504.jpg" alt="profile_pic" >
+                                    </div>
+                                
+                                    <div class="w-full h-16 mt-4 notif-modal-body modal-body" id="notif-body">
+                                      <p style="font-size: 15px;">{{$notif->title}}</p>
+                                      <p style="opacity: 0.5; font-size: 15px;">{{\Carbon\Carbon::parse($notif->created_at)->diffForHumans()}}</p>
+                                    </div>
+                                  </div>
+                                  @endif
+                                @endforeach
+                              </div>
+                            </ul>
+                        </div>
+                        {{-- End of Archives Changes Button --}}
                       </div>
-                      
-                      <div class="del-all">
-                        <button class="deleteAll text-red-500">
-                          <span>Delete all</span>
-                        </button>
-                      </div>
+                      {{-- End of the inside --}}
+
                   </ul>
                 </li>
                 <li class="flex relative group ">
@@ -448,7 +515,7 @@
           $(document).on('click', '.deleteAll',  function(e){
                 e.preventDefault();
 
-                // console.log('food_id');
+                console.log('food_id');
 
                 $.ajaxSetup({
                     headers: {
@@ -458,7 +525,7 @@
 
                 $.ajax({
                     method: "POST",
-                    url: 'deleteAllNotifs',
+                    url: 'home/deleteAllNotifs',
                     data: {"food-id":1},
                     success: function(response){
                       $('.allNotifs').load(location.href + " .allNotifs");

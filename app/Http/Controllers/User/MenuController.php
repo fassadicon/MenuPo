@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\Food;
 use App\Models\Student;
+use App\Models\Guardian;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,9 +33,11 @@ class MenuController extends Controller
 
     //For landing page
     public function landing(){
+        
+        $parent = Guardian::where('user_id', auth()->id())->get();
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
-        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         return view('user.menu-landing', [
             'notifications' => $notifications,
             'students' => $student
