@@ -943,58 +943,6 @@ class DatabaseSeeder extends Seeder
 
         // Philfct
         DB::table('philfcts')->delete();
-        // $philfcts = [
-        //     [
-        //         'id' => 1, // R014
-        //         'philfct_id' => 'R014',
-        //         'name' => 'Spaghetti',
-        //         'kcal' => 83,
-        //         'totFat' => 1,
-        //         'satFat' => 0.35,
-        //         'sugar' => 2.9,
-        //         'sodium' => 277
-        //     ],
-        //     [
-        //         'id' => 2, // 'R013',
-        //         'philfct_id' => 'R013',
-        //         'name' => 'Goto',
-        //         'kcal' => 53,
-        //         'totFat' => 1.3,
-        //         'satFat' => 0.84,
-        //         'sugar' => 0.2,
-        //         'sodium' => 179
-        //     ],
-        //     [
-        //         'id' => 3, // 'E102',
-        //         'philfct_id' => 'E102',
-        //         'name' => 'Turon',
-        //         'kcal' => 259,
-        //         'totFat' => 6.4,
-        //         'satFat' => 5.41,
-        //         'sugar' => 28.8,
-        //         'sodium' => 89
-        //     ],
-        //     [
-        //         'id' => 4, // Rice
-        //         'philfct_id' => null,
-        //         'name' => 'Rice',
-        //         'kcal' => 129,
-        //         'totFat' => 0.2,
-        //         'satFat' => 0.05,
-        //         'sugar' => 0.1,
-        //         'sodium' => 3
-        //     ],
-        //     [
-        //         'id' => 5, // 'Hotdog',
-        //         'philfct_id' => null,
-        //         'name' => 'Hotdog',
-        //         'kcal' => 226,
-        //         'totFat' => 17,
-        //         'satFat' => 6.21,
-        //         'sugar' => 2.9,
-        //         'sodium' => 698
-        //     ]
-        // ];
         $philfcts = [
             [
                 'id' => 1, // R014

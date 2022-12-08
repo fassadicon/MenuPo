@@ -43,7 +43,7 @@
                 <div class="mb-6">
                     <label for="price" class="inline-block text-lg mb-2">Price</label>
                     {{-- Bring Step to 2 Decimal Places --}}
-                    <input type="number" class="border border-gray-200 rounded p-2 w-full" name="price"
+                    <input type="number" class="border border-gray-200 rounded p-2 w-full" name="price" step=".01"
                         value="{{ old('price') }}" />
 
                     @error('price')
@@ -74,9 +74,7 @@
                  {{-- Color --}}
                  <div class="mb-6">
                     <label for="color" class="inline-block text-lg mb-2">color</label>
-                    <input id="color" type="text" class="border border-gray-200 rounded p-2 w-full"
-                        name="description" placeholder="Example: A violet, long, and delicious delicacy of Arsenio"
-                        value="{{ old('color') }}" />
+                    <input id="color" type="text" class="border border-gray-200 rounded p-2 w-full" placeholder="Example: Green, Amber, Red, Gray" value="{{ old('color') }}" />
 
                     @error('color')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -88,7 +86,7 @@
                 <div class="mb-6">
                     <label for="servingSize" class="inline-block text-lg mb-2">Serving Size</label>
                     <input id="servingSize" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="servingSize" placeholder="In grams (g)" value="100" />
+                        name="servingSize" placeholder="In grams (g)" value="100" step=".01"/>
 
                     @error('servingSize')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -98,7 +96,7 @@
                 <div class="mb-6">
                     <label for="calcKcal" class="inline-block text-lg mb-2">calcKcal</label>
                     <input id="calcKcal" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcKcal" placeholder="In grams (g)" value="{{ old('calcKcal') }}"/>
+                        name="calcKcal" placeholder="In grams (g)" step=".01" value="{{ old('calcKcal') }}"/>
 
                     @error('calcKcal')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -108,7 +106,7 @@
                 <div class="mb-6">
                     <label for="calcTotFat" class="inline-block text-lg mb-2">calcTotFat</label>
                     <input id="calcTotFat" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcTotFat" placeholder="In grams (g)" value="{{ old('calcTotFat') }}"/>
+                        name="calcTotFat" placeholder="In grams (g)" step=".01" value="{{ old('calcTotFat') }}"/>
 
                     @error('calcTotFat')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -118,7 +116,7 @@
                 <div class="mb-6">
                     <label for="calcSatFat" class="inline-block text-lg mb-2">calcSatFat</label>
                     <input id="calcSatFat" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSatFat" placeholder="In grams (g)" value="{{ old('calcSatFat') }}"/>
+                        name="calcSatFat" placeholder="In grams (g)" step=".01" value="{{ old('calcSatFat') }}"/>
 
                     @error('calcSatFat')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -128,7 +126,7 @@
                 <div class="mb-6">
                     <label for="calcSugar" class="inline-block text-lg mb-2">calcSugar</label>
                     <input id="calcSugar" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSugar" placeholder="In grams (g)" value="{{ old('calcSugar') }}"/>
+                        name="calcSugar" placeholder="In grams (g)" step=".01" value="{{ old('calcSugar') }}"/>
 
                     @error('calcSugar')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -138,7 +136,7 @@
                 <div class="mb-6">
                     <label for="calcSodium" class="inline-block text-lg mb-2">calcSodium</label>
                     <input id="calcSodium" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSodium" placeholder="In grams (g)" value="{{ old('calcSodium') }}"/>
+                        name="calcSodium" placeholder="In grams (g)" step=".01" value="{{ old('calcSodium') }}"/>
 
                     @error('calcSodium')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -148,7 +146,7 @@
                 <div class="mb-6">
                     <label for="grade" class="inline-block text-lg mb-2">grade</label>
                     <input id="grade" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="grade" placeholder="In grams (g)" value="{{ old('grade') }}"/>
+                        name="grade" placeholder="In grams (g)" step=".01" value="{{ old('grade') }}"/>
 
                     @error('grade')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
