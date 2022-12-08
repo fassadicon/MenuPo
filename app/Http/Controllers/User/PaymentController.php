@@ -5,7 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Models\Food;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\Guardian;
 use App\Models\Purchase;
+use App\Models\AdminNotif;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,8 +24,10 @@ class PaymentController extends Controller
     public function index(Request $request){
         
         $items = Cart::content();
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
-        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         
         //For total calories
         foreach($items as $item){
@@ -42,7 +46,7 @@ class PaymentController extends Controller
         $payment->save();
         
         $purchase = new Purchase;
-        $purchase->parent_id = 1;
+        $purchase->parent_id = $parent[0]->id;
         $purchase->student_id = $request->get('anak_id');
         $purchase->totalAmount = Cart::priceTotal();
         $purchase->totalKcal = $this->totKcal;
@@ -78,6 +82,14 @@ class PaymentController extends Controller
         $notification->status = 1;
         $notification->save();
 
+        //Creating admin notif
+        $adminNotif = new Adminnotif;
+        $adminNotif->type = 2;
+        $adminNotif->title = 'Order submitted successfully.';
+        $adminNotif->description = 'The order is received by the admin. Please wait for the confirmation of the payment.';
+        $adminNotif->status = 1;
+        $adminNotif->save();
+
         Alert::success('Success!', 'Ordered successfully!');
 
         return view('user.payment', [
@@ -90,8 +102,10 @@ class PaymentController extends Controller
 
         $items = Cart::content();
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
-        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
 
         // Destroying the cart session
         Cart::destroy();
@@ -106,8 +120,10 @@ class PaymentController extends Controller
     public function receipt_new(Purchase $purchase){
 
         $items = DB::select('SELECT * FROM orders WHERE purchase_id = ?', [$purchase->id]);
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
-        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
 
         return view('user.receipt2', [
             'items' => $items,

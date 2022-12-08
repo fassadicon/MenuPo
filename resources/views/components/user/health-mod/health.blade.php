@@ -1,11 +1,13 @@
 
 @props(['anak'])
+@props(['parent'])
 @props(['restricts'])
 @props(['purchases'])
 @props(['purchase_info'])
 @props(['average_grade'])
 
 @php
+
     $age = \Carbon\Carbon::parse($anak->birthDate)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
     $recommended_cal = 0;
     $consumed_cal = 0;
@@ -13,6 +15,12 @@
     $no_warning = true;
     $yellow_warning = true;
     $red_warning = true;
+
+
+    $consumed_fat = 0;
+    $consumed_satFat = 0;
+    $consumed_sugar = 0;
+    $consumed_sodium = 0;
 
     
     //For recommended Calories
@@ -23,7 +31,7 @@
         $recommended_cal = 1470;
     }
 
-    //For consumed calorie
+    //For consumed calorie and 4 macro
     foreach($purchases as $purch){
         $date_today = \Carbon\Carbon::now('Asia/Singapore')->toDateString();
         
@@ -33,8 +41,14 @@
         }
         else{
             $consumed_cal += $purch->totalKcal;
+            $consumed_fat += $purch->totalTotFat;
+            $consumed_satFat += $purch->totalSatFat;
+            $consumed_sugar += $purch->totalSugar;
+            $consumed_sodium += $purch->totalSodium;
         }
     }
+
+
     //For remaining cal
     if ($consumed_cal != 0) {
         $to_consume_percent = 100 - (($consumed_cal / $recommended_cal)*100);
@@ -73,7 +87,7 @@
                         <div class="p-2">
                           <button class="px-4 py-2 text-sm text-white bg-indigo-600 hover:bg-indigo-800">Upload Picture</button>
                         </div>
-                      </div>s
+                      </div>
                     </div>
                   </div>
                 </a>
@@ -97,7 +111,7 @@
                   </li>
                   <li class="flex items-centesr py-3">
                       <span>Adviser</span>
-                      <span class="ml-auto">Post Malone</span>
+                      <span class="ml-auto">{{$anak->adviser}}</span>
                   </li>
               </ul>
               
@@ -121,7 +135,7 @@
                       <a href="/user/user-account"><img class="h-auto w-16 rounded-full mx-auto border-4 border-white hover:border-primary"
                           src="https://i.pinimg.com/564x/af/83/19/af8319cc30be857f61493c59937f40e4.jpg"
                           alt=""
-                          class="text-gray-800">Post Malone</a>
+                          class="text-gray-800">{{$parent->firstName . ' ' . $parent->lastName}}</a>
                   </div>
                   
               </div>
@@ -164,8 +178,13 @@
                         <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
                             <i class="fa-solid fa-utensils"></i>
                         </div>
-                        <ul class="absolute bg-white p-3 w-40 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
-                            <h4>No warnings at the moment.</h4>        
+                        <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
+                            <p class="text-secondary text-lg font-bold">No warnings at the moment.</p>  
+                            <p><b>Consumed Fat:</b> {{$consumed_fat}}</p> 
+                            <p><b>Consumed Sat Fat:</b> {{$consumed_satFat}}</p>  
+                            <p><b>Consumed Sugar:</b>{{$consumed_sugar}}</p>  
+                            <p><b>Consumed Sodium:</b> {{$consumed_sodium}}</p>   
+
                         </ul>
                     </div>
                 @elseif($yellow_warning)
@@ -173,8 +192,12 @@
                         <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primary rounded-full mr-6">
                             <i class="fa-solid fa-triangle-exclamation"></i>
                         </div>
-                        <ul class="absolute bg-white p-3 w-40 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
-                            <h4>Yellow warning.</h4>        
+                        <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
+                            <p class="text-primary text-lg font-bold">Yellow Warning.</p>  
+                            <p><b>Consumed Fat:</b> {{$consumed_fat}}</p> 
+                            <p><b>Consumed Sat Fat:</b> {{$consumed_satFat}}</p>  
+                            <p><b>Consumed Sugar:</b>{{$consumed_sugar}}</p>  
+                            <p><b>Consumed Sodium:</b> {{$consumed_sodium}}</p>      
                         </ul>
                     </div>
                 @elseif($red_warning)
@@ -182,8 +205,12 @@
                         <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-red-500 rounded-full mr-6">
                             <i class="fa-solid fa-triangle-exclamation"></i>
                         </div>
-                        <ul class="absolute bg-white p-3 w-40 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
-                            <h4>Red warning.</h4>        
+                        <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
+                            <p class="text-red-500 text-lg font-bold">Red Warning.</p>  
+                            <p><b>Consumed Fat:</b> {{$consumed_fat}}</p> 
+                            <p><b>Consumed Sat Fat:</b> {{$consumed_satFat}}</p>  
+                            <p><b>Consumed Sugar:</b>{{$consumed_sugar}}</p>  
+                            <p><b>Consumed Sodium:</b> {{$consumed_sodium}}</p>      
                         </ul>
                     </div>
                 @endif
@@ -247,7 +274,7 @@
                       </div>
                       <div class="grid grid-cols-2">
                           <div class="px-4 py-2 font-semibold">Current Address</div>
-                          <div class="px-4 py-2">sample</div>
+                          <div class="px-4 py-2">{{$parent->address}}</div>
                       </div>
                       <div class="grid grid-cols-2">
                           <div class="px-4 py-2 font-semibold">Birthday</div>
@@ -259,9 +286,12 @@
                       </div>
                   </div>
               </div>
-              <button
-                  class="block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                  Edit Information</button>
+                <a class="text-center" href="/health/edit-info/{{$anak->id}}">
+                    <div
+                        class="block w-full text-secondary text-smfont-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        Edit Information
+                    </div>
+                </a>
           </div>
 
           <div class="bg-white p-3 shadow-xl rounded-sm">
@@ -422,7 +452,7 @@
                                     </td>
                                     <td class="px-6 py-4 text-center"> <span class="text-white text-sm w-1/3 pb-1 bg-red-600 font-semibold px-2 rounded-full"> Pending </span> </td>
                                     {{-- <td class="px-6 py-4 text-center"> {{$purch[0]->created_at}} </td> --}}
-                                    <td class="px-6 py-4 text-center"> ........ </td>
+                                    <td class="px-6 py-4 text-center">{{$purchases[0]->created_at}}</td>
                                 </tr>
                                 @endif
                             @endforeach   

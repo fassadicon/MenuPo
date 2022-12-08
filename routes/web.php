@@ -56,6 +56,8 @@ Route::get('/testData', [TestController::class, 'getData'])->name('test.chart');
 
 Auth::routes();
 
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // <------------------- ALL ADMIN ROUTES -------------------> //
@@ -191,56 +193,56 @@ Route::get('/autocomplete-search-parents', [AutocompleteController::class, 'getP
 Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
 
 
-//User /////////////////////////////////////////////////////////////////
+
+// All User Controller //
+Route::middleware('user')->group(function () {
 
     //Home
-    Route::get('user/home', [HomeController::class, 'index']);
+    Route::get('/user/home', [HomeController::class, 'index']);
+    Route::post('/user/deleteAllNotifs', [HomeController::class, 'deleteAllNotifs']);
 
     //Health Module
-    Route::get('/user/health/{anak}', [HealthController::class, 'index'])
-        ->name(name:'health.index');
-    Route::post('/user/health/remove-restrict', [HealthController::class, 'removeRestrict'])
-        ->name(name:'health.remove-restrict');
-    
+    Route::get('/user/health/{anak}', [HealthController::class, 'index'])->name(name:'health.index');
+    Route::post('/user/health/remove-restrict', [HealthController::class, 'removeRestrict'])->name(name:'health.remove-restrict');
+    Route::get('/health/edit-info/{anak}', [HealthController::class, 'edit']);
+    Route::post('/health/saveUpdate', [HealthController::class, 'saveUpdate']);
+
     //User-Account Page
-    Route::get('user/user-account', [UserAccController::class, 'index']);
+    Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name:'user.account');
+    Route::get('/edit-info', [UserAccController::class, 'edit']);
+    Route::post('/saveUpdate', [UserAccController::class, 'saveUpdate']);
+    
 
     //Menu Page
-    Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])
-        ->name(name:'menu.index');
+    Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])->name(name:'menu.index');
 
-    Route::get('/user/menu-landing', [UserMenuController::class, 'landing'])
-        ->name(name:'menu.landing');
+    Route::get('/user/menu-landing', [UserMenuController::class, 'landing'])->name(name:'menu.landing');
     Route::post('/user/menu/addtocart', [UserMenuController::class, 'addtocart']);
     Route::post('/user/menu/addtorestrict', [UserMenuController::class, 'addtorestrict']);
 
     //Cart Summarry
-    Route::get('user/cart-summary/{anak}', [CartSummaryController::class, 'index'])
-        ->name(name:'cart-summary.index');
+    Route::get('/user/cart-summary/{anak}', [CartSummaryController::class, 'index'])->name(name:'cart-summary.index');
     Route::post('/user/cart-summary/update-cart-add', [CartSummaryController::class, 'add']);
     Route::post('/user/cart-summary/update-cart-minus', [CartSummaryController::class, 'minus']);
     Route::post('/user/cart-summary/update-cart-delete', [CartSummaryController::class, 'delete']);
 
     //Survey Page
-    Route::get('users/survey', [SurveyController::class, 'index']);
-    Route::post('/users/survey-submit', [SurveyController::class, 'store'])
-    ->name(name:'survey.store');
+    Route::get('/users/survey', [SurveyController::class, 'index']);
+    Route::post('/users/survey-submit', [SurveyController::class, 'store'])->name(name:'survey.store');
 
     //Payment Page
     Route::post('/user/payment', [PaymentController::class, 'index']);
-        //Receipt
-        Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
-        Route::get('user/receipt', [PaymentController::class, 'receipt']);
+    //Receipt
+    Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
+    Route::get('user/receipt', [PaymentController::class, 'receipt']);
 
     //Point of sale
-    Route::get('/pos', [POSController::class, 'index']);
-
-    Route::post('/add-to-cart', [POSController::class, 'addtocart']);
-    Route::post('/update-cart-add', [POSController::class, 'add']);
-    Route::post('/update-cart-minus', [POSController::class, 'minus']);
-    Route::post('/update-cart-delete', [POSController::class, 'delete']);
-    Route::post('/pos/payment', [POSController::class, 'pospayment'])
-            ->name(name:'pos.order');
+    // Route::get('/pos', [POSController::class, 'index']);
+    // Route::post('/add-to-cart', [POSController::class, 'addtocart']);
+    // Route::post('/update-cart-add', [POSController::class, 'add']);
+    // Route::post('/update-cart-minus', [POSController::class, 'minus']);
+    // Route::post('/update-cart-delete', [POSController::class, 'delete']);
+    // Route::post('/pos/payment', [POSController::class, 'pospayment'])->name(name:'pos.order');
     
     //New Post
     Route::get('newpost', [NewPostController::class, 'index']);
@@ -250,5 +252,4 @@ Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
     // Sample
     Route::get('sample', [HomeController::class, 'sample']);
 
-    
-
+});

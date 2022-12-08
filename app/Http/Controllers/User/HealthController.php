@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
+use Carbon\Carbon;
+use App\Models\Food;
 use App\Models\Order;
 use App\Models\Student;
+use App\Models\Guardian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -11,21 +14,24 @@ use App\Http\Controllers\Controller;
 class HealthController extends Controller
 {
     public function index(Student $anak){
+
+        
         
         $ids = explode(',' , $anak->restriction);
 
         $restrict = array();
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
+        $parent = Guardian::where('user_id', auth()->id())->get();
 
-        $purchase = DB::select('SELECT * FROM purchases WHERE parent_id = ? && student_id = ?', [1, $anak->id]);
-        
-        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
-        
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $purchase = DB::select('SELECT * FROM purchases WHERE parent_id = ? && student_id = ?', [$parent[0]->id, $anak->id]);
+
         // For average food grade
-        $sample = Order::whereHas('purchase', function($q){
-            $q->where('parent_id', '=', 1);
-        })->with('food')->get();
+        $sample = Order::whereHas('purchase', (fn($q)=>
+            $q->where('parent_id', $parent[0]->id)
+        ))->with('food')->get();
+
         $average = 0;
         $ite = 0;
     
@@ -48,11 +54,11 @@ class HealthController extends Controller
             $item2 = DB::select('SELECT * FROM orders WHERE purchase_id = ?', [$purch->id]);
             array_push($purchase_info, $item2);
         }
-        //dd($restrict);
 
         return view('user.health', [
             'students' => $student,
             'restricts' => $restrict,
+            'parent' => $parent[0],
             'notifications' => $notifications,
             'purchases' => $purchase,
             'anaks' => $anak,
@@ -77,5 +83,44 @@ class HealthController extends Controller
         DB::update('UPDATE students SET restriction = ? WHERE id = ?', [$new, $anak_id]);
         
         return response()->json(['status' => 'Success']);
+    }
+
+    public function edit(Student $anak){
+
+        $parent = Guardian::where('user_id', auth()->id())->get();
+        
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+
+        return view('user.edit-studAcc', [
+            'notifications' => $notifications,
+            'anak' => $anak,
+            'students' => $student
+        ]);
+    }
+
+    public function saveUpdate(Request $request){
+
+        $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'middleName' => 'required',
+            'gender' => 'required',
+            'birthday' => 'required'
+        ]);
+
+        DB::update('UPDATE students SET firstName = ? , middleName = ? , lastName = ? , suffix = ? , sex = ? , birthDate = ? WHERE id = ?', [
+            $request->input('firstName'),
+            $request->input('lastName'),
+            $request->input('middleName'),
+            $request->input('suffix'),
+            $request->input('gender'),
+            $request->input('birthday'),
+            $request->input('id')
+
+        ]);
+
+        return redirect()->route(route:'user.account');
+        
     }
 }
