@@ -33,6 +33,7 @@ use App\Http\Controllers\User\CartSummaryController;
 use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\CompositionsReportController;
+use App\Http\Controllers\Admin\ImportUsersController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
 
 /*
@@ -174,6 +175,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('/students/create/store', [StudentController::class, 'store']);
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
     Route::put('/students/{student}', [StudentController::class, 'update']);
+    // Imports
+    Route::get('/imports', [ImportUsersController::class, 'index']);
+    Route::post('/imports/upload', [ImportUsersController::class, 'import'])->name('imports.upload');
     
     // REPORTS, GRAPHS, and INFORMATION
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');

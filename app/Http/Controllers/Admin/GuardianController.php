@@ -85,7 +85,7 @@ class GuardianController extends Controller
             'recoveryEmail'
         ]);
         $userCredentials['password'] = Hash::make(Str::random(8));
-        $userCredentials['role'] = 1;
+        $userCredentials['role'] = 0;
         $user = User::create($userCredentials);
         $guardian['user_id'] = $user->id;
         Guardian::create($guardian);
