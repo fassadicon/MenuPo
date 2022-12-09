@@ -51,14 +51,14 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <button id="navbarbutton" class="button login__submit">
                                         <i class="button__icon fa-solid fa-circle-user"></i>
                                         <a id="navbarhead" class="button__text" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </button>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
