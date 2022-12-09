@@ -1,7 +1,6 @@
 <x-admin.layout>
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
-    <a href="/admin/students/create" class="btn btn-primary mb-2">Create Student Account</a>
     <a href="/admin/students/" class="btn btn-primary mb-2">Back</a>
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
