@@ -1567,7 +1567,7 @@ footer .bottom-details{
        }
 
        /* Log in form */
-       .container {
+       .containerForm {
         display: flex;
         align-items: center;
         justify-content: center;
