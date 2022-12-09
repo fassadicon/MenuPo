@@ -80,12 +80,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6 d-flex flex-row justify-content-center">
-                <a href="/admin/pos" class="btn btn-secondary btn-lg">
+            {{-- <div class="col-lg-6 d-flex flex-row justify-content-center">
+                <a href="{{ URL('admin/pos')}}" class="btn btn-secondary btn-lg">
                     Proceed to Manual Order
                     <!-- <i class="fas fa-check"></i> -->
                 </a>
-            </div>
+            </div> --}}
             <div class="col-lg-6 d-flex flex-row justify-content-center">
                 <button class="btn btn-success btn-lg completeBtn">
                     Complete Order
@@ -144,7 +144,19 @@
                 $('#purchaseTable').html('');
                 // $('#orderTable').html('');
                 console.log(data);
-                $.each(data, function() {
+                if (data.purchase.length == 0) {
+                    // let btn = ' <a href="/admin/pos/' + '">Yes</a>';
+                    let btn = ' <a href="/admin/pos/' + id + '">Yes</a>';
+                    Swal.fire({
+                        title: 'Test',
+                        text: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
+                        icon: "warning",
+                        html: btn,
+                        showCancelButton: true,
+                        showConfirmButton: false
+                    });
+                }
+                $.each(data.purchase, function() {
                     $('#purchaseID').val(this.id);
                     $('#parentName').val(this.parent.firstName + ' ' + this.parent
                         .lastName);

@@ -119,7 +119,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // <----------- ORDER CONTROLLER -----------> //
       //Point of sale
-    Route::get('/pos', [POSController::class, 'index']);
+    // Route::get('/pos', [POSController::class, 'index']);
+    Route::get('/pos/{sid}', [POSController::class, 'index']);
     Route::post('/add-to-cart', [POSController::class, 'addtocart']);
     Route::post('/update-cart-add', [POSController::class, 'add']);
     Route::post('/update-cart-minus', [POSController::class, 'minus']);
@@ -245,15 +246,14 @@ Route::middleware('user')->group(function () {
     //Receipt
     Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
     Route::get('user/receipt', [PaymentController::class, 'receipt']);
-
-    //Point of sale
+    
     // Route::get('/pos', [POSController::class, 'index']);
     // Route::post('/add-to-cart', [POSController::class, 'addtocart']);
     // Route::post('/update-cart-add', [POSController::class, 'add']);
     // Route::post('/update-cart-minus', [POSController::class, 'minus']);
     // Route::post('/update-cart-delete', [POSController::class, 'delete']);
     // Route::post('/pos/payment', [POSController::class, 'pospayment'])->name(name:'pos.order');
-    
+
     //New Post
     // Route::get('newpost', [NewPostController::class, 'index']);
     // Route::get('newpost/view', [NewPostController::class, 'viewpost']);
