@@ -1,10 +1,9 @@
 <x-admin.layout>
     
-    <h1 class="h3">Food Item Management</h1>
+    <h1 class="h3">Archived Food Items</h1>
     {{-- DATABLE --}}
     <div class="container">
-        <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Food Item</a></div>
-        <div align="left"><a href="/admin/foods/trash" class="btn btn-success mb-2">Archived Food Item</a></div>
+        <div align="left"><a href="/admin/foods/" class="btn btn-success mb-2">Back</a></div>
         <table class="table table-hover table-sm" id="foodTable">
 
             <thead>
@@ -216,7 +215,7 @@
                 serverSide: true,
                 ajax: {
                     type: "GET",
-                    url: "{{ route('food.index') }}",
+                    url: "{{ route('food.trash') }}",
                     // data: function(d) {
 
                     // },
@@ -447,7 +446,7 @@
             // View Food Data Modal
             $('body').on('click', '.viewFood', function() {
                 var foodID = $(this).data('id');
-                $.get("{{ url('admin/foods/') }}" + '/' + foodID + '/view', function(data) {
+                $.get("{{ url('admin/foods/trash') }}" + '/' + foodID + '/viewTrash', function(data) {
                     $('#viewFoodInfoModalLabel').text('Nutritional Information of ' + data.food
                         .name);
                     $('#description').text(data.food.description);

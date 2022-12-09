@@ -1,8 +1,7 @@
 <x-admin.layout>
-    <h1 class="h3">Parent User Management</h1>
-    <a href="/admin/guardians/create" class="btn btn-primary mb-2">Create Parent Account</a>
-    <a href="/admin/guardians/trash" class="btn btn-primary mb-2">Inactive Parent Accounts</a>
-    
+    <h1 class="h3">Archived Staff Account Management</h1>
+    <a href="/admin/admins/create" class="btn btn-primary mb-2">Create Admin Account</a>
+    <a href="/admin/admins/" class="btn btn-primary mb-2">Back</a>
     {{-- DATABLE --}}
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
@@ -14,7 +13,6 @@
                     <th>LN</th>
                     <th>MN</th>
                     <th>Suffix</th>
-                    <th>Students</th>
                     <th>Email</th>
                     <th>Recovery Email</th>
                     <th>Sex</th>
@@ -24,7 +22,7 @@
                     <th>Created At</th>
                     <th>Created By</th>
                     <th>Updated At</th>
-                    <th>Last Updated By</th>
+                    <th>Updated By</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -37,7 +35,6 @@
                     <th>LN</th>
                     <th>MN</th>
                     <th>Suffix</th>
-                    <th>Students</th>
                     <th>Email</th>
                     <th>Recovery Email</th>
                     <th>Sex</th>
@@ -47,7 +44,7 @@
                     <th>Created At</th>
                     <th>Created By</th>
                     <th>Updated At</th>
-                    <th>Last Updated By</th>
+                    <th>Updated By</th>
                 </tr>
             </tfoot>
         </table>
@@ -74,11 +71,6 @@
                                 <label for="recoveryEmail">Recovery Email</label>
                                 <p id="recoveryEmail" class="form-control"></p>
                             </div>
-                            <div class="mb-3">
-                                <label for="students">Students</label>
-                                <div id="students"></div>
-                            </div>
-
                         </div>
                         <div class="col-4">
                             <div class="mb-3">
@@ -133,9 +125,9 @@
                         </div>
                     </div>
                     {{--  <div class="mb-3">
-                            <label for="">Description</label>
-                            <p id="description" class="form-control"></p>
-                        </div> --}}
+                         <label for="">Description</label>
+                         <p id="description" class="form-control"></p>
+                     </div> --}}
                 </div>
             </div>
         </div>
@@ -163,6 +155,7 @@
     @include('partials.admin._DataTableScripts')
     {{-- Scripts --}}
     <script type="text/javascript">
+        // Date
         // DataTables Script
         $(function() {
             $.ajaxSetup({
@@ -209,10 +202,10 @@
                     [10, 15, 20, 25, 30, 50, 100]
                 ],
                 processing: true,
-                // serverSide: true,
+                serverSide: true,
                 ajax: {
                     type: "GET",
-                    url: "{{ route('guardians.index') }}"
+                    url: "{{ route('admins.trash') }}"
                 },
                 // Footer Sorting
                 initComplete: function() {
@@ -266,15 +259,6 @@
                         }
                     },
                     {
-                        data: 'students',
-                        name: 'students',
-                        render: function(data, type, row) {
-                            return $.map(data, function(value, i) {
-                                return value.firstName + ' ' + value.lastName;
-                            }).join('<br>');
-                        }
-                    },
-                    {
                         data: 'user.email',
                         name: 'user.email',
                     },
@@ -282,7 +266,7 @@
                         data: 'user.recoveryEmail',
                         name: 'user.recoveryEmail',
                         render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
+                            return data == null ? 'N/A' : row.user.recoveryEmail;
                         }
                     },
                     {
@@ -304,16 +288,17 @@
                         data: 'status',
                         name: 'status',
                         render: function(data, type, row) {
-                            return data == 1 ? 'Active' : 'Inactive';
+                            return data == 0 ? 'Permanent' : 'Temporary';
                         }
                     },
                     {
                         data: 'created_at_formatted',
                         name: 'created_at_formatted',
+
                     },
                     {
-                        data: 'created_by_name.firstName',
-                        name: 'created_by_name.firstName',
+                        data: 'created_by',
+                        name: 'created_by',
                         render: function(data, type, row) {
                             return row.created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;
@@ -327,12 +312,13 @@
                         }
                     },
                     {
-                        data: 'updated_by_name',
-                        name: 'updated_by_name',
+                        data: 'updated_by',
+                        name: 'updated_by',
                         render: function(data, type, row) {
                             return row.updated_by_name.firstName == null ? 'N/A' : row
                                 .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
+
                     },
                     {
                         data: 'action',
@@ -343,6 +329,10 @@
                 ],
                 columnDefs: [{
                         target: 4,
+                        visible: false,
+                    },
+                    {
+                        target: 6,
                         visible: false,
                     },
                     {
@@ -378,10 +368,6 @@
                         visible: false,
                     },
                     {
-                        target: 15,
-                        visible: false,
-                    },
-                    {
                         targets: -1,
                         data: null,
                         defaultContent: '<button>Click!</button>',
@@ -392,10 +378,10 @@
 
             // View Student Picture Modal
             $('body').on('click', '.viewImage', function() {
-                var guardianID = $(this).data('id');
-                $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
+                var adminID = $(this).data('id');
+                $.get("{{ url('admin/admins/') }}" + '/' + adminID + '/view', function(data) {
                     $('#viewImgModalLabel').text('Image of ' + data.firstName + ' ' + data
-                    .lastName);
+                        .lastName);
                     data.image != null ? $('#image').attr('src', "{{ URL::asset('storage/') }}" +
                         '/' + data.image) : $('#image').attr('src',
                         "{{ URL::asset('storage/admin/userNoImage.png') }}");
@@ -403,11 +389,12 @@
                 })
             });
             // View Student Details Modal
-            $('body').on('click', '.viewParentDetails', function() {
-                var guardianID = $(this).data('id');
-                $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
+            $('body').on('click', '.viewAdminDetails', function() {
+                var adminID = $(this).data('id');
+                $.get("{{ url('admin/admins/') }}" + '/' + adminID + '/view', function(data) {
                     $.each(data, function(i, e) {
-                        if (data[i] == null) data[i] = 'N/A';
+                        if (data[i] == null)
+                            data[i] = "N/A";
                     });
                     $('#viewStudentInfoModalLabel').text('Account Information of ' + data
                         .firstName + ' ' + data.lastName);
@@ -416,8 +403,8 @@
                     $('#firstName').text(data.firstName);
                     $('#lastName').text(data.lastName);
                     $('#middleName').text(data.middleName);
-                    $('#suffix').text(data.suffix);
                     $('#sex').text(data.sex);
+                    $('#suffix').text(data.suffix);
                     $('#address').text(data.address);
                     $('#birthDate').text(data.birthDate);
                     $('#created_at').text(data.created_at_formatted);
@@ -429,19 +416,8 @@
                         .updated_by_name.firstName + ' ' + data
                         .updated_by_name.lastName);
                     $('#viewStudentInfoModal').modal('show');
-
-                    var studentsHTML = '';
-                    $('#students').html('');
-                    $.each(data.students, function(i, value) {
-                        studentsHTML += '<p>' + value.firstName + ' ' + value.lastName +
-                            '</p>';
-                    });
-                    $('#students').append(studentsHTML);
-
                 })
             });
-
-            // End of Scripts
         });
     </script>
 

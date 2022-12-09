@@ -3,7 +3,7 @@
     <h1 class="h3">Completed Orders</h1>
 
     <div class="container">
-        <div align="left"><a href="orders/completed/trash" class="btn btn-warning mb-2">Archived Purchases</a></div>
+        <div align="left"><a href="/admin/orders/completed/trash" class="btn btn-warning mb-2">Archived Purchases</a></div>
         <table class="table table-bordered table-sm" id="completedTable">
     
             <thead>

@@ -1,30 +1,33 @@
 <x-admin.layout>
-    <h1 class="h3">Parent User Management</h1>
-    <a href="/admin/guardians/create" class="btn btn-primary mb-2">Create Parent Account</a>
-    <a href="/admin/guardians/trash" class="btn btn-primary mb-2">Inactive Parent Accounts</a>
-    
+    <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
+    <a href="/admin/students/create" class="btn btn-primary mb-2">Create Student Account</a>
+    <a href="/admin/students/" class="btn btn-primary mb-2">Back</a>
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
         <table class="table table-hover table-sm" id="foodTable">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>FN</th>
-                    <th>LN</th>
-                    <th>MN</th>
+                    <th>Grade</th>
+                    <th>Section</th>
+                    <th>Adviser</th>
+                    <th>LRN</th>
+                    <th>Parent</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Middle Name</th>
                     <th>Suffix</th>
-                    <th>Students</th>
-                    <th>Email</th>
-                    <th>Recovery Email</th>
                     <th>Sex</th>
-                    <th>Address</th>
                     <th>Birth Date</th>
                     <th>Status</th>
-                    <th>Created At</th>
-                    <th>Created By</th>
-                    <th>Updated At</th>
-                    <th>Last Updated By</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>BMI</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                    <th>Created by</th>
+                    <th>Last Updated by</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -33,27 +36,32 @@
             <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th>FN</th>
-                    <th>LN</th>
-                    <th>MN</th>
+                    <th>Grade</th>
+                    <th>Section</th>
+                    <th>Adviser</th>
+                    <th>LRN</th>
+                    <th>Parent</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Middle Name</th>
                     <th>Suffix</th>
-                    <th>Students</th>
-                    <th>Email</th>
-                    <th>Recovery Email</th>
                     <th>Sex</th>
-                    <th>Address</th>
                     <th>Birth Date</th>
                     <th>Status</th>
-                    <th>Created At</th>
-                    <th>Created By</th>
-                    <th>Updated At</th>
-                    <th>Last Updated By</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>BMI</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                    <th>Created by</th>
+                    <th>Last Updated by</th>
                 </tr>
             </tfoot>
         </table>
     </div>
 
-    {{-- Parent Account Details Modal --}}
+    {{-- Student Data Modal --}}
+    <!-- Nutrient Data Modal -->
     <div class="modal fade" id="viewStudentInfoModal" tabindex="-1" aria-labelledby="viewStudentInfoModal"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -67,18 +75,25 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="mb-3">
-                                <label for="email">Email</label>
-                                <p id="email" class="form-control"></p>
+                                <label for="parent">Parent</label>
+                                <p id="parent" class="form-control"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="recoveryEmail">Recovery Email</label>
-                                <p id="recoveryEmail" class="form-control"></p>
+                                <label for="LRN">LRN</label>
+                                <p id="LRN" class="form-control"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="students">Students</label>
-                                <div id="students"></div>
+                                <label for="grade">Grade</label>
+                                <p id="grade" class="form-control"></p>
                             </div>
-
+                            <div class="mb-3">
+                                <label for="section">Section</label>
+                                <p id="section" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="adviser">Adviser</label>
+                                <p id="adviser" class="form-control"></p>
+                            </div>
                         </div>
                         <div class="col-4">
                             <div class="mb-3">
@@ -109,8 +124,16 @@
                                 <p id="birthDate" class="form-control"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="address">Address</label>
-                                <p id="address" class="form-control"></p>
+                                <label for="height">Height</label>
+                                <p id="height" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="weight">Weight</label>
+                                <p id="weight" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="BMI">BMI</label>
+                                <p id="BMI" class="form-control"></p>
                             </div>
                         </div>
                     </div>
@@ -141,8 +164,28 @@
         </div>
     </div>
 
+    {{-- QR Modal --}}
+    <div class="modal fade" id="viewQRModal" tabindex="-1" aria-labelledby="viewQRModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewQRModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="foodID" id="foodID">
+                    <div class="mb-3">
+                        <img src="" alt="" id="imageQR" class="form-control" width="100"
+                            height="200" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- Profile Picture Modal --}}
-    <div class="modal fade" id="viewImgModal" tabindex="-1" aria-labelledby="viewImgModalLabel" aria-hidden="true">
+    <div class="modal fade" id="viewImgModal" tabindex="-1" aria-labelledby="viewImgModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -159,6 +202,7 @@
             </div>
         </div>
     </div>
+
     {{-- DataTable Resources Scripts --}}
     @include('partials.admin._DataTableScripts')
     {{-- Scripts --}}
@@ -209,10 +253,10 @@
                     [10, 15, 20, 25, 30, 50, 100]
                 ],
                 processing: true,
-                // serverSide: true,
+                serverSide: true,
                 ajax: {
                     type: "GET",
-                    url: "{{ route('guardians.index') }}"
+                    url: "{{ route('students.trash') }}"
                 },
                 // Footer Sorting
                 initComplete: function() {
@@ -239,79 +283,103 @@
                                 });
                         });
                 },
-                columns: [{
+                columns: [{ // 0
                         data: 'id',
                         name: 'id'
                     },
-                    {
-                        data: 'firstName',
-                        name: 'firstName',
+                    { // 1
+                        data: 'grade',
+                        name: 'grade'
                     },
-                    {
+                    { // 2
+                        data: 'section',
+                        name: 'section'
+                    },
+                    { // 3
+                        data: 'adviser',
+                        name: 'adviser'
+                    },
+                    { // 4
+                        data: 'LRN',
+                        name: 'LRN'
+                    },
+                    { // 5
+                        data: 'guardian.firstName',
+                        name: 'guardian.firstName',
+                        render: function(data, type, row) {
+                            return row.guardian.firstName + ' ' + row.guardian.lastName;
+                        }
+                    },
+                    { // 6
+                        data: 'firstName',
+                        name: 'firstName'
+                    },
+                    { // 7
                         data: 'lastName',
                         name: 'lastName'
                     },
-                    {
+                    { // 8
                         data: 'middleName',
                         name: 'middleName',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
-                    {
+                    { // 9
                         data: 'suffix',
                         name: 'suffix',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
-                    {
-                        data: 'students',
-                        name: 'students',
-                        render: function(data, type, row) {
-                            return $.map(data, function(value, i) {
-                                return value.firstName + ' ' + value.lastName;
-                            }).join('<br>');
-                        }
-                    },
-                    {
-                        data: 'user.email',
-                        name: 'user.email',
-                    },
-                    {
-                        data: 'user.recoveryEmail',
-                        name: 'user.recoveryEmail',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
-                    },
-                    {
+                    { // 10
                         data: 'sex',
                         name: 'sex',
                     },
-                    {
-                        data: 'address',
-                        name: 'address',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
-                    },
-                    {
+                    { // 11
                         data: 'birthDate',
                         name: 'birthDate',
                     },
-                    {
+                    { // 12
                         data: 'status',
                         name: 'status',
                         render: function(data, type, row) {
                             return data == 1 ? 'Active' : 'Inactive';
                         }
                     },
-                    {
+                    { // 13
+                        data: 'height',
+                        name: 'height',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 14
+                        data: 'weight',
+                        name: 'weight',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 15
+                        data: 'BMI',
+                        name: 'BMI',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 18
                         data: 'created_at_formatted',
                         name: 'created_at_formatted',
                     },
-                    {
+                    { // 19
+                        data: 'updated_at_formatted',
+                        name: 'updated_at_formatted',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 20
                         data: 'created_by_name.firstName',
                         name: 'created_by_name.firstName',
                         render: function(data, type, row) {
@@ -319,14 +387,7 @@
                                 .lastName;
                         }
                     },
-                    {
-                        data: 'updated_at_formatted',
-                        name: 'updated_at_formatted',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
-                    },
-                    {
+                    { // 21
                         data: 'updated_by_name',
                         name: 'updated_by_name',
                         render: function(data, type, row) {
@@ -334,7 +395,7 @@
                                 .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
                     },
-                    {
+                    { // 22
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -342,44 +403,66 @@
                     }
                 ],
                 columnDefs: [{
+                        target: 0,
+                        visible: false,
+                    },
+                    {
+                        target: 3,
+                        visible: false,
+                    },
+                    {
                         target: 4,
-                        visible: false,
-                    },
-                    {
-                        target: 7,
-                        visible: false,
-                    },
-                    {
-                        target: 8,
                         visible: false,
                     },
                     {
                         target: 9,
                         visible: false,
+                        searchable: false,
                     },
                     {
                         target: 10,
                         visible: false,
+                        searchable: false,
                     },
                     {
                         target: 11,
                         visible: false,
+                        searchable: false,
                     },
                     {
                         target: 12,
                         visible: false,
+                        searchable: false,
                     },
                     {
                         target: 13,
                         visible: false,
+                        searchable: false,
                     },
                     {
                         target: 14,
                         visible: false,
+                        searchable: false,
                     },
                     {
                         target: 15,
                         visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 16,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 17,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 18,
+                        visible: false,
+                        searchable: false,
                     },
                     {
                         targets: -1,
@@ -389,59 +472,56 @@
                 ],
 
             });
-
+            // View QR Modal
+            $('body').on('click', '.viewQR', function() {
+                var studentID = $(this).data('id');
+                $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
+                    $('#viewQRModalLabel').text('Image of ' + data.firstName + ' ' + data.lastName);
+                    $('#imageQR').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.QR);
+                    $('#viewQRModal').modal('show');
+                })
+            });
             // View Student Picture Modal
             $('body').on('click', '.viewImage', function() {
-                var guardianID = $(this).data('id');
-                $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
-                    $('#viewImgModalLabel').text('Image of ' + data.firstName + ' ' + data
-                    .lastName);
-                    data.image != null ? $('#image').attr('src', "{{ URL::asset('storage/') }}" +
-                        '/' + data.image) : $('#image').attr('src',
-                        "{{ URL::asset('storage/admin/userNoImage.png') }}");
+                var studentID = $(this).data('id');
+                $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
+                    $('#viewImgModalLabel').text('QR Code of ' + data.firstName + ' ' + data.lastName);
+                    $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.image);
                     $('#viewImgModal').modal('show');
                 })
             });
             // View Student Details Modal
-            $('body').on('click', '.viewParentDetails', function() {
-                var guardianID = $(this).data('id');
-                $.get("{{ url('admin/guardians/') }}" + '/' + guardianID + '/view', function(data) {
+            $('body').on('click', '.viewStudentDetails', function() {
+                var studentID = $(this).data('id');
+                $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
                     $.each(data, function(i, e) {
                         if (data[i] == null) data[i] = 'N/A';
                     });
-                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data
-                        .firstName + ' ' + data.lastName);
-                    $('#email').text(data.user.email);
-                    $('#recoveryEmail').text(data.user.recoveryEmail);
+                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data.firstName + ' ' + data.lastName);
+                    $('#parent').text(data.guardian.firstName + ' ' + data.guardian.lastName);
+                    $('#LRN').text(data.LRN);
+                    $('#grade').text(data.grade);
+                    $('#section').text(data.section);
+                    $('#adviser').text(data.adviser);
                     $('#firstName').text(data.firstName);
                     $('#lastName').text(data.lastName);
                     $('#middleName').text(data.middleName);
                     $('#suffix').text(data.suffix);
                     $('#sex').text(data.sex);
-                    $('#address').text(data.address);
                     $('#birthDate').text(data.birthDate);
+                    $('#height').text(data.height);
+                    $('#weight').text(data.weight);
+                    $('#BMI').text(data.BMI);
                     $('#created_at').text(data.created_at_formatted);
                     $('#updated_at').text(data.updated_at_formatted);
-                    $('#created_by').text(data.created_by_name.firstName + ' ' + data
-                        .created_by_name.lastName)
+                    $('#created_by').text(data.created_by_name.firstName + ' ' + data.created_by_name.lastName);
                     data.updated_by_name.firstName == null ? $('#updated_by').text('N/A') : $(
                         '#updated_by').text(data
                         .updated_by_name.firstName + ' ' + data
                         .updated_by_name.lastName);
                     $('#viewStudentInfoModal').modal('show');
-
-                    var studentsHTML = '';
-                    $('#students').html('');
-                    $.each(data.students, function(i, value) {
-                        studentsHTML += '<p>' + value.firstName + ' ' + value.lastName +
-                            '</p>';
-                    });
-                    $('#students').append(studentsHTML);
-
                 })
             });
-
-            // End of Scripts
         });
     </script>
 
