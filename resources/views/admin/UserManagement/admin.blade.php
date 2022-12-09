@@ -1,6 +1,7 @@
 <x-admin.layout>
     <h1 class="h3">Staff Account Management</h1>
     <a href="/admin/admins/create" class="btn btn-primary mb-2">Create Admin Account</a>
+    <a href="/admin/admins/trash" class="btn btn-primary mb-2">Archived Admin Accounts</a>
     {{-- DATABLE --}}
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}

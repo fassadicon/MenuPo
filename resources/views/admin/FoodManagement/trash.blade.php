@@ -1,10 +1,9 @@
 <x-admin.layout>
     
-    <h1 class="h3">Food Item Management</h1>
+    <h1 class="h3">Archived Food Items</h1>
     {{-- DATABLE --}}
     <div class="container">
-        <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Food Item</a></div>
-        <div align="left"><a href="/admin/foods/trash" class="btn btn-success mb-2">Archived Food Item</a></div>
+        <div align="left"><a href="/admin/foods/" class="btn btn-success mb-2">Back</a></div>
         <table class="table table-hover table-sm" id="foodTable">
 
             <thead>
@@ -216,7 +215,7 @@
                 serverSide: true,
                 ajax: {
                     type: "GET",
-                    url: "{{ route('food.index') }}",
+                    url: "{{ route('food.trash') }}",
                     // data: function(d) {
 
                     // },
@@ -264,10 +263,7 @@
                     },
                     { // 2
                         data: 'description',
-                        name: 'description',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
+                        name: 'description'
                     },
                     { // 3
                         data: 'type',
@@ -284,9 +280,6 @@
                     { // 6
                         data: 'philfct_id',
                         name: 'philfct_id',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
                     },
                     { // 7
                         data: 'servingSize',
@@ -295,44 +288,26 @@
                     { // 8
                         data: 'calcKcal',
                         name: 'calcKcal',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
                     },
                     { // 9
                         data: 'calcTotFat',
                         name: 'calcTotFat',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
                     },
                     { // 10
                         data: 'calcSatFat',
                         name: 'calcSatFat',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
                     },
                     { // 11
                         data: 'calcSugar',
                         name: 'calcSugar',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
                     },
                     { // 12
                         data: 'calcSodium',
                         name: 'calcSodium',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
                     },
                     { // 13
                         data: 'grade',
                         name: 'grade',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
                     },
                     { // 14
                         data: 'grade',
@@ -352,30 +327,23 @@
                         }
                     },
                     { // 15
-                        data: 'created_at_formatted',
-                        name: 'created_at_formatted',
+                        data: 'created_at',
+                        name: 'created_at',
                     },
                     { // 16
-                        data: 'updated_at_formatted',
-                        name: 'updated_at_formatted',
-                        render: function(data, type, row) {
-                            return data == null ? 'N/A' : data;
-                        }
+                        data: 'updated_at',
+                        name: 'updated_at',
                     },
                     { // 17
-                        data: 'created_by_name.firstName',
-                        name: 'created_by_name',
+                        data: 'admin',
+                        name: 'created_by',
                         render: function(data, type, row) {
-                            return row.created_by_name.firstName + ' ' + row.created_by_name.lastName;
+                            return data.firstName + ' ' + data.lastName;
                         }
                     },
                     { // 18
-                        data: 'updated_by_name.firstName',
-                        name: 'updated_by_name',
-                        render: function(data, type, row) {
-                            return row.updated_by_name.firstName == null ? 'N/A' : row
-                                .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
-                        }
+                        data: 'updated_by',
+                        name: 'updated_by'
                     },
                     { // 19
                         data: 'action',
@@ -478,19 +446,17 @@
             // View Food Data Modal
             $('body').on('click', '.viewFood', function() {
                 var foodID = $(this).data('id');
-                $.get("{{ url('admin/foods/') }}" + '/' + foodID + '/view', function(data) {
-                    $.each(data, function(i, e) {
-                        if (data[i] == null) data[i] = 'N/A';
-                    });
-                    $('#viewFoodInfoModalLabel').text('Nutritional Information of ' + data.name);
-                    $('#description').text(data.description);
-                    $('#servingSize').text(data.servingSize);
-                    $('#calcKcal').text(data.calcKcal);
-                    $('#calcTotFat').text(data.calcTotFat);
-                    $('#calcSatFat').text(data.calcSatFat);
-                    $('#calcSugar').text(data.calcSugar);
-                    $('#calcSodium').text(data.calcSodium);
-                    let grade = data.grade
+                $.get("{{ url('admin/foods/trash') }}" + '/' + foodID + '/viewTrash', function(data) {
+                    $('#viewFoodInfoModalLabel').text('Nutritional Information of ' + data.food
+                        .name);
+                    $('#description').text(data.food.description);
+                    $('#servingSize').text(data.food.servingSize);
+                    $('#calcKcal').text(data.food.calcKcal);
+                    $('#calcTotFat').text(data.food.calcTotFat);
+                    $('#calcSatFat').text(data.food.calcSatFat);
+                    $('#calcSugar').text(data.food.calcSugar);
+                    $('#calcSodium').text(data.food.calcSodium);
+                    let grade = data.food.grade
                     $('#grade').text(grade);
                     if (grade <= 0) {
                         $('#color').text('Gray');
@@ -503,13 +469,11 @@
                     } else {
                         $('#color').text('Ungraded');
                     }
-                    $('#created_at').text(data.created_at_formatted);
-                    $('#updated_at').text(data.updated_at_formatted);
-                    $('#created_by').text(data.created_by_name.firstName + ' ' + data.created_by_name.lastName);
-                    data.updated_by_name.firstName == null ? $('#updated_by').text('N/A') : $(
-                        '#updated_by').text(data
-                        .updated_by_name.firstName + ' ' + data
-                        .updated_by_name.lastName);
+                    $('#created_at').text(data.created_atFormatted);
+                    $('#updated_at').text(data.updated_atFormatted);
+                    $('#created_by').text(data.food.admin.firstName + ' ' + data.food.admin
+                        .lastName);
+                    $('#updated_by').text(data.updatedByAdminName);
                     $('#viewFoodInfoModal').modal('show');
 
                 })
@@ -518,8 +482,9 @@
             $('body').on('click', '.viewFoodImg', function() {
                 var foodID = $(this).data('id');
                 $.get("{{ url('admin/foods/') }}" + '/' + foodID + '/view', function(data) {
-                    $('#viewFoodImgModalLabel').text('Image of ' + data.name);
-                    $('#imageFood').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.image);
+                    $('#viewFoodImgModalLabel').text('Image of ' + data.food.name);
+                    $('#imageFood').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.food
+                        .image);
                     $('#viewFoodImgModal').modal('show');
                 })
             });

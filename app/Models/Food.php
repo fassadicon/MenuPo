@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Food extends Model
 {
     use HasFactory;
-
+    use SoftDeletes;
     protected $table = 'foods';
     // Relationship To User
     public function admin() {
@@ -38,4 +39,14 @@ class Food extends Model
     {
         return $this->hasOne(Menu::class, 'food_id', 'id');
     }
+
+    // public static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::deleting(function($food) {
+    //         $food->philfct()->admin()->delete();
+    //     });
+
+    // }
 }

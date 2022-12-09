@@ -1,8 +1,7 @@
 <x-admin.layout>
-    <h1 class="h3">Parent User Management</h1>
+    <h1 class="h3">Archived Parent Users</h1>
     <a href="/admin/guardians/create" class="btn btn-primary mb-2">Create Parent Account</a>
-    <a href="/admin/guardians/trash" class="btn btn-primary mb-2">Inactive Parent Accounts</a>
-    
+    <a href="/admin/guardians/" class="btn btn-primary mb-2">Back</a>
     {{-- DATABLE --}}
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
@@ -212,7 +211,7 @@
                 // serverSide: true,
                 ajax: {
                     type: "GET",
-                    url: "{{ route('guardians.index') }}"
+                    url: "{{ route('guardians.trash') }}"
                 },
                 // Footer Sorting
                 initComplete: function() {
