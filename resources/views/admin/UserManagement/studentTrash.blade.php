@@ -256,7 +256,7 @@
                 serverSide: true,
                 ajax: {
                     type: "GET",
-                    url: "{{ route('students.trash') }}"
+                    url: "{{ route('student.trash') }}"
                 },
                 // Footer Sorting
                 initComplete: function() {
