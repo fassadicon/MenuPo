@@ -121,12 +121,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
       //Point of sale
     // Route::get('/pos', [POSController::class, 'index']);
     Route::get('/pos/{sid}', [POSController::class, 'index']);
-    Route::post('/add-to-cart', [POSController::class, 'addtocart']);
-    Route::post('/update-cart-add', [POSController::class, 'add']);
-    Route::post('/update-cart-minus', [POSController::class, 'minus']);
-    Route::post('/update-cart-delete', [POSController::class, 'delete']);
-    Route::post('/pos/payment', [POSController::class, 'pospayment'])
-            ->name(name:'pos.order');
+    Route::post('/pos/add-to-cart', [POSController::class, 'addtocart']);
+    Route::post('/pos/update-cart-add', [POSController::class, 'add']);
+    Route::post('/pos/update-cart-minus', [POSController::class, 'minus']);
+    Route::post('/pos/update-cart-delete', [POSController::class, 'delete']);
+    Route::post('/pos/payment/{sid}', [POSController::class, 'pospayment']);
     // Show Scanner Section
     Route::get('/orders/scanner', [ScannerController::class, 'index']);
     // Scan QR Code
