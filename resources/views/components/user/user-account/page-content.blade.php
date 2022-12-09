@@ -3,6 +3,7 @@
 @props(['purchases'])
 @props(['studs'])
 @props(['grade'])
+@props(['parent'])
 
 @php
     $pending = 0;
@@ -42,7 +43,7 @@
                   </a>
                 </div>
                 <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Greish_007</h1>
-                <h3 class="text-gray-600 font-lg text-semibold leading-6">Post Malone</h3>
+                <h3 class="text-gray-600 font-lg text-semibold leading-6">{{$parent->firstName . ' ' . $parent->lastName }}</h3>
                 <ul
                     class="bg-yellow-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                     <li class="flex items-center py-3">
@@ -52,7 +53,7 @@
                     </li>
                     <li class="flex items-center py-3">
                         <span>Account Created</span>
-                        <span class="ml-auto">July 69, 1993</span>
+                        <span class="ml-auto">{{$parent->created_at}}</span>
                     </li>
                 </ul>
             </div>
@@ -89,7 +90,6 @@
 
                 <p class="text-lg bg-white p-4 font-semibold text-gray-900 text-xl">Order history Grade Chart</p>
                 <div id="piechart" class="w-full h-full">
-
                 </div>
             </div>
             {{-- End of pie chart --}}
@@ -165,49 +165,55 @@
                     <div class="grid md:grid-cols-2 text-sm">
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">First Name</div>
-                            <div class="px-4 py-2">Post </div>
+                            <div class="px-4 py-2">{{$parent->firstName}}</div>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Middle Name</div>
-                            <div class="px-4 py-2">Andrew</div>
+                            <div class="px-4 py-2">{{$parent->middleName}}</div>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Last Name</div>
-                            <div class="px-4 py-2">Malone</div>
+                            <div class="px-4 py-2">{{$parent->lastName}}</div>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Suffix</div>
-                            <div class="px-4 py-2">jr</div>
+                            <div class="px-4 py-2">{{$parent->suffix}}</div>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Gender</div>
-                            <div class="px-4 py-2">M</div>
+                            <div class="px-4 py-2">{{$parent->sex}}</div>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Contact No.</div>
-                            <div class="px-4 py-2">09201284040</div>
+                            <div class="px-4 py-2">no contact</div>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Current Address</div>
-                            <div class="px-4 py-2">Makati, Metro Manila</div>
+                            <div class="px-4 py-2">{{$parent->address}}</div>
                         </div>
                         
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Email.</div>
                             <div class="px-4 py-2 break-words">
                             
-                                <a class="text-blue-800" href="mailto:jane@example.com">posty@gmail.com</a>
+                                <a class="text-blue-800" href="mailto:jane@example.com">{{auth()->user()->email}}</a>
                             </div>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Birthday</div>
-                            <div class="px-4 py-2">July 69, 1990</div>
+                            <div class="px-4 py-2">{{$parent->birthDate}}</div>
                         </div>
                     </div>
                 </div>
-                <button
-                    class="block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                    Edit Information</button>
+                <a class="text-center" href="/edit-info">
+                    <div
+                        class="block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        Edit Information
+                    </div>
+                </a>
+                
+                
+               
             </div>
 
             <div class="bg-white p-3 shadow-xl rounded-sm">
@@ -230,11 +236,11 @@
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Password</div>
-                            <div class="px-4 py-2">Name</div>
+                            <div class="px-4 py-2">************</div>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="px-4 py-2 font-semibold">Recovery Email</div>
-                            <div class="px-4 py-2">Name</div>
+                            <div class="px-4 py-2">{{auth()->user()->recoveryEmail}}</div>
                         </div>      
                     </div>
                 </div>

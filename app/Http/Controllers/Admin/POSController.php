@@ -17,10 +17,10 @@ class POSController extends Controller
 {
     public $totKcal, $totfat, $totsatfat, $totsugar, $totsodium;
 
-    public function index(){
-        
+    public function index($id){
         return view('admin.OrderManagement.pos', [
-            'foods' => Food::all()
+            'foods' => Food::all(),
+            'studentID' => $id
         ]);
     }
 

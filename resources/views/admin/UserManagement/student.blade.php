@@ -381,7 +381,7 @@
                     },
                     { // 20
                         data: 'created_by_name.firstName',
-                        name: 'created_by_name.firstName',
+                        name: 'created_by_name',
                         render: function(data, type, row) {
                             return row.created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;

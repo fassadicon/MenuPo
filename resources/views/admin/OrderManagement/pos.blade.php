@@ -136,6 +136,7 @@
 </section>
 
 <div id="tsum-tabs" class="flex flex-row">
+    <h1 id="studentID">{{ $studentID }}</h1>
 
     <main class="float left">
 
@@ -186,7 +187,7 @@
 
 
     </main>
-    <x-user.pos.sidebar-cart />
+    <x-user.pos.sidebar-cart :studentID="$studentID"/>
 </div>
 </x-admin.layout>
    

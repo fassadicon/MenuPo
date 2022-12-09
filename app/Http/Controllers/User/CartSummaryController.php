@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\Food;
 use App\Models\Student;
+use App\Models\Guardian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -13,8 +14,10 @@ class CartSummaryController extends Controller
 {
     public function index(Student $anak){
         
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
-        $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
 
         return view('user.cart-summary', [
             'notifications' => $notifications,

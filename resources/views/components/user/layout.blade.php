@@ -28,6 +28,8 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
         />
+      {{-- Flowbite JS--}}
+      <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
 
       {{-- For google charts --}}
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -204,33 +206,27 @@
               </ul>
 
               <ul class="hidden md:flex space-x-6 leading-9 font-bold text-secondary">
-                <li class="flex relative group">
+                <li class="allNotifs flex relative group">
                   <a href="#" class="hover:text-black"><i class="fa-solid fa-envelope fa-fw fa-xl"></i></a>
-                  <i class="fa-solid fa-chevron-down fa-2xs pt-3"></i>
-                  <ul class="absolute bg-white p-3 w-96 -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
+                 @if ($notifs != null)
+                  <i class="fa-solid fa-circle text-red-700"></i>
+                 @endif
+                  <ul class="absolute bg-white p-3 w-96  -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
                      <h3 class="text-xl">Notifications</h3>
-                      @if ($notifs == null)
-                        <div class="if-null text-center">
-                            <p>No notifications</p>
-                        </div>
-                      @else
-                        @foreach ($notifs as $notif)
-                          <x-user.notif-modal.notif-modal :notif="$notif" />
-                        @endforeach
-                      @endif
-                      {{-- @if(empty($notifs))
+                     <div class="h-96 overflow-y-scroll" >
+                        @if ($notifs == null)
                           <div class="if-null text-center">
                               <p>No notifications</p>
                           </div>
-                      @else
-                          <div class="overflow-y-scroll h-80">
-                              @foreach ($notifs as $notif)
-                                  <x-user.notif-modal.notif-modal :notif="$notif" />
-                              @endforeach
-                          </div>
-                      @endif --}}
+                        @else
+                          @foreach ($notifs as $notif)
+                            <x-user.notif-modal.notif-modal :notif="$notif" />
+                          @endforeach
+                        @endif
+                      </div>
+                      
                       <div class="del-all">
-                        <button class="text-red-500" onclick="deleteAll()">
+                        <button class="deleteAll text-red-500">
                           <span>Delete all</span>
                         </button>
                       </div>
@@ -264,7 +260,30 @@
             
             <!-- Mobile menu icon -->
             <div class="flex relative-group ml-auto md:hidden">
-              <a href="#" class="hover:text-white text-secondary"><i class="fa-solid fa-envelope fa-fw fa-xl "></i></a>
+              {{-- <li class="allNotifs flex relative group">
+                <a href="#" class="hover:text-black"><i class="fa-solid fa-envelope fa-fw fa-xl"></i></a>
+                <i class="fa-solid fa-chevron-down fa-2xs pt-3"></i>
+                <ul class="absolute bg-white p-3 w-80 h-96 overflow-y-scroll -left-60 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
+                   <h3 class="text-xl">Notifications</h3>
+                   <div class="">
+                      @if ($notifs == null)
+                        <div class="if-null text-center">
+                            <p>No notifications</p>
+                        </div>
+                      @else
+                        @foreach ($notifs as $notif)
+                          <x-user.notif-modal.notif-modal :notif="$notif" />
+                        @endforeach
+                      @endif
+                   </div>
+        
+                    <div class="del-all">
+                      <button class="deleteAll text-red-500">
+                        <span>Delete all</span>
+                      </button>
+                    </div>
+                </ul>
+              </li> --}}
             </div>
             <button id="mobile-icon" onclick="changeMyColor()" class="md:hidden w-12 h-12 mx-2 border-4 rounded-full hover:border-blue-600">
               <img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="rounded-full"> <i onclick="changeIcon(this)" class="fa-solid fa-bars invisible"></i>
@@ -423,36 +442,33 @@
         }
       </script>
 
-      <script> 
-        //For add button
-        $(document).on('click', 'delete-all-btn',  function(e){
-            e.preventDefault();
 
-            // var food_id = $(this).val();
+      <script>
+          //For deleting all notifs
+          $(document).on('click', '.deleteAll',  function(e){
+                e.preventDefault();
 
-            console.log('sample');
+                // console.log('food_id');
 
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     }
-            // });
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
-            // $.ajax({
-            //     method: "POST",
-            //     url: "update-cart-add",
-            //     data: {"food-id":food_id},
-            //     success: function(response){
-            //         //window.location.reload();
-            //         $('.cartItems').load(location.href + " .cartItems");
-            //         $('.cartsummary').load(location.href + " .cartsummary");
-
-            //     }
-            // })
-        });
+                $.ajax({
+                    method: "POST",
+                    url: 'deleteAllNotifs',
+                    data: {"food-id":1},
+                    success: function(response){
+                      $('.allNotifs').load(location.href + " .allNotifs");
+                    }
+                })
+            });
       </script>
 
-
+      {{-- Flowbite JS --}}
+      <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
       
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>

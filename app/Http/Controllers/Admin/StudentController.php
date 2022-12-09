@@ -54,7 +54,8 @@ class StudentController extends Controller
         return view('admin.UserManagement.student', compact('students'));
     }
 
-    public function view($id) {
+    public function view($id)
+    {
         $student = Student::where('id', $id)->first()->load('guardian');
         $student['created_at_formatted'] = Carbon::parse($student->created_at)->format('M d, Y');
         $student['updated_at_formatted'] = Carbon::parse($student->updated_at)->format('M d, Y');
@@ -70,11 +71,12 @@ class StudentController extends Controller
     }
 
     public function store(StoreStudentRequest $request)
-    {   
+    {
         $student = $request->safe()->merge([
             'status' => 1,
             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
-            ])->except(['parent']);
+        ])->except(['parent']);
+        $student['BMI'] = round($request->weight / pow($request->height / 100, 2), 2);
         if ($request->hasFile('image'))
             $student['image'] = $request->file('image')->store('admin/students', 'public');
         $parentName = $request->parent;
@@ -88,15 +90,18 @@ class StudentController extends Controller
         return redirect('admin/students');
     }
 
-    public function edit(Student $student) {
+    public function edit(Student $student)
+    {
         return view('admin.UserManagement.editStudent', ['student' => $student]);
     }
 
-    public function update(UpdateStudentRequest $request, Student $student) {
+    public function update(UpdateStudentRequest $request, Student $student)
+    {
         $studentCredentials = $request->safe()->merge([
             'status' => 1,
             'updated_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
-            ])->except(['parent']);
+        ])->except(['parent']);
+        $studentCredentials['BMI'] = round($request->weight / pow($request->height / 100, 2), 2);
         if ($request->hasFile('image'))
             $studentCredentials['image'] = $request->file('image')->store('admin/students', 'public');
         $parentName = $request->parent;

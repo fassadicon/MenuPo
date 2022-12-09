@@ -6,6 +6,7 @@ use Carbon\Carbon;
 
 use App\Models\Food;
 use App\Models\Order;
+use App\Models\Student;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,11 +26,14 @@ class ScannerController extends Controller
         ->whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))
         ->get();
 
-        if ($orders->isEmpty()) {
-            return response()->json(['error' => 'You have no order/s for today'], 404); // Status code here
-        } else {
-            return $orders;
-        }
+        $studentID = Student::where('id', $id)->get(['id'])->value('id');
+
+        return response()->json(['purchase' => $orders, 'studentID' => $studentID]);
+        // if ($orders->isEmpty()) {
+        //     return $studentID; // Status code here
+        // } else {
+        //     return $orders;
+        // }
     }
 
 

@@ -7,8 +7,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\POSController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\FoodController;
-
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\User\HealthController;
@@ -30,7 +30,11 @@ use App\Http\Controllers\Admin\CompletedController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PurchasesController;
 use App\Http\Controllers\User\CartSummaryController;
+use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
+use App\Http\Controllers\Admin\CompositionsReportController;
+use App\Http\Controllers\Admin\ImportUsersController;
+use App\Http\Controllers\Admin\StudentNutrientReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,7 +127,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // <----------- ORDER CONTROLLER -----------> //
       //Point of sale
-    Route::get('/pos', [POSController::class, 'index']);
+    // Route::get('/pos', [POSController::class, 'index']);
+    Route::get('/pos/{sid}', [POSController::class, 'index']);
     Route::post('/add-to-cart', [POSController::class, 'addtocart']);
     Route::post('/update-cart-add', [POSController::class, 'add']);
     Route::post('/update-cart-minus', [POSController::class, 'minus']);
@@ -198,12 +203,31 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/students/{id}/delete', [StudentController::class, 'delete'])->name('student.delete');
     Route::get('/student/trash', [StudentController::class, 'trash'])->name('student.trash');
     Route::get('/students/{id}/restore', [StudentController::class, 'restore'])->name('student.restore');
+    // Imports
+    Route::get('/imports', [ImportUsersController::class, 'index']);
+    Route::post('/imports/upload', [ImportUsersController::class, 'import'])->name('imports.upload');
+
+
+<<<<<<< HEAD
+    Route::get('/students/{id}/delete', [StudentController::class, 'delete'])->name('student.delete');
+    Route::get('/student/trash', [StudentController::class, 'trash'])->name('student.trash');
+    Route::get('/students/{id}/restore', [StudentController::class, 'restore'])->name('student.restore');
+=======
+    // Imports
+    Route::get('/imports', [ImportUsersController::class, 'index']);
+    Route::post('/imports/upload', [ImportUsersController::class, 'import'])->name('imports.upload');
+>>>>>>> 274a070d3792f1c9c2b193878ada2552d82e09b9
     
     // REPORTS, GRAPHS, and INFORMATION
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');
     Route::get('/reports/countFoodsBasedInColor/{type}', [ReportsController::class, 'countFoodsBasedInColor'])->name('reports.countFoodsBasedInColor');
     Route::get('/reports/aveGradePerType/{type}', [ReportsController::class, 'aveGradePerType'])->name('reports.aveGradePerType');
     Route::get('/reports/suggestions', [ReportsController::class, 'mostSuggested'])->name('reports.mostSuggested');
+
+    // Survey
+    Route::get('/reports/survey', [SurveyReportController::class, 'index']);
+    Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
+    Route::get('/reports/nutrientConsumption', [StudentNutrientReportController::class, 'index']);
 });
 
 
@@ -218,64 +242,62 @@ Route::get('/autocomplete-search-parents', [AutocompleteController::class, 'getP
 Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
 
 
-//User /////////////////////////////////////////////////////////////////
+
+// All User Controller //
+Route::middleware('user')->group(function () {
 
     //Home
-    Route::get('user/home', [HomeController::class, 'index']);
+    Route::get('/user/home', [HomeController::class, 'index']);
+    Route::post('/user/deleteAllNotifs', [HomeController::class, 'deleteAllNotifs']);
 
     //Health Module
-    Route::get('/user/health/{anak}', [HealthController::class, 'index'])
-        ->name(name:'health.index');
-    Route::post('/user/health/remove-restrict', [HealthController::class, 'removeRestrict'])
-        ->name(name:'health.remove-restrict');
-    
+    Route::get('/user/health/{anak}', [HealthController::class, 'index'])->name(name:'health.index');
+    Route::post('/user/health/remove-restrict', [HealthController::class, 'removeRestrict'])->name(name:'health.remove-restrict');
+    Route::get('/health/edit-info/{anak}', [HealthController::class, 'edit']);
+    Route::post('/health/saveUpdate', [HealthController::class, 'saveUpdate']);
+
     //User-Account Page
-    Route::get('user/user-account', [UserAccController::class, 'index']);
+    Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name:'user.account');
+    Route::get('/edit-info', [UserAccController::class, 'edit']);
+    Route::post('/saveUpdate', [UserAccController::class, 'saveUpdate']);
+    
 
     //Menu Page
-    Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])
-        ->name(name:'menu.index');
+    Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])->name(name:'menu.index');
 
-    Route::get('/user/menu-landing', [UserMenuController::class, 'landing'])
-        ->name(name:'menu.landing');
+    Route::get('/user/menu-landing', [UserMenuController::class, 'landing'])->name(name:'menu.landing');
     Route::post('/user/menu/addtocart', [UserMenuController::class, 'addtocart']);
     Route::post('/user/menu/addtorestrict', [UserMenuController::class, 'addtorestrict']);
 
     //Cart Summarry
-    Route::get('user/cart-summary/{anak}', [CartSummaryController::class, 'index'])
-        ->name(name:'cart-summary.index');
+    Route::get('/user/cart-summary/{anak}', [CartSummaryController::class, 'index'])->name(name:'cart-summary.index');
     Route::post('/user/cart-summary/update-cart-add', [CartSummaryController::class, 'add']);
     Route::post('/user/cart-summary/update-cart-minus', [CartSummaryController::class, 'minus']);
     Route::post('/user/cart-summary/update-cart-delete', [CartSummaryController::class, 'delete']);
 
     //Survey Page
-    Route::get('users/survey', [SurveyController::class, 'index']);
-    Route::post('/users/survey-submit', [SurveyController::class, 'store'])
-    ->name(name:'survey.store');
+    Route::get('/users/survey', [SurveyController::class, 'index']);
+    Route::post('/users/survey-submit', [SurveyController::class, 'store'])->name(name:'survey.store');
 
     //Payment Page
     Route::post('/user/payment', [PaymentController::class, 'index']);
-        //Receipt
-        Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
-        Route::get('user/receipt', [PaymentController::class, 'receipt']);
-
-    //Point of sale
-    Route::get('/pos', [POSController::class, 'index']);
-
-    Route::post('/add-to-cart', [POSController::class, 'addtocart']);
-    Route::post('/update-cart-add', [POSController::class, 'add']);
-    Route::post('/update-cart-minus', [POSController::class, 'minus']);
-    Route::post('/update-cart-delete', [POSController::class, 'delete']);
-    Route::post('/pos/payment', [POSController::class, 'pospayment'])
-            ->name(name:'pos.order');
+    //Receipt
+    Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
+    Route::get('user/receipt', [PaymentController::class, 'receipt']);
     
+    // Route::get('/pos', [POSController::class, 'index']);
+    // Route::post('/add-to-cart', [POSController::class, 'addtocart']);
+    // Route::post('/update-cart-add', [POSController::class, 'add']);
+    // Route::post('/update-cart-minus', [POSController::class, 'minus']);
+    // Route::post('/update-cart-delete', [POSController::class, 'delete']);
+    // Route::post('/pos/payment', [POSController::class, 'pospayment'])->name(name:'pos.order');
+
     //New Post
-    Route::get('newpost', [NewPostController::class, 'index']);
-    Route::get('newpost/view', [NewPostController::class, 'viewpost']);
-    Route::post('newpost-store', [NewPostController::class, 'store']);
+    // Route::get('newpost', [NewPostController::class, 'index']);
+    // Route::get('newpost/view', [NewPostController::class, 'viewpost']);
+    // Route::post('newpost-store', [NewPostController::class, 'store']);
 
     // Sample
     Route::get('sample', [HomeController::class, 'sample']);
 
-    
-
+});
