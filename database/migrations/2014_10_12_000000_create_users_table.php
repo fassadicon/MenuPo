@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('role')->default('0');
             $table->string('password');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
             // $table->unsignedBigInteger('created_by');
             // $table->foreign('created_by')->references('id')->on('admins');

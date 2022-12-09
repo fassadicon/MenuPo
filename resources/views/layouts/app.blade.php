@@ -7,23 +7,27 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'MenuPo') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/d00886c359.js" crossorigin="anonymous"></script>
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="{{ asset('admin/assets/css/loginStyle.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <p class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset('admin/assets/img/favicon-32x32.png') }}" alt="">
                     {{ config('app.name', 'MenuPo') }}
-                </a>
-                <p>Titeng baluktot ugh</p>
+                </p>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -40,15 +44,21 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <button id="navbarbutton" class="button login__submit">
+                                        <i class="button__icon fa-solid fa-right-to-bracket"></i>
+                                        <a id="navbarhead" class="button__text" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </button>
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <button id="navbarbutton" class="button login__submit">
+                                        <i class="button__icon fa-solid fa-circle-user"></i>
+                                        <a id="navbarhead" class="button__text" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </button>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -74,8 +84,23 @@
         </nav>
 
         <main class="py-4">
+            <div class="main-content">
+
+            </div>
             @yield('content')
         </main>
+        <footer id="footer" class="footer">
+            <div class="bottom-details">
+              <div class="bottom_text">
+                <span class="copyright_text">© 2022 School Name | <a id="bottomLink" href="#"> Terms of Use </a> | <a id="bottomLink" href="#"> Privacy Statement </a></span>
+                <span class="policy_terms">
+                  <a href="#">Contact Us at: 09613326890 (email: sample@gmail.com)</a>
+                  
+                </span>
+              </div>
+            </div>
+          </footer>
     </div>
+  
 </body>
 </html>

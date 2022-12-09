@@ -114,4 +114,51 @@ class AdminController extends Controller
         $admin->update($adminCredentials);
         return redirect('/admin/admins');
     }
+
+    public function delete($id) 
+    {
+        $admin = Admin::where('id', $id)->first();
+
+        $admin->delete();
+        
+        return redirect()->back();
+    }
+
+    public function trash (Request $request)
+    {
+        // Get Admin Accounts
+        $admins = Admin::onlyTrashed()->get()->load('user');
+        foreach ($admins as $admin) {
+            $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
+            $admin->updated_by == null ? $admin['updated_by_name'] = 'N/A' : $admin['updated_by_name'] = Admin::where('id', $admin->updated_by)->first();
+            $admin['created_at_formatted'] = Carbon::parse($admin->created_at)->format('M d, Y');
+            $admin['updated_at_formatted'] = Carbon::parse($admin->updated_at)->format('M d, Y');
+        }
+        // Return Data Tables
+        if ($request->ajax()) {
+            return DataTables::of($admins)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    // View Image Button
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
+                    // View Detailed Information Button
+                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewAdminDetails"><i class="bi bi-info-lg"></i></a>';
+                    // Edit Information Button
+                    // $btn = $btn . ' <a href="/admin/admins/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';
+                    // Archive Account Button
+                    $btn = $btn . ' <a href="/admin/admins/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreFood btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('admin.UserManagement.adminTrash', compact('admins'));
+    }
+
+    public function restore($id)
+    {
+        $admin = Admin::where('id', $id)->restore();
+
+        return redirect()->back();
+    }
 }
