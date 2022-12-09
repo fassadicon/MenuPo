@@ -207,17 +207,6 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/imports', [ImportUsersController::class, 'index']);
     Route::post('/imports/upload', [ImportUsersController::class, 'import'])->name('imports.upload');
 
-
-<<<<<<< HEAD
-    Route::get('/students/{id}/delete', [StudentController::class, 'delete'])->name('student.delete');
-    Route::get('/student/trash', [StudentController::class, 'trash'])->name('student.trash');
-    Route::get('/students/{id}/restore', [StudentController::class, 'restore'])->name('student.restore');
-=======
-    // Imports
-    Route::get('/imports', [ImportUsersController::class, 'index']);
-    Route::post('/imports/upload', [ImportUsersController::class, 'import'])->name('imports.upload');
->>>>>>> 274a070d3792f1c9c2b193878ada2552d82e09b9
-    
     // REPORTS, GRAPHS, and INFORMATION
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');
     Route::get('/reports/countFoodsBasedInColor/{type}', [ReportsController::class, 'countFoodsBasedInColor'])->name('reports.countFoodsBasedInColor');
