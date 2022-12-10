@@ -24,7 +24,7 @@
 
                 {{ $averageRecommendedNutrientConsumptionChart->script() }}
             </div>
-            <h1>Count: {{ $test }}</h1> 
+            {{-- <h1>Count: {{ $test }}</h1> 
             <div class="col-6">
                 @foreach ($collection as $item)
                     <h1>Purchase ID: {{ $item->id }}</h1>
@@ -33,12 +33,12 @@
                     <h1>Total Kcal: {{ $item->totalKcal }}</h1>
                     <h1>Percantage Consumed: {{ $item->totalKcal }}</h1>
                 @endforeach
-            </div>
-            <div class="col-6">
+            </div> --}}
+            {{-- <div class="col-6">
                 @foreach ($testArray as $item)
                     <h1>Purchase ID: {{ $item }}</h1>
                 @endforeach
-            </div>
+            </div> --}}
 
         </div>
     </div>
