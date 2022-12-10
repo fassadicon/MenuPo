@@ -2935,8 +2935,25 @@ class DatabaseSeeder extends Seeder
                 'type' => 1,
                 'served_by' => 2,
                 'created_at' => '2022-11-27'
-            ]
-
+            ],
+            // [
+            //     'id' => 26,
+            //     'parent_id' => 1,
+            //     'student_id' => 1,
+            //     'totalAmount' => 45.00,
+            //     'totalKcal' => 441,
+            //     'totalTotFat' => 6.6,
+            //     'totalSatFat' => 5.41,
+            //     'totalSugar' => 69.8,
+            //     'totalSodium' => 127,
+            //     'payment_id' => 1,
+            //     'claimStatus' => 0,
+            //     'type' => 0,
+            //     'served_by' => 2,
+            //     'created_at' => '2022-11-25'
+            // ],
+            
+                
         ];
         Purchase::insert($purchases);
 
@@ -3639,8 +3656,427 @@ class DatabaseSeeder extends Seeder
                 'sugar' => 0.7,
                 'sodium' => 520
             ]
-
-
+            // [
+            //     'id' => 57,
+            //     'purchase_id' => 26,
+            //     'food_id' => 16,
+            //     'quantity' => 1,
+            //     'amount' => 15.00,
+            //     'kcal' => 259,
+            //     'totFat' => 6.4,
+            //     'satFat' => 5.41,
+            //     'sugar' => 28.8,
+            //     'sodium' => 89
+            // ],
+            // [
+            //     'id' => 58,
+            //     'purchase_id' => 26,
+            //     'food_id' => 17,
+            //     'quantity' => 1,
+            //     'amount' => 10.00,
+            //     'kcal' => 90,
+            //     'totFat' => 0.2,
+            //     'satFat' => 0,
+            //     'sugar' => 21.6,
+            //     'sodium' => 14
+            // ],
+            // [
+            //     'id' => 59,
+            //     'purchase_id' => 26,
+            //     'food_id' => 58,
+            //     'quantity' => 1,
+            //     'amount' => 20.00,
+            //     'kcal' => 92,
+            //     'totFat' => 0,
+            //     'satFat' => 0,
+            //     'sugar' => 19.4,
+            //     'sodium' => 24
+            // ],
+            // [
+            //     'id' => 60,
+            //     'purchase_id' => 27,
+            //     'food_id' => 46,
+            //     'quantity' => 1,
+            //     'amount' => 15.00,
+            //     'kcal' => 489,
+            //     'totFat' => 24.1,
+            //     'satFat' => 12.66,
+            //     'sugar' => 2.5,
+            //     'sodium' => 672
+            // ],
+            // [
+            //     'id' => 61,
+            //     'purchase_id' => 27,
+            //     'food_id' => 38,
+            //     'quantity' => 1,
+            //     'amount' => 12.00,
+            //     'kcal' => 71,
+            //     'totFat' => 0.2,
+            //     'satFat' => 0.13,
+            //     'sugar' => 6,
+            //     'sodium' => 61
+            // ],
+            // [
+            //     'id' => 62,
+            //     'purchase_id' => 28,
+            //     'food_id' => 37,
+            //     'quantity' => 1,
+            //     'amount' => 20.00,
+            //     'kcal' => 97,
+            //     'totFat' => 0.2,
+            //     'satFat' => 0.11,
+            //     'sugar' => 4.8,
+            //     'sodium' => 13
+            // ],
+            // [
+            //     'id' => 63,
+            //     'purchase_id' => 28,
+            //     'food_id' => 33,
+            //     'quantity' => 1,
+            //     'amount' => 30.00,
+            //     'kcal' => 591,
+            //     'totFat' => 36.5,
+            //     'satFat' => 7.25,
+            //     'sugar' => 0,
+            //     'sodium' => 472
+            // ],
+            // [
+            //     'id' => 64,
+            //     'purchase_id' => 28,
+            //     'food_id' => 25,
+            //     'quantity' => 1,
+            //     'amount' => 40.00,
+            //     'kcal' => 408,
+            //     'totFat' => 29,
+            //     'satFat' => 10.25,
+            //     'sugar' => 0,
+            //     'sodium' => 340
+            // ],
+            // [
+            //     'id' => 65,
+            //     'purchase_id' => 29,
+            //     'food_id' => 52,
+            //     'quantity' => 1,
+            //     'amount' => 15.00,
+            //     'kcal' => 502,
+            //     'totFat' => 27,
+            //     'satFat' => 20.26,
+            //     'sugar' => 0.2,
+            //     'sodium' => 729
+            // ],
+            // [
+            //     'id' => 66,
+            //     'purchase_id' => 29,
+            //     'food_id' => 57,
+            //     'quantity' => 1,
+            //     'amount' => 20.00,
+            //     'kcal' => 82,
+            //     'totFat' => 0.2,
+            //     'satFat' => 0,
+            //     'sugar' => 18.8,
+            //     'sodium' => 8
+            // ],
+            // [
+            //     'id' => 67,
+            //     'purchase_id' => 30,
+            //     'food_id' => 24,
+            //     'quantity' => 1,
+            //     'amount' => 25.00,
+            //     'kcal' => 70,
+            //     'totFat' => 2.8,
+            //     'satFat' => 1.3,
+            //     'sugar' => 4,
+            //     'sodium' => 354
+            // ],
+            // [
+            //     'id' => 68,
+            //     'purchase_id' => 31,
+            //     'food_id' => 20,
+            //     'quantity' => 1,
+            //     'amount' => 25.00,
+            //     'kcal' => 70,
+            //     'totFat' => 2.8,
+            //     'satFat' => 1.3,
+            //     'sugar' => 4,
+            //     'sodium' => 354
+            // ],
+            // [
+            //     'id' => 69,
+            //     'purchase_id' => 31,
+            //     'food_id' => 13,
+            //     'quantity' => 1,
+            //     'amount' => 15.00,
+            //     'kcal' => 117,
+            //     'totFat' => 4.4,
+            //     'satFat' => 1.34,
+            //     'sugar' => 2.9,
+            //     'sodium' => 1208
+            // ],
+            // [
+            //     'id' => 70,
+            //     'purchase_id' => 32,
+            //     'food_id' => 12,
+            //     'quantity' => 1,
+            //     'amount' => 40.00,
+            //     'kcal' => 206,
+            //     'totFat' => 6.4,
+            //     'satFat' => 2.2,
+            //     'sugar' => 20.2,
+            //     'sodium' => 1037
+            // ],
+            // [
+            //     'id' => 71,
+            //     'purchase_id' => 32,
+            //     'food_id' => 10,
+            //     'quantity' => 1,
+            //     'amount' => 25.00,
+            //     'kcal' => 298,
+            //     'totFat' => 16.7,
+            //     'satFat' => 4.9,
+            //     'sugar' => 1.2,
+            //     'sodium' => 291
+            // ],
+            // [
+            //     'id' => 72,
+            //     'purchase_id' => 32,
+            //     'food_id' => 18,
+            //     'quantity' => 1,
+            //     'amount' => 10.00,
+            //     'kcal' => 92,
+            //     'totFat' => 0.6,
+            //     'satFat' => 0.3,
+            //     'sugar' => 17.6,
+            //     'sodium' => 14
+            // ],
+            // [
+            //     'id' => 73,
+            //     'purchase_id' => 33,
+            //     'food_id' => 6,
+            //     'quantity' => 1,
+            //     'amount' => 25.00,
+            //     'kcal' => 296,
+            //     'totFat' => 25,
+            //     'satFat' => 8.9,
+            //     'sugar' => 2.8,
+            //     'sodium' => 902
+            // ],
+            // [
+            //     'id' => 74,
+            //     'purchase_id' => 33,
+            //     'food_id' => 19,
+            //     'quantity' => 1,
+            //     'amount' => 10.00,
+            //     'kcal' => 100,
+            //     'totFat' => 0.4,
+            //     'satFat' => 0,
+            //     'sugar' => 23.2,
+            //     'sodium' => 10
+            // ],
+            // [
+            //     'id' => 75,
+            //     'purchase_id' => 34,
+            //     'food_id' => 30,
+            //     'quantity' => 1,
+            //     'amount' => 45.00,
+            //     'kcal' => 164,
+            //     'totFat' => 8.5,
+            //     'satFat' => 3.4,
+            //     'sugar' => 5.1,
+            //     'sodium' => 939
+            // ],
+            // [
+            //     'id' => 76,
+            //     'purchase_id' => 35,
+            //     'food_id' => 32,
+            //     'quantity' => 1,
+            //     'amount' => 35.00,
+            //     'kcal' => 168,
+            //     'totFat' => 10.7,
+            //     'satFat' => 4.51,
+            //     'sugar' => 0,
+            //     'sodium' => 567
+            // ],
+            // [
+            //     'id' => 77,
+            //     'purchase_id' => 35,
+            //     'food_id' => 50,
+            //     'quantity' => 1,
+            //     'amount' => 15.00,
+            //     'kcal' => 540,
+            //     'totFat' => 33.4,
+            //     'satFat' => 17.54,
+            //     'sugar' => 0.3,
+            //     'sodium' => 453
+            // ],
+            // [
+            //     'id' => 78,
+            //     'purchase_id' => 36,
+            //     'food_id' => 54,
+            //     'quantity' => 1,
+            //     'amount' => 12.00,
+            //     'kcal' => 114,
+            //     'totFat' => 0.4,
+            //     'satFat' => 0.1,
+            //     'sugar' => 26.4,
+            //     'sodium' => 20
+            // ],
+            // [
+            //     'id' => 79,
+            //     'purchase_id' => 37,
+            //     'food_id' => 59,
+            //     'quantity' => 1,
+            //     'amount' => 25.00,
+            //     'kcal' => 152,
+            //     'totFat' => 0.6,
+            //     'satFat' => 0.1,
+            //     'sugar' => 20.8,
+            //     'sodium' => 140
+            // ],
+            // [
+            //     'id' => 80,
+            //     'purchase_id' => 38,
+            //     'food_id' => 40,
+            //     'quantity' => 1,
+            //     'amount' => 40.00,
+            //     'kcal' => 245,
+            //     'totFat' => 21.8,
+            //     'satFat' => 7.95,
+            //     'sugar' => 0,
+            //     'sodium' => 61
+            // ],
+            // [
+            //     'id' => 81,
+            //     'purchase_id' => 39,
+            //     'food_id' => 34,
+            //     'quantity' => 1,
+            //     'amount' => 60.00,
+            //     'kcal' => 245,
+            //     'totFat' => 21.8,
+            //     'satFat' => 7.95,
+            //     'sugar' => 0,
+            //     'sodium' => 61
+            // ],
+            // [
+            //     'id' => 82,
+            //     'purchase_id' => 39,
+            //     'food_id' => 15,
+            //     'quantity' => 1,
+            //     'amount' => 25.00,
+            //     'kcal' => 245,
+            //     'totFat' => 18.1,
+            //     'satFat' => 6.19,
+            //     'sugar' => 5,
+            //     'sodium' => 1088
+            // ],
+            // [
+            //     'id' => 83,
+            //     'purchase_id' => 40,
+            //     'food_id' => 23,
+            //     'quantity' => 1,
+            //     'amount' => 20.00,
+            //     'kcal' => 118.32,
+            //     'totFat' => 5.808,
+            //     'satFat' => 1.2672,
+            //     'sugar' => 11.76,
+            //     'sodium' => 101.76
+            // ],
+            // [
+            //     'id' => 84,
+            //     'purchase_id' => 40,
+            //     'food_id' => 21,
+            //     'quantity' => 2,
+            //     'amount' => 10.00,
+            //     'kcal' => 63.42,
+            //     'totFat' => 1.554,
+            //     'satFat' => 2.856,
+            //     'sugar' => 4.2,
+            //     'sodium' => 1.12
+            // ],
+            // [
+            //     'id' => 85,
+            //     'purchase_id' => 40,
+            //     'food_id' => 22,
+            //     'quantity' => 5,
+            //     'amount' => 3.00,
+            //     'kcal' => 25.9,
+            //     'totFat' => 0.8235,
+            //     'satFat' => 2.58,
+            //     'sugar' => 0.5,
+            //     'sodium' => 0.5
+            // ],
+            // [
+            //     'id' => 86,
+            //     'purchase_id' => 41,
+            //     'food_id' => 1,
+            //     'quantity' => 1,
+            //     'amount' => 50.00,
+            //     'kcal' => 83,
+            //     'totFat' => 1,
+            //     'satFat' => 0.35,
+            //     'sugar' => 2.9,
+            //     'sodium' => 277
+            // ],
+            // [
+            //     'id' => 87,
+            //     'purchase_id' => 42,
+            //     'food_id' => 4,
+            //     'quantity' => 1,
+            //     'amount' => 25.00,
+            //     'kcal' => 168,
+            //     'totFat' => 10.7,
+            //     'satFat' => 4.51,
+            //     'sugar' => 0,
+            //     'sodium' => 567
+            // ],
+            // [
+            //     'id' => 88,
+            //     'purchase_id' => 43,
+            //     'food_id' => 9,
+            //     'quantity' => 1,
+            //     'amount' => 25.00,
+            //     'kcal' => 71,
+            //     'totFat' => 1.1,
+            //     'satFat' => 0.9,
+            //     'sugar' => 0.1,
+            //     'sodium' => 1
+            // ],
+            // [
+            //     'id' => 89,
+            //     'purchase_id' => 44,
+            //     'food_id' => 12,
+            //     'quantity' => 1,
+            //     'amount' => 40.00,
+            //     'kcal' => 206,
+            //     'totFat' => 6.4,
+            //     'satFat' => 2.2,
+            //     'sugar' => 20.2,
+            //     'sodium' => 1037
+            // ],
+            // [
+            //     'id' => 90,
+            //     'purchase_id' => 44,
+            //     'food_id' => 53,
+            //     'quantity' => 1,
+            //     'amount' => 20.00,
+            //     'kcal' => 100,
+            //     'totFat' => 0.4,
+            //     'satFat' => 0.06,
+            //     'sugar' => 20.2,
+            //     'sodium' => 8
+            // ],
+            // [
+            //     'id' => 91,
+            //     'purchase_id' => 45,
+            //     'food_id' => 31,
+            //     'quantity' => 1,
+            //     'amount' => 35.00,
+            //     'kcal' => 220,
+            //     'totFat' => 11.2,
+            //     'satFat' => 2.22,
+            //     'sugar' => 0.7,
+            //     'sodium' => 520
+            // ]
+            
         ];
         Order::insert($orders);
 
