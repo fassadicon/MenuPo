@@ -124,6 +124,7 @@ class StudentController extends Controller
         $students = Student::onlyTrashed()
         ->get()
         ->load('guardian');
+
         foreach ($students as $student) {
             $student['created_by_name'] = Admin::where('id', $student->created_by)->first();
             $student['updated_by_name'] = $student->updated_by == null ? 'N/A' : Admin::where('id', $student->updated_by)->first();

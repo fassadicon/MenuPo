@@ -200,7 +200,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
     Route::put('/students/{student}', [StudentController::class, 'update']);
     Route::get('/students/{id}/delete', [StudentController::class, 'delete'])->name('student.delete');
-    Route::get('/student/trash', [StudentController::class, 'trash'])->name('student.trash');
+    Route::get('/students/trash', [StudentController::class, 'trash'])->name('student.trash');
     Route::get('/students/{id}/restore', [StudentController::class, 'restore'])->name('student.restore');
     // Imports
     Route::get('/imports', [ImportUsersController::class, 'index']);

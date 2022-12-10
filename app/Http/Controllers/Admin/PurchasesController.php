@@ -26,9 +26,9 @@ class PurchasesController extends Controller
         // Initialize Datatable Values
         // $todayDate = Carbon::now();
 
-        $purchases = Purchase::where('claimStatus', 0)
-        ->where('created_at', '2022-12-01') // Palitan ng today()
-        // ->where('paymentStatus', 1)
+        $purchases = Purchase::where('created_at', Carbon::yesterday())
+        ->where('claimStatus', 0)
+        ->where('type', 0)
         ->get()
         ->load('orders', 'orders.food', 'parent', 'student', 'admin');
 
