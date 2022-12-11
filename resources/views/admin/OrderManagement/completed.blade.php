@@ -11,6 +11,7 @@
                     <th>ID</th>
                     <th>Parent ID</th>
                     <th>Student ID</th>
+                    <th>Orders</th>
                     <th>Total kcal</th>
                     <th>Total Fat</th>
                     <th>Total SatFat</th>
@@ -33,27 +34,6 @@
             </thead>
             <tbody>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Parent ID</th>
-                    <th>Student ID</th>
-                    <th>Total kcal</th>
-                    <th>Total Fat</th>
-                    <th>Total SatFat</th>
-                    <th>Total Sugar</th>
-                    <th>Total Sodium</th>
-                    <th>Total Amount</th>
-                    <th>Payment ID</th>
-                    <th>Payment Status</th>
-                    <th>Claim Status</th>
-                    <th>Type</th>
-                    <th>Date Ordered</th>
-                    <th>Updated at</th>
-                    <th>Admin in charge</th>
-                    <th>Options</th>
-                </tr>
-            </tfoot>
         </table>
     </div>
 
@@ -139,36 +119,36 @@
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
             // ],
-            buttons: [{
-                    extend: "csv",
-                    text: "",
-                    className: "fred bi bi-filetype-csv",
-                    title: "Food Items"
-                },
-                {
-                    extend: "excel",
-                    text: "",
-                    className: "fred bi bi bi-filetype-xlsx",
-                    title: "Food Items"
-                },
-                {
-                    extend: "pdf",
-                    text: "",
-                    className: "fred bi bi-filetype-pdf",
-                    title: "Food Items"
-                },
-                {
-                    extend: "print",
-                    text: "",
-                    className: "fred bi bi-printer",
-                    title: "Food Items"
-                },
-                {
-                    extend: "colvis",
-                    text: "",
-                    className: "fred bi bi-layout-sidebar-inset-reverse"
-                },
-            ],
+            // buttons: [{
+            //         extend: "csv",
+            //         text: "",
+            //         className: "fred bi bi-filetype-csv",
+            //         title: "Food Items"
+            //     },
+            //     {
+            //         extend: "excel",
+            //         text: "",
+            //         className: "fred bi bi bi-filetype-xlsx",
+            //         title: "Food Items"
+            //     },
+            //     {
+            //         extend: "pdf",
+            //         text: "",
+            //         className: "fred bi bi-filetype-pdf",
+            //         title: "Food Items"
+            //     },
+            //     {
+            //         extend: "print",
+            //         text: "",
+            //         className: "fred bi bi-printer",
+            //         title: "Food Items"
+            //     },
+            //     {
+            //         extend: "colvis",
+            //         text: "",
+            //         className: "fred bi bi-layout-sidebar-inset-reverse"
+            //     },
+            // ],
             lengthMenu: [
                 [10, 15, 20, 25, 30, 50, 100],
                 [10, 15, 20, 25, 30, 50, 100]
@@ -233,6 +213,15 @@
                             return row.student.firstName + ' ' + row.student.lastName;
                       }
                   },
+                  {
+                        data: 'orders',
+                        name: 'orders',
+                        render: function(data, type, row) {
+                            return $.map(data, function(value, i) {
+                                return value.food.name;
+                            }).join('<br>');
+                        }
+                    },
                   {//3
                       data: 'totalKcal',
                       name: 'totalKcal'
@@ -286,9 +275,8 @@
                       data: 'served_by',
                       name: 'served_by',
                   },
-
                   
-                  { // 18
+                  { // 17
                       data: 'action',
                       name: 'action',
                       orderable: false,
@@ -305,10 +293,10 @@
                   "defaultContent": "-",
                   "targets": "_all"
                   },
-                  {
-                     target: 3,
-                     visible: false,
-                  },
+                //   {
+                //      target: 3,
+                //      visible: false,
+                //   },
                   {
                      target: 4,
                      visible: false,
@@ -387,6 +375,14 @@
                $('#served_by').text(data.served_by);
            })
        });
+
+       $('body').on('click', '.archiveBtn', function() {
+                Swal.fire('Archived');
+            });
+
+        $('body').on('click', '.restoreBtn', function() {
+            Swal.fire('Archived');
+        });
 
        // Mark Pending Order as Paid
     //    $('body').on('click', '.viewPurchase', function() {

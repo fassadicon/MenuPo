@@ -11,6 +11,7 @@
                     <th>ID</th>
                     <th>Parent ID</th>
                     <th>Student ID</th>
+                    <th>Orders</th>
                     <th>Total kcal</th>
                     <th>Total Fat</th>
                     <th>Total SatFat</th>
@@ -33,27 +34,6 @@
             </thead>
             <tbody>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Parent ID</th>
-                    <th>Student ID</th>
-                    <th>Total kcal</th>
-                    <th>Total Fat</th>
-                    <th>Total SatFat</th>
-                    <th>Total Sugar</th>
-                    <th>Total Sodium</th>
-                    <th>Total Amount</th>
-                    <th>Payment ID</th>
-                    <th>Payment Status</th>
-                    <th>Claim Status</th>
-                    <th>Type</th>
-                    <th>Date Ordered</th>
-                    <th>Updated at</th>
-                    <th>Admin in charge</th>
-                    <th>Options</th>
-                </tr>
-            </tfoot>
         </table>
     </div>
 
@@ -233,6 +213,15 @@
                             return row.student.firstName + ' ' + row.student.lastName;
                       }
                   },
+                  {
+                        data: 'orders',
+                        name: 'orders',
+                        render: function(data, type, row) {
+                            return $.map(data, function(value, i) {
+                                return value.food.name;
+                            }).join('<br>');
+                        }
+                    },
                   {//3
                       data: 'totalKcal',
                       name: 'totalKcal'
@@ -303,10 +292,10 @@
                   "defaultContent": "-",
                   "targets": "_all"
                   },
-                  {
-                     target: 3,
-                     visible: false,
-                  },
+                //   {
+                //      target: 3,
+                //      visible: false,
+                //   },
                   {
                      target: 4,
                      visible: false,
@@ -364,7 +353,7 @@
         });
 
         // View Pending Order Data Modal
-       $('body').on('click', '.viewTrashed', function() {
+       $('body').on('click', '.viewTrash', function() {
            var purchaseID = $(this).data('id');
            $.get("{{ url('admin/orders/completed/trash') }}" + '/' + purchaseID + '/viewTrash', function(data) {
                $('#viewPurchaseInfoModal').modal('show');

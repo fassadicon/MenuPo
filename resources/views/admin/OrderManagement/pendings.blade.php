@@ -357,6 +357,10 @@
             //     })
 
             //     })
+            
+            $('body').on('click', '.confirmBtn', function() {
+                Swal.fire('Marked as Paid');
+            });
 
         });
     </script>
