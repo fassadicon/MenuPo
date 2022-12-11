@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('surveys', function (Blueprint $table) {
+        Schema::create('passrequests', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->integer('rating')->length(1)->nullable();
-            $table->string('suggestions');
-            $table->string('comment')->nullable();
+            $table->integer('user_id');
+            $table->string('otp');
+            $table->integer('status');
             $table->timestamps();
-            $table->foreignId('parent_id')->constrained('parents');
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surveys');
+        Schema::dropIfExists('passrequests');
     }
 };

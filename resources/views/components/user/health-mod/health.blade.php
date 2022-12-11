@@ -1,3 +1,4 @@
+@include('sweetalert::alert')
 
 @props(['anak'])
 @props(['parent'])

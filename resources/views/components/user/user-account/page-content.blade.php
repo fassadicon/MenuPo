@@ -1,9 +1,10 @@
-
+@include('sweetalert::alert')
 
 @props(['purchases'])
 @props(['studs'])
 @props(['grade'])
 @props(['parent'])
+@props(['reqbutton'])
 
 @php
     $pending = 0;
@@ -216,7 +217,7 @@
                
             </div>
 
-            <div class="bg-white p-3 shadow-xl rounded-sm">
+            <div class="reqdiv bg-white p-3 shadow-xl rounded-sm">
                 <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                     <span clas="text-green-500">
                         <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -244,9 +245,19 @@
                         </div>      
                     </div>
                 </div>
-                <button
-                    class="block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                    Request to change information</button>
+                @if ($reqbutton == 0)
+                    <button
+                        class="changepassreq block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        Request to change information
+                    </button>
+                @else
+                    <button
+                        class="changepassreq block w-full text-secondary text-sm font-semibold rounded-lg bg-zinc-400 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+                        disabled>
+                        Request to change information
+                    </button>
+                @endif
+                
             </div>
             <!-- End of about section -->
 

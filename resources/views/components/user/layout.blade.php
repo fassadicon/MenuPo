@@ -168,6 +168,8 @@
       }
 
       </style>
+      @include('sweetalert::alert')
+      
     </head>
     <body class="bg-white">
 
@@ -188,7 +190,12 @@
     
               <ul class="hidden md:flex space-x-6 leading-9 font-bold text-secondary">
                 <li><a href="/user/home" class="hover:text-white">Home</a></li> 
-                <li><a href="/user/menu-landing" class="hover:text-white">Menu</a></li>
+                @if (sizeof($studs) > 1)
+                  <li><a href="/user/menu-landing" class="hover:text-white">Menu</a></li>
+                @else
+                  <li><a href="/user/menu/{{$studs[0]->id}}" class="hover:text-white">Menu</a></li>
+                @endif
+                
                 <li class="flex relative group">
                   <a href="#" class="mr-1 hover:text-black">Student</a> 
                   <i class="fa-solid fa-chevron-down fa-2xs pt-3"></i>
@@ -205,7 +212,7 @@
                 
               </ul>
 
-              <ul class="hidden md:flex space-x-6 leading-9 font-bold text-secondary">
+              <ul class="homenotif hidden md:flex space-x-6 leading-9 font-bold text-secondary">
                 <li class="allNotifs flex relative group">
                   <a href="#" class="hover:text-black"><i class="fa-solid fa-envelope fa-fw fa-xl"></i></a>
                  @if ($notifs != null)
@@ -220,7 +227,12 @@
                           </div>
                         @else
                           @foreach ($notifs as $notif)
-                            <x-user.notif-modal.notif-modal :notif="$notif" />
+                            @if ($notif->type == 1)
+                              <x-user.notif-modal.notif-modal :notif="$notif" />
+                            @else
+                                <x-user.notif-modal.notif-modal :notif="$notif" />
+                            @endif
+                            
                           @endforeach
                         @endif
                       </div>
@@ -244,6 +256,9 @@
                             echo '<li><a href="/users/survey">Survey</a></li>';
                         }
                     @endphp --}}
+                    {{-- @if ($isSurveyAvail == 0)
+                      <li><a href="/users/survey">Survey</a></li>
+                    @endif --}}
                     <li><a href="/users/survey">Survey</a></li>
                     <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Billing</a></li>
                     <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Forms</a></li>
@@ -296,18 +311,24 @@
             <div id="mobile-menu" class="mobile-menu absolute z-50 top-23 w-3/4"> <!-- add hidden here later -->
               <ul class="bg-gray-100 shadow-lg leading-9 font-bold h-screen">
                 <li class="border-b-2 border-gray-200 hover:bg-primary hover:text-white pl-4 flex py-2 px-2"><a href="#" class="block pl-7 uppercase"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-12 h-12 rounded-full border-4 border-gray-50 mr-4 inline">Sample</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="{{ url('test') }}" class="block pl-7"><i class="fa-solid fa-house-user fa-fw text-primary mr-4 group-hover:text-white"></i></i>Home</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="/users/menu" class="block pl-7"><i class="fa-solid fa-bars fa-fw text-primary mr-4 group-hover:text-white"></i></i>Menu</a></li>
+                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="/user/home" class="block pl-7"><i class="fa-solid fa-house-user fa-fw text-primary mr-4 group-hover:text-white"></i></i>Home</a></li>
+                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="/user/menu-landing" class="block pl-7"><i class="fa-solid fa-bars fa-fw text-primary mr-4 group-hover:text-white"></i></i>Menu</a></li>
                 <li class="group border-b-2 border-white hover:bg-primary hover:text-white">
-                  <a href="#" class="block pl-11"><i class="fa-solid fa-school fa-fw text-primary mr-4 group-hover:text-white"></i>Student<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
+                  @if (sizeof($studs) > 1)
+                    <a href="#" class="block pl-11"><i class="fa-solid fa-school fa-fw text-primary mr-4 group-hover:text-white"></i>Student<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
+                    <!-- Submenu starts -->
+                    <ul class="bg-white text-gray-800 w-full">
+                      @foreach ($studs as $student)
+                        <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="/user/health/{{$student->id}}"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
+                      @endforeach
+                    </ul>
+                    <!-- Submenu ends -->
+                    @else
+                    <a href="/user/health/{{$studs[0]->id}}" class="block pl-11"><i class="fa-solid fa-school fa-fw text-primary mr-4 group-hover:text-white"></i>Student<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
+                    @endif
                   
-                  <!-- Submenu starts -->
-                  <ul class="bg-white text-gray-800 w-full">
-                    {{-- @foreach ($studs as $student)
-                      <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="/users/health/{{$student->id}}><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->stud_FN}}</a></li>
-                    @endforeach --}}
-                  </ul>
-                  <!-- Submenu ends -->
+                  
+                  
                 </li>
                 <li class="group border-b-2 border-white hover:bg-primary hover:text-white">
                   <a href="#" class="block pl-11"><i class="fa-solid fa-user fa-fw text-primary mr-4 group-hover:text-white"></i>Account<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 

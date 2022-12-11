@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
+use Carbon\Carbon;
 use App\Models\Food;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Survey;
 use App\Models\Student;
+use App\Mail\SampleMail;
 use App\Models\Guardian;
 use App\Models\Purchase;
 use App\Models\Adminnotif;
@@ -13,6 +16,7 @@ use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Expr\Cast\Object_;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -24,11 +28,17 @@ class HomeController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
-        $image = DB::select('SELECT * FROM posts');
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
         
+        $image = DB::select('SELECT * FROM posts');
         return view('user.home', [
             'students' => $student,
             'notifications' => $notifications,
+            'isSurveyAvail' => $isSurveyAvail,
             'image' => $image
         ]);
     }

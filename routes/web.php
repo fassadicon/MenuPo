@@ -217,7 +217,12 @@ Route::middleware('user')->group(function () {
     Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name:'user.account');
     Route::get('/edit-info', [UserAccController::class, 'edit']);
     Route::post('/saveUpdate', [UserAccController::class, 'saveUpdate']);
-    
+    Route::post('/user/change-pass-request', [UserAccController::class, 'change_pass_request']);
+    Route::get('/user/otp-page', [UserAccController::class, 'otp_page']);
+    Route::post('/user/submit-otp', [UserAccController::class, 'submit_otp']);
+    Route::get('/user/changepass-page', [UserAccController::class, 'changepass_page']);
+    Route::post('/user/submit-password', [UserAccController::class, 'submit_password']);
+
 
     //Menu Page
     Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])->name(name:'menu.index');
