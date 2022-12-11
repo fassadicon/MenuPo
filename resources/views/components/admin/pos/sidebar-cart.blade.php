@@ -1,13 +1,12 @@
 @props(['studentID']);
 
 
-<form class="w-1/3 h-screen mt-20 mr-4 border-2 border-solid rounded-xl shadow" action="{{ route('pos.order') }}"
-    method="POST">
+<form class="w-1/3 h-screen mt-20 mr-4 border-2 border-solid rounded-xl shadow"
+    action="/admin/pos/payment/{{ $studentID }}" method="POST">
     @csrf
     <div class="p-4">
         <p class="text-xl font-bold">Cart Summary</p>
         <p class="text-lg">Items: {{ Cart::count() }}</p>
-        <h1>{{ $studentID }}</h1>
     </div>
 
     <div class="sideBar h-80 overflow-y-scroll p-2">
@@ -15,7 +14,7 @@
             $item = Cart::content();
             
         @endphp
-    
+
         @foreach ($item as $val)
             @php
                 $price = $val->price * $val->qty;
