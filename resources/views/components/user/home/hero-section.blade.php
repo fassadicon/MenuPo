@@ -14,7 +14,7 @@
 
       <button class="button-hero mt-4">
         <a href="#">
-          Get started!
+          Pre Order
         </a>
       </button>
 
