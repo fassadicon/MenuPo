@@ -7,10 +7,10 @@
       <meta name="csrf-token" content="{{ csrf_token() }}" /> 
 
       <!-- Favicons -->
-      <link href="img/favicon/favicon.ico" rel="icon">
-      <link href="img/favicon/apple-touch-icon.ico" rel="apple-touch-icon">
+      <link href="{{ asset('admin/assets/img/favicon-32x32.png') }}" rel="icon">
+      <link href="{{ asset('admin/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
       <title>
-        Welcome
+        MenuPo
       </title>
       <meta name="description" content="Simple landind page" />
       <meta name="keywords" content="" />
@@ -67,6 +67,15 @@
 
       <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
       <style>
+
+        :root {
+            scroll-behavior: smooth;
+            --primary: #ffc300;
+            --primaryLight: #ffe799;
+            --primaryDark: #e6b000;
+            --secondary: #213559;
+            --secondaryLight: #374968;
+        }
       .gradient {
           background: linear-gradient(270deg, #ffc300 0%, white 100%)
         }
@@ -167,6 +176,53 @@
         }
       }
 
+      .mobile-nav{
+        border-top-right-radius: 80px;
+      }
+
+      .button-hero {
+        background: #FBCA1F;
+        font-family: inherit;
+        padding: 0.6em 1.3em;
+        font-weight: 900;
+        font-size: 18px;
+        border: 3px solid black;
+        border-radius: 0.4em;
+        box-shadow: 0.1em 0.1em;
+       }
+       
+       .button-hero:hover {
+        transform: translate(-0.05em, -0.05em);
+        box-shadow: 0.15em 0.15em;
+       }
+       
+       .button-hero:active {
+        transform: translate(0.05em, 0.05em);
+        box-shadow: 0.
+        
+        05em 0.05em;
+       }
+
+
+      .mobile-li:hover {
+          color: var(--primary);
+          margin-right: 0%;
+          background: #f6f9ff;
+          -webkit-transition: background-color 0.3s linear;
+          -moz-transition: background-color 0.3s linear;
+          -o-transition: background-color 0.3s linear;
+          transition: background-color 0.3s linear;
+          -webkit-border-radius: 40px 0px 0px 40px;
+          -moz-border-radius: 40px 0px 0px 40px;
+          border-radius: 40px 0px 0px 40px;
+      }
+
+      .mobile-nav li{
+        -webkit-border-radius: 40px 0px 0px 40px;
+          -moz-border-radius: 40px 0px 0px 40px;
+          border-radius: 40px 0px 0px 40px;
+      }
+
       </style>
       @include('sweetalert::alert')
       
@@ -176,15 +232,15 @@
       {{-- Sweet alert for non-livewire components --}}
       {{-- @include('sweetalert::alert') --}}
     
-      <header class="fixed top-0 z-50 h-20 w-screen sm:h-15 bg-primary">
+      <header class="fixed top-0 z-50 h-20 w-screen sm:h-15 bg-gradient-to-l from-yellow-100 via-yellow-300 to-yellow-500">
         <nav class="relative px-2">
           
           <div class="container mx-auto flex justify-between space-y-6 items-center">
               <a class="toggleColour text-secondary no-underline hover:no-underline font-bold text-2xl flex lg:text-4xl" 
               href="#"
               >
-              <img class="h-10 fill-current align-middle" width="50.502" src="{{ asset('storage/admin/school-images/logo-32X32.png') }}">
-              <img class="h-12 fill-current align-left" width="50.502" src="{{ asset('storage/admin/school-images/school-logo.png') }}">
+              <img class="h-10 mt-4 fill-current align-middle" width="50.502" src="{{ asset('storage/admin/school-images/logo-32X32.png') }}">
+              <img class="h-12 mt-4 fill-current align-left" width="50.502" src="{{ asset('storage/admin/school-images/school-logo.png') }}">
             </a>
              
     
@@ -301,50 +357,50 @@
               </li> --}}
             </div>
             <button id="mobile-icon" onclick="changeMyColor()" class="md:hidden w-12 h-12 mx-2 border-4 rounded-full hover:border-blue-600">
-              <img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="rounded-full"> <i onclick="changeIcon(this)" class="fa-solid fa-bars invisible"></i>
+              <img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="w-11 h-11  rounded-full bg-cover"> <i onclick="changeIcon(this)" class="fa-solid fa-bars invisible"></i>
             </button> 
             
             </div>
           
           <!-- Mobile menu -->
-          <div class="md:hidden flex justify-center mt-3 w-full">
+          <div class="md:hidden flex justify-center mt-1 w-full">
             <div id="mobile-menu" class="mobile-menu absolute z-50 top-23 w-3/4"> <!-- add hidden here later -->
-              <ul class="bg-gray-100 shadow-lg leading-9 font-bold h-screen">
-                <li class="border-b-2 border-gray-200 hover:bg-primary hover:text-white pl-4 flex py-2 px-2"><a href="#" class="block pl-7 uppercase"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-12 h-12 rounded-full border-4 border-gray-50 mr-4 inline">Sample</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="/user/home" class="block pl-7"><i class="fa-solid fa-house-user fa-fw text-primary mr-4 group-hover:text-white"></i></i>Home</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="/user/menu-landing" class="block pl-7"><i class="fa-solid fa-bars fa-fw text-primary mr-4 group-hover:text-white"></i></i>Menu</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white">
+              <ul class="mobile-nav bg-gradient-to-tl from-yellow-100 via-yellow-300 to-yellow-500 shadow-lg leading-9 font-bold h-screen">
+                <li class="border-b-2 border-gray-200 hover:text-primary pl-4 flex py-2 px-2"><a href="#" class="block pl-7 uppercase"><img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="w-12 h-12 rounded-full border-4 border-gray-50 mr-4 inline">{{auth()->user()->guardian->firstName}} {{auth()->user()->guardian->lastName}}</a></li>
+                <li class="mobile-li group border-b-2 border-white  hover:text-primary py-2 pl-4"><a href="/user/home" class="block pl-7"><i class="fa-solid fa-house-user fa-fw text-white mr-4 group-hover:text-primary"></i></i>Home</a></li>
+                <li class="mobile-li group border-b-2 border-white hover:text-primary py-2 pl-4"><a href="/user/menu-landing" class="block pl-7"><i class="fa-solid fa-bars fa-fw text-white mr-4 group-hover:text-primary"></i></i>Menu</a></li>
+                <li class="group border-b-2 border-white hover:text-gray-800 py-2">
                   @if (sizeof($studs) > 1)
-                    <a href="#" class="block pl-11"><i class="fa-solid fa-school fa-fw text-primary mr-4 group-hover:text-white"></i>Student<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
+                    <a href="#" class="block pl-11"><i class="fa-solid fa-school fa-fw text-white mr-4 group-hover:text-white"></i>Student <i class="fa-solid fa-chevron-down fa-2xs text-white text-base pt-1"></i></a> 
                     <!-- Submenu starts -->
-                    <ul class="bg-white text-gray-800 w-full">
+                    <ul class="bg-primaryLight text-gray-800 w-full">
                       @foreach ($studs as $student)
-                        <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="/user/health/{{$student->id}}"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
+                        <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="/user/health/{{$student->id}}"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
                       @endforeach
                     </ul>
                     <!-- Submenu ends -->
                     @else
-                    <a href="/user/health/{{$studs[0]->id}}" class="block pl-11"><i class="fa-solid fa-school fa-fw text-primary mr-4 group-hover:text-white"></i>Student<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
+                    <a href="/user/health/{{$studs[0]->id}}" class="block pl-11"><i class="fa-solid fa-school fa-fw text-white mr-4 group-hover:text-white"></i>Student <i class="fa-solid fa-chevron-down fa-2xs text-white text-base pt-1"></i></a> 
                     @endif
                   
                   
                   
                 </li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white">
-                  <a href="#" class="block pl-11"><i class="fa-solid fa-user fa-fw text-primary mr-4 group-hover:text-white"></i>Account<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
+                <li class="group border-b-2 border-whit hover:text-gray-800 py-2">
+                  <a href="#" class="block pl-11"><i class="fa-solid fa-user fa-fw text-white mr-4 group-hover:text-white"></i>Account <i class="fa-solid fa-chevron-down fa-2xs text-white text-base pt-1"></i></a> 
                   
                   <!-- Submenu starts -->
-                  <ul class="bg-white text-gray-800 w-full">
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="/users/user-account">Account Info</a></li>
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="#">Dashboard</a></li>
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="#">Billing</a></li>
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="#">Forms</a></li>
+                  <ul class="bg-primaryLight text-gray-800 w-full">
+                    <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="/users/user-account">Account Info</a></li>
+                    <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Dashboard</a></li>
+                    <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Billing</a></li>
+                    <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Forms</a></li>
                   </ul>
                   <!-- Submenu ends -->
                 </li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-gear fa-fw text-primary mr-4 group-hover:text-white"></i>Settings</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-address-book fa-fw text-primary mr-4 group-hover:text-white"></i>Contact</a></li>
-                <li class="group border-b-2 border-white hover:bg-red-600 hover:text-white pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-right-from-bracket fa-fw text-red-600 mr-4 group-hover:text-white"></i>Log Out</a></li>
+                <li class="mobile-li group border-b-2 border-white hover:text-primary py-2 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-gear fa-fw text-white mr-4 group-hover:text-primary"></i>Settings</a></li>
+                <li class="mobile-li group border-b-2 border-white hover:text-primary py-2 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-address-book fa-fw text-white mr-4 group-hover:text-primary"></i>Contact</a></li>
+                <li class="mobile-li group border-b-2 border-white hover:text-primary py-2 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-right-from-bracket fa-fw text-red-600 mr-4 group-hover:text-primary"></i>Log Out</a></li>
               </ul> 
               
               </div>
