@@ -117,43 +117,43 @@
                     "<'row'<'col-sm-12'tr>>" +
                     "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
 
-                // buttons: [
-                //     'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
-                // ],
-                // buttons: [{
-                //         extend: "csv",
-                //         text: "",
-                //         className: "fred bi bi-filetype-csv",
-                //         title: "Food Items"
-                //     },
-                //     {
-                //         extend: "excel",
-                //         text: "",
-                //         className: "fred bi bi bi-filetype-xlsx",
-                //         title: "Food Items"
-                //     },
-                //     {
-                //         extend: "pdf",
-                //         text: "",
-                //         className: "fred bi bi-filetype-pdf",
-                //         title: "Food Items"
-                //     },
-                //     {
-                //         extend: "print",
-                //         text: "",
-                //         className: "fred bi bi-printer",
-                //         title: "Food Items"
-                //     },
-                //     {
-                //         extend: "colvis",
-                //         text: "",
-                //         className: "fred bi bi-layout-sidebar-inset-reverse"
-                //     },
-                // ],
-                // lengthMenu: [
-                //     [10, 15, 20, 25, 30, 50, 100],
-                //     [10, 15, 20, 25, 30, 50, 100]
-                // ],
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
+                ],
+                buttons: [{
+                        extend: "csv",
+                        text: "",
+                        className: "fred bi bi-filetype-csv",
+                        title: "Food Items"
+                    },
+                    {
+                        extend: "excel",
+                        text: "",
+                        className: "fred bi bi bi-filetype-xlsx",
+                        title: "Food Items"
+                    },
+                    {
+                        extend: "pdf",
+                        text: "",
+                        className: "fred bi bi-filetype-pdf",
+                        title: "Food Items"
+                    },
+                    {
+                        extend: "print",
+                        text: "",
+                        className: "fred bi bi-printer",
+                        title: "Food Items"
+                    },
+                    {
+                        extend: "colvis",
+                        text: "",
+                        className: "fred bi bi-layout-sidebar-inset-reverse"
+                    },
+                ],
+                lengthMenu: [
+                    [10, 15, 20, 25, 30, 50, 100],
+                    [10, 15, 20, 25, 30, 50, 100]
+                ],
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -194,7 +194,7 @@
                         name: 'orders',
                         render: function(data, type, row) {
                             return $.map(data, function(value, i) {
-                                return value.food.name;
+                                return value.food.name + ' x ' + value.quantity;
                             }).join('<br>');
                         }
                     },
@@ -268,9 +268,13 @@
                       "targets": "_all"
                       },
                     //   {
-                    //      target: 3,
+                    //      target: 0,
                     //      visible: false,
                     //   },
+                      {
+                         target: 1,
+                         visible: false,
+                      },
                       {
                          target: 4,
                          visible: false,
@@ -297,6 +301,29 @@
                       },
                       {
                          target: 10,
+                         visible: false,
+                      },
+                      {
+                         target: 11,
+                         visible: false,
+                      },
+
+                      {
+                         target: 12,
+                         visible: false,
+                      },
+
+                      {
+                         target: 13,
+                         visible: false,
+                      },
+
+                      {
+                         target: 14,
+                         visible: false,
+                      },
+                      {
+                         target: 15,
                          visible: false,
                       },
 
