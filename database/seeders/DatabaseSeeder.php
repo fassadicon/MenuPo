@@ -5540,7 +5540,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-19'
+                'created_at' => '2022-11-18'
             ],
             [
                 'id' => 6,
@@ -5556,7 +5556,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-19'
+                'created_at' => '2022-11-18'
             ],
             [
                 'id' => 7,
@@ -5572,7 +5572,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-20'
+                'created_at' => '2022-11-18'
             ],
             [
                 'id' => 8,
@@ -5588,7 +5588,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2022-11-18'
             ],
             [
                 'id' => 9,
@@ -5604,7 +5604,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-17'
+                'created_at' => '2022-11-18'
             ],
             [
                 'id' => 10,
@@ -5636,7 +5636,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-17'
+                'created_at' => '2022-11-18'
             ],
             [
                 'id' => 12,
@@ -5652,7 +5652,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-17'
+                'created_at' => '2022-11-18'
             ],
             [
                 'id' => 13,
@@ -5684,7 +5684,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => '2022-11-21'
             ],
             [
                 'id' => 15,
@@ -5700,7 +5700,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-19'
+                'created_at' => '2022-11-21'
             ],
             [
                 'id' => 16,
@@ -5716,7 +5716,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-19'
+                'created_at' => '2022-11-21'
             ],
             [
                 'id' => 17,
@@ -5780,7 +5780,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-22'
+                'created_at' => '2022-11-21'
             ],
             [
                 'id' => 21,
@@ -5796,7 +5796,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-23'
+                'created_at' => '2022-11-21'
             ],
             [
                 'id' => 22,
@@ -5828,7 +5828,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2022-11-21'
             ],
             [
                 'id' => 24,
@@ -5844,7 +5844,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-21'
             ],
             [
                 'id' => 25,
@@ -5860,7 +5860,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-27'
+                'created_at' => '2022-11-21'
             ],
             [
                 'id' => 26,
@@ -6020,7 +6020,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ],
             [
                 'id' => 36,
@@ -6036,7 +6036,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ],
             [
                 'id' => 37,
@@ -6052,7 +6052,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ],
             [
                 'id' => 38,
@@ -6068,7 +6068,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ],
             [
                 'id' => 39,
@@ -6084,7 +6084,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ],
             [
                 'id' => 40,
@@ -6100,7 +6100,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ],
             [
                 'id' => 41,
@@ -6116,7 +6116,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ],
             [
                 'id' => 42,
@@ -6164,7 +6164,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ],
             [
                 'id' => 45,
@@ -6180,7 +6180,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => '2022-11-24'
             ]
                 
         ];
