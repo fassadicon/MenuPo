@@ -17,7 +17,8 @@ class averageNutrientConsumptionChart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-            ->setTitle('Average Nutrient Consumption')
+            ->setTitle('Average Daily Macronutrient Consumed from Bought Foods')
+            ->setSubtitle('Total Fat, Saturated Fat, Added Sugar, Sodium')
             ->addData('Average Total Fat', [
                 round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-18'])
                 ->avg('totalTotFat'), 2), 
@@ -58,6 +59,7 @@ class averageNutrientConsumptionChart
                 round(Purchase::whereBetween('created_at', ['2022-11-24', '2022-12-01'])
                 ->avg('totalSodium') / 1000, 2)
             ])
-            ->setXAxis(['Nov.17-18', 'Nov.19-20', 'Nov.21-23', 'Nov.24-Dec.1']);
+            ->setXAxis(['Nov.17-18', 'Nov.19-20', 'Nov.21-23', 'Nov.24-Dec.1'])
+            ->setToolBar(true);
     }
 }

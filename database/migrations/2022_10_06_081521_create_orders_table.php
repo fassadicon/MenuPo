@@ -25,6 +25,7 @@ return new class extends Migration
             $table->double('satFat', 10, 2)->nullable();
             $table->double('sugar', 10, 2)->nullable();
             $table->double('sodium', 10, 2)->nullable();
+            $table->softDeletes();
         });
     }
 

@@ -4,6 +4,7 @@
     {{-- DATABLE --}}
     <div class="container">
         <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Food Item</a></div>
+        <div align="left"><a href="/admin/foods/trash" class="btn btn-success mb-2">Archived Food Item</a></div>
         <table class="table table-hover table-sm" id="foodTable">
 
             <thead>

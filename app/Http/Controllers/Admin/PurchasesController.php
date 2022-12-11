@@ -26,9 +26,11 @@ class PurchasesController extends Controller
         // Initialize Datatable Values
         // $todayDate = Carbon::now();
 
-        $purchases = Purchase::where('claimStatus', 0)
+        $purchases = Purchase::where('created_at', Carbon::yesterday())
+        ->where('claimStatus', 0)
+        ->where('type', 0)
         ->get()
-        ->load('orders', 'parent', 'student', 'admin');
+        ->load('orders', 'orders.food', 'parent', 'student', 'admin');
 
         
         if ($request->ajax()) {
@@ -156,7 +158,7 @@ class PurchasesController extends Controller
                     
                      $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewTrashed"><i class="bi bi-info-lg"></i></a>';
 
-                    // $btn = $btn . ' <a href="/admin/pendings/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="fas fa-check-circle"></i></a>';
+                     $btn = $btn . ' <a href="/admin/orders/completed/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreCompleted btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
                     
                     // $btn = $btn. '<a href="/admin/pendings/update' data-id="' . $row->id . '" data-toggle="toggle" data-orginal-title="Data" class="toggle-class" type="checkbox"  '" data-onstyle="success" data-offstyle="danger" data-on="Active" data-off="InActive" {{$purchase->paymentStatus ? 'checked' : ''}}>';
                       return $btn;
@@ -168,10 +170,17 @@ class PurchasesController extends Controller
         }
 
         // return view
-        return view('admin.OrderManagement.archivedOrders', compact('purchases'));
+        return view('admin.OrderManagement.archivedPurchases', compact('purchases'));
     }
 
-    public function viewtrash($id)
+    public function restore($id)
+    {
+        $purchase = Purchase::where('id', $id)->restore();
+
+        return redirect()->back();
+    }
+
+    public function viewTrash($id)
     {
         return Purchase::where('id', $id)->first()
         ->load('orders', 'parent', 'student', 'admin');

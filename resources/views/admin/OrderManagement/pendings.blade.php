@@ -4,12 +4,13 @@
 
     <div class="container">
         <table class="table table-bordered table-sm" id="pendingTable">
-    
+
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Parent ID</th>
                     <th>Student ID</th>
+                    <th>Orders</th>
                     <th>Total kcal</th>
                     <th>Total Fat</th>
                     <th>Total SatFat</th>
@@ -32,32 +33,12 @@
             </thead>
             <tbody>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Parent ID</th>
-                    <th>Student ID</th>
-                    <th>Total kcal</th>
-                    <th>Total Fat</th>
-                    <th>Total SatFat</th>
-                    <th>Total Sugar</th>
-                    <th>Total Sodium</th>
-                    <th>Total Amount</th>
-                    <th>Payment ID</th>
-                    <th>Payment Status</th>
-                    <th>Claim Status</th>
-                    <th>Type</th>
-                    <th>Date Ordered</th>
-                    <th>Updated at</th>
-                    <th>Admin in charge</th>
-                    <th>Options</th>
-                </tr>
-            </tfoot>
         </table>
     </div>
 
     {{-- View Purchase Info Modal --}}
-    <div class="modal fade" id="viewPurchaseInfoModal" tabindex="-1" aria-labelledby="viewPurchaseInfoModal" aria-hidden="true">
+    <div class="modal fade" id="viewPurchaseInfoModal" tabindex="-1" aria-labelledby="viewPurchaseInfoModal"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -124,276 +105,260 @@
 
     @include('partials.admin._DataTableScripts')
     <script type="text/javascript">
-    // DataTables Script
-    $(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        var table = $('#pendingTable').DataTable({
-            dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-4'f><'col-sm-12 col-md-3'B>>" +
-                "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        // DataTables Script
+        $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var table = $('#pendingTable').DataTable({
+                dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-4'f><'col-sm-12 col-md-3'B>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
 
-            // buttons: [
-            //     'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
-            // ],
-            buttons: [{
-                    extend: "csv",
-                    text: "",
-                    className: "fred bi bi-filetype-csv",
-                    title: "Food Items"
-                },
-                {
-                    extend: "excel",
-                    text: "",
-                    className: "fred bi bi bi-filetype-xlsx",
-                    title: "Food Items"
-                },
-                {
-                    extend: "pdf",
-                    text: "",
-                    className: "fred bi bi-filetype-pdf",
-                    title: "Food Items"
-                },
-                {
-                    extend: "print",
-                    text: "",
-                    className: "fred bi bi-printer",
-                    title: "Food Items"
-                },
-                {
-                    extend: "colvis",
-                    text: "",
-                    className: "fred bi bi-layout-sidebar-inset-reverse"
-                },
-            ],
-            lengthMenu: [
-                [10, 15, 20, 25, 30, 50, 100],
-                [10, 15, 20, 25, 30, 50, 100]
-            ],
-            processing: true,
-            serverSide: true,
-            ajax: {
-                type: "GET",
-                url: "{{ route('pendings.index') }}",
-                // data: function(d) {
+                // buttons: [
+                //     'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
+                // ],
+                // buttons: [{
+                //         extend: "csv",
+                //         text: "",
+                //         className: "fred bi bi-filetype-csv",
+                //         title: "Food Items"
+                //     },
+                //     {
+                //         extend: "excel",
+                //         text: "",
+                //         className: "fred bi bi bi-filetype-xlsx",
+                //         title: "Food Items"
+                //     },
+                //     {
+                //         extend: "pdf",
+                //         text: "",
+                //         className: "fred bi bi-filetype-pdf",
+                //         title: "Food Items"
+                //     },
+                //     {
+                //         extend: "print",
+                //         text: "",
+                //         className: "fred bi bi-printer",
+                //         title: "Food Items"
+                //     },
+                //     {
+                //         extend: "colvis",
+                //         text: "",
+                //         className: "fred bi bi-layout-sidebar-inset-reverse"
+                //     },
+                // ],
+                // lengthMenu: [
+                //     [10, 15, 20, 25, 30, 50, 100],
+                //     [10, 15, 20, 25, 30, 50, 100]
+                // ],
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    type: "GET",
+                    url: "{{ route('pendings.index') }}",
+                    // data: function(d) {
 
-                // },
-                // dataFilter: function(data) {
-                //     var json = JQuery.parseJSON(data);
-                //     json.draw = json.draw;
-                //     json.recordsFiltered = json.total;
-                //     json.recordsTotal = json.total;
-                //     json.data = json.data;
-                //     return JSON.stringify(json);
-                // }
-            },
-            // Footer Sorting
-            initComplete: function() {
-                this.api()
-                    .columns()
-                    .every(function() {
-                        var column = this;
-                        var select = $('<select><option value=""></option></select>')
-                            .appendTo($(column.footer()).empty())
-                            .on('change', function() {
-                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                column.search(val ? '^' + val + '$' : '', true, false)
-                                    .draw();
-                            });
-
-                            column
-                            .data()
-                            .unique()
-                            .sort()
-                            .each(function(d, j) {
-                                select.append('<option value="' + d + '">' + d +
-                                    '</option>');
-                            });
-                    });
-            },
-            columns: [{//0
-                      data: 'id',
-                      name: 'id'
-                  },
-                  {//1
+                    // },
+                    // dataFilter: function(data) {
+                    //     var json = JQuery.parseJSON(data);
+                    //     json.draw = json.draw;
+                    //     json.recordsFiltered = json.total;
+                    //     json.recordsTotal = json.total;
+                    //     json.data = json.data;
+                    //     return JSON.stringify(json);
+                    // }
+                },
+                columns: [{ //0
+                        data: 'id',
+                        name: 'id'
+                    },
+                    { //1
                         data: 'parent.firstName',
                         name: 'parent_id',
                         render: function(data, type, row) {
                             return row.parent.firstName + ' ' + row.parent.lastName;
                         }
-                  },
-                  { //2
-                      data: 'student.firstName',
-                      name: 'student_id',
-                      render: function(data, type, row) {
+                    },
+                    { //2
+                        data: 'student.firstName',
+                        name: 'student_id',
+                        render: function(data, type, row) {
                             return row.student.firstName + ' ' + row.student.lastName;
-                      }
-                  },
-                  {//3
-                      data: 'totalKcal',
-                      name: 'totalKcal'
-                  },
-                  {//4
-                      data: 'totalTotFat',
-                      name: 'totalTotFat'
-                  },
-                  {//5
-                      data: 'totalSatFat',
-                      name: 'totalSatFat',
-                  },
-                  {//6
-                      data: 'totalSugar',
-                      name: 'totalSugar',
-                  },
-                  { //7
-                      data: 'totalSodium',
-                      name: 'totalSodium',
-                  },
-                  {//8
-                      data: 'totalAmount',
-                      name: 'totalAmount',
-                  },
-                  {//9
-                      data: 'payment_id',
-                      name: 'payment_id',
-                  },
-                  {//10
-                      data: 'paymentStatus',
-                      name: 'paymentStatus',
-                  },
-                  {//11
-                      data: 'claimStatus',
-                      name: 'claimStatus',
-                  },
-                  {//12
-                      data: 'type',
-                      name: 'type',
-                  },
-                  { // 13
-                      data: 'created_at',
-                      name: 'created_at',
-                  },
-                  { // 14
-                      data: 'updated_at',
-                      name: 'updated_at',
-                  },
-                  { //16
-                      data: 'served_by',
-                      name: 'served_by',
-                  },
-                  { // 17
-                      data: 'action',
-                      name: 'action',
-                      orderable: false,
-                      searchable: false
-                  }
-                  // {
-                  //     data: 'checkbox',
-                  //     name: 'checkbox',
-                  //     orderable: false,
-                  //     searchable: false
-                  // },
-              ],
-              columnDefs: [{
-                  "defaultContent": "-",
-                  "targets": "_all"
-                  },
-                  {
-                     target: 3,
-                     visible: false,
-                  },
-                  {
-                     target: 4,
-                     visible: false,
-                  },
-                  {
-                     target: 5,
-                     visible: false,
-                  },
-                  {
-                     target: 6,
-                     visible: false,
-                  },
-                  {
-                     target: 7,
-                     visible: false,
-                  },
-                  {
-                     target: 8,
-                     visible: false,
-                  },
-                  {
-                     target: 9,
-                     visible: false,
-                  },
-                  {
-                     target: 12,
-                     visible: false,
-                  },
-                  
-                //   {
-                //      target: 12,
-                //      visible: false,
-                //   },
-                //   {
-                //      target: 13,
-                //      visible: false,
-                //      searchable: false,
-                //   },
-                  {
-                     target: 14,
-                     visible: false,
-                     searchable: false,
-                  },
-                //   {
-                //      target: 15,
-                //      visible: false,
-                //      searchable: false,
-                //   },
-                  {
-                      targets: -1,
-                      data: null,
-                      defaultContent: '<button>Click!</button>',
-                  }   
-             ],
+                        }
+                    },
+                    {
+                        data: 'orders',
+                        name: 'orders',
+                        render: function(data, type, row) {
+                            return $.map(data, function(value, i) {
+                                return value.food.name;
+                            }).join('<br>');
+                        }
+                    },
+                    { //3
+                        data: 'totalKcal',
+                        name: 'totalKcal'
+                    },
+                    { //4
+                        data: 'totalTotFat',
+                        name: 'totalTotFat'
+                    },
+                    { //5
+                        data: 'totalSatFat',
+                        name: 'totalSatFat',
+                    },
+                    { //6
+                        data: 'totalSugar',
+                        name: 'totalSugar',
+                    },
+                    { //7
+                        data: 'totalSodium',
+                        name: 'totalSodium',
+                    },
+                    { //8
+                        data: 'totalAmount',
+                        name: 'totalAmount',
+                    },
+                    { //9
+                        data: 'payment_id',
+                        name: 'payment_id',
+                    },
+                    { //10
+                        data: 'paymentStatus',
+                        name: 'paymentStatus',
+                    },
+                    { //11
+                        data: 'claimStatus',
+                        name: 'claimStatus',
+                    },
+                    { //12
+                        data: 'type',
+                        name: 'type',
+                    },
+                    { // 13
+                        data: 'created_at',
+                        name: 'created_at',
+                    },
+                    { // 14
+                        data: 'updated_at',
+                        name: 'updated_at',
+                    },
+                    { //16
+                        data: 'served_by',
+                        name: 'served_by',
+                    },
+                    { // 17
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
+                    // {
+                    //     data: 'checkbox',
+                    //     name: 'checkbox',
+                    //     orderable: false,
+                    //     searchable: false
+                    // },
+                ],
+                //   columnDefs: [{
+                //       "defaultContent": "-",
+                //       "targets": "_all"
+                //       },
+                //       {
+                //          target: 3,
+                //          visible: false,
+                //       },
+                //       {
+                //          target: 4,
+                //          visible: false,
+                //       },
+                //       {
+                //          target: 5,
+                //          visible: false,
+                //       },
+                //       {
+                //          target: 6,
+                //          visible: false,
+                //       },
+                //       {
+                //          target: 7,
+                //          visible: false,
+                //       },
+                //       {
+                //          target: 8,
+                //          visible: false,
+                //       },
+                //       {
+                //          target: 9,
+                //          visible: false,
+                //       },
+                //       {
+                //          target: 12,
+                //          visible: false,
+                //       },
+
+                //     //   {
+                //     //      target: 12,
+                //     //      visible: false,
+                //     //   },
+                //     //   {
+                //     //      target: 13,
+                //     //      visible: false,
+                //     //      searchable: false,
+                //     //   },
+                //       {
+                //          target: 14,
+                //          visible: false,
+                //          searchable: false,
+                //       },
+                //     //   {
+                //     //      target: 15,
+                //     //      visible: false,
+                //     //      searchable: false,
+                //     //   },
+                //       {
+                //           targets: -1,
+                //           data: null,
+                //           defaultContent: '<button>Click!</button>',
+                //       }   
+                //  ],
+            });
+
+            // View Pending Order Data Modal
+            //    $('body').on('click', '.viewPending', function() {
+            //        var purchaseID = $(this).data('id');
+            //        $.get("{{ url('/orders/pendings') }}" + '/' + purchaseID + '/view', function(data) {
+            //            $('#viewPurchaseInfoModal').modal('show');
+            //            $('#parent_id').text(data.parent.id);
+            //            $('#student_id').text(data.student.id;
+            //            $('#totalKcal').text(data.totalKcal);
+            //            $('#totalTotFat').text(data.totalTotFat);
+            //            $('#totalSatFat').text(data.totalSatFat);
+            //            $('#totalSugar').text(data.totalSugar);
+            //            $('#totalSodium').text(data.totalSodium);
+            //            $('#totalAmount').text(data.totalAmount);
+            //            $('#payment_id').text(data.payment_id);
+            //            $('#paymentStatus').text(data.paymentStatus);
+            //            $('#claimStatus').text(data.claimStatus);
+            //            $('#type').text(data.type);
+            //            $('#created_at').text(data.created_at);
+            //            $('#updated_at').text(data.updated_at);
+            //            $('#served_by').text(data.served_by);
+            //        })
+            //    });
+
+            //    $('body').on('click', '.confirmPayment', function() {
+            //     var $pid = $('#id').val();
+            //     $.get("{{ url('/orders/pendings') }}" + $pid + '/confirm', function(data) {
+
+            //     })
+
+            //     })
+
         });
-
-        // View Pending Order Data Modal
-       $('body').on('click', '.viewPending', function() {
-           var purchaseID = $(this).data('id');
-           $.get("{{ url('/orders/pendings') }}" + '/' + purchaseID + '/view', function(data) {
-               $('#viewPurchaseInfoModal').modal('show');
-               $('#parent_id').text(data.parent.id);
-               $('#student_id').text(data.student.id;
-               $('#totalKcal').text(data.totalKcal);
-               $('#totalTotFat').text(data.totalTotFat);
-               $('#totalSatFat').text(data.totalSatFat);
-               $('#totalSugar').text(data.totalSugar);
-               $('#totalSodium').text(data.totalSodium);
-               $('#totalAmount').text(data.totalAmount);
-               $('#payment_id').text(data.payment_id);
-               $('#paymentStatus').text(data.paymentStatus);
-               $('#claimStatus').text(data.claimStatus);
-               $('#type').text(data.type);
-               $('#created_at').text(data.created_at);
-               $('#updated_at').text(data.updated_at);
-               $('#served_by').text(data.served_by);
-           })
-       });
-
-    //    $('body').on('click', '.confirmPayment', function() {
-    //     var $pid = $('#id').val();
-    //     $.get("{{ url('/orders/pendings') }}" + $pid + '/confirm', function(data) {
-
-    //     })
-
-    //     })
-       
-    });
     </script>
 
 </x-admin.layout>

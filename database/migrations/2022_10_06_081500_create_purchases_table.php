@@ -29,7 +29,7 @@ return new class extends Migration
             $table->integer('type')->length(1);
             // Logs
             $table->timestamps();
-            // $table->softDeletes();
+            $table->softDeletes();
             $table->foreignId('served_by')->constrained('admins');
         });
     }

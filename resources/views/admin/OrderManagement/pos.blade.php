@@ -136,6 +136,7 @@
 </section>
 
 <div id="tsum-tabs" class="flex flex-row">
+    <h1 id="studentID">{{ $studentID }}</h1>
 
     <main class="float left">
 
@@ -152,41 +153,41 @@
         <label for="tab4">Others</label>
 
         {{-- Rice Meals --}}
-        <x-user.cards.card-tabs.card-tab-riceMeal>
+        <x-admin.cards.card-tabs.card-tab-riceMeal>
             @foreach ($foods as $food)
                 @if ($food->type == 3)
-                    <x-user.pos.pos-foodcard :food="$food" />
+                    <x-admin.pos.pos-foodcard :food="$food" />
                 @endif
             @endforeach
-        </x-user.cards.card-tabs.card-tab-riceMeal>
+        </x-admin.cards.card-tabs.card-tab-riceMeal>
 
-        <x-user.cards.card-tabs.card-tab-fried>
+        <x-admin.cards.card-tabs.card-tab-fried>
             @foreach ($foods as $food)
                 @if ($food->type == 2)
-                    <x-user.pos.pos-foodcard :food="$food" />
+                    <x-admin.pos.pos-foodcard :food="$food" />
                 @endif
             @endforeach
-        </x-user.cards.card-tabs.card-tab-fried>
+        </x-admin.cards.card-tabs.card-tab-fried>
 
-        <x-user.cards.card-tabs.card-tab-drinks>
+        <x-admin.cards.card-tabs.card-tab-drinks>
             @foreach ($foods as $food)
                 @if ($food->type == 1)
-                    <x-user.pos.pos-foodcard :food="$food" />
+                    <x-admin.pos.pos-foodcard :food="$food" />
                 @endif
             @endforeach
-        </x-user.cards.card-tabs.card-tab-drinks>
+        </x-admin.cards.card-tabs.card-tab-drinks>
 
-        <x-user.cards.card-tabs.card-tab-snacks>
+        <x-admin.cards.card-tabs.card-tab-snacks>
             @foreach ($foods as $food)
                 @if ($food->type == 0)
-                    <x-user.pos.pos-foodcard :food="$food" />
+                    <x-admin.pos.pos-foodcard :food="$food" />
                 @endif
             @endforeach
-        </x-user.cards.card-tabs.card-tab-snacks>
+        </x-admin.cards.card-tabs.card-tab-snacks>
 
 
     </main>
-    <x-user.pos.sidebar-cart />
+    <x-admin.pos.sidebar-cart :studentID="$studentID"/>
 </div>
 </x-admin.layout>
    

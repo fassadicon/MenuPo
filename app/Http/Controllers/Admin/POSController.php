@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Food;
+use App\Models\Admin;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\Student;
 use App\Models\Purchase;
 use App\Models\Notification;
 use Illuminate\Http\Request;
@@ -17,17 +19,17 @@ class POSController extends Controller
 {
     public $totKcal, $totfat, $totsatfat, $totsugar, $totsodium;
 
-    public function index(){
-        
+    public function index($id){
         return view('admin.OrderManagement.pos', [
-            'foods' => Food::all()
+            'foods' => Food::all(),
+            'studentID' => $id
         ]);
     }
 
-    public function pospayment(){
+    public function pospayment($sid){
         
         $items = Cart::content();
-    
+
         //For total calories
         foreach($items as $item){
             $food = Food::findOrFail($item->id);
@@ -45,8 +47,8 @@ class POSController extends Controller
         $payment->save();
         
         $purchase = new Purchase;
-        $purchase->parent_id = 1;
-        $purchase->student_id = 1;
+        $purchase->parent_id = Student::where('id', $sid)->get(['parent_id'])->value('parent_id');
+        $purchase->student_id = $sid;
         $purchase->totalAmount = Cart::priceTotal();
         $purchase->totalKcal = $this->totKcal;
         $purchase->totalTotFat = $this->totfat;
@@ -54,8 +56,8 @@ class POSController extends Controller
         $purchase->totalSugar = $this->totsugar;
         $purchase->totalSodium = $this->totsodium;
         $purchase->payment_id = $payment->id;
-        $purchase->paymentStatus = 0;
-        $purchase->served_by = 1;
+        $purchase->paymentStatus = 1;
+        $purchase->served_by = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
         $purchase->save();
 
         foreach($items as $item){
@@ -71,11 +73,18 @@ class POSController extends Controller
             $order->sugar = $food->calcSugar;
             $order->sodium = $food->calcSodium;
             $order->save();
+
+            $prevStock = $food->stock;
+            $newStock = $prevStock - $item->qty;
+            Food::where('id', $item->id)->update([
+                'stock' => $newStock,
+                'updated_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+            ]);
         }
 
         //Creating notif
         $notification = new Notification;
-        $notification->parent_id = 1;
+        $notification->parent_id = Student::where('id', $sid)->get(['parent_id'])->value('parent_id');
         $notification->title = 'Order submitted successfully.';
         $notification->description = 'The order is received by the admin. Please wait for the confirmation of the payment.';
         $notification->status = 1;
@@ -85,7 +94,7 @@ class POSController extends Controller
         
         Cart::destroy();
 
-        return redirect('/admin/pos');
+        return redirect('/admin/orders/scanner');
     }
 
     public function addtocart(Request $request){

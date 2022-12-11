@@ -213,6 +213,11 @@
               <i class="fa-solid fa-user-plus"></i><span>Students</span>
             </a>
         </li>
+        <li>
+          <a href="/admin/imports" class="nav-link collapsed" id="sidebarLink">
+            <i class="fa-solid fa-user-plus"></i><span>Mass Creation</span>
+          </a>
+      </li>
         <li class="nav-heading">Food Item Management</li>
 
         <li class="nav-item">
@@ -225,13 +230,7 @@
                 <span>Food Item Management</span>
             </a>
         </li><!-- End Profile Page Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html" id="sidebarLink">
-              <i class="fa-solid fa-bars-progress"></i>
-                <span>Survey Management</span>
-            </a>
-        </li><!-- End F.A.Q Page Nav -->
+        
         <li class="nav-item">
             <a href="/admin/menu" class="nav-link collapsed" href="pages-faq.html" id="sidebarLink">
               <i class="fa-solid fa-bars-progress"></i>
@@ -240,13 +239,6 @@
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-heading">Order Management</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/admin/pos" id="sidebarLink">
-            <i class="fa-solid fa-person-chalkboard"></i>
-              <span>Walk-In POS</span>
-          </a>
-      </li><!-- End Walk-In POS Nav -->
 
         <li class="nav-item">
           <a href="/admin/orders/pendings" class="nav-link collapsed" id="sidebarLink">
@@ -268,6 +260,25 @@
         </a>
       </li><!-- End Completed Orders Nav -->
 
+      <li class="nav-heading">Reports and Information</li>
+      <li class="nav-item">
+        <a href="/admin/reports/survey" class="nav-link collapsed" id="sidebarLink">
+          <i class="fa-solid fa-list"></i>
+          <span>Parents' Survey</span>
+        </a>
+      </li><!-- End Completed Orders Nav -->
+      <li class="nav-item">
+        <a href="/admin/reports/compositions" class="nav-link collapsed" id="sidebarLink">
+          <i class="fa-solid fa-list"></i>
+          <span>Menu and Order Composition</span>
+        </a>
+      </li><!-- End Completed Orders Nav -->
+      <li class="nav-item">
+        <a href="/admin/reports/nutrientConsumption" class="nav-link collapsed" id="sidebarLink">
+          <i class="fa-solid fa-list"></i>
+          <span>Student Nutrient Data</span>
+        </a>
+      </li><!-- End Completed Orders Nav -->
 
         {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="pages-contact.html">

@@ -2,6 +2,7 @@
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
     <a href="/admin/students/create" class="btn btn-primary mb-2">Create Student Account</a>
+    <a href="/admin/students/trash" class="btn btn-primary mb-2">Archived Student Accounts</a>
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
         <table class="table table-hover table-sm" id="foodTable">
@@ -387,7 +388,7 @@
                         }
                     },
                     { // 21
-                        data: 'updated_by_name.firstName',
+                        data: 'updated_by_name',
                         name: 'updated_by_name',
                         render: function(data, type, row) {
                             return row.updated_by_name.firstName == null ? 'N/A' : row
