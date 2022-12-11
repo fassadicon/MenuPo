@@ -5365,7 +5365,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-17'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 11,
@@ -5477,7 +5477,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-20'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 18,
@@ -5509,7 +5509,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 20,
@@ -5557,7 +5557,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-23'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 23,
@@ -5618,7 +5618,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 69.8,
                 'totalSodium' => 127,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => Carbon::today()->format('Y-m-d')
@@ -5634,7 +5634,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 8.5,
                 'totalSodium' => 733,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => Carbon::today()->format('Y-m-d')
@@ -5650,7 +5650,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 4.8,
                 'totalSodium' => 825,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => Carbon::today()->format('Y-m-d')
@@ -5666,7 +5666,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 19,
                 'totalSodium' => 737,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => Carbon::today()->format('Y-m-d')
@@ -5682,7 +5682,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 4,
                 'totalSodium' => 354,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => Carbon::today()->format('Y-m-d')
@@ -5746,7 +5746,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 5.1,
                 'totalSodium' => 939,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => Carbon::today()->format('Y-m-d')
@@ -5877,7 +5877,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 43,
@@ -5893,7 +5893,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-25'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 44,
