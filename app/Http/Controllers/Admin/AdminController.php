@@ -9,13 +9,14 @@ use App\Models\Admin;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreatAdminRequest;
-use App\Http\Requests\Admin\UpdateAdminRequest;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+
+use App\Http\Requests\CreatAdminRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables as DataTables;
+use App\Http\Requests\Admin\UpdateAdminRequest;
 
 class AdminController extends Controller
 {
@@ -87,6 +88,7 @@ class AdminController extends Controller
         $user = User::create($userCredentials);
         $admin['user_id'] = $user->id;
         Admin::create($admin);
+        Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('/admin/admins');
     }
 
@@ -112,6 +114,7 @@ class AdminController extends Controller
         $user = User::where('id', $admin->user_id);
         $user->update($userCredentials);
         $admin->update($adminCredentials);
+        Alert::success('Success', 'Account of ' . $admin->firstName . ' ' . $admin->lastName . ' Created Successfully');
         return redirect('/admin/admins');
     }
 
@@ -140,13 +143,13 @@ class AdminController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     // View Image Button
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
+                    // $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
                     // View Detailed Information Button
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewAdminDetails"><i class="bi bi-info-lg"></i></a>';
+                    // $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewAdminDetails"><i class="bi bi-info-lg"></i></a>';
                     // Edit Information Button
                     // $btn = $btn . ' <a href="/admin/admins/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';
                     // Archive Account Button
-                    $btn = $btn . ' <a href="/admin/admins/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreFood btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
+                    $btn = ' <a href="/admin/admins/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreFood btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

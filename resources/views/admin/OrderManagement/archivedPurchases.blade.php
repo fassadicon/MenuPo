@@ -119,40 +119,40 @@
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
             // ],
-            buttons: [{
-                    extend: "csv",
-                    text: "",
-                    className: "fred bi bi-filetype-csv",
-                    title: "Food Items"
-                },
-                {
-                    extend: "excel",
-                    text: "",
-                    className: "fred bi bi bi-filetype-xlsx",
-                    title: "Food Items"
-                },
-                {
-                    extend: "pdf",
-                    text: "",
-                    className: "fred bi bi-filetype-pdf",
-                    title: "Food Items"
-                },
-                {
-                    extend: "print",
-                    text: "",
-                    className: "fred bi bi-printer",
-                    title: "Food Items"
-                },
-                {
-                    extend: "colvis",
-                    text: "",
-                    className: "fred bi bi-layout-sidebar-inset-reverse"
-                },
-            ],
-            lengthMenu: [
-                [10, 15, 20, 25, 30, 50, 100],
-                [10, 15, 20, 25, 30, 50, 100]
-            ],
+            // buttons: [{
+            //         extend: "csv",
+            //         text: "",
+            //         className: "fred bi bi-filetype-csv",
+            //         title: "Food Items"
+            //     },
+            //     {
+            //         extend: "excel",
+            //         text: "",
+            //         className: "fred bi bi bi-filetype-xlsx",
+            //         title: "Food Items"
+            //     },
+            //     {
+            //         extend: "pdf",
+            //         text: "",
+            //         className: "fred bi bi-filetype-pdf",
+            //         title: "Food Items"
+            //     },
+            //     {
+            //         extend: "print",
+            //         text: "",
+            //         className: "fred bi bi-printer",
+            //         title: "Food Items"
+            //     },
+            //     {
+            //         extend: "colvis",
+            //         text: "",
+            //         className: "fred bi bi-layout-sidebar-inset-reverse"
+            //     },
+            // ],
+            // lengthMenu: [
+            //     [10, 15, 20, 25, 30, 50, 100],
+            //     [10, 15, 20, 25, 30, 50, 100]
+            // ],
             processing: true,
             serverSide: true,
             ajax: {

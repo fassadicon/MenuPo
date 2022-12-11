@@ -213,7 +213,7 @@
                             return row.student.firstName + ' ' + row.student.lastName;
                       }
                   },
-                  {
+                  {//3
                         data: 'orders',
                         name: 'orders',
                         render: function(data, type, row) {
@@ -222,51 +222,51 @@
                             }).join('<br>');
                         }
                     },
-                  {//3
+                  {//4
                       data: 'totalKcal',
                       name: 'totalKcal'
                   },
-                  {//4
+                  {//5
                       data: 'totalTotFat',
                       name: 'totalTotFat'
                   },
-                  {//5
+                  {//6
                       data: 'totalSatFat',
                       name: 'totalSatFat',
                   },
-                  {//6
+                  {//7
                       data: 'totalSugar',
                       name: 'totalSugar',
                   },
-                  { //7
+                  { //8
                       data: 'totalSodium',
                       name: 'totalSodium',
                   },
-                  {//8
+                  {//9
                       data: 'totalAmount',
                       name: 'totalAmount',
                   },
-                  {//9
+                  {//10
                       data: 'payment_id',
                       name: 'payment_id',
                   },
-                  {//10
+                  {//11
                       data: 'paymentStatus',
                       name: 'paymentStatus',
                   },
-                  {//11
+                  {//12
                       data: 'claimStatus',
                       name: 'claimStatus',
                   },
-                  {//12
+                  {//13
                       data: 'type',
                       name: 'type',
                   },
-                  { // 13
+                  { // 14
                       data: 'created_at',
                       name: 'created_at',
                   },
-                  { // 14
+                  { // 15
                       data: 'updated_at',
                       name: 'updated_at',
                   },

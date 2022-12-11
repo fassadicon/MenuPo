@@ -7,13 +7,15 @@ use Carbon\Carbon;
 use App\Models\Admin;
 use App\Models\Student;
 
+use App\Models\Guardian;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\StoreStudentRequest;
-use App\Http\Requests\Admin\UpdateStudentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Yajra\DataTables\DataTables as DataTables;
+use App\Http\Requests\Admin\StoreStudentRequest;
+use App\Http\Requests\Admin\UpdateStudentRequest;
 
 class StudentController extends Controller
 {
@@ -87,6 +89,7 @@ class StudentController extends Controller
         $student['QR'] = 'admin/qrs/' . $studentID . '.png';
         Storage::disk('public')->put($student['QR'], $test);
         Student::create($student);
+        Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('admin/students');
     }
 
@@ -104,9 +107,12 @@ class StudentController extends Controller
         $studentCredentials['BMI'] = round($request->weight / pow($request->height / 100, 2), 2);
         if ($request->hasFile('image'))
             $studentCredentials['image'] = $request->file('image')->store('admin/students', 'public');
-        $parentName = $request->parent;
-        $studentCredentials['parent_id'] = substr($parentName, strpos($parentName, ":") + 1);
+        $prevParentID = Student::where('id', (int)$student->id)->get(['parent_id'])->value('parent_id');
+        $prevParent = Guardian::where('id', $prevParentID)->first();
+        $prevParentName = $prevParent->firstName . ' ' . $prevParent->middleName . ' ' . $prevParent->lastName;
+        $prevParentName == $request->parent ? $studentCredentials['parent_id'] = $prevParent->id : $studentCredentials['parent_id'] = substr($request->parent, strpos($request->parent, ":") + 1);
         $student->update($studentCredentials);
+        Alert::success('Success', 'Account of ' . $student->firstName . ' ' . $student->lastName . ' Updated Successfully');
         return redirect('/admin/students');
     }
 
@@ -119,11 +125,11 @@ class StudentController extends Controller
         return redirect()->back();
     }
 
-    public function trash (Request $request)
+    public function trash(Request $request)
     {
         $students = Student::onlyTrashed()
-        ->get()
-        ->load('guardian');
+            ->get()
+            ->load('guardian');
 
         foreach ($students as $student) {
             $student['created_by_name'] = Admin::where('id', $student->created_by)->first();
@@ -138,14 +144,14 @@ class StudentController extends Controller
                 ->addColumn('action', function ($row) {
 
                     // $btn = '<a href="{{url("admin/foods/'.$row->id.'/restore")}}" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewFoodImg"><i class="bi bi-card-image"></i></a>';
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewQR"><i class="bi bi-qr-code"></i></a>';
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewStudentDetails"><i class="bi bi-info-lg"></i></a>';
+                    // $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewQR"><i class="bi bi-qr-code"></i></a>';
+                    // $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
+                    // $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewStudentDetails"><i class="bi bi-info-lg"></i></a>';
                     // $btn = $btn . ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-info-lg"></i></button>';
 
                     // $btn = $btn . ' <a href="/admin/students/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';
 
-                    $btn = $btn . ' <a href="/admin/students/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreStudent btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
+                    $btn = ' <a href="/admin/students/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreStudent btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
                     return $btn;
                 })
                 // ->addColumn('checkbox',

@@ -21,12 +21,12 @@ class ScannerController extends Controller
     public function view($id)
     {
         $orders = Purchase::with('student', 'parent', 'orders.food')
-        ->where('student_id', (int)$id)
-        ->where('claimStatus', 0)
-        ->whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))
-        ->get();
+            ->where('student_id', (int)$id)
+            ->where('claimStatus', 0)
+            ->whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))
+            ->get();
 
-        $studentID = Student::where('id', $id)->get(['id'])->value('id');
+        $studentID = Student::where('id', (int)$id)->get(['id'])->value('id');
 
         return response()->json(['purchase' => $orders, 'studentID' => $studentID]);
         // if ($orders->isEmpty()) {
@@ -37,19 +37,28 @@ class ScannerController extends Controller
     }
 
 
-    public function complete($sid, $pid)
+    public function complete($sid)
     {
+        do {
+            $claimStatusUpdate = Purchase::where('student_id', (int)$sid)
+                ->whereDate('created_at', Carbon::yesterday())
+                ->update(['claimStatus' => 1]);
+        } while ($claimStatusUpdate != null);
         // Changes the claimStatus to 1 (Claimed)
-        Purchase::where('student_id', (int)$sid)
-        ->whereDate('created_at', Carbon::yesterday()->format('Y-m-d'))
-        ->update(['claimStatus' => 1]);
+        // Purchase::where('student_id', (int)$sid)
+        // ->whereDate('created_at', Carbon::yesterday()->format('Y-m-d'))
+        // ->update(['claimStatus' => 1]);
         // Subtracts the quantity of food items ordered to their stock
-        $orders = Order::with('food')->where('purchase_id', (int)$pid)->get();
-        foreach($orders as $order) {
+        $orders = Order::with('food', 'purchase')
+            ->whereHas('purchase', function ($query) use ($sid) {
+                $query->where('student_id', (int)$sid)
+                    ->whereDate('created_at', Carbon::yesterday())
+                    ->where('claimStatus', 1);
+            })->get();
+        foreach ($orders as $order) {
             $stock = ($order->food->stock) - ($order->quantity);
             Food::where('id', $order->food->id)->update(['stock' => $stock]);
         }
-        
 
         return redirect('/admin/orders/scanner');
     }

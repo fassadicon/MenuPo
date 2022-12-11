@@ -10,12 +10,13 @@ use App\Models\Guardian;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\StoreParentRequest;
-use App\Http\Requests\Admin\UpdateParentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables as DataTables;
+use App\Http\Requests\Admin\StoreParentRequest;
+use App\Http\Requests\Admin\UpdateParentRequest;
 
 class GuardianController extends Controller
 {
@@ -88,7 +89,7 @@ class GuardianController extends Controller
         $userCredentials['role'] = 0;
         $user = User::create($userCredentials);
         $guardian['user_id'] = $user->id;
-        Guardian::create($guardian);
+        Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('/admin/guardians');
     }
 
@@ -114,6 +115,7 @@ class GuardianController extends Controller
         $user = User::where('id', $guardian->user_id);
         $user->update($userCredentials);
         $guardian->update($parentCredentials);
+        Alert::success('Success', 'Account of ' . $guardian->firstName . ' ' . $guardian->lastName . ' Updated Successfully');
         return redirect('/admin/guardians');
     }
 
@@ -144,14 +146,14 @@ class GuardianController extends Controller
                 ->addColumn('action', function ($row) {
 
                     // $btn = '<a href="{{url("admin/foods/'.$row->id.'/restore")}}" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewFoodImg"><i class="bi bi-card-image"></i></a>';
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
+                    // $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
 
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewParentDetails"><i class="bi bi-info-lg"></i></a>';
+                    // $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewParentDetails"><i class="bi bi-info-lg"></i></a>';
                     // $btn = $btn . ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-info-lg"></i></button>';
 
                     // $btn = $btn . ' <a href="/admin/guardians/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';
 
-                    $btn = $btn . ' <a href="/admin/guardians/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreParent btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
+                    $btn = ' <a href="/admin/guardians/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreParent btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
