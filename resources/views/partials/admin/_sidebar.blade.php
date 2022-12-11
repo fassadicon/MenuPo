@@ -246,12 +246,12 @@
               <span>To Claim Orders</span>
           </a>
         </li><!-- End Paid/To Claim Nav -->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a href="/admin/orders/placed" class="nav-link collapsed" id="sidebarLink">
           <i class="fa-solid fa-bars"></i>
             <span>Placed Orders</span>
         </a>
-      </li>
+      </li> --}}
 
       <li class="nav-item">
         <a href="/admin/orders/completed" class="nav-link collapsed" id="sidebarLink">

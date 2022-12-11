@@ -25,7 +25,7 @@ return new class extends Migration
     // Types of notifs
     // 1 = Orders 
     // 2 = Menu 
-    // 3 = Archives
+    // 3 = User
 
     /**
      * Reverse the migrations.

@@ -189,7 +189,7 @@
                             return row.student.firstName + ' ' + row.student.lastName;
                         }
                     },
-                    {
+                    {//3
                         data: 'orders',
                         name: 'orders',
                         render: function(data, type, row) {
@@ -198,51 +198,51 @@
                             }).join('<br>');
                         }
                     },
-                    { //3
+                    { //4
                         data: 'totalKcal',
                         name: 'totalKcal'
                     },
-                    { //4
+                    { //5
                         data: 'totalTotFat',
                         name: 'totalTotFat'
                     },
-                    { //5
+                    { //6
                         data: 'totalSatFat',
                         name: 'totalSatFat',
                     },
-                    { //6
+                    { //7
                         data: 'totalSugar',
                         name: 'totalSugar',
                     },
-                    { //7
+                    { //8
                         data: 'totalSodium',
                         name: 'totalSodium',
                     },
-                    { //8
+                    { //9
                         data: 'totalAmount',
                         name: 'totalAmount',
                     },
-                    { //9
+                    { //10
                         data: 'payment_id',
                         name: 'payment_id',
                     },
-                    { //10
+                    { //11
                         data: 'paymentStatus',
                         name: 'paymentStatus',
                     },
-                    { //11
+                    { //12
                         data: 'claimStatus',
                         name: 'claimStatus',
                     },
-                    { //12
+                    { //13
                         data: 'type',
                         name: 'type',
                     },
-                    { // 13
+                    { // 14
                         data: 'created_at',
                         name: 'created_at',
                     },
-                    { // 14
+                    { // 15
                         data: 'updated_at',
                         name: 'updated_at',
                     },
@@ -263,47 +263,47 @@
                     //     searchable: false
                     // },
                 ],
-                //   columnDefs: [{
-                //       "defaultContent": "-",
-                //       "targets": "_all"
-                //       },
-                //       {
-                //          target: 3,
-                //          visible: false,
-                //       },
-                //       {
-                //          target: 4,
-                //          visible: false,
-                //       },
-                //       {
-                //          target: 5,
-                //          visible: false,
-                //       },
-                //       {
-                //          target: 6,
-                //          visible: false,
-                //       },
-                //       {
-                //          target: 7,
-                //          visible: false,
-                //       },
-                //       {
-                //          target: 8,
-                //          visible: false,
-                //       },
-                //       {
-                //          target: 9,
-                //          visible: false,
-                //       },
-                //       {
-                //          target: 12,
-                //          visible: false,
-                //       },
+                  columnDefs: [{
+                      "defaultContent": "-",
+                      "targets": "_all"
+                      },
+                    //   {
+                    //      target: 3,
+                    //      visible: false,
+                    //   },
+                      {
+                         target: 4,
+                         visible: false,
+                      },
+                      {
+                         target: 5,
+                         visible: false,
+                      },
+                      {
+                         target: 6,
+                         visible: false,
+                      },
+                      {
+                         target: 7,
+                         visible: false,
+                      },
+                      {
+                         target: 8,
+                         visible: false,
+                      },
+                      {
+                         target: 9,
+                         visible: false,
+                      },
+                      {
+                         target: 10,
+                         visible: false,
+                      },
 
-                //     //   {
-                //     //      target: 12,
-                //     //      visible: false,
-                //     //   },
+                      {
+                         target: 16,
+                         visible: false,
+                      },
                 //     //   {
                 //     //      target: 13,
                 //     //      visible: false,
@@ -319,12 +319,12 @@
                 //     //      visible: false,
                 //     //      searchable: false,
                 //     //   },
-                //       {
-                //           targets: -1,
-                //           data: null,
-                //           defaultContent: '<button>Click!</button>',
-                //       }   
-                //  ],
+                      {
+                          targets: -1,
+                          data: null,
+                          defaultContent: '<button>Click!</button>',
+                      }   
+                 ],
             });
 
             // View Pending Order Data Modal
@@ -357,6 +357,10 @@
             //     })
 
             //     })
+            
+            $('body').on('click', '.confirmBtn', function() {
+                Swal.fire('Marked as Paid');
+            });
 
         });
     </script>

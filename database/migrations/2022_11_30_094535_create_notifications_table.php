@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('parent_id')->constrained('parents');
             $table->string('title');
             $table->string('description');
+            $table->integer('type');
             $table->integer('status');
             $table->timestamps();
         });

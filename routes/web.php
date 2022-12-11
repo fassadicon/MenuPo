@@ -142,20 +142,22 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('/orders/scanner/{sid}/complete', [ScannerController::class, 'complete']);
     // Pending/Unpaid Orders
     Route::get('/orders/pendings', [PurchasesController::class, 'index'])->name('pendings.index');
+    // Confirm Pending Orders to Paid 
+    Route::get('/orders/pendings/{id}/confirm', [PurchasesController::class, 'confirm'])->name('pendings.confirm');
     // Pending/Unpaid Orders Modal
     Route::get('/orders/pendings/{id}/view', [PurchasesController::class, 'viewPending'])->name('pendings.viewPending');
-    // Orders Placed
-    Route::get('/orders/placed', [OrderController::class, 'index'])->name('orders.index');
-    // Orders Placed Modal
-    Route::get('/orders/placed/{id}/view', [OrderController::class, 'view'])->name('orders.view');
-    // Orders Placed Soft Delete
-    Route::get('/orders/placed/{id}/delete', [OrderController::class, 'delete'])->name('orders.delete');
-    // Orders Placed Trash View
-    Route::get('/orders/placed/trash', [OrderController::class, 'trash'])->name('orders.trash');
-    // Orders Placed Trash Modal
-    Route::get('/orders/placed/{id}/viewTrash', [OrderController::class, 'view'])->name('orders.viewTrash');
-    // Orders Placed Restore
-    Route::get('/orders/placed/{id}/restore', [OrderController::class, 'restore'])->name('orders.restore');
+    // // Orders Placed
+    // Route::get('/orders/placed', [OrderController::class, 'index'])->name('orders.index');
+    // // Orders Placed Modal
+    // Route::get('/orders/placed/{id}/view', [OrderController::class, 'view'])->name('orders.view');
+    // // Orders Placed Soft Delete
+    // Route::get('/orders/placed/{id}/delete', [OrderController::class, 'delete'])->name('orders.delete');
+    // // Orders Placed Trash View
+    // Route::get('/orders/placed/trash', [OrderController::class, 'trash'])->name('orders.trash');
+    // // Orders Placed Trash Modal
+    // Route::get('/orders/placed/{id}/viewTrash', [OrderController::class, 'view'])->name('orders.viewTrash');
+    // // Orders Placed Restore
+    // Route::get('/orders/placed/{id}/restore', [OrderController::class, 'restore'])->name('orders.restore');
     // Completed Purchases
     Route::get('/orders/completed', [PurchasesController::class, 'completedOrders'])->name('completed.completedOrders');
     // Completed Purchases Modal
@@ -180,7 +182,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
     Route::get('/admins/{id}/delete', [AdminController::class, 'delete'])->name('admins.delete');
     Route::get('/admins/trash', [AdminController::class, 'trash'])->name('admins.trash');
-    Route::get('/admins/trash/{id}/view', [AdminController::class, 'viewTrash'])->name('admins.viewTrash');
+    Route::get('/admins/trash/{id}/viewTrash', [AdminController::class, 'viewTrash'])->name('admins.viewTrash');
     Route::get('/admins/{id}/restore', [AdminController::class, 'restore'])->name('admins.restore');
     // Parent Account Management
     Route::get('/guardians', [GuardianController::class, 'index'])->name('guardians.index');
@@ -251,7 +253,12 @@ Route::middleware('user')->group(function () {
     Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name:'user.account');
     Route::get('/edit-info', [UserAccController::class, 'edit']);
     Route::post('/saveUpdate', [UserAccController::class, 'saveUpdate']);
-    
+    Route::post('/user/change-pass-request', [UserAccController::class, 'change_pass_request']);
+    Route::get('/user/otp-page', [UserAccController::class, 'otp_page']);
+    Route::post('/user/submit-otp', [UserAccController::class, 'submit_otp']);
+    Route::get('/user/changepass-page', [UserAccController::class, 'changepass_page']);
+    Route::post('/user/submit-password', [UserAccController::class, 'submit_password']);
+
 
     //Menu Page
     Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])->name(name:'menu.index');

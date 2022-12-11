@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('rating')->length(1)->nullable();
             $table->string('suggestions');
             $table->string('comment')->nullable();
-            $table->timestamp('created_at');
+            $table->timestamps();
             $table->foreignId('parent_id')->constrained('parents');
         });
     }

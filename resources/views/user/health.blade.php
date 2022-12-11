@@ -2,7 +2,7 @@
 
 
 
-<x-user.layout :studs="$students" :notifs="$notifications">
+<x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
 
     <x-user.health-mod.health :anak="$anaks" :parent="$parent" :restricts="$restricts" :purchases="$purchases" :purchase_info="$purchase_info" :average_grade="$average_grade"/>
 

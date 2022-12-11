@@ -1,5 +1,6 @@
+@include('sweetalert::alert')
 
-<x-user.layout :studs="$students" :notifs="$notifications">
+<x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
     
         <x-user.home.carousel></x-test.user.home.carousel>
 

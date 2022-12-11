@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Food;
+use App\Models\Survey;
 use App\Models\Student;
+use App\Models\Guardian;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,14 +19,23 @@ class UserMenuController extends Controller
 
         
         $restricts = $student->restriction;
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
-        $anaks = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
-        
+
+
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
         return view('user.menu', [
             'anak' => $student,
             'foods' => Food::all(),
             'notifications' => $notifications,
-            'students' => $anaks,
+            'students' => $student,
+            'isSurveyAvail' => $isSurveyAvail,
             'restricts' => $restricts
         ]);
 
@@ -33,10 +44,18 @@ class UserMenuController extends Controller
     //For landing page
     public function landing(){
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
-        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
         return view('user.menu-landing', [
             'notifications' => $notifications,
+            'isSurveyAvail' => $isSurveyAvail,
             'students' => $student
         ]);
 
