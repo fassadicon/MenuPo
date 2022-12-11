@@ -5521,7 +5521,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 3.4,
                 'totalSodium' => 837,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-18'
@@ -5537,7 +5537,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 46.1,
                 'totalSodium' => 305,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-19'
@@ -5553,7 +5553,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 21,
                 'totalSodium' => 996.48,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-19'
@@ -5601,7 +5601,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 1.9,
                 'totalSodium' => 1477,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-17'
@@ -5633,7 +5633,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 2.9,
                 'totalSodium' => 277,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-17'
@@ -5649,7 +5649,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 21.7,
                 'totalSodium' => 633,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-17'
@@ -5665,7 +5665,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 19.8,
                 'totalSodium' => 1396,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-18'
@@ -5681,7 +5681,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 4.3,
                 'totalSodium' => 1086,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-18'
@@ -5697,7 +5697,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 26.5,
                 'totalSodium' => 129,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-19'
@@ -5713,7 +5713,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 0,
                 'totalSodium' => 0,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-19'
@@ -5745,7 +5745,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 43,
                 'totalSodium' => 590,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-21'
@@ -5777,7 +5777,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 26.4,
                 'totalSodium' => 27,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
                 'created_at' => '2022-11-22'
@@ -5793,7 +5793,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 19.5,
                 'totalSodium' => 367,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-23'
@@ -5825,7 +5825,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 0,
                 'totalSodium' => 472,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-24'
@@ -5841,7 +5841,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 37.4,
                 'totalSodium' => 297,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
                 'created_at' => '2022-11-25'
@@ -5857,7 +5857,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 18.5,
                 'totalSodium' => 636,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
                 'created_at' => '2022-11-27'
@@ -6017,7 +6017,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 0.3,
                 'totalSodium' => 1020,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-25'
@@ -6033,7 +6033,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 26.4,
                 'totalSodium' => 20,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-25'
@@ -6081,7 +6081,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 0,
                 'totalSodium' => 61,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-25'
@@ -6097,7 +6097,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 22.66,
                 'totalSodium' => 106.5,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-25'
@@ -6113,7 +6113,7 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 2.9,
                 'totalSodium' => 277,
                 'payment_id' => 1,
-                'claimStatus' => 0,
+                'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
                 'created_at' => '2022-11-25'
