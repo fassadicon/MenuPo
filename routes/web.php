@@ -139,7 +139,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Scan QR Code
     Route::get('/orders/scanner/{id}/view', [ScannerController::class, 'view']);
     // Complete order
-    Route::post('/orders/scanner/{sid}/{pid}/complete', [ScannerController::class, 'complete']);
+    Route::post('/orders/scanner/{sid}/complete', [ScannerController::class, 'complete']);
     // Pending/Unpaid Orders
     Route::get('/orders/pendings', [PurchasesController::class, 'index'])->name('pendings.index');
     // Pending/Unpaid Orders Modal
@@ -205,6 +205,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Imports
     Route::get('/imports', [ImportUsersController::class, 'index']);
     Route::post('/imports/upload', [ImportUsersController::class, 'import'])->name('imports.upload');
+    Route::get('/imports/viewImportedGuardians', [ImportUsersController::class, 'viewImportedGuardians'])->name('imports.viewImportedGuardians');
+    Route::get('/imports/viewImportedStudents', [ImportUsersController::class, 'viewImportedStudents'])->name('imports.viewImportedStudents');
+    Route::get('/imports/viewImportedAdmins', [ImportUsersController::class, 'viewImportedAdmins'])->name('imports.viewImportedAdmins');
 
     // REPORTS, GRAPHS, and INFORMATION
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');

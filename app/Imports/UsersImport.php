@@ -6,11 +6,18 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Student;
 use App\Models\Guardian;
+
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 use Illuminate\Support\Str;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+
 use Maatwebsite\Excel\Concerns\ToModel;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Maatwebsite\Excel\Concerns\SkipsOnError;
+use Maatwebsite\Excel\Concerns\SkipsOnFailure;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
 class UsersImport implements ToModel
 {
@@ -52,7 +59,27 @@ class UsersImport implements ToModel
         $QRcode = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)->generate($studentID);
         Storage::disk('public')->put('admin/qrs/' . $studentID . '.png', $QRcode);
 
-        $student = new Student([
+        // $student = new Student([
+        //     'parent_id' => $guardian->id,
+        //     'LRN' => $row[9],
+        //     'grade' => $row[10],
+        //     'section' => $row[11],
+        //     'adviser' => $row[12],
+        //     'firstName' => $row[13],
+        //     'lastName' => $row[14],
+        //     'middleName' => $row[15],
+        //     'suffix' => $row[16],
+        //     'sex' => $row[17],
+        //     'birthDate' => $row[18],
+        //     'status' => 1,
+        //     'height' => $row[19],
+        //     'weight' => $row[20],
+        //     'BMI' => $row[21],
+        //     'QR' => 'admin/qrs/' . $studentID . '.png',
+        //     'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+        // ]);
+
+        return new Student([
             'parent_id' => $guardian->id,
             'LRN' => $row[9],
             'grade' => $row[10],
@@ -71,7 +98,24 @@ class UsersImport implements ToModel
             'QR' => 'admin/qrs/' . $studentID . '.png',
             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         ]);
-
-        return $student;
     }
+
+    // public function rules(): array
+    // {
+    //     return [
+    //         // 'parent_id' =>  'required|numeric|max:10|unique:parents,id',
+    //         'LRN' => 'required|numeric',
+    //         'grade' => 'required|numeric|max:6',
+    //         'section' => 'required|string|max:255',
+    //         'adviser' => 'required|string|max:255',
+    //         'firstName' => 'required|string|max:255',
+    //         'lastName' => 'required|string|max:255',
+    //         'middleName' => 'nullable|string|max:255',
+    //         'suffix' => 'nullable|string|max:255',
+    //         'sex' => 'required|max:1',
+    //         'birthDate' => 'required|date',
+    //         'height' => 'nullable|numeric',
+    //         'weight' => 'nullable|numeric',
+    //     ];
+    // }
 }

@@ -12,11 +12,12 @@ use App\Models\Purchase;
 
 // use DataTables;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\StoreFoodRequest;
-use App\Http\Requests\Admin\UpdateFoodRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\Admin\StoreFoodRequest;
+use App\Http\Requests\Admin\UpdateFoodRequest;
 use Yajra\DataTables\DataTables as DataTables;
 
 class FoodController extends Controller
@@ -85,6 +86,7 @@ class FoodController extends Controller
         if ($request->hasFile('image'))
             $food['image'] = $request->file('image')->store('admin/foods', 'public');
         Food::create($food);
+        Alert::success($request->name . ' Created Successfully');
         return redirect('/admin/foods');
     }
 
@@ -101,6 +103,7 @@ class FoodController extends Controller
         if ($request->hasFile('image'))
             $foodCredentials['image'] = $request->file('image')->store('admin/foods', 'public');
         $food->update($foodCredentials);
+        Alert::success($food->name . " Updated Successfully");
         return redirect('/admin/foods');
     }
 

@@ -10,12 +10,13 @@ use App\Models\Guardian;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\StoreParentRequest;
-use App\Http\Requests\Admin\UpdateParentRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables as DataTables;
+use App\Http\Requests\Admin\StoreParentRequest;
+use App\Http\Requests\Admin\UpdateParentRequest;
 
 class GuardianController extends Controller
 {
@@ -88,7 +89,7 @@ class GuardianController extends Controller
         $userCredentials['role'] = 0;
         $user = User::create($userCredentials);
         $guardian['user_id'] = $user->id;
-        Guardian::create($guardian);
+        Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('/admin/guardians');
     }
 
@@ -114,6 +115,7 @@ class GuardianController extends Controller
         $user = User::where('id', $guardian->user_id);
         $user->update($userCredentials);
         $guardian->update($parentCredentials);
+        Alert::success('Success', 'Account of ' . $guardian->firstName . ' ' . $guardian->lastName . ' Updated Successfully');
         return redirect('/admin/guardians');
     }
 

@@ -118,7 +118,7 @@
                       You have 3 new messages
                       <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
                   </li>
-                  <li>
+                  {{-- <li>
                       <hr class="dropdown-divider">
                   </li>
 
@@ -159,7 +159,7 @@
                               <p>8 hrs. ago</p>
                           </div>
                       </a>
-                  </li>
+                  </li> --}}
                   <li>
                       <hr class="dropdown-divider">
                   </li>
@@ -176,7 +176,7 @@
 
               <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                   data-bs-toggle="dropdown">
-                  <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                  <img src="{{ auth()->user()->admin->image ? asset('storage/' . auth()->user()->admin->image) : asset('storage/admin/userNoImage.png') }}" alt="Profile" class="rounded-circle">
                   <span class="d-none d-md-block dropdown-toggle ps-2"></span>
               </a><!-- End Profile Iamge Icon -->
 

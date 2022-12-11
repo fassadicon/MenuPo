@@ -61,7 +61,6 @@
     </div>
 
     {{-- Student Data Modal --}}
-    <!-- Nutrient Data Modal -->
     <div class="modal fade" id="viewStudentInfoModal" tabindex="-1" aria-labelledby="viewStudentInfoModal"
         aria-hidden="true">
         <div class="modal-dialog">

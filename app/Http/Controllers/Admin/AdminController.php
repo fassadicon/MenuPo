@@ -9,13 +9,14 @@ use App\Models\Admin;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreatAdminRequest;
-use App\Http\Requests\Admin\UpdateAdminRequest;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+
+use App\Http\Requests\CreatAdminRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables as DataTables;
+use App\Http\Requests\Admin\UpdateAdminRequest;
 
 class AdminController extends Controller
 {
@@ -87,6 +88,7 @@ class AdminController extends Controller
         $user = User::create($userCredentials);
         $admin['user_id'] = $user->id;
         Admin::create($admin);
+        Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('/admin/admins');
     }
 
@@ -112,6 +114,7 @@ class AdminController extends Controller
         $user = User::where('id', $admin->user_id);
         $user->update($userCredentials);
         $admin->update($adminCredentials);
+        Alert::success('Success', 'Account of ' . $admin->firstName . ' ' . $admin->lastName . ' Created Successfully');
         return redirect('/admin/admins');
     }
 

@@ -24,15 +24,15 @@
                 <div class="card-body orderDetailsCard">
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" name="studentID" id="studentID" hidden>
+                            {{-- <input type="text" name="studentID" id="studentID" hidden> --}}
                             <label for="parentName">Parent's Name: </label>
-                            <input type="text" id="parentName" class="border border-gray-200 rounded p-2 w-full">
+                            <input type="text" id="parentName" class="border border-gray-200 rounded p-2 w-full" readonly>
                             <label for="studentName">Student's Name: </label>
-                            <input type="text" id="studentName" class="border border-gray-200 rounded p-2 w-full">
-                            <input type="text" id="purchaseID" class="border border-gray-200 rounded p-2 w-full"
-                                hidden>
+                            <input type="text" id="studentName" class="border border-gray-200 rounded p-2 w-full" readonly>
+                            <label for="studentID">Student's ID: </label>
+                            <input type="number" id="studentID" class="border border-gray-200 rounded p-2 w-full">
                             <label for="totalAmount">Total Amount: </label>
-                            <input type="text" id="totalAmount" class="border border-gray-200 rounded p-2 w-full">
+                            <input type="text" id="totalAmount" class="border border-gray-200 rounded p-2 w-full" readonly>
                         </div>
                         <div class="col-12 table-responsive">
                             <table class="table table-borderless" width="100%" cellspacing="0">
@@ -145,19 +145,17 @@
                 // $('#orderTable').html('');
                 console.log(data);
                 if (data.purchase.length == 0) {
-                    // let btn = ' <a href="/admin/pos/' + '">Yes</a>';
-                    let btn = ' <a href="/admin/pos/' + id + '">Yes</a>';
                     Swal.fire({
-                        title: 'Test',
-                        text: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
+                        title: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
                         icon: "warning",
-                        html: btn,
+                        html: '<a href="/admin/pos/' + id +
+                            '"class=\'btn btn-success\'>Yes</a>',
                         showCancelButton: true,
                         showConfirmButton: false
                     });
                 }
                 $.each(data.purchase, function() {
-                    $('#purchaseID').val(this.id);
+                    // $('#purchaseID').val(this.id);
                     $('#parentName').val(this.parent.firstName + ' ' + this.parent
                         .lastName);
                     $('#studentName').val(this.student.firstName + ' ' + this.student
@@ -197,10 +195,9 @@
     // Complete Button
     $(".completeBtn").click(function() {
         var sid = $("#studentID").val();
-        var pid = $("#purchaseID").val();
         $.ajax({
             type: "POST",
-            url: "{{ url('admin/orders/scanner') }}" + '/' + sid + '/' + pid + '/complete',
+            url: "{{ url('admin/orders/scanner') }}" + '/' + sid + '/complete',
             success: function(result) {
                 $('#studentID').val('');
                 $('#purchaseID').val('');
@@ -209,14 +206,18 @@
                 $('#totalAmount').val('');
                 $('#purchaseTable').children('tr').remove();
 
-                Swal.fire(
-                    'Completed'
-                );
+                Swal.fire({
+                    title: 'Order Claimed Successfully. Do you want to add orders?',
+                    html: '<a href="/admin/pos/' + sid +
+                        '"class=\'btn btn-success\'>Yes</a>',
+                    showCancelButton: true,
+                    showConfirmButton: false
+                });
 
             },
             error: function(error) {
                 Swal.fire(
-                    'No Order Scanned!'
+                    'No QR Scanned!',
                 );
             }
         });
