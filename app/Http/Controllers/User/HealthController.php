@@ -5,11 +5,13 @@ namespace App\Http\Controllers\User;
 use Carbon\Carbon;
 use App\Models\Food;
 use App\Models\Order;
+use App\Models\Survey;
 use App\Models\Student;
 use App\Models\Guardian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HealthController extends Controller
 {
@@ -25,6 +27,11 @@ class HealthController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
         $purchase = DB::select('SELECT * FROM purchases WHERE parent_id = ? && student_id = ?', [$parent[0]->id, $anak->id]);
 
         // For average food grade
@@ -61,6 +68,7 @@ class HealthController extends Controller
             'parent' => $parent[0],
             'notifications' => $notifications,
             'purchases' => $purchase,
+            'isSurveyAvail' => $isSurveyAvail,
             'anaks' => $anak,
             'purchase_info' => $purchase_info,
             'average_grade' => $average_grade
@@ -88,13 +96,19 @@ class HealthController extends Controller
     public function edit(Student $anak){
 
         $parent = Guardian::where('user_id', auth()->id())->get();
-        
+
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
 
         return view('user.edit-studAcc', [
             'notifications' => $notifications,
             'anak' => $anak,
+            'isSurveyAvail' => $isSurveyAvail,
             'students' => $student
         ]);
     }
@@ -119,6 +133,8 @@ class HealthController extends Controller
             $request->input('id')
 
         ]);
+
+        Alert::success('Success!', 'Student details successfully changed.');
 
         return redirect()->route(route:'user.account');
         

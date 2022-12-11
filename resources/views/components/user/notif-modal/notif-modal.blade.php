@@ -4,7 +4,7 @@
 @props(['notif'])
 
 
-<div class="notif-wrapper flex flex-row pl-3 hover:bg-gray-200 hover:cursor-pointer">
+<div class="notif-wrapper flex flex-row pl-3 hover:bg-gray-200">
     <div class="notif-image">
         <img class="w-16 h-16 rounded-full mt-4" src="https://i.pinimg.com/564x/49/6f/1d/496f1d78e07b43c2975522de90ce8504.jpg" alt="profile_pic" >
     </div>

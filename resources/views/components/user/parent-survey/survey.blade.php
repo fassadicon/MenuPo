@@ -25,12 +25,7 @@
             <label for="role" class="block text-base">
                 Select your role in the school
             </label>
-            <select id="role" name="role" class="w-full px-4 py-2 text-base border rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary">
-                <option selected>Choose a role</option>
-                <option value="0">Canteen Staff</option>
-                <option value="1">Faculty</option>
-                <option value="2">Parent</option>
-            </select>
+            <input class="w-full rounded-lg" type="text" disabled name="role" value="Parent">
             </div>
         </div>
 
@@ -66,31 +61,6 @@
                 1
             </label>
             </div>
-            
-        </div>
-
-        <div class="gap-2 mb-8 lg:flex">
-            <p> What menu items you like to have more choices? <span class="text-primary"> (Check all that apply) </span></p>
-            <div class="py-4">
-            <div class="form-check">
-            <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-primary checked:border-primary focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" name="more_choices[]" type="checkbox" value="0" id="flexCheckChecked" checked>
-            <label class="form-check-label inline-block text-gray-800" for="flexCheckChecked">
-                Rice Meals
-            </label>
-            </div>
-            <div class="form-check">
-            <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-primary checked:border-primary focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" name="more_choices[]" type="checkbox" value="1" id="flexCheckDefault">
-            <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
-                Snacks
-            </label>
-            </div>
-            <div class="form-check">
-            <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-primary checked:border-primary focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" name="more_choices[]" type="checkbox" value="2" id="flexCheckDefault">
-            <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
-                Beverages
-            </label>
-            </div>
-        </div>
             
         </div>
 

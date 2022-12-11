@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\Food;
 use App\Models\Order;
+use App\Models\Survey;
 use App\Models\Payment;
 use App\Models\Guardian;
 use App\Models\Purchase;
@@ -28,6 +29,11 @@ class PaymentController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
         
         //For total calories
         foreach($items as $item){
@@ -76,9 +82,10 @@ class PaymentController extends Controller
 
         //Creating notif
         $notification = new Notification;
-        $notification->parent_id = 1;
+        $notification->parent_id = $parent[0]->id;
         $notification->title = 'Order submitted successfully.';
         $notification->description = 'The order is received by the admin. Please wait for the confirmation of the payment.';
+        $notification->type = 1;
         $notification->status = 1;
         $notification->save();
 
@@ -94,7 +101,8 @@ class PaymentController extends Controller
 
         return view('user.payment', [
             'notifications' => $notifications,
-            'students' => $student
+            'students' => $student,
+            'isSurveyAvail' => $isSurveyAvail
         ]);
     }
 
@@ -106,6 +114,11 @@ class PaymentController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
 
         // Destroying the cart session
         Cart::destroy();
@@ -113,7 +126,8 @@ class PaymentController extends Controller
         return view('user.receipt', [
             'items' => $items,
             'notifications' => $notifications,
-            'students' => $student
+            'students' => $student,
+            'isSurveyAvail' => $isSurveyAvail,
         ]);
     }
 
@@ -124,11 +138,17 @@ class PaymentController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
 
         return view('user.receipt2', [
             'items' => $items,
             'notifications' => $notifications,
-            'students' => $student
+            'students' => $student,
+            'isSurveyAvail' => $isSurveyAvail
         ]);
     }
 

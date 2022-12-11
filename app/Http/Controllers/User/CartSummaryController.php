@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Food;
+use App\Models\Survey;
 use App\Models\Student;
 use App\Models\Guardian;
 use Illuminate\Http\Request;
@@ -17,12 +18,17 @@ class CartSummaryController extends Controller
         $parent = Guardian::where('user_id', auth()->id())->get();
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
-        $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
-
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
         return view('user.cart-summary', [
             'notifications' => $notifications,
             'anak' => $anak,
-            'students' => $students
+            'isSurveyAvail' => $isSurveyAvail,
+            'students' => $student
             
         ]);
     }

@@ -13,19 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('adminnotifs', function (Blueprint $table) {
+        Schema::create('passrequests', function (Blueprint $table) {
             $table->id();
-            $table->integer('type');
-            $table->string('title');
-            $table->string('description');
+            $table->integer('user_id');
+            $table->string('otp');
             $table->integer('status');
             $table->timestamps();
         });
     }
-    // Types of notifs
-    // 1 = Orders 
-    // 2 = Menu 
-    // 3 = User
 
     /**
      * Reverse the migrations.
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adminnotifs');
+        Schema::dropIfExists('passrequests');
     }
 };

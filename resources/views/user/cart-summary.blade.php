@@ -1,6 +1,6 @@
 
 
-<x-user.layout :studs="$students" :notifs="$notifications">
+<x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
 
     <br>
     <x-user.cart-summary.cart-summary :anak="$anak"/>

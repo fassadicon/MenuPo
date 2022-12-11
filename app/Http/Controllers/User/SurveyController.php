@@ -2,42 +2,51 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Survey;
+use App\Models\Guardian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SurveyController extends Controller
 {
     public function index(){
 
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
-        $currentTime = \Carbon\Carbon::now('Asia/Singapore')->toTimeString();
-        $anaks = DB::select('SELECT * FROM students WHERE parent_id = ?', [1]);
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
+
+        
 
         return view('user.survey',[
             'notifications' => $notifications,
-            'students' => $anaks
+            'students' => $student,
+            'isSurveyAvail' => $isSurveyAvail
         ]);
     }
 
     public function store(Request $request){
 
-        $choices = $request->more_choices;
-        $choices = implode(',', $choices);
+        $parent = Guardian::where('user_id', auth()->id())->get();
 
-        // $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [1]);
+        $survey = new Survey;
+        $survey->name = $request->name;
+        $survey->rating = $request->rating;
+        $survey->suggestions = $request->meal_suggest;
+        $survey->comment = $request->recommendation;
+        $survey->parent_id = $parent[0]->id;
+        $survey->save();
 
-        // $survey = new Surveys;
-        // $survey->user_id = auth()->user()->id;
-        // $survey->name = $request->name;
-        // $survey->role = $request->role;
-        // $survey->rating = $request->rating;
-        // $survey->more_choices = $choices;
-        // $survey->food_suggest = $request->meal_suggest;
-        // $survey->recommendation = $request->recommendation;
-        // $survey->save();
+        Alert::success('Success!', 'Survey submitted successfully.');
         
 
-        return redirect()->route(route:'menu.landing');
+        return redirect('user/user-account');
     }
 }
