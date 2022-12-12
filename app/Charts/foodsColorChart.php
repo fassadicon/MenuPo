@@ -25,6 +25,7 @@ class foodsColorChart
                 Food::whereNull('grade')->count()
             ])
             ->setLabels(['Green', 'Amber', 'Red', 'Ungraded'])
+            ->setColors(['#40916c', '#ff8800', '#d90429', '#adb5bd'])
             ->setToolBar(true);
     }
 }

@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
                 'id' => 1,
                 'email' => 'super@admin.com',
                 'recoveryEmail' => 'super@recover.com',
-                'password' => bcrypt('qwe21344'),
+                'password' => bcrypt('qwe123'),
                 'role' => 2,
                 'created_at' => '2022-05-01'
             ],
