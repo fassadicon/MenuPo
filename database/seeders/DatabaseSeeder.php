@@ -5898,12 +5898,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 28,
                 'parent_id' => 1,
                 'student_id' => 1,
-                'totalAmount' => 90.00,
-                'totalKcal' => 1096,
-                'totalTotFat' => 65.7,
-                'totalSatFat' => 17.61,
-                'totalSugar' => 4.8,
-                'totalSodium' => 825,
+                'totalAmount' => 105.00,
+                'totalKcal' => 1225,
+                'totalTotFat' => 65.9,
+                'totalSatFat' => 17.66,
+                'totalSugar' => 4.9,
+                'totalSodium' => 828,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 0,
@@ -5930,12 +5930,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 30,
                 'parent_id' => 12,
                 'student_id' => 18,
-                'totalAmount' => 25.00,
-                'totalKcal' => 70,
-                'totalTotFat' => 2.8,
-                'totalSatFat' => 1.3,
-                'totalSugar' => 4,
-                'totalSodium' => 354,
+                'totalAmount' => 40.00,
+                'totalKcal' => 199,
+                'totalTotFat' => 3,
+                'totalSatFat' => 1.35,
+                'totalSugar' => 4.1,
+                'totalSodium' => 357,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 0,
@@ -5946,12 +5946,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 31,
                 'parent_id' => 11,
                 'student_id' => 14,
-                'totalAmount' => 35.00,
-                'totalKcal' => 195,
-                'totalTotFat' => 4.8,
-                'totalSatFat' => 1.68,
-                'totalSugar' => 13.1,
-                'totalSodium' => 1222,
+                'totalAmount' => 50.00,
+                'totalKcal' => 324,
+                'totalTotFat' => 5,
+                'totalSatFat' => 1.73,
+                'totalSugar' => 13.2,
+                'totalSodium' => 1225,
                 'payment_id' => 1,
                 'claimStatus' => 0,
                 'type' => 0,
@@ -5962,12 +5962,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 32,
                 'parent_id' => 15,
                 'student_id' => 21,
-                'totalAmount' => 75.00,
-                'totalKcal' => 596,
-                'totalTotFat' => 23.7,
-                'totalSatFat' => 7.4,
-                'totalSugar' => 39,
-                'totalSodium' => 1342,
+                'totalAmount' => 90.00,
+                'totalKcal' => 725,
+                'totalTotFat' => 23.9,
+                'totalSatFat' => 7.45,
+                'totalSugar' => 39.1,
+                'totalSodium' => 1345,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 1,
@@ -5978,12 +5978,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 33,
                 'parent_id' => 19,
                 'student_id' => 26,
-                'totalAmount' => 35.00,
-                'totalKcal' => 396,
-                'totalTotFat' => 25.4,
-                'totalSatFat' => 8.9,
-                'totalSugar' => 26,
-                'totalSodium' => 912,
+                'totalAmount' => 50.00,
+                'totalKcal' => 525,
+                'totalTotFat' => 25.6,
+                'totalSatFat' => 8.95,
+                'totalSugar' => 26.1,
+                'totalSodium' => 915,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 1,
@@ -5994,12 +5994,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 34,
                 'parent_id' => 19,
                 'student_id' => 24,
-                'totalAmount' => 45.00,
-                'totalKcal' => 164,
-                'totalTotFat' => 8.5,
-                'totalSatFat' => 3.4,
-                'totalSugar' => 5.1,
-                'totalSodium' => 939,
+                'totalAmount' => 60.00,
+                'totalKcal' => 293,
+                'totalTotFat' => 8.7,
+                'totalSatFat' => 3.45,
+                'totalSugar' => 5.2,
+                'totalSodium' => 942,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 0,
@@ -6058,12 +6058,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 38,
                 'parent_id' => 7,
                 'student_id' => 9,
-                'totalAmount' => 40.00,
-                'totalKcal' => 245,
-                'totalTotFat' => 21.8,
-                'totalSatFat' => 7.95,
-                'totalSugar' => 0,
-                'totalSodium' => 61,
+                'totalAmount' => 55.00,
+                'totalKcal' => 374,
+                'totalTotFat' => 22,
+                'totalSatFat' => 8,
+                'totalSugar' => 0.1,
+                'totalSodium' => 64,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 0,
@@ -6074,12 +6074,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 39,
                 'parent_id' => 16,
                 'student_id' => 22,
-                'totalAmount' => 60.00,
-                'totalKcal' => 245,
-                'totalTotFat' => 21.8,
-                'totalSatFat' => 7.95,
-                'totalSugar' => 0,
-                'totalSodium' => 61,
+                'totalAmount' => 90.00,
+                'totalKcal' => 503,
+                'totalTotFat' => 22.2,
+                'totalSatFat' => 8.05,
+                'totalSugar' => 0.2,
+                'totalSodium' => 67,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 0,
@@ -6122,12 +6122,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 42,
                 'parent_id' => 13,
                 'student_id' => 19,
-                'totalAmount' => 25.00,
-                'totalKcal' => 168,
-                'totalTotFat' => 10.7,
-                'totalSatFat' => 4.51,
-                'totalSugar' => 0,
-                'totalSodium' => 567,
+                'totalAmount' => 40.00,
+                'totalKcal' => 297,
+                'totalTotFat' => 10.9,
+                'totalSatFat' => 4.56,
+                'totalSugar' => 0.1,
+                'totalSodium' => 570,
                 'payment_id' => 1,
                 'claimStatus' => 0,
                 'type' => 0,
@@ -6154,12 +6154,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 44,
                 'parent_id' => 22,
                 'student_id' => 29,
-                'totalAmount' => 60.00,
-                'totalKcal' => 306,
-                'totalTotFat' => 6.8,
-                'totalSatFat' => 2.26,
-                'totalSugar' => 40.4,
-                'totalSodium' => 1045,
+                'totalAmount' => 75.00,
+                'totalKcal' => 435,
+                'totalTotFat' => 7,
+                'totalSatFat' => 2.31,
+                'totalSugar' => 40.5,
+                'totalSodium' => 1048,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 0,
@@ -6170,12 +6170,12 @@ class DatabaseSeeder extends Seeder
                 'id' => 45,
                 'parent_id' => 26,
                 'student_id' => 33,
-                'totalAmount' => 35.00,
-                'totalKcal' => 220,
-                'totalTotFat' => 11.2,
-                'totalSatFat' => 2.22,
-                'totalSugar' => 0.7,
-                'totalSodium' => 520,
+                'totalAmount' => 50.00,
+                'totalKcal' => 349,
+                'totalTotFat' => 11.4,
+                'totalSatFat' => 2.27,
+                'totalSugar' => 0.8,
+                'totalSodium' => 523,
                 'payment_id' => 1,
                 'claimStatus' => 1,
                 'type' => 1,
@@ -7187,6 +7187,18 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id' => 82,
+                'purchase_id' => 28,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 83,
                 'purchase_id' => 29,
                 'food_id' => 52,
                 'quantity' => 1,
@@ -7198,7 +7210,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 729
             ],
             [
-                'id' => 83,
+                'id' => 84,
                 'purchase_id' => 29,
                 'food_id' => 57,
                 'quantity' => 1,
@@ -7210,7 +7222,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 8
             ],
             [
-                'id' => 84,
+                'id' => 85,
                 'purchase_id' => 30,
                 'food_id' => 24,
                 'quantity' => 1,
@@ -7222,7 +7234,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 354
             ],
             [
-                'id' => 85,
+                'id' => 86,
+                'purchase_id' => 30,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 87,
                 'purchase_id' => 31,
                 'food_id' => 20,
                 'quantity' => 1,
@@ -7234,7 +7258,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 354
             ],
             [
-                'id' => 86,
+                'id' => 88,
                 'purchase_id' => 31,
                 'food_id' => 13,
                 'quantity' => 1,
@@ -7246,7 +7270,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1208
             ],
             [
-                'id' => 87,
+                'id' => 89,
+                'purchase_id' => 31,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 90,
                 'purchase_id' => 32,
                 'food_id' => 12,
                 'quantity' => 1,
@@ -7258,7 +7294,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1037
             ],
             [
-                'id' => 88,
+                'id' => 91,
+                'purchase_id' => 32,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 92,
                 'purchase_id' => 32,
                 'food_id' => 10,
                 'quantity' => 1,
@@ -7270,7 +7318,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 291
             ],
             [
-                'id' => 89,
+                'id' => 93,
                 'purchase_id' => 32,
                 'food_id' => 18,
                 'quantity' => 1,
@@ -7282,7 +7330,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 14
             ],
             [
-                'id' => 90,
+                'id' => 94,
                 'purchase_id' => 33,
                 'food_id' => 6,
                 'quantity' => 1,
@@ -7294,7 +7342,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 902
             ],
             [
-                'id' => 91,
+                'id' => 95,
+                'purchase_id' => 33,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 96,
                 'purchase_id' => 33,
                 'food_id' => 19,
                 'quantity' => 1,
@@ -7306,7 +7366,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 10
             ],
             [
-                'id' => 92,
+                'id' => 97,
                 'purchase_id' => 34,
                 'food_id' => 30,
                 'quantity' => 1,
@@ -7318,7 +7378,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 939
             ],
             [
-                'id' => 93,
+                'id' => 98,
+                'purchase_id' => 34,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 99,
                 'purchase_id' => 35,
                 'food_id' => 32,
                 'quantity' => 1,
@@ -7330,7 +7402,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 567
             ],
             [
-                'id' => 94,
+                'id' => 100,
                 'purchase_id' => 35,
                 'food_id' => 50,
                 'quantity' => 1,
@@ -7342,7 +7414,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 453
             ],
             [
-                'id' => 95,
+                'id' => 101,
                 'purchase_id' => 36,
                 'food_id' => 54,
                 'quantity' => 1,
@@ -7354,7 +7426,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 20
             ],
             [
-                'id' => 96,
+                'id' => 102,
                 'purchase_id' => 37,
                 'food_id' => 59,
                 'quantity' => 1,
@@ -7366,7 +7438,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 140
             ],
             [
-                'id' => 97,
+                'id' => 103,
                 'purchase_id' => 38,
                 'food_id' => 40,
                 'quantity' => 1,
@@ -7378,7 +7450,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 61
             ],
             [
-                'id' => 98,
+                'id' => 104,
+                'purchase_id' => 38,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 105,
                 'purchase_id' => 39,
                 'food_id' => 34,
                 'quantity' => 1,
@@ -7390,7 +7474,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 61
             ],
             [
-                'id' => 99,
+                'id' => 106,
+                'purchase_id' => 39,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 107,
                 'purchase_id' => 39,
                 'food_id' => 15,
                 'quantity' => 1,
@@ -7402,7 +7498,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1088
             ],
             [
-                'id' => 100,
+                'id' => 108,
+                'purchase_id' => 39,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 109,
                 'purchase_id' => 40,
                 'food_id' => 23,
                 'quantity' => 1,
@@ -7414,7 +7522,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 101.76
             ],
             [
-                'id' => 101,
+                'id' => 110,
                 'purchase_id' => 40,
                 'food_id' => 21,
                 'quantity' => 2,
@@ -7426,7 +7534,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1.12
             ],
             [
-                'id' => 102,
+                'id' => 111,
                 'purchase_id' => 40,
                 'food_id' => 22,
                 'quantity' => 5,
@@ -7438,7 +7546,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 0.5
             ],
             [
-                'id' => 103,
+                'id' => 112,
                 'purchase_id' => 41,
                 'food_id' => 1,
                 'quantity' => 1,
@@ -7450,7 +7558,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 277
             ],
             [
-                'id' => 104,
+                'id' => 113,
                 'purchase_id' => 42,
                 'food_id' => 4,
                 'quantity' => 1,
@@ -7462,7 +7570,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 567
             ],
             [
-                'id' => 105,
+                'id' => 114,
+                'purchase_id' => 42,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 115,
                 'purchase_id' => 43,
                 'food_id' => 9,
                 'quantity' => 1,
@@ -7474,7 +7594,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1
             ],
             [
-                'id' => 106,
+                'id' => 116,
                 'purchase_id' => 44,
                 'food_id' => 12,
                 'quantity' => 1,
@@ -7486,7 +7606,19 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 1037
             ],
             [
-                'id' => 107,
+                'id' => 117,
+                'purchase_id' => 44,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 118,
                 'purchase_id' => 44,
                 'food_id' => 53,
                 'quantity' => 1,
@@ -7498,7 +7630,7 @@ class DatabaseSeeder extends Seeder
                 'sodium' => 8
             ],
             [
-                'id' => 108,
+                'id' => 119,
                 'purchase_id' => 45,
                 'food_id' => 31,
                 'quantity' => 1,
@@ -7508,6 +7640,18 @@ class DatabaseSeeder extends Seeder
                 'satFat' => 2.22,
                 'sugar' => 0.7,
                 'sodium' => 520
+            ],
+            [
+                'id' => 120,
+                'purchase_id' => 45,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
             ]
             
         ];
