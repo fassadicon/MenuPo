@@ -8,6 +8,11 @@
 }
 
 
+body{
+  font-family: 'Lato', sans-serif !important;
+}
+
+
 /* html,body{
   width: 100%;
   height: 100%;
@@ -67,6 +72,11 @@
   
   .navbar a:hover {
     color: var(--primary);
+  }
+
+  .navbar-brand{
+    font-weight: 600;
+    color: var(--secondary);
   }
 
 
@@ -145,6 +155,7 @@
     top: -172px;
     right: 0;	
     border-radius: 32px;
+
 }
 
 @media (max-width: 640px) {
@@ -161,6 +172,7 @@
     top: -24px;
     right: 0;	
     border-radius: 32px;
+
 }
 
 @media (max-width: 640px) {
@@ -258,6 +270,7 @@
     height: 560px;
     width: 320px;	
     right: 18px;
+    border-top-right-radius: 80px;
   }
 }
 
@@ -336,6 +349,15 @@
 #forgot-pass:focus,
 #forgot-pass:hover {
     color: #2986cc;
+}
+
+
+#remember{
+  margin-left: 1em;
+}
+
+.form-remember{
+  margin-right: 5em;
 }
 
 
