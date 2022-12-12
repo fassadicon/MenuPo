@@ -1732,11 +1732,5 @@ footer .bottom-details{
     .social-login__icon:hover {
         transform: scale(1.5);	
     }
-       
-
-    /* Button adjustment */
-    .btn{
-        background-color: var(--secondary) !important;
-    }
 
    
