@@ -4,7 +4,6 @@
 @props(['parent'])
 @props(['restricts'])
 @props(['purchases'])
-@props(['purchase_info'])
 @props(['average_grade'])
 
 @php
@@ -80,7 +79,7 @@
               <div class="image overflow-hidden">
               <a class="relative block h-72 bg-gray-900 group" href="#">
                   <img class="absolute inset-0 object-cover w-full h-auto mx-auto group-hover:opacity-50"
-                  src="https://i.pinimg.com/564x/ed/c3/f4/edc3f4694de738c6223cbb130b1f83dd.jpg" alt="" />
+                  src="https://www.kindpng.com/picc/m/57-573752_school-student-images-png-transparent-png.png" alt="" />
                   <div class="relative p-2">
                     <div class="mt-56">
                       <div
@@ -310,23 +309,16 @@
                   <div class="grid md:grid-cols-2 text-sm">
                       <div class="grid grid-cols-2">
                           <div class="px-4 py-2 font-semibold">Height</div>
-                          <div class="px-4 py-2">1.6</div>
+                          <div class="px-4 py-2">{{$anak->height}} cm</div>
                       </div>
                       <div class="grid grid-cols-2">
                           <div class="px-4 py-2 font-semibold">Weight</div>
-                          <div class="px-4 py-2">30</div>
+                          <div class="px-4 py-2">{{$anak->weight}} kgs</div>
                       </div>
                       <div class="grid grid-cols-2">
                           <div class="px-4 py-2 font-semibold">BMI</div>
                           <div class="px-4 py-2">
-                            @php
-                                $height = 1.6;
-                                $weight = 30;
-                                $bmi = 0;
-
-                                $bmi = $weight / ($height^2);
-                                echo $bmi;
-                            @endphp
+                           {{$anak->BMI}}
                           </div>
                       </div>
                   </div>
@@ -407,10 +399,9 @@
                               </tr>
                           </thead>
                           <tbody class="divide-y divide-gray-200">
-                            @foreach ($purchase_info as $purch)
-                                @if (!empty($purch))
+                            @foreach ($purchases as $purch)
                                 <tr class="">
-                                    <td class="px-6 py-4 text-center">{{$purch[0]->purchase_id}}</td>
+                                    <td class="px-6 py-4 text-center">{{$purch->id}}</td>
                                     <td class="flex relative group px-6 py-4 text-center">
                                         <i class="relative fa-solid fa-eye"></i>
                                         <!-- Submenu starts -->
@@ -422,26 +413,13 @@
                                                 <th class="border-solid border-4 text-lg w-20 text-[#ffc300] font-bold"> Sugar </th>
                                                 <th class="border-solid border-4 text-lg w-20 text-[#ffc300] font-bold"> Calories </th>
                                             </thead>
-                                            @php
-                                                $fat = 0;
-                                                $sat_fat = 0;
-                                                $sugar = 0;
-                                                $cal = 0;
-                                            @endphp
-                                            @foreach ($purch as $item)
-                                                @php
-                                                    $fat += $item->totFat;
-                                                    $sat_fat += $item->satFat;
-                                                    $sugar += $item->sugar;
-                                                    $cal += $item->kcal; 
-                                                @endphp
-                                            @endforeach
+                                            
                                             <tbody>
                                                 <tr class="flex flex-row ">
-                                                <td class="border-solid border-2 text-lg text-center w-20 font-bold">{{$fat}}</td>
-                                                <td class="border-solid border-2 text-lg text-center w-20 font-bold">{{$sat_fat}}</td>
-                                                <td class="border-solid border-2 text-lg text-center w-20 font-bold">{{$sugar}}</td>
-                                                <td class="border-solid border-2 text-lg text-center w-20 font-bold">{{$cal}}</td>
+                                                <td class="border-solid border-2 text-lg text-center w-20 font-bold">{{$purch->totalTotFat}}</td>
+                                                <td class="border-solid border-2 text-lg text-center w-20 font-bold">{{$purch->totalSatFat}}</td>
+                                                <td class="border-solid border-2 text-lg text-center w-20 font-bold">{{$purch->totalSugar}}</td>
+                                                <td class="border-solid border-2 text-lg text-center w-20 font-bold">{{$purch->totalKcal}}</td>
                                                 </tr>
                                             </tbody>
                                             </table>
@@ -449,13 +427,12 @@
                                     <!-- Submenu ends -->
                                     </td>
                                     <td class="px-6 py-4">
-                                        <p class=""><span>&#8369;</span>20.0</p>
+                                        <p class=""><span>&#8369;</span>{{$purch->totalAmount}}</p>
                                     </td>
                                     <td class="px-6 py-4 text-center"> <span class="text-white text-sm w-1/3 pb-1 bg-red-600 font-semibold px-2 rounded-full"> Pending </span> </td>
                                     {{-- <td class="px-6 py-4 text-center"> {{$purch[0]->created_at}} </td> --}}
-                                    <td class="px-6 py-4 text-center">{{$purchases[0]->created_at}}</td>
+                                    <td class="px-6 py-4 text-center">{{$purch->created_at}}</td>
                                 </tr>
-                                @endif
                             @endforeach   
                           </tbody>
                       </table>

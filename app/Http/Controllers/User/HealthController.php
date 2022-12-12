@@ -17,8 +17,6 @@ class HealthController extends Controller
 {
     public function index(Student $anak){
 
-        
-        
         $ids = explode(',' , $anak->restriction);
 
         $restrict = array();
@@ -55,13 +53,6 @@ class HealthController extends Controller
             array_push($restrict, $item);
         }
 
-        $purchase_info = array();
-
-        foreach($purchase as $purch){
-            $item2 = DB::select('SELECT * FROM orders WHERE purchase_id = ?', [$purch->id]);
-            array_push($purchase_info, $item2);
-        }
-
         return view('user.health', [
             'students' => $student,
             'restricts' => $restrict,
@@ -70,7 +61,6 @@ class HealthController extends Controller
             'purchases' => $purchase,
             'isSurveyAvail' => $isSurveyAvail,
             'anaks' => $anak,
-            'purchase_info' => $purchase_info,
             'average_grade' => $average_grade
         ]);
     }

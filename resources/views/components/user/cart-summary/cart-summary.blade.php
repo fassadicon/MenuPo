@@ -1,4 +1,5 @@
 @props(['anak'])
+@props(['parent'])
 
 @php
     $items = Cart::content();
@@ -6,10 +7,10 @@
     <div class="cartItems h-screen">
         <br><br><br><br><br>
         <div class="text-center mb-4">
-            <p class="text-xl font-bold">Cart Summary</p>
+            <p class="text-2xl text-primary font-bold"><u>Cart Summary</u></p>
         </div>
         <div class="w-10/12 h-3/4 mx-auto md:w-2/3 md:flex">
-            <div class="h-3/4 justify-center p-4 overflow-y-scroll md:w-2/3 md:h-full">
+            <div class="h-3/4 justify-center bg-zinc-50  p-4 overflow-y-scroll md:w-2/3 md:h-full">
                 @foreach ($items as $val)
                     <div class="flex shadow rounded-lg">
                         <div class="w-full h-28 flex">
@@ -50,7 +51,7 @@
     
                         <div class="subtotal h-8 mt-8 items-end w-full">
                             <span class="text-lg">Parent Name:</span>
-                            <span class="text-lg font-bold float-right">Post Malone</span>
+                            <span class="text-lg font-bold float-right">{{$parent->firstName}} {{$parent->lastName}}</span>
                         </div>
     
                         <div class="subtotal h-8 items-end w-full">

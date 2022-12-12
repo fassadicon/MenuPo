@@ -40,14 +40,12 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">DOST-FNRI</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">Plans to roll out end-to-end encryption on Facebook and Instag</p>
-                    <form action="{{ url('philfct') }}">
-                      <input type="submit" class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100" value="Read More" />
-                    </form>
+                    <button class="button-sec text-white px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
               </a>
@@ -60,12 +58,12 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Health composition table</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">El Salvador plans to build a Bitcoin city at the base of a volcano, with the cryptocurrency used to fund the project.</p>
-                    <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
+                    <button class="button-sec text-white px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
               </a>
@@ -78,12 +76,12 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">The students of Nuestra Seniora de Aranzazu</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">New homes and buildings in England will be required by law to install electric vehicle charging points from next year.</p>
-                    <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
+                    <button class="button-sec text-white px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
               </a>
@@ -96,12 +94,12 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Healthy fruits</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">About six million Sky routers had a significant software bug that could have allowed hackers to take over home networks.</p>
-                    <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
+                    <button class="button-sec text-white px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
               </a>
