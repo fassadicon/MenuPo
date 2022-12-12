@@ -3,7 +3,7 @@
 <x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
 
     <br>
-    <x-user.cart-summary.cart-summary :anak="$anak"/>
+    <x-user.cart-summary.cart-summary :anak="$anak" :parent="$parent"/>
 
 </x-user.layout>
 

@@ -256,6 +256,7 @@ Route::middleware('user')->group(function () {
     Route::post('/user/health/remove-restrict', [HealthController::class, 'removeRestrict'])->name(name: 'health.remove-restrict');
     Route::get('/health/edit-info/{anak}', [HealthController::class, 'edit']);
     Route::post('/health/saveUpdate', [HealthController::class, 'saveUpdate']);
+    Route::get('/user/health-report/{student_id}', [HealthController::class, 'report_index']);
 
     //User-Account Page
     Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name: 'user.account');

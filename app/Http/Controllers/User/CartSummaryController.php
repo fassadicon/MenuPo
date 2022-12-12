@@ -28,6 +28,7 @@ class CartSummaryController extends Controller
             'notifications' => $notifications,
             'anak' => $anak,
             'isSurveyAvail' => $isSurveyAvail,
+            'parent'=> $parent[0],
             'students' => $student
             
         ]);

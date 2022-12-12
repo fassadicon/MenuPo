@@ -1,8 +1,7 @@
 @include('sweetalert::alert')
-
+@props(['chart'])
 @props(['purchases'])
 @props(['studs'])
-@props(['grade'])
 @props(['parent'])
 @props(['reqbutton'])
 
@@ -30,7 +29,7 @@
                 <div class="image overflow-hidden">
                 <a class="relative block h-72 bg-gray-900 group" href="#">
                     <img class="absolute inset-0 object-cover w-full h-auto mx-auto group-hover:opacity-50"
-                    src="https://i.pinimg.com/564x/4d/f1/7e/4df17ec95c6cd9b7224b220c4e67d948.jpg" alt="" />
+                    src="https://i.guim.co.uk/img/media/62440e68daccfd54725dbe638b60c54e0359202d/0_704_4000_2398/master/4000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=47fe00c7ca5afc59737d8e3fb506c768" alt="" />
                     <div class="relative p-2">
                       <div class="mt-56">
                         <div
@@ -77,7 +76,7 @@
                     @foreach ($studs as $student)
                         <div class="text-center my-2">
                             <a href="/user/health/{{$student->id}}"><img class="h-auto w-16 rounded-full mx-auto"
-                                src="{{ asset('user/assets/img/avatar/user-dp.png') }}"
+                                src="https://www.kindpng.com/picc/m/57-573752_school-student-images-png-transparent-png.png"
                                 alt=""
                                 class="text-gray-800">{{$student->firstName . $student->lastName}}</a>
                         </div>
@@ -87,12 +86,9 @@
             <!-- End of friends card -->
 
             {{-- Pie chart start --}}
-            <div class="my-4 hover:shadow shadow-xl ">
 
-                <p class="text-lg bg-white p-4 font-semibold text-gray-900 text-xl">Order history Grade Chart</p>
-                <div id="piechart" class="w-full h-full">
-                </div>
-            </div>
+            {!! $chart->container() !!}
+            
             {{-- End of pie chart --}}
 
         </div>
@@ -293,38 +289,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
 
-      var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Healthy', {{$grade[0]}}],
-        ['Moderately Healthy', {{$grade[1]}}],
-        ['Not Healthy', {{$grade[2]}}]
-        
-      ]);
-
-      var options = {
-        title: 'Order history Grade Chart'
-      };
-
-      var options = {
-          legend: 'none',
-          series: {
-            0: { color: '#green' },
-            1: { color: '#orange' },
-            2: { color: '#red' }
-            ,
-          }
-        };
-
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-      chart.draw(data, options);
-    }
-  </script>
 
 
