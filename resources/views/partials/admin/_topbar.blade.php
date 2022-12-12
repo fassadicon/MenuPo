@@ -116,6 +116,7 @@
 
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                   <li class="dropdown-header">
+                      <img src="{{ auth()->user()->admin->image ? asset('storage/' . auth()->user()->admin->image) : asset('storage/admin/userNoImage.png') }}" alt="Profile" class="rounded-circle float-left h-12 w-12">
                       <h6>{{auth()->user()->admin->firstName}} {{auth()->user()->admin->lastName}}</h6>
                       <span>Canteen Staff</span>
                   </li>
@@ -126,7 +127,7 @@
                   <li>
                       <a class="dropdown-item d-flex align-items-center" href="{{ url('account') }}">
                           <i class="bi bi-person"></i>
-                          <span>My Profile</span>
+                          <span>Account Profile</span>
                       </a>
                   </li>
                   <li>

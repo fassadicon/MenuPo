@@ -40,11 +40,11 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">DOST-FNRI Philippine Food Composition Table</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
-                    <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">By clicking the link above, you will be redirected to online portal of DOST-FNRI PhilFCT. This is the source of nutrient data we provided in the menu.</p>
+                    <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">Plans to roll out end-to-end encryption on Facebook and Instag</p>
                     <form action="{{ url('philfct') }}">
                       <input type="submit" class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100" value="Read More" />
                     </form>
@@ -60,11 +60,11 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">UK Food Traffic Light and know more about food grade, recommended food nutrient intake</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
-                    <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">Get to know the Food Traffic Light System, a guide to a better diet and nutrition.</p>
+                    <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">El Salvador plans to build a Bitcoin city at the base of a volcano, with the cryptocurrency used to fund the project.</p>
                     <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
@@ -78,11 +78,11 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Policy and Guidelines on Healthy Food and Beverage Choices in school and in Deped Offices</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
-                    <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">Learn more about the DepEd Order No .13, s. 2017</p>
+                    <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">New homes and buildings in England will be required by law to install electric vehicle charging points from next year.</p>
                     <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
@@ -96,11 +96,11 @@
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
                     <div class="absolute bottom-0">
-                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">How to be a healthy parent for your child</h2>
+                      <h2 class="font-bold text-white leading-tight transition duration-300 text-xl pb-6 group-hover:underline">Sample</h2>
                     </div>
                   </div>
                   <div class="h-1/2">
-                    <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">See tips on how to be a healthy parent when it comes to nutrition and diet of your child</p>
+                    <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">About six million Sky routers had a significant software bug that could have allowed hackers to take over home networks.</p>
                     <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>

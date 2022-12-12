@@ -257,9 +257,9 @@
                   <i class="fa-solid fa-chevron-down fa-2xs pt-3"></i>
                   <!-- Submenu starts -->
 
-                  <ul class="absolute bg-white p-3 w-36 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
+                  <ul class="absolute bg-white p-3 w-44 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
                     @foreach ($studs as $student)
-                      <li class="text-sm hover:bg-slate-100 leading-8 my-3"><a href="/user/health/{{$student->id}}"><img src="{{ asset('storage/admin/userNoImage.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
+                      <li class="text-sm hover:bg-slate-100 leading-8 my-3"><a href="/user/health/{{$student->id}}"><img src="https://www.trueline.school/wp-content/uploads/2020/06/banner-school-child-pic-e1594121880288.png" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
                     @endforeach
                   </ul>
                   <!-- Submenu ends -->
@@ -294,14 +294,13 @@
                       </div>
                       
                       <div class="del-all">
-                        <button class="deleteAll text-red-500">
-                          <span>Delete all</span>
-                        </button>
+                        <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
+                        
                       </div>
                   </ul>
                 </li>
                 <li class="flex relative group ">
-                  <a href="#" class="mr-1  hover:text-white"><img id="desktop-icon" src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="w-12 h-12 border-4 rounded-full hover:border-blue-600"></a> 
+                  <a href="#" class="mr-1  hover:text-white"><img id="desktop-icon" src="https://i.guim.co.uk/img/media/62440e68daccfd54725dbe638b60c54e0359202d/0_704_4000_2398/master/4000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=47fe00c7ca5afc59737d8e3fb506c768" class="w-12 h-12 border-4 rounded-full hover:border-blue-600"></a> 
                   <i class="fa-solid fa-chevron-down fa-2xs pt-3 hidden"></i>
                   <!-- Submenu starts -->
                   <ul class="absolute bg-white p-3 w-52 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50 right-0">
@@ -380,7 +379,7 @@
                     </ul>
                     <!-- Submenu ends -->
                     @else
-                    <a href="/user/health/{{$studs[0]->id}}" class="block pl-11"><i class="fa-solid fa-school fa-fw text-white mr-4 group-hover:text-white"></i>Student <i class="fa-solid fa-chevron-down fa-2xs text-white text-base pt-1"></i></a> 
+                    <a href="/user/health/{{$studs[0]->id}}" class="block pl-11"><i class="fa-solid fa-school fa-fw text-primary mr-4 group-hover:text-white"></i>Student<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
                     @endif
                   
                   
@@ -548,5 +547,6 @@
       <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
       
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+
+    </body>
   </html>

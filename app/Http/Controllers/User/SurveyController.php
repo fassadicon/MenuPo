@@ -28,6 +28,7 @@ class SurveyController extends Controller
         return view('user.survey',[
             'notifications' => $notifications,
             'students' => $student,
+            'parent'=> $parent[0],
             'isSurveyAvail' => $isSurveyAvail
         ]);
     }

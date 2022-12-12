@@ -2,6 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Charts\UserCharts\CalorieChart;
+use App\Charts\UserCharts\FatChart;
+use App\Charts\UserCharts\HealthCharts;
+use App\Charts\UserCharts\ParentChart;
+use App\Charts\UserCharts\SatFatChart;
+use App\Charts\UserCharts\SodiumChart;
+use App\Charts\UserCharts\SugarChart;
 use Carbon\Carbon;
 use App\Models\Food;
 use App\Models\User;
@@ -43,19 +50,25 @@ class HomeController extends Controller
         ]);
     }
 
-    public function sample(){
+    public function sample(SatFatChart $satFatChart, SugarChart $sugarChart, SodiumChart $sodiumChart, CalorieChart $calChart, FatChart $fatChart){
 
         $parent = Guardian::where('user_id', auth()->id())->get();
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         $adminNotifs = Adminnotif::get();
+        $stud_id = 2;
 
         return view('user.sample', [
             'students' => $student,
             'notifications' => $notifications,
             'anak' => Student::findOrFail(1),
-            'adminNotifs' => $adminNotifs
+            'adminNotifs' => $adminNotifs,
+            'calChart' => $calChart->build($stud_id),
+            'fatChart' => $fatChart->build($stud_id),
+            'satFatChart' => $satFatChart->build($stud_id),
+            'sodiumChart' => $sodiumChart->build($stud_id),
+            'sugarChart' => $sugarChart->build($stud_id)
         ]);
     }
 

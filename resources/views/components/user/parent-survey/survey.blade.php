@@ -1,3 +1,7 @@
+
+@props(['parent'])
+
+
 <br><br>
 
 
@@ -13,16 +17,16 @@
         @csrf
         <div class="gap-2 mb-8 lg:flex">
             <div class="w-full py-2">
-            <label class="block text-base">
+            <label class="block text-base font-bold">
                 Your Name 
             </label>
             <input type="text" readonly
                 class="w-full px-4 py-2 text-base border rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                placeholder="Ervin" value="Ervin" name="name" id="name"/>
+                placeholder="" value="{{$parent->firstName}} {{$parent->middleName}} {{$parent->lastName}}" name="name" id="name"/>
             </div>
             <div class="w-full py-2">
 
-            <label for="role" class="block text-base">
+            <label for="role" class="block text-base font-bold">
                 Select your role in the school
             </label>
             <input class="w-full rounded-lg" type="text" disabled name="role" value="Parent">
@@ -30,7 +34,7 @@
         </div>
 
         <div class="gap-2 mb-8 lg:flex">
-            <p>In a rate of 1-5, how well is the current canteen menu? </p> <br>
+            <p class="font-bold">In a rate of 1-5, how well is the current canteen menu? </p> <br>
             <div class="form-check">
             <input class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-primary checked:border-primary focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="rating" id="flexRadioDefault2" value="5" checked>
             <label class="form-check-label inline-block text-gray-800" for="5" value="5">
@@ -67,7 +71,7 @@
       
         <div class="gap-2 mb-8 lg:flex">
             <div class="w-full">
-            <label class="block text-base">
+            <label class="block text-base font-bold">
                 Any food-item or rice meal suggestions?
             </label>
             <input type="text"
@@ -77,16 +81,17 @@
             
         </div>
         <div class="">
-            <label class="block text-base">
+            <label class="block text-base font-bold">
             If you have any recommendations/comment, please type here
             </label>
             <textarea id="" rows="8" cols="30"
             class="w-full p-3 text-base border rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-            placeholder="" name="recommendation"></textarea>
+            placeholder="Type here" name="recommendation"></textarea>
         </div>
-        <button type="submit" class="button-hero mt-4">
+        {{-- <button type="submit" class="button-hero mt-4">
             <span>Submit</span>
-        </button>
+        </button> --}}
+        <button type="submit" class="h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Submit</button>
     </form>
     </div>
   </div>

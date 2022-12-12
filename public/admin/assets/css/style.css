@@ -1734,4 +1734,9 @@ footer .bottom-details{
     }
        
 
+    /* Button adjustment */
+    .btn{
+        background-color: var(--secondary) !important;
+    }
+
    
