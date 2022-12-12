@@ -1,8 +1,7 @@
 @include('sweetalert::alert')
-
+@props(['chart'])
 @props(['purchases'])
 @props(['studs'])
-@props(['grade'])
 @props(['parent'])
 @props(['reqbutton'])
 
@@ -87,12 +86,9 @@
             <!-- End of friends card -->
 
             {{-- Pie chart start --}}
-            <div class="my-4 hover:shadow shadow-xl ">
 
-                <p class="text-lg bg-white p-4 font-semibold text-gray-900 text-xl">Order history Grade Chart</p>
-                <div id="piechart" class="w-full h-full">
-                </div>
-            </div>
+            {!! $chart->container() !!}
+            
             {{-- End of pie chart --}}
 
         </div>
@@ -293,38 +289,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
 
-      var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Healthy', {{$grade[0]}}],
-        ['Moderately Healthy', {{$grade[1]}}],
-        ['Not Healthy', {{$grade[2]}}]
-        
-      ]);
-
-      var options = {
-        title: 'Order history Grade Chart'
-      };
-
-      var options = {
-          legend: 'none',
-          series: {
-            0: { color: '#green' },
-            1: { color: '#orange' },
-            2: { color: '#red' }
-            ,
-          }
-        };
-
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-      chart.draw(data, options);
-    }
-  </script>
 
 

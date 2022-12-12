@@ -13,12 +13,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Charts\UserCharts\ParentChart;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class UserAccController extends Controller
 {
-    public function index(){
+    public function index(ParentChart $chart){
         $parent = Guardian::where('user_id', auth()->id())->get();
         
         $purchase_his = DB::select('SELECT * FROM purchases WHERE parent_id = ?', [$parent[0]->id]); 
@@ -29,37 +30,6 @@ class UserAccController extends Controller
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
-
-        $healthy = Order::whereHas('purchase', (fn($q)=>
-            $q->where('parent_id', '=', $parent[0]->id)
-        ))->whereHas('food', function($e){
-            $e->where('grade', '=', 4)
-            ->orWhere('grade', '=', 5)
-            ->orWhere('grade', '=', 6);
-        })->count();
-       
-        $mod_healthy = Order::whereHas('purchase', (fn($q)=>
-            $q->where('parent_id', '=', $parent[0]->id)
-        ))->whereHas('food', function($e){
-            $e->where('grade', '=', 7)
-            ->orWhere('grade', '=', 8)
-            ->orWhere('grade', '=', 9);
-        })->count();
-
-        $not_healthy = Order::whereHas('purchase', (fn($q)=>
-            $q->where('parent_id', '=', $parent[0]->id)
-        ))->whereHas('food', function($e){
-            $e->where('grade', '=', 10)
-            ->orWhere('grade', '=', 11)
-            ->orWhere('grade', '=', 12);
-        })->count();
-
-        $grade_count = array();
-        $chart_data = array();
-
-        array_push($grade_count, $healthy, $mod_healthy, $not_healthy);
-
-        $chart_data = "['Healthy', $grade_count[0]], ['Moderately Healthy', $grade_count[1]], ['Not Healthy', $grade_count[2]]";
 
         $passreq = Passrequest::where('user_id', auth()->id())->get();
         $reqbutton = 0;
@@ -80,11 +50,10 @@ class UserAccController extends Controller
             'notifications' => $notifications,
             'parent' => $parent[0],
             'students' => $student,
-            'chart_data' => $chart_data,
-            'grades' => $grade_count,
             'isSurveyAvail' => $isSurveyAvail,
             'purchases' => $purchase_his,
-            'reqbutton' => $reqbutton
+            'reqbutton' => $reqbutton,
+            'chart' => $chart->build()
         ]);
     }
 

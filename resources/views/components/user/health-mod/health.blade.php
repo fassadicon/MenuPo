@@ -286,12 +286,21 @@
                       </div>
                   </div>
               </div>
-                <a class="text-center" href="/health/edit-info/{{$anak->id}}">
+              <div class="w-full flex">
+                <a class="w-full text-center mr-4" href="/health/edit-info/{{$anak->id}}">
                     <div
                         class="block w-full text-secondary text-smfont-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                         Edit Information
                     </div>
                 </a>
+                <a class="w-full text-center" href="/user/health-report/{{$anak->id}}">
+                    <div
+                        class="block w-full text-secondary text-smfont-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        View health report
+                    </div>
+                </a>
+              </div>
+                
           </div>
 
           <div class="bg-white p-3 shadow-xl rounded-sm">

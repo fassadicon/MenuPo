@@ -8,9 +8,15 @@ use App\Models\Order;
 use App\Models\Survey;
 use App\Models\Student;
 use App\Models\Guardian;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Charts\UserCharts\FatChart;
 use App\Http\Controllers\Controller;
+use App\Charts\UserCharts\SugarChart;
+use App\Charts\UserCharts\SatFatChart;
+use App\Charts\UserCharts\SodiumChart;
+use App\Charts\UserCharts\CalorieChart;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class HealthController extends Controller
@@ -19,7 +25,7 @@ class HealthController extends Controller
 
         $ids = explode(',' , $anak->restriction);
 
-        $restrict = array();
+       
 
         $parent = Guardian::where('user_id', auth()->id())->get();
 
@@ -48,6 +54,8 @@ class HealthController extends Controller
         $average_grade = $average/$ite;
         $average_grade = number_format((float)$average_grade, 2, '.', '');
 
+        //Restrict
+        $restrict = array();
         foreach($ids as $id){
             $item = DB::select('select * from foods where id = ?', [$id]);
             array_push($restrict, $item);
@@ -128,5 +136,25 @@ class HealthController extends Controller
 
         return redirect()->route(route:'user.account');
         
+    }
+
+    public function report_index($student_id, SatFatChart $satFatChart, SugarChart $sugarChart, SodiumChart $sodiumChart, CalorieChart $calChart, FatChart $fatChart){
+
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
+        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        $anak = Student::findorfail($student_id);
+
+        return view('user.sample', [
+            'students' => $student,
+            'notifications' => $notifications,
+            'anak' => $anak,
+            'calChart' => $calChart->build($student_id),
+            'fatChart' => $fatChart->build($student_id),
+            'satFatChart' => $satFatChart->build($student_id),
+            'sodiumChart' => $sodiumChart->build($student_id),
+            'sugarChart' => $sugarChart->build($student_id)
+        ]);
     }
 }
