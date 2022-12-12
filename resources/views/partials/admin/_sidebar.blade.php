@@ -197,12 +197,13 @@
         </li><!-- End User Management Nav --> --}}
 
         <li class="nav-heading">Accounts Management</li>
-
+        @if (auth()->user()->role == 2)
         <li>
             <a href="/admin/admins" class="nav-link collapsed" id="sidebarLink">
                 <i class="fas fa-user-cog"></i></i><span>Admin</span>
             </a>
         </li>
+        @endif
         <li>
             <a href="/admin/guardians" class="nav-link collapsed" id="sidebarLink">
                 <i class="fas fa-user-alt"></i><span>Parents</span>
