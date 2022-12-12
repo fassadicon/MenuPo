@@ -1,17 +1,15 @@
 <x-admin.layout>
 
-    <h1 class="h3">Completed Orders</h1>
+    <h1 class="h3">To Confirm Payment Orders</h1>
 
     <div class="container">
-        <div align="left"><a href="/admin/orders/completed/trash" class="btn btn-warning mb-2">Archived Purchases</a>
-        </div>
-        <table class="table table-bordered table-sm" id="completedTable">
+        <table class="table table-bordered table-sm" id="pendingTable">
 
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Parent ID</th>
-                    <th>Student ID</th>
+                    <th>Parent</th>
+                    <th>Student</th>
                     <th>Orders</th>
                     <th>Total kcal</th>
                     <th>Total Fat</th>
@@ -20,18 +18,18 @@
                     <th>Total Sodium</th>
                     <th>Total Amount</th>
                     <th>Payment ID</th>
-                    <th>Payment Details</th>
                     <th>Payment Status</th>
                     <th>Claim Status</th>
                     <th>Type</th>
-                    <th>Ordered At</th>
-                    <th>Served At</th>
-                    <th>Served By</th>
+                    <th>Date Ordered</th>
+                    <th>Updated at</th>
+                    <th>Admin in charge</th>
+                    <th>Payment Details</th>
                     <th>Options</th>
                     {{-- <th>Grade</th>
-                    <th>Created By</th> --}}
+                  <th>Created By</th> --}}
                     {{-- <th width="50px"><button type="button" name="bulk_delete" id="bulk_delete"
-                            class="btn btn-danger">Delete</button></th> --}}
+                          class="btn btn-danger">Delete</button></th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -50,7 +48,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="purchaseID" id="purchaseID">
-                    <div class="mb-3">
+                    <div class="row mb-3">
                         <label for="">Parent Name</label>
                         <p id="parent_id" class="form-control"></p>
                     </div>
@@ -105,6 +103,7 @@
     </div>
 
 
+
     @include('partials.admin._DataTableScripts')
     <script type="text/javascript">
         // DataTables Script
@@ -114,7 +113,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            var table = $('#completedTable').DataTable({
+            var table = $('#pendingTable').DataTable({
                 dom: "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-4'f><'col-sm-12 col-md-3'B>>" +
                     "<'row'<'col-sm-12'tr>>" +
                     "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -160,43 +159,7 @@
                 serverSide: true,
                 ajax: {
                     type: "GET",
-                    url: "{{ route('completed.completedOrders') }}",
-                    // data: function(d) {
-
-                    // },
-                    // dataFilter: function(data) {
-                    //     var json = JQuery.parseJSON(data);
-                    //     json.draw = json.draw;
-                    //     json.recordsFiltered = json.total;
-                    //     json.recordsTotal = json.total;
-                    //     json.data = json.data;
-                    //     return JSON.stringify(json);
-                    // }
-                },
-                // Footer Sorting
-                initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function() {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                    column.search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-
-                            column
-                                .data()
-                                .unique()
-                                .sort()
-                                .each(function(d, j) {
-                                    select.append('<option value="' + d + '">' + d +
-                                        '</option>');
-                                });
-                        });
+                    url: "{{ route('paymentConfirmationTable.index') }}",
                 },
                 columns: [{ //0
                         data: 'id',
@@ -253,13 +216,6 @@
                         data: 'payment_id',
                         name: 'payment_id',
                     },
-                    { //10
-                        data: 'payment.method',
-                        name: 'payment',
-                        render: function(data, type, row) {
-                            return row.payment.method + '<br>' + row.payment.referenceNo;
-                        }
-                    },
                     { //11
                         data: 'paymentStatus',
                         name: 'paymentStatus',
@@ -267,34 +223,30 @@
                     { //12
                         data: 'claimStatus',
                         name: 'claimStatus',
-                        render: function(data, type, row) {
-                            return data == 0 ? 'Unclaimed' : 'Claimed';
-                        }
                     },
                     { //13
                         data: 'type',
                         name: 'type',
-                        render: function(data, type, row) {
-                            return data == 0 ? 'Pre-Order' : 'Walk-In';
-                        }
                     },
                     { // 14
                         data: 'created_at_formatted',
                         name: 'created_at_formatted',
                     },
                     { // 15
-                        data: 'updated_at_formatted',
-                        name: 'updated_at_formatted',
+                        data: 'updated_at',
+                        name: 'updated_at',
                     },
-
                     { //16
-                        data: 'served_by_name.firstName',
-                        name: 'served_by_name',
+                        data: 'served_by',
+                        name: 'served_by',
+                    },
+                    { //16
+                        data: 'payment.method',
+                        name: 'payment',
                         render: function(data, type, row) {
-                            return row.served_by_name.firstName + ' ' + row.served_by_name.lastName;
+                            return row.payment.method + '<br>' + row.payment.referenceNo;
                         }
                     },
-
                     { // 17
                         data: 'action',
                         name: 'action',
@@ -336,34 +288,53 @@
                         target: 8,
                         visible: false,
                     },
+                    // {
+                    //    target: 9,
+                    //    visible: false,
+                    // },
                     {
-                        target: 9,
+                        target: 10,
+                        visible: false,
+                    },
+                    {
+                        target: 11,
                         visible: false,
                     },
                     {
                         target: 12,
                         visible: false,
                     },
-
-                    //   {
-                    //      target: 12,
-                    //      visible: false,
-                    //   },
-                    //   {
-                    //      target: 13,
-                    //      visible: false,
-                    //      searchable: false,
-                    //   },
+                    {
+                        target: 13,
+                        visible: false,
+                    },
                     // {
-                    //     target: 14,
-                    //     visible: false,
-                    //     searchable: false,
+                    //    target: 14,
+                    //    visible: false,
                     // },
-                    //   {
-                    //      target: 15,
-                    //      visible: false,
-                    //      searchable: false,
-                    //   },
+                    {
+                        target: 15,
+                        visible: false,
+                    },
+                    {
+                        target: 16,
+                        visible: false,
+                    },
+                    //     //   {
+                    //     //      target: 13,
+                    //     //      visible: false,
+                    //     //      searchable: false,
+                    //     //   },
+                    //       {
+                    //          target: 14,
+                    //          visible: false,
+                    //          searchable: false,
+                    //       },
+                    //     //   {
+                    //     //      target: 15,
+                    //     //      visible: false,
+                    //     //      searchable: false,
+                    //     //   },
                     {
                         targets: -1,
                         data: null,
@@ -373,43 +344,12 @@
             });
 
             // View Pending Order Data Modal
-            $('body').on('click', '.viewCompleted', function() {
-                var purchaseID = $(this).data('id');
-                $.get("{{ url('admin/orders/completed') }}" + '/' + purchaseID + '/view', function(data) {
-                    $('#viewPurchaseInfoModal').modal('show');
-                    $('#parent_id').text(data.parent.firstName);
-                    $('#student_id').text(data.student.id);
-                    $('#totalKcal').text(data.totalKcal);
-                    $('#totalTotFat').text(data.totalTotFat);
-                    $('#totalSatFat').text(data.totalSatFat);
-                    $('#totalSugar').text(data.totalSugar);
-                    $('#totalSodium').text(data.totalSodium);
-                    $('#totalAmount').text(data.totalAmount);
-                    $('#payment_id').text(data.payment_id);
-                    $('#paymentStatus').text(data.paymentStatus);
-                    $('#claimStatus').text(data.claimStatus);
-                    $('#type').text(data.type);
-                    $('#created_at').text(data.created_at);
-                    $('#updated_at').text(data.updated_at);
-                    $('#served_by').text(data.served_by);
-                })
-            });
-
-            $('body').on('click', '.archiveBtn', function() {
-                Swal.fire('Archived');
-            });
-
-            $('body').on('click', '.restoreBtn', function() {
-                Swal.fire('Archived');
-            });
-
-            // Mark Pending Order as Paid
-            //    $('body').on('click', '.viewPurchase', function() {
-            //        var orderID = $(this).data('id');
-            //        $.get("{{ url('admin/orders/pendings') }}" + '/' + purchaseID + '/view', function(data) {
+            //    $('body').on('click', '.viewPending', function() {
+            //        var purchaseID = $(this).data('id');
+            //        $.get("{{ url('/orders/pendings') }}" + '/' + purchaseID + '/view', function(data) {
             //            $('#viewPurchaseInfoModal').modal('show');
-            //            $('#parent_id').text(data.parent.name);
-            //            $('#student_id').text(data.student.name);
+            //            $('#parent_id').text(data.parent.id);
+            //            $('#student_id').text(data.student.id;
             //            $('#totalKcal').text(data.totalKcal);
             //            $('#totalTotFat').text(data.totalTotFat);
             //            $('#totalSatFat').text(data.totalSatFat);
@@ -425,6 +365,19 @@
             //            $('#served_by').text(data.served_by);
             //        })
             //    });
+
+            //    $('body').on('click', '.confirmPayment', function() {
+            //     var $pid = $('#id').val();
+            //     $.get("{{ url('/orders/pendings') }}" + $pid + '/confirm', function(data) {
+
+            //     })
+
+            //     })
+
+            $('body').on('click', '.confirmBtn', function() {
+                Swal.fire('Marked as Paid');
+            });
+
         });
     </script>
 

@@ -24,7 +24,6 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'parent_id' =>  'required|string|max:255|exists:parents,id',
             'parent' =>  'required|string|max:255',
             'LRN' => 'required|numeric',
             'grade' => 'required|numeric|max:6',

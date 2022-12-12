@@ -239,33 +239,33 @@
                                 });
                         });
                 },
-                columns: [{
+                columns: [{//0
                         data: 'id',
                         name: 'id'
                     },
-                    {
+                    {//1
                         data: 'firstName',
                         name: 'firstName',
                     },
-                    {
+                    {//2
                         data: 'lastName',
                         name: 'lastName'
                     },
-                    {
+                    {//3
                         data: 'middleName',
                         name: 'middleName',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
-                    {
+                    {//4
                         data: 'suffix',
                         name: 'suffix',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
-                    {
+                    {//5
                         data: 'students',
                         name: 'students',
                         render: function(data, type, row) {
@@ -274,44 +274,44 @@
                             }).join('<br>');
                         }
                     },
-                    {
+                    {//6
                         data: 'user.email',
                         name: 'user.email',
                     },
-                    {
+                    {//7
                         data: 'user.recoveryEmail',
                         name: 'user.recoveryEmail',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
-                    {
+                    {//8
                         data: 'sex',
                         name: 'sex',
                     },
-                    {
+                    {//9
                         data: 'address',
                         name: 'address',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
-                    {
+                    {//10
                         data: 'birthDate',
                         name: 'birthDate',
                     },
-                    {
+                    {//11
                         data: 'status',
                         name: 'status',
                         render: function(data, type, row) {
                             return data == 1 ? 'Active' : 'Inactive';
                         }
                     },
-                    {
+                    {//12
                         data: 'created_at_formatted',
                         name: 'created_at_formatted',
                     },
-                    {
+                    {//13
                         data: 'created_by_name.firstName',
                         name: 'created_by_name.firstName',
                         render: function(data, type, row) {
@@ -319,14 +319,14 @@
                                 .lastName;
                         }
                     },
-                    {
+                    {//14
                         data: 'updated_at_formatted',
                         name: 'updated_at_formatted',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
-                    {
+                    {//15
                         data: 'updated_by_name',
                         name: 'updated_by_name',
                         render: function(data, type, row) {
@@ -334,7 +334,7 @@
                                 .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
                     },
-                    {
+                    {//16
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -377,10 +377,10 @@
                         target: 14,
                         visible: false,
                     },
-                    {
-                        target: 15,
-                        visible: false,
-                    },
+                    // {
+                    //     target: 15,
+                    //     visible: false,
+                    // },
                     {
                         targets: -1,
                         data: null,

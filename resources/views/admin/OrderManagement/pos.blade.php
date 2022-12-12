@@ -136,7 +136,7 @@
 </section>
 
 <div id="tsum-tabs" class="flex flex-row">
-    <h1 id="studentID">{{ $studentID }}</h1>
+    <h1 id="studentID" hidden>{{ $studentID }}</h1>
 
     <main class="float left">
 

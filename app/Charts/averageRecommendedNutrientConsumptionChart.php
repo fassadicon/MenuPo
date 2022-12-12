@@ -60,10 +60,10 @@ class averageRecommendedNutrientConsumptionChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
-        $quarterOneAveKcal = $this->initializeKcal('2022-11-17', '2022-11-18');
-        $quarterTwoAveKcal = $this->initializeKcal('2022-11-19', '2022-11-20');
-        $quarterThreeAveKcal = $this->initializeKcal('2022-11-21', '2022-11-23');
-        $quarterFourAveKcal = $this->initializeKcal('2022-11-24', '2022-12-01');
+        $quarterOneAveKcal = $this->initializeKcal('2022-11-17', '2022-11-19');
+        $quarterTwoAveKcal = $this->initializeKcal('2022-11-20', '2022-11-22');
+        $quarterThreeAveKcal = $this->initializeKcal('2022-11-23', '2022-11-25');
+        $quarterFourAveKcal = $this->initializeKcal(Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d'));
 
         return $this->chart->barChart()
             ->setTitle('Average Percentage of Daily Recommended Nutrient Consumed from Bought Foods')
@@ -73,7 +73,7 @@ class averageRecommendedNutrientConsumptionChart
                 $quarterThreeAveKcal,
                 $quarterFourAveKcal
             ])
-            ->setXAxis(['Nov.17-18', 'Nov.19-20', 'Nov.21-23', 'Nov.24-Dec.1'])
+            ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
             ->setToolBar(true);
     }
 }

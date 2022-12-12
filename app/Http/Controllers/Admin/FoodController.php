@@ -12,11 +12,12 @@ use App\Models\Purchase;
 
 // use DataTables;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\StoreFoodRequest;
-use App\Http\Requests\Admin\UpdateFoodRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\Admin\StoreFoodRequest;
+use App\Http\Requests\Admin\UpdateFoodRequest;
 use Yajra\DataTables\DataTables as DataTables;
 
 class FoodController extends Controller
@@ -85,6 +86,7 @@ class FoodController extends Controller
         if ($request->hasFile('image'))
             $food['image'] = $request->file('image')->store('admin/foods', 'public');
         Food::create($food);
+        Alert::success($request->name . ' Created Successfully');
         return redirect('/admin/foods');
     }
 
@@ -101,6 +103,7 @@ class FoodController extends Controller
         if ($request->hasFile('image'))
             $foodCredentials['image'] = $request->file('image')->store('admin/foods', 'public');
         $food->update($foodCredentials);
+        Alert::success($food->name . " Updated Successfully");
         return redirect('/admin/foods');
     }
 
@@ -124,11 +127,11 @@ class FoodController extends Controller
                 ->addColumn('action', function ($row) {
 
                     // $btn = '<a href="{{url("admin/foods/'.$row->id.'/restore")}}" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewFoodImg"><i class="bi bi-card-image"></i></a>';
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewFoodImg"><i class="bi bi-card-image"></i></a>';
+                    // $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewFoodImg"><i class="bi bi-card-image"></i></a>';
 
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewFood"><i class="bi bi-info-lg"></i></a>';
+                    // $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewFood"><i class="bi bi-info-lg"></i></a>';
 
-                    $btn = $btn . ' <a href="/admin/foods/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreFood btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
+                    $btn = ' <a href="/admin/foods/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreFood btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
                     // $btn = $btn . ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-info-lg"></i></button>';
 
                     // $btn = $btn . ' <a href="/admin/foods/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';

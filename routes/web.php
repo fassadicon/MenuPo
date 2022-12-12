@@ -33,6 +33,7 @@ use App\Http\Controllers\User\CartSummaryController;
 use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\CompositionsReportController;
+use App\Http\Controllers\Admin\ConfirmPaymentTableController;
 use App\Http\Controllers\Admin\ImportUsersController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
 
@@ -109,8 +110,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // PREVIEW SECTION
     // Preview Content
     Route::get('/menu/{id}/preview', [MenuController::class, 'preview'])->name('food.preview');
-     // Get Menu Item Details for Modal
-     Route::get('/menu/{id}/getMenuItemDetails', [MenuController::class, 'getMenuItemDetails'])->name('menu.getMenuItemDetails');
+    // Get Menu Item Details for Modal
+    Route::get('/menu/{id}/getMenuItemDetails', [MenuController::class, 'getMenuItemDetails'])->name('menu.getMenuItemDetails');
     // Add additional stock
     Route::post('/menu/addAdditionalStock', [MenuController::class, 'updateMenuItemStock'])->name('menu.addAdditionalStock');
     // Update Menu Item Date and Status
@@ -126,7 +127,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Autocomplete search for PhilFCT
 
     // <----------- ORDER CONTROLLER -----------> //
-      //Point of sale
+    //Point of sale
     // Route::get('/pos', [POSController::class, 'index']);
     Route::get('/pos/{sid}', [POSController::class, 'index']);
     Route::post('/pos/add-to-cart', [POSController::class, 'addtocart']);
@@ -139,23 +140,25 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Scan QR Code
     Route::get('/orders/scanner/{id}/view', [ScannerController::class, 'view']);
     // Complete order
-    Route::post('/orders/scanner/{sid}/{pid}/complete', [ScannerController::class, 'complete']);
+    Route::post('/orders/scanner/{sid}/complete', [ScannerController::class, 'complete']);
     // Pending/Unpaid Orders
     Route::get('/orders/pendings', [PurchasesController::class, 'index'])->name('pendings.index');
+    // Confirm Pending Orders to Paid 
+    Route::get('/orders/pendings/{id}/confirm', [PurchasesController::class, 'confirm'])->name('pendings.confirm');
     // Pending/Unpaid Orders Modal
     Route::get('/orders/pendings/{id}/view', [PurchasesController::class, 'viewPending'])->name('pendings.viewPending');
-    // Orders Placed
-    Route::get('/orders/placed', [OrderController::class, 'index'])->name('orders.index');
-    // Orders Placed Modal
-    Route::get('/orders/placed/{id}/view', [OrderController::class, 'view'])->name('orders.view');
-    // Orders Placed Soft Delete
-    Route::get('/orders/placed/{id}/delete', [OrderController::class, 'delete'])->name('orders.delete');
-    // Orders Placed Trash View
-    Route::get('/orders/placed/trash', [OrderController::class, 'trash'])->name('orders.trash');
-    // Orders Placed Trash Modal
-    Route::get('/orders/placed/{id}/viewTrash', [OrderController::class, 'view'])->name('orders.viewTrash');
-    // Orders Placed Restore
-    Route::get('/orders/placed/{id}/restore', [OrderController::class, 'restore'])->name('orders.restore');
+    // // Orders Placed
+    // Route::get('/orders/placed', [OrderController::class, 'index'])->name('orders.index');
+    // // Orders Placed Modal
+    // Route::get('/orders/placed/{id}/view', [OrderController::class, 'view'])->name('orders.view');
+    // // Orders Placed Soft Delete
+    // Route::get('/orders/placed/{id}/delete', [OrderController::class, 'delete'])->name('orders.delete');
+    // // Orders Placed Trash View
+    // Route::get('/orders/placed/trash', [OrderController::class, 'trash'])->name('orders.trash');
+    // // Orders Placed Trash Modal
+    // Route::get('/orders/placed/{id}/viewTrash', [OrderController::class, 'view'])->name('orders.viewTrash');
+    // // Orders Placed Restore
+    // Route::get('/orders/placed/{id}/restore', [OrderController::class, 'restore'])->name('orders.restore');
     // Completed Purchases
     Route::get('/orders/completed', [PurchasesController::class, 'completedOrders'])->name('completed.completedOrders');
     // Completed Purchases Modal
@@ -168,8 +171,15 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/orders/completed/trash', [PurchasesController::class, 'trash'])->name('completed.trash');
     // Soft Delete Trash Purchases View Modal
     Route::get('/orders/completed/{id}/viewTrash', [PurchasesController::class, 'viewTrash'])->name('completed.viewTrash');
-   // Soft Delete Restore Purchases
-   Route::get('/orders/completed/{id}/restore', [PurchasesController::class, 'restore'])->name('completed.restore');
+    // Soft Delete Restore Purchases
+    Route::get('/orders/completed/{id}/restore', [PurchasesController::class, 'restore'])->name('completed.restore');
+    // Confirm Payment of Pre Orders Table
+    Route::get('/orders/paymentConfirmationTable', [ConfirmPaymentTableController::class, 'index'])->name('paymentConfirmationTable.index');
+    // Confirm Pending Orders to Paid 
+    // Route::get('/orders/pendings/{id}/confirm', [PurchasesController::class, 'confirm'])->name('pendings.confirm');
+
+
+
     // <----------- USER CONTROLLER -----------> //
     // Admin Account Management
     Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
@@ -180,7 +190,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
     Route::get('/admins/{id}/delete', [AdminController::class, 'delete'])->name('admins.delete');
     Route::get('/admins/trash', [AdminController::class, 'trash'])->name('admins.trash');
-    Route::get('/admins/trash/{id}/view', [AdminController::class, 'viewTrash'])->name('admins.viewTrash');
+    Route::get('/admins/trash/{id}/viewTrash', [AdminController::class, 'viewTrash'])->name('admins.viewTrash');
     Route::get('/admins/{id}/restore', [AdminController::class, 'restore'])->name('admins.restore');
     // Parent Account Management
     Route::get('/guardians', [GuardianController::class, 'index'])->name('guardians.index');
@@ -205,6 +215,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Imports
     Route::get('/imports', [ImportUsersController::class, 'index']);
     Route::post('/imports/upload', [ImportUsersController::class, 'import'])->name('imports.upload');
+    Route::get('/imports/viewImportedGuardians', [ImportUsersController::class, 'viewImportedGuardians'])->name('imports.viewImportedGuardians');
+    Route::get('/imports/viewImportedStudents', [ImportUsersController::class, 'viewImportedStudents'])->name('imports.viewImportedStudents');
+    Route::get('/imports/viewImportedAdmins', [ImportUsersController::class, 'viewImportedAdmins'])->name('imports.viewImportedAdmins');
 
     // REPORTS, GRAPHS, and INFORMATION
     Route::get('/reports/foodIntake', [ReportsController::class, 'index'])->name('reports.index');
@@ -239,13 +252,13 @@ Route::middleware('user')->group(function () {
     Route::post('/user/deleteAllNotifs', [HomeController::class, 'deleteAllNotifs']);
 
     //Health Module
-    Route::get('/user/health/{anak}', [HealthController::class, 'index'])->name(name:'health.index');
-    Route::post('/user/health/remove-restrict', [HealthController::class, 'removeRestrict'])->name(name:'health.remove-restrict');
+    Route::get('/user/health/{anak}', [HealthController::class, 'index'])->name(name: 'health.index');
+    Route::post('/user/health/remove-restrict', [HealthController::class, 'removeRestrict'])->name(name: 'health.remove-restrict');
     Route::get('/health/edit-info/{anak}', [HealthController::class, 'edit']);
     Route::post('/health/saveUpdate', [HealthController::class, 'saveUpdate']);
 
     //User-Account Page
-    Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name:'user.account');
+    Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name: 'user.account');
     Route::get('/edit-info', [UserAccController::class, 'edit']);
     Route::post('/saveUpdate', [UserAccController::class, 'saveUpdate']);
     Route::post('/user/change-pass-request', [UserAccController::class, 'change_pass_request']);
@@ -256,28 +269,28 @@ Route::middleware('user')->group(function () {
 
 
     //Menu Page
-    Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])->name(name:'menu.index');
+    Route::get('/user/menu/{student}', [UserMenuController::class, 'index'])->name(name: 'menu.index');
 
-    Route::get('/user/menu-landing', [UserMenuController::class, 'landing'])->name(name:'menu.landing');
+    Route::get('/user/menu-landing', [UserMenuController::class, 'landing'])->name(name: 'menu.landing');
     Route::post('/user/menu/addtocart', [UserMenuController::class, 'addtocart']);
     Route::post('/user/menu/addtorestrict', [UserMenuController::class, 'addtorestrict']);
 
     //Cart Summarry
-    Route::get('/user/cart-summary/{anak}', [CartSummaryController::class, 'index'])->name(name:'cart-summary.index');
+    Route::get('/user/cart-summary/{anak}', [CartSummaryController::class, 'index'])->name(name: 'cart-summary.index');
     Route::post('/user/cart-summary/update-cart-add', [CartSummaryController::class, 'add']);
     Route::post('/user/cart-summary/update-cart-minus', [CartSummaryController::class, 'minus']);
     Route::post('/user/cart-summary/update-cart-delete', [CartSummaryController::class, 'delete']);
 
     //Survey Page
     Route::get('/users/survey', [SurveyController::class, 'index']);
-    Route::post('/users/survey-submit', [SurveyController::class, 'store'])->name(name:'survey.store');
+    Route::post('/users/survey-submit', [SurveyController::class, 'store'])->name(name: 'survey.store');
 
     //Payment Page
     Route::post('/user/payment', [PaymentController::class, 'index']);
     //Receipt
     Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
     Route::get('user/receipt', [PaymentController::class, 'receipt']);
-    
+
     // Route::get('/pos', [POSController::class, 'index']);
     // Route::post('/add-to-cart', [POSController::class, 'addtocart']);
     // Route::post('/update-cart-add', [POSController::class, 'add']);
@@ -292,5 +305,4 @@ Route::middleware('user')->group(function () {
 
     // Sample
     Route::get('sample', [HomeController::class, 'sample']);
-
 });

@@ -40,7 +40,7 @@ class PurchasesController extends Controller
                     
                     $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewPending"><i class="bi bi-info-lg"></i></a>';
 
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-success btn-sm confirmPayment"><i class="bi bi-check-circle"></i></a>';
+                    // $btn = $btn . ' <a href="/admin/orders/pendings/' . $row->id . '/confirm" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Confirm" class="confirmBtn btn btn-success btn-sm"><i class="bi bi-check-circle"></i></a>';
 
                     // $btn = $btn . ' <a href="/admin/pendings/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="fas fa-check-circle"></i></a>';
                     
@@ -82,7 +82,7 @@ class PurchasesController extends Controller
        Purchase::where('id', $id)
        ->update(['paymentStatus' => 1]);
 
-       return redirect('/admin/orders/pendings');
+       return redirect('/admin/orders/paymentConfirmationTable');
     }
 
     public function completedOrders(Request $request) 
@@ -91,8 +91,12 @@ class PurchasesController extends Controller
 
         $purchases = Purchase::where('claimStatus', 1)
         ->get()
-        ->load('orders', 'parent', 'student', 'admin');
-
+        ->load('orders', 'orders.food', 'parent', 'student', 'admin', 'payment');
+        foreach ($purchases as $purchase) {
+            $purchase['served_by_name'] = Admin::where('id', $purchase->served_by)->first();
+            $purchase['created_at_formatted'] = Carbon::parse($purchase->created_at)->format('M d, Y');
+            $purchase['updated_at_formatted'] = Carbon::parse($purchase->updated_at)->format('M d, Y');
+        }
         
         if ($request->ajax()) {
             return DataTables::of($purchases)
@@ -101,7 +105,7 @@ class PurchasesController extends Controller
                     
                     $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewCompleted"><i class="bi bi-info-lg"></i></a>';
 
-                    $btn = $btn . ' <a href="/admin/orders/completed/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-warning btn-sm"><i class="bi bi-archive"></i></a>';
+                    $btn = ' <a href="/admin/orders/completed/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="archiveBtn btn btn-warning btn-sm"><i class="bi bi-archive"></i></a>';
                     
                     // $btn = $btn. '<a href="/admin/pendings/update' data-id="' . $row->id . '" data-toggle="toggle" data-orginal-title="Data" class="toggle-class" type="checkbox"  '" data-onstyle="success" data-offstyle="danger" data-on="Active" data-off="InActive" {{$purchase->paymentStatus ? 'checked' : ''}}>';
                      return $btn;
@@ -149,16 +153,16 @@ class PurchasesController extends Controller
     public function trash(Request $request)
     {
         $purchases = Purchase::onlyTrashed()->get()
-        ->load('orders', 'parent', 'student', 'admin');
+        ->load('orders', 'orders.food', 'parent', 'student', 'admin');
 
         if ($request->ajax()) {
             return DataTables::of($purchases)
                 ->addIndexColumn() 
                 ->addColumn('action', function ($row) {
                     
-                     $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewTrashed"><i class="bi bi-info-lg"></i></a>';
+                     $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewTrash"><i class="bi bi-info-lg"></i></a>';
 
-                     $btn = $btn . ' <a href="/admin/orders/completed/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreCompleted btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
+                     $btn = ' <a href="/admin/orders/completed/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreBtn btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
                     
                     // $btn = $btn. '<a href="/admin/pendings/update' data-id="' . $row->id . '" data-toggle="toggle" data-orginal-title="Data" class="toggle-class" type="checkbox"  '" data-onstyle="success" data-offstyle="danger" data-on="Active" data-off="InActive" {{$purchase->paymentStatus ? 'checked' : ''}}>';
                       return $btn;
@@ -182,7 +186,7 @@ class PurchasesController extends Controller
 
     public function viewTrash($id)
     {
-        return Purchase::where('id', $id)->first()
+        return Purchase::onlyTrashed('id', $id)->first()
         ->load('orders', 'parent', 'student', 'admin');
     }
 

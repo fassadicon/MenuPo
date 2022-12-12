@@ -97,6 +97,8 @@
     {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    @include('sweetalert::alert');
+
 </body>
 
 </html>
