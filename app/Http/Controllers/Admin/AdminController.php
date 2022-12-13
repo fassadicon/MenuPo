@@ -22,6 +22,9 @@ class AdminController extends Controller
 {
     public function index(Request $request)
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         // Get Admin Accounts
         $admins = Admin::with('user')->get();
         foreach ($admins as $admin) {
@@ -53,6 +56,9 @@ class AdminController extends Controller
 
     public function view($id)
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         $admin = Admin::where('id', $id)->first()->load('user');
         $admin['created_at_formatted'] = Carbon::parse($admin->created_at)->format('M d, Y');
         $admin['updated_at_formatted'] = Carbon::parse($admin->updated_at)->format('M d, Y');
@@ -64,12 +70,18 @@ class AdminController extends Controller
     // Show Create Form
     public function create()
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         return view('admin.UserManagement.createAdmin');
     }
 
     // Create Admin User
     public function store(CreatAdminRequest $request)
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         $admin = $request->safe()->except([
             'email',
             'recoveryEmail'
@@ -94,11 +106,17 @@ class AdminController extends Controller
 
     public function edit(Admin $admin)
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         return view('admin.UserManagement.editAdmin', ['admin' => $admin]);
     }
 
     public function update(UpdateAdminRequest $request, Admin $admin)
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         $adminCredentials = $request->safe()->except([
             'email',
             'recoveryEmail'
@@ -120,6 +138,9 @@ class AdminController extends Controller
 
     public function delete($id) 
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         $admin = Admin::where('id', $id)->first();
 
         $admin->delete();
@@ -129,6 +150,9 @@ class AdminController extends Controller
 
     public function trash (Request $request)
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         // Get Admin Accounts
         $admins = Admin::onlyTrashed()->get()->load('user');
         foreach ($admins as $admin) {
@@ -160,6 +184,9 @@ class AdminController extends Controller
 
     public function restore($id)
     {
+        if (auth()->user()->role != 2) {
+            abort(404);
+        }
         $admin = Admin::where('id', $id)->restore();
 
         return redirect()->back();

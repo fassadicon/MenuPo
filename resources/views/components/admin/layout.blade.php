@@ -38,6 +38,11 @@
             extend: {
                 colors: {
                     laravel: "#ef3b2d",
+                    // primary: 'hsl(46, 100%, 50%)', // #ffc300
+                    // primaryLight: 'hsl(46, 100%, 80%)', 	// #ffe799
+                    // primaryDark: 'hsl(46, 100%, 45%)', //	#e6b000
+                    // secondary: 'hsl(219, 46%, 24%)',  // #213559
+                    // secondaryLight:  'hsl(218, 31%, 31%)', // #374968
                 },
             },
         },

@@ -15,6 +15,14 @@ class boughtCookedMealsChart
         $this->chart = $chart;
     }
 
+    public function rand_color($count) {
+        $colors = array();
+        for ($i=0; $i < $count; $i++) {
+            array_push($colors, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+        }
+        return $colors;
+    }
+
     public function build(): \ArielMejiaDev\LarapexCharts\HorizontalBar
     {
         $foods = Order::selectRaw('food_id, COUNT(*) as count')
@@ -37,9 +45,11 @@ class boughtCookedMealsChart
                 ->get(['name'])->value('name');
             array_push($names, $foodIdName);
         }
+        $count = (int)sizeof($labels);
+
         return $this->chart->horizontalBarChart()
             ->setTitle('Most Bought Cooked Meals')
-            ->setColors(['#FFC107', '#D32F2F'])
+            // ->setColors($this->rand_color($count))
             ->addData('Bought by', $data)
             ->setXAxis($names)
             ->setToolbar(true);

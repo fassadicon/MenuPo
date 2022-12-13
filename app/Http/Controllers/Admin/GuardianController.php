@@ -73,7 +73,7 @@ class GuardianController extends Controller
     public function store(StoreParentRequest $request)
     {
         $guardian = $request->safe()->except([
-            'email', 
+            'email',
             'recoveryEmail'
         ]);
         $guardian['status'] = 1;
@@ -82,7 +82,7 @@ class GuardianController extends Controller
             $guardian['image'] = $request->file('image')->store('admin/parents', 'public');
         }
         $userCredentials = $request->safe()->only([
-            'email', 
+            'email',
             'recoveryEmail'
         ]);
         $userCredentials['password'] = Hash::make(Str::random(8));
@@ -100,23 +100,41 @@ class GuardianController extends Controller
 
     public function update(UpdateParentRequest $request, Guardian $guardian)
     {
-        $parentCredentials = $request->safe()->except([
-            'email', 
-            'recoveryEmail'
-        ]);
-        $parentCredentials['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
-        if ($request->hasFile('image')) {
-            $parentCredentials['image'] = $request->file('image')->store('admin/parents', 'public');
+        dd($request->safe());
+        if (auth()->user()->role == 2) {
+            $userCredentials = $request->safe()->only([
+                'email',
+                'recoveryEmail'
+            ]);
+            $user = User::where('id', $guardian->user_id);
+            $user->update($userCredentials);
+            $parentCredentials = $request->safe()->except([
+                'email',
+                'recoveryEmail'
+            ]);
+            $parentCredentials['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
+            if ($request->hasFile('image')) {
+                $parentCredentials['image'] = $request->file('image')->store('admin/parents', 'public');
+            }
+            $guardian->update($parentCredentials);
+            Alert::success('Success', 'Account of ' . $guardian->firstName . ' ' . $guardian->lastName . ' Updated Successfully');
+            return redirect('/admin/guardians');
+        } else {
+            // $parentCredentials = $request->safe()->except([
+            //     'email',
+            //     'recoveryEmail'
+            // ]);
+           
+            $parentCredentials = $request->safe()->all();
+            dd($parentCredentials);
+            $parentCredentials['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
+            if ($request->hasFile('image')) {
+                $parentCredentials['image'] = $request->file('image')->store('admin/parents', 'public');
+            }
+            $guardian->update($parentCredentials);
+            Alert::success('Success', 'Account of ' . $guardian->firstName . ' ' . $guardian->lastName . ' Updated Successfully');
+            return redirect('/admin/guardians');
         }
-        $userCredentials = $request->safe()->only([
-            'email', 
-            'recoveryEmail'
-        ]);
-        $user = User::where('id', $guardian->user_id);
-        $user->update($userCredentials);
-        $guardian->update($parentCredentials);
-        Alert::success('Success', 'Account of ' . $guardian->firstName . ' ' . $guardian->lastName . ' Updated Successfully');
-        return redirect('/admin/guardians');
     }
 
     public function delete($id)
@@ -128,12 +146,12 @@ class GuardianController extends Controller
         return redirect()->back();
     }
 
-    public function trash (Request $request)
+    public function trash(Request $request)
     {
         $guardians = Guardian::onlyTrashed()
-        ->get()
-        ->load('students', 'user');
-       
+            ->get()
+            ->load('students', 'user');
+
         foreach ($guardians as $guardian) {
             $guardian['created_by_name'] = Admin::where('id', $guardian->created_by)->first();
             $guardian['updated_by_name'] = $guardian->updated_by == null ? 'N/A' : Admin::where('id', $guardian->updated_by)->first();
@@ -164,7 +182,7 @@ class GuardianController extends Controller
         return view('admin.UserManagement.parentTrash', compact('guardians'));
     }
 
-    public function restore ($id)
+    public function restore($id)
     {
         $guardian = Guardian::where('id', $id)->restore();
 

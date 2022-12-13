@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'MenuPo') }}</title>
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/d00886c359.js" crossorigin="anonymous"></script>
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
