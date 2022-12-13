@@ -14,6 +14,9 @@
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
 
+ {{-- Flowbite JS--}}
+ <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+
 <!-- Vendor CSS Files -->
 <link href="{{ asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('admin/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -64,7 +67,9 @@
 </head>
 
 <body>
-    @include('partials.admin._topbar')
+
+    
+    @include('partials.admin._topbar', array('sample' => $notifs))
     @include('partials.admin._sidebar')
 
     <main id="main" class="main">
@@ -98,6 +103,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @include('sweetalert::alert');
+
+    {{-- Flowbite JS --}}
+    <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+      
 
 </body>
 

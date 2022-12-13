@@ -47,8 +47,8 @@
         }
 
         #tsum-tabs main {
-            padding: 30px;
-            margin: 0 auto;
+            /* padding: 10px;
+            margin: 0 auto; */
             background: #fff;
             text-align: center;
         }
@@ -94,7 +94,8 @@
         #tsum-tabs #tab1:checked~#content1,
         #tsum-tabs #tab2:checked~#content2,
         #tsum-tabs #tab3:checked~#content3,
-        #tsum-tabs #tab4:checked~#content4 {
+        #tsum-tabs #tab4:checked~#content4,
+        #tsum-tabs #tab5:checked ~ #content5  {
             display: block;
         }
 
@@ -143,12 +144,15 @@
         <input id="tab1" type="radio" name="tabs" checked>
         <label for="tab1">Rice Meals</label>
 
+        <input id="tab5" type="radio" name="tabs">
+        <label for="tab5">Pasta & Porridge</label>
+            
         <input id="tab2" type="radio" name="tabs">
         <label for="tab2">Snacks</label>
-
+            
         <input id="tab3" type="radio" name="tabs">
         <label for="tab3">Drinks</label>
-
+            
         <input id="tab4" type="radio" name="tabs">
         <label for="tab4">Others</label>
 
@@ -156,15 +160,24 @@
         <x-admin.cards.card-tabs.card-tab-riceMeal>
             @foreach ($foods as $food)
                 @if ($food->type == 3)
-                    <x-admin.pos.pos-foodcard :food="$food" />
+                    <x-admin.pos.pos-foodcard :food="$food" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
         </x-admin.cards.card-tabs.card-tab-riceMeal>
 
+        {{-- Pasta & Porridge Meals --}}
+        <x-admin.cards.card-tabs.card-tab-pasta>
+            @foreach ($foods as $food)
+                @if ($food->type == 4)
+                    <x-admin.pos.pos-foodcard :food="$food" :studentID="$studentID" :student="$student"/>
+                @endif
+            @endforeach
+        </x-admin.cards.card-tabs.card-tab-pasta>
+
         <x-admin.cards.card-tabs.card-tab-fried>
             @foreach ($foods as $food)
                 @if ($food->type == 2)
-                    <x-admin.pos.pos-foodcard :food="$food" />
+                    <x-admin.pos.pos-foodcard :food="$food" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
         </x-admin.cards.card-tabs.card-tab-fried>
@@ -172,7 +185,7 @@
         <x-admin.cards.card-tabs.card-tab-drinks>
             @foreach ($foods as $food)
                 @if ($food->type == 1)
-                    <x-admin.pos.pos-foodcard :food="$food" />
+                    <x-admin.pos.pos-foodcard :food="$food" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
         </x-admin.cards.card-tabs.card-tab-drinks>
@@ -180,7 +193,7 @@
         <x-admin.cards.card-tabs.card-tab-snacks>
             @foreach ($foods as $food)
                 @if ($food->type == 0)
-                    <x-admin.pos.pos-foodcard :food="$food" />
+                    <x-admin.pos.pos-foodcard :food="$food" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
         </x-admin.cards.card-tabs.card-tab-snacks>

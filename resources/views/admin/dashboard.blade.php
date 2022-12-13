@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs="$adminNotifs">
   <p>Dashboard</p>
   {{-- <div class="container">
     <div class="main-body">
