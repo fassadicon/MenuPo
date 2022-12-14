@@ -36,6 +36,6 @@ class SodiumChart
                 ->sum('totalSodium'), 2)
                ])
             ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
-            ->setToolbar(true);;
+            ->setHeight(240);
     }
 }

@@ -43,7 +43,7 @@ class CalorieChart
                 ->sum('totalKcal'), 2)
                ])
             ->setColors(['#6AA54D'])
-            ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
-            ->setToolbar(true);;
+            ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter']);
+
     }
 }

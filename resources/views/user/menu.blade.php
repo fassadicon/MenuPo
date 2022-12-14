@@ -110,7 +110,7 @@
               <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primaryDark">
                 TODAY'S MENU</h2>
                 {{-- @livewire('cart-counter', ['anak_id' => $anak->id]) --}}
-                <a class="cart-counter" href="/user/cart-summary/{{$anak[0]->id}}" >
+                <a class="cart-counter" href="/user/cart-summary/{{$anak->id}}" >
                   <button class="button-hero mt-2">
                     <span class=cart-title>My Cart</span>
                     @if (Cart::count() != 0)
@@ -153,7 +153,7 @@
             <x-user.cards.card-tabs.card-tab-riceMeal>
               @foreach($foods as $food)
                   @if($food->type == 3)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>   
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>   
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-riceMeal>
@@ -162,7 +162,7 @@
             <x-user.cards.card-tabs.card-tab-pasta>
               @foreach($foods as $food)
                   @if($food->type == 4)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>   
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>   
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-pasta>
@@ -170,7 +170,7 @@
             <x-user.cards.card-tabs.card-tab-fried>
               @foreach($foods as $food)
                   @if($food->type == 2)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>  
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-fried>
@@ -178,7 +178,7 @@
             <x-user.cards.card-tabs.card-tab-drinks>
               @foreach($foods as $food)
                   @if($food->type == 1)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>  
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-drinks>
@@ -186,7 +186,7 @@
             <x-user.cards.card-tabs.card-tab-snacks>
               @foreach($foods as $food)
                   @if($food->type == 0)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>  
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-snacks>
@@ -250,22 +250,36 @@
             }
         });
 
-        $.ajax({
-            method: "POST",
-            url: 'addtorestrict',
-            data: {"food-id":food_id, "anak-id":stud_id},
-            success: function(response){
-              //window.location.reload();
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Added to restrict!',
-                showConfirmButton: false,
-                timer: 700
-              });
-              $('.foods').load(location.href + " .foods");
-              
-            }
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "You want to restrict this item? Restricting this item means the student cannot order it in the canteen.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Restrict'
+        }).then((result) => {
+          if (result.isConfirmed) {
+              $.ajax({
+              method: "POST",
+              url: 'addtorestrict',
+              data: {"food-id":food_id, "anak-id":stud_id},
+              success: function(response){
+                //window.location.reload();
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Added to restrict!',
+                  showConfirmButton: false,
+                  timer: 700
+                });
+                $('.foods').load(location.href + " .foods");
+                
+                  }
+              })
+          }
         })
+
+        
     });
 </script>

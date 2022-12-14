@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Survey;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
-use App\Charts\CanteenRatingChart;
 
+use App\Charts\CanteenRatingChart;
 use App\Http\Controllers\Controller;
 use App\Charts\ParentFoodSuggestionChart;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
@@ -14,6 +15,7 @@ class SurveyReportController extends Controller
 {
     public function index(ParentFoodSuggestionChart $suggestionChart, CanteenRatingChart $ratingChart)
     {
+        $adminNotifs = Adminnotif::get();
         $average = Survey::avg('rating');
 
         $surveys = Survey::selectRaw('suggestions, COUNT(*) as count')
@@ -30,6 +32,6 @@ class SurveyReportController extends Controller
             $mostSuggested[$i] = $labels[$i];
         }
 
-        return view('admin.Reports.survey', ['suggestionChart' => $suggestionChart->build(), 'ratingChart' => $ratingChart->build(), 'averageRating' => $average, 'mostSuggestedFoods' => $mostSuggested]);
+        return view('admin.Reports.survey', ['suggestionChart' => $suggestionChart->build(), 'adminNotifs' => $adminNotifs, 'ratingChart' => $ratingChart->build(), 'averageRating' => $average, 'mostSuggestedFoods' => $mostSuggested]);
     }
 }

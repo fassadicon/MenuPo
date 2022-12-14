@@ -37,6 +37,6 @@ class SugarChart
                ])
             ->setColors(['#F733D9'])
             ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
-            ->setToolbar(true);
+            ->setHeight(240);
     }
 }
