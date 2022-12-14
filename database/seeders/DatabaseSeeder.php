@@ -5524,7 +5524,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 5,
@@ -5540,7 +5540,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 6,
@@ -5556,7 +5556,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 7,
@@ -5572,7 +5572,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 8,
@@ -5588,7 +5588,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 9,
@@ -5601,10 +5601,10 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 1.9,
                 'totalSodium' => 1477,
                 'payment_id' => 1,
-                'claimStatus' => 1,
+                'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 10,
@@ -5633,10 +5633,10 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 2.9,
                 'totalSodium' => 277,
                 'payment_id' => 1,
-                'claimStatus' => 1,
+                'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 12,
@@ -5649,15 +5649,15 @@ class DatabaseSeeder extends Seeder
                 'totalSugar' => 21.7,
                 'totalSodium' => 633,
                 'payment_id' => 1,
-                'claimStatus' => 1,
+                'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 13,
-                'parent_id' => 3,
-                'student_id' => 4,
+                'parent_id' => 19,
+                'student_id' => 26,
                 'totalAmount' => 72.00,
                 'totalKcal' => 790,
                 'totalTotFat' => 42.3,
@@ -5668,7 +5668,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-18'
+                'created_at' => Carbon::yesterday()->format('Y-m-d')
             ],
             [
                 'id' => 14,
@@ -5684,12 +5684,12 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2023-1-13'
             ],
             [
                 'id' => 15,
-                'parent_id' => 4,
-                'student_id' => 5,
+                'parent_id' => 21,
+                'student_id' => 28,
                 'totalAmount' => 77.00,
                 'totalKcal' => 431,
                 'totalTotFat' => 11,
@@ -5700,12 +5700,12 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2023-2-13'
             ],
             [
                 'id' => 16,
-                'parent_id' => 4,
-                'student_id' => 5,
+                'parent_id' => 22,
+                'student_id' => 29,
                 'totalAmount' => 35.00,
                 'totalKcal' => 294,
                 'totalTotFat' => 11.2,
@@ -5716,7 +5716,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2022-7-22'
             ],
             [
                 'id' => 17,
@@ -5732,7 +5732,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2022-7-24'
             ],
             [
                 'id' => 18,
@@ -5748,7 +5748,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2022-7-30'
             ],
             [
                 'id' => 19,
@@ -5764,7 +5764,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2022-8-3'
             ],
             [
                 'id' => 20,
@@ -5780,12 +5780,12 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2022-8-10'
             ],
             [
                 'id' => 21,
-                'parent_id' => 6,
-                'student_id' => 7,
+                'parent_id' => 23,
+                'student_id' => 30,
                 'totalAmount' => 75.00,
                 'totalKcal' => 629,
                 'totalTotFat' => 30,
@@ -5796,7 +5796,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2022-8-12'
             ],
             [
                 'id' => 22,
@@ -5812,7 +5812,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2022-8-30'
             ],
             [
                 'id' => 23,
@@ -5828,7 +5828,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2022-9-1'
             ],
             [
                 'id' => 24,
@@ -5844,7 +5844,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2022-9-16'
             ],
             [
                 'id' => 25,
@@ -5860,7 +5860,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-21'
+                'created_at' => '2022-9-22'
             ],
             [
                 'id' => 26,
@@ -5876,7 +5876,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2022-10-4'
             ],
              [
                 'id' => 27,
@@ -5892,7 +5892,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2022-10-13'
             ],
             [
                 'id' => 28,
@@ -5908,7 +5908,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2022-10-25'
             ],
             [
                 'id' => 29,
@@ -5924,7 +5924,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2022-10-27'
             ],
             [
                 'id' => 30,
@@ -5940,7 +5940,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2022-10-31'
             ],
             [
                 'id' => 31,
@@ -5956,7 +5956,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2023-3-3'
             ],
             [
                 'id' => 32,
@@ -5972,7 +5972,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2023-3-8'
             ],
             [
                 'id' => 33,
@@ -5988,7 +5988,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2023-3-15'
             ],
             [
                 'id' => 34,
@@ -6004,7 +6004,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::today()->format('Y-m-d')
+                'created_at' => '2023-3-25'
             ],
             [
                 'id' => 35,
@@ -6020,7 +6020,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-4-6'
             ],
             [
                 'id' => 36,
@@ -6036,7 +6036,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-4-12'
             ],
             [
                 'id' => 37,
@@ -6052,7 +6052,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-4-20'
             ],
             [
                 'id' => 38,
@@ -6068,7 +6068,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-4-29'
             ],
             [
                 'id' => 39,
@@ -6084,7 +6084,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-5-8'
             ],
             [
                 'id' => 40,
@@ -6100,7 +6100,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-5-11'
             ],
             [
                 'id' => 41,
@@ -6116,7 +6116,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-5-17'
             ],
             [
                 'id' => 42,
@@ -6132,7 +6132,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2023-6-8'
             ],
             [
                 'id' => 43,
@@ -6148,7 +6148,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2023-6-16'
             ],
             [
                 'id' => 44,
@@ -6164,7 +6164,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-6-19'
             ],
             [
                 'id' => 45,
@@ -6180,8 +6180,249 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2022-11-24'
+                'created_at' => '2023-6-30'
+            ],
+            [
+                'id' => 46,
+                'parent_id' => 27,
+                'student_id' => 34,
+                'totalAmount' => 40.00,
+                'totalKcal' => 444,
+                'totalTotFat' => 22.9,
+                'totalSatFat' => 6.98,
+                'totalSugar' => 0.1,
+                'totalSodium' => 3,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-7-3'
+            ],
+            [
+                'id' => 47,
+                'parent_id' => 13,
+                'student_id' => 19,
+                'totalAmount' => 40.00,
+                'totalKcal' => 374,
+                'totalTotFat' => 18.3,
+                'totalSatFat' => 6.24,
+                'totalSugar' => 5.1,
+                'totalSodium' => 1091,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-7-5'
+            ],
+            [
+                'id' => 48,
+                'parent_id' => 14,
+                'student_id' => 20,
+                'totalAmount' => 75.00,
+                'totalKcal' => 374,
+                'totalTotFat' => 22,
+                'totalSatFat' => 8,
+                'totalSugar' => 0.1,
+                'totalSodium' => 64,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-7-8'
+            ],
+            [
+                'id' => 49,
+                'parent_id' => 25,
+                'student_id' => 32,
+                'totalAmount' => 55.00,
+                'totalKcal' => 374,
+                'totalTotFat' => 22,
+                'totalSatFat' => 8,
+                'totalSugar' => 0.1,
+                'totalSodium' => 64,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-7-12'
+            ],
+            [
+                'id' => 50,
+                'parent_id' => 21,
+                'student_id' => 28,
+                'totalAmount' => 67.00,
+                'totalKcal' => 449,
+                'totalTotFat' => 7,
+                'totalSatFat' => 2.35,
+                'totalSugar' => 46.7,
+                'totalSodium' => 1060,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-7-15'
+            ],
+            [
+                'id' => 51,
+                'parent_id' => 9,
+                'student_id' => 11,
+                'totalAmount' => 48.00,
+                'totalKcal' => 668,
+                'totalTotFat' => 19.4,
+                'totalSatFat' => 11.52,
+                'totalSugar' => 50.3,
+                'totalSodium' => 551,
+                'payment_id' => 1,
+                'claimStatus' => 1,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-7-19'
+            ],
+            [
+                'id' => 52,
+                'parent_id' => 10,
+                'student_id' => 12,
+                'totalAmount' => 60.00,
+                'totalKcal' => 293,
+                'totalTotFat' => 8.7,
+                'totalSatFat' => 3.45,
+                'totalSugar' => 5.2,
+                'totalSodium' => 942,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-7-22'
+            ],
+            [
+                'id' => 53,
+                'parent_id' => 17,
+                'student_id' => 6,
+                'totalAmount' => 40.00,
+                'totalKcal' => 297,
+                'totalTotFat' => 10.9,
+                'totalSatFat' => 4.56,
+                'totalSugar' => 0.1,
+                'totalSodium' => 570,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-7-23'
+            ],
+            [
+                'id' => 54,
+                'parent_id' => 14,
+                'student_id' => 20,
+                'totalAmount' => 65.00,
+                'totalKcal' => 317,
+                'totalTotFat' => 10.6,
+                'totalSatFat' => 0.05,
+                'totalSugar' => 0.1,
+                'totalSodium' => 109,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-8-5'
+            ],
+            [
+                'id' => 55,
+                'parent_id' => 23,
+                'student_id' => 30,
+                'totalAmount' => 90.00,
+                'totalKcal' => 507,
+                'totalTotFat' => 12.8,
+                'totalSatFat' => 4.22,
+                'totalSugar' => 22.4,
+                'totalSodium' => 859,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-8-9'
+            ],
+            [
+                'id' => 56,
+                'parent_id' => 14,
+                'student_id' => 20,
+                'totalAmount' => 55.00,
+                'totalKcal' => 537,
+                'totalTotFat' => 30,
+                'totalSatFat' => 10.3,
+                'totalSugar' => 0.1,
+                'totalSodium' => 343,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-8-15'
+            ],
+            [
+                'id' => 57,
+                'parent_id' => 18,
+                'student_id' => 25,
+                'totalAmount' => 50.00,
+                'totalKcal' => 349,
+                'totalTotFat' => 11.4,
+                'totalSatFat' => 2.27,
+                'totalSugar' => 0.8,
+                'totalSodium' => 523,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-8-17'
+            ],
+            [
+                'id' => 58,
+                'parent_id' => 24,
+                'student_id' => 31,
+                'totalAmount' => 55.00,
+                'totalKcal' => 374,
+                'totalTotFat' => 22,
+                'totalSatFat' => 8,
+                'totalSugar' => 0.1,
+                'totalSodium' => 64,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-8-19'
+            ],
+            [
+                'id' => 59,
+                'parent_id' => 27,
+                'student_id' => 34,
+                'totalAmount' => 85.00,
+                'totalKcal' => 464,
+                'totalTotFat' => 22.2,
+                'totalSatFat' => 8,
+                'totalSugar' => 21.7,
+                'totalSodium' => 78,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-8-21'
+            ],
+            [
+                'id' => 60,
+                'parent_id' => 28,
+                'student_id' => 35,
+                'totalAmount' => 90.00,
+                'totalKcal' => 387,
+                'totalTotFat' => 13.4,
+                'totalSatFat' => 1.35,
+                'totalSugar' => 4.1,
+                'totalSodium' => 463,
+                'payment_id' => 1,
+                'claimStatus' => 0,
+                'type' => 1,
+                'served_by' => 2,
+                'created_at' => '2023-8-23'
             ]
+            
                 
         ];
         Purchase::insert($purchases);
@@ -7652,8 +7893,427 @@ class DatabaseSeeder extends Seeder
                 'satFat' => 0.05,
                 'sugar' => 0.1,
                 'sodium' => 3
+            ],
+            [
+                'id' => 121,
+                'purchase_id' => 46,
+                'food_id' => 8,
+                'quantity' => 1,
+                'amount' => 25.00,
+                'kcal' => 315,
+                'totFat' => 22.7,
+                'satFat' => 6.93,
+                'sugar' => 0,
+                'sodium' => 714
+            ],
+            [
+                'id' => 122,
+                'purchase_id' => 46,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 123,
+                'purchase_id' => 47,
+                'food_id' => 15,
+                'quantity' => 1,
+                'amount' => 25.00,
+                'kcal' => 245,
+                'totFat' => 18.1,
+                'satFat' => 6.19,
+                'sugar' => 5,
+                'sodium' => 1088
+            ],
+            [
+                'id' => 124,
+                'purchase_id' => 47,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 125,
+                'purchase_id' => 48,
+                'food_id' => 34,
+                'quantity' => 1,
+                'amount' => 60.00,
+                'kcal' => 245,
+                'totFat' => 21.8,
+                'satFat' => 7.95,
+                'sugar' => 0,
+                'sodium' => 61
+            ],
+            [
+                'id' => 126,
+                'purchase_id' => 48,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 127,
+                'purchase_id' => 49,
+                'food_id' => 40,
+                'quantity' => 1,
+                'amount' => 40.00,
+                'kcal' => 245,
+                'totFat' => 21.8,
+                'satFat' => 7.95,
+                'sugar' => 0,
+                'sodium' => 61
+            ],
+            [
+                'id' => 128,
+                'purchase_id' => 49,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 129,
+                'purchase_id' => 50,
+                'food_id' => 12,
+                'quantity' => 1,
+                'amount' => 40.00,
+                'kcal' => 206,
+                'totFat' => 6.4,
+                'satFat' => 2.2,
+                'sugar' => 20.2,
+                'sodium' => 1037
+            ],
+            [
+                'id' => 130,
+                'purchase_id' => 50,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 131,
+                'purchase_id' => 50,
+                'food_id' => 54,
+                'quantity' => 1,
+                'amount' => 12.00,
+                'kcal' => 114,
+                'totFat' => 0.4,
+                'satFat' => 0.1,
+                'sugar' => 26.4,
+                'sodium' => 20
+            ],
+            [
+                'id' => 132,
+                'purchase_id' => 51,
+                'food_id' => 24,
+                'quantity' => 1,
+                'amount' => 25.00,
+                'kcal' => 70,
+                'totFat' => 2.8,
+                'satFat' => 1.3,
+                'sugar' => 4,
+                'sodium' => 354
+            ],
+            [
+                'id' => 133,
+                'purchase_id' => 51,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 134,
+                'purchase_id' => 51,
+                'food_id' => 35,
+                'quantity' => 1,
+                'amount' => 8.00,
+                'kcal' => 469,
+                'totFat' => 16.4,
+                'satFat' => 10.17,
+                'sugar' => 46.2,
+                'sodium' => 194
+            ],
+            [
+                'id' => 135,
+                'purchase_id' => 52,
+                'food_id' => 30,
+                'quantity' => 1,
+                'amount' => 45.00,
+                'kcal' => 164,
+                'totFat' => 8.5,
+                'satFat' => 3.4,
+                'sugar' => 5.1,
+                'sodium' => 939
+            ],
+            [
+                'id' => 136,
+                'purchase_id' => 52,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 137,
+                'purchase_id' => 53,
+                'food_id' => 4,
+                'quantity' => 1,
+                'amount' => 25.00,
+                'kcal' => 168,
+                'totFat' => 10.7,
+                'satFat' => 4.51,
+                'sugar' => 0,
+                'sodium' => 567
+            ],
+            [
+                'id' => 138,
+                'purchase_id' => 53,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 139,
+                'purchase_id' => 54,
+                'food_id' => 27,
+                'quantity' => 1,
+                'amount' => 50.00,
+                'kcal' => 188,
+                'totFat' => 10.4,
+                'satFat' => 0,
+                'sugar' => 0,
+                'sodium' => 106
+            ],
+            [
+                'id' => 140,
+                'purchase_id' => 54,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 141,
+                'purchase_id' => 55,
+                'food_id' => 29,
+                'quantity' => 1,
+                'amount' => 50.00,
+                'kcal' => 226,
+                'totFat' => 12,
+                'satFat' => 4.07,
+                'sugar' => 1.5,
+                'sodium' => 716
+            ],
+            [
+                'id' => 142,
+                'purchase_id' => 55,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 143,
+                'purchase_id' => 55,
+                'food_id' => 59,
+                'quantity' => 1,
+                'amount' => 25.00,
+                'kcal' => 152,
+                'totFat' => 0.6,
+                'satFat' => 0.1,
+                'sugar' => 20.8,
+                'sodium' => 140
+            ],
+            [
+                'id' => 144,
+                'purchase_id' => 56,
+                'food_id' => 25,
+                'quantity' => 1,
+                'amount' => 40.00,
+                'kcal' => 408,
+                'totFat' => 29.8,
+                'satFat' => 10.25,
+                'sugar' => 0,
+                'sodium' => 340
+            ],
+            [
+                'id' => 145,
+                'purchase_id' => 56,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 146,
+                'purchase_id' => 57,
+                'food_id' => 31,
+                'quantity' => 1,
+                'amount' => 35.00,
+                'kcal' => 220,
+                'totFat' => 11.2,
+                'satFat' => 2.22,
+                'sugar' => 0.7,
+                'sodium' => 520
+            ],
+            [
+                'id' => 147,
+                'purchase_id' => 57,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 148,
+                'purchase_id' => 58,
+                'food_id' => 40,
+                'quantity' => 1,
+                'amount' => 40.00,
+                'kcal' => 245,
+                'totFat' => 21.8,
+                'satFat' => 7.95,
+                'sugar' => 0,
+                'sodium' => 61
+            ],
+            [
+                'id' => 149,
+                'purchase_id' => 58,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 150,
+                'purchase_id' => 59,
+                'food_id' => 34,
+                'quantity' => 1,
+                'amount' => 60.00,
+                'kcal' => 245,
+                'totFat' => 21.8,
+                'satFat' => 7.95,
+                'sugar' => 0,
+                'sodium' => 61
+            ],
+            [
+                'id' => 151,
+                'purchase_id' => 59,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 152,
+                'purchase_id' => 59,
+                'food_id' => 17,
+                'quantity' => 1,
+                'amount' => 10.00,
+                'kcal' => 90,
+                'totFat' => 0.2,
+                'satFat' => 0,
+                'sugar' => 21.6,
+                'sodium' => 14
+            ],
+            [
+                'id' => 153,
+                'purchase_id' => 60,
+                'food_id' => 24,
+                'quantity' => 1,
+                'amount' => 25.00,
+                'kcal' => 70,
+                'totFat' => 2.8,
+                'satFat' => 1.3,
+                'sugar' => 4,
+                'sodium' => 354
+            ],
+            [
+                'id' => 154,
+                'purchase_id' => 60,
+                'food_id' => 2,
+                'quantity' => 1,
+                'amount' => 15.00,
+                'kcal' => 129,
+                'totFat' => 0.2,
+                'satFat' => 0.05,
+                'sugar' => 0.1,
+                'sodium' => 3
+            ],
+            [
+                'id' => 155,
+                'purchase_id' => 60,
+                'food_id' => 27,
+                'quantity' => 1,
+                'amount' => 50.00,
+                'kcal' => 188,
+                'totFat' => 10.4,
+                'satFat' => 0,
+                'sugar' => 0,
+                'sodium' => 106
             ]
-            
         ];
         Order::insert($orders);
 
