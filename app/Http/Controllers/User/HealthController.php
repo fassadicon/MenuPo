@@ -210,76 +210,76 @@ class HealthController extends Controller
                 </tr>
                 <tr>
                     <td>Calories</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-19'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-07-01 00:00:00', '2022-10-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalKcal'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-20', '2022-11-22'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-01 00:00:00', '2023-02-28 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalKcal'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-23', '2022-11-25'])
+                    ->sum('totalKcal'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-03-01 00:00:00', '2023-06-30 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalKcal'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', [Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d')])
+                    ->sum('totalKcal'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-07-01 00:00:00', '2023-08-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalKcal'), 2) .'</td>
                 </tr>
                 <tr>
                     <td>Fat</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-19'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-07-01 00:00:00', '2022-10-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalTotFat'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-20', '2022-11-22'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-01 00:00:00', '2023-02-28 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalTotFat'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-23', '2022-11-25'])
+                    ->sum('totalTotFat'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-03-01 00:00:00', '2023-06-30 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalTotFat'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', [Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d')])
+                    ->sum('totalTotFat'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-07-01 00:00:00', '2023-08-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalTotFat'), 2) .'</td>
                 </tr>
                 <tr>
                     <td>Saturated Fat</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-19'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-07-01 00:00:00', '2022-10-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalSatFat'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-20', '2022-11-22'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-01 00:00:00', '2023-02-28 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalSatFat'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-23', '2022-11-25'])
+                    ->sum('totalSatFat'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-03-01 00:00:00', '2023-06-30 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalSatFat'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', [Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d')])
+                    ->sum('totalSatFat'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-07-01 00:00:00', '2023-08-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalSatFat'), 2) .'</td>
                 </tr>
                 <tr>
                     <td>Sugar</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-19'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-07-01 00:00:00', '2022-10-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalSugar'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-20', '2022-11-22'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-01 00:00:00', '2023-02-28 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalSugar'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-23', '2022-11-25'])
+                    ->sum('totalSugar'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-03-01 00:00:00', '2023-06-30 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalSugar'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', [Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d')])
+                    ->sum('totalSugar'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-07-01 00:00:00', '2023-08-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalSugar'), 2) .'</td>
                 </tr>
                 <tr>
                     <td>Sodium</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-19'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-07-01 00:00:00', '2022-10-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalSodium'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-20', '2022-11-22'])
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-01 00:00:00', '2023-02-28 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalSodium'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-23', '2022-11-25'])
+                    ->sum('totalSodium'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-03-01 00:00:00', '2023-06-30 00:00:00'])
                     ->where('student_id', $student->id)
-                    ->sum('totalSodium'), 2) .'</td>
-                    <td>'. round(Purchase::whereBetween('created_at', [Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d')])
+                    ->sum('totalSodium'), 2).'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-07-01 00:00:00', '2023-08-31 00:00:00'])
                     ->where('student_id', $student->id)
                     ->sum('totalSodium'), 2) .'</td>
                 </tr>

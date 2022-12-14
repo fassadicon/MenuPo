@@ -13,21 +13,21 @@
             <div class="w-full">
                 <div class="md:flex mb-2">
                     <div class="w-full md:w-1/2 bg-zinc-50 rounded-lg p-4 mx-2">
-                        {!! $sugarChart->container() !!}
-                    </div>
-            
-                    <div class="w-full md:w-1/2 bg-zinc-50 rounded-lg p-4 mx-2">
                         {!! $fatChart->container() !!}
+                    </div>
+
+                    <div class="w-full md:w-1/2 bg-zinc-50 rounded-lg p-4 mx-2">
+                        {!! $satFatChart->container() !!}
                     </div>
                 </div>
                 
                 <div class="w-full md:flex">
                     <div class="w-full md:w-1/2 bg-zinc-50 rounded-lg p-4 mx-2">
-                        {!! $sodiumChart->container() !!}
+                        {!! $sugarChart->container() !!}
                     </div>
-        
+            
                     <div class="w-full md:w-1/2 bg-zinc-50 rounded-lg p-4 mx-2">
-                        {!! $satFatChart->container() !!}
+                        {!! $sodiumChart->container() !!}
                     </div>
                 </div>
             </div>
