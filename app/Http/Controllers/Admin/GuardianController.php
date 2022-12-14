@@ -64,7 +64,8 @@ class GuardianController extends Controller
     // Show Create Form
     public function create()
     {
-        return view('admin.UserManagement.createGuardian');
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.createGuardian', compact('adminNotifs'));
     }
 
     // Create parent User
@@ -96,7 +97,8 @@ class GuardianController extends Controller
 
     public function edit(Guardian $guardian)
     {
-        return view('admin.UserManagement.editGuardian', ['guardian' => $guardian]);
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.editGuardian', ['guardian' => $guardian, 'adminNotifs' => $adminNotifs]);
     }
 
     public function update(UpdateParentRequest $request, Guardian $guardian)

@@ -444,5 +444,7 @@
             // End of Scripts
         });
     </script>
+    <hr class="mx-4 my-4">
+    <br>
 
 </x-admin.layout>

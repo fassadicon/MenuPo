@@ -26,15 +26,17 @@ use App\Http\Controllers\Admin\ScannerController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\User\UserMenuController;
 use App\Http\Controllers\Admin\GuardianController;
+use App\Http\Controllers\Admin\BMIReportController;
 use App\Http\Controllers\Admin\CompletedController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PurchasesController;
 use App\Http\Controllers\User\CartSummaryController;
+use App\Http\Controllers\Admin\ImportUsersController;
 use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
-use App\Http\Controllers\Admin\ImportUsersController;
+use App\Http\Controllers\Admin\SalesReportController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
 
 /*
@@ -231,6 +233,12 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/survey/table', [SurveyReportController::class, 'surveyTable'])->name('survey.table');
     Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
     Route::get('/reports/nutrientConsumption', [StudentNutrientReportController::class, 'index']);
+    Route::get('/reports/nutrientConsumption/totalFat', [StudentNutrientReportController::class, 'indexTotalFat']);
+    Route::get('/reports/nutrientConsumption/satFat', [StudentNutrientReportController::class, 'indexSaturatedFat']);
+    Route::get('/reports/nutrientConsumption/addedSugar', [StudentNutrientReportController::class, 'indexAddedSugar']);
+    Route::get('/reports/nutrientConsumption/sodium', [StudentNutrientReportController::class, 'indexSodium']);
+    Route::get('/reports/sales', [SalesReportController::class, 'index']);
+    Route::get('/reports/bmi', [BMIReportController::class, 'index']);
 });
 
 

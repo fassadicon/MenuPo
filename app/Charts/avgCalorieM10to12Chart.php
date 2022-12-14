@@ -18,27 +18,26 @@ class avgCalorieM10to12Chart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-            ->setTitle('Males Ages 10 to 12')
             ->setHeight(240)
             ->addData('Average Calorie', [
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'M')->whereBetween('birthdate', [Carbon::now()->subYear(12), Carbon::now()->subYear(10)]);
-                })->whereBetween('created_at', ['2022-11-17', '2022-11-19'])
+                })->whereBetween('created_at', ['2022-07-01', '2022-10-31'])
                     ->avg('totalKcal'), 2),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'M')->whereBetween('birthdate', [Carbon::now()->subYear(12), Carbon::now()->subYear(10)]);
-                })->whereBetween('created_at', ['2022-11-20', '2022-11-22'])
+                })->whereBetween('created_at', ['2022-09-01', '2023-02-28'])
                     ->avg('totalKcal'), 2),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'M')->whereBetween('birthdate', [Carbon::now()->subYear(12), Carbon::now()->subYear(10)]);
-                })->whereBetween('created_at', ['2022-11-23', '2022-11-25'])
+                })->whereBetween('created_at', ['2023-03-01', '2023-06-30'])
                     ->avg('totalKcal'), 2),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'M')->whereBetween('birthdate', [Carbon::now()->subYear(12), Carbon::now()->subYear(10)]);
-                })->whereBetween('created_at', [Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d')])
+                })->whereBetween('created_at', ['2023-07-01', '2023-08-31'])
                     ->avg('totalKcal'), 2)
             ])
-            ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
+            ->setXAxis(['1st Qtr', '2nd Qtr', '3rd Qtr', '4th Qtr'])
             ->setToolBar(true);
     }
 }

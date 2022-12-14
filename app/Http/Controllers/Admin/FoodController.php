@@ -77,7 +77,8 @@ class FoodController extends Controller
     // Show Create Form
     public function create()
     {
-        return view('admin.FoodManagement.createFood');
+        $adminNotifs = Adminnotif::get();
+        return view('admin.FoodManagement.createFood', compact('adminNotifs'));
     }
 
     // Create Food Item
@@ -94,7 +95,8 @@ class FoodController extends Controller
     // Show Update Form
     public function edit(Food $food)
     {
-        return view('admin.FoodManagement.editFood', ['food' => $food]);
+        $adminNotifs = Adminnotif::get();
+        return view('admin.FoodManagement.editFood', ['food' => $food, 'adminNotifs' => $adminNotifs]);
     }
 
     // Update Food Item
