@@ -76,7 +76,8 @@ class AdminController extends Controller
         if (auth()->user()->role != 2) {
             abort(404);
         }
-        return view('admin.UserManagement.createAdmin');
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.createAdmin', compact('adminNotifs'));
     }
 
     // Create Admin User
@@ -112,7 +113,8 @@ class AdminController extends Controller
         if (auth()->user()->role != 2) {
             abort(404);
         }
-        return view('admin.UserManagement.editAdmin', ['admin' => $admin]);
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.editAdmin', ['admin' => $admin, 'adminNotifs' => $adminNotifs]);
     }
 
     public function update(UpdateAdminRequest $request, Admin $admin)
