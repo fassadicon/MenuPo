@@ -228,6 +228,76 @@ class MenuController extends Controller
         return view('admin.FoodManagement.menu', compact('beverages', 'adminNotifs'));
     }
 
+    public function pastas(Request $request)
+    {
+
+        // Initialize DataTable Values
+        $pastas = Menu::with('food.orders.purchase', 'food')
+            // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
+            ->where(function ($query) {
+                $query->where('status', 1)
+                    ->whereDate('displayed_at', Carbon::now()->format('Y-m-d'))
+                    ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
+                    ->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    });
+            })
+            ->orWhere(function ($query) {
+                $query->where('status', 0)
+                    ->WhereNull('displayed_at')
+                    ->WhereNull('removed_at')
+                    ->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    });
+            })
+            // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
+            // get distinct food id 
+            ->groupBy('food_id')
+            // ->orderBy('food_id')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        if ($request->ajax()) {
+            return DataTables::of($pastas)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    // Update Stock Quantity
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="updateMenuItemDetailsBtn" class="btn btn-info btn-sm" id="editMenuItemDetailsDTBtn"><i class="bi bi-pencil-square"></i></a>';
+                    // Remove from the Menu
+                    $btn = $btn . ' <a href="/admin/foods/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="removeMenuItemBtn delete btn btn-danger btn-sm"><i class="bi bi-dash-circle"></i></a>';
+                    return $btn;
+                })
+                ->addColumn('count', function ($row) {
+                    $menuID = $row->food->id;
+                    $test = Purchase::with('order')
+                        ->where('paymentStatus', 'paid')
+                        ->whereHas('order', function ($query) use ($menuID) {
+                            $query->where('food_id', 'like', $menuID);
+                        })->count();
+                    return $test;
+                })
+                ->addColumn('prevStock', function ($row) {
+                    $foodID = $row->food->id;
+
+                    $test = Purchase::with('order')
+                        ->where('paymentStatus', 'paid')
+                        ->whereHas('order', function ($query) use ($foodID) {
+                            $query->where('food_id', 'like', $foodID);
+                        })->count();
+
+                    $currentStock = Food::where('id', $foodID)
+                        ->get(['stock'])->value('stock');
+
+                    $prevStock = $currentStock + $test;
+                    return $prevStock;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        $adminNotifs = Adminnotif::get();
+        return view('admin.FoodManagement.menu', compact('pastas', 'adminNotifs'));
+    }
+
     public function others(Request $request)
     {
 

@@ -100,6 +100,10 @@
                 aria-selected="true">Cooked Meals</button>
         </li>
         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pastas-tab" data-bs-toggle="tab" data-bs-target="#pastasTableTab"
+                type="button" role="tab" aria-controls="pastas" aria-selected="false">Pastas</button>
+        </li>
+        <li class="nav-item" role="presentation">
             <button class="nav-link" id="snacks-tab" data-bs-toggle="tab" data-bs-target="#snacksTableTab"
                 type="button" role="tab" aria-controls="snacks" aria-selected="false">Snacks</button>
         </li>
@@ -159,6 +163,46 @@
                         </div>
 
 
+                    </div>
+                </div>
+                {{-- Pastas Table --}}
+                <div class="tab-pane fade" id="pastasTableTab" role="tabpanel" aria-labelledby="pastasTableTab">
+                    <div align="left"><a href="javascript:void(0)" class="btn btn-success mb-2"
+                            id="addMenuItemBtn">Add
+                            Pasta Meals</a>
+                    </div>
+                    <div class="col-8">
+                        <table class="table table-hover table-sm" id="pastasTable">
+                            <thead>
+                                <tr>
+                                    <th>Menu ID</th>
+                                    <th>Food ID</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Removed At</th>
+                                    <th>Stock</th>
+                                    <th>Pre-Orders</th>
+                                    <th>Remaining</th>
+                                    <th>Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Menu ID</th>
+                                    <th>Food ID</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Removed At</th>
+                                    <th>Stock</th>
+                                    <th>Pre-Orders</th>
+                                    <th>Remaining</th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
                 {{-- Snacks Table --}}
@@ -762,6 +806,101 @@
                 }
             ]
         });
+
+         // Pasta Meals Table in the Menu
+         var pastasTable = $('#pastasTable').DataTable({
+            lengthMenu: [
+                [10, 15, 20, 25, 30],
+                [10, 15, 20, 25, 30]
+            ],
+            processing: true,
+            serverSide: true,
+            ajax: {
+                type: "GET",
+                url: "{{ route('menu.pastas') }}",
+            },
+            // Footer Sorting
+            initComplete: function() {
+                this.api()
+                    .columns()
+                    .every(function() {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function() {
+                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                                column.search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column
+                            .data()
+                            .unique()
+                            .sort()
+                            .each(function(d, j) {
+                                select.append('<option value="' + d + '">' + d +
+                                    '</option>');
+                            });
+                    });
+            },
+            columns: [{
+                    data: 'id',
+                    name: 'id'
+                },
+                {
+                    data: 'food.id',
+                    name: 'food.id'
+                },
+                {
+                    data: 'food.name',
+                    name: 'food.name'
+                },
+                {
+                    data: 'food.price',
+                    name: 'food.price'
+                },
+                {
+                    data: 'status',
+                    name: 'status',
+                    render: function(data, type, row) {
+                        return data == 1 ? 'Temporary' : 'Permanent';
+                    }
+                },
+                {
+                    data: 'removed_at',
+                    name: 'removed_at',
+                },
+
+                {
+                    data: 'prevStock',
+                    name: 'prevStock'
+                },
+                {
+                    data: 'count',
+                    name: 'count'
+                },
+                {
+                    data: 'food.stock',
+                    name: 'food.stock',
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                }
+            ],
+            columnDefs: [{
+                    target: 0,
+                    visible: false
+                },
+                {
+                    target: 1,
+                    visible: false
+                }
+            ]
+        });
         // Snack Meals Table in the Menu
         var snacksTable = $('#snacksTable').DataTable({
             lengthMenu: [
@@ -1251,6 +1390,54 @@
                 // $('#stockUpdate').val(data.stock);
             })
         });
+        // Pastas
+        $('#pastasTable').on('click', 'tr', function() {
+            // var id = table.row(this).id();
+            var id = pastasTable.row(this).data().id;
+            $.get("{{ url('admin/menu/') }}" + '/' + id + '/preview', function(data) {
+                if (data.image != null) {
+                    $('#imageFood').attr('src', "{{ asset('storage/') }}" + '/' + data.image);
+                } else {
+                    console.log('No Image');
+                }
+                $('#menuID').val(id);
+                $('#foodID').val(data.id);
+                $('#name').val(data.name);
+                $('#description').val(data.description);
+                $('#price').val(data.price);
+                $('#stock').val(data.stock);
+                $('#servingSize').val(data.servingSize);
+                $('#calcKcal').val(data.calcKcal);
+                $('#calcTotFat').val(data.calcTotFat);
+                $('#calcSatFat').val(data.calcSatFat);
+                $('#calcSugar').val(data.calcSugar);
+                $('#calcSodium').val(data.calcSodium);
+                $('#grade').val(data.grade);
+                let color;
+                if (data.grade <= 0) {
+                    color = 'gray';
+                } else if (data.grade <= 6) {
+                    color = 'green';
+                } else if (data.grade <= 9) {
+                    color = 'amber';
+                } else if (data.grade <= 12) {
+                    color = 'red';
+                } else {
+                    color = 'gray';
+                }
+                $('#color').val(color);
+
+                // <a id="updateFoodInfo" href="javascript:void(0)" style="background-color: gray; border: none;" class="btn btn-info" role="link" aria-disabled="true">Edit Information</a>
+                $('#updatePreviewMenuStock').prop('disabled', false);
+                $('#updatePreviewMenuDate').prop('disabled', false);
+                $('#removePreviewMenu').prop('disabled', false);
+                $('#updateFoodInfo').removeAttr('style');
+                $('#updateFoodInfo').prop('href', "{{ url('admin/foods/') }}" + '/' + data.id +
+                    '/edit');
+
+                // $('#stockUpdate').val(data.stock);
+            })
+        });
         // Snacks
         $('#snacksTable').on('click', 'tr', function() {
             // var id = table.row(this).id();
@@ -1421,6 +1608,7 @@
                 success: function(response) {
                     console.log('success');
                     cookedMealsTable.ajax.reload();
+                    pastasTable.ajax.reload();
                     snacksTable.ajax.reload();
                     beveragesTable.ajax.reload();
                     othersTable.ajax.reload();
