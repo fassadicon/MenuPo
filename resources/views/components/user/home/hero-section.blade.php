@@ -1,7 +1,7 @@
 
 
 <!-- Hero section starts -->
-<section class="flex bg-white h-96">
+<section class="section-hero flex bg-white h-96">
     <div class="container mx-auto flex justify-center items-center flex-col">
       
       <h1 class="text-black text-4xl md:text-5xl font-bold text-center w-1/2">
@@ -13,7 +13,7 @@
       </p>
 
       <button class="button-hero mt-4">
-        <a href="#">
+        <a href="/user/menu-landing">
           Pre Order
         </a>
       </button>
