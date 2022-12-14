@@ -3,8 +3,8 @@
     <h1 class="h3">Food Item Management</h1>
     {{-- DATABLE --}}
     <div class="container">
-        <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Food Item</a></div>
-        <div align="left"><a href="/admin/foods/trash" class="btn btn-success mb-2">Archived Food Item</a></div>
+        <a href="/admin/foods/create" class="btn btn-success mb-2"><i class="fas fa-plus-circle"></i>&nbsp;Create Food Item</a>
+        <a href="/admin/foods/trash" class="btn btn-warning mb-2"><i class="fas fa-trash"></i>&nbsp;Archived Food Item</a>
         <table class="table table-hover table-sm" id="foodTable">
 
             <thead>

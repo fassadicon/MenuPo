@@ -20,16 +20,16 @@ class FatChart
         return $this->chart->barChart()
             ->setTitle('Fat Intake Quarterly')
             ->addData('Fat', [
-                round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-19'])
+                round(Purchase::whereBetween('created_at', ['2022-07-01 00:00:00', '2022-10-31 00:00:00'])
                 ->where('student_id', $id)
                 ->sum('totalTotFat'), 2),
-                round(Purchase::whereBetween('created_at', ['2022-11-20', '2022-11-22'])
+                round(Purchase::whereBetween('created_at', ['2022-11-01 00:00:00', '2023-02-28 00:00:00'])
                 ->where('student_id', $id)
                 ->sum('totalTotFat'), 2),
-                round(Purchase::whereBetween('created_at', ['2022-11-23', '2022-11-25'])
+                round(Purchase::whereBetween('created_at', ['2023-03-01 00:00:00', '2023-06-30 00:00:00'])
                 ->where('student_id', $id)
                 ->sum('totalTotFat'), 2),
-                round(Purchase::whereBetween('created_at', [Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d')])
+                round(Purchase::whereBetween('created_at', ['2023-07-01 00:00:00', '2023-08-31 00:00:00'])
                 ->where('student_id', $id)
                 ->sum('totalTotFat'), 2)
                ])

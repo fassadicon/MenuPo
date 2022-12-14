@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <header class="text-center">
         <h2 class="text-2xl font-bold uppercase mb-1">Create a Food Item</h2>
     </header>

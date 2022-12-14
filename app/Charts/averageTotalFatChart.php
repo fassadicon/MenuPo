@@ -18,16 +18,15 @@ class averageTotalFatChart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-            ->setTitle('Average Daily Total Fat')
             ->addData('Average Total Fat', [
-                round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-19'])
-                ->avg('totalTotFat'), 2), 
-                round(Purchase::whereBetween('created_at', ['2022-11-20', '2022-11-22'])
-                ->avg('totalTotFat'), 2), 
-                round(Purchase::whereBetween('created_at', ['2022-11-23', '2022-11-25'])
-                ->avg('totalTotFat'), 2),
-                round(Purchase::whereBetween('created_at', [Carbon::yesterday()->format('Y-m-d'), Carbon::today()->format('Y-m-d')])
-                ->avg('totalTotFat'), 2)
+                round(Purchase::whereBetween('created_at', ['2022-07-01', '2022-10-31'])
+                ->avg('totalTotFat')), 
+                round(Purchase::whereBetween('created_at', ['2022-09-01', '2023-02-28'])
+                ->avg('totalTotFat')), 
+                round(Purchase::whereBetween('created_at', ['2023-03-01', '2023-06-30'])
+                ->avg('totalTotFat')),
+                round(Purchase::whereBetween('created_at', ['2023-07-01', '2023-08-31'])
+                ->avg('totalTotFat'))
             ])
             ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
             ->setToolBar(true);

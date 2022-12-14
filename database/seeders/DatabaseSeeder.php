@@ -139,7 +139,7 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('zxc433'),
                 'role' => 0,
                 'created_at' => '2022-08-01'
-            ],
+            ],  
             [
                 'id' => 6,
                 'email' => 'byronjames@gmail.com',
@@ -5969,7 +5969,7 @@ class DatabaseSeeder extends Seeder
                 'payment_id' => 1,
                 'claimStatus' => 0,
                 'type' => 0,
-                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'created_at' => '2022-07-05',
                 'served_by' => 2
             ],
             [
@@ -5986,7 +5986,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2022-07-12'
             ],
             [
                 'id' => 3,
@@ -6002,7 +6002,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2022-09-25'
             ],
             [
                 'id' => 4,
@@ -6034,7 +6034,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2022-07-12'
             ],
             [
                 'id' => 6,
@@ -6082,7 +6082,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2022-11-12'
             ],
             [
                 'id' => 9,
@@ -6150,8 +6150,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id' => 13,
-                'parent_id' => 19,
-                'student_id' => 26,
+                'parent_id' => 1,
+                'student_id' => 1,
                 'totalAmount' => 72.00,
                 'totalKcal' => 790,
                 'totalTotFat' => 42.3,
@@ -6162,12 +6162,12 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => Carbon::yesterday()->format('Y-m-d')
+                'created_at' => '2022-11-13'
             ],
             [
                 'id' => 14,
-                'parent_id' => 4,
-                'student_id' => 5,
+                'parent_id' => 1,
+                'student_id' => 1,
                 'totalAmount' => 55.00,
                 'totalKcal' => 701,
                 'totalTotFat' => 30,
@@ -6178,7 +6178,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 0,
                 'type' => 1,
                 'served_by' => 2,
-                'created_at' => '2023-1-13'
+                'created_at' => '2022-11-14'
             ],
             [
                 'id' => 15,
@@ -6930,7 +6930,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-5'
+                'created_at' => '2023-03-22'
             ],
             [
                 'id' => 62,
@@ -6946,7 +6946,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-10'
+                'created_at' => '2023-03-22'
             ],
             [
                 'id' => 63,
@@ -6962,12 +6962,12 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-19'
+                'created_at' => '2023-03-23'
             ],
             [
                 'id' => 64,
                 'parent_id' => 1,
-                'student_id' => 2,
+                'student_id' => 1,
                 'totalAmount' => 92.00,
                 'totalKcal' => 877,
                 'totalTotFat' => 44.2,
@@ -6978,7 +6978,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2022-11-26'
+                'created_at' => '2023-03-24'
             ],
             [
                 'id' => 65,
@@ -7026,7 +7026,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2023-3-5'
+                'created_at' => '2023-07-13'
             ],
             [
                 'id' => 68,
@@ -7042,7 +7042,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2023-3-19'
+                'created_at' => '2023-07-19'
             ],
             [
                 'id' => 69,
@@ -7058,7 +7058,7 @@ class DatabaseSeeder extends Seeder
                 'claimStatus' => 1,
                 'type' => 0,
                 'served_by' => 2,
-                'created_at' => '2023-3-22'
+                'created_at' => '2023-07-22'
             ],
             [
                 'id' => 70,

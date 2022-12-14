@@ -71,7 +71,8 @@ class StudentController extends Controller
     // Show Create Form
     public function create()
     {
-        return view('admin.UserManagement.createStudent');
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.createStudent', compact('adminNotifs'));
     }
 
     public function store(StoreStudentRequest $request)
@@ -102,7 +103,8 @@ class StudentController extends Controller
 
     public function edit(Student $student)
     {
-        return view('admin.UserManagement.editStudent', ['student' => $student]);
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.editStudent', ['student' => $student, 'adminNotifs' => $adminNotifs]);
     }
 
     public function update(UpdateStudentRequest $request, Student $student)
