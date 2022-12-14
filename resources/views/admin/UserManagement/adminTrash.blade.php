@@ -1,6 +1,5 @@
 <x-admin.layout>
     <h1 class="h3">Archived Staff Account Management</h1>
-    <a href="/admin/admins/create" class="btn btn-primary mb-2">Create Admin Account</a>
     <a href="/admin/admins/" class="btn btn-primary mb-2">Back</a>
     {{-- DATABLE --}}
     <div class="container">

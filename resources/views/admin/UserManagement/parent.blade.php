@@ -312,10 +312,10 @@
                         name: 'created_at_formatted',
                     },
                     {//13
-                        data: 'created_by_name.firstName',
-                        name: 'created_by_name.firstName',
+                        data: 'created_by_name',
+                        name: 'created_by_name',
                         render: function(data, type, row) {
-                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                            return row.created_by_name == null ?'Archived Account' : row.created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;
                         }
                     },

@@ -18,7 +18,7 @@ class averageCalorieConsumption
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-        ->setTitle('Average Daily Calorie Consumed from Bought Foods')
+        ->setTitle('Average Daily Calorie ')
         ->addData('Average Calorie', [
             round(Purchase::whereBetween('created_at', ['2022-11-17', '2022-11-19'])
             ->avg('totalKcal'), 2), 

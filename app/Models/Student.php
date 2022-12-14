@@ -27,4 +27,9 @@ class Student extends Model
     {
         return $this->hasMany(Purchase::class, 'student_id', 'id');
     }
+
+    public function bmi()
+    {
+        return $this->belongsTo(Bmi::class, 'bmi_id', 'id');
+    }
 }

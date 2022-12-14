@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Survey;
 use Illuminate\Http\Request;
-use App\Charts\CanteenRatingChart;
 
+use App\Charts\CanteenRatingChart;
 use App\Http\Controllers\Controller;
 use App\Charts\ParentFoodSuggestionChart;
-use ArielMejiaDev\LarapexCharts\LarapexChart;
+
+use Yajra\DataTables\DataTables as DataTables;
 
 class SurveyReportController extends Controller
 {
@@ -31,5 +33,21 @@ class SurveyReportController extends Controller
         }
 
         return view('admin.Reports.survey', ['suggestionChart' => $suggestionChart->build(), 'ratingChart' => $ratingChart->build(), 'averageRating' => $average, 'mostSuggestedFoods' => $mostSuggested]);
+    }
+
+    public function surveyTable(Request $request)
+    {
+        // Initialize DataTable Values
+        $surveys = Survey::all();
+        foreach ($surveys as $survey) {
+            $survey['created_at_formatted'] = Carbon::parse($survey->created_at)->format('M d, Y');
+        }
+        if ($request->ajax()) {
+            return DataTables::of($surveys)
+                ->make(true);
+        }
+
+        // Return View
+        return view('admin.Reports.survey', compact('surveys'));
     }
 }

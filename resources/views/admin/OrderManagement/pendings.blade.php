@@ -176,17 +176,17 @@
                         name: 'id'
                     },
                     { //1
-                        data: 'parent.firstName',
-                        name: 'parent_id',
+                        data: 'parent',
+                        name: 'parent',
                         render: function(data, type, row) {
-                            return row.parent.firstName + ' ' + row.parent.lastName;
+                            return row.parent == null ? 'Deleted Account' : row.parent.firstName + ' ' + row.parent.lastName;
                         }
                     },
                     { //2
-                        data: 'student.firstName',
-                        name: 'student_id',
+                        data: 'student',
+                        name: 'student',
                         render: function(data, type, row) {
-                            return row.student.firstName + ' ' + row.student.lastName;
+                            return row.student == null ? 'Deleted Account' : row.student.firstName + ' ' + row.student.lastName;
                         }
                     },
                     {//3
@@ -194,7 +194,7 @@
                         name: 'orders',
                         render: function(data, type, row) {
                             return $.map(data, function(value, i) {
-                                return value.food.name + ' x ' + value.quantity;
+                                return value.food == null ? 'Archived Food Item x ' + value.quantity : value.food.name + ' x ' + value.quantity;
                             }).join('<br>');
                         }
                     },
