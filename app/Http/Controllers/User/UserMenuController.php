@@ -22,9 +22,8 @@ class UserMenuController extends Controller
 
 
         $parent = Guardian::where('user_id', auth()->id())->get();
-
+        $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
-        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         $survey = Survey::where('parent_id', $parent[0]->id)
             ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
         if(!empty($survey)){
@@ -34,7 +33,7 @@ class UserMenuController extends Controller
             'anak' => $student,
             'foods' => Food::all(),
             'notifications' => $notifications,
-            'students' => $student,
+            'students' => $students,
             'isSurveyAvail' => $isSurveyAvail,
             'restricts' => $restricts
         ]);

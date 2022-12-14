@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="row">

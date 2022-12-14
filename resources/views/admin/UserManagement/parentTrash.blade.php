@@ -1,6 +1,5 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Archived Parent Users</h1>
-    <a href="/admin/guardians/create" class="btn btn-primary mb-2">Create Parent Account</a>
     <a href="/admin/guardians/" class="btn btn-primary mb-2">Back</a>
     {{-- DATABLE --}}
     <div class="container">

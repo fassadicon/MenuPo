@@ -1,6 +1,6 @@
 <x-admin.layout>
     <header class="text-center">
-        <h2 class="text-2xl font-bold uppercase mb-1">Edit Student Account Details</h2>
+        <h2 class="text-2xl font-bold uppercase mb-1">Edit Guardian Account Details</h2>
     </header>
     <form method="POST" action="/admin/guardians/{{ $guardian->id }}" enctype="multipart/form-data">
         {{-- @csrf -> prevents scripting attacks --}}

@@ -227,6 +227,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Survey
     Route::get('/reports/survey', [SurveyReportController::class, 'index']);
+    Route::get('/reports/survey/table', [SurveyReportController::class, 'surveyTable'])->name('survey.table');
     Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
     Route::get('/reports/nutrientConsumption', [StudentNutrientReportController::class, 'index']);
 });
@@ -257,6 +258,7 @@ Route::middleware('user')->group(function () {
     Route::get('/health/edit-info/{anak}', [HealthController::class, 'edit']);
     Route::post('/health/saveUpdate', [HealthController::class, 'saveUpdate']);
     Route::get('/user/health-report/{student_id}', [HealthController::class, 'report_index']);
+    Route::get('/user/health-report-download/{student}', [HealthController::class, 'download_report']);
 
     //User-Account Page
     Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name: 'user.account');
@@ -290,7 +292,7 @@ Route::middleware('user')->group(function () {
     Route::post('/user/payment', [PaymentController::class, 'index']);
     //Receipt
     Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
-    Route::get('user/receipt', [PaymentController::class, 'receipt']);
+    // Route::get('user/receipt', [PaymentController::class, 'receipt']);
 
     // Route::get('/pos', [POSController::class, 'index']);
     // Route::post('/add-to-cart', [POSController::class, 'addtocart']);

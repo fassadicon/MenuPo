@@ -1,4 +1,4 @@
-<x-user.layout2 :studs="$students" :notifs="$notifications" :adminNotifs="$adminNotifs">
+<x-user.layout :studs="$students" :notifs="$notifications">
 
 <div class="container px-4 mx-auto ">
     <br><br><br>
@@ -55,4 +55,4 @@
 {{ $sodiumChart->script() }}
 
 
-</x-user.layout2>
+</x-user.layout>

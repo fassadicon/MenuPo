@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Guardian;
 
+use App\Models\Adminnotif;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,12 +34,9 @@ class GuardianController extends Controller
             return DataTables::of($guardians)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-
-                    // $btn = '<a href="{{url("admin/foods/'.$row->id.'/restore")}}" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewFoodImg"><i class="bi bi-card-image"></i></a>';
                     $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
 
                     $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewParentDetails"><i class="bi bi-info-lg"></i></a>';
-                    // $btn = $btn . ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-info-lg"></i></button>';
 
                     $btn = $btn . ' <a href="/admin/guardians/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';
 
@@ -48,9 +46,9 @@ class GuardianController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.UserManagement.parent', compact('guardians'));
+        return view('admin.UserManagement.parent', compact('guardians', 'adminNotifs'));
     }
 
     public function view($id)
@@ -72,6 +70,7 @@ class GuardianController extends Controller
     // Create parent User
     public function store(StoreParentRequest $request)
     {
+
         $guardian = $request->safe()->except([
             'email',
             'recoveryEmail'
@@ -81,6 +80,7 @@ class GuardianController extends Controller
         if ($request->hasFile('image')) {
             $guardian['image'] = $request->file('image')->store('admin/parents', 'public');
         }
+
         $userCredentials = $request->safe()->only([
             'email',
             'recoveryEmail'
@@ -89,6 +89,7 @@ class GuardianController extends Controller
         $userCredentials['role'] = 0;
         $user = User::create($userCredentials);
         $guardian['user_id'] = $user->id;
+        Guardian::create($guardian);
         Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('/admin/guardians');
     }
@@ -100,7 +101,6 @@ class GuardianController extends Controller
 
     public function update(UpdateParentRequest $request, Guardian $guardian)
     {
-        dd($request->safe());
         if (auth()->user()->role == 2) {
             $userCredentials = $request->safe()->only([
                 'email',
@@ -108,25 +108,12 @@ class GuardianController extends Controller
             ]);
             $user = User::where('id', $guardian->user_id);
             $user->update($userCredentials);
+        }
+        if (auth()->user()->role == 2 || auth()->user()->role == 1) {
             $parentCredentials = $request->safe()->except([
                 'email',
                 'recoveryEmail'
             ]);
-            $parentCredentials['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
-            if ($request->hasFile('image')) {
-                $parentCredentials['image'] = $request->file('image')->store('admin/parents', 'public');
-            }
-            $guardian->update($parentCredentials);
-            Alert::success('Success', 'Account of ' . $guardian->firstName . ' ' . $guardian->lastName . ' Updated Successfully');
-            return redirect('/admin/guardians');
-        } else {
-            // $parentCredentials = $request->safe()->except([
-            //     'email',
-            //     'recoveryEmail'
-            // ]);
-           
-            $parentCredentials = $request->safe()->all();
-            dd($parentCredentials);
             $parentCredentials['updated_by'] = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
             if ($request->hasFile('image')) {
                 $parentCredentials['image'] = $request->file('image')->store('admin/parents', 'public');
@@ -140,9 +127,9 @@ class GuardianController extends Controller
     public function delete($id)
     {
         $guardian = Guardian::where('id', $id)->first();
-
+        $guardian->update(['status' => 0]);
+        Alert::success('Success', $guardian->firstName . ' ' . $guardian->lastName . ' Archived');    
         $guardian->delete();
-
         return redirect()->back();
     }
 
@@ -163,29 +150,23 @@ class GuardianController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
 
-                    // $btn = '<a href="{{url("admin/foods/'.$row->id.'/restore")}}" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewFoodImg"><i class="bi bi-card-image"></i></a>';
-                    // $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
-
-                    // $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewParentDetails"><i class="bi bi-info-lg"></i></a>';
-                    // $btn = $btn . ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-info-lg"></i></button>';
-
-                    // $btn = $btn . ' <a href="/admin/guardians/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';
-
                     $btn = ' <a href="/admin/guardians/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreParent btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.UserManagement.parentTrash', compact('guardians'));
+        return view('admin.UserManagement.parentTrash', compact('guardians', 'adminNotifs'));
     }
 
     public function restore($id)
     {
-        $guardian = Guardian::where('id', $id)->restore();
-
+        Guardian::where('id', $id)->restore();
+        $guardian = Guardian::where('id', $id)->first();
+        $guardian->update(['status' => 1]);
+        Alert::success('Success', $guardian->firstName . ' ' . $guardian->lastName . ' Restored');
         return redirect()->back();
     }
 }

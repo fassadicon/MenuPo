@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
     <a href="/admin/students/" class="btn btn-primary mb-2">Back</a>
