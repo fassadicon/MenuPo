@@ -1,12 +1,10 @@
 <x-admin.layout :notifs='$adminNotifs'>
-    <section class="survey-card">
-        <div class="container-fluid">
-          <div class="container">
-            <div class="row">
-              
-            </div>
-          </div>
+<section class="survey-card">
+    <div class="header-page">
+        <p><i class="fas fa-poll fa-xl"></i>Parent's Survey</p>
         </div>
+        <hr class="mx-4 my-4">
+        
       
     <div class="card-body">
         <div class="row">

@@ -1818,9 +1818,8 @@ footer .bottom-details{
 }
 
 .row-mid{
-    margin-bottom: 2.2rem;
+    margin-bottom: 2.4rem;
 }
-
 
 .table-bottom{
     margin-bottom: 6.2rem;
@@ -1829,7 +1828,37 @@ footer .bottom-details{
 .table{
     text-align: justify;
 }
-  
+
+/* Header of Pages */
+.header-page{
+    padding: 0.8rem;
+
+}
+
+.header-page p{
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--secondary);
+}
+
+.header-page .fas{
+    margin-top: 0.8rem;
+    margin-right: 0.4rem;
+    float:left;
+    color: var(--primary);
+}
+
+.header-page .fab{
+    margin-top: 0.8rem;
+    margin-right: 0.4rem;
+    float:left;
+    color: var(--primary);
+}
+
+.row-bottom{
+    margin-bottom: 4.4rem !important;
+}
     
     
    
