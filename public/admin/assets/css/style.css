@@ -1733,4 +1733,103 @@ footer .bottom-details{
         transform: scale(1.5);	
     }
 
+
+    /* Parent Survey Design */
+
+
+.survey-card {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px 0; 
+  
+}
+
+.card-survey {
+  position: relative;
+  min-width: 300px;
+  height: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  margin: 0 auto;
+  padding: 5px 5px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  transition: .5s;
+}
+.card-survey:hover {
+  transform:scale(1.02);
+}
+.card_red, .card_red .title .fa {
+  background: linear-gradient(-45deg, #fff, #FFFAEA);
+}
+
+.card-survey .card-list{
+    text-align: justify !important;
+}
+
+.card-survey h1{
+    font-weight: 600;
+}
+
+.title h4 {
+  position: relative;
+  margin: 20px 0 0;
+  padding: 0;
+  color: #000;
+  font-size: 16px;
+  z-index: 2;
+}
+.price {
+  position: relative;
+  z-index: 2;
+}
+.price h4 {
+  margin: 0;
+  padding: 20px 0;
+  color: #fff;
+  font-size: 60px;
+}
+.option {
+  position: relative;
+  z-index: 2;
+}
+.option ul {
+  margin: 0;
+  padding: 0;
+}
+.option ul li {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.row-top{
+    margin-bottom: 2.4rem;
+}
+
+.row-parent{
+    margin-bottom: 2.4rem;
+}
+
+.survey-table{
+    margin: 4.2rem;
+}
+
+.row-mid{
+    margin-bottom: 2.2rem;
+}
+
+
+.table-bottom{
+    margin-bottom: 6.2rem;
+}
+
+.table{
+    text-align: justify;
+}
+  
+    
+    
    
