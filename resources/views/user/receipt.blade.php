@@ -4,6 +4,6 @@
     <br><br><br><br><br>
     
 
-    <x-user.receipt.receipt :items="$items" />
+    <x-user.receipt.receipt :items="$items" :paymentLink="$paymentLink"/>
 
 </x-user.layout>

@@ -1,7 +1,7 @@
 @props(['studentID']);
 
 
-<form class="w-1/3 h-screen mt-20 mr-4 border-2 border-solid rounded-xl shadow"
+<form class="w-1/3 h-2/3 mt-20 mr-4 border-2 border-solid rounded-xl shadow"
     action="/admin/pos/payment/{{ $studentID }}" method="POST">
     @csrf
     <div class="p-4">
@@ -9,7 +9,7 @@
         <p class="text-lg">Items: {{ Cart::count() }}</p>
     </div>
 
-    <div class="sideBar h-80 overflow-y-scroll p-2">
+    <div class="sideBar h-60 overflow-y-scroll p-2">
         @php
             $item = Cart::content();
             

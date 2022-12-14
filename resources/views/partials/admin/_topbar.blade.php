@@ -32,76 +32,125 @@
   </li><!-- End Search Icon--> --}}
 
           <li class="nav-item dropdown">
-
+           
               <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                   <i class="bi bi-bell"></i>
-                  <span class="badge bg-primary badge-number">5</span>
+                  @if ($notifs == null)
+                    <span class="badge bg-primary badge-number">5</span>
+                  @endif
               </a><!-- End Notification Icon -->
 
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow w-80 notifications">
                   <li class="dropdown-header">
-                      You have 4 new notifications
-                      <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                  </li>
-                  <li>
-                      <hr class="dropdown-divider">
+                     <p class="text-xl font-bold">Notifications</p>
                   </li>
 
-                  <li class="notification-item">
-                      <i class="bi bi-exclamation-circle text-warning"></i>
-                      <div>
-                          <h4>Lorem Ipsum</h4>
-                          <p>Quae dolorem earum veritatis oditseno</p>
-                          <p>30 min. ago</p>
-                      </div>
+                  {{-- Orders Notifs --}}
+                  <li class="flex relative group">
+                    <div class="border-2 border-solid bg-green-400 h-12 w-full text-center mb-3 mx-3">
+                        <span class="text-lg font-bold">Order Notifs</span>
+                    </div>
+                   
+                    <ul class="absolute bg-white p-3 w-96  -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
+                       <h3 class="text-xl">Notifications</h3>
+                       <div class="h-96 overflow-y-scroll" >
+                            @if ($notifs == null)
+                                <p class="text-black">No notifications</p>
+                            @else
+                                @foreach ($notifs as $notif)
+                                    @if ($notif->type == 1)
+                                        <div class="flex flex-row pl-3 hover:bg-gray-200">
+                                            <div class="notif-image">
+                                                <img class="w-16 h-16 rounded-full mt-4" src="https://i.pinimg.com/564x/49/6f/1d/496f1d78e07b43c2975522de90ce8504.jpg" alt="profile_pic" >
+                                            </div>
+                                            <div class=" modal-body p-4" id="notif-body">
+                                                <p class="text-lg font-bold">{{$notif->title}}</p>
+                                                <p style="opacity: 0.5; font-size: 15px;">{{\Carbon\Carbon::parse($notif->created_at)->diffForHumans()}}</p>
+                                            </div>
+                                        </div>
+                                        <hr class="mt-0 mb-2" id="user-profile">
+                                    @endif
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="del-all">
+                          <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
+                        </div>
+                    </ul>
                   </li>
 
-                  <li>
-                      <hr class="dropdown-divider">
+                  {{-- User Notifs --}}
+                  <li class="flex relative group">
+                    <div class="border-2 border-solid bg-yellow-400 h-12 w-full text-center mb-3 mx-3">
+                        <p class="text-lg text-center font-bold">User Notifs</p>
+                    </div>
+                   
+                    <ul class="absolute bg-white p-3 w-96  -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
+                       <h3 class="text-xl">Notifications</h3>
+                       <div class="h-96 overflow-y-scroll" >
+                            @if ($notifs == null)
+                                <p class="text-black">No notifications</p>
+                            @else
+                                @foreach ($notifs as $notif)
+                                    @if ($notif->type == 2)
+                                        <div class="flex flex-row pl-3 hover:bg-gray-200">
+                                            <div class="notif-image">
+                                                <img class="w-16 h-16 rounded-full mt-4" src="https://i.pinimg.com/564x/49/6f/1d/496f1d78e07b43c2975522de90ce8504.jpg" alt="profile_pic" >
+                                            </div>
+                                            <div class=" modal-body p-4" id="notif-body">
+                                                <p class="text-lg font-bold">{{$notif->title}}</p>
+                                                <p style="opacity: 0.5; font-size: 15px;">{{\Carbon\Carbon::parse($notif->created_at)->diffForHumans()}}</p>
+                                            </div>
+                                        </div>
+                                        <hr class="mt-0 mb-2" id="user-profile">
+                                    @endif
+                                @endforeach
+                            @endif
+                        
+                        </div>
+                        
+                        <div class="del-all">
+                          <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
+                          
+                        </div>
+                    </ul>
                   </li>
 
-                  <li class="notification-item">
-                      <i class="bi bi-x-circle text-danger"></i>
-                      <div>
-                          <h4>Atque rerum nesciunt</h4>
-                          <p>Quae dolorem earum veritatis oditseno</p>
-                          <p>1 hr. ago</p>
-                      </div>
+                  {{-- Archive Notifs --}}
+                  <li class="flex relative group">
+                    <div class="border-2 border-solid bg-red-400 h-12 w-full text-center mb-3 mx-3">
+                        <p class="text-lg font-bold">Archive Notifs</p>
+                    </div>
+                    <ul class="absolute bg-white p-3 w-96  -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
+                       <h3 class="text-xl">Notifications</h3>
+                       <div class="h-96 overflow-y-scroll" >
+                            @if ($notifs == null)
+                                <p class="text-black">No notifications</p>
+                            @else
+                                @foreach ($notifs as $notif)
+                                    @if ($notif->type == 3)
+                                        <div class="flex flex-row pl-3 hover:bg-gray-200">
+                                            <div class="notif-image">
+                                                <img class="w-16 h-16 rounded-full mt-4" src="https://i.pinimg.com/564x/49/6f/1d/496f1d78e07b43c2975522de90ce8504.jpg" alt="profile_pic" >
+                                            </div>
+                                            <div class=" modal-body p-4" id="notif-body">
+                                                <p class="text-lg font-bold">{{$notif->title}}</p>
+                                                <p style="opacity: 0.5; font-size: 15px;">{{\Carbon\Carbon::parse($notif->created_at)->diffForHumans()}}</p>
+                                            </div>
+                                        </div>
+                                        <hr class="mt-0 mb-2" id="user-profile">
+                                    @endif
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="del-all">
+                          <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
+                          
+                        </div>
+                    </ul>
                   </li>
-
-                  <li>
-                      <hr class="dropdown-divider">
-                  </li>
-
-                  <li class="notification-item">
-                      <i class="bi bi-check-circle text-success"></i>
-                      <div>
-                          <h4>Sit rerum fuga</h4>
-                          <p>Quae dolorem earum veritatis oditseno</p>
-                          <p>2 hrs. ago</p>
-                      </div>
-                  </li>
-
-                  <li>
-                      <hr class="dropdown-divider">
-                  </li>
-
-                  <li class="notification-item">
-                      <i class="bi bi-info-circle text-primary"></i>
-                      <div>
-                          <h4>Dicta reprehenderit</h4>
-                          <p>Quae dolorem earum veritatis oditseno</p>
-                          <p>4 hrs. ago</p>
-                      </div>
-                  </li>
-
-                  <li>
-                      <hr class="dropdown-divider">
-                  </li>
-                  <li class="dropdown-footer">
-                      <a href="#">Show all notifications</a>
-                  </li>
-
+     
+                  
               </ul><!-- End Notification Dropdown Items -->
 
           </li><!-- End Notification Nav -->

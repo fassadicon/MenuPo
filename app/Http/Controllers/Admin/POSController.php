@@ -20,9 +20,13 @@ class POSController extends Controller
     public $totKcal, $totfat, $totsatfat, $totsugar, $totsodium;
 
     public function index($id){
+        
+        $student = Student::findorfail($id);
+
         return view('admin.OrderManagement.pos', [
             'foods' => Food::all(),
-            'studentID' => $id
+            'studentID' => $id,
+            'student'=> $student
         ]);
     }
 

@@ -17,6 +17,8 @@ class averageCalorieConsumption
 
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
+
+       
         return $this->chart->barChart()
         ->setTitle('Average Daily Calorie ')
         ->addData('Average Calorie', [
