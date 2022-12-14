@@ -8,6 +8,7 @@ use App\Models\Food;
 use App\Models\Order;
 use App\Models\Student;
 use App\Models\Purchase;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -27,8 +28,8 @@ class ScannerController extends Controller
             ->get();
 
         $studentID = Student::where('id', (int)$id)->get(['id'])->value('id');
-
-        return response()->json(['purchase' => $orders, 'studentID' => $studentID]);
+        $adminNotifs = Adminnotif::get();
+        return response()->json(['purchase' => $orders, 'studentID' => $studentID, 'adminNotifs' => $adminNotifs]);
         // if ($orders->isEmpty()) {
         //     return $studentID; // Status code here
         // } else {

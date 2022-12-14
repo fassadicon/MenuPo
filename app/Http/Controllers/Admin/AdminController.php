@@ -7,11 +7,12 @@ use App\Models\User;
 
 use App\Models\Admin;
 
+use App\Models\Adminnotif;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreatAdminRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,8 @@ class AdminController extends Controller
         // Get Admin Accounts
         $admins = Admin::with('user')->get();
         foreach ($admins as $admin) {
-            $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
+            // $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
+            $admin->created_by == null ? $admin['created_by_name'] = null : $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
             $admin->updated_by == null ? $admin['updated_by_name'] = 'N/A' : $admin['updated_by_name'] = Admin::where('id', $admin->updated_by)->first();
             $admin['created_at_formatted'] = Carbon::parse($admin->created_at)->format('M d, Y');
             $admin['updated_at_formatted'] = Carbon::parse($admin->updated_at)->format('M d, Y');
@@ -51,7 +53,8 @@ class AdminController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.UserManagement.admin', compact('admins'));
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.admin', compact('admins', 'adminNotifs'));
     }
 
     public function view($id)
@@ -142,9 +145,10 @@ class AdminController extends Controller
             abort(404);
         }
         $admin = Admin::where('id', $id)->first();
-
+        $admin->update(['status' => 0]);
+        Alert::success('Success', $admin->firstName . ' ' . $admin->lastName . ' Archived');    
         $admin->delete();
-        
+       
         return redirect()->back();
     }
 
@@ -179,7 +183,8 @@ class AdminController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.UserManagement.adminTrash', compact('admins'));
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.adminTrash', compact('admins', 'adminNotifs'));
     }
 
     public function restore($id)
@@ -187,8 +192,10 @@ class AdminController extends Controller
         if (auth()->user()->role != 2) {
             abort(404);
         }
-        $admin = Admin::where('id', $id)->restore();
-
+        Admin::where('id', $id)->restore();
+        $admin = Admin::where('id', $id)->first();
+        $admin->update(['status' => 1]);
+        Alert::success('Success', $admin->firstName . ' ' . $admin->lastName . ' Restored');
         return redirect()->back();
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Student;
 use App\Models\Purchase;
+use App\Models\Adminnotif;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,11 +23,12 @@ class POSController extends Controller
     public function index($id){
         
         $student = Student::findorfail($id);
-
+        $adminNotifs = Adminnotif::get();
         return view('admin.OrderManagement.pos', [
             'foods' => Food::all(),
             'studentID' => $id,
-            'student'=> $student
+            'student'=> $student,
+            'adminNotifs' => $adminNotifs
         ]);
     }
 

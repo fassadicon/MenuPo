@@ -149,7 +149,7 @@
                 <div class="mb-6">
                     <label for="height" class="inline-block text-lg mb-2"> Height (cm)</label>
                     <input type="number" class="border border-gray-200 rounded p-2 w-full" name="height"
-                        placeholder="Example: 175" value="{{ $student->height }}" />
+                        placeholder="Example: 175" value="{{ $student->bmi->Q1Height }}" />
 
                     @error('height')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -159,7 +159,7 @@
                 <div class="mb-6">
                     <label for="weight" class="inline-block text-lg mb-2"> Weight (kg)</label>
                     <input type="number" class="border border-gray-200 rounded p-2 w-full" name="weight"
-                        placeholder="Example: 63.5" value="{{ $student->weight }}" />
+                        placeholder="Example: 63.5" value="{{ $student->bmi->Q1Weight }}" />
 
                     @error('weight')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -169,7 +169,7 @@
                 <div class="mb-6">
                     <label for="BMI" class="inline-block text-lg mb-2"> BMI</label>
                     <input type="number" class="border border-gray-200 rounded p-2 w-full" name="BMI"
-                        placeholder="" value="{{ $student->BMI }}" />
+                        placeholder="" value="{{ $student->bmi->Q1BMI }}" />
 
                     @error('BMI')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

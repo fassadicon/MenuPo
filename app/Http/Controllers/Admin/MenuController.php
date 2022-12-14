@@ -9,8 +9,9 @@ use App\Models\Menu;
 
 use App\Models\Admin;
 use App\Models\Purchase;
-use Illuminate\Http\Request;
+use App\Models\Adminnotif;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables as DataTables;
@@ -83,7 +84,8 @@ class MenuController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.FoodManagement.menu', compact('cookedMeals'));
+        $adminNotifs = Adminnotif::get();
+        return view('admin.FoodManagement.menu', compact('cookedMeals', 'adminNotifs'));
     }
 
     public function snacks(Request $request)
@@ -152,7 +154,8 @@ class MenuController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.FoodManagement.menu', compact('snacks'));
+        $adminNotifs = Adminnotif::get();
+        return view('admin.FoodManagement.menu', compact('snacks', 'adminNotifs'));
     }
 
     public function beverages(Request $request)
@@ -221,7 +224,8 @@ class MenuController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.FoodManagement.menu', compact('beverages'));
+        $adminNotifs = Adminnotif::get();
+        return view('admin.FoodManagement.menu', compact('beverages', 'adminNotifs'));
     }
 
     public function others(Request $request)
@@ -290,7 +294,8 @@ class MenuController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.FoodManagement.menu', compact('others'));
+        $adminNotifs = Adminnotif::get();
+        return view('admin.FoodManagement.menu', compact('others', 'adminNotifs'));
     }
 
     // Add Menu Item

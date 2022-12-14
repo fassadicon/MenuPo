@@ -5,10 +5,11 @@ use Carbon\Carbon;
 use App\Models\Admin;
 use App\Models\Student;
 use App\Models\Guardian;
+use App\Models\Adminnotif;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables as DataTables;
@@ -16,7 +17,8 @@ use Yajra\DataTables\DataTables as DataTables;
 class ImportUsersController extends Controller
 {
     public function index () {
-        return view('admin.UserManagement.importUsers');
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.importUsers', compact('adminNotifs'));
     }
 
     public function import(Request $request) {
@@ -26,8 +28,8 @@ class ImportUsersController extends Controller
 
         Alert::success('Success', 'Parent and Student Accounts Imported');
         Excel::import(new UsersImport, $request->file);
-
-        return redirect('admin/imports');
+        $adminNotifs = Adminnotif::get();
+        return redirect('admin/imports', compact('adminNotifs'));
     }
 
     public function viewImportedGuardians(Request $request)

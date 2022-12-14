@@ -2,12 +2,12 @@
 
 namespace App\Imports;
 
+use App\Models\Bmi;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Student;
-use App\Models\Guardian;
 
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\Guardian;
 
 use Illuminate\Support\Str;
 
@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 use Maatwebsite\Excel\Concerns\ToModel;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -79,6 +80,12 @@ class UsersImport implements ToModel
         //     'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         // ]);
 
+        $BMI = Bmi::create([
+            'Q1Height' => $row[19],
+            'Q1Weight' => $row[20],
+            'Q1BMI' => round($row[20] / pow($row[19] / 100, 2), 2)
+        ]);
+        
         return new Student([
             'parent_id' => $guardian->id,
             'LRN' => $row[9],
@@ -92,9 +99,7 @@ class UsersImport implements ToModel
             'sex' => $row[17],
             'birthDate' => $row[18],
             'status' => 1,
-            'height' => $row[19],
-            'weight' => $row[20],
-            'BMI' => $row[21],
+            'bmi_id' => $BMI->id,
             'QR' => 'admin/qrs/' . $studentID . '.png',
             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         ]);

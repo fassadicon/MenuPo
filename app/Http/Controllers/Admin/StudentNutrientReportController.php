@@ -5,8 +5,32 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Purchase;
+use App\Charts\testChart;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
+use App\Charts\averageSugarChart;
+use App\Charts\averageSodiumChart;
+use App\Charts\avgSatFatF6to9Chart;
+use App\Charts\avgSatFatM6to9Chart;
+use App\Charts\avgTotFatF6to9Chart;
+use App\Charts\avgTotFatM6to9Chart;
+use App\Charts\averageTotalFatChart;
+use App\Charts\avgCalorieF6to9Chart;
+use App\Charts\avgCalorieM6to9Chart;
 use App\Http\Controllers\Controller;
+use App\Charts\avgSatFatF10to12Chart;
+use App\Charts\avgSatFatF13to15Chart;
+use App\Charts\avgSatFatM10to12Chart;
+use App\Charts\avgSatFatM13to15Chart;
+use App\Charts\avgTotFatF10to12Chart;
+use App\Charts\avgTotFatF13to15Chart;
+use App\Charts\avgTotFatM10to12Chart;
+use App\Charts\avgTotFatM13to15Chart;
+use App\Charts\avgCalorieF10to12Chart;
+use App\Charts\avgCalorieF13to15Chart;
+use App\Charts\avgCalorieM10to12Chart;
+use App\Charts\avgCalorieM13to15Chart;
+use App\Charts\averageSaturatedFatChart;
 use App\Charts\averageCalorieConsumption;
 use App\Charts\averageNutrientConsumptionChart;
 use App\Charts\averageRecommendedNutrientConsumptionChart;
@@ -14,9 +38,29 @@ use App\Charts\averageRecommendedNutrientConsumptionChart;
 class StudentNutrientReportController extends Controller
 {
     public function index(
-        averageNutrientConsumptionChart $averageNutrientConsumptionChart,
         averageCalorieConsumption $averageCalorieConsumptionChart,
-        averageRecommendedNutrientConsumptionChart $averageRecommendedNutrientConsumptionChart
+        avgCalorieM6to9Chart $avgCalorieM6to9Chart,
+        avgCalorieF6to9Chart $avgCalorieF6to9Chart,
+        avgCalorieM10to12Chart $avgCalorieM10to12Chart,
+        avgCalorieF10to12Chart $avgCalorieF10to12Chart,
+        avgCalorieM13to15Chart $avgCalorieM13to15Chart,
+        avgCalorieF13to15Chart $avgCalorieF13to15Chart,
+        averageTotalFatChart $averageTotalFatChart,
+        avgTotFatM6to9Chart $avgTotFatM6to9Chart,
+        avgTotFatM10to12Chart $avgTotFatM10to12Chart,
+        avgTotFatM13to15Chart $avgTotFatM13to15Chart,
+        avgTotFatF6to9Chart $avgTotFatF6to9Chart,
+        avgTotFatF10to12Chart $avgTotFatF10to12Chart,
+        avgTotFatF13to15Chart $avgTotFatF13to15Chart,
+        averageSaturatedFatChart $averageSaturatedFatChart,
+        avgSatFatM6to9Chart $avgSatFatM6to9Chart,
+        avgSatFatM10to12Chart $avgSatFatM10to12Chart,
+        avgSatFatM13to15Chart $avgSatFatM13to15Chart,
+        avgSatFatF6to9Chart $avgSatFatF6to9Chart,
+        avgSatFatF10to12Chart $avgSatFatF10to12Chart,
+        avgSatFatF13to15Chart $avgSatFatF13to15Chart,
+        averageSugarChart $averageSugarChart,
+        averageSodiumChart $averageSodiumChart
     ) {
         $dailyRecoKcalM10to12 = 2060;
         $purchaseM10to12s = Purchase::whereHas('student', function ($query) {
@@ -30,14 +74,28 @@ class StudentNutrientReportController extends Controller
             array_push($testArray, ($record->totalKcal / $dailyRecoKcalM10to12) * 100);
         }
 
-
-
+        $adminNotifs = Adminnotif::get();
+        
         return view('admin.Reports.studentNutrientData', [
-            'averageNutrientConsumptionChart' => $averageNutrientConsumptionChart->build(),
-            'averageCalorieConsumptionChart' => $averageCalorieConsumptionChart->build(),  'averageRecommendedNutrientConsumptionChart' => $averageRecommendedNutrientConsumptionChart->build(),
-            'collection' => $purchaseM10to12s,
-            'test' => $test,
-            'testArray' => $testArray
+            'averageCalorieConsumptionChart' => $averageCalorieConsumptionChart->build(),
+            'avgCalorieM6to9Chart' => $avgCalorieM6to9Chart->build(),
+            'avgCalorieF6to9Chart' => $avgCalorieF6to9Chart->build(),
+            'avgCalorieM10to12Chart' => $avgCalorieM10to12Chart->build(),
+            'avgCalorieF10to12Chart' => $avgCalorieF10to12Chart->build(),
+            'avgCalorieM13to15Chart' => $avgCalorieM13to15Chart->build(),
+            'avgCalorieF13to15Chart' => $avgCalorieF13to15Chart->build(),
+            'averageTotalFatChart' => $averageTotalFatChart->build(),
+            'avgTotFatM6to9Chart' => $avgTotFatM6to9Chart->build(),
+            'avgTotFatF6to9Chart' => $avgTotFatF6to9Chart->build(),
+            'avgTotFatM10to12Chart' => $avgTotFatM10to12Chart->build(),
+            'avgTotFatF10to12Chart' => $avgTotFatF10to12Chart->build(),
+            'avgTotFatM13to15Chart' => $avgTotFatM13to15Chart->build(),
+            'avgTotFatF13to15Chart' => $avgTotFatF13to15Chart->build(),
+            'averageSugarChart' => $averageSugarChart->build(),
+            'averageSaturatedFatChart' => $averageSaturatedFatChart->build(),  'averageSugarChart' => $averageSugarChart->build(),
+           
+            'averageSodiumChart' => $averageSodiumChart->build(),
+            'adminNotifs' => $adminNotifs,
         ]);
     }
 }
