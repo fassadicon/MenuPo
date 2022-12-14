@@ -277,9 +277,37 @@
         <li class="nav-item">
             <a href="/admin/reports/nutrientConsumption" class="nav-link collapsed" id="sidebarLink">
                 <i class="fab fa-nutritionix"></i>
-                <span>Student Nutrient Data</span>
+                <span>Calorie</span>
             </a>
         </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+          <a href="/admin/reports/nutrientConsumption/totalFat" class="nav-link collapsed" id="sidebarLink">
+              <i class="fab fa-nutritionix"></i>
+              <span>Total Fat</span>
+          </a>
+      </li><!-- End Completed Orders Nav -->
+
+      <li class="nav-item">
+        <a href="/admin/reports/nutrientConsumption/satFat" class="nav-link collapsed" id="sidebarLink">
+            <i class="fab fa-nutritionix"></i>
+            <span>Saturated Fat</span>
+        </a>
+    </li><!-- End Completed Orders Nav -->
+
+    <li class="nav-item">
+      <a href="/admin/reports/nutrientConsumption/addedSugar" class="nav-link collapsed" id="sidebarLink">
+          <i class="fab fa-nutritionix"></i>
+          <span>Added Sugars</span>
+      </a>
+  </li><!-- End Completed Orders Nav -->
+
+  <li class="nav-item">
+    <a href="/admin/reports/nutrientConsumption/sodium" class="nav-link collapsed" id="sidebarLink">
+        <i class="fab fa-nutritionix"></i>
+        <span>Sodium</span>
+    </a>
+</li><!-- End Completed Orders Nav -->
+
 
         {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="pages-contact.html">

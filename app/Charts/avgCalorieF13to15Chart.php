@@ -38,7 +38,7 @@ class avgCalorieF13to15Chart
             })->whereBetween('created_at', ['2023-07-01', '2023-08-31'])
                 ->avg('totalKcal'), 2)
         ])
-        ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
+        ->setXAxis(['1st Qtr', '2nd Qtr', '3rd Qtr', '4th Qtr'])
         ->setToolBar(true);
     }
 }

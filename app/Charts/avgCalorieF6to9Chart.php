@@ -18,27 +18,26 @@ class avgCalorieF6to9Chart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-            ->setTitle('Females Ages 6 to 9')
             ->setHeight(240)
             ->addData('Average Calorie', [
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'F')->whereBetween('birthdate', [Carbon::now()->subYear(9), Carbon::now()->subYear(6)]);
                 })->whereBetween('created_at', ['2022-07-01', '2022-10-31'])
-                    ->avg('totalKcal'), 2),
+                    ->avg('totalKcal')),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'F')->whereBetween('birthdate', [Carbon::now()->subYear(9), Carbon::now()->subYear(6)]);
                 })->whereBetween('created_at', ['2022-09-01', '2023-02-28'])
-                    ->avg('totalKcal'), 2),
+                    ->avg('totalKcal')),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'F')->whereBetween('birthdate', [Carbon::now()->subYear(9), Carbon::now()->subYear(6)]);
                 })->whereBetween('created_at', ['2023-03-01', '2023-06-30'])
-                    ->avg('totalKcal'), 2),
+                    ->avg('totalKcal')),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'F')->whereBetween('birthdate', [Carbon::now()->subYear(9), Carbon::now()->subYear(6)]);
                 })->whereBetween('created_at', ['2023-07-01', '2023-08-31'])
-                    ->avg('totalKcal'), 2)
+                    ->avg('totalKcal'))
             ])
-            ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
+            ->setXAxis(['1st Qtr', '2nd Qtr', '3rd Qtr', '4th Qtr'])
             ->setToolBar(true);
     }
 }

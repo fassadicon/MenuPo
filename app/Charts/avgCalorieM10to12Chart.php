@@ -18,7 +18,6 @@ class avgCalorieM10to12Chart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-            ->setTitle('Males Ages 10 to 12')
             ->setHeight(240)
             ->addData('Average Calorie', [
                 round(Purchase::whereHas('student', function ($query) {
@@ -38,7 +37,7 @@ class avgCalorieM10to12Chart
                 })->whereBetween('created_at', ['2023-07-01', '2023-08-31'])
                     ->avg('totalKcal'), 2)
             ])
-            ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])
+            ->setXAxis(['1st Qtr', '2nd Qtr', '3rd Qtr', '4th Qtr'])
             ->setToolBar(true);
     }
 }

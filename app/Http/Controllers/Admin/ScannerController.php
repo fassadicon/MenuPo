@@ -16,7 +16,8 @@ class ScannerController extends Controller
 {
     public function index()
     {
-        return view('admin.OrderManagement.index');
+        $adminNotifs = Adminnotif::get();
+        return view('admin.OrderManagement.index', ['adminNotifs' => $adminNotifs]);
     }
 
     public function view($id)

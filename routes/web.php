@@ -230,6 +230,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/survey/table', [SurveyReportController::class, 'surveyTable'])->name('survey.table');
     Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
     Route::get('/reports/nutrientConsumption', [StudentNutrientReportController::class, 'index']);
+    Route::get('/reports/nutrientConsumption/totalFat', [StudentNutrientReportController::class, 'indexTotalFat']);
+    Route::get('/reports/nutrientConsumption/satFat', [StudentNutrientReportController::class, 'indexSaturatedFat']);
+    Route::get('/reports/nutrientConsumption/addedSugar', [StudentNutrientReportController::class, 'indexAddedSugar']);
+    Route::get('/reports/nutrientConsumption/sodium', [StudentNutrientReportController::class, 'indexSodium']);
 });
 
 

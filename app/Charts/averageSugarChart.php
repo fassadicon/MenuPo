@@ -18,7 +18,6 @@ class averageSugarChart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-            ->setTitle('Average Daily Sugar')
             ->addData('Average Added Sugars', [
                 round(Purchase::whereBetween('created_at', ['2022-07-01', '2022-10-31'])
                 ->avg('totalSugar'), 2), 
