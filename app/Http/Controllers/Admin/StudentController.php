@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 
+use App\Models\Bmi;
 use App\Models\Admin;
-use App\Models\Student;
 
+use App\Models\Student;
 use App\Models\Guardian;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +23,7 @@ class StudentController extends Controller
 {
     public function index(Request $request)
     {
-        $students = Student::get()->load('guardian');
+        $students = Student::get()->load('guardian', 'bmi');
         foreach ($students as $student) {
             $student['created_by_name'] = Admin::where('id', $student->created_by)->first();
             $student['updated_by_name'] = $student->updated_by == null ? 'N/A' : Admin::where('id', $student->updated_by)->first();
@@ -51,14 +53,14 @@ class StudentController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.UserManagement.student', compact('students'));
+        return view('admin.UserManagement.student', compact('students', 'adminNotifs'));
     }
 
     public function view($id)
     {
-        $student = Student::where('id', $id)->first()->load('guardian');
+        $student = Student::where('id', $id)->first()->load('guardian', 'bmi');
         $student['created_at_formatted'] = Carbon::parse($student->created_at)->format('M d, Y');
         $student['updated_at_formatted'] = Carbon::parse($student->updated_at)->format('M d, Y');
         $student['updated_by_name'] = Admin::where('id', $student->updated_by)->first();
@@ -74,11 +76,16 @@ class StudentController extends Controller
 
     public function store(StoreStudentRequest $request)
     {
+        $BMI = Bmi::create([
+            'Q1Height' => $request->height,
+            'Q1Weight' => $request->weight,
+            'Q1BMI' => round($request->weight / pow($request->height / 100, 2), 2)
+        ]);
         $student = $request->safe()->merge([
             'status' => 1,
             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
-        ])->except(['parent']);
-        $student['BMI'] = round($request->weight / pow($request->height / 100, 2), 2);
+        ])->except(['parent', 'weight', 'height']);
+        $student['bmi_id'] = $BMI->id;
         if ($request->hasFile('image'))
             $student['image'] = $request->file('image')->store('admin/students', 'public');
         $parentName = $request->parent;
@@ -100,11 +107,15 @@ class StudentController extends Controller
 
     public function update(UpdateStudentRequest $request, Student $student)
     {
+        Bmi::where('id', $student->bmi_id)->update([
+            'Q1Height' => $request->height,
+            'Q1Weight' => $request->weight,
+            'Q1BMI' => round($request->weight / pow($request->height / 100, 2), 2)
+        ]);
         $studentCredentials = $request->safe()->merge([
             'status' => 1,
             'updated_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
-        ])->except(['parent']);
-        $studentCredentials['BMI'] = round($request->weight / pow($request->height / 100, 2), 2);
+        ])->except(['parent', 'weight', 'height']);
         if ($request->hasFile('image'))
             $studentCredentials['image'] = $request->file('image')->store('admin/students', 'public');
         $prevParentID = Student::where('id', (int)$student->id)->get(['parent_id'])->value('parent_id');
@@ -119,7 +130,8 @@ class StudentController extends Controller
     public function delete($id)
     {
         $student = Student::where('id', $id)->first();
-
+        $student->update(['status' => 0]);
+        Alert::success('Success', $student->firstName . ' ' . $student->lastName . ' Archived');
         $student->delete();
 
         return redirect()->back();
@@ -160,15 +172,17 @@ class StudentController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.UserManagement.studentTrash', compact('students'));
+        return view('admin.UserManagement.studentTrash', compact('students', 'adminNotifs'));
     }
 
     public function restore($id)
     {
         $student = Student::where('id', $id)->restore();
-
+        $student = Admin::where('id', $id)->first();
+        $student->update(['status' => 1]);
+        Alert::success('Success', $student->firstName . ' ' . $student->lastName . ' Restored');
         return redirect()->back();
     }
 }

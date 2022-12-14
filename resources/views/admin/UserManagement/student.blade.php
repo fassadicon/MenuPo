@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
     <a href="/admin/students/create" class="btn btn-primary mb-2">Create Student Account</a>
@@ -21,9 +21,18 @@
                     <th>Sex</th>
                     <th>Birth Date</th>
                     <th>Status</th>
-                    <th>Height</th>
-                    <th>Weight</th>
-                    <th>BMI</th>
+                    <th>Q1Height</th>
+                    <th>Q1Weight</th>
+                    <th>Q1BMI</th>
+                    <th>Q2Height</th>
+                    <th>Q2Weight</th>
+                    <th>Q2BMI</th>
+                    <th>Q3Height</th>
+                    <th>Q3Weight</th>
+                    <th>Q3BMI</th>
+                    <th>Q4Height</th>
+                    <th>Q4Weight</th>
+                    <th>Q4BMI</th>
                     <th>Created at</th>
                     <th>Updated at</th>
                     <th>Created by</th>
@@ -34,28 +43,6 @@
             <tbody>
             </tbody>
             <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Grade</th>
-                    <th>Section</th>
-                    <th>Adviser</th>
-                    <th>LRN</th>
-                    <th>Parent</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Middle Name</th>
-                    <th>Suffix</th>
-                    <th>Sex</th>
-                    <th>Birth Date</th>
-                    <th>Status</th>
-                    <th>Height</th>
-                    <th>Weight</th>
-                    <th>BMI</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th>Created by</th>
-                    <th>Last Updated by</th>
-                </tr>
             </tfoot>
         </table>
     </div>
@@ -73,10 +60,6 @@
                     <input type="hidden" name="studentID" id="studentID">
                     <div class="row">
                         <div class="col-4">
-                            <div class="mb-3">
-                                <label for="parent">Parent</label>
-                                <p id="parent" class="form-control"></p>
-                            </div>
                             <div class="mb-3">
                                 <label for="LRN">LRN</label>
                                 <p id="LRN" class="form-control"></p>
@@ -115,6 +98,10 @@
                         </div>
                         <div class="col-4">
                             <div class="mb-3">
+                                <label for="parent">Parent</label>
+                                <p id="parent" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
                                 <label for="sex">Sex</label>
                                 <p id="sex" class="form-control"></p>
                             </div>
@@ -122,37 +109,87 @@
                                 <label for="birthDate">Birth Date</label>
                                 <p id="birthDate" class="form-control"></p>
                             </div>
+
+                        </div>
+                        <div class="col-3">
                             <div class="mb-3">
-                                <label for="height">Height</label>
-                                <p id="height" class="form-control"></p>
+                                <label for="height">Q1Height</label>
+                                <p id="Q1height" class="form-control"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="weight">Weight</label>
-                                <p id="weight" class="form-control"></p>
+                                <label for="weight">Q1Weight</label>
+                                <p id="Q1weight" class="form-control"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="BMI">BMI</label>
-                                <p id="BMI" class="form-control"></p>
+                                <label for="BMI">Q1BMI</label>
+                                <p id="Q1BMI" class="form-control"></p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-3">
+                                <label for="height">Q2Height</label>
+                                <p id="Q2height" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="weight">Q2Weight</label>
+                                <p id="Q2weight" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="BMI">Q2BMI</label>
+                                <p id="Q2BMI" class="form-control"></p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-3">
+                                <label for="height">Q3Height</label>
+                                <p id="Q3height" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="weight">Q3Weight</label>
+                                <p id="Q3weight" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="BMI">Q3BMI</label>
+                                <p id="Q3BMI" class="form-control"></p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-3">
+                                <label for="height">Q4Height</label>
+                                <p id="Q4height" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="weight">Q4Weight</label>
+                                <p id="Q4weight" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="BMI">Q4BMI</label>
+                                <p id="Q4BMI" class="form-control"></p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="mb-3">
-                            <label for="created_by">Created By</label>
-                            <p id="created_by" class="form-control"></p>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="created_by">Created By</label>
+                                <p id="created_by" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="created_at">Created At</label>
+                                <p id="created_at" class="form-control"></p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="created_at">Created At</label>
-                            <p id="created_at" class="form-control"></p>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="updated_by">Last Updated By</label>
+                                <p id="updated_by" class="form-control"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="updated_at">Last Updated At</label>
+                                <p id="updated_at" class="form-control"></p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="updated_by">Last Updated By</label>
-                            <p id="updated_by" class="form-control"></p>
-                        </div>
-                        <div class="mb-3">
-                            <label for="updated_at">Last Updated At</label>
-                            <p id="updated_at" class="form-control"></p>
-                        </div>
+
                     </div>
                     {{--  <div class="mb-3">
                             <label for="">Description</label>
@@ -303,10 +340,11 @@
                         name: 'LRN'
                     },
                     { // 5
-                        data: 'guardian.firstName',
-                        name: 'guardian.firstName',
+                        data: 'guardian',
+                        name: 'guardian',
                         render: function(data, type, row) {
-                            return row.guardian.firstName + ' ' + row.guardian.lastName;
+                            return row.guardian == null ? 'Deleted Account' : row.guardian
+                                .firstName + ' ' + row.guardian.lastName;
                         }
                     },
                     { // 6
@@ -347,46 +385,110 @@
                         }
                     },
                     { // 13
-                        data: 'height',
+                        data: 'bmi.Q1Height',
                         name: 'height',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
                     { // 14
-                        data: 'weight',
+                        data: 'bmi.Q1Weight',
                         name: 'weight',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
                     { // 15
-                        data: 'BMI',
+                        data: 'bmi.Q1BMI',
                         name: 'BMI',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
+                    { // 16
+                        data: 'bmi.Q2Height',
+                        name: 'height',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 17
+                        data: 'bmi.Q2Weight',
+                        name: 'weight',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
                     { // 18
+                        data: 'bmi.Q2BMI',
+                        name: 'BMI',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 19
+                        data: 'bmi.Q3Height',
+                        name: 'height',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 20
+                        data: 'bmi.Q3Weight',
+                        name: 'weight',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 21
+                        data: 'bmi.Q3BMI',
+                        name: 'BMI',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 22
+                        data: 'bmi.Q4Height',
+                        name: 'height',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 23
+                        data: 'bmi.Q4Weight',
+                        name: 'weight',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 24
+                        data: 'bmi.Q4BMI',
+                        name: 'BMI',
+                        render: function(data, type, row) {
+                            return data == null ? 'N/A' : data;
+                        }
+                    },
+                    { // 25
                         data: 'created_at_formatted',
                         name: 'created_at_formatted',
                     },
-                    { // 19
+                    { // 26
                         data: 'updated_at_formatted',
                         name: 'updated_at_formatted',
                         render: function(data, type, row) {
                             return data == null ? 'N/A' : data;
                         }
                     },
-                    { // 20
-                        data: 'created_by_name.firstName',
+                    { // 27
+                        data: 'created_by_name',
                         name: 'created_by_name',
                         render: function(data, type, row) {
-                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                            return row.created_by_name == null ? 'Archived Account' : row
+                                .created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;
                         }
                     },
-                    { // 21
+                    { // 28
                         data: 'updated_by_name',
                         name: 'updated_by_name',
                         render: function(data, type, row) {
@@ -394,7 +496,7 @@
                                 .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
                     },
-                    { // 22
+                    { // 29
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -464,6 +566,56 @@
                         searchable: false,
                     },
                     {
+                        target: 19,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 20,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 21,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 22,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 23,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 24,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 25,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 26,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 27,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        target: 28,
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
                         targets: -1,
                         data: null,
                         defaultContent: '<button>Click!</button>',
@@ -484,7 +636,8 @@
             $('body').on('click', '.viewImage', function() {
                 var studentID = $(this).data('id');
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
-                    $('#viewImgModalLabel').text('QR Code of ' + data.firstName + ' ' + data.lastName);
+                    $('#viewImgModalLabel').text('QR Code of ' + data.firstName + ' ' + data
+                        .lastName);
                     $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.image);
                     $('#viewImgModal').modal('show');
                 })
@@ -496,8 +649,10 @@
                     $.each(data, function(i, e) {
                         if (data[i] == null) data[i] = 'N/A';
                     });
-                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data.firstName + ' ' + data.lastName);
-                    $('#parent').text(data.guardian.firstName + ' ' + data.guardian.lastName);
+                    $('#viewStudentInfoModalLabel').text('Account Information of ' + data
+                        .firstName + ' ' + data.lastName);
+                    data.guardian == null ? $('#parent').text('Deleted Account') : $('#parent')
+                        .text(data.guardian.firstName + ' ' + data.guardian.lastName);
                     $('#LRN').text(data.LRN);
                     $('#grade').text(data.grade);
                     $('#section').text(data.section);
@@ -508,12 +663,22 @@
                     $('#suffix').text(data.suffix);
                     $('#sex').text(data.sex);
                     $('#birthDate').text(data.birthDate);
-                    $('#height').text(data.height);
-                    $('#weight').text(data.weight);
-                    $('#BMI').text(data.BMI);
+                    $('#Q1height').text(data.bmi.Q1Height);
+                    $('#Q1weight').text(data.bmi.Q1Weight);
+                    $('#Q1BMI').text(data.bmi.Q1BMI);
+                    $('#Q2height').text(data.bmi.Q2Height);
+                    $('#Q2weight').text(data.bmi.Q2Weight);
+                    $('#Q2BMI').text(data.bmi.Q2BMI);
+                    $('#Q3height').text(data.bmi.Q3Height);
+                    $('#Q3weight').text(data.bmi.Q3Weight);
+                    $('#Q3BMI').text(data.bmi.Q3BMI);
+                    $('#Q4height').text(data.bmi.Q4Height);
+                    $('#Q4weight').text(data.bmi.Q4Weight);
+                    $('#Q4BMI').text(data.bmi.Q4BMI);
                     $('#created_at').text(data.created_at_formatted);
                     $('#updated_at').text(data.updated_at_formatted);
-                    $('#created_by').text(data.created_by_name.firstName + ' ' + data.created_by_name.lastName);
+                    $('#created_by').text(data.created_by_name.firstName + ' ' + data
+                        .created_by_name.lastName);
                     data.updated_by_name.firstName == null ? $('#updated_by').text('N/A') : $(
                         '#updated_by').text(data
                         .updated_by_name.firstName + ' ' + data

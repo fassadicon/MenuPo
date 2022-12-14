@@ -13,7 +13,9 @@ class UpdateParentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if ($this->user()->role == 1 || $this->user()->role == 2)
+            return true;
+        return false;
     }
 
     /**
@@ -23,17 +25,30 @@ class UpdateParentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'email' => 'required|email|max:255|unique:users,email,' . $this->guardian->user->id,
-            'recoveryEmail' => 'nullable|email|max:255|unique:users,recoveryEmail,' . $this->guardian->user->id,
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'middleName' => 'nullable|string|max:255',
-            'address' => 'nullable|string|max:255',
-            'suffix' => 'nullable|string|max:255',
-            'sex' => 'required|max:1',
-            'birthDate' => 'required|date',
-            'image' => 'nullable|image|max:2048'
-        ];
+        if (auth()->user()->role == 2) {
+            return [
+                'email' => 'required|email|max:255|unique:users,email,' . $this->guardian->user->id,
+                'recoveryEmail' => 'nullable|email|max:255|unique:users,recoveryEmail,' . $this->guardian->user->id,
+                'firstName' => 'required|string|max:255',
+                'lastName' => 'required|string|max:255',
+                'middleName' => 'nullable|string|max:255',
+                'address' => 'nullable|string|max:255',
+                'suffix' => 'nullable|string|max:255',
+                'sex' => 'required|max:1',
+                'birthDate' => 'required|date',
+                'image' => 'nullable|image|max:2048'
+            ];
+        } else {
+            return [
+                'firstName' => 'required|string|max:255',
+                'lastName' => 'required|string|max:255',
+                'middleName' => 'nullable|string|max:255',
+                'address' => 'nullable|string|max:255',
+                'suffix' => 'nullable|string|max:255',
+                'sex' => 'required|max:1',
+                'birthDate' => 'required|date',
+                'image' => 'nullable|image|max:2048'
+            ];
+        }
     }
 }

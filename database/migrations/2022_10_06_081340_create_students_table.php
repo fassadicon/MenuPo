@@ -29,9 +29,7 @@ return new class extends Migration
             $table->string('sex', 1);
             $table->date('birthDate')->nullable();
             $table->integer('status')->length(1);
-            $table->double('height')->nullable();
-            $table->double('weight')->nullable();
-            $table->double('BMI')->nullable();
+            $table->foreignId('bmi_id')->constrained('bmis');
             $table->string('restriction')->nullable();
             $table->string('image')->nullable();
             $table->string('QR')->nullable();

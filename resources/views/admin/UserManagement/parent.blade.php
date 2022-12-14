@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Parent User Management</h1>
     <a href="/admin/guardians/create" class="btn btn-primary mb-2">Create Parent Account</a>
     <a href="/admin/guardians/trash" class="btn btn-primary mb-2">Inactive Parent Accounts</a>
@@ -312,10 +312,10 @@
                         name: 'created_at_formatted',
                     },
                     {//13
-                        data: 'created_by_name.firstName',
-                        name: 'created_by_name.firstName',
+                        data: 'created_by_name',
+                        name: 'created_by_name',
                         render: function(data, type, row) {
-                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                            return row.created_by_name == null ?'Archived Account' : row.created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;
                         }
                     },

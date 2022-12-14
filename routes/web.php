@@ -227,6 +227,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Survey
     Route::get('/reports/survey', [SurveyReportController::class, 'index']);
+    Route::get('/reports/survey/table', [SurveyReportController::class, 'surveyTable'])->name('survey.table');
     Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
     Route::get('/reports/nutrientConsumption', [StudentNutrientReportController::class, 'index']);
 });

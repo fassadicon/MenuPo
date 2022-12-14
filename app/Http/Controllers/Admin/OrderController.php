@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\Purchase;
 
 // use DataTables;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
@@ -45,9 +46,9 @@ class OrderController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // return view
-        return view('admin.OrderManagement.orders', compact('orders'));
+        return view('admin.OrderManagement.orders', compact('orders', 'adminNotifs'));
     }
 
     public function view($id)
@@ -89,9 +90,9 @@ class OrderController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // return view
-        return view('admin.OrderManagement.archivedOrders', compact('orders'));
+        return view('admin.OrderManagement.archivedOrders', compact('orders', 'adminNotifs'));
     }
 
     public function restore($id)

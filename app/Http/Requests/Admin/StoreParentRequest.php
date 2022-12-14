@@ -13,7 +13,9 @@ class StoreParentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if ($this->user()->role == 1 || $this->user()->role == 2) 
+            return true;
+        return false;
     }
 
     /**

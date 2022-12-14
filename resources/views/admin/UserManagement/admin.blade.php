@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Staff Account Management</h1>
     <a href="/admin/admins/create" class="btn btn-primary mb-2">Create Admin Account</a>
     <a href="/admin/admins/trash" class="btn btn-primary mb-2">Archived Admin Accounts</a>
@@ -297,10 +297,10 @@
 
                     },
                     {
-                        data: 'created_by',
-                        name: 'created_by',
+                        data: 'created_by_name',
+                        name: 'created_by_name',
                         render: function(data, type, row) {
-                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                            return row.created_by_name == null ? 'N/A' : row.created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;
                         }
                     },
@@ -315,7 +315,7 @@
                         data: 'updated_by',
                         name: 'updated_by',
                         render: function(data, type, row) {
-                            return row.updated_by_name.firstName == null ? 'N/A' : row
+                            return row.updated_by_name == null ? 'N/A' : row
                                 .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
 

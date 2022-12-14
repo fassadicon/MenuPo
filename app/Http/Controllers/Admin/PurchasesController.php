@@ -3,20 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
-use App\Models\Purchase;
 use App\Models\Admin;
 use App\Models\Order;
-use App\Models\Guardian;
 use App\Models\Student;
+use App\Models\Guardian;
+use App\Models\Purchase;
+use App\Models\Adminnotif;
+
+
 use Illuminate\Http\Request;
-
-
-use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
 
 // Use Yajra Datatable
+use App\Http\Controllers\Controller;
 use Yajra\DataTables\DataTables as DataTables;
 
 class PurchasesController extends Controller
@@ -66,9 +67,9 @@ class PurchasesController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // return view
-        return view('admin.OrderManagement.pendings', compact('purchases'));
+        return view('admin.OrderManagement.pendings', compact('purchases', 'adminNotifs'));
     }
 
     public function viewPending($id)
@@ -129,9 +130,9 @@ class PurchasesController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // return view
-        return view('admin.OrderManagement.completed', compact('purchases'));
+        return view('admin.OrderManagement.completed', compact('purchases', 'adminNotifs'));
     }
 
     
@@ -173,9 +174,9 @@ class PurchasesController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // return view
-        return view('admin.OrderManagement.archivedPurchases', compact('purchases'));
+        return view('admin.OrderManagement.archivedPurchases', compact('purchases', 'adminNotifs'));
     }
 
     public function restore($id)
