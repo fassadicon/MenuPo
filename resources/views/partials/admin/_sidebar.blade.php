@@ -308,6 +308,20 @@
     </a>
 </li><!-- End Completed Orders Nav -->
 
+<li class="nav-item">
+  <a href="/admin/reports/bmi" class="nav-link collapsed" id="sidebarLink">
+      <i class="fab fa-nutritionix"></i>
+      <span>BMI</span>
+  </a>
+</li><!-- End Completed Orders Nav -->
+<li class="nav-item">
+  <a href="/admin/reports/sales" class="nav-link collapsed" id="sidebarLink">
+      <i class="fab fa-nutritionix"></i>
+      <span>Sales</span>
+  </a>
+</li><!-- End Completed Orders Nav -->
+
+
 
         {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="pages-contact.html">
