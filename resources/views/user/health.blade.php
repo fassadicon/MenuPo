@@ -22,8 +22,17 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        $.ajax({
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "You want to unrestrict this item? Unrestricting this item means the student can order this item in the canteen.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Unrestrict'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.ajax({
             method: "POST",
             url: "remove-restrict",
             data: {"anak-id":anak_id},
@@ -32,7 +41,11 @@
              $('.restriction').load(location.href + " .restriction");
                 // $('.cartsummary').load(location.href + " .cartsummary");
 
-            }
+                }
+            })
+          }
         })
+
+        
     });
 </script>

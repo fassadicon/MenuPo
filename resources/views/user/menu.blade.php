@@ -110,7 +110,7 @@
               <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primaryDark">
                 TODAY'S MENU</h2>
                 {{-- @livewire('cart-counter', ['anak_id' => $anak->id]) --}}
-                <a class="cart-counter" href="/user/cart-summary/{{$anak[0]->id}}" >
+                <a class="cart-counter" href="/user/cart-summary/{{$anak->id}}" >
                   <button class="button-hero mt-2">
                     <span class=cart-title>My Cart</span>
                     @if (Cart::count() != 0)
@@ -126,7 +126,25 @@
             </div>
             
             
+            
           </section>
+
+          <div class="menu-sticky">
+            <div class="card">
+              <a class="cart-counter" href="/user/cart-summary/{{$anak[0]->id}}" >
+              <button class="button-hero mt-2 bg-blue-600 text-white rounded-full">
+                <span class=cart-title><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="cart-menu bi bi-cart float-left" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg> 
+                  <p class="text-base inline ml-2">My Cart</p></span>
+                @if (Cart::count() != 0)
+                    <span class="bg-red-500 px-2 rounded-full ">
+                        @php
+                            echo Cart::count();
+                        @endphp
+                    </span>
+                @endif
+              </button>
+            </a></div>
+          </div>
           
           <div id="tsum-tabs" class="foods">
         
@@ -153,7 +171,7 @@
             <x-user.cards.card-tabs.card-tab-riceMeal>
               @foreach($foods as $food)
                   @if($food->type == 3)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>   
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>   
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-riceMeal>
@@ -162,7 +180,7 @@
             <x-user.cards.card-tabs.card-tab-pasta>
               @foreach($foods as $food)
                   @if($food->type == 4)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>   
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>   
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-pasta>
@@ -170,7 +188,7 @@
             <x-user.cards.card-tabs.card-tab-fried>
               @foreach($foods as $food)
                   @if($food->type == 2)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>  
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-fried>
@@ -178,7 +196,7 @@
             <x-user.cards.card-tabs.card-tab-drinks>
               @foreach($foods as $food)
                   @if($food->type == 1)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>  
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-drinks>
@@ -186,13 +204,15 @@
             <x-user.cards.card-tabs.card-tab-snacks>
               @foreach($foods as $food)
                   @if($food->type == 0)
-                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>  
+                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-snacks>
 
           </main>
           </div>
+
+          
       
         
        
@@ -201,6 +221,28 @@
 </x-user.layout>
 
 <script>
+
+  // Sticky Cart
+
+  const footer = document.querySelector('.footer');
+  const menuSticky = document.querySelector('.menu-sticky');
+  
+
+  $(document).scroll(function() {
+    function checkOffset() {
+    if($(menuSticky).offset().top + $(menuSticky).height() 
+                                           >= $(footer).offset().top - 10)
+        $(menuSticky).css('position', 'absolute');
+    if($(document).scrollTop() + window.innerHeight < $(footer).offset().top)
+        $(menuSticky).css('position', 'fixed'); // restore when you scroll up
+        // menuSticky.style.height = `${ footer.offsetTop - 0 }px`;
+  }
+  });
+
+
+    
+    
+
   //For add to cart button
   $(document).on('click', 'button[id^="cart"]',  function(e){
         e.preventDefault();
@@ -250,22 +292,36 @@
             }
         });
 
-        $.ajax({
-            method: "POST",
-            url: 'addtorestrict',
-            data: {"food-id":food_id, "anak-id":stud_id},
-            success: function(response){
-              //window.location.reload();
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Added to restrict!',
-                showConfirmButton: false,
-                timer: 700
-              });
-              $('.foods').load(location.href + " .foods");
-              
-            }
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "You want to restrict this item? Restricting this item means the student cannot order it in the canteen.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Restrict'
+        }).then((result) => {
+          if (result.isConfirmed) {
+              $.ajax({
+              method: "POST",
+              url: 'addtorestrict',
+              data: {"food-id":food_id, "anak-id":stud_id},
+              success: function(response){
+                //window.location.reload();
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Added to restrict!',
+                  showConfirmButton: false,
+                  timer: 700
+                });
+                $('.foods').load(location.href + " .foods");
+                
+                  }
+              })
+          }
         })
+
+        
     });
 </script>

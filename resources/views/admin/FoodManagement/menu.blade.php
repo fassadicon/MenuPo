@@ -121,7 +121,7 @@
                     aria-labelledby="cookedMealsTableTab">
                     <div class="row">
                         <div align="left"><a href="javascript:void(0)" class="btn btn-success mb-2"
-                                id="addMenuItemBtn">Add
+                                id="addMenuItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;Add
                                 Menu Item</a>
                         </div>
                         <div class="col-8">
@@ -353,9 +353,9 @@
                 <div class="col-12">
                     <a id="updateFoodInfo" href="javascript:void(0)" style="background-color: gray; border: none;"
                         class="btn btn-info" role="link" aria-disabled="true" disabled>Edit Info</a>
-                    <a class="btn btn-primary" id="updatePreviewMenuStock" disabled>Add Stock</a>
-                    <a class="btn btn-warning" id="updatePreviewMenuDate" disabled>Update Date</a>
-                    <a class="btn btn-danger" id="removePreviewMenu" disabled>Remove</a>
+                    <a class="btn btn-primary" id="updatePreviewMenuStock" disabled><i class="fas fa-plus"></i>&nbsp;Add Stock</a>
+                    <a class="btn btn-warning" id="updatePreviewMenuDate" disabled><i class="fas fa-calendar-alt"></i>&nbsp;Update Date</a>
+                    <a class="btn btn-danger" id="removePreviewMenu" disabled><i class="fas fa-minus-circle"></i>&nbsp;Remove</a>
                 </div>
             </div>
         </div>

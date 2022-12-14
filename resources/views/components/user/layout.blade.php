@@ -106,7 +106,7 @@
       }
 
       .landing-image{
-          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('user/assets/img/landing-bg.jpg') }}") no-repeat center center fixed; 
+          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('storage/admin/school-images/canteen-pic.jpg') }}") no-repeat center center fixed; 
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
@@ -223,6 +223,149 @@
           border-radius: 40px 0px 0px 40px;
       }
 
+      .button-sec {
+        background: var(--primary);
+        font-family: inherit;
+        padding: 0.6em 1.3em;
+        font-weight: 500;
+        font-size: 14px;
+        border: 3px solid black;
+        border-radius: 0.4em;
+        box-shadow: 0.1em 0.1em;
+       }
+       
+       .button-sec:hover {
+        transform: translate(-0.05em, -0.05em);
+        box-shadow: 0.15em 0.15em;
+       }
+       
+       .button-sec:active {
+        transform: translate(0.05em, 0.05em);
+        box-shadow: 0.05em 0.05em;
+       }
+
+       .menu-landing {
+        border-top-right-radius: 80px !important;
+       }
+
+
+       /* WEBKIT RESIZING BROWSER */
+
+       @media only screen and (max-width: 640px) {
+        .menu-landing {
+          transform: scale(0.8, 0.8);
+          -ms-transform: scale(0.8, 0.8); /* IE 9 */
+          -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+          -o-transform: scale(0.8, 0.8); /* Opera */
+          -moz-transform: scale(0.8, 0.8); /* Firefox */
+         }
+      }
+
+      @media only screen and (max-width: 640px) {
+        .section-hero {
+          transform: scale(0.8, 0.8);
+          -ms-transform: scale(0.8, 0.8); /* IE 9 */
+          -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+          -o-transform: scale(0.8, 0.8); /* Opera */
+          -moz-transform: scale(0.8, 0.8); /* Firefox */
+         }
+
+         .school-logo{
+          transform: scale(0.8, 0.8);
+          -ms-transform: scale(0.8, 0.8); /* IE 9 */
+          -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+          -o-transform: scale(0.8, 0.8); /* Opera */
+          -moz-transform: scale(0.8, 0.8); /* Firefox */
+         }
+
+
+         .button-sec{
+          transform: scale(0.8, 0.8);
+          -ms-transform: scale(0.8, 0.8); /* IE 9 */
+          -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+          -o-transform: scale(0.8, 0.8); /* Opera */
+          -moz-transform: scale(0.8, 0.8); /* Firefox */
+         }
+
+         
+      }
+
+      .button-sec{
+          transform: scale(0.9, 0.9);
+          -ms-transform: scale(0.9, 0.9); /* IE 9 */
+          -webkit-transform: scale(0.9, 0.9); /* Safari and Chrome */
+          -o-transform: scale(0.9, 0.9); /* Opera */
+          -moz-transform: scale(0.9, 0.9); /* Firefox */
+         }
+
+    .cart-menu
+        {
+          transform: scale(1.4, 1.4);
+          -ms-transform: scale(1.4, 1.4); /* IE 9 */
+          -webkit-transform: scale(1.4, 1.4); /* Safari and Chrome */
+          -o-transform: scale(1.4, 1.4); /* Opera */
+          -moz-transform: scale(1.4, 1.4); /* Firefox */
+        }
+
+
+        .menu-sticky .button-hero
+        {
+          transform: scale(1.4, 1.4);
+          -ms-transform: scale(1.4, 1.4); /* IE 9 */
+          -webkit-transform: scale(1.4, 1.4); /* Safari and Chrome */
+          -o-transform: scale(1.4, 1.4); /* Opera */
+          -moz-transform: scale(1.4, 1.4); /* Firefox */
+        }
+        
+        /* Sticky Menu */
+
+        .menu-sticky {
+          position: absolute;
+          right: 5.8rem;
+          width: 240px;
+        /*   background: red; */
+        }
+        
+        .menu-sticky .card {
+          position: fixed;
+          top: calc(100vh - 5rem);
+          padding: 0.5rem;
+          right: 5.4rem;
+          background-color: transparent;
+          padding-bottom: 1.4rem;
+          text-align: center;
+          font-weight: bold;
+          z-index: 999;
+          width: 92%;
+          transform: translateY(-2em);
+          
+        } 
+
+        @media only screen and (max-width: 640px) {
+        .menu-sticky .card{
+          transform: scale(0.6, 0.6);
+          -ms-transform: scale(0.6, 0.6); /* IE 9 */
+          -webkit-transform: scale(0.6, 0.6); /* Safari and Chrome */
+          -o-transform: scale(0.6, 0.6); /* Opera */
+          -moz-transform: scale(0.6, 0.6); /* Firefox */
+         }
+
+         .menu-sticky{
+          left: -1.5rem; 
+          right: 0 !important;
+         }
+
+        .menu-sticky .card{
+          top: calc(100vh - 6rem);
+          right: 6.6rem;
+        }
+      }
+
+      
+
+      
+
+
       </style>
       @include('sweetalert::alert')
       
@@ -318,7 +461,11 @@
                     <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Billing</a></li>
                     <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Forms</a></li>
                     <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Settings</a></li>
-                    <li class="text-sm hover:bg-slate-100 leading-8 mt-6"><a href="#" class="bg-secondaryLight px-5 py-1 rounded-3xl font-bold hover:bg-red-600 text-white hidden md:flex" role="button">Log Out</a>
+                    <li class="text-sm hover:bg-slate-100 leading-8 mt-6"><a href="{{ route('logout') }}" class="bg-secondaryLight px-5 py-1 rounded-3xl font-bold hover:bg-red-600 text-white hidden md:flex" onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                     </li>
                   </ul>
                   <!-- Submenu ends -->
@@ -365,10 +512,10 @@
           <div class="md:hidden flex justify-center mt-1 w-full">
             <div id="mobile-menu" class="mobile-menu absolute z-50 top-23 w-3/4"> <!-- add hidden here later -->
               <ul class="mobile-nav bg-gradient-to-tl from-yellow-100 via-yellow-300 to-yellow-500 shadow-lg leading-9 font-bold h-screen">
-                <li class="border-b-2 border-gray-200 hover:text-primary pl-4 flex py-2 px-2"><a href="#" class="block pl-7 uppercase"><img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="w-12 h-12 rounded-full border-4 border-gray-50 mr-4 inline">{{auth()->user()->guardian->firstName}} {{auth()->user()->guardian->lastName}}</a></li>
-                <li class="mobile-li group border-b-2 border-white  hover:text-primary py-2 pl-4"><a href="/user/home" class="block pl-7"><i class="fa-solid fa-house-user fa-fw text-white mr-4 group-hover:text-primary"></i></i>Home</a></li>
-                <li class="mobile-li group border-b-2 border-white hover:text-primary py-2 pl-4"><a href="/user/menu-landing" class="block pl-7"><i class="fa-solid fa-bars fa-fw text-white mr-4 group-hover:text-primary"></i></i>Menu</a></li>
-                <li class="group border-b-2 border-white hover:text-gray-800 py-2">
+                <li class="hover:text-primary pl-4 flex pt-2 pb-1 px-2"><a href="#" class="block pl-7 uppercase"><img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="w-12 h-12 rounded-full border-4 border-gray-50 mr-4 inline">{{auth()->user()->guardian->firstName}} {{auth()->user()->guardian->lastName}}</a></li>
+                <li class="mobile-li group   hover:text-primary py-1 pl-4"><a href="/user/home" class="block pl-7"><i class="fa-solid fa-house-user fa-fw text-white mr-4 group-hover:text-primary"></i></i>Home</a></li>
+                <li class="mobile-li group  hover:text-primary py-1 pl-4"><a href="/user/menu-landing" class="block pl-7"><i class="fa-solid fa-bars fa-fw text-white mr-4 group-hover:text-primary"></i></i>Menu</a></li>
+                <li class="group  hover:text-gray-800 py-1">
                   @if (sizeof($studs) > 1)
                     <a href="#" class="block pl-11"><i class="fa-solid fa-school fa-fw text-white mr-4 group-hover:text-white"></i>Student <i class="fa-solid fa-chevron-down fa-2xs text-white text-base pt-1"></i></a> 
                     <!-- Submenu starts -->
@@ -385,7 +532,7 @@
                   
                   
                 </li>
-                <li class="group border-b-2 border-whit hover:text-gray-800 py-2">
+                <li class="group hover:text-gray-800 py-1">
                   <a href="#" class="block pl-11"><i class="fa-solid fa-user fa-fw text-white mr-4 group-hover:text-white"></i>Account <i class="fa-solid fa-chevron-down fa-2xs text-white text-base pt-1"></i></a> 
                   
                   <!-- Submenu starts -->
@@ -397,9 +544,12 @@
                   </ul>
                   <!-- Submenu ends -->
                 </li>
-                <li class="mobile-li group border-b-2 border-white hover:text-primary py-2 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-gear fa-fw text-white mr-4 group-hover:text-primary"></i>Settings</a></li>
-                <li class="mobile-li group border-b-2 border-white hover:text-primary py-2 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-address-book fa-fw text-white mr-4 group-hover:text-primary"></i>Contact</a></li>
-                <li class="mobile-li group border-b-2 border-white hover:text-primary py-2 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-right-from-bracket fa-fw text-red-600 mr-4 group-hover:text-primary"></i>Log Out</a></li>
+                <li class="mobile-li group  hover:text-primary py-1 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-gear fa-fw text-white mr-4 group-hover:text-primary"></i>Settings</a></li>
+                <li class="mobile-li group  hover:text-primary py-1 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-address-book fa-fw text-white mr-4 group-hover:text-primary"></i>Contact</a></li>
+                <li class="mobile-li group  hover:text-primary py-1 pl-4"><a hhref="{{ route('logout') }}" class="block pl-7" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();"><i class="fa-solid fa-right-from-bracket fa-fw text-red-600 mr-4 group-hover:text-primary"></i>{{ __('Logout') }}</a><form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form></li>
               </ul> 
               
               </div>
@@ -415,7 +565,7 @@
   
   
       <!--Footer-->
-    <footer class="flex flex-col items-center justify-between p-10 border-t-4 border-t-primary bg-white sm:flex-row">
+    <footer class="footer flex flex-col items-center justify-between p-10 border-t-4 border-t-primary bg-white sm:flex-row">
     
         <p class="text-sm text-gray-600">© 2022 School Name | <a href="#" class="text-blue-600">Terms of Use</a> | <a href="#" class="text-blue-600">Privacy Statement</a></p>
     

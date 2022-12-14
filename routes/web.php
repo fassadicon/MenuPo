@@ -262,6 +262,7 @@ Route::middleware('user')->group(function () {
     Route::get('/health/edit-info/{anak}', [HealthController::class, 'edit']);
     Route::post('/health/saveUpdate', [HealthController::class, 'saveUpdate']);
     Route::get('/user/health-report/{student_id}', [HealthController::class, 'report_index']);
+    Route::get('/user/health-report-download/{student}', [HealthController::class, 'download_report']);
 
     //User-Account Page
     Route::get('/user/user-account', [UserAccController::class, 'index'])->name(name: 'user.account');

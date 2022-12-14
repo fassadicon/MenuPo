@@ -7,6 +7,7 @@ use App\Models\Survey;
 use App\Models\Adminnotif;
 
 use Illuminate\Http\Request;
+
 use App\Charts\CanteenRatingChart;
 use App\Http\Controllers\Controller;
 
@@ -17,6 +18,7 @@ class SurveyReportController extends Controller
 {
     public function index(ParentFoodSuggestionChart $suggestionChart, CanteenRatingChart $ratingChart)
     {
+        $adminNotifs = Adminnotif::get();
         $average = Survey::avg('rating');
 
         $surveys = Survey::selectRaw('suggestions, COUNT(*) as count')

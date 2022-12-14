@@ -10,6 +10,11 @@
 
     $age = \Carbon\Carbon::parse($anak->birthDate)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
     $recommended_cal = 0;
+    $recommended_fat = 0;
+    $recommended_satFat = 0;
+    $recommended_sugar = 0;
+    $recommended_sodium = 0;
+
     $consumed_cal = 0;
     $to_consume = $recommended_cal - $consumed_cal;
     $no_warning = true;
@@ -23,12 +28,20 @@
     $consumed_sodium = 0;
 
     
-    //For recommended Calories
+    //For recommended Calories and 4 macro
     if($age >= 6 && $age <= 9 && $anak->sex == 'M'){
         $recommended_cal = 1600;
+        $recommended_fat = 30;
+        $recommended_satFat = 20.74;
+        $recommended_sugar = 20.74;
+        $recommended_sodium = 2000;
     }
     else{
         $recommended_cal = 1470;
+        $recommended_fat = 30;
+        $recommended_satFat = 19.1;
+        $recommended_sugar = 19.1;
+        $recommended_sodium = 2000;
     }
 
     //For consumed calorie and 4 macro
@@ -161,11 +174,20 @@
           </div>
           <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 py-4">
               <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
-                <a href="#">
-                  <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
-                      <i class="fa-solid fa-chart-simple"></i>
-                  </div>
-                </a>
+
+                <div class="flex relative group">
+                    <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                    <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
+                        <p class="text-secondary text-lg font-bold">4 macro: </p>  
+                        <p><b>Consumed Fat:</b> {{$recommended_fat}}</p> 
+                        <p><b>Consumed Sat Fat:</b> {{$recommended_satFat}}</p>  
+                        <p><b>Consumed Sugar:</b>{{$recommended_sugar}}</p>  
+                        <p><b>Consumed Sodium:</b> {{$recommended_sodium}}</p>   
+                    </ul>
+                </div>
+
                 <div>
                   <span class="block text-xl font-bold">{{$recommended_cal}}</span>
                   <span class="block text-gray-500">Recommended Calorie Intake</span>
