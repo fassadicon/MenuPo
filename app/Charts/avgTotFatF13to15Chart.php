@@ -20,7 +20,7 @@ class avgTotFatF13to15Chart
         return $this->chart->barChart()
         ->setTitle('Females Ages 13 to 15')
         ->setHeight(240)
-        ->addData('Average Calorie', [
+        ->addData('Average Total Fat', [
             round(Purchase::whereHas('student', function ($query) {
                 $query->where('sex', 'F')->whereBetween('birthdate', [Carbon::now()->subYear(15), Carbon::now()->subYear(13)]);
             })->whereBetween('created_at', ['2022-11-17', '2022-11-19'])

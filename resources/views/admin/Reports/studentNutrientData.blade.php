@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
 
     <div class="card-body">
         {{-- Kcal --}}

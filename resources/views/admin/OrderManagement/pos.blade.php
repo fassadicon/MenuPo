@@ -2,7 +2,7 @@
     <!--Replace with your tailwind.css once created-->
     
 
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
   <script src="https://kit.fontawesome.com/d00886c359.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />

@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Archived Staff Account Management</h1>
     <a href="/admin/admins/" class="btn btn-primary mb-2">Back</a>
     {{-- DATABLE --}}

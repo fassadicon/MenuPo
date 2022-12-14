@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use App\Models\Survey;
-use Illuminate\Http\Request;
+use App\Models\Adminnotif;
 
+use Illuminate\Http\Request;
 use App\Charts\CanteenRatingChart;
 use App\Http\Controllers\Controller;
-use App\Charts\ParentFoodSuggestionChart;
 
+use App\Charts\ParentFoodSuggestionChart;
 use Yajra\DataTables\DataTables as DataTables;
 
 class SurveyReportController extends Controller
@@ -31,8 +32,8 @@ class SurveyReportController extends Controller
         for ($i = 0; $i < 5; $i++) {
             $mostSuggested[$i] = $labels[$i];
         }
-
-        return view('admin.Reports.survey', ['suggestionChart' => $suggestionChart->build(), 'ratingChart' => $ratingChart->build(), 'averageRating' => $average, 'mostSuggestedFoods' => $mostSuggested]);
+        $adminNotifs = Adminnotif::get();
+        return view('admin.Reports.survey', ['suggestionChart' => $suggestionChart->build(), 'ratingChart' => $ratingChart->build(), 'averageRating' => $average, 'mostSuggestedFoods' => $mostSuggested, 'adminNotifs' => $adminNotifs]);
     }
 
     public function surveyTable(Request $request)
@@ -46,7 +47,7 @@ class SurveyReportController extends Controller
             return DataTables::of($surveys)
                 ->make(true);
         }
-
+        
         // Return View
         return view('admin.Reports.survey', compact('surveys'));
     }

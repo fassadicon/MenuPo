@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\Purchase;
 
 // use DataTables;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
@@ -58,9 +59,9 @@ class FoodController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.FoodManagement.index', compact('foods'));
+        return view('admin.FoodManagement.index', compact('foods', 'adminNotifs'));
     }
 
     public function view($id)
@@ -149,9 +150,9 @@ class FoodController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.FoodManagement.trash', compact('foods'));
+        return view('admin.FoodManagement.trash', compact('foods', 'adminNotifs'));
     }
 
     public function restore($id)

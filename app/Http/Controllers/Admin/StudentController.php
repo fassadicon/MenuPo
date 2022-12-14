@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 
+use App\Models\Bmi;
 use App\Models\Admin;
-use App\Models\Student;
 
+use App\Models\Student;
 use App\Models\Guardian;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +18,6 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Yajra\DataTables\DataTables as DataTables;
 use App\Http\Requests\Admin\StoreStudentRequest;
 use App\Http\Requests\Admin\UpdateStudentRequest;
-use App\Models\Bmi;
 
 class StudentController extends Controller
 {
@@ -52,9 +53,9 @@ class StudentController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.UserManagement.student', compact('students'));
+        return view('admin.UserManagement.student', compact('students', 'adminNotifs'));
     }
 
     public function view($id)
@@ -171,9 +172,9 @@ class StudentController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.UserManagement.studentTrash', compact('students'));
+        return view('admin.UserManagement.studentTrash', compact('students', 'adminNotifs'));
     }
 
     public function restore($id)

@@ -7,6 +7,7 @@ use App\Models\Food;
 
 use App\Models\Menu;
 use App\Models\Order;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Charts\menuColorChart;
 use App\Charts\foodsColorChart;
@@ -31,6 +32,7 @@ class CompositionsReportController extends Controller
         $averageFoodListGrade = Food::avg('grade');
         $averageMenuGrade = Food::has('menus', '>=', 1)->avg('grade');
         $averageBoughtGrade = Food::has('orders', '>=', 1)->avg('grade');
+        $adminNotifs = Adminnotif::get();
         return view('admin.Reports.composition', [
             'boughtCookedMealsChart' => $boughtCookedMealsChart->build(),
             'boughtSnacksChart' => $boughtSnacksChart->build(),
@@ -41,7 +43,8 @@ class CompositionsReportController extends Controller
             'boughtColorChart' => $boughtColorChart->build(),
             'averageFoodListGrade' => $averageFoodListGrade,
             'averageMenuGrade' => $averageMenuGrade,
-            'averageBoughtGrade' => $averageBoughtGrade
+            'averageBoughtGrade' => $averageBoughtGrade,
+            'adminNotifs' => $adminNotifs
         ]);
     }
 }

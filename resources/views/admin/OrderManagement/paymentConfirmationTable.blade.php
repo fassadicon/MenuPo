@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
 
     <h1 class="h3">To Confirm Payment Orders</h1>
 

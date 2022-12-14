@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Parent User Management</h1>
     <a href="/admin/guardians/create" class="btn btn-primary mb-2">Create Parent Account</a>
     <a href="/admin/guardians/trash" class="btn btn-primary mb-2">Inactive Parent Accounts</a>

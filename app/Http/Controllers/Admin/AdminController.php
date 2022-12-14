@@ -7,11 +7,12 @@ use App\Models\User;
 
 use App\Models\Admin;
 
+use App\Models\Adminnotif;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreatAdminRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -52,7 +53,8 @@ class AdminController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.UserManagement.admin', compact('admins'));
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.admin', compact('admins', 'adminNotifs'));
     }
 
     public function view($id)
@@ -181,7 +183,8 @@ class AdminController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.UserManagement.adminTrash', compact('admins'));
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.adminTrash', compact('admins', 'adminNotifs'));
     }
 
     public function restore($id)

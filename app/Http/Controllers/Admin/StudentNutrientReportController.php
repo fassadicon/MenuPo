@@ -6,15 +6,22 @@ use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Purchase;
 use App\Charts\testChart;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Charts\averageSugarChart;
 use App\Charts\averageSodiumChart;
+use App\Charts\avgSatFatF6to9Chart;
+use App\Charts\avgSatFatM6to9Chart;
 use App\Charts\avgTotFatF6to9Chart;
 use App\Charts\avgTotFatM6to9Chart;
 use App\Charts\averageTotalFatChart;
 use App\Charts\avgCalorieF6to9Chart;
 use App\Charts\avgCalorieM6to9Chart;
 use App\Http\Controllers\Controller;
+use App\Charts\avgSatFatF10to12Chart;
+use App\Charts\avgSatFatF13to15Chart;
+use App\Charts\avgSatFatM10to12Chart;
+use App\Charts\avgSatFatM13to15Chart;
 use App\Charts\avgTotFatF10to12Chart;
 use App\Charts\avgTotFatF13to15Chart;
 use App\Charts\avgTotFatM10to12Chart;
@@ -46,6 +53,12 @@ class StudentNutrientReportController extends Controller
         avgTotFatF10to12Chart $avgTotFatF10to12Chart,
         avgTotFatF13to15Chart $avgTotFatF13to15Chart,
         averageSaturatedFatChart $averageSaturatedFatChart,
+        avgSatFatM6to9Chart $avgSatFatM6to9Chart,
+        avgSatFatM10to12Chart $avgSatFatM10to12Chart,
+        avgSatFatM13to15Chart $avgSatFatM13to15Chart,
+        avgSatFatF6to9Chart $avgSatFatF6to9Chart,
+        avgSatFatF10to12Chart $avgSatFatF10to12Chart,
+        avgSatFatF13to15Chart $avgSatFatF13to15Chart,
         averageSugarChart $averageSugarChart,
         averageSodiumChart $averageSodiumChart
     ) {
@@ -61,8 +74,8 @@ class StudentNutrientReportController extends Controller
             array_push($testArray, ($record->totalKcal / $dailyRecoKcalM10to12) * 100);
         }
 
-
-
+        $adminNotifs = Adminnotif::get();
+        
         return view('admin.Reports.studentNutrientData', [
             'averageCalorieConsumptionChart' => $averageCalorieConsumptionChart->build(),
             'avgCalorieM6to9Chart' => $avgCalorieM6to9Chart->build(),
@@ -82,6 +95,7 @@ class StudentNutrientReportController extends Controller
             'averageSaturatedFatChart' => $averageSaturatedFatChart->build(),  'averageSugarChart' => $averageSugarChart->build(),
            
             'averageSodiumChart' => $averageSodiumChart->build(),
+            'adminNotifs' => $adminNotifs,
         ]);
     }
 }

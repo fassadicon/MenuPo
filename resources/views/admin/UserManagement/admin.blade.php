@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Staff Account Management</h1>
     <a href="/admin/admins/create" class="btn btn-primary mb-2">Create Admin Account</a>
     <a href="/admin/admins/trash" class="btn btn-primary mb-2">Archived Admin Accounts</a>

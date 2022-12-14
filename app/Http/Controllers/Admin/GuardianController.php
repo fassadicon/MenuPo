@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Guardian;
 
+use App\Models\Adminnotif;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -45,9 +46,9 @@ class GuardianController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.UserManagement.parent', compact('guardians'));
+        return view('admin.UserManagement.parent', compact('guardians', 'adminNotifs'));
     }
 
     public function view($id)
@@ -155,9 +156,9 @@ class GuardianController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // Return View
-        return view('admin.UserManagement.parentTrash', compact('guardians'));
+        return view('admin.UserManagement.parentTrash', compact('guardians', 'adminNotifs'));
     }
 
     public function restore($id)
