@@ -1,6 +1,6 @@
 <div class="swiper mySwiper">
   <div class="swiper-logo">
-    <div class="w-full justify-center items-center md:text-left">
+    <div class="school-logo w-full justify-center items-center md:text-left">
       <img class="lg:transform lg:scale-125 w-48 md:w-48" src="{{ asset('storage/admin/school-images/school-logo.png') }}" />
     </div>
   </div>
