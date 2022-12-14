@@ -40,14 +40,14 @@ class PurchasesController extends Controller
                 ->addIndexColumn() 
                 ->addColumn('action', function ($row) {
                     
-                    $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewPending"><i class="bi bi-info-lg"></i></a>';
+                    // $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewPending"><i class="bi bi-info-lg"></i></a>';
 
-                    // $btn = $btn . ' <a href="/admin/orders/pendings/' . $row->id . '/confirm" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Confirm" class="confirmBtn btn btn-success btn-sm"><i class="bi bi-check-circle"></i></a>';
+                    // // $btn = $btn . ' <a href="/admin/orders/pendings/' . $row->id . '/confirm" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Confirm" class="confirmBtn btn btn-success btn-sm"><i class="bi bi-check-circle"></i></a>';
 
-                    // $btn = $btn . ' <a href="/admin/pendings/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="fas fa-check-circle"></i></a>';
+                    // // $btn = $btn . ' <a href="/admin/pendings/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="fas fa-check-circle"></i></a>';
                     
-                    // $btn = $btn. '<a href="/admin/pendings/update' data-id="' . $row->id . '" data-toggle="toggle" data-orginal-title="Data" class="toggle-class" type="checkbox"  '" data-onstyle="success" data-offstyle="danger" data-on="Active" data-off="InActive" {{$purchase->paymentStatus ? 'checked' : ''}}>';
-                     return $btn;
+                    // // $btn = $btn. '<a href="/admin/pendings/update' data-id="' . $row->id . '" data-toggle="toggle" data-orginal-title="Data" class="toggle-class" type="checkbox"  '" data-onstyle="success" data-offstyle="danger" data-on="Active" data-off="InActive" {{$purchase->paymentStatus ? 'checked' : ''}}>';
+                    //  return $btn;
                 })
 
                 // ->addColumn('status', function ($row){
@@ -162,7 +162,7 @@ class PurchasesController extends Controller
                 ->addIndexColumn() 
                 ->addColumn('action', function ($row) {
                     
-                     $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewTrash"><i class="bi bi-info-lg"></i></a>';
+                    //  $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewTrash"><i class="bi bi-info-lg"></i></a>';
 
                      $btn = ' <a href="/admin/orders/completed/' . $row->id . '/restore" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Restore" class="restoreBtn btn btn-success btn-sm"><i class="bi bi-arrow-clockwise"></i></a>';
                     
@@ -186,11 +186,11 @@ class PurchasesController extends Controller
         return redirect()->back();
     }
 
-    public function viewTrash($id)
-    {
-        return Purchase::onlyTrashed('id', $id)->first()
-        ->load('orders', 'parent', 'student', 'admin');
-    }
+    // public function viewTrash($id)
+    // {
+    //     return Purchase::onlyTrashed('id', $id)->first()
+    //     ->load('orders', 'parent', 'student', 'admin');
+    // }
 
     
 }
