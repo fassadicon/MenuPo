@@ -63,7 +63,8 @@
         #tsum-tabs #tab1:checked ~ #content1,
         #tsum-tabs #tab2:checked ~ #content2,
         #tsum-tabs #tab3:checked ~ #content3,
-        #tsum-tabs #tab4:checked ~ #content4 {
+        #tsum-tabs #tab4:checked ~ #content4,
+        #tsum-tabs #tab5:checked ~ #content5 {
           display: block;
         }
         
@@ -109,15 +110,18 @@
               <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primaryDark">
                 TODAY'S MENU</h2>
                 {{-- @livewire('cart-counter', ['anak_id' => $anak->id]) --}}
-                <a class="cart-counter hover:text-black" href="/user/cart-summary/{{$anak[0]->id}}" >
-                  <span class=cart-title>My Cart</span>
-                  @if (Cart::count() != 0)
-                      <span class="bg-red-500 px-2 rounded-full ">
-                          @php
-                              echo Cart::count();
-                          @endphp
-                      </span>
-                  @endif
+                <a class="cart-counter" href="/user/cart-summary/{{$anak[0]->id}}" >
+                  <button class="button-hero mt-2">
+                    <span class=cart-title>My Cart</span>
+                    @if (Cart::count() != 0)
+                        <span class="bg-red-500 px-2 rounded-full ">
+                            @php
+                                echo Cart::count();
+                            @endphp
+                        </span>
+                    @endif
+                  </button>
+                  
                 </a>
             </div>
             
@@ -130,6 +134,9 @@
             
             <input id="tab1" type="radio" name="tabs" checked>
             <label for="tab1">Rice Meals</label>
+
+            <input id="tab5" type="radio" name="tabs">
+            <label for="tab5">Pasta & Porridge</label>
               
             <input id="tab2" type="radio" name="tabs">
             <label for="tab2">Snacks</label>
@@ -140,6 +147,8 @@
             <input id="tab4" type="radio" name="tabs">
             <label for="tab4">Others</label>
 
+            
+
             {{-- Rice Meals --}}
             <x-user.cards.card-tabs.card-tab-riceMeal>
               @foreach($foods as $food)
@@ -148,6 +157,15 @@
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-riceMeal>
+
+            {{-- Pasta & Porridge Meals --}}
+            <x-user.cards.card-tabs.card-tab-pasta>
+              @foreach($foods as $food)
+                  @if($food->type == 4)
+                      <x-user.cards.food-card :food="$food" :anak="$anak[0]" :studs="$students" :restricts="$restricts"/>   
+                  @endif
+              @endforeach
+            </x-user.cards.card-tabs.card-tab-pasta>
 
             <x-user.cards.card-tabs.card-tab-fried>
               @foreach($foods as $food)
@@ -172,8 +190,7 @@
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-snacks>
-        
-      
+
           </main>
           </div>
       

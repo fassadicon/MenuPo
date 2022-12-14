@@ -34,6 +34,10 @@ class PaymentController extends Controller
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
+
+        $totalPrice = Cart::priceTotal();
+        $totalPricePayment = $totalPrice * 1000;
+
         
         //For total calories
         foreach($items as $item){
@@ -46,15 +50,51 @@ class PaymentController extends Controller
            
         }
 
+        // Paymongo Payment API
+        $ch = curl_init();
+        $certificate_location = "C:\xampp\php\extras\ssl\cacert.pem";
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $certificate_location);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $certificate_location);
+
+        curl_setopt_array($ch, [
+        CURLOPT_URL => "https://api.paymongo.com/v1/links",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "{\"data\":{\"attributes\":{\"amount\":$totalPricePayment,\"description\":\"Payment for Menu-Po:NSDAPS's Canteen\",\"remarks\":\"sample\"}}}",
+        CURLOPT_HTTPHEADER => [
+            "accept: application/json",
+            "authorization: Basic c2tfdGVzdF9Ec2dNUldYWHZ1VHdCYVpzdjc3blJVUVc6",
+            "content-type: application/json"
+            ],
+        ]);
+
+        $response = curl_exec($ch);
+        $err = curl_error($ch);
+
+        curl_close($ch);
+
+        $data = json_decode($response, true);
+
+        $checkout_link = $data['data']['attributes']['checkout_url'];
+        $payment_id = $data['data']['id'];
+        $reference_num = $data['data']['attributes']['reference_number'];
+        $payment_status = $data['data']['attributes']['status'];
+
         $payment = new Payment;
         $payment->method = "Gcash";
-        $payment->referenceNo = 123456789;
+        $payment->paymentID = $payment_id;
+        $payment->referenceNo = $reference_num;
+        $payment->paymenStatus = $payment_status;
         $payment->save();
         
         $purchase = new Purchase;
         $purchase->parent_id = $parent[0]->id;
         $purchase->student_id = $request->get('anak_id');
-        $purchase->totalAmount = Cart::priceTotal();
+        $purchase->totalAmount = $totalPrice;
         $purchase->totalKcal = $this->totKcal;
         $purchase->totalTotFat = $this->totfat;
         $purchase->totalSatFat = $this->totsatfat;
@@ -97,39 +137,44 @@ class PaymentController extends Controller
         $adminNotif->status = 1;
         $adminNotif->save();
 
-        Alert::success('Success!', 'Ordered successfully!');
-
-        return view('user.payment', [
-            'notifications' => $notifications,
-            'students' => $student,
-            'isSurveyAvail' => $isSurveyAvail
-        ]);
-    }
-
-    public function receipt(){
-
-        $items = Cart::content();
-
-        $parent = Guardian::where('user_id', auth()->id())->get();
-
-        $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
-        $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
-        $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
-        if(!empty($survey)){
-            $isSurveyAvail = 1;
-        }
-
         // Destroying the cart session
         Cart::destroy();
 
+        Alert::success('Success!', 'Ordered successfully!');
+
         return view('user.receipt', [
             'items' => $items,
+            'paymentLink' => $checkout_link,
             'notifications' => $notifications,
             'students' => $student,
             'isSurveyAvail' => $isSurveyAvail,
         ]);
     }
+
+    // public function receipt(){
+
+    //     $items = Cart::content();
+
+    //     $parent = Guardian::where('user_id', auth()->id())->get();
+
+    //     $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+    //     $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+    //     $survey = Survey::where('parent_id', $parent[0]->id)
+    //         ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+    //     if(!empty($survey)){
+    //         $isSurveyAvail = 1;
+    //     }
+
+    //     // Destroying the cart session
+    //     Cart::destroy();
+
+    //     return view('user.receipt', [
+    //         'items' => $items,
+    //         'notifications' => $notifications,
+    //         'students' => $student,
+    //         'isSurveyAvail' => $isSurveyAvail,
+    //     ]);
+    // }
 
     public function receipt_new(Purchase $purchase){
 

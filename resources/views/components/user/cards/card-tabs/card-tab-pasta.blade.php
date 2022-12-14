@@ -3,8 +3,8 @@
 
 
 
-<section id="content3">
-    <div class="container w-full mx-auto">
+<section id="content5">
+    <div class="container w-full px-5 py-6 mx-auto">
       <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-y-6">
         {{$slot}}
       </div>

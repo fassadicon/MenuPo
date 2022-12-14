@@ -1,5 +1,6 @@
-
+@include('sweetalert::alert')
 @props(['items'])
+@props(['paymentLink'])
 
 <div class="h-screen w-screen justify-center align-center ">
     
@@ -41,8 +42,9 @@
         </div>
         <div class="text-center">
             <button onclick="doCapture()" class=" bg-[#ffc300] hover:bg-blue-900 hover:text-white text-black font-bold py-2 px-4 rounded">Download Receipt</button>
-            <a href="/user/user-account" class=" bg-blue-900 hover:bg-[#ffc300] hover:text-black text-white font-bold py-2 px-4 rounded">Confirm</a>
+            <a href="{{$paymentLink}}" onclick="myFunction()" target="_blank" class=" bg-blue-900 hover:bg-[#ffc300] hover:text-black text-white font-bold py-2 px-4 rounded">Payment</a>
         </div>
+        <a id="home" class="text-center text-lg text-secondary font-bold mt-2" hidden href="/user/home"> <- Back to homepage</a>
     </div>
 </div>
 
@@ -58,4 +60,9 @@
   
       })
     }
+
+    function myFunction() {
+        document.getElementById("home").style.display = "block";
+    }
+    
 </script>

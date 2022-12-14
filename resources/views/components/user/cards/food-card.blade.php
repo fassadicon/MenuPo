@@ -5,9 +5,9 @@
 @props(['anak'])
 
 
-  <div class="max-w-xs mx-4 mb-2 rounded-lg shadow-lg">
-    <div class="relative flex mb-2">
-      <img class="w-full h-48" src="{{ $food->image ? asset('storage/' . $food->image) : asset('storage/admin/userNoImage.png') }}""
+  <div class="max-w-xs mx-4 mb-2 rounded-lg shadow-lg p-4">
+    <div class="relative h-48 flex mb-2">
+      <img class="w-full h-full" src="{{ $food->image ? asset('storage/' . $food->image) : asset('storage/admin/userNoImage.png') }}""
       alt="Image" />
 
       {{-- <img src="{{ $admin->image ? asset('storage/' . $admin->image) : asset('storage/admin/userNoImage.png') }}"
@@ -29,8 +29,8 @@
 
     </div>
 
-    <div class="md:px-6 md:py-2 px-4 py-0">
-      <h4 class="mb-3 md:text-xl text-base font-semibold tracking-tight text-primary uppercase">{{$food->name}}</h4>
+    <div class="md:px-6 md:py-2 h-32 px-4 py-0">
+      <h4 class="mb-3 md:text-xl text-xl font-semibold tracking-tight text-primary uppercase">{{$food->name}}</h4>
       <p class="leading-normal md:text-base text-sm text-gray-700">{{$food->description}}</p>
     </div>
 
@@ -39,13 +39,14 @@
           $contain = strpos($restricts, $food->id, 0)
       @endphp
       @if ($contain === false)
-        <button class="md:px-4 md:py-2 px-4 bg-primary text-sm md:text-base text-green-50" type="submit" id="cart<%=count++%>" value="{{$food->id}}" name="addtocart">
-          Add to cart
+        <button class="button-hero bg-primary" type="submit" id="cart<%=count++%>" value="{{$food->id}}" name="addtocart">
+          +
         </button>
+        <span class="px-4 py-2 w-full font-bold md:text-xl text-base text-primary"><span>&#8369;</span>{{$food->price}}</span>
 
         {{-- Restrict Button --}}
         <input type="hidden" name="stud_id" id="anak-id" value="{{$anak->id}}">
-        <button class="md:px-4 md:py-2 px-4 bg-primary text-sm md:text-base text-green-50" id="restrict<%=count++%>" type="submit" name="addtorestrict" value="{{$food->id}}" data-bs-toggle="tooltip" data-bs-placement="top">
+        <button class="button-hero bg-red-400" id="restrict<%=count++%>" type="submit" name="addtorestrict" value="{{$food->id}}" data-bs-toggle="tooltip" data-bs-placement="top">
           x
         </button>
        
@@ -53,7 +54,7 @@
         <p class="text-red"> This is restricted</p>
       @endif
       
-      <span class="px-4 py-2 md:text-xl text-base text-primary"><span>&#8369;</span>{{$food->price}}</span>
+      
     </div>
   </div>
 
