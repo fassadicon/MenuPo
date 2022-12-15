@@ -48,7 +48,7 @@ class HomeController extends Controller
         $purchases =  Purchase::where('parent_id', $parent[0]->id)->with('payment')->get();
 
         foreach($purchases as $purchase){
-            if($purchase->payment->paymentID != null && $purchase->payment->paymenStatus == 'unpaid'){
+            if($purchase->payment->paymentID != null && $purchase->payment->paymentStatus == 'unpaid'){
                 
                 $paymentID = $purchase->payment->paymentID;
 
@@ -74,9 +74,17 @@ class HomeController extends Controller
                 $response = curl_exec($ch);
 
                 $data = json_decode($response, true);
-                $payment_status = $data['data']['attributes']['status'];
 
-                DB::update('UPDATE payments SET paymenStatus = ? WHERE paymentID = ?', ['paid', $paymentID]);
+                dd($data);
+
+                $payment_status = $data['data']['attributes']['status'];
+                if($payment_status == 'unpaid'){
+                    //
+                }else{
+                    DB::update('UPDATE payments SET paymentStatus = ? WHERE paymentID = ?', ['paid', $paymentID]);
+                }
+
+                
             }
         }
 

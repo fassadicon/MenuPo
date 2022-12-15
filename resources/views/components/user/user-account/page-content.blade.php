@@ -4,17 +4,20 @@
 @props(['studs'])
 @props(['parent'])
 @props(['reqbutton'])
+@props(['unpaid'])
 
 @php
     $pending = 0;
     $paid = 0;
 
     foreach($purchases as $purchase){
-        if($purchase->paymentStatus == 0){
+        if($purchase->payment->paymentStatus == 'unpaid'){
             $pending += 1;
+        }elseif($purchase->payment->paymentStatus == 'paid'){
+            $paid += 1;
         }
         else{
-            $paid += 1;
+            //
         }
     }
 @endphp
@@ -129,13 +132,27 @@
                     </div>
                   </div>
                 <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
-                  <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
-                    <i class="fa-solid fa-pause"></i>
-                  </div>
-                  <div>
-                    <span class="inline-block text-2xl font-bold">{{$pending}}</span>
-                    <span class="block text-gray-500">Pending Orders</span>
-                  </div>
+                    <div class="flex relative group">
+                        <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
+                            <i class="fa-solid fa-pause"></i>
+                        </div>
+                        <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
+                            <p class="text-secondary text-lg font-bold">Unpaid purchase links: </p>  
+                             {{-- @foreach ()
+                                 <a href=""></a>
+                             @endforeach --}}
+                             @if ($unpaid != null || $unpaid != '')
+                                <a class="text-red-400" href="{{$unpaid}}" target="_blank">Unpaid purchase #1</a>
+                             @else
+                                 No unpaid purchases
+                             @endif
+                             
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="inline-block text-2xl font-bold">{{$pending}}</span>
+                        <span class="block text-gray-500">Pending Orders</span>
+                    </div>
                 </div>
                 <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
                   <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">

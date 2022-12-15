@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Food;
+use App\Models\Menu;
 use App\Models\Survey;
 use App\Models\Student;
 use App\Models\Guardian;
@@ -20,6 +21,7 @@ class UserMenuController extends Controller
         
         $restricts = $student->restriction;
 
+        $food = Menu::with('food')->get();
 
         $parent = Guardian::where('user_id', auth()->id())->get();
         $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
@@ -31,7 +33,7 @@ class UserMenuController extends Controller
         }
         return view('user.menu', [
             'anak' => $student,
-            'foods' => Food::all(),
+            'foods' => $food,
             'notifications' => $notifications,
             'students' => $students,
             'isSurveyAvail' => $isSurveyAvail,

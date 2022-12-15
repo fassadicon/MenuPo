@@ -5,7 +5,7 @@
 
 <x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
 
-    <x-user.user-account.page-content :chart="$chart" :purchases="$purchases" :reqbutton="$reqbutton" :parent="$parent" :studs="$students"/>
+    <x-user.user-account.page-content :chart="$chart" :unpaid="$unpaid" :purchases="$purchases" :reqbutton="$reqbutton" :parent="$parent" :studs="$students"/>
 
     <script src="{{ $chart->cdn() }}"></script>
 

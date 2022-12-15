@@ -5,10 +5,12 @@
     <td>#{{$purchase->id}}</td>
     <td><a href="/user/receipt/{{$purchase->id}}"><i class="fa-solid fa-receipt"></i></a></td>
     <td>{{$purchase->totalAmount}}</td>
-    @if ($purchase->paymentStatus == 0)
+    @if ($purchase->payment->paymentStatus == 'unpaid')
         <td class="px-6 py-4 text-center"> <span class="text-white text-sm w-1/3 pb-1 bg-red-600 font-semibold px-2 rounded-full"> Pending </span> </td>
-    @else
+    @elseif($purchase->payment->paymentStatus == 'paid')
         <td class="px-6 py-4 text-center"> <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Paid </span> </td>
+    @else
+        <td class="px-6 py-4 text-center"> <span class="text-black text-sm w-1/3 pb-1 bg-zinc-200 font-semibold px-2 rounded-full"> Test </span> </td>
     @endif
     <td>{{$purchase->created_at}}</td>
 </tr>

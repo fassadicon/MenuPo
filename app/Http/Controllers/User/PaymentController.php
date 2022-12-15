@@ -88,7 +88,7 @@ class PaymentController extends Controller
         $payment->method = "Gcash";
         $payment->paymentID = $payment_id;
         $payment->referenceNo = $reference_num;
-        $payment->paymenStatus = $payment_status;
+        $payment->paymentStatus = $payment_status;
         $payment->save();
         
         $purchase = new Purchase;

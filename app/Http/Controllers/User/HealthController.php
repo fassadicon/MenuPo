@@ -19,15 +19,16 @@ use App\Charts\UserCharts\SugarChart;
 use App\Charts\UserCharts\SatFatChart;
 use App\Charts\UserCharts\SodiumChart;
 use App\Charts\UserCharts\CalorieChart;
+use App\Models\Bmi;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class HealthController extends Controller
 {
     public function index(Student $anak){
 
-        $ids = explode(',' , $anak->restriction);
+        
 
-       
+        $ids = explode(',' , $anak->restriction);
 
         $parent = Guardian::where('user_id', auth()->id())->get();
 
@@ -38,6 +39,7 @@ class HealthController extends Controller
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
+        $bmi = Bmi::where('id', $anak->bmi_id)->get();
         $purchase = DB::select('SELECT * FROM purchases WHERE parent_id = ? && student_id = ?', [$parent[0]->id, $anak->id]);
 
         // For average food grade
@@ -65,6 +67,7 @@ class HealthController extends Controller
 
         return view('user.health', [
             'students' => $student,
+            'bmi' => $bmi[0],
             'restricts' => $restrict,
             'parent' => $parent[0],
             'notifications' => $notifications,
@@ -136,7 +139,7 @@ class HealthController extends Controller
 
         Alert::success('Success!', 'Student details successfully changed.');
 
-        return redirect()->route(route:'user.account');
+        return redirect()->route('health.index', $request->input('id'));
         
     }
 

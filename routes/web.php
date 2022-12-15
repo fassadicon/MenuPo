@@ -228,8 +228,12 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Survey
     Route::get('/reports/survey', [SurveyReportController::class, 'index']);
     Route::get('/reports/survey/table', [SurveyReportController::class, 'surveyTable'])->name('survey.table');
+    Route::get('/reports/download-survey-report', [SurveyReportController::class, 'download_survey_report']);
     Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
+    Route::get('/reports/download-composition-report', [CompositionsReportController::class, 'download_composition_report']);
     Route::get('/reports/nutrientConsumption', [StudentNutrientReportController::class, 'index']);
+    
+
 });
 
 

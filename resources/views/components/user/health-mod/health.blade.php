@@ -5,6 +5,7 @@
 @props(['restricts'])
 @props(['purchases'])
 @props(['average_grade'])
+@props(['bmi'])
 
 @php
 
@@ -270,40 +271,40 @@
                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                   </span>
-                  <span class="tracking-wide">Personal Information</span>
+                  <span class="tracking-wide font-bold">Personal Information</span>
               </div>
               <div class="text-gray-700">
                   <div class="grid md:grid-cols-2 text-sm">
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">First Name</div>
+                          <div class="px-4 py-2 font-bold">First Name</div>
                           <div class="px-4 py-2">{{$anak->firstName}}</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Middle Name</div>
+                          <div class="px-4 py-2 font-bold">Middle Name</div>
                           <div class="px-4 py-2">{{$anak->middleName}}</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Last Name</div>
+                          <div class="px-4 py-2 font-bold">Last Name</div>
                           <div class="px-4 py-2">{{$anak->lastName}}</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Suffix</div>
+                          <div class="px-4 py-2 font-bold">Suffix</div>
                           <div class="px-4 py-2">{{$anak->suffix}}</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Gender</div>
+                          <div class="px-4 py-2 font-bold">Gender</div>
                           <div class="px-4 py-2">{{$anak->sex}}</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Current Address</div>
+                          <div class="px-4 py-2 font-bold">Current Address</div>
                           <div class="px-4 py-2">{{$parent->address}}</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Birthday</div>
+                          <div class="px-4 py-2 font-bold">Birthday</div>
                           <div class="px-4 py-2">{{$anak->birthDate}}</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Account Created</div>
+                          <div class="px-4 py-2 font-bold">Account Created</div>
                           <div class="px-4 py-2">{{$anak->created_at}}</div>
                       </div>
                   </div>
@@ -334,29 +335,29 @@
                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                   </span>
-                  <span class="tracking-wide">Health Information</span>
+                  <span class="tracking-wide font-bold">Health Information</span>
               </div>
-              <div class="text-gray-700">
+              <div class="text-gray-700 mb-4">
                   <div class="grid md:grid-cols-2 text-sm">
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Height</div>
-                          <div class="px-4 py-2">{{$anak->height}} cm</div>
+                          <div class="px-4 py-2 font-bold">Height</div>
+                          <div class="px-4 py-2">{{$bmi->Q1Height}} cm</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">Weight</div>
-                          <div class="px-4 py-2">{{$anak->weight}} kgs</div>
+                          <div class="px-4 py-2 font-bold">Weight</div>
+                          <div class="px-4 py-2">{{$bmi->Q1Weight}} kgs</div>
                       </div>
                       <div class="grid grid-cols-2">
-                          <div class="px-4 py-2 font-semibold">BMI</div>
+                          <div class="px-4 py-2 font-bold">BMI</div>
                           <div class="px-4 py-2">
-                           {{$anak->BMI}}
+                            {{$bmi->Q1BMI}}
                           </div>
                       </div>
                   </div>
               </div>
-              <button
+              {{-- <button
                   class="block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                  Request to Change Information</button>
+                  Request to Change Information</button> --}}
           </div>
 
           <div class="my-4"></div>

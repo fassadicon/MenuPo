@@ -72,5 +72,11 @@
 
         </div>
     </div>
+    <a class="w-full text-center mr-4" href="/admin/reports/download-composition-report">
+        <div
+            class="block  text-secondary text-smfont-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+            Download in PDF
+        </div>
+    </a>
 
 </x-admin.layout>

@@ -45,6 +45,7 @@ class boughtCookedMealsChart
                 ->get(['name'])->value('name');
             array_push($names, $foodIdName);
         }
+
         $count = (int)sizeof($labels);
 
         return $this->chart->horizontalBarChart()

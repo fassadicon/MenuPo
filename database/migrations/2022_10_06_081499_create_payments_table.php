@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('method');
             $table->string('paymentID')->nullable();
             $table->string('referenceNo')->nullable();
-            $table->string('paymenStatus');
+            $table->string('paymentStatus');
             $table->timestamps();
         });
     }

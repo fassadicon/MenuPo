@@ -110,7 +110,7 @@
               <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primaryDark">
                 TODAY'S MENU</h2>
                 {{-- @livewire('cart-counter', ['anak_id' => $anak->id]) --}}
-                <a class="cart-counter" href="/user/cart-summary/{{$anak->id}}" >
+                {{-- <a class="cart-counter" href="/user/cart-summary/{{$anak->id}}" >
                   <button class="button-hero mt-2">
                     <span class=cart-title>My Cart</span>
                     @if (Cart::count() != 0)
@@ -122,7 +122,7 @@
                     @endif
                   </button>
                   
-                </a>
+                </a> --}}
             </div>
             
             
@@ -131,7 +131,7 @@
 
           <div class="menu-sticky">
             <div class="card">
-              <a class="cart-counter" href="/user/cart-summary/{{$anak[0]->id}}" >
+              <a class="cart-counter" href="/user/cart-summary/{{$anak->id}}" >
               <button class="button-hero mt-2 bg-blue-600 text-white rounded-full">
                 <span class=cart-title><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="cart-menu bi bi-cart float-left" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg> 
                   <p class="text-base inline ml-2">My Cart</p></span>
@@ -170,8 +170,8 @@
             {{-- Rice Meals --}}
             <x-user.cards.card-tabs.card-tab-riceMeal>
               @foreach($foods as $food)
-                  @if($food->type == 3)
-                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>   
+                  @if($food->food->type == 3)
+                      <x-user.cards.food-card :food="$food->food" :anak="$anak" :studs="$students" :restricts="$restricts"/>   
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-riceMeal>
@@ -179,32 +179,32 @@
             {{-- Pasta & Porridge Meals --}}
             <x-user.cards.card-tabs.card-tab-pasta>
               @foreach($foods as $food)
-                  @if($food->type == 4)
-                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>   
+                  @if($food->food->type == 4)
+                      <x-user.cards.food-card :food="$food->food" :anak="$anak" :studs="$students" :restricts="$restricts"/>   
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-pasta>
 
             <x-user.cards.card-tabs.card-tab-fried>
               @foreach($foods as $food)
-                  @if($food->type == 2)
-                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
+                  @if($food->food->type == 2)
+                      <x-user.cards.food-card :food="$food->food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-fried>
 
             <x-user.cards.card-tabs.card-tab-drinks>
               @foreach($foods as $food)
-                  @if($food->type == 1)
-                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
+                  @if($food->food->type == 1)
+                      <x-user.cards.food-card :food="$food->food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-drinks>
   
             <x-user.cards.card-tabs.card-tab-snacks>
               @foreach($foods as $food)
-                  @if($food->type == 0)
-                      <x-user.cards.food-card :food="$food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
+                  @if($food->food->type == 0)
+                      <x-user.cards.food-card :food="$food->food" :anak="$anak" :studs="$students" :restricts="$restricts"/>  
                   @endif
               @endforeach
             </x-user.cards.card-tabs.card-tab-snacks>

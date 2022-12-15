@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Survey;
 use App\Mail\SampleMail;
 use App\Models\Guardian;
+use App\Models\Purchase;
 use App\Models\Adminnotif;
 use App\Models\Passrequest;
 use App\Models\Notification;
@@ -22,7 +23,7 @@ class UserAccController extends Controller
     public function index(ParentChart $chart){
         $parent = Guardian::where('user_id', auth()->id())->get();
         
-        $purchase_his = DB::select('SELECT * FROM purchases WHERE parent_id = ?', [$parent[0]->id]); 
+        $purchase_his = Purchase::where('parent_id', $parent[0]->id)->with('payment')->get();
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         $survey = Survey::where('parent_id', $parent[0]->id)
@@ -45,10 +46,51 @@ class UserAccController extends Controller
             }
         }
 
+        $payment_link = '';
+        foreach($purchase_his as $purchase){
+            if($purchase->payment->paymentID != null && $purchase->payment->paymentStatus == 'unpaid'){
+                
+                $paymentID = $purchase->payment->paymentID;
+
+                $ch = curl_init();
+                $certificate_location = "C:\xampp\php\extras\ssl\cacert.pem";
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $certificate_location);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $certificate_location);
+                
+                curl_setopt_array($ch, [
+                CURLOPT_URL => "https://api.paymongo.com/v1/links/$paymentID",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => [
+                    "accept: application/json",
+                    "authorization: Basic c2tfdGVzdF9Ec2dNUldYWHZ1VHdCYVpzdjc3blJVUVc6"
+                    ],
+                ]);
+                
+                $response = curl_exec($ch);
+
+                $data = json_decode($response, true);
+                $payment_link = $data['data']['attributes']['checkout_url'];
+                $payment_status = $data['data']['attributes']['status'];
+                if($payment_status == 'unpaid'){
+                    //
+                }else{
+                    DB::update('UPDATE payments SET paymentStatus = ? WHERE paymentID = ?', ['paid', $paymentID]);
+                }
+   
+            }
+        }
+
+
         
         return view('user.user-account', [
             'notifications' => $notifications,
             'parent' => $parent[0],
+            'unpaid' => $payment_link,
             'students' => $student,
             'isSurveyAvail' => $isSurveyAvail,
             'purchases' => $purchase_his,

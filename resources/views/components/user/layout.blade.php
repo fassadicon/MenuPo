@@ -392,7 +392,7 @@
                 @if (sizeof($studs) > 1)
                   <li><a href="/user/menu-landing" class="hover:text-white">Menu</a></li>
                 @else
-                  <li><a href="/user/menu/{{$studs[0]->id}}" class="hover:text-white">Menu</a></li>
+                  <li><a href="/user/menu/{{$studs->id}}" class="hover:text-white">Menu</a></li>
                 @endif
                 
                 <li class="flex relative group">
