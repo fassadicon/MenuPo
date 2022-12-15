@@ -1,7 +1,7 @@
 <x-admin.layout :notifs='$adminNotifs'>
 <section class="survey-card">
     <div class="header-page">
-    <p><i class="fab fa-nutritionix fa-xl"></i>Calorie Intake Report</p>
+        <p><i class="fab fa-nutritionix fa-xl"></i>Calorie Intake Report</p>
     </div>
     <hr class="mx-4 my-4">
 
@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="row-bottom row">
+    <d  iv class="row-bottom row">
         <div class="col-3">
             <div class="card-survey card_red">
             <h1><strong>Male Ages 10 to 12</strong></h1>
@@ -103,8 +103,19 @@
             </div>
         </div>
     </div>
+
+    <a class="text-center" href="/admin/reports/download-calorie-report">
+        <div
+            class="block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+            Download in PDF
+        </div>
+    </a>
+
     <hr class="mx-4 my-4">
     <br>
 
+    
 </section>
+
+
 </x-admin.layout>
