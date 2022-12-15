@@ -107,7 +107,7 @@ class PurchasesController extends Controller
                     
                     $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewCompleted"><i class="bi bi-info-lg"></i></a>';
 
-                    $btn = ' <a href="/admin/orders/completed/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="archiveBtn btn btn-warning btn-sm"><i class="bi bi-archive"></i></a>';
+                    $btn = $btn . ' <a href="/admin/orders/completed/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="archiveBtn btn btn-warning btn-sm"><i class="bi bi-archive"></i></a>';
                     
                     // $btn = $btn. '<a href="/admin/pendings/update' data-id="' . $row->id . '" data-toggle="toggle" data-orginal-title="Data" class="toggle-class" type="checkbox"  '" data-onstyle="success" data-offstyle="danger" data-on="Active" data-off="InActive" {{$purchase->paymentStatus ? 'checked' : ''}}>';
                      return $btn;
@@ -155,7 +155,12 @@ class PurchasesController extends Controller
     public function trash(Request $request)
     {
         $purchases = Purchase::onlyTrashed()->get()
-        ->load('orders', 'orders.food', 'parent', 'student', 'admin');
+        ->load('orders', 'orders.food', 'parent', 'student', 'admin', 'payment');
+        foreach ($purchases as $purchase) {
+            $purchase['served_by_name'] = Admin::where('id', $purchase->served_by)->first();
+            $purchase['created_at_formatted'] = Carbon::parse($purchase->created_at)->format('M d, Y');
+            $purchase['updated_at_formatted'] = Carbon::parse($purchase->updated_at)->format('M d, Y');
+        }
 
         if ($request->ajax()) {
             return DataTables::of($purchases)
