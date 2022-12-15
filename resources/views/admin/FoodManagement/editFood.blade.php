@@ -1,4 +1,4 @@
-<x-admin.layout>
+<x-admin.layout :notifs='$adminNotifs'>
     <header class="text-center">
         <h2 class="text-2xl font-bold uppercase mb-1">Edit Food Details</h2>
         {{-- <p class="mb-4">Edit: {{ $food->name }}</p> --}}

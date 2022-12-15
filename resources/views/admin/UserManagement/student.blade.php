@@ -1,8 +1,8 @@
 <x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
-    <a href="/admin/students/create" class="btn btn-primary mb-2">Create Student Account</a>
-    <a href="/admin/students/trash" class="btn btn-primary mb-2">Archived Student Accounts</a>
+    <a href="/admin/students/create" class="btn btn-success mb-2"><i class="fas fa-user-plus"></i>&nbsp;Create Student Account</a>
+    <a href="/admin/students/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Student Accounts</a>
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
         <table class="table table-hover table-sm" id="foodTable">
@@ -688,5 +688,7 @@
             });
         });
     </script>
+    <hr class="mx-4 my-4">
+    <br>
 
 </x-admin.layout>

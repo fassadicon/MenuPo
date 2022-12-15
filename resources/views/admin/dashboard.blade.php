@@ -135,5 +135,23 @@
           </div>
 
         </div> --}}
-    </div>
+        <section class="survey-card">
+          <div class="container-fluid">
+            <div class="container">
+              <div class="row">
+                {{-- Main Card --}}
+                <div class="col-sm-4">
+                  <div class="card-survey card_red text-center">
+                    <div class="title">
+                      <h4>Basic</h4>
+                    </div>
+                   
+                   
+              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 </x-admin.layout>
