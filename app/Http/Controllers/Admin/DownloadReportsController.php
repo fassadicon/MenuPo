@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use App\Models\Bmi;
+use App\Models\Order;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -1806,7 +1807,7 @@ class DownloadReportsController extends Controller
                 text-align: center;
             }
             th{
-                width: 180px;
+                width: 75px;
             }
             tr{
                 text-align: center;
@@ -1822,6 +1823,9 @@ class DownloadReportsController extends Controller
                 border: 1px solid black;
                 border-collapse: collapse;
               }
+            .total{
+                font-weight: bold;
+            }
         </style>
         <body>
 
@@ -1829,6 +1833,7 @@ class DownloadReportsController extends Controller
 
             <table class="border-2 border-solid">
                 <tr> 
+                    <th>        </th>
                     <th>July</th>
                     <th>August</th>
                     <th>September</th>
@@ -1841,22 +1846,343 @@ class DownloadReportsController extends Controller
                     <th>April</th>
                     <th>May</th>
                     <th>June</th>
-                    <th>Total</th>
                 </tr>
+
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>Cooked Meals </td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-07-01', '2022-07-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-08-01', '2022-08-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-09-01', '2022-09-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-10-01', '2022-10-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-11-01', '2022-11-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-12-01', '2022-12-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-01-01', '2023-01-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-02-01', '2023-02-28']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-03-01', '2023-03-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-04-01', '2023-04-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-05-01', '2023-05-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-06-01', '2023-06-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 3);
+                    })->sum('amount') .'</td>
+                   
+                </tr>
+
+                <tr>
+                    <td> Pasta & Porridge </td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-07-01', '2022-07-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-08-01', '2022-08-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-09-01', '2022-09-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-10-01', '2022-10-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-11-01', '2022-11-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-12-01', '2022-12-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-01-01', '2023-01-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-02-01', '2023-02-28']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-03-01', '2023-03-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-04-01', '2023-04-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-05-01', '2023-05-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-06-01', '2023-06-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 4);
+                    })->sum('amount') .'</td>
+                </tr>
+
+                <tr>
+                    <td> Snacks </td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-07-01', '2022-07-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-08-01', '2022-08-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-09-01', '2022-09-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-10-01', '2022-10-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-11-01', '2022-11-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-12-01', '2022-12-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-01-01', '2023-01-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-02-01', '2023-02-28']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-03-01', '2023-03-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-04-01', '2023-04-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-05-01', '2023-05-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-06-01', '2023-06-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 2);
+                    })->sum('amount') .'</td>
+                </tr>
+
+                <tr>
+                    <td> Beverages </td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-07-01', '2022-07-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-08-01', '2022-08-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-09-01', '2022-09-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-10-01', '2022-10-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-11-01', '2022-11-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-12-01', '2022-12-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-01-01', '2023-01-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-02-01', '2023-02-28']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-03-01', '2023-03-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-04-01', '2023-04-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-05-01', '2023-05-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-06-01', '2023-06-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 1);
+                    })->sum('amount') .'</td>
+                </tr>
+
+                <tr>
+                    <td> Others </td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-07-01', '2022-07-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-08-01', '2022-08-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-09-01', '2022-09-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-10-01', '2022-10-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-11-01', '2022-11-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2022-12-01', '2022-12-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-01-01', '2023-01-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-02-01', '2023-02-28']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-03-01', '2023-03-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-04-01', '2023-04-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-05-01', '2023-05-31']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                    <td>'. Order::whereHas('purchase', function ($query) {
+                        $query->whereBetween('created_at', ['2023-06-01', '2023-06-30']);
+                    })->whereHas('food', function ($query) {
+                        $query->where('type', 0);
+                    })->sum('amount') .'</td>
+                </tr>
+
+                <tr class="total"> 
+                    <td>Total</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-07-01', '2022-07-31'])->sum('totalAmount')) .'</td>
+                    <td>'.  round(Purchase::whereBetween('created_at', ['2022-08-01', '2022-08-31'])->sum('totalAmount')) .'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-09-01', '2022-09-30'])->sum('totalAmount')) .'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-10-01', '2022-10-31'])->sum('totalAmount')) .'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-11-01', '2022-11-30'])->sum('totalAmount')) .'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2022-12-01', '2022-12-31'])->sum('totalAmount')) .'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-01-01', '2023-01-31'])->sum('totalAmount')) .'</td>
+                    <td>'.  round(Purchase::whereBetween('created_at', ['2023-02-01', '2023-02-28'])->sum('totalAmount')) .'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-03-01', '2023-03-31'])->sum('totalAmount')) .'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-04-01', '2023-04-30'])->sum('totalAmount')) .'</td>
+                    <td>'.  round(Purchase::whereBetween('created_at', ['2023-05-01', '2023-05-31'])->sum('totalAmount')) .'</td>
+                    <td>'. round(Purchase::whereBetween('created_at', ['2023-06-01', '2023-06-30'])->sum('totalAmount')) .'</td>
                 </tr>
         
             </table>
