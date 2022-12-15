@@ -44,28 +44,6 @@
             <tbody>
             </tbody>
             <tfoot>
-                <th>ID</th>
-                <th>Grade</th>
-                <th>Section</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Sex</th>
-                <th>Q1Height</th>
-                <th>Q1Weight</th>
-                <th>Q1BMI</th>
-                <th>Q2Height</th>
-                <th>Q2Weight</th>
-                <th>Q2BMI</th>
-                <th>Q3Height</th>
-                <th>Q3Weight</th>
-                <th>Q3BMI</th>
-                <th>Q4Height</th>
-                <th>Q4Weight</th>
-                <th>Q4BMI</th>
-                <th>Created BY</th>
-                <th>Created At</th>
-                <th>Last Updated By</th>
-                <th>Last Updated At</th>
             </tfoot>
         </table>
     </div>
@@ -319,28 +297,7 @@
                 },
                 // Footer Sorting
                 initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function() {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                    column.search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-
-                            column
-                                .data()
-                                .unique()
-                                .sort()
-                                .each(function(d, j) {
-                                    select.append('<option value="' + d + '">' + d +
-                                        '</option>');
-                                });
-                        });
+                   
                 },
                 columns: [{ // 0
                         data: 'id',
