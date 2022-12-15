@@ -20,13 +20,13 @@ class averageSodiumChart
         return $this->chart->barChart()
             ->setTitle('Average Daily Sodium')
             ->addData('Average Sodium', [
-                round(Purchase::whereBetween('created_at', ['2022-07-01', '2022-10-31'])
+                round(Purchase::whereBetween('created_at', ['2022-08-01', '2022-11-30'])
                 ->avg('totalSodium') / 1000, 2), 
-                round(Purchase::whereBetween('created_at', ['2022-09-01', '2023-02-28'])
+                round(Purchase::whereBetween('created_at', ['2022-12-01', '2023-03-31'])
                 ->avg('totalSodium') / 1000, 2), 
-                round(Purchase::whereBetween('created_at', ['2023-03-01', '2023-06-30'])
+                round(Purchase::whereBetween('created_at', ['2023-04-01', '2023-06-30'])
                 ->avg('totalSodium') / 1000, 2),
-                round(Purchase::whereBetween('created_at', ['2023-07-01', '2023-08-31'])
+                round(Purchase::whereBetween('created_at', ['2023-07-01', '2023-07-31'])
                 ->avg('totalSodium') / 1000, 2)
             ])
             ->setXAxis(['1st Quarter', '2nd Quarter', '3rd Quarter', '4th Quarter'])

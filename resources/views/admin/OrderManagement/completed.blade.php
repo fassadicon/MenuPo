@@ -50,19 +50,43 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="purchaseID" id="purchaseID">
-                    <div class="mb-3">
-                        <label for="">Parent Name</label>
-                        <p id="parent_id" class="form-control"></p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Student Name</label>
-                        <p id="parent_id" class="form-control"></p>
-                    </div>
-                    <input type="hidden" id="totalKcal">
-                    <input type="hidden" id="totalTotFat">
-                    <input type="hidden" id="totalSatFat">
-                    <input type="hidden" id="totalSugar">
-                    <input type="hidden" id="totalSodium">
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="">Parent Name</label>
+                            <p id="parent_id" class="form-control"></p>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3">
+                                <label for="">Student Name</label>
+                                <p id="student_id" class="form-control"></p>
+                            </div>
+                            <div class="col-6">
+
+                                <div class="mb-3">
+                                    <label for="">Total Amount</label>
+                                    <p id="totalAmount" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Total Kcal</label>
+                                    <p id="totalKcal" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Total Fat (g)</label>
+                                    <p id="totalTotFat" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Total Saturated Fat (g)</label>
+                                    <p id="totalSatFat" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Total Sugar (g)</label>
+                                    <p id="totalSugar" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Total Sodium (mg)</label>
+                                    <p id="totalSodium" class="form-control"></p>
+                                </div>
+                            </div>
                     <div class="mb-3">
                         <label for="">Total Amount</label>
                         <p id="totalAmount" class="form-control"></p>
@@ -400,7 +424,7 @@
             });
 
             $('body').on('click', '.restoreBtn', function() {
-                Swal.fire('Archived');
+                Swal.fire('Restore');
             });
 
             // Mark Pending Order as Paid

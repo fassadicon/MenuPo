@@ -1,6 +1,6 @@
 <x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Archived Staff Account Management</h1>
-    <a href="/admin/admins/" class="btn btn-primary mb-2">Back</a>
+    <a href="/admin/admins/" class="btn btn-warning mb-2"><i class="fas fa-angle-left"></i>&nbsp;Back</a>
     {{-- DATABLE --}}
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
