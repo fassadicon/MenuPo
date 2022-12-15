@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use App\Models\Admin;
 use App\Models\Purchase;
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\DataTables as DataTables;
@@ -60,8 +61,8 @@ class ConfirmPaymentTableController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
+        $adminNotifs = Adminnotif::get();
         // return view
-        return view('admin.OrderManagement.paymentConfirmationTable', compact('purchases'));
+        return view('admin.OrderManagement.paymentConfirmationTable', compact('purchases', 'adminNotifs'));
     }
 }

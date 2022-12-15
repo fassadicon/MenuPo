@@ -10,6 +10,7 @@ use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Imports\AdminsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables as DataTables;
@@ -29,7 +30,7 @@ class ImportUsersController extends Controller
         Alert::success('Success', 'Parent and Student Accounts Imported');
         Excel::import(new UsersImport, $request->file);
         $adminNotifs = Adminnotif::get();
-        return redirect('admin/imports', compact('adminNotifs'));
+        return view('admin.UserManagement.importUsers', ['adminNotifs' => $adminNotifs]);
     }
 
     public function viewImportedGuardians(Request $request)
@@ -93,37 +94,53 @@ class ImportUsersController extends Controller
         return view('admin.UserManagement.importUsers', compact('students'));
     }
 
-    // public function viewImportedAdmins(Request $request) 
-    // {
-    //     // Get Admin Accounts
-    //     $admins = Admin::with('user')
-    //     ->whereDate('created_at', Carbon::today())
-    //     ->whereBetween('created_at', [Carbon::now()->subSeconds(10), Carbon::now()])
-    //     ->get();
-    //     foreach ($admins as $admin) {
-    //         $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
-    //         $admin->updated_by == null ? $admin['updated_by_name'] = 'N/A' : $admin['updated_by_name'] = Admin::where('id', $admin->updated_by)->first();
-    //         $admin['created_at_formatted'] = Carbon::parse($admin->created_at)->format('M d, Y');
-    //         $admin['updated_at_formatted'] = Carbon::parse($admin->updated_at)->format('M d, Y');
-    //     }
-    //     // Return Data Tables
-    //     if ($request->ajax()) {
-    //         return DataTables::of($admins)
-    //             ->addIndexColumn()
-    //             ->addColumn('action', function ($row) {
-    //                 // View Image Button
-    //                 $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
-    //                 // View Detailed Information Button
-    //                 $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewAdminDetails"><i class="bi bi-info-lg"></i></a>';
-    //                 // Edit Information Button
-    //                 $btn = $btn . ' <a href="/admin/admins/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';
-    //                 // Archive Account Button
-    //                 $btn = $btn . ' <a href="/admin/admins/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-warning btn-sm"><i class="bi bi-archive"></i></a>';
-    //                 return $btn;
-    //             })
-    //             ->rawColumns(['action'])
-    //             ->make(true);
-    //     }
-    //     return view('admin.UserManagement.importUsers', compact('admins'));
-    // }
+    public function indexAdmin () {
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.importAdmins', compact('adminNotifs'));
+    }
+
+    public function importAdmin(Request $request) {
+        $request->validate([
+            'file' => 'required|mimes:csv,txt',
+        ]);
+
+        Alert::success('Success', 'Admin Accounts Imported');
+        Excel::import(new AdminsImport, $request->file);
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.importAdmins', ['adminNotifs' => $adminNotifs]);
+    }
+
+    public function viewImportedAdmins(Request $request) 
+    {
+        // Get Admin Accounts
+        $admins = Admin::with('user')
+        ->whereDate('created_at', Carbon::today())
+        ->whereBetween('created_at', [Carbon::now()->subSeconds(10), Carbon::now()])
+        ->get();
+        foreach ($admins as $admin) {
+            $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
+            $admin->updated_by == null ? $admin['updated_by_name'] = 'N/A' : $admin['updated_by_name'] = Admin::where('id', $admin->updated_by)->first();
+            $admin['created_at_formatted'] = Carbon::parse($admin->created_at)->format('M d, Y');
+            $admin['updated_at_formatted'] = Carbon::parse($admin->updated_at)->format('M d, Y');
+        }
+        // Return Data Tables
+        if ($request->ajax()) {
+            return DataTables::of($admins)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    // View Image Button
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Image" class="imgBtn btn btn-primary btn-sm viewImage"><i class="bi bi-card-image"></i></a>';
+                    // View Detailed Information Button
+                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewAdminDetails"><i class="bi bi-info-lg"></i></a>';
+                    // Edit Information Button
+                    $btn = $btn . ' <a href="/admin/admins/' . $row->id . '/edit" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>';
+                    // Archive Account Button
+                    $btn = $btn . ' <a href="/admin/admins/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="delete btn btn-warning btn-sm"><i class="bi bi-archive"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('admin.UserManagement.importUsers', compact('admins'));
+    }
 }

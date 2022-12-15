@@ -29,23 +29,6 @@
             <tbody>
             </tbody>
             <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>FN</th>
-                    <th>LN</th>
-                    <th>MN</th>
-                    <th>Suffix</th>
-                    <th>Email</th>
-                    <th>Recovery Email</th>
-                    <th>Sex</th>
-                    <th>Address</th>
-                    <th>Birth Date</th>
-                    <th>Status</th>
-                    <th>Created At</th>
-                    <th>Created By</th>
-                    <th>Updated At</th>
-                    <th>Updated By</th>
-                </tr>
             </tfoot>
         </table>
     </div>
@@ -209,28 +192,7 @@
                 },
                 // Footer Sorting
                 initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function() {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                    column.search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-
-                            column
-                                .data()
-                                .unique()
-                                .sort()
-                                .each(function(d, j) {
-                                    select.append('<option value="' + d + '">' + d +
-                                        '</option>');
-                                });
-                        });
+                    
                 },
                 columns: [{
                         data: 'id',

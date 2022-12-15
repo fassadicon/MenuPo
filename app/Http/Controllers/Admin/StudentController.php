@@ -18,6 +18,8 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Yajra\DataTables\DataTables as DataTables;
 use App\Http\Requests\Admin\StoreStudentRequest;
 use App\Http\Requests\Admin\UpdateStudentRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ImportBMI;
 
 class StudentController extends Controller
 {
@@ -186,5 +188,41 @@ class StudentController extends Controller
         $student->update(['status' => 1]);
         Alert::success('Success', $student->firstName . ' ' . $student->lastName . ' Restored');
         return redirect()->back();
+    }
+
+    public function importUpdateBMI () {
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.updateBMI', compact('adminNotifs'));
+    }
+
+    public function import(Request $request) {
+        $request->validate([
+            'file' => 'required|mimes:csv,txt',
+        ]);
+
+       
+        Excel::import(new ImportBMI, $request->file);
+        Alert::success('Success', 'BMI Information of Students Updated');
+        $adminNotifs = Adminnotif::get();
+        return view('admin.UserManagement.updateBMI', compact('adminNotifs'));
+    }
+
+    public function viewImportedStudents(Request $request)
+    {
+        $students = Student::whereDate('updated_at', Carbon::today())
+        ->whereBetween('updated_at', [Carbon::now()->subMinute(), Carbon::now()])->get()->load('guardian', 'bmi');
+        foreach ($students as $student) {
+            $student['created_by_name'] = Admin::where('id', $student->created_by)->first();
+            $student['updated_by_name'] = $student->updated_by == null ? 'N/A' : Admin::where('id', $student->updated_by)->first();
+            $student['created_at_formatted'] = Carbon::parse($student->created_at)->format('M d, Y');
+            $student['updated_at_formatted'] = Carbon::parse($student->updated_at)->format('M d, Y');
+        }
+        if ($request->ajax()) {
+            return DataTables::of($students)
+                ->addIndexColumn()
+                ->make(true);
+        }
+        // Return View
+        return view('admin.UserManagement.updateBMI', compact('students'));
     }
 }
