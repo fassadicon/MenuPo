@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 use App\Models\Student;
 use App\Models\Purchase;
 use App\Charts\testChart;
@@ -13,6 +14,7 @@ use App\Charts\testRadialCjart;
 use App\Charts\avgSugarPieChart;
 use App\Charts\averageSugarChart;
 use App\Charts\avgSatFatPieChart;
+use App\Charts\avgSodiumPieChart;
 use App\Charts\avgTotFatPieChart;
 use App\Charts\kcalF6to9PieChart;
 use App\Charts\kcalM6to9PieChart;
@@ -31,6 +33,8 @@ use App\Charts\kcalF10to12PieChart;
 use App\Charts\kcalM10to12PieChart;
 use App\Charts\satFatF6to9PieChart;
 use App\Charts\satFatM6to9PieChart;
+use App\Charts\sodiumF6to9PieChart;
+use App\Charts\sodiumM6to9PieChart;
 use App\Charts\totFatF6to9PieChart;
 use App\Charts\totFatM6to9PieChart;
 use App\Charts\averageTotalFatChart;
@@ -58,6 +62,8 @@ use App\Charts\avgTotFatM10to12Chart;
 use App\Charts\avgTotFatM13to15Chart;
 use App\Charts\satFatF10to12PieChart;
 use App\Charts\satFatM10to12PieChart;
+use App\Charts\sodiumF10to12PieChart;
+use App\Charts\sodiumM10to12PieChart;
 use App\Charts\totFatF10to12PieChart;
 use App\Charts\totFatM10to12PieChart;
 use App\Charts\avgCalorieF10to12Chart;
@@ -68,15 +74,10 @@ use App\Charts\averageSaturatedFatChart;
 use App\Charts\averageCalorieConsumption;
 use App\Charts\avgSugarComparisonPieChart;
 use App\Charts\avgSatFatComparisonPieChart;
+use App\Charts\avgSodiumComparisonPieChart;
 use App\Charts\avgTotFatComparisonPieChart;
 use App\Charts\averageNutrientConsumptionChart;
 use App\Charts\averageRecommendedNutrientConsumptionChart;
-use App\Charts\avgSodiumComparisonPieChart;
-use App\Charts\avgSodiumPieChart;
-use App\Charts\sodiumF10to12PieChart;
-use App\Charts\sodiumF6to9PieChart;
-use App\Charts\sodiumM10to12PieChart;
-use App\Charts\sodiumM6to9PieChart;
 
 class StudentNutrientReportController extends Controller
 {
@@ -243,4 +244,7 @@ class StudentNutrientReportController extends Controller
             'sodiumM10to12PieChart' => $sodiumM10to12PieChart->build()
         ]); 
     }
+
+ 
+
 }

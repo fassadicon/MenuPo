@@ -19,8 +19,7 @@ class kcalF6to9PieChart
     {
         $caloriesConsumed = round((Purchase::whereHas('student', function ($query) {
             $query->where('sex', 'F')->whereBetween('birthDate', [Carbon::now()->subYear(9), Carbon::now()->subYear(6)]);
-        })
-        ->avg('totalKcal') * 100) / 1470);
+        })->avg('totalKcal') * 100) / 1470);
         return $this->chart->donutChart()
             ->addData([
                 $caloriesConsumed,
