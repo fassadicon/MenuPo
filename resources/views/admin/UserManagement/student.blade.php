@@ -2,6 +2,7 @@
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
     <a href="/admin/students/create" class="btn btn-success mb-2"><i class="fas fa-user-plus"></i>&nbsp;Create Student Account</a>
+    <a href="/admin/students/importUpdateBMI" class="btn btn-success mb-2"><i class="fas fa-user-plus"></i>&nbsp;Mass Update BMI</a>
     <a href="/admin/students/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Student Accounts</a>
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
@@ -43,6 +44,28 @@
             <tbody>
             </tbody>
             <tfoot>
+                <th>ID</th>
+                <th>Grade</th>
+                <th>Section</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Sex</th>
+                <th>Q1Height</th>
+                <th>Q1Weight</th>
+                <th>Q1BMI</th>
+                <th>Q2Height</th>
+                <th>Q2Weight</th>
+                <th>Q2BMI</th>
+                <th>Q3Height</th>
+                <th>Q3Weight</th>
+                <th>Q3BMI</th>
+                <th>Q4Height</th>
+                <th>Q4Weight</th>
+                <th>Q4BMI</th>
+                <th>Created BY</th>
+                <th>Created At</th>
+                <th>Last Updated By</th>
+                <th>Last Updated At</th>
             </tfoot>
         </table>
     </div>
