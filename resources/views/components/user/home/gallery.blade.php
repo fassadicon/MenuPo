@@ -32,12 +32,11 @@
                           <!-- content #1 -->
                           <div
                              class="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
-                             <img class="rounded-t-lg w-full md:h-72 h:64 object-cover" src="{{ asset('storage/admin/school-images/school-pic1.jpg') }}" alt="" />
+                             <img class="rounded-t-lg w-full md:h-72 h:64 object-cover" src="{{ asset('storage/admin/school-images/canteen-pic.jpg') }}" alt="" />
                              <div class="py-4 px-8">
-                                <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">NSDAPS News #1
+                                <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">Canteen New Service Starting Date
                                 </h1>
-                                <p class="hover:cursor-pointer py-3 text-gray-600 leading-6">Egestas diam in arcu cursus euismod
-                                 quis. Fusce id velit ut tortor. Congue quisque egestas diam in arcu cursus euismod quis.
+                                <p class="hover:cursor-pointer py-3 text-gray-600 leading-6">the new canteen services will start next month.It will be a privilege to all employee for this services.It`s a big help for everybody to have this kind of services of your daily meals.This is one of the benefits that you claim from the canteen.
                                 </p>
                              </div>
                              <!-- controls -->
@@ -61,13 +60,12 @@
                           <!-- content #2 -->
                           <div
                              class="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
-                             <img class="rounded-t-lg w-full md:h-72 h-64 object-cover" src="{{ asset('storage/admin/school-images/school-pic1.jpg') }}" alt="" />
+                             <img class="rounded-t-lg w-full md:h-72 h-64 object-cover" src="{{ asset('storage/admin/school-images/canteen-img.jpg') }}" alt="" />
                              <div class="py-4 px-8">
                                 <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">
-                                 NSDAPS News #2
+                                 Canteen Service Notice
                                 </h1>
-                                <p class="hover:cursor-pointer py-3 text-gray-600 leading-6">Egestas diam in arcu cursus euismod
-                                 quis. Fusce id velit ut tortor. Congue quisque egestas diam in arcu cursus euismod quis.
+                                <p class="hover:cursor-pointer py-3 text-gray-600 leading-6">We have recently changed the canteen/catering services of our school from [old canteen service] to [new canteen service]
                                 </p>
                              </div>
                              <!-- controls -->
@@ -91,13 +89,12 @@
                           <!-- content #3 -->
                           <div
                              class="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
-                             <img class="rounded-t-lg w-full md:h-72 h-64 object-cover" src="{{ asset('storage/admin/school-images/school-pic1.jpg') }}" alt="" />
+                             <img class="rounded-t-lg w-full md:h-72 h-64 object-cover" src="{{ asset('storage/admin/school-images/school-pic2.jpg') }}" alt="" />
                              <div class="py-4 px-8">
                                 <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">
-                                   NSDAPS News #3
+                                   Announcement in changing canteen management.
                                 </h1>
-                                <p class="hover:cursor-pointer py-3 text-gray-600 leading-6">Egestas diam in arcu cursus euismod
-                                 quis. Fusce id velit ut tortor. Congue quisque egestas diam in arcu cursus euismod quis.
+                                <p class="hover:cursor-pointer py-3 text-gray-600 leading-6">There has been (yes/no) change in management and they will still be providing the same food services on which we our company have greatly depended on. We would appreciate it if you would bring this announcement to the attention of our other respective employees from all departments.
                              </div>
                              <!-- controls -->
                              <div class="absolute top-1/2 w-full flex justify-between z-20">
