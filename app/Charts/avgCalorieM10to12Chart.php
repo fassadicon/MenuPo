@@ -22,11 +22,11 @@ class avgCalorieM10to12Chart
             ->addData('Average Calorie', [
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'M')->whereBetween('birthdate', [Carbon::now()->subYear(12), Carbon::now()->subYear(10)]);
-                })->whereBetween('created_at', ['2022-07-01', '2022-10-31'])
+                })->whereBetween('created_at', ['2022-08-01', '2022-11-30'])
                     ->avg('totalKcal'), 2),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'M')->whereBetween('birthdate', [Carbon::now()->subYear(12), Carbon::now()->subYear(10)]);
-                })->whereBetween('created_at', ['2022-09-01', '2023-02-28'])
+                })->whereBetween('created_at', ['2022-09-01', '2023-03-31'])
                     ->avg('totalKcal'), 2),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'M')->whereBetween('birthdate', [Carbon::now()->subYear(12), Carbon::now()->subYear(10)]);
@@ -34,7 +34,7 @@ class avgCalorieM10to12Chart
                     ->avg('totalKcal'), 2),
                 round(Purchase::whereHas('student', function ($query) {
                     $query->where('sex', 'M')->whereBetween('birthdate', [Carbon::now()->subYear(12), Carbon::now()->subYear(10)]);
-                })->whereBetween('created_at', ['2023-07-01', '2023-08-31'])
+                })->whereBetween('created_at', ['2023-07-01', '2023-07-31'])
                     ->avg('totalKcal'), 2)
             ])
             ->setXAxis(['1st Qtr', '2nd Qtr', '3rd Qtr', '4th Qtr'])
