@@ -34,7 +34,7 @@ class LoginController extends Controller
             return redirect('/admin/dashboard')->with('status', 'Welcome to Admin Dashboard');
         }
         else if(Auth::user()->role == '0') {
-            return redirect('/home')->with('status', 'Logged In Successful');
+            return redirect('/user/home')->with('status', 'Logged In Successful');
         }
         // Add Super Admin
         // Banned Accounts
