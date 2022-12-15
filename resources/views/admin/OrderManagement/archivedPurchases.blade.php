@@ -116,43 +116,43 @@
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
 
-            // buttons: [
-            //     'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
-            // ],
-            // buttons: [{
-            //         extend: "csv",
-            //         text: "",
-            //         className: "fred bi bi-filetype-csv",
-            //         title: "Food Items"
-            //     },
-            //     {
-            //         extend: "excel",
-            //         text: "",
-            //         className: "fred bi bi bi-filetype-xlsx",
-            //         title: "Food Items"
-            //     },
-            //     {
-            //         extend: "pdf",
-            //         text: "",
-            //         className: "fred bi bi-filetype-pdf",
-            //         title: "Food Items"
-            //     },
-            //     {
-            //         extend: "print",
-            //         text: "",
-            //         className: "fred bi bi-printer",
-            //         title: "Food Items"
-            //     },
-            //     {
-            //         extend: "colvis",
-            //         text: "",
-            //         className: "fred bi bi-layout-sidebar-inset-reverse"
-            //     },
-            // ],
-            // lengthMenu: [
-            //     [10, 15, 20, 25, 30, 50, 100],
-            //     [10, 15, 20, 25, 30, 50, 100]
-            // ],
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
+            ],
+            buttons: [{
+                    extend: "csv",
+                    text: "",
+                    className: "fred bi bi-filetype-csv",
+                    title: "Food Items"
+                },
+                {
+                    extend: "excel",
+                    text: "",
+                    className: "fred bi bi bi-filetype-xlsx",
+                    title: "Food Items"
+                },
+                {
+                    extend: "pdf",
+                    text: "",
+                    className: "fred bi bi-filetype-pdf",
+                    title: "Food Items"
+                },
+                {
+                    extend: "print",
+                    text: "",
+                    className: "fred bi bi-printer",
+                    title: "Food Items"
+                },
+                {
+                    extend: "colvis",
+                    text: "",
+                    className: "fred bi bi-layout-sidebar-inset-reverse"
+                },
+            ],
+            lengthMenu: [
+                [10, 15, 20, 25, 30, 50, 100],
+                [10, 15, 20, 25, 30, 50, 100]
+            ],
             processing: true,
             serverSide: true,
             ajax: {
@@ -172,28 +172,7 @@
             },
             // Footer Sorting
             initComplete: function() {
-                this.api()
-                    .columns()
-                    .every(function() {
-                        var column = this;
-                        var select = $('<select><option value=""></option></select>')
-                            .appendTo($(column.footer()).empty())
-                            .on('change', function() {
-                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                column.search(val ? '^' + val + '$' : '', true, false)
-                                    .draw();
-                            });
-
-                            column
-                            .data()
-                            .unique()
-                            .sort()
-                            .each(function(d, j) {
-                                select.append('<option value="' + d + '">' + d +
-                                    '</option>');
-                            });
-                    });
+                
             },
             columns: [{//0
                       data: 'id',

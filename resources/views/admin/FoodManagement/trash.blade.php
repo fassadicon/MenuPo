@@ -35,27 +35,7 @@
             <tbody>
             </tbody>
             <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                    <th>PhilFCT ID</th>
-                    <th>Serving Size</th>
-                    <th>kcal</th>
-                    <th>tot fat</th>
-                    <th>sat fat</th>
-                    <th>sugar</th>
-                    <th>sodium</th>
-                    <th>Grade</th>
-                    <th>Color</th>
-                    <th>Created at</th>
-                    <th>Last Updated at</th>
-                    <th>Created by</th>
-                    <th>Last Updated By</th>
-                </tr>
+               
             </tfoot>
         </table>
     </div>
@@ -230,28 +210,7 @@
                 },
                 // Footer Sorting
                 initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function() {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                    column.search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-
-                            column
-                                .data()
-                                .unique()
-                                .sort()
-                                .each(function(d, j) {
-                                    select.append('<option value="' + d + '">' + d +
-                                        '</option>');
-                                });
-                        });
+                   
                 },
                 columns: [{ // 0
                         data: 'id',
@@ -338,7 +297,7 @@
                         data: 'admin',
                         name: 'created_by',
                         render: function(data, type, row) {
-                            return data.firstName + ' ' + data.lastName;
+                            return data == null ? 'Archived' : data.firstName + ' ' + data.lastName;
                         }
                     },
                     { // 18
