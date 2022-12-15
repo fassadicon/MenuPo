@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
+use App\Http\Controllers\Admin\DownloadReportsController;
 use App\Http\Controllers\Admin\SalesReportController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
 
@@ -165,7 +166,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Completed Purchases
     Route::get('/orders/completed', [PurchasesController::class, 'completedOrders'])->name('completed.completedOrders');
     // Completed Purchases Modal
-    Route::get('/orders/completed/{id}/view', [PurchasesController::class, 'viewCompleted'])->name('completed.viewCompleted');
+    Route::get('/orders/completed/{id}/view', [PurchasesController::class, 'viewCompleted'])->name('completed.view');
     // Confirm Payment
     Route::get('/orders/pendings/{id}/confirm', [PurchasesController::class, 'confirm']);
     // Soft Delete Completed Purchases
@@ -240,13 +241,27 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/download-survey-report', [SurveyReportController::class, 'download_survey_report']);
     Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
     Route::get('/reports/download-composition-report', [CompositionsReportController::class, 'download_composition_report']);
+
     Route::get('/reports/nutrientConsumption', [StudentNutrientReportController::class, 'index']);
+    Route::get('/reports/download-calorie-report', [DownloadReportsController::class, 'download_calorie_report']);
+
     Route::get('/reports/nutrientConsumption/totalFat', [StudentNutrientReportController::class, 'indexTotalFat']);
+    Route::get('/reports/download-totalFat-report', [DownloadReportsController::class, 'download_totalFat_report']);
+
     Route::get('/reports/nutrientConsumption/satFat', [StudentNutrientReportController::class, 'indexSaturatedFat']);
+    Route::get('/reports/download-satFat-report', [DownloadReportsController::class, 'download_satFat_report']);
+
     Route::get('/reports/nutrientConsumption/addedSugar', [StudentNutrientReportController::class, 'indexAddedSugar']);
+    Route::get('/reports/download-sugar-report', [DownloadReportsController::class, 'download_sugar_report']);
+
     Route::get('/reports/nutrientConsumption/sodium', [StudentNutrientReportController::class, 'indexSodium']);
+    Route::get('/reports/download-sodium-report', [DownloadReportsController::class, 'download_sodium_report']);
+
     Route::get('/reports/sales', [SalesReportController::class, 'index']);
+    Route::get('/reports/download-sales-report', [DownloadReportsController::class, 'download_sales_report']);
+
     Route::get('/reports/bmi', [BMIReportController::class, 'index']);
+    Route::get('/reports/download-bmi-report', [DownloadReportsController::class, 'download_bmi_report']);
 });
 
 

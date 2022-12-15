@@ -1,7 +1,7 @@
 <x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
-    <a href="/admin/students/" class="btn btn-primary mb-2">Back</a>
+    <a href="/admin/students/" class="btn btn-warning mb-2"><i class="fas fa-angle-left"></i>&nbsp;Back</a>
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
         <table class="table table-hover table-sm" id="foodTable">

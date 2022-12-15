@@ -1,9 +1,9 @@
 <x-admin.layout :notifs='$adminNotifs'>
 
-    <h1 class="h3">Archived Purchases</h1>
+    <h1 class="h3">Archived Completed Orders</h1>
 
     <div class="container">
-        <div align="left"><a href="/admin/orders/completed/" class="btn btn-warning mb-2">Back</a></div>
+        <div align="left"><a href="/admin/orders/completed/" class="btn btn-warning mb-2"><i class="fas fa-angle-left"></i>&nbsp;Back</a></div>
         <table class="table table-bordered table-sm" id="completedTable">
     
             <thead>

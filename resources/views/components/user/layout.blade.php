@@ -567,7 +567,7 @@
       <!--Footer-->
     <footer class="footer flex flex-col items-center justify-between p-10 border-t-4 border-t-primary bg-white sm:flex-row">
     
-        <p class="text-sm text-gray-600">© 2022 School Name | <a href="#" class="text-blue-600">Terms of Use</a> | <a href="#" class="text-blue-600">Privacy Statement</a></p>
+        <p class="text-sm text-gray-600">© 2022 School Name | <a href="#" class="text-primary">Terms of Use</a> | <a href="#" class="text-primary">Privacy Statement</a></p>
     
         <div class="flex -mx-2">
           <p class="text-sm text-gray-600">Contact Us at: 09613326890 (email: sample@gmail.com) or visit us at: School Address
