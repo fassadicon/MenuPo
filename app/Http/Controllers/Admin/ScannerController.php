@@ -30,7 +30,7 @@ class ScannerController extends Controller
                 $query->where('paymentStatus', 'paid');
             })
             ->where('claimStatus', 0)
-            ->whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))
+            ->whereDate('created_at', Carbon::yesterday()->format('Y-m-d'))
             ->get();
 
         $studentID = Student::where('id', (int)$id)->get(['id'])->value('id');

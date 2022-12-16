@@ -45,6 +45,7 @@ class HomeController extends Controller
 
         $survey = Survey::where('parent_id', $parent[0]->id)
             ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
+            
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
