@@ -532,7 +532,7 @@
                   
                   <!-- Submenu starts -->
                   <ul class="bg-primaryLight text-gray-800 w-full">
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="/users/user-account">Account Info</a></li>
+                    <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="/user/user-account">Account Info</a></li>
                     <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Dashboard</a></li>
                     <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Billing</a></li>
                     <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Forms</a></li>
