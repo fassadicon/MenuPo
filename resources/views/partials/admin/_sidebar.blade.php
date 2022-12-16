@@ -283,7 +283,7 @@
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
             <a href="/admin/reports/sales" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
+              <i class="fas fa-cash-register"></i>
                 <span>Sales</span>
             </a>
         </li><!-- End Completed Orders Nav -->
@@ -336,31 +336,31 @@
     </li>
         <li class="nav-item">
             <a href="/admin/logs/adminAccount" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
+              <i class="fas fa-user-tie"></i>
                 <span>Admin Logs</span>
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
             <a href="/admin/logs/guardianAccount" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
+              <i class="fas fa-user-friends"></i>
                 <span>Parent Logs</span>
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
             <a href="/admin/logs/studentAccount" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
+              <i class="fas fa-user-graduate"></i>
                 <span>Student Logs</span>
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
             <a href="/admin/logs/bmiChanges" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
+              <i class="fas fa-weight"></i>
                 <span>BMI Logs</span>
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
           <a href="/admin/logs/foodItems" class="nav-link collapsed" id="sidebarLink">
-              <i class="fab fa-nutritionix"></i>
+            <i class="fas fa-burger-soda"></i>
               <span>Food Logs</span>
           </a>
       </li><!-- End Completed Orders Nav -->
