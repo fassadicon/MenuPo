@@ -164,11 +164,7 @@
           <div class="bg-primaryLight p-3 shadow-xl mt-4 rounded-sm">
               <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                   <span clas="text-green-500">
-                      <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                          stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                    <i class="fa-solid fa-chart-line"></i>
                   </span>
                   <span class="md:text-base text-sm tracking-wide">Recommended Daily Calorie Intake Chart</span>
               </div>
@@ -191,7 +187,7 @@
 
                 <div>
                   <span class="block text-xl font-bold">{{$recommended_cal}}</span>
-                  <span class="block text-gray-500">Recommended Calorie Intake</span>
+                  <span class="block font-bold text-gray-500">Recommended Calorie Intake</span>
                 </div>
               </div>
               <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
@@ -240,7 +236,7 @@
                 
                 <div>
                     <span class="block text-xl font-bold">{{$consumed_cal}}</span>
-                    <span class="block text-gray-500">Today's Calorie Intake</span>
+                    <span class="block font-bold text-gray-500">Today's Calorie Intake</span>
                 </div>
               </div>
               <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
@@ -249,7 +245,7 @@
                 </div>
                 <div>
                   <span class="inline-block text-xl font-bold">{{$to_consume_percent.'%'}}</span>
-                  <span class="block text-gray-500">Remaining Calorie Intake</span>
+                  <span class="block font-bold text-gray-500">Remaining Calorie Intake</span>
                 </div>
               </div>
               <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
@@ -258,7 +254,7 @@
                 </div>
                 <div>
                   <span class="block text-xl font-bold">{{$average_grade}}</span>
-                  <span class="block text-gray-500">Average Food Grade</span>
+                  <span class="block font-bold text-gray-500">Average Food Grade</span>
                 </div>
               </div>
             </section>
@@ -309,16 +305,16 @@
                       </div>
                   </div>
               </div>
-              <div class="w-full flex">
+              <div class="w-full md:flex">
                 <a class="w-full text-center mr-4" href="/health/edit-info/{{$anak->id}}">
                     <div
-                        class="block w-full text-secondary text-smfont-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        class="block w-full text-secondary font-bold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 md:my-4">
                         Edit Information
                     </div>
                 </a>
                 <a class="w-full text-center" href="/user/health-report/{{$anak->id}}">
                     <div
-                        class="block w-full text-secondary text-smfont-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        class="block w-full text-secondary font-bold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 md:my-4">
                         View health report
                     </div>
                 </a>
@@ -329,11 +325,7 @@
           <div class="bg-white p-3 shadow-xl rounded-sm">
               <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                   <span clas="text-green-500">
-                      <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                          stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                    <i class="fa-solid fa-suitcase-medical"></i>
                   </span>
                   <span class="tracking-wide font-bold">Health Information</span>
               </div>
@@ -364,19 +356,15 @@
 
           <!-- End of about section -->
           <div class="bg-white p-3 shadow-xl rounded-sm">
-              <div class="min-h-auto bg-white py-5">
+              <div class="min-h-auto bg-white py-2">
                   <div class='w-full'>
                       <div class="flex w-full items-center space-x-2 font-semibold text-gray-900 leading-8">
                           <span clas="text-green-500 float-left">
-                              <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                              </svg>
+                            <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
                           </span>
                           <div class="items-end w-full">
                             <span class="tracking-wide font-bold float-left">Restricted Food Items</span>
-                            <a href="/user/menu/{{$anak->id}}"><span class="tracking-wide font-bold hover:text-primary float-right"><- Back to menu</span></a>
+                            <a href="/user/menu/{{$anak->id}}"><span class="tracking-wide font-bold hover:text-primary float-right"><i class="fa-solid fa-right-from-bracket"></i></span></a>
                         </div>
                           
                       </div>
@@ -410,19 +398,15 @@
 
           <!-- Experience and education -->
           <div class="bg-white h-1/3 p-3 shadow-xl rounded-sm">
-              <div class="bg-white py-5">
+              <div class="bg-white">
                   <div class='overflow-x-auto h-96 w-full'>
                       <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                           <span clas="text-green-500">
-                              <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                  stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                              </svg>
+                            <i class="fa-solid fa-list-radio"></i>
                           </span>
-                          <span class="tracking-wide">Order History</span>
+                          <span class="tracking-wide font-bold">Order History</span>
                       </div>
-                      <table class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-auto'>
+                      <table class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300'>
                           <thead class="bg-secondary">
                               <tr class="text-white text-left">
                                   <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Order number </th>

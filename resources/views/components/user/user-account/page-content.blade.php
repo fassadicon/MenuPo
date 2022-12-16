@@ -46,8 +46,7 @@
                     </div>
                   </a>
                 </div>
-                <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Greish_007</h1>
-                <h3 class="text-gray-600 font-lg text-semibold leading-6">{{$parent->firstName . ' ' . $parent->lastName }}</h3>
+                <h3 class="mt-2 text-2xl font-bold leading-6">{{$parent->firstName . ' ' . $parent->lastName }}</h3>
                 <ul
                     class="bg-yellow-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                     <li class="flex items-center py-3">
@@ -114,11 +113,10 @@
                             echo sizeof($studs);
                         @endphp
                     </span>
-                    <span class="block text-gray-500">Tagged student/s</span>
+                    <span class="block font-bold text-gray-500">Tagged student/s</span>
                   </div>
                 </div>
                 <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
-                    <a href="#">
                     <div class="flex relative group">
                         <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
                             <i class="fa-solid fa-chart-pie"></i>
@@ -127,10 +125,9 @@
                             {!! $chart->container() !!}
                         </ul>
                     </div>
-                    </a>
                     <div>
                       <span class="block text-2xl font-bold">{{$aveGrade}}</span>
-                      <span class="block text-gray-500">Average Food Grade Ordered</span>
+                      <span class="block font-bold text-gray-500">Average Food Grade Ordered</span>
                     </div>
                   </div>
                 <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
@@ -153,7 +150,7 @@
                     </div>
                     <div>
                         <span class="inline-block text-2xl font-bold">{{$pending}}</span>
-                        <span class="block text-gray-500">Pending Orders</span>
+                        <span class="block font-bold text-gray-500">Pending Orders</span>
                     </div>
                 </div>
                 <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
@@ -162,7 +159,7 @@
                   </div>
                   <div>
                     <span class="block text-2xl font-bold">{{$paid}}</span>
-                    <span class="block text-gray-500">Finished Orders (Month)</span>
+                    <span class="block font-bold text-gray-500">Finished Orders (Month)</span>
                   </div>
                 </div>
               </section>
@@ -175,7 +172,7 @@
                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </span>
-                    <span class="tracking-wide">About</span>
+                    <span class="tracking-wide font-bold">About</span>
                 </div>
                 <div class="text-gray-700">
                     <div class="grid md:grid-cols-2 text-sm">
@@ -235,11 +232,7 @@
             <div class="reqdiv bg-white p-3 shadow-xl rounded-sm">
                 <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                     <span clas="text-green-500">
-                        <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
+                        <i class="fa-sharp fa-solid fa-shield-halved"></i>
                     </span>
                     <span class="tracking-wide font-bold">Account Security</span>
                 </div>
@@ -280,7 +273,13 @@
 
             <!-- Experience and education -->
             <div class="bg-white p-3 shadow-xl rounded-sm">
-                <div class="h-96 bg-white py-5  overflow-y-scroll">
+                <div class="h-96 bg-white overflow-y-scroll">
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                        <span clas="text-green-500">
+                          <i class="fa-solid fa-list-radio"></i>
+                        </span>
+                        <span class="tracking-wide font-bold">Order History</span>
+                    </div>
                     <div class='overflow-x-auto w-full'>
                         <table class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300'>
                             <thead class="bg-secondary">
