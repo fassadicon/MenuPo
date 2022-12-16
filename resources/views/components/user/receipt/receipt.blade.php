@@ -57,7 +57,6 @@
         a.href = canvas.toDataURL("image/jpeg", 1);
         a.download = "sample.jpeg";
         a.click();
-  
       })
     }
 

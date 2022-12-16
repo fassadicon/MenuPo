@@ -38,12 +38,17 @@ class HomeController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
-
+        
         //For checking and changing the payment status.
         $purchases =  Purchase::where('parent_id', $parent[0]->id)->with('payment')->get();
 
@@ -74,8 +79,6 @@ class HomeController extends Controller
                 $response = curl_exec($ch);
 
                 $data = json_decode($response, true);
-
-                dd($data);
 
                 $payment_status = $data['data']['attributes']['status'];
                 if($payment_status == 'unpaid'){
@@ -168,6 +171,13 @@ class HomeController extends Controller
         //DB::table('notifications')->delete('parent_id', 1);
         Notification::getQuery()->where('parent_id', $parent[0]->id)->delete();
 
+        return response()->json(['status' => 'Success']);
+    }
+
+    public function sample_testing(Request $request){
+
+        // 
+        
         return response()->json(['status' => 'Success']);
     }
 

@@ -296,6 +296,8 @@ Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
 // All User Controller //
 Route::middleware('user')->group(function () {
 
+    Route::post('/sample-testing', [HomeController::class, 'sample_testing']);
+
     //Home
     Route::get('/user/home', [HomeController::class, 'index']);
     Route::post('/user/deleteAllNotifs', [HomeController::class, 'deleteAllNotifs']);
@@ -340,7 +342,6 @@ Route::middleware('user')->group(function () {
     Route::post('/user/payment', [PaymentController::class, 'index']);
     //Receipt
     Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
-    // Route::get('user/receipt', [PaymentController::class, 'receipt']);
 
     // Route::get('/pos', [POSController::class, 'index']);
     // Route::post('/add-to-cart', [POSController::class, 'addtocart']);

@@ -37,9 +37,9 @@ class ConfirmPaymentTableController extends Controller
                 ->addIndexColumn() 
                 ->addColumn('action', function ($row) {
                     
-                    $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewPending"><i class="bi bi-info-lg"></i></a>';
+                    // $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Data" class="data btn btn-info btn-sm viewPending"><i class="bi bi-info-lg"></i></a>';
 
-                    $btn = $btn . ' <a href="/admin/orders/pendings/' . $row->id . '/confirm" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Confirm" class="confirmBtn btn btn-success btn-sm"><i class="bi bi-check-circle"></i></a>';
+                    $btn = ' <a href="/admin/orders/pendings/' . $row->id . '/confirm" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Confirm" class="confirmBtn btn btn-success btn-sm"><i class="bi bi-check-circle"></i></a>';
 
                      return $btn;
                 })

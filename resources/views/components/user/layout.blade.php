@@ -426,12 +426,7 @@
                           </div>
                         @else
                           @foreach ($notifs as $notif)
-                            @if ($notif->type == 1)
                               <x-user.notif-modal.notif-modal :notif="$notif" />
-                            @else
-                                <x-user.notif-modal.notif-modal :notif="$notif" />
-                            @endif
-                            
                           @endforeach
                         @endif
                       </div>
@@ -454,10 +449,10 @@
                             echo '<li><a href="/users/survey">Survey</a></li>';
                         }
                     @endphp --}}
-                    {{-- @if ($isSurveyAvail == 0)
+                    @if ($isSurveyAvail == 1)
                       <li><a href="/users/survey">Survey</a></li>
-                    @endif --}}
-                    <li><a href="/users/survey">Survey</a></li>
+                    @endif
+                    {{-- <li><a href="/users/survey">Survey</a></li> --}}
                     <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Billing</a></li>
                     <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Forms</a></li>
                     <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Settings</a></li>
@@ -537,7 +532,7 @@
                   
                   <!-- Submenu starts -->
                   <ul class="bg-primaryLight text-gray-800 w-full">
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="/users/user-account">Account Info</a></li>
+                    <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="/user/user-account">Account Info</a></li>
                     <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Dashboard</a></li>
                     <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Billing</a></li>
                     <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="#">Forms</a></li>

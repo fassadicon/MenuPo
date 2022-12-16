@@ -44,9 +44,11 @@ class ParentChart
         })->count();
 
         return $this->chart->pieChart()
+            ->setTitle('Purchases by Food Grade')
             ->addData([$healthy, $mod_healthy, $not_healthy])
             ->setColors(['#6AA54D', '#F8C834', '#F83734'])
             ->setLabels(['Healthy', 'Moderately Healthy', 'Not Healthy'])
-            ->setToolbar(true);
+            ->setWidth(500)
+            ->setSparkline();
     }
 }

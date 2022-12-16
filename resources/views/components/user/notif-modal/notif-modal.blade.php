@@ -6,7 +6,7 @@
 
 <div class="notif-wrapper flex flex-row pl-3 hover:bg-gray-200">
     <div class="notif-image">
-        <img class="w-16 h-16 rounded-full mt-4" src="https://i.pinimg.com/564x/49/6f/1d/496f1d78e07b43c2975522de90ce8504.jpg" alt="profile_pic" >
+        <img class="w-16 h-16 rounded-full mt-4" src="https://i.pinimg.com/564x/af/36/ec/af36ecd52b1404909dd3be71c2886d1a.jpg" alt="profile_pic" >
     </div>
     <div class="notif-modal-body modal-body p-4" id="notif-body">
         <p style="font-size: 15px;">{{$notif->title}}</p>
