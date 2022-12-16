@@ -374,8 +374,11 @@
                                       d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                               </svg>
                           </span>
-                          <span class="tracking-wide float-left">Restricted Food Items</span>
-                          <a href="/user/menu/{{$anak->id}}"><span class="tracking-wide float-right">Back to menu</span></a>
+                          <div class="items-end w-full">
+                            <span class="tracking-wide font-bold float-left">Restricted Food Items</span>
+                            <a href="/user/menu/{{$anak->id}}"><span class="tracking-wide font-bold hover:text-primary float-right"><- Back to menu</span></a>
+                        </div>
+                          
                       </div>
 
                       <div class="my-4"></div>
@@ -425,7 +428,6 @@
                                   <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Order number </th>
                                   <th class="font-semibold text-sm uppercase px-6 py-4"> View </th>
                                   <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Price </th>
-                                  <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> status </th>
                                   <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Date </th>
                                   
                               </tr>
@@ -435,9 +437,9 @@
                                 <tr class="">
                                     <td class="px-6 py-4 text-center">{{$purch->id}}</td>
                                     <td class="flex relative group px-6 py-4 text-center">
-                                        <i class="relative fa-solid fa-eye"></i>
+                                        <i class="relative fa-solid fa-eye ml-2 "></i>
                                         <!-- Submenu starts -->
-                                        <span class="absolute flex flex-col bg-white p-3 w-auto top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-90">
+                                        <span class="absolute flex flex-col bg-white p-3 w-auto left-16 -top-8 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-90">
                                             <table class="w-full">
                                             <thead class="flex flex-row text-center">
                                                 <th class="border-solid border-4 text-lg w-20 text-[#ffc300] font-bold"> Fat </th>
@@ -459,9 +461,8 @@
                                     <!-- Submenu ends -->
                                     </td>
                                     <td class="px-6 py-4">
-                                        <p class=""><span>&#8369;</span>{{$purch->totalAmount}}</p>
+                                        <p class="text-center"><span>&#8369;</span>{{$purch->totalAmount}}</p>
                                     </td>
-                                    <td class="px-6 py-4 text-center"> <span class="text-white text-sm w-1/3 pb-1 bg-red-600 font-semibold px-2 rounded-full"> Pending </span> </td>
                                     {{-- <td class="px-6 py-4 text-center"> {{$purch[0]->created_at}} </td> --}}
                                     <td class="px-6 py-4 text-center">{{$purch->created_at}}</td>
                                 </tr>

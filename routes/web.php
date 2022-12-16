@@ -326,7 +326,6 @@ Route::middleware('user')->group(function () {
     Route::post('/user/payment', [PaymentController::class, 'index']);
     //Receipt
     Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
-    // Route::get('user/receipt', [PaymentController::class, 'receipt']);
 
     // Route::get('/pos', [POSController::class, 'index']);
     // Route::post('/add-to-cart', [POSController::class, 'addtocart']);

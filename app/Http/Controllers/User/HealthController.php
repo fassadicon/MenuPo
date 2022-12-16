@@ -52,6 +52,7 @@ class HealthController extends Controller
         // For average food grade
         $sample = Order::whereHas('purchase', (fn($q)=>
             $q->where('parent_id', $parent[0]->id)
+                ->where('student_id', $anak->id)
         ))->with('food')->get();
 
         $average = 0;
@@ -61,6 +62,7 @@ class HealthController extends Controller
             $average += $sam->food->grade;
             $ite += 1;
         }
+
 
         $average_grade = $average/$ite;
         $average_grade = number_format((float)$average_grade, 2, '.', '');

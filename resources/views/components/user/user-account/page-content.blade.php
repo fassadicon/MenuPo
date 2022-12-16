@@ -5,6 +5,7 @@
 @props(['parent'])
 @props(['reqbutton'])
 @props(['unpaid'])
+@props(['aveGrade'])
 
 @php
     $pending = 0;
@@ -90,7 +91,7 @@
 
             {{-- Pie chart start --}}
 
-            {!! $chart->container() !!}
+           
             
             {{-- End of pie chart --}}
 
@@ -118,17 +119,18 @@
                 </div>
                 <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
                     <a href="#">
-                      <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
-                          <i class="fa-solid fa-school"></i>
-                      </div>
+                    <div class="flex relative group">
+                        <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-secondary bg-primaryLight rounded-full mr-6">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <ul class="absolute bg-white p-3 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
+                            {!! $chart->container() !!}
+                        </ul>
+                    </div>
                     </a>
                     <div>
-                      <span class="block text-2xl font-bold">
-                          @php
-                              echo sizeof($studs);
-                          @endphp
-                      </span>
-                      <span class="block text-gray-500">Tagged student/s</span>
+                      <span class="block text-2xl font-bold">{{$aveGrade}}</span>
+                      <span class="block text-gray-500">Average Food Grade Ordered</span>
                     </div>
                   </div>
                 <div class="flex items-center p-8 bg-white shadow-xl rounded-lg">
@@ -178,50 +180,50 @@
                 <div class="text-gray-700">
                     <div class="grid md:grid-cols-2 text-sm">
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">First Name</div>
+                            <div class="px-4 py-2 font-bold">First Name</div>
                             <div class="px-4 py-2">{{$parent->firstName}}</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Middle Name</div>
+                            <div class="px-4 py-2 font-bold">Middle Name</div>
                             <div class="px-4 py-2">{{$parent->middleName}}</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Last Name</div>
+                            <div class="px-4 py-2 font-bold">Last Name</div>
                             <div class="px-4 py-2">{{$parent->lastName}}</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Suffix</div>
+                            <div class="px-4 py-2 font-bold">Suffix</div>
                             <div class="px-4 py-2">{{$parent->suffix}}</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Gender</div>
+                            <div class="px-4 py-2 font-bold">Gender</div>
                             <div class="px-4 py-2">{{$parent->sex}}</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Contact No.</div>
+                            <div class="px-4 py-2 font-bold">Contact No.</div>
                             <div class="px-4 py-2">no contact</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Current Address</div>
+                            <div class="px-4 py-2 font-bold">Current Address</div>
                             <div class="px-4 py-2">{{$parent->address}}</div>
                         </div>
                         
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Email.</div>
+                            <div class="px-4 py-2 font-bold">Email.</div>
                             <div class="px-4 py-2 break-words">
                             
                                 <a class="text-blue-800" href="mailto:jane@example.com">{{auth()->user()->email}}</a>
                             </div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Birthday</div>
+                            <div class="px-4 py-2 font-bold">Birthday</div>
                             <div class="px-4 py-2">{{$parent->birthDate}}</div>
                         </div>
                     </div>
                 </div>
                 <a class="text-center" href="/edit-info">
                     <div
-                        class="block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        class="block w-full text-secondary text-sm font-bold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                         Edit Information
                     </div>
                 </a>
@@ -239,35 +241,35 @@
                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </span>
-                    <span class="tracking-wide">Account Security</span>
+                    <span class="tracking-wide font-bold">Account Security</span>
                 </div>
                 <div class="text-gray-700">
                     <div class="grid md:grid-cols-2 text-sm">
                 
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Username</div>
+                            <div class="px-4 py-2 font-bold">Username</div>
                             <div class="px-4 py-2">Mima</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Password</div>
+                            <div class="px-4 py-2 font-bold">Password</div>
                             <div class="px-4 py-2">************</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">Recovery Email</div>
+                            <div class="px-4 py-2 font-bold">Recovery Email</div>
                             <div class="px-4 py-2">{{auth()->user()->recoveryEmail}}</div>
                         </div>      
                     </div>
                 </div>
                 @if ($reqbutton == 0)
                     <button
-                        class="changepassreq block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                        Request to change information
+                        class="changepassreq block w-full text-secondary text-sm font-bold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        Change password
                     </button>
                 @else
                     <button
-                        class="changepassreq block w-full text-secondary text-sm font-semibold rounded-lg bg-zinc-400 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+                        class="changepassreq block w-full text-secondary text-sm font-bold rounded-lg bg-zinc-400 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
                         disabled>
-                        Request to change information
+                        Change password
                     </button>
                 @endif
                 
@@ -278,9 +280,9 @@
 
             <!-- Experience and education -->
             <div class="bg-white p-3 shadow-xl rounded-sm">
-                <div class="min-h-screen bg-white py-5">
+                <div class="h-96 bg-white py-5  overflow-y-scroll">
                     <div class='overflow-x-auto w-full'>
-                        <table class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+                        <table class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300'>
                             <thead class="bg-secondary">
                                 <tr class="text-white tex-center">
                                     <th class="font-semibold text-sm uppercase px-6 py-4"> Order Details </th>
@@ -291,7 +293,7 @@
                                     <th class="font-semibold text-sm uppercase px-6 py-4"> </th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-gray-200 text-center">
+                            <tbody class="divide-y  divide-gray-200 text-center">
                                 @foreach($purchases as $purchase)
                                     <x-user.order-history.order-history :purchase="$purchase"/>
                                 @endforeach

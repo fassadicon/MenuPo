@@ -3,7 +3,7 @@
 @props(['anak_id'])
 
 
-<div class="max-w-xs mx-4 mb-2 rounded-lg shadow-lg">
+<div class="w-80 h-80 mx-4 mb-2 rounded-lg shadow-lg">
     <div class="relative flex mb-2">
       <img class="w-full h-48" src="{{ $restrict->image ? asset('storage/' . $restrict->image) : asset('storage/admin/userNoImage.png') }}""
       alt="Image" />
@@ -24,12 +24,9 @@
 
     </div>
   <div class="md:px-6 md:py-2 px-4 py-0">
-    <h4 class="mb-3 md:text-xl text-base font-semibold tracking-tight text-primary uppercase">{{$restrict->name}}</h4>
-    <p class="leading-normal md:text-base md:mb-1 mb-4 text-sm text-gray-700">Date Added: DATE</p>
+    <h4 class="md:text-xl text-base font-semibold tracking-tight text-primary uppercase">{{$restrict->name}}</h4>
   </div>
-  <div class="flex justify-items-start md:space-x-4 md:p-4">
-    <button type="submit" class="md:px-4 md:py-2 px-4 bg-primary text-sm md:text-base text-green-50" id="del<%=count++%>" value="{{$anak_id}},{{$restrict->id}}" name="rem-btn" >&times;</button>
-    <button title="See in menu" class="md:px-4 md:py-2 px-4 border-l-2 border-white bg-primary hover:bg-indigo-600 text-sm md:text-base text-green-50"><i class="fa-solid fa-eye"></i></button>
-    <span class="px-4 py-2 md:text-xl text-base text-primary"><span>&#8369;</span>20.0</span>
+  <div class="flex justify-items-start md:space-x-4 p-4">
+    <button type="submit" class="button-sec bg-primary w-full md:px-4 font-bold md:py-2 px-4 text-lg md:text-secondary" id="del<%=count++%>" value="{{$anak_id}},{{$restrict->id}}" name="rem-btn" >Unrestrict</button>
   </div>
 </div>
