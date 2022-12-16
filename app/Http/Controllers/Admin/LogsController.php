@@ -33,6 +33,7 @@ class LogsController extends Controller
                 ->make(true);
         }
 
+
         $adminNotifs = Adminnotif::get();
         return view('admin.Logs.admin', compact('logs', 'adminNotifs'));
     }
