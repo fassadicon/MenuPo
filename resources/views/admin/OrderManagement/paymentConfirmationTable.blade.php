@@ -25,7 +25,7 @@
                     <th>Updated at</th>
                     <th>Admin in charge</th>
                     <th>Payment Details</th>
-                    <th>Options</th>
+                    <th>Status</th>
                     {{-- <th>Grade</th>
                   <th>Created By</th> --}}
                     {{-- <th width="50px"><button type="button" name="bulk_delete" id="bulk_delete"
@@ -248,11 +248,9 @@
                         }
                     },
                     { // 17
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    }
+                        data: 'status',
+                        name: 'status',
+                    },
                     // {
                     //     data: 'checkbox',
                     //     name: 'checkbox',

@@ -26,6 +26,9 @@ class ScannerController extends Controller
     {
         $orders = Purchase::with('student', 'parent', 'orders.food')
             ->where('student_id', (int)$id)
+            ->whereHas('payment', function($query) {
+                $query->where('paymentStatus', 'paid');
+            })
             ->where('claimStatus', 0)
             ->whereDate('created_at', '=', Carbon::yesterday()->format('Y-m-d'))
             ->get();

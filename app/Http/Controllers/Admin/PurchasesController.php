@@ -29,7 +29,9 @@ class PurchasesController extends Controller
 
         $purchases = Purchase::where('created_at', Carbon::yesterday())
         ->where('claimStatus', 0)
-        ->where('paymentStatus', 1)
+        ->wherehas('payment', function($query) {
+            $query->where('paymentStatus', 'paid');
+        })
         ->where('type', 0)
         ->get()
         ->load('orders', 'orders.food', 'parent', 'student', 'admin');
