@@ -1,5 +1,49 @@
 <x-admin.layout :notifs="$adminNotifs">
-  <div class="row">
+  <h1 class="h3">Food Movement Logs</h1>
+  <table class="table-bordered table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Start</th>
+        <th>Add</th>
+        <th>Sold</th>
+        <th>End</th>
+        <th>Amount (in Pesos)</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      @foreach ($foodNames as $foodName)
+      @foreach ($starts as $start)
+      @foreach ($adds as $add)
+      @foreach ($solds as $sold)
+      @foreach ($ends as $end)
+      @foreach ($amounts as $amount)
+      <tr>
+        <td>{{ $foodName }}</td>
+        <td>{{ $start }}</td>
+        <td>{{ $add }}</td>
+        <td>{{ $sold }}</td>
+        <td>{{ $end }}</td>
+        <td>{{ $amount }}</td>
+      </tr>
+      <tfoot class="table-group-divider">
+        <tr align="right">
+          <td colspan="6">
+            <h5>Total Amount: {{$totalAmount}}</h5>
+          </td>
+        </tr>
+      </tfoot>
+      @endforeach
+      @endforeach
+      @endforeach
+      @endforeach
+      @endforeach
+      @endforeach
+    </tbody>
+  </table>
+  
+  
+  {{-- <div class="row">
     <div class="col-2">
       <h1>Name</h1>
       @foreach ($foodNames as $foodName)
@@ -40,6 +84,6 @@
   </div>
   <div class="row">
     <h1>Total Amount: {{$totalAmount}}</h1>
-  </div>
+  </div> --}}
   
 </x-admin.layout>
