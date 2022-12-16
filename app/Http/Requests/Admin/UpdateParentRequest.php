@@ -28,7 +28,7 @@ class UpdateParentRequest extends FormRequest
         if (auth()->user()->role == 2) {
             return [
                 'email' => 'required|email|max:255|unique:users,email,' . $this->guardian->user->id,
-                'recoveryEmail' => 'nullable|email|max:255|unique:users,recoveryEmail,' . $this->guardian->user->id,
+                'recoveryEmail' => 'required|email|max:255|unique:users,recoveryEmail,' . $this->guardian->user->id,
                 'firstName' => 'required|string|max:255',
                 'lastName' => 'required|string|max:255',
                 'middleName' => 'nullable|string|max:255',
