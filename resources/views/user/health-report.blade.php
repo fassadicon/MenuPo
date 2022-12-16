@@ -1,4 +1,4 @@
-<x-user.layout :studs="$students" :notifs="$notifications">
+<x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
 
     <div class="w-full h-auto md:mx-auto">
         <br><br><br>

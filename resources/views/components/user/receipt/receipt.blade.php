@@ -18,14 +18,16 @@
                     <th class="w-40">Price</th>
                 </thead>
                 <tbody class="text-center">
-                    @php
+                     @php
                         $total_price = 0;
-                        foreach($items as $item){
-                            $total_price += $item->qty * $item->price;
-                            echo "<tr class='h-12'>
-                                    <td class='w-20'>$item->name</td>
-                                    <td class='w-20'>$item->qty</td>
-                                    <td class='w-20'>$item->price</td>
+                        $size = sizeOf($items);
+                        for( $i=0; $i< $size; $i++){
+                            $total_price += $items[$i]->quantity * $items[$i]->amount;
+                            $price = $items[$i]->amount * $items[$i]->quantity;
+                            echo "<tr class='h-4'>
+                                    <td class='w-20'>{$item_array[$i]->name}</td>
+                                    <td class='w-20'>{$items[$i]->quantity}</td>
+                                    <td class='w-20'>$price</td>
                                 </tr>";
                         }
                     @endphp
@@ -57,7 +59,6 @@
         a.href = canvas.toDataURL("image/jpeg", 1);
         a.download = "sample.jpeg";
         a.click();
-  
       })
     }
 

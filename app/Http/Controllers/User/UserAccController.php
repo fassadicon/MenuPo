@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Survey;
 use App\Mail\SampleMail;
@@ -26,8 +27,13 @@ class UserAccController extends Controller
         $purchase_his = Purchase::where('parent_id', $parent[0]->id)->with('payment')->get();
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
@@ -105,8 +111,13 @@ class UserAccController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
@@ -179,8 +190,13 @@ class UserAccController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
@@ -232,8 +248,13 @@ class UserAccController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+       
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
@@ -249,6 +270,8 @@ class UserAccController extends Controller
 
     public function submit_password(Request $request){
 
+        $parent = Guardian::where('user_id', auth()->id())->get();
+        $timeDate = \Carbon\Carbon::now('Asia/Singapore')->toDateString();
         $request->validate([
             'newpass' => 'required|min:8|max:100',
         ]);
@@ -258,6 +281,15 @@ class UserAccController extends Controller
                 bcrypt($request->input('newpass')),
                 auth()->id()
             ]);
+
+            //Creating notif
+            $notification = new Notification;
+            $notification->parent_id = $parent[0]->id;
+            $notification->title = 'Password changed successfully..';
+            $notification->description = 'Your password is changed at'. $timeDate .'.';
+            $notification->type = 1;
+            $notification->status = 1;
+            $notification->save();
 
             Alert::success('Success!', 'Password is changed.');
             
