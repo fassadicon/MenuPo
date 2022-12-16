@@ -1,7 +1,9 @@
 <x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Staff Account Management</h1>
-    <a href="/admin/admins/create" class="btn btn-success mb-2"><i class="fas fa-user-times"></i>&nbsp;Create Admin Account</a>
-    <a href="/admin/admins/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Admin Accounts</a>
+    <a href="/admin/admins/create" class="btn btn-success mb-2"><i class="fas fa-user-times"></i>&nbsp;Create Admin
+        Account</a>
+    <a href="/admin/admins/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Admin
+        Accounts</a>
     {{-- DATABLE --}}
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
@@ -45,67 +47,96 @@
                 <div class="modal-body">
                     <input type="hidden" name="studentID" id="studentID">
                     <div class="row">
-                        <div class="col-4">
-                            <div class="mb-3">
-                                <label for="email">Email</label>
-                                <p id="email" class="form-control"></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="email">Email</label>
+                                    <p id="email" class="form-control"></p>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="recoveryEmail">Recovery Email</label>
-                                <p id="recoveryEmail" class="form-control"></p>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="recoveryEmail">Recovery Email</label>
+                                    <p id="recoveryEmail" class="form-control"></p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="mb-3">
                                 <label for="firstName">First Name</label>
                                 <p id="firstName" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-6">
                             <div class="mb-3">
                                 <label for="lastName">Last Name</label>
                                 <p id="lastName" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-6">
                             <div class="mb-3">
                                 <label for="middleName">Middle Name</label>
                                 <p id="middleName" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-3">
                             <div class="mb-3">
                                 <label for="suffix">Suffix</label>
                                 <p id="suffix" class="form-control"></p>
                             </div>
 
+
                         </div>
-                        <div class="col-4">
+
+                        <div class="col-3">
                             <div class="mb-3">
                                 <label for="sex">Sex</label>
                                 <p id="sex" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-4">
                             <div class="mb-3">
                                 <label for="birthDate">Birth Date</label>
                                 <p id="birthDate" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-8">
                             <div class="mb-3">
                                 <label for="address">Address</label>
                                 <p id="address" class="form-control"></p>
                             </div>
                         </div>
+
                     </div>
                     <div class="row">
-                        <div class="mb-3">
-                            <label for="created_by">Created By</label>
-                            <p id="created_by" class="form-control"></p>
+                        <div class="6">
+                            <div class="mb-3">
+                                <label for="created_by">Created By</label>
+                                <p id="created_by" class="form-control"></p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="created_at">Created At</label>
-                            <p id="created_at" class="form-control"></p>
+                        <div class="6">
+                            <div class="mb-3">
+                                <label for="created_at">Created At</label>
+                                <p id="created_at" class="form-control"></p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="updated_by">Last Updated By</label>
-                            <p id="updated_by" class="form-control"></p>
+                        <div class="6">
+                            <div class="mb-3">
+                                <label for="updated_by">Last Updated By</label>
+                                <p id="updated_by" class="form-control"></p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="updated_at">Last Updated At</label>
-                            <p id="updated_at" class="form-control"></p>
+                        <div class="6">
+                            <div class="mb-3">
+                                <label for="updated_at">Last Updated At</label>
+                                <p id="updated_at" class="form-control"></p>
+                            </div>
                         </div>
+                       
+                       
+                       
+                        
                     </div>
                     {{--  <div class="mb-3">
                          <label for="">Description</label>
@@ -192,7 +223,7 @@
                 },
                 // Footer Sorting
                 initComplete: function() {
-                    
+
                 },
                 columns: [{
                         data: 'id',
@@ -262,7 +293,8 @@
                         data: 'created_by_name',
                         name: 'created_by_name',
                         render: function(data, type, row) {
-                            return row.created_by_name == null ? 'N/A' : row.created_by_name.firstName + ' ' + row.created_by_name
+                            return row.created_by_name == null ? 'N/A' : row.created_by_name
+                                .firstName + ' ' + row.created_by_name
                                 .lastName;
                         }
                     },

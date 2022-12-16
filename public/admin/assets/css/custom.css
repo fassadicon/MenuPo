@@ -5,7 +5,8 @@ td.highlight {
 
 /* DataTable Buttons */
 .fred {
-  background-color: blue !important;
+  background-color: #2282FE
+  !important;
   color: white !important;
   border-color: transparent;
 }

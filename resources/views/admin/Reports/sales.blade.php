@@ -1,8 +1,8 @@
 <x-admin.layout :notifs='$adminNotifs'>
   {{-- Saturated Fat --}}
   <div class="row">
-    <div class="col-4">
-      <h1>Monthly Sales</h1>
+    <div class="col-12">
+      <h1> <strong> Monthly Sales</strong></h1>
       {!! $monthlySalesChart->container() !!}
       <script src="{{ $monthlySalesChart->cdn() }}"></script>
       {{ $monthlySalesChart->script() }}
