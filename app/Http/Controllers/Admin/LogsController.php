@@ -22,7 +22,6 @@ class LogsController extends Controller
     public function adminLogs(Request $request)
     {
         $logs = Activity::where('log_name', 'Admin')->get();
-        
         foreach ($logs as $log) {
             $log['model_id'] = $log->subject_id . ' - ' . Admin::where('id', $log->subject_id)->get(['firstName'])->value('firstName');
             $admin = Admin::where('user_id',  $log->causer->id)->first();

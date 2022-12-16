@@ -15,9 +15,9 @@ class Payment extends Model
         return $this->hasOne(Purchase::class, 'payment_id', 'id');
     }
 
-    public function purchases() {
-        return $this->hasMany(Purchase::class, 'payment_id', 'id');
-    }
+    // public function purchases() {
+    //     return $this->hasMany(Purchase::class, 'payment_id', 'id');
+    // }
 
     public function getActivitylogOptions(): LogOptions
     {
