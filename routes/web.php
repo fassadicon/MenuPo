@@ -37,8 +37,11 @@ use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
 use App\Http\Controllers\Admin\DownloadReportsController;
+use App\Http\Controllers\Admin\FoodlogController;
+use App\Http\Controllers\Admin\LogsController;
 use App\Http\Controllers\Admin\SalesReportController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
+use Spatie\Activitylog\Models\Activity;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +55,7 @@ use App\Http\Controllers\Admin\StudentNutrientReportController;
 */
 
 Route::get('/', function () {
+    // return Activity::where()->last();
     return view('welcome');
 });
 
@@ -262,6 +266,18 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('/reports/bmi', [BMIReportController::class, 'index']);
     Route::get('/reports/download-bmi-report', [DownloadReportsController::class, 'download_bmi_report']);
+
+    // Logs
+    // Route::get('/logs/adminAccount', [LogsController::class, 'adminLogs']);
+    Route::get('/logs/adminAccount', [LogsController::class, 'adminLogs'])->name('adminLogsTable');
+    Route::get('/logs/guardianAccount', [LogsController::class, 'guardianLogs'])->name('guardianLogsTable');
+    Route::get('/logs/studentAccount', [LogsController::class, 'studentLogs'])->name('studentLogsTable');
+    Route::get('/logs/foodItems', [LogsController::class, 'foodLogs'])->name('foodLogsTable');
+    Route::get('/logs/bmiChanges', [LogsController::class, 'bmiLogs'])->name('bmiLogsTable');
+    // Route::get('/logfoodItems/table', [LogsController::class, 'foodItemsTable'])->name('adminLogsTable');
+
+    // Food Logs
+    Route::get('/logs/foodMovements', [FoodlogController::class, 'index']);
 });
 
 

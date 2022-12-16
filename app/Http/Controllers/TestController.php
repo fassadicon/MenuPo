@@ -17,33 +17,16 @@ use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Html\SearchPane;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Activitylog\Models\Activity;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TestController extends Controller
 {
     public function index()
     {
-        // $foods = Purchase::with('orders', 'orders.food')
-        // ->whereHas('orders', function ($query) {
-        //     $query->where('purchase_id', 2);
-        // })->get();
-
-        $Allfoods = Food::with('order.purchase')
-        ->whereHas('order.purchase', function ($query) {
-            $query->where('parent_id', 1);
-        })->get();
-        $foods = $Allfoods->avg('grade');
-        // $foods = array();
-        // // $foods[] = $orders->food->grade;
-        // foreach ($orders as $order) {
-        //     $foods[] = $order->food->grade;
-        // }
-
-        // $foods = $orders->food->grade;
-        // foreach($orders as $key => $order) {
-        //     $foods[$key] = $order->food->grade;
-        // }
-        return view('admin.test', compact('foods'));
+        $activities = Activity::where('log_name', 'Admin')->get();
+        dd($activities);
+        return view('admin.test', compact('activities'));
     }
 
     // if (totalPoints <= 0) {

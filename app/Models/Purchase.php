@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 class Purchase extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes, LogsActivity;
 
     public function admin() {
         return $this->belongsTo(Admin::class, 'served_by', 'id');
@@ -36,4 +36,12 @@ class Purchase extends Model
     public function student() {
         return $this->belongsTo(Student::class, 'student_id', 'id');
     }    
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->useLogName('Purchase')
+        ->logAll()
+        ->logOnlyDirty()
+        ->dontSubmitEmptyLogs();
+    }
 }

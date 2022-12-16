@@ -26,7 +26,7 @@ class UpdateFoodRequest extends FormRequest
         return [
             'name' =>  'required|string|max:255|unique:foods,name,' . $this->food->id,
             'description' =>  'nullable|string|max:255',
-            'type' => 'required|numeric|max:3',
+            'type' => 'required|numeric|max:4',
             'stock' => 'nullable|numeric',
             'price' => 'required|numeric',
             'servingSize' => 'nullable|numeric',
