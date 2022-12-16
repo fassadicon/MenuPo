@@ -477,7 +477,7 @@ body{
 --------------------------------------------------------------*/
 footer{
   position: sticky;
-  background: #f8fafc;
+  background: #fff;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -492,12 +492,12 @@ footer::before{
   top: 100px;
   height: 1px;
   width: 100%;
-  background: #f8fafc;
+  background: #fff;
 }
 
 footer .bottom-details{
   width: 100%;
-background: #f8fafc;
+background: #fff;
 }
 footer .bottom-details .bottom_text{
   max-width: 1250px;
@@ -576,6 +576,12 @@ footer .bottom-details .bottom_text{
   footer .content .link-boxes .input-box{
     width: 100%;
   }
+}
+
+/* Log in adjustment */
+.login-header{
+  color: var(--secondary);
+  font-weight: 600;
 }
 
 

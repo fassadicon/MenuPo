@@ -15,7 +15,7 @@
                   Information and announcements are located here. this will be your guid through accessing the canteen of Buestra Senra De Aranzazu Parochial School
                 </p>
                 <div class="relative flex">
-                  <button class="button-sec mt-4">
+                  <button class="button-sec my-4">
                      <a href="#">
                        Read More
                      </a>
@@ -23,6 +23,7 @@
                 </div>
               </div>
             </div>
+   
             <div class="max-w-screen-xl md:w-1/2 md:block my-60 md:my-56">
                 <div class=" bg-white p-3 relative">
                     <div class="w-72 md:w-96 mx-auto" style="scroll-snap-type: x mandatory;">
@@ -116,6 +117,7 @@
             </div>
           </div>
         </div>
+        
        
       </section>
       

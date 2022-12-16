@@ -282,51 +282,58 @@
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
-            <a href="/admin/reports/nutrientConsumption" class="nav-link collapsed" id="sidebarLink">
+            <a href="/admin/reports/sales" class="nav-link collapsed" id="sidebarLink">
+                <i class="fab fa-nutritionix"></i>
+                <span>Sales</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+    <li class="button-dropdown">
+      <a href="javascript:void(0)" class="nav-link collapsed dropdown-toggle">
+        <i class="fa-solid fa-border-all"></i> Nutritional Report <i class="fas fa-chevron"></i>
+      </a>
+        <ul class="dropdown-menu">
+        <li class="dropdown-nav nav-item">
+            <a href="/admin/reports/nutrientConsumption" class="dropdown-link nav-link collapsed" id="sidebarLink">
                 <i class="fab fa-nutritionix"></i>
                 <span>Calorie</span>
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
-            <a href="/admin/reports/nutrientConsumption/totalFat" class="nav-link collapsed" id="sidebarLink">
+            <a href="/admin/reports/nutrientConsumption/totalFat" class="dropdown-link nav-link collapsed" id="sidebarLink">
                 <i class="fab fa-nutritionix"></i>
                 <span>Total Fat</span>
             </a>
         </li><!-- End Completed Orders Nav -->
 
         <li class="nav-item">
-            <a href="/admin/reports/nutrientConsumption/satFat" class="nav-link collapsed" id="sidebarLink">
+            <a href="/admin/reports/nutrientConsumption/satFat" class="dropdown-link nav-link collapsed" id="sidebarLink">
                 <i class="fab fa-nutritionix"></i>
                 <span>Saturated Fat</span>
             </a>
         </li><!-- End Completed Orders Nav -->
 
         <li class="nav-item">
-            <a href="/admin/reports/nutrientConsumption/addedSugar" class="nav-link collapsed" id="sidebarLink">
+            <a href="/admin/reports/nutrientConsumption/addedSugar" class="dropdown-link nav-link collapsed" id="sidebarLink">
                 <i class="fab fa-nutritionix"></i>
                 <span>Added Sugars</span>
             </a>
         </li><!-- End Completed Orders Nav -->
 
         <li class="nav-item">
-            <a href="/admin/reports/nutrientConsumption/sodium" class="nav-link collapsed" id="sidebarLink">
+            <a href="/admin/reports/nutrientConsumption/sodium" class="dropdown-link nav-link collapsed" id="sidebarLink">
                 <i class="fab fa-nutritionix"></i>
                 <span>Sodium</span>
             </a>
         </li><!-- End Completed Orders Nav -->
 
         <li class="nav-item">
-            <a href="/admin/reports/bmi" class="nav-link collapsed" id="sidebarLink">
+            <a href="/admin/reports/bmi" class="dropdown-link nav-link collapsed" id="sidebarLink">
                 <i class="fab fa-nutritionix"></i>
                 <span>BMI</span>
             </a>
         </li><!-- End Completed Orders Nav -->
-        <li class="nav-item">
-            <a href="/admin/reports/sales" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
-                <span>Sales</span>
-            </a>
-        </li><!-- End Completed Orders Nav -->
+      </ul>
+    </li>
         <li class="nav-item">
             <a href="/admin/logs/adminAccount" class="nav-link collapsed" id="sidebarLink">
                 <i class="fab fa-nutritionix"></i>
