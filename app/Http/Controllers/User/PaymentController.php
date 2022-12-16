@@ -107,7 +107,6 @@ class PaymentController extends Controller
         $purchase->totalSugar = $this->totsugar;
         $purchase->totalSodium = $this->totsodium;
         $purchase->payment_id = $payment->id;
-        $purchase->paymentStatus = 0;
         $purchase->served_by = 1;
         $purchase->save();
 

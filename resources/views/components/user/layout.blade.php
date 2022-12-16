@@ -585,7 +585,7 @@
                     <!-- Submenu starts -->
                     <ul class="bg-primaryLight text-gray-800 w-full">
                       @foreach ($studs as $student)
-                        <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="/user/health/{{$student->id}}"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
+                        <li class="text-sm leading-8 font-normal hover:bg-slate-200 py-1"><a class="block pl-16" href="/user/health/{{$student->id}}"><img src="https://www.kindpng.com/picc/m/57-573752_school-student-images-png-transparent-png.png" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->firstName}}</a></li>
                       @endforeach
                     </ul>
                     <!-- Submenu ends -->
