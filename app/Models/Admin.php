@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -48,12 +49,14 @@ class Admin extends Model
         return $this->hasMany(Parent::class, 'updated_by', 'id');
     }
 
-    return LogOptions::defaults() {
-        >useLogName('User')
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->useLogName('Admin')
         ->logAll()
-        ->logOnlyDirty();
+        ->logOnlyDirty()
+        ->dontSubmitEmptyLogs();
     }
-        
         
 }
 
