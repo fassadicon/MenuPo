@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use App\Models\Bmi;
+use App\Models\Food;
 use App\Models\Order;
+use App\Models\Foodlog;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -1793,6 +1795,69 @@ class DownloadReportsController extends Controller
     }
 
     public function download_sales_report(){
+        $foodIDs = Foodlog::select('food_id')->distinct()->pluck('food_id')->toArray();
+
+
+        $foodNames = array();
+        foreach ($foodIDs as $foodID) {
+            array_push(
+                $foodNames,
+                Food::where('id', $foodID)->get(['name'])->value('name')
+            );
+        }
+
+        $starts = array();
+        $adds = array();
+        $solds = array();
+        $ends = array();
+        $amounts = array();
+        $totalAmount = 0;
+
+        foreach ($foodIDs as $foodID) {
+            $firstLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())->first();
+            $startStock = $firstLog->start;
+            array_push(
+                $starts,
+                $startStock
+            );
+
+            $lastLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())
+                ->orderBy('created_at', 'desc')
+                ->first();
+            $endStock = $lastLog->end;
+            array_push(
+                $ends,
+                $endStock
+            );
+
+            $addLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())
+                ->sum('add');
+            array_push(
+                $adds,
+                $addLog
+            );
+
+            $soldLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())
+                ->sum('sold');
+            array_push(
+                $solds,
+                $soldLog
+            );
+
+            $amountLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())
+                ->sum('sold') * Food::where('id', $foodID)->get(['price'])->value('price');
+            array_push(
+                $amounts,
+                $amountLog
+            );
+            $totalAmount += $amountLog;
+        }
+
         $html = '
         <!DOCTYPE html>
         <html lang="en">
@@ -1825,6 +1890,12 @@ class DownloadReportsController extends Controller
               }
             .total{
                 font-weight: bold;
+            }
+            .stockReport th{
+                width: 130px;
+            }
+            .stockReport td{
+                height: 25px;
             }
         </style>
         <body>
@@ -2186,9 +2257,48 @@ class DownloadReportsController extends Controller
                 </tr>
         
             </table>
+            <br>
+            <h2> <u>Daily Stock and Amount Report </u> </h2>
+            <table class="stockReport">
+                <tr>
+                    <th>Name</th>
+                    <th>Start</th>
+                    <th>Add</th>
+                    <th>Sold</th>
+                    <th>End</th>
+                    <th>Amount</th>
+                </tr>';
+                
+            
+                for($i = 0; $i < sizeof($foodNames); $i++){
+                    $html .= '<tr> ';   
+                    $html .= '<td>'.$foodNames[$i].'</td>';
+                    $html .= '<td>'.$starts[$i].'</td>';
+                    $html .= '<td>'.$adds[$i].'</td>';
+                    $html .= '<td>'.$solds[$i].'</td>';
+                    $html .= '<td>'.$ends[$i].'</td>';
+                    $html .= '<td>'.$amounts[$i].'</td>';
+                    $html .= '</tr>';
+                }
+
+                $html .= '
+                    <tr>
+                        <td colspan="3"></td>
+                        <td><b>Total: </b></td>
+                        <td colspan="2">'.$totalAmount.'</td>
+                    </tr>
+                    <tr>
+                        <td><b>Prepared by: </b></td>
+                        <td colspan="2"></td>
+                        <td><b>Checked by: </b></td>
+                        <td colspan="2"></td>
+                    </tr>
+                ';
+        
+        $html .= '
+            </table>
             <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
 
-            
         </body>
         </html>
         

@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 class Guardian extends Model
 {
+    use HasFactory, SoftDeletes, LogsActivity;
     protected $table = 'parents';
-    use HasFactory;
-    use SoftDeletes;
     public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
@@ -40,5 +41,13 @@ class Guardian extends Model
     public function purchases()
     {
         return $this->hasMany(Purchase::class, 'parent_id', 'id');
+    }
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->useLogName('Guardian')
+        ->logAll()
+        ->logOnlyDirty()
+        ->dontSubmitEmptyLogs();
     }
 }

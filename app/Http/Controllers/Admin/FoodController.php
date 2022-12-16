@@ -106,6 +106,7 @@ class FoodController extends Controller
         if ($request->hasFile('image'))
             $foodCredentials['image'] = $request->file('image')->store('admin/foods', 'public');
         $food->update($foodCredentials);
+        
         Alert::success($food->name . " Updated Successfully");
         return redirect('/admin/foods');
     }

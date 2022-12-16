@@ -8,9 +8,10 @@ use App\Models\Food;
 use App\Models\Menu;
 
 use App\Models\Admin;
+use App\Models\Foodlog;
 use App\Models\Purchase;
-use App\Models\Adminnotif;
 
+use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -29,7 +30,7 @@ class MenuController extends Controller
                     ->whereDate('displayed_at', '=', Carbon::now()->format('Y-m-d'))
                     ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
                     ->whereHas('food', function ($query) {
-                        $query->where('type', 3);
+                        $query->where('type', 3)->where('stock', '>', 0);
                     });
             })
             ->orWhere(function ($query) {
@@ -37,7 +38,7 @@ class MenuController extends Controller
                     ->WhereNull('displayed_at')
                     ->WhereNull('removed_at')
                     ->whereHas('food', function ($query) {
-                        $query->where('type', 3);
+                        $query->where('type', 3)->where('stock', '>', 0);
                     });
             })
             // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
@@ -60,7 +61,9 @@ class MenuController extends Controller
                 ->addColumn('count', function ($row) {
                     $menuID = $row->food->id;
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($menuID) {
                             $query->where('food_id', 'like', $menuID);
                         })->count();
@@ -70,7 +73,9 @@ class MenuController extends Controller
                     $foodID = $row->food->id;
 
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($foodID) {
                             $query->where('food_id', 'like', $foodID);
                         })->count();
@@ -130,7 +135,9 @@ class MenuController extends Controller
                 ->addColumn('count', function ($row) {
                     $menuID = $row->food->id;
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($menuID) {
                             $query->where('food_id', 'like', $menuID);
                         })->count();
@@ -140,7 +147,9 @@ class MenuController extends Controller
                     $foodID = $row->food->id;
 
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($foodID) {
                             $query->where('food_id', 'like', $foodID);
                         })->count();
@@ -200,7 +209,9 @@ class MenuController extends Controller
                 ->addColumn('count', function ($row) {
                     $menuID = $row->food->id;
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($menuID) {
                             $query->where('food_id', 'like', $menuID);
                         })->count();
@@ -210,7 +221,9 @@ class MenuController extends Controller
                     $foodID = $row->food->id;
 
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($foodID) {
                             $query->where('food_id', 'like', $foodID);
                         })->count();
@@ -270,7 +283,9 @@ class MenuController extends Controller
                 ->addColumn('count', function ($row) {
                     $menuID = $row->food->id;
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($menuID) {
                             $query->where('food_id', 'like', $menuID);
                         })->count();
@@ -280,7 +295,9 @@ class MenuController extends Controller
                     $foodID = $row->food->id;
 
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($foodID) {
                             $query->where('food_id', 'like', $foodID);
                         })->count();
@@ -340,7 +357,9 @@ class MenuController extends Controller
                 ->addColumn('count', function ($row) {
                     $menuID = $row->food->id;
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($menuID) {
                             $query->where('food_id', 'like', $menuID);
                         })->count();
@@ -350,7 +369,9 @@ class MenuController extends Controller
                     $foodID = $row->food->id;
 
                     $test = Purchase::with('order')
-                        ->where('paymentStatus', 'paid')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
                         ->whereHas('order', function ($query) use ($foodID) {
                             $query->where('food_id', 'like', $foodID);
                         })->count();
@@ -381,6 +402,15 @@ class MenuController extends Controller
             $newAddedStock = $prevStock + $addedStock;
             Food::where('id', $foodID)->update(['stock' => $newAddedStock]);
         }
+
+        // Foodlog::create([
+        //     'food_id' => $foodID,
+        //     'description' => 'added stock',
+        //     'start' => $prevStock,
+        //     'add' => $addedStock,
+        //     'end' => $newAddedStock,
+        //     'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+        // ]);
 
         $menuItem = new Menu();
         $menuItem->food_id = $foodID;
@@ -414,6 +444,14 @@ class MenuController extends Controller
             $newAddedStock = $prevStock + $addedStock;
             Food::where('id', $foodID)->update(['stock' => $newAddedStock]);
         }
+        Foodlog::create([
+            'food_id' => $foodID,
+            'description' => 'added stock',
+            'start' => $prevStock,
+            'add' => $addedStock,
+            'end' => $newAddedStock,
+            'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+        ]);
 
         $menuItem->save();
 
@@ -446,10 +484,20 @@ class MenuController extends Controller
         if ($request->additionalStock != null || $request->additionalStock > 0) {
             $prevStock = Food::where('name', $request->name)->get(['stock'])->value('stock');
             $newStock = $prevStock + $request->additionalStock;
+            $foodID = Food::where('name', $request->name)->get(['id'])->value('id');
             $test = Food::where('name', $request->name)->update(['stock' => $newStock]);
         } else {
             $test = "Invalid Additional Stock";
         }
+        Foodlog::create([
+            'food_id' => $foodID,
+            'description' => 'added stock',
+            'start' => $prevStock,
+            'add' => $request->additionalStock,
+            'end' => $newStock,
+            'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+        ]);
+
         return $newStock;
     }
 

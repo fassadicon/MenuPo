@@ -48,7 +48,6 @@ class ParentChart
             ->addData([$healthy, $mod_healthy, $not_healthy])
             ->setColors(['#6AA54D', '#F8C834', '#F83734'])
             ->setLabels(['Healthy', 'Moderately Healthy', 'Not Healthy'])
-            ->setWidth(500)
-            ->setSparkline();
+            ->setWidth(400);
     }
 }
