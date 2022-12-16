@@ -327,6 +327,36 @@
                 <span>Sales</span>
             </a>
         </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+            <a href="/admin/logs/adminAccount" class="nav-link collapsed" id="sidebarLink">
+                <i class="fab fa-nutritionix"></i>
+                <span>Admin Logs</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+            <a href="/admin/logs/guardianAccount" class="nav-link collapsed" id="sidebarLink">
+                <i class="fab fa-nutritionix"></i>
+                <span>Parent Logs</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+            <a href="/admin/logs/studentAccount" class="nav-link collapsed" id="sidebarLink">
+                <i class="fab fa-nutritionix"></i>
+                <span>Student Logs</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+            <a href="/admin/logs/bmiChanges" class="nav-link collapsed" id="sidebarLink">
+                <i class="fab fa-nutritionix"></i>
+                <span>BMI Logs</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+          <a href="/admin/logs/foodItems" class="nav-link collapsed" id="sidebarLink">
+              <i class="fab fa-nutritionix"></i>
+              <span>Food Logs</span>
+          </a>
+      </li><!-- End Completed Orders Nav -->
 
 
 

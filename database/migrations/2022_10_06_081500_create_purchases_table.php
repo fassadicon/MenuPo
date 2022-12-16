@@ -24,7 +24,6 @@ return new class extends Migration
             $table->double('totalSodium', 10, 2)->nullable();
             $table->double('totalAmount', 10, 2)->nullable();
             $table->foreignId('payment_id')->constrained('payments');
-            $table->integer('paymentStatus')->length(1)->default(0);
             $table->integer('claimStatus')->default(0);
             $table->integer('type')->length(1);
             // Logs

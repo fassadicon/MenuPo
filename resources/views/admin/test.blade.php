@@ -2,9 +2,15 @@
 
 @section('content')
     <div class="card">
-        {{-- @foreach ($foods as $food) --}}
-           {{$foods}}
-        {{-- @endforeach --}}
+        {{-- @foreach ($activities as $activity)
+            {{$acitivity->changes}}
+        @endforeach --}}
+        <h1>New: </h1>
+        {{$activities->changes->attributes}}
+        <br>
+        {{-- <h1>Old: </h1>
+        {{$activities->changes['old']['stock']}} --}}
+        
     </div>
     <!-- Page level plugins -->
     <script src="{{ asset('admin/assets/vendor/jquery/jquery.min.js') }}"></script>

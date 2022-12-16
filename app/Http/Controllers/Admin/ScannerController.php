@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 
 use App\Models\Food;
+use App\Models\Admin;
 use App\Models\Order;
+use App\Models\Foodlog;
 use App\Models\Student;
 use App\Models\Purchase;
 use App\Models\Adminnotif;
@@ -60,6 +62,14 @@ class ScannerController extends Controller
         foreach ($orders as $order) {
             $stock = ($order->food->stock) - ($order->quantity);
             Food::where('id', $order->food->id)->update(['stock' => $stock]);
+            Foodlog::create([
+                'food_id' => $order->food->id,
+                'description' => 'sold',
+                'start' => $order->food->stock,
+                'end' => $stock,
+                'sold' => $order->quantity,
+                'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+            ]);
         }
 
         return redirect('/admin/orders/scanner');

@@ -13,6 +13,7 @@ use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Foodlog;
 use RealRashid\SweetAlert\Facades\Alert;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -62,7 +63,6 @@ class POSController extends Controller
         $purchase->totalSugar = $this->totsugar;
         $purchase->totalSodium = $this->totsodium;
         $purchase->payment_id = $payment->id;
-        $purchase->paymentStatus = 1;
         $purchase->claimStatus = 1;
         $purchase->served_by = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
         $purchase->save();
@@ -83,10 +83,22 @@ class POSController extends Controller
 
             $prevStock = $food->stock;
             $newStock = $prevStock - $item->qty;
+
+            Foodlog::create([
+                'food_id' => $food->id,
+                'description' => 'sold',
+                'start' => $prevStock,
+                'end' => $newStock,
+                'sold' => $item->qty,
+                'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+            ]);
+
             Food::where('id', $item->id)->update([
                 'stock' => $newStock,
                 'updated_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
             ]);
+
+           
         }
 
         //Creating notif
