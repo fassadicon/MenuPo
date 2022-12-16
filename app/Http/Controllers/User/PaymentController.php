@@ -9,7 +9,7 @@ use App\Models\Survey;
 use App\Models\Payment;
 use App\Models\Guardian;
 use App\Models\Purchase;
-use App\Models\AdminNotif;
+use App\Models\Adminnotif;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +42,7 @@ class PaymentController extends Controller
         }
 
         $totalPrice = Cart::priceTotal();
-        $totalPricePayment = $totalPrice * 1000;
+        $totalPricePayment = $totalPrice * 100;
 
         
         //For total calories
@@ -184,22 +184,23 @@ class PaymentController extends Controller
 
     public function receipt_new(Purchase $purchase){
 
-        $items = DB::select('SELECT * FROM orders WHERE purchase_id = ?', [$purchase->id]);
         $parent = Guardian::where('user_id', auth()->id())->get();
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         
-        $now = Carbon::now();
-        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
-        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+        // $now = Carbon::now();
+        // $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        // $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
 
-        $survey = Survey::where('parent_id', $parent[0]->id)
-            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
-        if(!empty($survey)){
-            $isSurveyAvail = 1;
-        }
-        
+        // $survey = Survey::where('parent_id', $parent[0]->id)
+        //     ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
+
+        // if(!empty($survey)){
+        //     $isSurveyAvail = 1;
+        // }
+
+        $items = DB::select('SELECT * FROM orders WHERE purchase_id = ?', [$purchase->id]);
         $item_array = array();
         foreach($items as $item){
             $food = Food::findorfail($item->id);
@@ -211,7 +212,7 @@ class PaymentController extends Controller
             'item_array' => $item_array,
             'notifications' => $notifications,
             'students' => $student,
-            'isSurveyAvail' => $isSurveyAvail
+            'isSurveyAvail' => 0
         ]);
     }
 

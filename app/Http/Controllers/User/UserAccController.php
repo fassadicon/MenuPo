@@ -40,6 +40,7 @@ class UserAccController extends Controller
 
         $passreq = Passrequest::where('user_id', auth()->id())->get();
         $reqbutton = 0;
+        
 
         foreach ($passreq as $val){
             $key = strpos($val->created_at, \Carbon\Carbon::now('Asia/Singapore')->toDateString());
@@ -51,6 +52,23 @@ class UserAccController extends Controller
                 $reqbutton = 1;
             }
         }
+
+        // For average food grade
+        $sample = Order::whereHas('purchase', (fn($q)=>
+            $q->where('parent_id', $parent[0]->id)
+        ))->with('food')->get();
+
+        $average = 0;
+        $ite = 0;
+    
+        foreach($sample as $sam){
+            $average += $sam->food->grade;
+            $ite += 1;
+        }
+
+
+        $average_grade = $average/$ite;
+        $average_grade = number_format((float)$average_grade, 2, '.', '');
 
         $payment_link = '';
         foreach($purchase_his as $purchase){
@@ -97,6 +115,7 @@ class UserAccController extends Controller
             'notifications' => $notifications,
             'parent' => $parent[0],
             'unpaid' => $payment_link,
+            'averageGrade' => $average_grade,
             'students' => $student,
             'isSurveyAvail' => $isSurveyAvail,
             'purchases' => $purchase_his,
@@ -132,6 +151,8 @@ class UserAccController extends Controller
 
     public function saveUpdate(Request $request){
 
+        $parent = Guardian::where('user_id', auth()->id())->get();
+
         $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
@@ -153,6 +174,15 @@ class UserAccController extends Controller
             $request->input('id')
 
         ]);
+
+        //Creating notif
+        $notification = new Notification;
+        $notification->parent_id = $parent[0]->id;
+        $notification->title = 'Personal details changed successfully.';
+        $notification->description = 'Your account details changed.';
+        $notification->type = 1;
+        $notification->status = 1;
+        $notification->save();
 
         Alert::success('Success!', 'Parent details successfully changed.');
 
