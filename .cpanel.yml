@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ugmuvjgh/public_html/
+    - /bin/cp /repositories/MenuPo -R * $DEPLOYPATH
