@@ -6,8 +6,8 @@
 @endphp
     <div class="cartItems h-screen">
         <br><br><br><br><br>
-        <div class="text-center mb-4">
-            <p class="text-2xl text-primary font-bold"><u>Cart Summary</u></p>
+        <div class=" mb-4">
+            <p class="text-center text-2xl text-primary font-bold"><u>Cart Summary</u></p>
         </div>
         <div class="w-10/12 h-3/4 mx-auto md:w-2/3 md:flex">
             <div class="h-3/4 justify-center bg-zinc-50  p-4 overflow-y-scroll md:w-2/3 md:h-full">
