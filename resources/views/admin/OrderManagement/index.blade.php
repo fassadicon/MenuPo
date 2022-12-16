@@ -199,6 +199,7 @@
             type: "POST",
             url: "{{ url('admin/orders/scanner') }}" + '/' + sid + '/complete',
             success: function(result) {
+                console.log(result);
                 $('#studentID').val('');
                 $('#purchaseID').val('');
                 $('#parentName').val('');

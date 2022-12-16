@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Record of</th>
                 <th>Description</th>
                 <th>Action by</th>
                 <th>After</th>
@@ -80,6 +81,10 @@
                 columns: [{ //0
                         data: 'id',
                         name: 'id'
+                    },
+                    {
+                        data: 'model_id',
+                        data: 'model_id',
                     },
                     {
                         data: 'event',

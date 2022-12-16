@@ -8,6 +8,7 @@ use App\Models\Menu;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Bmi;
+use App\Models\Foodlog;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Philfct;
@@ -5948,7 +5949,8 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 1,
                 'method' => 'GCash',
-                'referenceNo' => 123456789
+                'referenceNo' => 123456789,
+                'paymentStatus' => 'paid'
             ]
         ];
         Payment::insert($payments);
@@ -9801,5 +9803,19 @@ class DatabaseSeeder extends Seeder
 
         ];
         Survey::insert($surveys);
+
+        DB::table('foodlogs')->delete();
+        // $foodLogs = [
+        //     [
+        //         'id' => 1,
+        //         'food_id' => 60,
+        //         'description' => 'SAMPLE',
+        //         'start' => 1,
+        //         'end' => 1,
+        //         'sold' => 1,
+        //         'created_by' => 1
+        //     ]
+        // ];
+        // Foodlog::insert($foodLogs);
     }
 }
