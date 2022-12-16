@@ -1859,6 +1859,23 @@ footer .bottom-details{
 .row-bottom{
     margin-bottom: 4.4rem !important;
 }
-    
-    
+
+/* Sidebar Dropdown */
+.dropdown-menu{
+    width: 260px;
+    border-radius: 4px;
+    transition: all 0.4s;
+}
+.button-dropdown{
+    border-radius: 4px;
+}
+
+.dropdown-link{
+    transform: scale(0.9, 0.9);
+    -ms-transform: scale(0.9, 0.9); /* IE 9 */
+    -webkit-transform: scale(0.9, 0.9); /* Safari and Chrome */
+    -o-transform: scale(0.9, 0.9); /* Opera */
+    -moz-transform: scale(0.9, 0.9); /* Firefox */
+}
+
    

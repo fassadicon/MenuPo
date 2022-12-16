@@ -7,7 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'MenuPo') }}</title>
+    <link href="{{ asset('admin/assets/img/favicon-32x32.png') }}" rel="icon">
+    <link href="{{ asset('admin/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+      <title>
+        MenuPo Log In
+      </title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -17,8 +21,7 @@
     <link href="{{ asset('admin/assets/css/loginStyle.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
 </head>
 <body>
@@ -27,7 +30,7 @@
             <div class="container">
                 <p class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('admin/assets/img/favicon-32x32.png') }}" alt="">
-                    {{ config('app.name', 'MenuPo') }}
+                    <h6 class="login-header">{{ config('app.name', 'MenuPo') }}</h6>
                 </p>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
