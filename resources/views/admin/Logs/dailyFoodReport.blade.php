@@ -1,5 +1,5 @@
 <x-admin.layout :notifs="$adminNotifs">
-    <h1 class="h3">Food Movement Logs</h1>
+    <h1 class="h3">Daily Report</h1>
     <table class="table-bordered table">
         <thead>
             <tr>
