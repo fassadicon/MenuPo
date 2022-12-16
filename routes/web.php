@@ -216,11 +216,17 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/students/{id}/delete', [StudentController::class, 'delete'])->name('student.delete');
     Route::get('/students/trash', [StudentController::class, 'trash'])->name('student.trash');
     Route::get('/students/{id}/restore', [StudentController::class, 'restore'])->name('student.restore');
+    Route::get('/students/importUpdateBMI', [StudentController::class, 'importUpdateBMI']);
+    Route::post('/students/importUpdateBMI/upload', [StudentController::class, 'import'])->name('students.updateBMI');
+    Route::get('/students/importUpdateBMI/table', [StudentController::class, 'viewImportedStudents'])->name('students.tableUpdatedBMIStudents');
     // Imports
     Route::get('/imports', [ImportUsersController::class, 'index']);
     Route::post('/imports/upload', [ImportUsersController::class, 'import'])->name('imports.upload');
     Route::get('/imports/viewImportedGuardians', [ImportUsersController::class, 'viewImportedGuardians'])->name('imports.viewImportedGuardians');
     Route::get('/imports/viewImportedStudents', [ImportUsersController::class, 'viewImportedStudents'])->name('imports.viewImportedStudents');
+    // Admin Imports
+    Route::get('/imports/adminAccounts', [ImportUsersController::class, 'indexAdmin']);
+    Route::post('/imports/adminAccounts/upload', [ImportUsersController::class, 'importAdmin'])->name('imports.uploadAdmin');
     Route::get('/imports/viewImportedAdmins', [ImportUsersController::class, 'viewImportedAdmins'])->name('imports.viewImportedAdmins');
 
     // REPORTS, GRAPHS, and INFORMATION

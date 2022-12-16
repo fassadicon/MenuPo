@@ -33,28 +33,7 @@
             <tbody>
             </tbody>
             <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Grade</th>
-                    <th>Section</th>
-                    <th>Adviser</th>
-                    <th>LRN</th>
-                    <th>Parent</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Middle Name</th>
-                    <th>Suffix</th>
-                    <th>Sex</th>
-                    <th>Birth Date</th>
-                    <th>Status</th>
-                    <th>Height</th>
-                    <th>Weight</th>
-                    <th>BMI</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th>Created by</th>
-                    <th>Last Updated by</th>
-                </tr>
+               
             </tfoot>
         </table>
     </div>
@@ -259,28 +238,7 @@
                 },
                 // Footer Sorting
                 initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function() {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                    column.search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-
-                            column
-                                .data()
-                                .unique()
-                                .sort()
-                                .each(function(d, j) {
-                                    select.append('<option value="' + d + '">' + d +
-                                        '</option>');
-                                });
-                        });
+                  
                 },
                 columns: [{ // 0
                         data: 'id',
@@ -306,7 +264,7 @@
                         data: 'guardian.firstName',
                         name: 'guardian.firstName',
                         render: function(data, type, row) {
-                            return row.guardian.firstName + ' ' + row.guardian.lastName;
+                            return data == null ? 'Archived' : row.guardian.firstName + ' ' + row.guardian.lastName;
                         }
                     },
                     { // 6
@@ -379,10 +337,10 @@
                         }
                     },
                     { // 20
-                        data: 'created_by_name.firstName',
-                        name: 'created_by_name.firstName',
+                        data: 'created_by_name',
+                        name: 'created_by_name',
                         render: function(data, type, row) {
-                            return row.created_by_name.firstName + ' ' + row.created_by_name
+                            return data == null ? 'Archived' : row.created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;
                         }
                     },

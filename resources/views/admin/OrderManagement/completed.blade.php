@@ -48,24 +48,18 @@
                     <h5 class="modal-title" id="viewPurchaseInfoModalLabel">Purchase Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="hidden" name="purchaseID" id="purchaseID">
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="">Parent Name</label>
-                            <p id="parent_id" class="form-control"></p>
-                        </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="purchaseID" id="purchaseID">
                         <div class="row">
+                            <div class="mb-3">
+                                <label for="">Parent Name</label>
+                                <p id="parent_id" class="form-control"></p>
+                            </div>
                             <div class="mb-3">
                                 <label for="">Student Name</label>
                                 <p id="student_id" class="form-control"></p>
                             </div>
                             <div class="col-6">
-
-                                <div class="mb-3">
-                                    <label for="">Total Amount</label>
-                                    <p id="totalAmount" class="form-control"></p>
-                                </div>
                                 <div class="mb-3">
                                     <label for="">Total Kcal</label>
                                     <p id="totalKcal" class="form-control"></p>
@@ -87,46 +81,41 @@
                                     <p id="totalSodium" class="form-control"></p>
                                 </div>
                             </div>
-                    <div class="mb-3">
-                        <label for="">Total Amount</label>
-                        <p id="totalAmount" class="form-control"></p>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="">Payment ID</label>
+                                    <p id="payment_id" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Payment Status</label>
+                                    <p id="paymentStatus" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Claim Status</label>
+                                    <p id="claimStatus" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Type</label>
+                                    <p id="type" class="form-control"></p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="">Ordered At</label>
+                                    <p id="created_at" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Claimed at</label>
+                                    <p id="updated_at" class="form-control"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Served By</label>
+                                    <p id="served_by" class="form-control"></p>
+                                </div>
+                            </div>
+                        </div>
+    
                     </div>
-                    <div class="mb-3">
-                        <label for="">Payment ID</label>
-                        <p id="payment_id" class="form-control"></p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Payment Status</label>
-                        <p id="paymentStatus" class="form-control"></p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Claim Status</label>
-                        <p id="claimStatus" class="form-control"></p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Type</label>
-                        <p id="type" class="form-control"></p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Ordered at:</label>
-                        <p id="created_at" class="form-control"></p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Claimed at:</label>
-                        <p id="updated_at" class="form-control"></p>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Served By:</label>
-                        <p id="served_by" class="form-control"></p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save Changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     @include('partials.admin._DataTableScripts')

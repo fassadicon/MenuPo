@@ -2,6 +2,7 @@
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
     <a href="/admin/students/create" class="btn btn-success mb-2"><i class="fas fa-user-plus"></i>&nbsp;Create Student Account</a>
+    <a href="/admin/students/importUpdateBMI" class="btn btn-success mb-2"><i class="fas fa-user-plus"></i>&nbsp;Mass Update BMI</a>
     <a href="/admin/students/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Student Accounts</a>
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
@@ -296,28 +297,7 @@
                 },
                 // Footer Sorting
                 initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function() {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-                                    column.search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-
-                            column
-                                .data()
-                                .unique()
-                                .sort()
-                                .each(function(d, j) {
-                                    select.append('<option value="' + d + '">' + d +
-                                        '</option>');
-                                });
-                        });
+                   
                 },
                 columns: [{ // 0
                         data: 'id',

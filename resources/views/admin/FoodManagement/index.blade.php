@@ -326,10 +326,10 @@
                         }
                     },
                     { // 18
-                        data: 'updated_by_name.firstName',
+                        data: 'updated_by_name',
                         name: 'updated_by_name',
                         render: function(data, type, row) {
-                            return row.updated_by_name.firstName == null ? 'N/A' : row
+                            return row.updated_by_name == null ? 'N/A' : row
                                 .updated_by_name.firstName + ' ' + row.updated_by_name.lastName;
                         }
                     },

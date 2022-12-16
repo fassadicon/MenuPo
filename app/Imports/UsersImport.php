@@ -29,12 +29,6 @@ class UsersImport implements ToModel
      */
     public function model(array $row)
     {
-        // return new User([
-        //     'email' => $row[0],
-        //     'recoveryEmail' => $row[1],
-        //     'password' => $row[2],
-        //     'role' => 0
-        // ]);
         $userCredentials = ([
             'email' => $row[0],
             'recoveryEmail' => $row[1],
@@ -59,26 +53,6 @@ class UsersImport implements ToModel
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
         $QRcode = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)->generate($studentID);
         Storage::disk('public')->put('admin/qrs/' . $studentID . '.png', $QRcode);
-
-        // $student = new Student([
-        //     'parent_id' => $guardian->id,
-        //     'LRN' => $row[9],
-        //     'grade' => $row[10],
-        //     'section' => $row[11],
-        //     'adviser' => $row[12],
-        //     'firstName' => $row[13],
-        //     'lastName' => $row[14],
-        //     'middleName' => $row[15],
-        //     'suffix' => $row[16],
-        //     'sex' => $row[17],
-        //     'birthDate' => $row[18],
-        //     'status' => 1,
-        //     'height' => $row[19],
-        //     'weight' => $row[20],
-        //     'BMI' => $row[21],
-        //     'QR' => 'admin/qrs/' . $studentID . '.png',
-        //     'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
-        // ]);
 
         $BMI = Bmi::create([
             'Q1Height' => $row[19],
