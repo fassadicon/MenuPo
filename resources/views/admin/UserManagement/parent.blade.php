@@ -47,49 +47,70 @@
                 <div class="modal-body">
                     <input type="hidden" name="studentID" id="studentID">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="mb-3">
                                 <label for="email">Email</label>
                                 <p id="email" class="form-control"></p>
                             </div>
+                           
+                         
+
+                        </div>
+                        <div class="col-6">
                             <div class="mb-3">
                                 <label for="recoveryEmail">Recovery Email</label>
                                 <p id="recoveryEmail" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-12">
                             <div class="mb-3">
                                 <label for="students">Students</label>
-                                <div id="students"></div>
+                                {{-- <div id="students"></div> --}}
+                                <p class="form-control" id="students"></p>
                             </div>
-
                         </div>
-                        <div class="col-4">
+                        
+                        <div class="col-6">
                             <div class="mb-3">
                                 <label for="firstName">First Name</label>
                                 <p id="firstName" class="form-control"></p>
                             </div>
+                          
+                          
+                           
+
+                        </div>
+                        <div class="col-6">
                             <div class="mb-3">
                                 <label for="lastName">Last Name</label>
                                 <p id="lastName" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-6">
                             <div class="mb-3">
                                 <label for="middleName">Middle Name</label>
                                 <p id="middleName" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-2">
                             <div class="mb-3">
                                 <label for="suffix">Suffix</label>
                                 <p id="suffix" class="form-control"></p>
                             </div>
-
                         </div>
-                        <div class="col-4">
+                        <div class="col-2">
                             <div class="mb-3">
                                 <label for="sex">Sex</label>
                                 <p id="sex" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-4">
                             <div class="mb-3">
                                 <label for="birthDate">Birth Date</label>
                                 <p id="birthDate" class="form-control"></p>
                             </div>
+                        </div>
+                        <div class="col-8">
                             <div class="mb-3">
                                 <label for="address">Address</label>
                                 <p id="address" class="form-control"></p>
@@ -97,22 +118,34 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="mb-3">
-                            <label for="created_by">Created By</label>
-                            <p id="created_by" class="form-control"></p>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="created_by">Created By</label>
+                                <p id="created_by" class="form-control"></p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="created_at">Created At</label>
-                            <p id="created_at" class="form-control"></p>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="created_at">Created At</label>
+                                <p id="created_at" class="form-control"></p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="updated_by">Last Updated By</label>
-                            <p id="updated_by" class="form-control"></p>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="updated_by">Last Updated By</label>
+                                <p id="updated_by" class="form-control"></p>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="updated_at">Last Updated At</label>
-                            <p id="updated_at" class="form-control"></p>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="updated_at">Last Updated At</label>
+                                <p id="updated_at" class="form-control"></p>
+                            </div>
                         </div>
+                        
+                        
+                       
+                       
                     </div>
                     {{--  <div class="mb-3">
                             <label for="">Description</label>
@@ -391,13 +424,11 @@
                         .updated_by_name.lastName);
                     $('#viewStudentInfoModal').modal('show');
 
-                    var studentsHTML = '';
-                    $('#students').html('');
+                    let studentList = '';
                     $.each(data.students, function(i, value) {
-                        studentsHTML += '<p>' + value.firstName + ' ' + value.lastName +
-                            '</p>';
+                        studentList += value.firstName + ' ' + value.lastName + ', ';
                     });
-                    $('#students').append(studentsHTML);
+                    $('#students').text(studentList);
 
                 })
             });

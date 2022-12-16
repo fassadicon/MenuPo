@@ -86,7 +86,7 @@
                 <div class="row">
                     <div class="col-1">
                         <div class="card-survey card_red">
-                        <h1>Average Food Grade of Food Items</h1>
+                        <h1> <strong>Average Food Grade of Food Items</strong> </h1>
                         <h1>{{round($averageFoodListGrade, 2)}}</h1>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                 <div class="row">
                     <div class="col-1">
                         <div class="card-survey card_red">
-                        <h1>Average Food Grade of Menu Items</h1>
+                        <h1><strong> Average Food Grade of Menu Items</strong></h1>
                         <h1>{{round($averageMenuGrade, 2)}}</h1>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                 <div class="row">
                     <div class="col-1">
                         <div class="card-survey card_red">
-                        <h1>Average Food Grade of Bought Items</h1>
+                        <h1><strong>Average Food Grade of Bought Items</strong> </h1>
                         <h1>{{round($averageBoughtGrade, 2)}}</h1>
                         </div>
                     </div>
@@ -112,14 +112,15 @@
             </div>
 
         </div>
+        <a class="w-full text-center mr-4" href="/admin/reports/download-composition-report">
+            <div
+                class="block  text-secondary text-smfont-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                Download in PDF
+            </div>
+        </a>
         <hr class="mx-4 my-4">
         <br>
     </div>
-    <a class="w-full text-center mr-4" href="/admin/reports/download-composition-report">
-        <div
-            class="block  text-secondary text-smfont-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-            Download in PDF
-        </div>
-    </a>
+  
 
 </x-admin.layout>

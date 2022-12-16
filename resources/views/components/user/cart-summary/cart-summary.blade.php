@@ -8,7 +8,7 @@
         <div class="text-center mb-2">
             <p class="text-2xl pt-8 text-primary font-bold text-decoration-none">Cart Summary</p>
         </div>
-        <a href="/user/menu-landing" class="md:hidden block w-24 mx-auto mt-2 mb-4 md:my-4 text-sm text-gray-50 hover:text-primary"><i class="fa-solid fa-arrow-left fa-lg"></i> Go Back</a>
+        <a href="/user/menu/{{$anak->id}}" class="md:hidden block w-24 mx-auto mt-2 mb-4 md:my-4 text-sm text-gray-50 hover:text-primary"><i class="fa-solid fa-arrow-left fa-lg"></i> Go Back</a>
         <div class="w-10/12 h-3/4 mx-auto md:w-2/3 md:flex">
             <div class="h-3/4 justify-center bg-zinc-50  p-8 overflow-y-scroll md:w-2/3 md:h-full">
                 @foreach ($items as $val)

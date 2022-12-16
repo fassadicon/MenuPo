@@ -48,7 +48,7 @@
                   {{-- Orders Notifs --}}
                   <li class="flex relative group">
                     <div class="border-2 border-solid bg-green-400 h-12 w-full text-center mb-3 mx-3">
-                        <span class="text-lg font-bold">Order Notifs</span>
+                        <span class="text-lg font-bold">User Notifs</span>
                     </div>
                    
                     <ul class="absolute bg-white p-3 w-96  -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
@@ -82,7 +82,7 @@
                   {{-- User Notifs --}}
                   <li class="flex relative group">
                     <div class="border-2 border-solid bg-yellow-400 h-12 w-full text-center mb-3 mx-3">
-                        <p class="text-lg text-center font-bold">User Notifs</p>
+                        <p class="text-lg text-center font-bold">Order Notifs</p>
                     </div>
                    
                     <ul class="absolute bg-white p-3 w-96  -left-80 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 

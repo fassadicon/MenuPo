@@ -24,9 +24,14 @@ class TestController extends Controller
 {
     public function index()
     {
-        $activities = Activity::where('log_name', 'Admin')->get();
-        dd($activities);
-        return view('admin.test', compact('activities'));
+       for ($i = 36; $i < 101; $i++) {
+        $test = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)
+        ->generate($i);
+        $fileName = 'admin/qrs/' . $i . '.png';
+        Storage::disk('public')->put($fileName, $test);
+       }
+        
+        return view('admin.test');
     }
 
     // if (totalPoints <= 0) {

@@ -141,8 +141,12 @@ class PurchasesController extends Controller
 
     public function viewCompleted($id)
     {
-        return Purchase::where('id', $id)->first()
+        $purchase = Purchase::where('id', $id)->first()
         ->load('orders', 'parent', 'student', 'admin');
+        $purchase['served_by_name'] = Admin::where('id', $purchase->served_by)->first();
+        $purchase['created_at_formatted'] = Carbon::parse($purchase->created_at)->format('M d, Y');
+        $purchase['updated_at_formatted'] = Carbon::parse($purchase->updated_at)->format('M d, Y');
+        return $purchase;
     }
 
     
