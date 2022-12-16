@@ -274,6 +274,8 @@ Route::get('/dt', [TestController::class, 'dt'])->name('food.test');
 // All User Controller //
 Route::middleware('user')->group(function () {
 
+    Route::post('/sample-testing', [HomeController::class, 'sample_testing']);
+
     //Home
     Route::get('/user/home', [HomeController::class, 'index']);
     Route::post('/user/deleteAllNotifs', [HomeController::class, 'deleteAllNotifs']);

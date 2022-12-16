@@ -3,14 +3,15 @@
 
 
 @props(['items'])
+@props(['item_array'])
 
 <div class="h-screen w-screen justify-center align-center ">
     
-    <div class="h-3/4 w-96 mx-auto border-solid border-4 border-primary rounded-lg">
+    <div class="h-auto w-80 py-8 mx-auto border-solid border-4 border-primary rounded-lg">
         <div id="receipt" class="">
-            <div class="py-8">
-                <h3 class="text-center text-lg text-primary font-bold">Receipt</h3>
-                <p class="text-center">Date & time today</p>
+            <div class="mb-4">
+                <h3 class="text-center text-2xl text-black font-bold">Receipt</h3>
+                <p class="text-center text-gray-400">{{\Carbon\Carbon::now('Asia/Singapore')->toDateTimeString()}}</p>
             </div>
             
             <table class="w-full h-80 mx-auto">
@@ -22,12 +23,13 @@
                 <tbody class="text-center">
                     @php
                         $total_price = 0;
-                        foreach($items as $item){
-                            $total_price += $item->quantity * $item->amount;
-                            $price = $item->amount * $item->quantity;
+                        $size = sizeOf($items);
+                        for( $i=0; $i< $size; $i++){
+                            $total_price += $items[$i]->quantity * $items[$i]->amount;
+                            $price = $items[$i]->amount * $items[$i]->quantity;
                             echo "<tr class='h-4'>
-                                    <td class='w-20'>$item->id</td>
-                                    <td class='w-20'>$item->quantity</td>
+                                    <td class='w-20'>{$item_array[$i]->name}</td>
+                                    <td class='w-20'>{$items[$i]->quantity}</td>
                                     <td class='w-20'>$price</td>
                                 </tr>";
                         }
