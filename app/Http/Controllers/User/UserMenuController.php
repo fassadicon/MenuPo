@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use Carbon\Carbon;
 use App\Models\Food;
 use App\Models\Menu;
 use App\Models\Survey;
@@ -26,8 +27,13 @@ class UserMenuController extends Controller
         $parent = Guardian::where('user_id', auth()->id())->get();
         $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
@@ -49,8 +55,13 @@ class UserMenuController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }

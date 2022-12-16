@@ -33,12 +33,19 @@ class HealthController extends Controller
         $parent = Guardian::where('user_id', auth()->id())->get();
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+        
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
+
         $bmi = Bmi::where('id', $anak->bmi_id)->get();
         $purchase = DB::select('SELECT * FROM purchases WHERE parent_id = ? && student_id = ?', [$parent[0]->id, $anak->id]);
 
@@ -102,8 +109,13 @@ class HealthController extends Controller
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
+        
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
         $survey = Survey::where('parent_id', $parent[0]->id)
-            ->where('created_at', 'like', \Carbon\Carbon::now('Asia/Singapore')->toDateString().'%')->get();
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
@@ -151,10 +163,21 @@ class HealthController extends Controller
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         $anak = Student::findorfail($student_id);
 
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
+
+        $survey = Survey::where('parent_id', $parent[0]->id)
+            ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
+        if(!empty($survey)){
+            $isSurveyAvail = 1;
+        }
+
         return view('user.health-report', [
             'students' => $student,
             'notifications' => $notifications,
             'anak' => $anak,
+            'isSurveyAvail' => $isSurveyAvail,
             'calChart' => $calChart->build($student_id),
             'fatChart' => $fatChart->build($student_id),
             'satFatChart' => $satFatChart->build($student_id),
