@@ -42,7 +42,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title" id="viewStudentInfoModalLabel"></h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-window-close fa-xl"></i></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="studentID" id="studentID">
