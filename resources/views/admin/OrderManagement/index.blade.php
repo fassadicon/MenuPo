@@ -90,6 +90,9 @@
                 <button class="btn btn-success btn-lg completeBtn">
                     Complete Order
                 </button>
+                <button class="btn btn-success btn-lg findBtn">
+                    Find Order
+                </button>
             </div>
         </div>
     </div>
@@ -220,6 +223,61 @@
                 Swal.fire(
                     'No QR Scanned!',
                 );
+            }
+        });
+    });
+
+    $('.findBtn').click(function() {
+        let id = $('#studentID').val();
+        $.ajax({
+            type: "GET",
+            url: "{{ url('admin/orders/scanner') }}" + '/' + id + '/view',
+            // data: content;
+            success: function(data) {
+                var trHTML1 = '';
+                var total = 0.00;
+                $('#purchaseTable').html('');
+                // $('#orderTable').html('');
+                console.log(data);
+                if (data.purchase.length == 0) {
+                    Swal.fire({
+                        title: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
+                        icon: "warning",
+                        html: '<a href="/admin/pos/' + id +
+                            '"class=\'btn btn-success\'>Yes</a>',
+                        showCancelButton: true,
+                        showConfirmButton: false
+                    });
+                }
+                $.each(data.purchase, function() {
+                    // $('#purchaseID').val(this.id);
+                    $('#parentName').val(this.parent.firstName + ' ' + this.parent
+                        .lastName);
+                    $('#studentName').val(this.student.firstName + ' ' + this.student
+                        .lastName);
+                    total += this.totalAmount;
+                    // console.log(this.id)
+                    $.each(this.orders, function(i, value) {
+                        trHTML1 += '<tr><td>' + value.food.name +
+                            '</td><td>' + value.quantity +
+                            '</td><td>' + value.amount + '</td></tr>';
+                    });
+                });
+                $('#totalAmount').val('PHP ' + total);
+                $('#purchaseTable').append(trHTML1);
+            },
+            error: function(error) {
+                Swal.fire({
+                    title: 'The student have no order/s for today. Do you want to proceed to Walk-in Order?',
+                    text: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
+                    icon: "warning",
+                    html: '<button type="button" role="button" tabindex="0" class="bg-dark text-white rounded py-2 px-4 hover:bg-black">' +
+                        'No' + '</button>' +
+                        '<button type="button" role="button" tabindex="0" class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">' +
+                        'Yes' + '</button>',
+                    showCancelButton: true,
+                    showConfirmButton: false
+                });
             }
         });
     });
