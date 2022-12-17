@@ -144,7 +144,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 6,
                 'email' => 'byronjames@gmail.com',
-                'recoveryEmail' => 'titoko@gmail.com',
+                'recoveryEmail' => 'babyko@gmail.com',
                 'password' => bcrypt('mylabs1999'),
                 'role' => 0,
                 'created_at' => '2022-08-01'

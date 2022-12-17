@@ -177,11 +177,11 @@
                         <i class="fa-solid fa-chart-simple"></i>
                     </div>
                     <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
-                        <p class="text-secondary text-lg font-bold">4 macro: </p>  
-                        <p><b>Consumed Fat:</b> {{$recommended_fat}}</p> 
-                        <p><b>Consumed Sat Fat:</b> {{$recommended_satFat}}</p>  
-                        <p><b>Consumed Sugar:</b>{{$recommended_sugar}}</p>  
-                        <p><b>Consumed Sodium:</b> {{$recommended_sodium}}</p>   
+                        <p class="text-secondary text-lg font-bold">Recommended amount: </p>  
+                        <p><b> Fat:</b> {{$recommended_fat}}g</p> 
+                        <p><b> Saturated Fat:</b> {{$recommended_satFat}}g</p>  
+                        <p><b> Sugar:</b>{{$recommended_sugar}}g</p>  
+                        <p><b> Sodium:</b> {{$recommended_sodium}}mg</p>   
                     </ul>
                 </div>
 
@@ -199,10 +199,11 @@
                         </div>
                         <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
                             <p class="text-secondary text-lg font-bold">No warnings at the moment.</p>  
-                            <p><b>Consumed Fat:</b> {{$consumed_fat}}</p> 
-                            <p><b>Consumed Sat Fat:</b> {{$consumed_satFat}}</p>  
-                            <p><b>Consumed Sugar:</b>{{$consumed_sugar}}</p>  
-                            <p><b>Consumed Sodium:</b> {{$consumed_sodium}}</p>   
+                            <p class="text-secondary"><b>Consumed:</b></p> 
+                            <p><b> Fat:</b> {{$consumed_fat}}g</p> 
+                            <p><b> Sat Fat:</b> {{$consumed_satFat}}g</p>  
+                            <p><b> Sugar:</b>{{$consumed_sugar}}g</p>  
+                            <p><b> Sodium:</b> {{$consumed_sodium}}mg</p>   
 
                         </ul>
                     </div>
@@ -213,10 +214,11 @@
                         </div>
                         <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
                             <p class="text-primary text-lg font-bold">Yellow Warning.</p>  
-                            <p><b>Consumed Fat:</b> {{$consumed_fat}}</p> 
-                            <p><b>Consumed Sat Fat:</b> {{$consumed_satFat}}</p>  
-                            <p><b>Consumed Sugar:</b>{{$consumed_sugar}}</p>  
-                            <p><b>Consumed Sodium:</b> {{$consumed_sodium}}</p>      
+                            <p class="text-secondary"><b>Consumed:</b></p> 
+                            <p><b> Fat:</b> {{$consumed_fat}}g</p> 
+                            <p><b> Sat Fat:</b> {{$consumed_satFat}}g</p>  
+                            <p><b> Sugar:</b>{{$consumed_sugar}}g</p>  
+                            <p><b> Sodium:</b> {{$consumed_sodium}}mg</p>   
                         </ul>
                     </div>
                 @elseif($red_warning)
@@ -226,10 +228,11 @@
                         </div>
                         <ul class="absolute bg-white p-3 w-60 -top-8 left-12 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50">
                             <p class="text-red-500 text-lg font-bold">Red Warning.</p>  
-                            <p><b>Consumed Fat:</b> {{$consumed_fat}}</p> 
-                            <p><b>Consumed Sat Fat:</b> {{$consumed_satFat}}</p>  
-                            <p><b>Consumed Sugar:</b>{{$consumed_sugar}}</p>  
-                            <p><b>Consumed Sodium:</b> {{$consumed_sodium}}</p>      
+                            <p class="text-secondary"><b>Consumed:</b></p> 
+                            <p><b> Fat:</b> {{$consumed_fat}}g</p> 
+                            <p><b> Sat Fat:</b> {{$consumed_satFat}}g</p>  
+                            <p><b> Sugar:</b>{{$consumed_sugar}}g</p>  
+                            <p><b> Sodium:</b> {{$consumed_sodium}}mg</p>   
                         </ul>
                     </div>
                 @endif

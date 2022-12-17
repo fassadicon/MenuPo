@@ -50,7 +50,7 @@ class DownloadReportsController extends Controller
         <body>
            
             <div>
-                <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+                <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
                 <h2> <u> Calorie Intake Report </u> </h2>
                 <table class="border-2 border-solid">
                     <tr> 
@@ -286,6 +286,7 @@ class DownloadReportsController extends Controller
                     </tr>
                 </table>
             </div>
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
 
             
 
@@ -347,7 +348,7 @@ class DownloadReportsController extends Controller
         <body>
            
             <div>
-                <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+                <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
                 <h2> <u> Total Fat Intake Report </u> </h2>
                 <table class="border-2 border-solid">
                     <tr> 
@@ -583,6 +584,7 @@ class DownloadReportsController extends Controller
                     </tr>
                 </table>
             </div>
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
 
             
 
@@ -644,7 +646,7 @@ class DownloadReportsController extends Controller
         <body>
            
             <div>
-                <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+                <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
                 <h2> <u> Saturated Fat Intake Report </u> </h2>
                 <table class="border-2 border-solid">
                     <tr> 
@@ -880,6 +882,7 @@ class DownloadReportsController extends Controller
                     </tr>
                 </table>
             </div>
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
 
             
 
@@ -941,7 +944,7 @@ class DownloadReportsController extends Controller
         <body>
            
             <div>
-                <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+                <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
                 <h2> <u> Sugar Intake Report </u> </h2>
                 <table class="border-2 border-solid">
                     <tr> 
@@ -1177,6 +1180,7 @@ class DownloadReportsController extends Controller
                     </tr>
                 </table>
             </div>
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
 
             
 
@@ -1238,7 +1242,7 @@ class DownloadReportsController extends Controller
         <body>
            
             <div>
-                <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+                <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
                 <h2> <u> Sodium Intake Report </u> </h2>
                 <table class="border-2 border-solid">
                     <tr> 
@@ -1474,6 +1478,7 @@ class DownloadReportsController extends Controller
                     </tr>
                 </table>
             </div>
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
 
             
 
@@ -1667,6 +1672,7 @@ class DownloadReportsController extends Controller
         </style>
         <body>
 
+            <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
             <h2> <u> BMI Data Report </u> </h2>
 
             <table class="border-2 border-solid">
@@ -1899,7 +1905,7 @@ class DownloadReportsController extends Controller
             }
         </style>
         <body>
-
+            <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
             <h2> <u>Canteen Sales Report </u> </h2>
 
             <table class="border-2 border-solid">
@@ -2254,10 +2260,141 @@ class DownloadReportsController extends Controller
                     <td>'. round(Purchase::whereBetween('created_at', ['2023-04-01', '2023-04-30'])->sum('totalAmount')) .'</td>
                     <td>'.  round(Purchase::whereBetween('created_at', ['2023-05-01', '2023-05-31'])->sum('totalAmount')) .'</td>
                     <td>'. round(Purchase::whereBetween('created_at', ['2023-06-01', '2023-06-30'])->sum('totalAmount')) .'</td>
-                </tr>
+                </tr>';
         
+        
+        $html .= '
             </table>
-            <br>
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+
+        </body>
+        </html>
+        
+        ';
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream('Canteen Sales Report');
+
+        return redirect()->back();
+    }
+
+    public function download_dailyStockSales_report(){
+        $foodIDs = Foodlog::select('food_id')->distinct()->pluck('food_id')->toArray();
+
+
+        $foodNames = array();
+        foreach ($foodIDs as $foodID) {
+            array_push(
+                $foodNames,
+                Food::where('id', $foodID)->get(['name'])->value('name')
+            );
+        }
+
+        $starts = array();
+        $adds = array();
+        $solds = array();
+        $ends = array();
+        $amounts = array();
+        $totalAmount = 0;
+
+        foreach ($foodIDs as $foodID) {
+            $firstLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())->first();
+            $startStock = $firstLog->start;
+            array_push(
+                $starts,
+                $startStock
+            );
+
+            $lastLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())
+                ->orderBy('created_at', 'desc')
+                ->first();
+            $endStock = $lastLog->end;
+            array_push(
+                $ends,
+                $endStock
+            );
+
+            $addLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())
+                ->sum('add');
+            array_push(
+                $adds,
+                $addLog
+            );
+
+            $soldLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())
+                ->sum('sold');
+            array_push(
+                $solds,
+                $soldLog
+            );
+
+            $amountLog = Foodlog::where('food_id', $foodID)
+                ->whereDate('created_at', Carbon::today())
+                ->sum('sold') * Food::where('id', $foodID)->get(['price'])->value('price');
+            array_push(
+                $amounts,
+                $amountLog
+            );
+            $totalAmount += $amountLog;
+        }
+
+        $html = '
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <style>
+            h2{
+                text-align: center;
+            }
+            th{
+                width: 75px;
+            }
+            tr{
+                text-align: center;
+            }
+            td{
+                height: 40px;
+            }
+            table{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+              }
+            .total{
+                font-weight: bold;
+            }
+            .stockReport th{
+                width: 130px;
+            }
+            .stockReport td{
+                height: 25px;
+            }
+        </style>
+        <body>
+
+            <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
             <h2> <u>Daily Stock and Amount Report </u> </h2>
             <table class="stockReport">
                 <tr>
@@ -2315,7 +2452,7 @@ class DownloadReportsController extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream('Canteen Sales Report');
+        $dompdf->stream('Daily Stock Sales Report');
 
         return redirect()->back();
     }

@@ -191,7 +191,7 @@ class CompositionsReportController extends Controller
 
         </style>
         <body>
-
+            <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
             <h2> <u> Most Bought </u> </h2>
             <div class="main-container">
                 <table class="border-2 border-solid">

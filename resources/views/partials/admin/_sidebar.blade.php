@@ -324,6 +324,12 @@
               <span>Food Logs</span>
           </a>
       </li><!-- End Completed Orders Nav -->
+      <li class="nav-item">
+        <a href="/admin/logs/menuChanges" class="nav-link collapsed" id="sidebarLink">
+          <i class="bi bi-menu-button-wide-fill"></i>
+            <span>Menu Changes</span>
+        </a>
+    </li><!-- End Completed Orders Nav -->
       <li class="nav-heading">Nutritional Report</li>
     <li class="button-dropdown">
       <a href="javascript:void(0)" class="nav-link collapsed dropdown-toggle">

@@ -97,7 +97,8 @@ class SurveyReportController extends Controller
               }
         </style>
         <body>
-
+        
+            <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
             <h2> <u> Parent Survey Report </u> </h2>
 
             <table class="border-2 border-solid">

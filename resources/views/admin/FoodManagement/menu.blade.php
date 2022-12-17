@@ -218,6 +218,10 @@
                 {{-- Beverages Table --}}
                 <div class="tab-pane fade" id="beveragesTableTab" role="tabpanel"
                     aria-labelledby="beveragesTableTab">
+                    <div align="left"><a href="javascript:void(0)" class="btn btn-success mb-2"
+                            id="addMenuItemBtn">Add
+                            a Beverages</a>
+                    </div>
                     <div class="col-8">
                         <table class="table table-hover table-sm" id="beveragesTable">
                             <thead>
@@ -244,8 +248,13 @@
                 </div>
                 {{-- Other Food Items Table --}}
                 <div class="tab-pane fade" id="othersTableTab" role="tabpanel" aria-labelledby="othersTableTab">
-                    <div class="col-8">
-                        <table class="table table-hover table-sm" id="othersTable">
+                     <div align="left"><a href="javascript:void(0)" class="btn btn-success mb-2"
+                                id="addMenuItemBtn">Add
+                                Other Food Items</a>
+                        </div>
+                    <div class="col-12">
+                       
+                        <table class="table table-hover" id="othersTable">
                             <thead>
                                 <tr>
                                     <th>Menu ID</th>
@@ -347,9 +356,12 @@
                 <div class="col-12">
                     <a id="updateFoodInfo" href="javascript:void(0)" style="background-color: gray; border: none;"
                         class="btn btn-info" role="link" aria-disabled="true" disabled>Edit Info</a>
-                    <a class="btn btn-primary" id="updatePreviewMenuStock" disabled><i class="fas fa-plus"></i>&nbsp;Add Stock</a>
-                    <a class="btn btn-warning" id="updatePreviewMenuDate" disabled><i class="fas fa-calendar-alt"></i>&nbsp;Update Date</a>
-                    <a class="btn btn-danger" id="removePreviewMenu" disabled><i class="fas fa-minus-circle"></i>&nbsp;Remove</a>
+                    <a class="btn btn-primary" id="updatePreviewMenuStock" disabled><i
+                            class="fas fa-plus"></i>&nbsp;Add Stock</a>
+                    <a class="btn btn-warning" id="updatePreviewMenuDate" disabled><i
+                            class="fas fa-calendar-alt"></i>&nbsp;Update Date</a>
+                    <a class="btn btn-danger" id="removePreviewMenu" disabled><i
+                            class="fas fa-minus-circle"></i>&nbsp;Remove</a>
                 </div>
             </div>
         </div>
@@ -591,7 +603,7 @@
                 <div class="modal-footer">
                     {{-- <button type="button" class="bg-primary text-white rounded py-2 px-4 hover:bg-black"
                         id="addMenuClearBtn">Clear Fields</button> --}}
-                    <button type="button" class="btn btn-primary" id="submitUpdateMenuItemBtn">Update</button>
+                    <button type="button" class="btn btn-success" id="submitUpdateMenuItemBtn">Update</button>
                 </div>
             </div>
         </div>
@@ -676,7 +688,7 @@
             },
             // Footer Sorting
             initComplete: function() {
-               
+
             },
             columns: [{
                     data: 'id',
@@ -736,8 +748,8 @@
             ]
         });
 
-         // Pasta Meals Table in the Menu
-         var pastasTable = $('#pastasTable').DataTable({
+        // Pasta Meals Table in the Menu
+        var pastasTable = $('#pastasTable').DataTable({
             lengthMenu: [
                 [10, 15, 20, 25, 30],
                 [10, 15, 20, 25, 30]
@@ -750,7 +762,7 @@
             },
             // Footer Sorting
             initComplete: function() {
-   
+
             },
             columns: [{
                     data: 'id',
@@ -823,7 +835,7 @@
             },
             // Footer Sorting
             initComplete: function() {
-               
+
             },
             columns: [{
                     data: 'id',
@@ -896,7 +908,7 @@
             },
             // Footer Sorting
             initComplete: function() {
-                
+
             },
             columns: [{
                     data: 'id',
@@ -969,7 +981,7 @@
             },
             // Footer Sorting
             initComplete: function() {
-                
+
             },
             columns: [{
                     data: 'id',
@@ -1101,6 +1113,7 @@
                     snacksTable.ajax.reload();
                     beveragesTable.ajax.reload();
                     othersTable.ajax.reload();
+                    pastasTable.ajax.reload();
                     $('#updateMenuModal').modal('hide');
                     $('#updateMenuModal form')[0].reset();
                     console.log(response);
@@ -1173,6 +1186,7 @@
                     snacksTable.ajax.reload();
                     beveragesTable.ajax.reload();
                     othersTable.ajax.reload();
+                    pastasTable.ajax.reload();
                     $('#addMenuModal').modal('hide');
                     $('#addMenuModal form')[0].reset();
                     console.log(response);
@@ -1451,7 +1465,13 @@
                     additionalStock: additionalStock
                 },
                 success: function(response) {
-                    console.log('success');
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Stock Added',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     cookedMealsTable.ajax.reload();
                     pastasTable.ajax.reload();
                     snacksTable.ajax.reload();
@@ -1477,7 +1497,13 @@
                     $('#prevRemovedAt').val(data.removed_at);
                     $('#updateDateModal').modal('show');
                 } else {
-                    console.log('Menu is permanent');
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'warning',
+                        title: 'Menu is permanent',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
 
             })
@@ -1501,6 +1527,7 @@
                     snacksTable.ajax.reload();
                     beveragesTable.ajax.reload();
                     othersTable.ajax.reload();
+                    pastasTable.ajax.reload();
                     $('#updateDateModal').modal('hide');
                     $('#updateDateModal form')[0].reset();
                     console.log(response);
