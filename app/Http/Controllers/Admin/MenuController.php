@@ -27,26 +27,27 @@ class MenuController extends Controller
             // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
             ->where(function ($query) {
                 $query->where('status', 1)
-                    ->whereDate('displayed_at', '=', Carbon::now()->format('Y-m-d'))
-                    ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
+                    ->whereDate('displayed_at', Carbon::today()->format('Y-m-d'))
+                    ->whereDate('removed_at', '>', Carbon::today()->format('Y-m-d'))
                     ->whereHas('food', function ($query) {
                         $query->where('type', 3)->where('stock', '>', 0);
                     });
             })
             ->orWhere(function ($query) {
                 $query->where('status', 0)
-                    ->WhereNull('displayed_at')
-                    ->WhereNull('removed_at')
+                    ->whereNull('displayed_at')
+                    ->whereNull('removed_at')
                     ->whereHas('food', function ($query) {
                         $query->where('type', 3)->where('stock', '>', 0);
                     });
             })
             // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
             // get distinct food id 
-            ->groupBy('food_id')
-            // ->orderBy('food_id')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+            ->orderBy('id', 'DESC')
+            // ->groupBy('food_id')
+            ->latest()    
+            ->get()
+            ->unique('food_id');
 
         if ($request->ajax()) {
             return DataTables::of($cookedMeals)
@@ -425,6 +426,7 @@ class MenuController extends Controller
 
     public function updateMenuItem(Request $request)
     {
+        // dd($request);
         $menuItem = Menu::where('id', $request->id)->first();
         if ($request->status == 1) {
             if ($request->displayed_at != NULL && $request->removed_at == NULL) {
@@ -444,15 +446,15 @@ class MenuController extends Controller
             $newAddedStock = $prevStock + $addedStock;
             Food::where('id', $foodID)->update(['stock' => $newAddedStock]);
         }
-        Foodlog::create([
-            'food_id' => $foodID,
-            'description' => 'added stock',
-            'start' => $prevStock,
-            'add' => $addedStock,
-            'end' => $newAddedStock,
-            'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
-        ]);
-
+        // Foodlog::create([
+        //     'food_id' => $foodID,
+        //     'description' => 'added stock',
+        //     'start' => $prevStock,
+        //     'add' => $addedStock,
+        //     'end' => $newAddedStock,
+        //     'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+        // ]);
+        $menuItem->status = $request->status;
         $menuItem->save();
 
         return $menuItem;

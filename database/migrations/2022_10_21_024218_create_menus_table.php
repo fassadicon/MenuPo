@@ -20,7 +20,6 @@ return new class extends Migration
             $table->date('displayed_at')->nullable();
             $table->date('removed_at')->nullable();
             $table->timestamps();
-            $table->softDeletes();
             $table->foreignId('created_by')->constrained('admins');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('updated_by')->references('id')->on('admins');
