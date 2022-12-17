@@ -30,7 +30,7 @@
                 </div>
                 {{-- Type --}}
                 <div class="mb-6">
-                    <label for="type" class="inline-block text-lg mb-2">Type</label>
+                    <label for="type" class="inline-block text-lg mb-2">Type (4-Pastas, 3-RiceMeals, 2-Snacks, 1-Bevs, 0-Others)</label>
                     <input id="type" type="text" class="border border-gray-200 rounded p-2 w-full"
                         name="type" placeholder="Example: Snacks, Beverages, Rice Meals, Others"
                         value="{{ old('type') }}" />
