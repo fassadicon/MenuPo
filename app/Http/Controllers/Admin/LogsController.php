@@ -110,7 +110,23 @@ class LogsController extends Controller
         return view('admin.Logs.bmi', compact('logs', 'adminNotifs'));
     }
 
+    public function menuLogs(Request $request)
+    {
+        $logs = Activity::where('log_name', 'Menu')->get();
+        foreach ($logs as $log) {
+            $log['model_id'] = $log->subject_id . ' - ' . Food::where('id', $log->subject_id)->get(['name'])->value('name');
+            $admin = Admin::where('user_id',  $log->causer->id)->first();
+            $log['action_by'] = $admin->firstName . ' ' . $admin->lastName;
+        }
+        if ($request->ajax()) {
+            return DataTables::of($logs)
+                ->addIndexColumn()
+                ->make(true);
+        }
 
+        $adminNotifs = Adminnotif::get();
+        return view('admin.Logs.menu', compact('logs', 'adminNotifs'));
+    }
     // public function foodItemsTable(Request $request) 
     // {
     //     $logs = Activity::where('log_name', 'Admin')->get();

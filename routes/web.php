@@ -275,6 +275,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/logs/studentAccount', [LogsController::class, 'studentLogs'])->name('studentLogsTable');
     Route::get('/logs/foodItems', [LogsController::class, 'foodLogs'])->name('foodLogsTable');
     Route::get('/logs/bmiChanges', [LogsController::class, 'bmiLogs'])->name('bmiLogsTable');
+    Route::get('/logs/menuChanges', [LogsController::class, 'menuLogs'])->name('menuLogsTable');
     // Route::get('/logfoodItems/table', [LogsController::class, 'foodItemsTable'])->name('adminLogsTable');
 
     // Food Logs

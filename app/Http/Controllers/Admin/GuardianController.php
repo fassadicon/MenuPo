@@ -11,8 +11,10 @@ use App\Models\Guardian;
 use App\Models\Adminnotif;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\ParentCredentialsMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables as DataTables;
@@ -71,7 +73,6 @@ class GuardianController extends Controller
     // Create parent User
     public function store(StoreParentRequest $request)
     {
-
         $guardian = $request->safe()->except([
             'email',
             'recoveryEmail'
@@ -86,11 +87,13 @@ class GuardianController extends Controller
             'email',
             'recoveryEmail'
         ]);
-        $userCredentials['password'] = Hash::make(Str::random(8));
+        $password = Str::random(8);
+        $userCredentials['password'] = Hash::make($password);
         $userCredentials['role'] = 0;
         $user = User::create($userCredentials);
         $guardian['user_id'] = $user->id;
         Guardian::create($guardian);
+        Mail::to('bautistaervin7@gmail.com')->send(new ParentCredentialsMail($user->email, $password));
         Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('/admin/guardians');
     }
@@ -130,7 +133,7 @@ class GuardianController extends Controller
     {
         $guardian = Guardian::where('id', $id)->first();
         $guardian->update(['status' => 0]);
-        Alert::success('Success', $guardian->firstName . ' ' . $guardian->lastName . ' Archived');    
+        Alert::success('Success', $guardian->firstName . ' ' . $guardian->lastName . ' Archived');
         $guardian->delete();
         return redirect()->back();
     }
