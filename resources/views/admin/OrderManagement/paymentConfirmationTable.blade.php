@@ -1,6 +1,6 @@
 <x-admin.layout :notifs='$adminNotifs'>
 
-    <h1 class="h3">To Confirm Payment Orders</h1>
+    <h1 class="h3">Pending Payment Orders</h1>
 
     <div class="container">
         <table class="table table-bordered table-sm" id="pendingTable">
