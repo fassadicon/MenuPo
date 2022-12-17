@@ -222,7 +222,7 @@
         @if (auth()->user()->role == 2)
             <li>
                 <a href="/admin/imports/adminAccounts" class="nav-link collapsed" id="sidebarLink">
-                    <i class="fa-solid fa-people-roof"></i><span>Mass Admin Creation</span>
+                  <i class="fas fa-users-cog"></i><span>Mass Admin Creation</span>
                 </a>
             </li>
         @endif
@@ -234,8 +234,8 @@
     <span>Food Item Management</span>
   </a> --}}
             <a href="/admin/foods" class="nav-link collapsed" id="sidebarLink">
-                <i class="fa-solid fa-bars-progress"></i>
-                <span>Food Item Management</span>
+              <i class="fas fa-utensils"></i>
+                <span>Food Items</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
@@ -257,7 +257,7 @@
         <li class="nav-item">
             <a href="/admin/orders/paymentConfirmationTable" class="nav-link collapsed" id="sidebarLink">
                 <i class="fas fa-money-bill"></i>
-                <span>To Confirm Payment Orders</span>
+                <span>Pending Payment Orders</span>
             </a>
         </li>
 
@@ -267,7 +267,7 @@
                 <span>Completed Orders</span>
             </a>
         </li><!-- End Completed Orders Nav -->
-
+        
         <li class="nav-heading">Reports and Information</li>
         <li class="nav-item">
             <a href="/admin/reports/survey" class="nav-link collapsed" id="sidebarLink">
@@ -283,10 +283,48 @@
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
             <a href="/admin/reports/sales" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
+              <i class="fas fa-cash-register"></i>
                 <span>Sales</span>
             </a>
         </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+          <a href="/admin/logs/foodMovements" class="nav-link collapsed" id="sidebarLink">
+            <i class="fas fa-clipboard-list"></i>
+              <span>Daily Sales Report</span>
+          </a>
+      </li><!-- End Completed Orders Nav -->
+        <li class="nav-heading">Logs</li>
+        <li class="nav-item">
+            <a href="/admin/logs/adminAccount" class="nav-link collapsed" id="sidebarLink">
+              <i class="fas fa-user-tie"></i>
+                <span>Admin Logs</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+            <a href="/admin/logs/guardianAccount" class="nav-link collapsed" id="sidebarLink">
+              <i class="fas fa-user-friends"></i>
+                <span>Parent Logs</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+            <a href="/admin/logs/studentAccount" class="nav-link collapsed" id="sidebarLink">
+              <i class="fas fa-user-graduate"></i>
+                <span>Student Logs</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+            <a href="/admin/logs/bmiChanges" class="nav-link collapsed" id="sidebarLink">
+              <i class="fas fa-weight"></i>
+                <span>BMI Logs</span>
+            </a>
+        </li><!-- End Completed Orders Nav -->
+        <li class="nav-item">
+          <a href="/admin/logs/foodItems" class="nav-link collapsed" id="sidebarLink">
+            <i class="fas fa-drumstick-bite"></i>
+              <span>Food Logs</span>
+          </a>
+      </li><!-- End Completed Orders Nav -->
+      <li class="nav-heading">Nutritional Report</li>
     <li class="button-dropdown">
       <a href="javascript:void(0)" class="nav-link collapsed dropdown-toggle">
         <i class="fa-solid fa-border-all"></i> Nutritional Report <i class="fas fa-chevron"></i>
@@ -334,36 +372,6 @@
         </li><!-- End Completed Orders Nav -->
       </ul>
     </li>
-        <li class="nav-item">
-            <a href="/admin/logs/adminAccount" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
-                <span>Admin Logs</span>
-            </a>
-        </li><!-- End Completed Orders Nav -->
-        <li class="nav-item">
-            <a href="/admin/logs/guardianAccount" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
-                <span>Parent Logs</span>
-            </a>
-        </li><!-- End Completed Orders Nav -->
-        <li class="nav-item">
-            <a href="/admin/logs/studentAccount" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
-                <span>Student Logs</span>
-            </a>
-        </li><!-- End Completed Orders Nav -->
-        <li class="nav-item">
-            <a href="/admin/logs/bmiChanges" class="nav-link collapsed" id="sidebarLink">
-                <i class="fab fa-nutritionix"></i>
-                <span>BMI Logs</span>
-            </a>
-        </li><!-- End Completed Orders Nav -->
-        <li class="nav-item">
-          <a href="/admin/logs/foodItems" class="nav-link collapsed" id="sidebarLink">
-              <i class="fab fa-nutritionix"></i>
-              <span>Food Logs</span>
-          </a>
-      </li><!-- End Completed Orders Nav -->
 
 
 

@@ -1878,4 +1878,28 @@ footer .bottom-details{
     -moz-transform: scale(0.9, 0.9); /* Firefox */
 }
 
-   
+
+.modal-content{
+    min-width: 480px !important;
+    box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
+
+}
+.modal-body{
+    padding: 8px 8px 8px 8px;
+    border-radius: 8px;
+    background: #fffaea;
+    
+
+}
+
+.modal-header{
+    background-color: var(--primaryDark);
+    font-weight: 600;
+    color: #fff;
+}
+
+
+.btn-close{
+    color: #000 !important;
+
+}

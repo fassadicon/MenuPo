@@ -51,49 +51,63 @@
                     <div class="modal-body">
                         <input type="hidden" name="purchaseID" id="purchaseID">
                         <div class="row">
-                            <div class="mb-3">
-                                <label for="">Parent Name</label>
-                                <p id="parent_id" class="form-control"></p>
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Student Name</label>
-                                <p id="student_id" class="form-control"></p>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="">Parent Name</label>
+                                    <p id="parent_id" class="form-control"></p>
+                                </div>
                             </div>
                             <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="">Student Name</label>
+                                    <p id="student_id" class="form-control"></p>
+                                </div>
+                            </div>
+                            <div class="col-3">
                                 <div class="mb-3">
                                     <label for="">Total Kcal</label>
                                     <p id="totalKcal" class="form-control"></p>
                                 </div>
+                            </div>
+                            <div class="col-3">
                                 <div class="mb-3">
                                     <label for="">Total Fat (g)</label>
                                     <p id="totalTotFat" class="form-control"></p>
                                 </div>
+                            </div>
+                            <div class="col-3">
                                 <div class="mb-3">
-                                    <label for="">Total Saturated Fat (g)</label>
+                                    <label for="">Tot Sat Fat (g)</label>
                                     <p id="totalSatFat" class="form-control"></p>
                                 </div>
+                            </div>
+                            <div class="col-3">
                                 <div class="mb-3">
-                                    <label for="">Total Sugar (g)</label>
+                                    <label for="">Tot Sugar (g)</label>
                                     <p id="totalSugar" class="form-control"></p>
                                 </div>
+                            </div>
+                            <div class="col-4">
+                                
                                 <div class="mb-3">
-                                    <label for="">Total Sodium (mg)</label>
+                                    <label for="">Tot Sodium (mg)</label>
                                     <p id="totalSodium" class="form-control"></p>
                                 </div>
                             </div>
-                            <div class="col-6">
+                         
+                            <div class="col-4">
                                 <div class="mb-3">
                                     <label for="">Payment ID</label>
                                     <p id="payment_id" class="form-control"></p>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="">Payment Status</label>
-                                    <p id="paymentStatus" class="form-control"></p>
-                                </div>
+                            </div>
+                            <div class="col-4">
                                 <div class="mb-3">
                                     <label for="">Claim Status</label>
                                     <p id="claimStatus" class="form-control"></p>
                                 </div>
+                            </div>
+                            <div class="col-6">
                                 <div class="mb-3">
                                     <label for="">Type</label>
                                     <p id="type" class="form-control"></p>
@@ -101,20 +115,23 @@
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="">Ordered At</label>
-                                    <p id="created_at" class="form-control"></p>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="">Claimed at</label>
-                                    <p id="updated_at" class="form-control"></p>
-                                </div>
-                                <div class="mb-3">
                                     <label for="">Served By</label>
                                     <p id="served_by" class="form-control"></p>
                                 </div>
                             </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="">Ordered At</label>
+                                    <p id="created_at" class="form-control"></p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="">Claimed at</label>
+                                    <p id="updated_at" class="form-control"></p>
+                                </div>
+                            </div>
                         </div>
-    
                     </div>
 
 
@@ -390,8 +407,8 @@
                 var purchaseID = $(this).data('id');
                 $.get("{{ url('admin/orders/completed') }}" + '/' + purchaseID + '/view', function(data) {
                     $('#viewPurchaseInfoModal').modal('show');
-                    $('#parent_id').text(data.parent.firstName);
-                    $('#student_id').text(data.student.id);
+                    $('#parent_id').text(data.parent.firstName + ' ' + data.parent.lastName);
+                    $('#student_id').text(data.student.firstName + ' ' + data.student.lastName);
                     $('#totalKcal').text(data.totalKcal);
                     $('#totalTotFat').text(data.totalTotFat);
                     $('#totalSatFat').text(data.totalSatFat);
@@ -399,12 +416,11 @@
                     $('#totalSodium').text(data.totalSodium);
                     $('#totalAmount').text(data.totalAmount);
                     $('#payment_id').text(data.payment_id);
-                    $('#paymentStatus').text(data.paymentStatus);
-                    $('#claimStatus').text(data.claimStatus);
-                    $('#type').text(data.type);
-                    $('#created_at').text(data.created_at);
-                    $('#updated_at').text(data.updated_at);
-                    $('#served_by').text(data.served_by);
+                    $('#claimStatus').text(data.claimStatus == 0 ? 'Not claimed' : 'Claimed');
+                    $('#type').text(data.type == 0 ? 'Pre-order' : 'Walk-in');
+                    $('#created_at').text(data.created_at_formatted);
+                    $('#updated_at').text(data.updated_at_formatted);
+                    $('#served_by').text(data.served_by_name.firstName + ' ' + data.served_by_name.lastName);
                 })
             });
 

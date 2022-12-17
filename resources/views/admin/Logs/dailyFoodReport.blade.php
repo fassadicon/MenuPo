@@ -33,8 +33,5 @@
     </table>
 
     </div>
-    <div class="row">
-        <h1>Total Amount: {{ $totalAmount }}</h1>
-    </div>
 
 </x-admin.layout>

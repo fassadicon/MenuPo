@@ -18,6 +18,7 @@ class MonthlySalesChart
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
         return $this->chart->lineChart()
+            ->setHeight(650)
             ->addData('Total Sales', [
                 round(Purchase::whereBetween('created_at', ['2022-07-01', '2022-07-31'])->sum('totalAmount')),
                 round(Purchase::whereBetween('created_at', ['2022-08-01', '2022-08-31'])->sum('totalAmount')),
@@ -379,6 +380,6 @@ class MonthlySalesChart
             //         $query->where('type', 1);
             //     })->whereBetween('created_at', ['2023-08-01', '2023-08-31'])->sum('totalAmount'))
             // ])
-            ->setXAxis(['July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug']);
+            ->setXAxis(['July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'March', 'April', 'May', 'June']);
     }
 }
