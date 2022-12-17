@@ -90,10 +90,11 @@
                 <button class="btn btn-success btn-lg completeBtn">
                     Complete Order
                 </button>
-                <button class="btn btn-success btn-lg findBtn">
+            </div>
+            <div class="col-lg-6 d-flex flex-row justify-content-center">
+                <button class="btn btn-warning btn-lg findBtn ">
                     Find Order
                 </button>
-            </div>
         </div>
     </div>
 
