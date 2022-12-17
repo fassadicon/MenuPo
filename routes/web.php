@@ -243,6 +243,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/survey', [SurveyReportController::class, 'index']);
     Route::get('/reports/survey/table', [SurveyReportController::class, 'surveyTable'])->name('survey.table');
     Route::get('/reports/download-survey-report', [SurveyReportController::class, 'download_survey_report']);
+    
     Route::get('/reports/compositions', [CompositionsReportController::class, 'index']);
     Route::get('/reports/download-composition-report', [CompositionsReportController::class, 'download_composition_report']);
 
@@ -278,6 +279,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Food Logs
     Route::get('/logs/foodMovements', [FoodlogController::class, 'index']);
+    Route::get('/logs/download-dailyStockSales-report', [DownloadReportsController::class, 'download_dailyStockSales_report']);
 });
 
 
