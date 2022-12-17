@@ -287,7 +287,13 @@
                         data: 'payment.method',
                         name: 'payment',
                         render: function(data, type, row) {
-                            return row.payment.method + '<br>' + row.payment.referenceNo;
+                            let details;
+                            if (row.type == 1) {
+                                details = row.payment.method;
+                            } else {
+                                details = row.payment.method + ' - ' + row.payment.referenceNo;
+                            }
+                            return details;
                         }
                     },
                     { //11

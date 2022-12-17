@@ -1,9 +1,10 @@
 <x-admin.layout :notifs='$adminNotifs'>
-    
+
     <h1 class="h3">Food Item Management</h1>
     {{-- DATABLE --}}
     <div class="container">
-        <a href="/admin/foods/create" class="btn btn-success mb-2"><i class="fas fa-plus-circle"></i>&nbsp;Create Food Item</a>
+        <a href="/admin/foods/create" class="btn btn-success mb-2"><i class="fas fa-plus-circle"></i>&nbsp;Create Food
+            Item</a>
         <a href="/admin/foods/trash" class="btn btn-warning mb-2"><i class="fas fa-trash"></i>&nbsp;Archived Food Item</a>
         <table class="table table-hover table-sm" id="foodTable">
 
@@ -137,7 +138,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- DataTable Resources Scripts --}}
     @include('partials.admin._DataTableScripts')
     {{-- Scripts --}}
@@ -321,7 +322,8 @@
                         data: 'created_by_name',
                         name: 'created_by_name',
                         render: function(data, type, row) {
-                            return row.created_by_name == null ?'Archived Account' : row.created_by_name.firstName + ' ' + row.created_by_name
+                            return row.created_by_name == null ? 'Archived Account' : row
+                                .created_by_name.firstName + ' ' + row.created_by_name
                                 .lastName;
                         }
                     },
@@ -461,7 +463,8 @@
                     }
                     $('#created_at').text(data.created_at_formatted);
                     $('#updated_at').text(data.updated_at_formatted);
-                    $('#created_by').text(data.created_by_name.firstName + ' ' + data.created_by_name.lastName);
+                    $('#created_by').text(data.created_by_name.firstName + ' ' + data
+                        .created_by_name.lastName);
                     data.updated_by_name.firstName == null ? $('#updated_by').text('N/A') : $(
                         '#updated_by').text(data
                         .updated_by_name.firstName + ' ' + data
@@ -475,7 +478,9 @@
                 var foodID = $(this).data('id');
                 $.get("{{ url('admin/foods/') }}" + '/' + foodID + '/view', function(data) {
                     $('#viewFoodImgModalLabel').text('Image of ' + data.name);
-                    $('#imageFood').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.image);
+                    data.image != null ? $('#imageFood').attr('src', "{{ URL::asset('storage/') }}" +
+                        '/' + data.image) : $('#imageFood').attr('src',
+                        "{{ URL::asset('storage/admin/userNoImage.png') }}");
                     $('#viewFoodImgModal').modal('show');
                 })
             });
@@ -485,7 +490,7 @@
             });
         });
     </script>
-<hr class="mx-4 my-4">
-<br>
+    <hr class="mx-4 my-4">
+    <br>
 
 </x-admin.layout>

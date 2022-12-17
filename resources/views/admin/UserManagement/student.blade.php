@@ -1,9 +1,12 @@
 <x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Student Account Management</h1>
     {{-- DATABLE --}}
-    <a href="/admin/students/create" class="btn btn-success mb-2"><i class="fas fa-user-plus"></i>&nbsp;Create Student Account</a>
-    <a href="/admin/students/importUpdateBMI" class="btn btn-success mb-2"><i class="fas fa-weight"></i>&nbsp;Mass Update BMI</a>
-    <a href="/admin/students/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Student Accounts</a>
+    <a href="/admin/students/create" class="btn btn-success mb-2"><i class="fas fa-user-plus"></i>&nbsp;Create Student
+        Account</a>
+    <a href="/admin/students/importUpdateBMI" class="btn btn-success mb-2"><i class="fas fa-weight"></i>&nbsp;Mass Update
+        BMI</a>
+    <a href="/admin/students/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Student
+        Accounts</a>
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
         <table class="table table-hover table-sm" id="foodTable">
@@ -297,7 +300,7 @@
                 },
                 // Footer Sorting
                 initComplete: function() {
-                   
+
                 },
                 columns: [{ // 0
                         data: 'id',
@@ -618,7 +621,9 @@
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
                     $('#viewImgModalLabel').text('QR Code of ' + data.firstName + ' ' + data
                         .lastName);
-                    $('#image').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.image);
+                    data.image != null ? $('#image').attr('src', "{{ URL::asset('storage/') }}" +
+                        '/' + data.image) : $('#image').attr('src',
+                        "{{ URL::asset('storage/admin/userNoImage.png') }}");
                     $('#viewImgModal').modal('show');
                 })
             });
