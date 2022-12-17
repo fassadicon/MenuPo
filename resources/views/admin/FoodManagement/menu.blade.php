@@ -218,6 +218,10 @@
                 {{-- Beverages Table --}}
                 <div class="tab-pane fade" id="beveragesTableTab" role="tabpanel"
                     aria-labelledby="beveragesTableTab">
+                    <div align="left"><a href="javascript:void(0)" class="btn btn-success mb-2"
+                            id="addMenuItemBtn">Add
+                            a Beverages</a>
+                    </div>
                     <div class="col-8">
                         <table class="table table-hover table-sm" id="beveragesTable">
                             <thead>
@@ -244,8 +248,13 @@
                 </div>
                 {{-- Other Food Items Table --}}
                 <div class="tab-pane fade" id="othersTableTab" role="tabpanel" aria-labelledby="othersTableTab">
-                    <div class="col-8">
-                        <table class="table table-hover table-sm" id="othersTable">
+                     <div align="left"><a href="javascript:void(0)" class="btn btn-success mb-2"
+                                id="addMenuItemBtn">Add
+                                Other Food Items</a>
+                        </div>
+                    <div class="col-12">
+                       
+                        <table class="table table-hover" id="othersTable">
                             <thead>
                                 <tr>
                                     <th>Menu ID</th>
@@ -1104,6 +1113,7 @@
                     snacksTable.ajax.reload();
                     beveragesTable.ajax.reload();
                     othersTable.ajax.reload();
+                    pastasTable.ajax.reload();
                     $('#updateMenuModal').modal('hide');
                     $('#updateMenuModal form')[0].reset();
                     console.log(response);
@@ -1176,6 +1186,7 @@
                     snacksTable.ajax.reload();
                     beveragesTable.ajax.reload();
                     othersTable.ajax.reload();
+                    pastasTable.ajax.reload();
                     $('#addMenuModal').modal('hide');
                     $('#addMenuModal form')[0].reset();
                     console.log(response);
@@ -1516,6 +1527,7 @@
                     snacksTable.ajax.reload();
                     beveragesTable.ajax.reload();
                     othersTable.ajax.reload();
+                    pastasTable.ajax.reload();
                     $('#updateDateModal').modal('hide');
                     $('#updateDateModal form')[0].reset();
                     console.log(response);
