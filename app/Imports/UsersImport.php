@@ -11,9 +11,11 @@ use App\Models\Guardian;
 
 use Illuminate\Support\Str;
 
+use App\Mail\ParentCredentialsMail;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Concerns\ToModel;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
@@ -29,10 +31,11 @@ class UsersImport implements ToModel
      */
     public function model(array $row)
     {
+        $passwordMake = Str::random(8);
         $userCredentials = ([
             'email' => $row[0],
             'recoveryEmail' => $row[1],
-            'password' => Hash::make(Str::random(8)),
+            'password' => Hash::make($passwordMake),
             'role' => 0
         ]);
         $user = User::create($userCredentials);
@@ -50,6 +53,8 @@ class UsersImport implements ToModel
             'user_id' => $user->id
         ]);
 
+        Mail::to('bautistaervin7@gmail.com')->send(new ParentCredentialsMail($row[0], $passwordMake));
+        
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
 
         $BMI = Bmi::create([
