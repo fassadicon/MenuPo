@@ -31,6 +31,12 @@
         </tfoot>
         </tbody>
     </table>
+    <a class="text-center" href="/admin/logs/download-dailyStockSales-report">
+        <div
+            class="block w-full text-secondary text-sm font-semibold rounded-lg bg-yellow-100 hover:bg-primaryLight focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+            Download in PDF
+        </div>
+    </a>
 
     </div>
 
