@@ -98,30 +98,31 @@ class MenuController extends Controller
     {
 
         // Initialize DataTable Values
-        $snacks = Menu::with('food.orders.purchase', 'food')
-            // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
-            ->where(function ($query) {
-                $query->where('status', 1)
-                    ->whereDate('displayed_at', Carbon::now()->format('Y-m-d'))
-                    ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
-                    ->whereHas('food', function ($query) {
-                        $query->where('type', 2);
-                    });
-            })
-            ->orWhere(function ($query) {
-                $query->where('status', 0)
-                    ->WhereNull('displayed_at')
-                    ->WhereNull('removed_at')
-                    ->whereHas('food', function ($query) {
-                        $query->where('type', 2);
-                    });
-            })
-            // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
-            // get distinct food id 
-            ->groupBy('food_id')
-            // ->orderBy('food_id')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+        $snacks = Menu::with('food')
+        // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
+        ->where(function ($query) {
+            $query->where('status', 1)
+                ->whereDate('displayed_at', Carbon::today()->format('Y-m-d'))
+                ->whereDate('removed_at', '>', Carbon::today()->format('Y-m-d'))
+                ->whereHas('food', function ($query) {
+                    $query->where('type', 2)->where('stock', '>', 0);
+                });
+        })
+        ->orWhere(function ($query) {
+            $query->where('status', 0)
+                ->whereNull('displayed_at')
+                ->whereNull('removed_at')
+                ->whereHas('food', function ($query) {
+                    $query->where('type', 2)->where('stock', '>', 0);
+                });
+        })
+        // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
+        // get distinct food id 
+        ->orderBy('id', 'DESC')
+        // ->groupBy('food_id')
+        ->latest()    
+        ->get()
+        ->unique('food_id');
 
         if ($request->ajax()) {
             return DataTables::of($snacks)
@@ -172,30 +173,31 @@ class MenuController extends Controller
     {
 
         // Initialize DataTable Values
-        $beverages = Menu::with('food.orders.purchase', 'food')
-            // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
-            ->where(function ($query) {
-                $query->where('status', 1)
-                    ->whereDate('displayed_at', Carbon::now()->format('Y-m-d'))
-                    ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
-                    ->whereHas('food', function ($query) {
-                        $query->where('type', 1);
-                    });
-            })
-            ->orWhere(function ($query) {
-                $query->where('status', 0)
-                    ->WhereNull('displayed_at')
-                    ->WhereNull('removed_at')
-                    ->whereHas('food', function ($query) {
-                        $query->where('type', 1);
-                    });
-            })
-            // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
-            // get distinct food id 
-            ->groupBy('food_id')
-            // ->orderBy('food_id')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+        $beverages = Menu::with('food')
+        // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
+        ->where(function ($query) {
+            $query->where('status', 1)
+                ->whereDate('displayed_at', Carbon::today()->format('Y-m-d'))
+                ->whereDate('removed_at', '>', Carbon::today()->format('Y-m-d'))
+                ->whereHas('food', function ($query) {
+                    $query->where('type', 1)->where('stock', '>', 0);
+                });
+        })
+        ->orWhere(function ($query) {
+            $query->where('status', 0)
+                ->whereNull('displayed_at')
+                ->whereNull('removed_at')
+                ->whereHas('food', function ($query) {
+                    $query->where('type', 1)->where('stock', '>', 0);
+                });
+        })
+        // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
+        // get distinct food id 
+        ->orderBy('id', 'DESC')
+        // ->groupBy('food_id')
+        ->latest()    
+        ->get()
+        ->unique('food_id');
 
         if ($request->ajax()) {
             return DataTables::of($beverages)
@@ -246,30 +248,31 @@ class MenuController extends Controller
     {
 
         // Initialize DataTable Values
-        $pastas = Menu::with('food.orders.purchase', 'food')
-            // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
-            ->where(function ($query) {
-                $query->where('status', 1)
-                    ->whereDate('displayed_at', Carbon::now()->format('Y-m-d'))
-                    ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
-                    ->whereHas('food', function ($query) {
-                        $query->where('type', 4);
-                    });
-            })
-            ->orWhere(function ($query) {
-                $query->where('status', 0)
-                    ->WhereNull('displayed_at')
-                    ->WhereNull('removed_at')
-                    ->whereHas('food', function ($query) {
-                        $query->where('type', 4);
-                    });
-            })
-            // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
-            // get distinct food id 
-            ->groupBy('food_id')
-            // ->orderBy('food_id')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+        $pastas = Menu::with('food')
+        // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
+        ->where(function ($query) {
+            $query->where('status', 1)
+                ->whereDate('displayed_at', Carbon::today()->format('Y-m-d'))
+                ->whereDate('removed_at', '>', Carbon::today()->format('Y-m-d'))
+                ->whereHas('food', function ($query) {
+                    $query->where('type', 4)->where('stock', '>', 0);
+                });
+        })
+        ->orWhere(function ($query) {
+            $query->where('status', 0)
+                ->whereNull('displayed_at')
+                ->whereNull('removed_at')
+                ->whereHas('food', function ($query) {
+                    $query->where('type', 4)->where('stock', '>', 0);
+                });
+        })
+        // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
+        // get distinct food id 
+        ->orderBy('id', 'DESC')
+        // ->groupBy('food_id')
+        ->latest()    
+        ->get()
+        ->unique('food_id');
 
         if ($request->ajax()) {
             return DataTables::of($pastas)
@@ -320,30 +323,31 @@ class MenuController extends Controller
     {
 
         // Initialize DataTable Values
-        $others = Menu::with('food.orders.purchase', 'food')
-            // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
-            ->where(function ($query) {
-                $query->where('status', 1)
-                    ->whereDate('displayed_at', Carbon::now()->format('Y-m-d'))
-                    ->whereDate('removed_at', '>', Carbon::now()->format('Y-m-d'))
-                    ->whereHas('food', function ($query) {
-                        $query->where('type', 0);
-                    });
-            })
-            ->orWhere(function ($query) {
-                $query->where('status', 0)
-                    ->WhereNull('displayed_at')
-                    ->WhereNull('removed_at')
-                    ->whereHas('food', function ($query) {
-                        $query->where('type', 0);
-                    });
-            })
-            // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
-            // get distinct food id 
-            ->groupBy('food_id')
-            // ->orderBy('food_id')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+        $others = Menu::with('food')
+        // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
+        ->where(function ($query) {
+            $query->where('status', 1)
+                ->whereDate('displayed_at', Carbon::today()->format('Y-m-d'))
+                ->whereDate('removed_at', '>', Carbon::today()->format('Y-m-d'))
+                ->whereHas('food', function ($query) {
+                    $query->where('type', 0)->where('stock', '>', 0);
+                });
+        })
+        ->orWhere(function ($query) {
+            $query->where('status', 0)
+                ->whereNull('displayed_at')
+                ->whereNull('removed_at')
+                ->whereHas('food', function ($query) {
+                    $query->where('type', 0)->where('stock', '>', 0);
+                });
+        })
+        // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
+        // get distinct food id 
+        ->orderBy('id', 'DESC')
+        // ->groupBy('food_id')
+        ->latest()    
+        ->get()
+        ->unique('food_id');
 
         if ($request->ajax()) {
             return DataTables::of($others)
@@ -403,15 +407,6 @@ class MenuController extends Controller
             $newAddedStock = $prevStock + $addedStock;
             Food::where('id', $foodID)->update(['stock' => $newAddedStock]);
         }
-
-        // Foodlog::create([
-        //     'food_id' => $foodID,
-        //     'description' => 'added stock',
-        //     'start' => $prevStock,
-        //     'add' => $addedStock,
-        //     'end' => $newAddedStock,
-        //     'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
-        // ]);
 
         $menuItem = new Menu();
         $menuItem->food_id = $foodID;
