@@ -53,9 +53,9 @@ class PaymentController extends Controller
             $this->totsatfat += $food->calcSatFat;
             $this->totsugar += $food->calcSugar;
             $this->totsodium += $food->calcSodium;
-           
+            $qty = $food->stock;
+            DB::update('UPDATE foods SET stock = ? WHERE id = ?', [$qty-$item->qty, $food->id]);
         }
-
         // Paymongo Payment API
         $ch = curl_init();
         $certificate_location = "C:\xampp\php\extras\ssl\cacert.pem";

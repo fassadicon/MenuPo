@@ -2,6 +2,7 @@
 @props(['food'])
 @props(['studentID'])
 @props(['student'])
+@props(['stock'])
 
 <div class="max-w-xs w-52 h-80 mx-4 mb-2 rounded-lg shadow-lg">
     <div class="relative w-full flex mx-auto mb-2">
@@ -35,6 +36,7 @@
         +
       </button>
       <span class="px-4 py-2 md:text-xl text-base text-primary"><span>&#8369;</span>{{$food->price}}</span>
+      <p>Stock: {{$stock}}</p>
     </div>
   @else
     <div class="mt-3">

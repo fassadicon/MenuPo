@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Food;
+use App\Models\Menu;
 use App\Models\Admin;
 use App\Models\Order;
+use App\Models\Foodlog;
 use App\Models\Payment;
 use App\Models\Student;
 use App\Models\Purchase;
@@ -13,7 +15,6 @@ use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Foodlog;
 use RealRashid\SweetAlert\Facades\Alert;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -24,9 +25,10 @@ class POSController extends Controller
     public function index($id){
         
         $student = Student::findorfail($id);
+        $foods =  Menu::with('food')->get();
         $adminNotifs = Adminnotif::get();
         return view('admin.OrderManagement.pos', [
-            'foods' => Food::all(),
+            'foods' => $foods,
             'studentID' => $id,
             'student'=> $student,
             'adminNotifs' => $adminNotifs
@@ -45,7 +47,8 @@ class POSController extends Controller
             $this->totsatfat += $food->calcSatFat;
             $this->totsugar += $food->calcSugar;
             $this->totsodium += $food->calcSodium;
-           
+            $qty = $food->stock;
+            DB::update('UPDATE foods SET stock = ? WHERE id = ?', [$qty-$item->qty, $food->id]);
         }
 
         $payment = new Payment;

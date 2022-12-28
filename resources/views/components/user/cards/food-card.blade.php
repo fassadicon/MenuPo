@@ -3,6 +3,7 @@
 @props(['studs'])
 @props(['restricts'])
 @props(['anak'])
+@props(['stock'])
 
 
   <div class="max-w-xs md:h-fit h-72 mx-1 mb-2 rounded-lg shadow-lg p-4">
@@ -56,6 +57,7 @@
     <div class="md:px-6 md:py-2 h-32 px-4 py-0">
       <h4 class="mb-3 md:text-xl text-xl font-semibold tracking-tight text-primary uppercase">{{$food->name}}</h4>
       <p class="leading-normal md:text-base text-sm text-gray-700">{{$food->description}}</p>
+      <p class="leading-normal md:text-base text-sm text-gray-700">Stock: {{$stock}}</p>
     </div>
   </div>
 

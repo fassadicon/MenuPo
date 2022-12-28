@@ -283,7 +283,6 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/logs/download-dailyStockSales-report', [DownloadReportsController::class, 'download_dailyStockSales_report']);
 });
 
-
 Route::get('/autocomplete-search', [AutocompleteController::class, 'autocompleteSearch']);
 Route::get('/autocomplete-search-foods', [AutocompleteController::class, 'autocompleteSearchFoods']);
 Route::get('/getPhilFCTFood/{name}/view', [AutocompleteController::class, 'getPhilFCTFood']);
