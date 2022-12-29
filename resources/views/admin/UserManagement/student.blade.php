@@ -611,7 +611,7 @@
                 var studentID = $(this).data('id');
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
                     $('#viewQRModalLabel').text('Image of ' + data.firstName + ' ' + data.lastName);
-                    $('#imageQR').attr('src', "{{ Storage::url('/storage/app/') }}" + '/' + data.QR);
+                    $('#imageQR').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.QR);
                     $('#viewQRModal').modal('show');
                 })
             });

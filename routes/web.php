@@ -2,27 +2,31 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Artisan;
 // Admin Controllers
+use Spatie\Activitylog\Models\Activity;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\POSController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\FoodController;
+use App\Http\Controllers\Admin\LogsController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
+
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\User\HealthController;
 use App\Http\Controllers\User\SurveyController;
-
 use App\Http\Controllers\AutocompleteController;
-use App\Http\Controllers\User\NewPostController;
-use App\Http\Controllers\User\PaymentController;
-use App\Http\Controllers\User\UserAccController;
 
 // User Controllers
+use App\Http\Controllers\User\NewPostController;
+use App\Http\Controllers\User\PaymentController;
+
+use App\Http\Controllers\User\UserAccController;
+use App\Http\Controllers\Admin\FoodlogController;
 use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\ScannerController;
-
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\User\UserMenuController;
 use App\Http\Controllers\Admin\GuardianController;
@@ -32,16 +36,13 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PurchasesController;
 use App\Http\Controllers\User\CartSummaryController;
 use App\Http\Controllers\Admin\ImportUsersController;
+use App\Http\Controllers\Admin\SalesReportController;
 use App\Http\Controllers\Admin\SurveyReportController;
 use App\Http\Controllers\Admin\MenuSuggestionController;
+use App\Http\Controllers\Admin\DownloadReportsController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
-use App\Http\Controllers\Admin\DownloadReportsController;
-use App\Http\Controllers\Admin\FoodlogController;
-use App\Http\Controllers\Admin\LogsController;
-use App\Http\Controllers\Admin\SalesReportController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
-use Spatie\Activitylog\Models\Activity;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,10 @@ use Spatie\Activitylog\Models\Activity;
 Route::get('/', function () {
     // return Activity::where()->last();
     return view('welcome');
+});
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
 });
 
 // Route::get('/qrcode', function () {
