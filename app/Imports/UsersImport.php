@@ -56,7 +56,9 @@ class UsersImport implements ToModel
         Mail::to('bautistaervin7@gmail.com')->send(new ParentCredentialsMail($row[0], $passwordMake));
         
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
-
+        $QRcode = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)->generate($studentID);
+        Storage::disk('public')->put('admin/qrs/' . $studentID . '.png', $QRcode);
+        
         $BMI = Bmi::create([
             'Q1Height' => $row[19],
             'Q1Weight' => $row[20],
