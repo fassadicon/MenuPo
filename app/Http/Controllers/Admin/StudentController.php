@@ -94,8 +94,12 @@ class StudentController extends Controller
         $parentName = $request->parent;
         $student['parent_id'] = substr($parentName, strpos($parentName, ":") + 1);
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
+        $test = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)
+            ->generate($studentID);
+        $studentID = Student::latest()->get(['id'])->value('id') + 1;
         $student['QR'] = 'admin/qrs/' . $studentID . '.png';
         Student::create($student);
+        Storage::disk('public')->put($student['QR'], $test);
         Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('admin/students');
     }
