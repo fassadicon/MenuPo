@@ -610,7 +610,7 @@
             $('body').on('click', '.viewQR', function() {
                 var studentID = $(this).data('id');
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
-                    $('#viewQRModalLabel').text('Image of ' + data.firstName + ' ' + data.lastName);
+                    $('#viewQRModalLabel').text('QR of ' + data.firstName + ' ' + data.lastName);
                     $('#imageQR').attr('src', "{{ URL::asset('storage/') }}" + '/' + data.QR);
                     $('#viewQRModal').modal('show');
                 })
@@ -619,7 +619,7 @@
             $('body').on('click', '.viewImage', function() {
                 var studentID = $(this).data('id');
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
-                    $('#viewImgModalLabel').text('QR Code of ' + data.firstName + ' ' + data
+                    $('#viewImgModalLabel').text('Image of ' + data.firstName + ' ' + data
                         .lastName);
                     data.image != null ? $('#image').attr('src', "{{ URL::asset('storage/') }}" +
                         '/' + data.image) : $('#image').attr('src',
