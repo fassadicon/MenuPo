@@ -33,7 +33,7 @@
                           <!-- content #1 -->
                           <div
                              class="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
-                             <img class="rounded-t-lg w-full md:h-72 h:64 object-cover" src="{{ asset('storage/admin/school-images/canteen-pic.jpg') }}" alt="" />
+                             <img class="rounded-t-lg w-full md:h-72 h:64 object-cover" src="{{ asset('images/school-images/canteen-pic.jpg') }}" alt="" />
                              <div class="py-4 px-8">
                                 <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">Canteen New Service Starting Date
                                 </h1>
@@ -61,7 +61,7 @@
                           <!-- content #2 -->
                           <div
                              class="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
-                             <img class="rounded-t-lg w-full md:h-72 h-64 object-cover" src="{{ asset('storage/admin/school-images/canteen-img.jpg') }}" alt="" />
+                             <img class="rounded-t-lg w-full md:h-72 h-64 object-cover" src="{{ asset('images/school-images/canteen-img.jpg') }}" alt="" />
                              <div class="py-4 px-8">
                                 <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">
                                  Canteen Service Notice
@@ -90,7 +90,7 @@
                           <!-- content #3 -->
                           <div
                              class="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
-                             <img class="rounded-t-lg w-full md:h-72 h-64 object-cover" src="{{ asset('storage/admin/school-images/school-pic2.jpg') }}" alt="" />
+                             <img class="rounded-t-lg w-full md:h-72 h-64 object-cover" src="{{ asset('images/school-images/school-pic2.jpg') }}" alt="" />
                              <div class="py-4 px-8">
                                 <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">
                                    Announcement in changing canteen management.

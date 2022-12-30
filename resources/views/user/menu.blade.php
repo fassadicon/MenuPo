@@ -2,7 +2,7 @@
 
 
 <x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
-
+  @include('sweetalert::alert')
     <style>
         #tsum-tabs h1 {
           padding: 50px 0;
