@@ -49,8 +49,10 @@ class TestController extends Controller
             Storage::disk('public')->put('admin/names/' . $student->id . '.png', $saveImage);
 
             // MERGED NAME AND QR
-            $image2 = public_path('storage/admin/qrs/' . $student->id . '.png');
-            $image1 = public_path('storage/admin/names/' . $student->id . '.png');
+            // $image2 = public_path('storage/admin/qrs/' . $student->id . '.png');
+            // $image1 = public_path('storage/admin/names/' . $student->id . '.png');
+            $image2 = storage_path('app/public/admin/qrs/' . $student->id . '.png');
+            $image1 = storage_path('app/public/admin/names/' . $student->id . '.png');
             $image1 = imagecreatefromstring(file_get_contents($image1));
             $image2 = imagecreatefromstring(file_get_contents($image2));
             imagecopymerge($image1, $image2, 5, 20, 0, 0, 300, 300, 100);
