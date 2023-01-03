@@ -55,7 +55,8 @@ class UsersImport implements ToModel
 
         Mail::to('bautistaervin7@gmail.com')->send(new ParentCredentialsMail($row[0], $passwordMake));
 
-        $studentID = Student::latest()->get(['id'])->value('id') + 1;
+        $studentID = $row[3] == 'Sadicon' ? 36 : Student::latest()->get(['id'])->value('id') + 1;
+        
         $QRcode = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)->generate($studentID);
         $QRPath = 'admin/qrs/' . $studentID . '.png';
         Storage::disk('public')->put($QRPath, $QRcode);
