@@ -94,12 +94,46 @@ class StudentController extends Controller
         $parentName = $request->parent;
         $student['parent_id'] = substr($parentName, strpos($parentName, ":") + 1);
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
+
+        // GENERATE QR
         $test = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)
             ->generate($studentID);
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
-        $student['QR'] = 'admin/qrs/' . $studentID . '.png';
+        $QRPath = 'admin/qrs/' . $studentID . '.png';
+        Storage::disk('public')->put($QRPath, $test);
+
+        // GENERATE TEXT NAME IMAGE
+        $text = ' ' . $request->firstName . ' ' . $request->middleName . ' ' . $request->lastName . ' ';
+        $string = $text;
+        $font = 5;
+        $width  = 310;
+        $height = 330;
+        $im = @imagecreate($width, $height);
+        $background_color = imagecolorallocate($im, 255, 255, 255); // white background
+        $text_color = imagecolorallocate($im, 0, 0, 0);
+        imagestring($im, $font, 0, 0, $string, $text_color);
+        ob_start();
+        imagepng($im);
+        $imstr = base64_encode(ob_get_clean());
+        $saveImage = base64_decode($imstr);
+        imagedestroy($im);
+        Storage::disk('public')->put('admin/names/' . $studentID . '.png', $saveImage);
+
+        // MERGED NAME AND QR
+        $image2 = public_path('storage/admin/qrs/' . $studentID . '.png');
+        $image1 = public_path('storage/admin/names/' . $studentID . '.png');
+        $image1 = imagecreatefromstring(file_get_contents($image1));
+        $image2 = imagecreatefromstring(file_get_contents($image2));
+        imagecopymerge($image1, $image2, 5, 20, 0, 0, 300, 300, 100);
+        ob_start();
+        imagepng($image1);
+        $imstr = base64_encode(ob_get_clean());
+        $saveImage = base64_decode($imstr);
+        imagedestroy($im);
+        Storage::disk('public')->put('admin/merges/' . $studentID . $request->lastName . '.png', $saveImage);
+        $student['QR'] = 'admin/merges/' . $studentID . $request->lastName . '.png';
+
         Student::create($student);
-        Storage::disk('public')->put($student['QR'], $test);
         Alert::success('Success', 'Account of ' . $request->firstName . ' ' . $request->lastName . ' Created Successfully');
         return redirect('admin/students');
     }
@@ -191,17 +225,19 @@ class StudentController extends Controller
         return redirect()->back();
     }
 
-    public function importUpdateBMI () {
+    public function importUpdateBMI()
+    {
         $adminNotifs = Adminnotif::get();
         return view('admin.UserManagement.updateBMI', compact('adminNotifs'));
     }
 
-    public function import(Request $request) {
+    public function import(Request $request)
+    {
         $request->validate([
             'file' => 'required|mimes:csv,txt',
         ]);
 
-       
+
         Excel::import(new ImportBMI, $request->file);
         Alert::success('Success', 'BMI Information of Students Updated');
         $adminNotifs = Adminnotif::get();
@@ -211,7 +247,7 @@ class StudentController extends Controller
     public function viewImportedStudents(Request $request)
     {
         $students = Student::whereDate('updated_at', Carbon::today())
-        ->whereBetween('updated_at', [Carbon::now()->subMinute(), Carbon::now()])->get()->load('guardian', 'bmi');
+            ->whereBetween('updated_at', [Carbon::now()->subMinute(), Carbon::now()])->get()->load('guardian', 'bmi');
         foreach ($students as $student) {
             $student['created_by_name'] = Admin::where('id', $student->created_by)->first();
             $student['updated_by_name'] = $student->updated_by == null ? 'N/A' : Admin::where('id', $student->updated_by)->first();
