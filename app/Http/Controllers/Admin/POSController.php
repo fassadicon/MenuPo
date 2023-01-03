@@ -27,6 +27,14 @@ class POSController extends Controller
         $student = Student::findorfail($id);
         $foods =  Menu::with('food')->get();
         $adminNotifs = Adminnotif::get();
+
+        foreach($foods as $fud){
+            if($fud->food->stock < 40){
+                Alert::warning('Warning', 'Some items has less than 10 in stock.');
+                break;
+            }
+        }
+
         return view('admin.OrderManagement.pos', [
             'foods' => $foods,
             'studentID' => $id,

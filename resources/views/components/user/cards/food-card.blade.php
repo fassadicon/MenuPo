@@ -8,7 +8,7 @@
 
   <div class="max-w-xs md:h-fit h-72 mx-1 mb-2 rounded-lg shadow-lg p-4">
     <div class="relative h-48 flex mb-2">
-      <img class="w-full h-full" src="{{ $food->image ? asset('storage/' . $food->image) : asset('storage/admin/userNoImage.png') }}"
+      <img class="w-full h-full" src="{{ $food->image ? asset($food->image) : asset('storage/admin/userNoImage.png') }}"
       alt="Image" />
 
       {{-- <img src="{{ $admin->image ? asset('storage/' . $admin->image) : asset('storage/admin/userNoImage.png') }}"
@@ -57,7 +57,13 @@
     <div class="md:px-6 md:py-2 h-32 px-4 py-0">
       <h4 class="mb-3 md:text-xl text-xl font-semibold tracking-tight text-primary uppercase">{{$food->name}}</h4>
       <p class="leading-normal md:text-base text-sm text-gray-700">{{$food->description}}</p>
-      <p class="leading-normal md:text-base text-sm text-gray-700">Stock: {{$stock}}</p>
+      @if ($stock < 10)
+          <span><i class="fa-solid text-red-500 fa-triangle-exclamation"></i></span>
+          <span class="leading-normal text-red-500 md:text-base text-sm text-gray-700">Stock: {{$stock}}</span>
+      @else
+        <p class="leading-normal md:text-base text-sm text-gray-700">Stock: {{$stock}}</p>
+      @endif
+      
     </div>
   </div>
 

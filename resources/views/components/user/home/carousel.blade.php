@@ -8,7 +8,7 @@
       <div class="swiper-slide h-96">
         <img
           class="object-cover block w-full lg:object-cover h-96 z-0 "
-          src="{{ asset('storage/admin/school-images/school-pic1.jpg') }}"
+          src="{{ asset('images/school-images/school-pic1.jpg') }}"
           alt="apple watch photo"
         />
         <x-user.home.svg-wave></x-user.home.svg-wave>
@@ -16,7 +16,7 @@
       <div class="swiper-slide h-96">
         <img
           class="object-cover block w-full lg:object-cover h-96 z-0"
-          src="{{ asset('storage/admin/school-images/school-pic2.jpg') }}"
+          src="{{ asset('images/school-images/school-pic2.jpg') }}"
           alt="apple watch photo"
         />
         <x-user.home.svg-wave></x-user.home.svg-wave>
@@ -24,7 +24,7 @@
       <div class="swiper-slide h-96">
         <img
           class="object-cover block w-full lg:object-cover h-96 z-0"
-          src="{{ asset('storage/admin/school-images/school-pic3.jpg') }}"
+          src="{{ asset('images/school-images/school-pic3.jpg') }}"
           alt="apple watch photo"
         />
         <x-user.home.svg-wave></x-user.home.svg-wave>

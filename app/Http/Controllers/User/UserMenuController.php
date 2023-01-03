@@ -27,6 +27,8 @@ class UserMenuController extends Controller
         $parent = Guardian::where('user_id', auth()->id())->get();
         $students = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
+
+
         
         $now = Carbon::now();
         $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
@@ -37,6 +39,15 @@ class UserMenuController extends Controller
         if(!empty($survey)){
             $isSurveyAvail = 1;
         }
+
+        foreach($food as $fud){
+            if($fud->food->stock < 10){
+                Alert::warning('Warning', 'Some items has less than 10 in stock.');
+                break;
+            }
+        }
+
+
         return view('user.menu', [
             'anak' => $student,
             'foods' => $food,

@@ -35,7 +35,7 @@
             {{-- item 1 --}}
             <div class="w-full md:w-1/2 lg:w-1/4 mb-4 lg:mb-0">
               <a href="https://i.fnri.dost.gov.ph/fct/library" target=”_blank” class="h-72 md:h-96 block group relative mx-2 overflow-hidden shadow-lg">
-                <img src="{{ asset('storage/admin/user-home/infographic-img-1.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
+                <img src="{{ asset('images/user-home/infographic-img-1.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
                 <div class="absolute gradient2 transition duration-300 group-hover:bg-black group-hover:opacity-90 w-full h-72 md:h-96 z-10"></div>
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
@@ -55,7 +55,7 @@
             {{-- item 2 --}}
             <div class="h-72 md:h-96 w-full md:w-1/2 lg:w-1/4 mb-4 lg:mb-0">
               <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5452210/#:~:text=Foods%20were%20classified%20as%20%E2%80%9CRed,of%20Health%20traffic%20light%20criteria." target=”_blank” class="h-72 md:h-96 block group relative mx-2 overflow-hidden shadow-lg">
-                <img src="{{ asset('storage/admin/user-home/infographic-img-2.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
+                <img src="{{ asset('images/user-home/infographic-img-2.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
                 <div class="absolute gradient2 transition duration-300 group-hover:bg-black group-hover:opacity-90 w-full h-72 md:h-96 z-100"></div>
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
@@ -73,7 +73,7 @@
             {{-- item 3 --}}
             <div class="h-72 md:h-96 w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
               <a href="https://www.deped.gov.ph/2017/03/14/do-13-s-2017-policy-and-guidelines-on-healthy-food-and-beverage-choices-in-schools-and-in-deped-offices/" target=”_blank” class="h-72 md:h-96 block group relative mx-2 overflow-hidden shadow-lg">
-                <img src="{{ asset('storage/admin/user-home/infographic-img-3.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
+                <img src="{{ asset('images/user-home/infographic-img-3.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
                 <div class="absolute gradient2 transition duration-300 group-hover:bg-black group-hover:opacity-90 w-full h-72 md:h-96 z-10"></div>
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">
@@ -91,7 +91,7 @@
             {{-- item 4 --}}
             <div class="h-72 md:h-96 w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
               <a href="#" target=”_blank” class="h-72 md:h-96 block group relative mx-2 overflow-hidden shadow-lg">
-                <img src="{{ asset('storage/admin/user-home/infographic-img-4.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
+                <img src="{{ asset('images/user-home/infographic-img-4.jpg') }}" class="absolute z-0 object-cover w-full h-72 md:h-96 transform group-hover:scale-150">
                 <div class="absolute gradient2 transition duration-300 group-hover:bg-black group-hover:opacity-90 w-full h-72 md:h-96 z-10"></div>
                 <div class="absolute left-0 right-0 bottom-0 p-6 z-30 transform translate-y-1/2 transition duration-300 h-full group-hover:translate-y-0 delay-100">
                   <div class="h-1/2 relative">

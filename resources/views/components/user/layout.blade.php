@@ -451,8 +451,8 @@
               <a class="toggleColour text-secondary no-underline hover:no-underline font-bold text-2xl flex lg:text-4xl" 
               href="#"
               >
-              <img class="h-10 mt-4 fill-current align-middle" width="50.502" src="{{ asset('storage/admin/school-images/logo-32X32.png') }}">
-              <img class="h-12 mt-4 fill-current align-left" width="50.502" src="{{ asset('storage/admin/school-images/school-logo.png') }}">
+              <img class="h-10 mt-4 fill-current align-middle" width="50.502" src="{{ asset('images/school-images/logo-32X32.png') }}">
+              <img class="h-12 mt-4 fill-current align-left" width="50.502" src="{{ asset('images/school-images/school-logo.png') }}">
             </a>
              
     
