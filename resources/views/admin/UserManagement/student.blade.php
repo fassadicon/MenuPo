@@ -621,7 +621,7 @@
                 $.get("{{ url('admin/students/') }}" + '/' + studentID + '/view', function(data) {
                     $('#viewImgModalLabel').text('Image of ' + data.firstName + ' ' + data
                         .lastName);
-                    data.image != null ? $('#image').attr('src', "{{ URL::asset('public/') }}" +
+                    data.image != null ? $('#image').attr('src', "{{ URL::asset('storage/') }}" +
                         '/' + data.image) : $('#image').attr('src',
                         "{{ URL::asset('storage/admin/userNoImage.png') }}");
                     $('#viewImgModal').modal('show');
