@@ -54,17 +54,48 @@ class UsersImport implements ToModel
         ]);
 
         Mail::to('bautistaervin7@gmail.com')->send(new ParentCredentialsMail($row[0], $passwordMake));
-        
+
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
         $QRcode = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)->generate($studentID);
-        Storage::disk('public')->put('admin/qrs/' . $studentID . '.png', $QRcode);
-        
+        $QRPath = 'admin/qrs/' . $studentID . '.png';
+        Storage::disk('public')->put($QRPath, $QRcode);
+
+        // GENERATE TEXT NAME IMAGE
+        $text = ' ' . $row[13] . ' ' . $row[15] . ' ' . $row[14] . ' ';
+        $string = $text;
+        $font = 5;
+        $width  = 310;
+        $height = 330;
+        $im = @imagecreate($width, $height);
+        $background_color = imagecolorallocate($im, 255, 255, 255); // white background
+        $text_color = imagecolorallocate($im, 0, 0, 0);
+        imagestring($im, $font, 0, 0, $string, $text_color);
+        ob_start();
+        imagepng($im);
+        $imstr = base64_encode(ob_get_clean());
+        $saveImage = base64_decode($imstr);
+        imagedestroy($im);
+        Storage::disk('public')->put('admin/names/' . $studentID . '.png', $saveImage);
+
+        // MERGED NAME AND QR
+        $image2 = public_path('storage/admin/qrs/' . $studentID . '.png');
+        $image1 = public_path('storage/admin/names/' . $studentID . '.png');
+        $image1 = imagecreatefromstring(file_get_contents($image1));
+        $image2 = imagecreatefromstring(file_get_contents($image2));
+        imagecopymerge($image1, $image2, 5, 20, 0, 0, 300, 300, 100);
+        ob_start();
+        imagepng($image1);
+        $imstr = base64_encode(ob_get_clean());
+        $saveImage = base64_decode($imstr);
+        imagedestroy($im);
+        Storage::disk('public')->put('admin/merges/' . $studentID . $row[14] . '.png', $saveImage);
+
         $BMI = Bmi::create([
             'Q1Height' => $row[19],
             'Q1Weight' => $row[20],
             'Q1BMI' => round($row[20] / pow($row[19] / 100, 2), 2)
         ]);
-        
+
         return new Student([
             'parent_id' => $guardian->id,
             'LRN' => $row[9],
@@ -79,7 +110,7 @@ class UsersImport implements ToModel
             'birthDate' => $row[18],
             'status' => 1,
             'bmi_id' => $BMI->id,
-            'QR' => 'admin/qrs/' . $studentID . '.png',
+            'QR' => 'admin/merges/' . $studentID . $row[14] . '.png',
             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         ]);
     }

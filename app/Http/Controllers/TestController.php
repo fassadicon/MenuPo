@@ -24,95 +24,47 @@ class TestController extends Controller
 {
     public function index()
     {
-       for ($i = 36; $i < 101; $i++) {
-        $test = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)
-        ->generate($i);
-        $fileName = 'admin/qrs/' . $i . '.png';
-        Storage::disk('public')->put($fileName, $test);
-       }
-        
+        // GENERATE TEXT IMAGE
+        $text = ' Test Test Test Test ';
+        $string = $text;
+        $font = 5;
+        $width  = 310;
+        $height = 330;
+        $im = @imagecreate($width, $height);
+        $background_color = imagecolorallocate($im, 255, 255, 255); // white background
+        $text_color = imagecolorallocate($im, 0, 0, 0); //black text
+        imagestring($im, $font, 0, 0, $string, $text_color);
+        ob_start();
+        imagepng($im);
+        $imstr = base64_encode(ob_get_clean());
+        $saveImage = base64_decode($imstr);
+        imagedestroy($im);
+
+        Storage::disk('public')->put('admin/names/' . 'qwe' . '.png', $saveImage);
+
+        // MERGED IMAGE
+
+        $image2 = public_path('storage/admin/qrs/1.png');
+        $image1 = public_path('storage/admin/names/qwe.png');
+
+        // list($width, $height) = getimagesize($image2);
+
+        $image1 = imagecreatefromstring(file_get_contents($image1));
+        $image2 = imagecreatefromstring(file_get_contents($image2));
+
+        // imagealphablending($image2, false);
+        // imagesavealpha($image2, true);
+
+        imagecopymerge($image1, $image2, 5, 20, 0, 0, 300, 300, 100);
+        // header('Content-Type:image/png');
+        ob_start();
+        imagepng($image1);
+        $imstr = base64_encode(ob_get_clean());
+        $saveImage = base64_decode($imstr);
+        imagedestroy($im);
+        Storage::disk('public')->put('admin/merges/' . 'SADICON' . '.png', $saveImage);
+   
         return view('admin.test');
-    }
-
-    // if (totalPoints <= 0) {
-    //     color = 'gray';
-    // } else if (totalPoints <= 6) {
-    //     color = 'green';
-    // } else if (totalPoints <= 9) {
-    //     color = 'amber';
-    // } else if (totalPoints <= 12) {
-    //     color = 'red';
-    // } else {
-    //     color = null;
-    // }
-
-    public function getData()
-    {
-        $labels = ['Green', 'Amber', 'Red'];
-        $greens = Food::where('grade', '>', 0)->where('grade', '<=', 6);
-        $greensCount = $greens->count();
-        $ambers = Food::where('grade', '>', 6)->where('grade', '<=', 9);
-        $ambersCount = $ambers->count();
-        $reds = Food::where('grade', '>', 9)->where('grade', '<=', 12);
-        $redsCount = $reds->count();
-        $data = [];
-        $data[0] = $greensCount;
-        $data[1] = $ambersCount;
-        $data[2] = $redsCount;
-
-        return response()->json(['labels' => $labels, 'data' => $data]);
-    }
-
-    public function dt(Request $request)
-    {
-        // Initialize DataTable Values
-        $purchases = Purchase::with('student', 'parent', 'orders.food')->select('purchases.*');
-        // Purchase::where('student_id', (int)$id)->first()->load('student', 'parent', 'orders.food');
-        if ($request->ajax()) {
-            return DataTables::eloquent($purchases)
-                ->addIndexColumn()
-                // ->addColumn('Parent', function ($purchase) {
-                //     return $purchase->parent->name;
-                // })
-                ->addColumn('students', '{{$student_id}}')
-                ->skipTotalRecords()
-                ->toJson();
-        }
-
-        // Return View
-        return view('admin.FoodManagement.dt', compact('purchases'));
-    }
-
-    public function suggest(Request $request)
-    {
-        $greens = Food::where('grade', '<=', 6.00)
-            ->inRandomOrder()->limit(3)->get();
-        $ambers = Food::where('grade', '<=', 9.00)
-            ->where('grade', '>', 6.00)
-            ->inRandomOrder()->limit(2)->get();
-        $reds = Food::where('grade', '<=', 12.00)
-            ->where('grade', '>', 9.00)
-            ->inRandomOrder()->limit(2)->get();
-        $grays = Food::where('grade', NULL)
-            ->inRandomOrder()->limit(1)->get();
-
-        return view('admin.reco', compact('ambers', 'greens', 'reds', 'grays'));
-    }
-
-    public function try(Request $request)
-    {
-        $greens = Food::where('grade', '<=', 6.00)
-            ->inRandomOrder()->limit(3)->get();
-        $ambers = Food::where('grade', '<=', 9.00)
-            ->where('grade', '>', 6.00)
-            ->inRandomOrder()->limit(2)->get();
-        $reds = Food::where('grade', '<=', 12.00)
-            ->where('grade', '>', 9.00)
-            ->inRandomOrder()->limit(2)->get();
-        $grays = Food::where('grade', NULL)
-            ->inRandomOrder()->limit(1)->get();
-
-        // return response('/reco', compact('ambers', 'greens', 'reds', 'grays'));
-        return response()->json(['ambers' => $ambers, 'greens' => $greens, 'reds' => $reds, 'grays' => $grays]);
+        // return view('admin.test', array('data' => $imstr));
     }
 }
