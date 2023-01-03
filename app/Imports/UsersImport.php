@@ -78,8 +78,10 @@ class UsersImport implements ToModel
         Storage::disk('public')->put('admin/names/' . $studentID . '.png', $saveImage);
 
         // MERGED NAME AND QR
-        $image2 = public_path('storage/admin/qrs/' . $studentID . '.png');
-        $image1 = public_path('storage/admin/names/' . $studentID . '.png');
+        // $image2 = public_path('storage/admin/qrs/' . $studentID . '.png');
+        // $image1 = public_path('storage/admin/names/' . $studentID . '.png');
+        $image2 = storage_path('admin/qrs/' . $studentID . '.png');
+        $image1 = storage_path('admin/names/' . $studentID . '.png');
         $image1 = imagecreatefromstring(file_get_contents($image1));
         $image2 = imagecreatefromstring(file_get_contents($image2));
         imagecopymerge($image1, $image2, 5, 20, 0, 0, 300, 300, 100);
