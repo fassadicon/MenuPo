@@ -41,9 +41,10 @@
 
         </div>
         <div class="text-center">
-            <button onclick="doCapture()" class=" bg-[#ffc300] hover:bg-blue-900 hover:text-white text-black font-bold py-2 px-4 rounded">Download Receipt</button>
+            <button disabled id="receiptbutton" onclick="doCapture()" class=" bg-zinc-50 text-black font-bold py-2 px-4 rounded">Download Receipt</button>
             <a href="{{$paymentLink}}" onclick="myFunction()" target="_blank" class=" bg-blue-900 hover:bg-[#ffc300] hover:text-black text-white font-bold py-2 px-4 rounded">Payment</a>
         </div>
+        <p id="warning-text" class="text-xs text-center"><i>Please settle the payment first to download the receipt.</i></p>
         <a id="home" class="text-center text-lg text-secondary font-bold mt-2" hidden href="/user/home"> <- Back to homepage</a>
     </div>
 </div>
@@ -61,6 +62,9 @@
     }
 
     function myFunction() {
+        document.getElementById('receiptbutton').disabled = false;
+        document.getElementById('receiptbutton').style.backgroundColor = "#ffc300";
+        document.getElementById('warning-text').style.display = "hidden";
         document.getElementById("home").style.display = "block";
     }
     
