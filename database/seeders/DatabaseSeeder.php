@@ -1592,7 +1592,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-01',
                 'parent_id' => 1,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/1.png',
+                'QR' => 'admin/merges/1Reyes.png',
                 'image' => 'admin/students/1.png'
             ],
             [
@@ -1609,7 +1609,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-01',
                 'parent_id' => 1,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/2.png',
+                'QR' => 'admin/merges/2Reyes.png',
                 'image' => 'admin/students/2.png'
             ],
             [
@@ -1626,7 +1626,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-01',
                 'parent_id' => 2,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/3.png',
+                'QR' => 'admin/merges/3Ramos.png',
                 'image' => 'admin/students/3.png'
             ],
             [
@@ -1643,7 +1643,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-01',
                 'parent_id' => 3,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/4.png',
+                'QR' => 'admin/merges/4Salao.png',
                 'image' => 'admin/students/4.png'
             ],
             [
@@ -1660,7 +1660,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 4,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/5.png',
+                'QR' => 'admin/merges/5Dimaranan.png',
                 'image' => 'admin/students/5.png'
             ],
             [
@@ -1677,7 +1677,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 5,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/6.png',
+                'QR' => 'admin/merges/6Dela Vera.png',
                 'image' => null
             ],
             [
@@ -1694,7 +1694,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 6,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/7.png',
+                'QR' => 'admin/merges/7Espin.png',
                 'image' => null
             ],
             [
@@ -1711,7 +1711,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 7,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/8.png',
+                'QR' => 'admin/merges/8Asilo.png',
                 'image' => null
             ],
             [
@@ -1728,7 +1728,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 7,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/9.png',
+                'QR' => 'admin/merges/9Asilo.png',
                 'image' => null
             ],
             [
@@ -1745,7 +1745,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 8,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/10.png',
+                'QR' => 'admin/merges/10Olivares.png',
                 'image' => null
             ],
             [
@@ -1762,7 +1762,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 9,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/11.png',
+                'QR' => 'admin/merges/11Madrigal.png',
                 'image' => null
             ],
             [
@@ -1779,7 +1779,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 10,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/12.png',
+                'QR' => 'admin/merges/12Dela Cruz.png',
                 'image' => null
             ],
             [
@@ -1796,7 +1796,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 6,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/13.png',
+                'QR' => 'admin/merges/13Martinez.png',
                 'image' => null
             ],
             [
@@ -1813,7 +1813,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 11,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/14.png',
+                'QR' => 'admin/merges/14Navarro.png',
                 'image' => null
             ],
             [
@@ -1830,7 +1830,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 11,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/15.png',
+                'QR' => 'admin/merges/15Katipunan.png',
                 'image' => null
             ],
             [
@@ -1847,7 +1847,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 11,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/16.png',
+                'QR' => 'admin/merges/16Escuvania.png',
                 'image' => null
             ],
             [
@@ -1864,7 +1864,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 3,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/17.png',
+                'QR' => 'admin/merges/17Arias.png',
                 'image' => null
             ],
             [
@@ -1881,7 +1881,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 12,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/19.png',
+                'QR' => 'admin/merges/18Marcayda.png',
                 'image' => null
             ],
             [
@@ -1898,7 +1898,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 13,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/20.png',
+                'QR' => 'admin/merges/19Singh.png',
                 'image' => null
             ],
             [
@@ -1915,7 +1915,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 14,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/21.png',
+                'QR' => 'admin/merges/20Fernandez.png',
                 'image' => null
             ],
             [
@@ -1932,7 +1932,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 15,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/22.png',
+                'QR' => 'admin/qrs/21Bantayan.png',
                 'image' => null
             ],
             [
@@ -1949,7 +1949,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 16,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/23.png',
+                'QR' => 'admin/merges/22Hicana.png',
                 'image' => null
             ],
             [
@@ -1966,7 +1966,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 17,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/24.png',
+                'QR' => 'admin/merges/23Delavera.png',
                 'image' => null
             ],
             [
@@ -1983,7 +1983,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 17,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/25.png',
+                'QR' => 'admin/merges/24Magnaye.png',
                 'image' => null
             ],
             [
@@ -2000,7 +2000,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 18,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/26.png',
+                'QR' => 'admin/merges/25Fugen.png',
                 'image' => null
             ],
             [
@@ -2017,7 +2017,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 19,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/27.png',
+                'QR' => 'admin/merges/26Magnaye.png',
                 'image' => null
             ],
             [
@@ -2034,7 +2034,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 20,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/28.png',
+                'QR' => 'admin/merges/27Urdaneta.png',
                 'image' => null
             ],
             [
@@ -2051,7 +2051,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 21,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/29.png',
+                'QR' => 'admin/merges/28Ramos.png',
                 'image' => null
             ],
             [
@@ -2068,7 +2068,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 22,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/30.png',
+                'QR' => 'admin/merges/29Somera.png',
                 'image' => null
             ],
             [
@@ -2085,7 +2085,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 23,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/31.png',
+                'QR' => 'admin/merges/30Santos.png',
                 'image' => null
             ],
             [
@@ -2102,7 +2102,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 24,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/32.png',
+                'QR' => 'admin/merges/31Matheran.png',
                 'image' => null
             ],
             [
@@ -2119,7 +2119,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 25,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/33.png',
+                'QR' => 'admin/merges/32Martinez.png',
                 'image' => null
             ],
             [
@@ -2136,7 +2136,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 26,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/34.png',
+                'QR' => 'admin/merges/33Yuzon.png',
                 'image' => null
             ],
             [
@@ -2153,7 +2153,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 27,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/35.png',
+                'QR' => 'admin/merges/34Camiling.png',
                 'image' => null
             ],
             [
@@ -2170,7 +2170,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 28,
                 'created_by' => 4,
-                'QR' => 'admin/qrs/36.png',
+                'QR' => 'admin/merges/35Ramos.png',
                 'image' => null
             ],
             
