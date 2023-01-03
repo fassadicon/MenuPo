@@ -96,7 +96,7 @@ class StudentController extends Controller
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
 
         // GENERATE QR
-        $test = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)
+        $test = QrCode::size(300)->errorCorrection('H')->format('png')->merge('public/admin/assets/MenuPoLogoQR.png', .3, true)
             ->generate($studentID);
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
         $QRPath = 'admin/qrs/' . $studentID . '.png';
