@@ -45,9 +45,7 @@
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">See and explore the Philippine Food Composition Table library, the basis of nutritional information provided in the menu.</p>
-                    <form action="{{ url('philfct') }}">
                       <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
-                    </form>
                   </div>
                 </div>
               </a>

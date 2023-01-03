@@ -106,13 +106,14 @@
       }
 
       .landing-image{
-          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('storage/admin/school-images/canteen-pic.jpg') }}") no-repeat center center fixed; 
+          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('images/school-images/canteen-pic.jpg') }}") no-repeat center center fixed; 
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
           background-size: cover;
         }
 
+    
       .swiper-slide {
         position: relative;
         display: inline-block; /* <= shrinks container to image size */
