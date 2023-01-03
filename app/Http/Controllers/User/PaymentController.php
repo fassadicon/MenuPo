@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Gloudemans\Shoppingcart\Facades\Cart;
-
-
+use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
@@ -146,6 +145,8 @@ class PaymentController extends Controller
         Cart::destroy();
 
         Alert::success('Success!', 'Ordered successfully!');
+
+        // return Redirect::away($checkout_link);
 
         return view('user.receipt', [
             'items' => $items,
