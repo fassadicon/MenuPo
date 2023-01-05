@@ -55,7 +55,8 @@ class UsersImport implements ToModel
 
         Mail::to('bautistaervin7@gmail.com')->send(new ParentCredentialsMail($row[0], $passwordMake));
 
-        $studentID = Student::latest()->get(['id'])->value('id') + 1;
+        $studentID = $row[3] == 'Sadicon' ? 36 : Student::latest()->get(['id'])->value('id') + 1;
+        
         $QRcode = QrCode::size(300)->errorCorrection('H')->format('png')->merge('storage/admin/MenuPoLogoQR.png', .3, true)->generate($studentID);
         $QRPath = 'admin/qrs/' . $studentID . '.png';
         Storage::disk('public')->put($QRPath, $QRcode);
@@ -78,8 +79,10 @@ class UsersImport implements ToModel
         Storage::disk('public')->put('admin/names/' . $studentID . '.png', $saveImage);
 
         // MERGED NAME AND QR
-        $image2 = public_path('storage/admin/qrs/' . $studentID . '.png');
-        $image1 = public_path('storage/admin/names/' . $studentID . '.png');
+        // $image2 = public_path('storage/admin/qrs/' . $studentID . '.png');
+        // $image1 = public_path('storage/admin/names/' . $studentID . '.png');
+        $image2 = storage_path('app/public/admin/qrs/' . $studentID . '.png');
+        $image1 = storage_path('app/public/admin/names/' . $studentID . '.png');
         $image1 = imagecreatefromstring(file_get_contents($image1));
         $image2 = imagecreatefromstring(file_get_contents($image2));
         imagecopymerge($image1, $image2, 5, 20, 0, 0, 300, 300, 100);
@@ -114,23 +117,4 @@ class UsersImport implements ToModel
             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         ]);
     }
-
-    // public function rules(): array
-    // {
-    //     return [
-    //         // 'parent_id' =>  'required|numeric|max:10|unique:parents,id',
-    //         'LRN' => 'required|numeric',
-    //         'grade' => 'required|numeric|max:6',
-    //         'section' => 'required|string|max:255',
-    //         'adviser' => 'required|string|max:255',
-    //         'firstName' => 'required|string|max:255',
-    //         'lastName' => 'required|string|max:255',
-    //         'middleName' => 'nullable|string|max:255',
-    //         'suffix' => 'nullable|string|max:255',
-    //         'sex' => 'required|max:1',
-    //         'birthDate' => 'required|date',
-    //         'height' => 'nullable|numeric',
-    //         'weight' => 'nullable|numeric',
-    //     ];
-    // }
 }

@@ -1932,7 +1932,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2022-06-02',
                 'parent_id' => 15,
                 'created_by' => 2,
-                'QR' => 'admin/qrs/21Bantayan.png',
+                'QR' => 'admin/merges/21Bantayan.png',
                 'image' => null
             ],
             [
