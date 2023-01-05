@@ -6,10 +6,10 @@
     @csrf
     <div class="p-4">
         <p class="text-xl font-bold">Cart Summary</p>
-        <p class="text-lg">Items: {{ Cart::count() }}</p>
+        <p class="itemCount text-lg">Items: {{ Cart::count() }}</p>
     </div>
 
-    <div class="sideBar h-60 overflow-y-scroll p-2">
+    <div class="sideBar h-80 overflow-y-scroll p-2">
         @php
             $item = Cart::content();
             
@@ -22,7 +22,8 @@
             @endphp
             <div class="flex mt-3">
                 <div class="w-48 flex mr-8 items-center">
-                    <img src="https://i.pinimg.com/564x/80/78/e4/8078e4a7626f514eccbf8a82b361579e.jpg" width="60"
+                    <img src="{{ $val->options->image ? asset($val->options->image ) : asset('storage/admin/userNoImage.png') }}""
+                    alt="Image" width="60"
                         class="rounded-full ">
 
                     <div class="flex flex-col ml-3">
@@ -33,13 +34,13 @@
                 </div>
 
                 <div class="flex justify-center items-center">
-                    @if ($val->id != 13)
+                    @if ($val->id != 2)
                         <div class="w-20 mr-4 flex ">
                             <button class="minusQty font-semibold " id="minus<%=count++%>" value="{{ $val->id }}"
-                                name="{{ $val->id }}">-</button>
+                                name="{{ $val->id }}"><i class="fa-solid fa-minus rounded-full p-1 bg-red-400 text-gray-50 "></i></button>
                             <span class="text-l text-black px-2 mx-2">{{ $val->qty }}</span>
                             <button class="addQty font-semibold" id="add<%=count++%>" value="{{ $val->id }}"
-                                name="{{ $val->id }}">+</button>
+                                name="{{ $val->id }}"><i class="fa-solid fa-plus rounded-full p-1 bg-yellow-400 text-gray-50 "></i></button>
                         </div>
 
                         <div class="pr-4 flex">
@@ -49,7 +50,7 @@
 
                         <div>
                             <button type="submit" class="font-semibold text-black" id="del<%=count++%>"
-                                value="{{ $val->id }}" name="rem-btn">&times;</button>
+                                value="{{ $val->id }}" name="rem-btn"><i class="fa-solid fa-xmark text-gray-400"></i></button>
                         </div>
                     @endif
                 </div>
