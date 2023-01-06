@@ -25,7 +25,6 @@
                     <th>Updated at</th>
                     <th>Admin in charge</th>
                     <th>Payment Details</th>
-                    <th>Status</th>
                     {{-- <th>Grade</th>
                   <th>Created By</th> --}}
                     {{-- <th width="50px"><button type="button" name="bulk_delete" id="bulk_delete"
@@ -244,12 +243,8 @@
                         data: 'payment.method',
                         name: 'payment',
                         render: function(data, type, row) {
-                            return row.payment.method + '<br>' + row.payment.referenceNo;
+                            return row.payment.method;
                         }
-                    },
-                    { // 17
-                        data: 'status',
-                        name: 'status',
                     },
                     // {
                     //     data: 'checkbox',

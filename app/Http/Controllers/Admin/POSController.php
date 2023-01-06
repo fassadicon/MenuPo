@@ -74,6 +74,7 @@ class POSController extends Controller
         $purchase->totalSugar = $this->totsugar;
         $purchase->totalSodium = $this->totsodium;
         $purchase->payment_id = $payment->id;
+        $purchase->type = 1;
         $purchase->claimStatus = 1;
         $purchase->served_by = Admin::where('user_id', auth()->id())->get(['id'])->value('id');
         $purchase->save();

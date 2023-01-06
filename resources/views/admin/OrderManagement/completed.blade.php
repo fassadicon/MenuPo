@@ -10,8 +10,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Parent ID</th>
-                    <th>Student ID</th>
+                    <th>Parent</th>
+                    <th>Student</th>
                     <th>Orders</th>
                     <th>Total kcal</th>
                     <th>Total Fat</th>
@@ -191,42 +191,10 @@
                 ajax: {
                     type: "GET",
                     url: "{{ route('completed.completedOrders') }}",
-                    // data: function(d) {
-
-                    // },
-                    // dataFilter: function(data) {
-                    //     var json = JQuery.parseJSON(data);
-                    //     json.draw = json.draw;
-                    //     json.recordsFiltered = json.total;
-                    //     json.recordsTotal = json.total;
-                    //     json.data = json.data;
-                    //     return JSON.stringify(json);
-                    // }
                 },
                 // Footer Sorting
                 initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function() {
-                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                                    column.search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-
-                            column
-                                .data()
-                                .unique()
-                                .sort()
-                                .each(function(d, j) {
-                                    select.append('<option value="' + d + '">' + d +
-                                        '</option>');
-                                });
-                        });
                 },
                 columns: [{ //0
                         data: 'id',

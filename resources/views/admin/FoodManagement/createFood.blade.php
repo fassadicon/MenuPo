@@ -21,8 +21,7 @@
                 <div class="mb-6">
                     <label for="description" class="inline-block text-lg mb-2">Description</label>
                     <input id="description" type="text" class="border border-gray-200 rounded p-2 w-full"
-                        name="description" placeholder=""
-                        value="{{ old('description') }}" />
+                        name="description" placeholder="" value="{{ old('description') }}" />
 
                     @error('description')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -30,7 +29,8 @@
                 </div>
                 {{-- Type --}}
                 <div class="mb-6">
-                    <label for="type" class="inline-block text-lg mb-2">Type (4-Pastas, 3-RiceMeals, 2-Snacks, 1-Bevs, 0-Others)</label>
+                    <label for="type" class="inline-block text-lg mb-2">Type (4-Pastas, 3-RiceMeals, 2-Snacks,
+                        1-Bevs, 0-Others)</label>
                     <input id="type" type="text" class="border border-gray-200 rounded p-2 w-full"
                         name="type" placeholder="Example: Snacks, Beverages, Rice Meals, Others"
                         value="{{ old('type') }}" />
@@ -43,8 +43,8 @@
                 <div class="mb-6">
                     <label for="price" class="inline-block text-lg mb-2">Price</label>
                     {{-- Bring Step to 2 Decimal Places --}}
-                    <input type="number" class="border border-gray-200 rounded p-2 w-full" name="price" step=".01"
-                        value="{{ old('price') }}" />
+                    <input type="number" class="border border-gray-200 rounded p-2 w-full" name="price"
+                        step=".01" value="{{ old('price') }}" />
 
                     @error('price')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -71,10 +71,11 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-                 {{-- Color --}}
-                 <div class="mb-6">
+                {{-- Color --}}
+                <div class="mb-6">
                     <label for="color" class="inline-block text-lg mb-2">color</label>
-                    <input id="color" type="text" class="border border-gray-200 rounded p-2 w-full" placeholder="Example: Green, Amber, Red, Gray" value="{{ old('color') }}" />
+                    <input id="color" type="text" class="border border-gray-200 rounded p-2 w-full"
+                        placeholder="Gray" value="{{ old('color') }}" disabled />
 
                     @error('color')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -86,7 +87,7 @@
                 <div class="mb-6">
                     <label for="servingSize" class="inline-block text-lg mb-2">Serving Size</label>
                     <input id="servingSize" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="servingSize" placeholder="In grams (g)" value="100" step=".01"/>
+                        name="servingSize" placeholder="In grams (g)" value="100" step=".01" />
 
                     @error('servingSize')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -96,7 +97,7 @@
                 <div class="mb-6">
                     <label for="calcKcal" class="inline-block text-lg mb-2">calcKcal</label>
                     <input id="calcKcal" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcKcal" placeholder="In grams (g)" step=".01" value="{{ old('calcKcal') }}"/>
+                        name="calcKcal" placeholder="In grams (g)" step=".01" value="{{ old('calcKcal') }}" />
 
                     @error('calcKcal')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -106,7 +107,8 @@
                 <div class="mb-6">
                     <label for="calcTotFat" class="inline-block text-lg mb-2">calcTotFat</label>
                     <input id="calcTotFat" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcTotFat" placeholder="In grams (g)" step=".01" value="{{ old('calcTotFat') }}"/>
+                        name="calcTotFat" placeholder="In grams (g)" step=".01"
+                        value="{{ old('calcTotFat') }}" />
 
                     @error('calcTotFat')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -116,7 +118,8 @@
                 <div class="mb-6">
                     <label for="calcSatFat" class="inline-block text-lg mb-2">calcSatFat</label>
                     <input id="calcSatFat" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSatFat" placeholder="In grams (g)" step=".01" value="{{ old('calcSatFat') }}"/>
+                        name="calcSatFat" placeholder="In grams (g)" step=".01"
+                        value="{{ old('calcSatFat') }}" />
 
                     @error('calcSatFat')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -126,7 +129,8 @@
                 <div class="mb-6">
                     <label for="calcSugar" class="inline-block text-lg mb-2">calcSugar</label>
                     <input id="calcSugar" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSugar" placeholder="In grams (g)" step=".01" value="{{ old('calcSugar') }}"/>
+                        name="calcSugar" placeholder="In grams (g)" step=".01"
+                        value="{{ old('calcSugar') }}" />
 
                     @error('calcSugar')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -136,7 +140,8 @@
                 <div class="mb-6">
                     <label for="calcSodium" class="inline-block text-lg mb-2">calcSodium</label>
                     <input id="calcSodium" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSodium" placeholder="In grams (g)" step=".01" value="{{ old('calcSodium') }}"/>
+                        name="calcSodium" placeholder="In grams (g)" step=".01"
+                        value="{{ old('calcSodium') }}" />
 
                     @error('calcSodium')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -146,7 +151,7 @@
                 <div class="mb-6">
                     <label for="grade" class="inline-block text-lg mb-2">grade</label>
                     <input id="grade" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="grade" placeholder="In grams (g)" step=".01" value="{{ old('grade') }}"/>
+                        name="grade" placeholder="In grams (g)" step=".01" value="{{ old('grade') }}" />
 
                     @error('grade')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -208,119 +213,116 @@
             // Getting Base Nutritional Details per 100 g 
             var type = $('#type').val();
 
-            if (type == 1) {
-                alert("Gawin mo ako!");
+            // Base Nutritional Data
+            var baseServingSize = 100;
+            var baseKcal = result.kcal;
+            var baseTotFat = result.totFat;
+            var baseSatFat = result.satFat;
+            var baseSugar = result.sugar;
+            var baseSodium = result.sodium;
+
+            // Computation based on specific serving size
+            var servingSize = servingSize;
+            // var servingSize = $('#servingSize').val();
+            var computeSize = servingSize / baseServingSize;
+
+            // Calculated Nutrient Data
+            var calcKcal = (computeSize * baseKcal);
+            var calcTotFat = (computeSize * baseTotFat);
+            var calcSatFat = (computeSize * baseSatFat);
+            var calcSugar = (computeSize * baseSugar);
+            var calcSodium = (computeSize * baseSodium);
+
+            // Base Criteria
+            var greenTotFat = computeSize * 3;
+            var greenSatFat = computeSize * 1.5;
+            var greenSugar = computeSize * 5;
+            var greenSodium = computeSize * 120;
+            var amberTotFat = computeSize * 17.5;
+            var amberSatFat = computeSize * 5;
+            var amberSugar = computeSize * 22.5;
+            var amberSodium = computeSize * 600;
+            var redTotFat = computeSize * 21;
+            var redSatFat = computeSize * 6;
+            var redSugar = computeSize * 27;
+            var redSodium = computeSize * 720;
+
+            // Point System
+            var green = 1,
+                amber = 2,
+                red = 3;
+
+            // Food Grade Evaluation
+            var pointsTotFat = 0,
+                pointsSatFat = 0,
+                pointsSugar = 0,
+                pointsSodium = 0;
+            // Calculated Total Fat Evaluation
+            if (calcTotFat <= greenTotFat) {
+                pointsTotFat += green;
+            } else if (calcTotFat <= amberTotFat) {
+                pointsTotFat += amber;
+            } else if (calcTotFat <= redTotFat) {
+                pointsTotFat += red;
             } else {
-                // Base Nutritional Data
-                var baseServingSize = 100;
-                var baseKcal = result.kcal;
-                var baseTotFat = result.totFat;
-                var baseSatFat = result.satFat;
-                var baseSugar = result.sugar;
-                var baseSodium = result.sodium;
-
-                // Computation based on specific serving size
-                var servingSize = servingSize;
-                // var servingSize = $('#servingSize').val();
-                var computeSize = servingSize / baseServingSize;
-
-                // Calculated Nutrient Data
-                var calcKcal = (computeSize * baseKcal);
-                var calcTotFat = (computeSize * baseTotFat);
-                var calcSatFat = (computeSize * baseSatFat);
-                var calcSugar = (computeSize * baseSugar);
-                var calcSodium = (computeSize * baseSodium);
-
-                // Base Criteria
-                var greenTotFat = computeSize * 3;
-                var greenSatFat = computeSize * 1.5;
-                var greenSugar = computeSize * 5;
-                var greenSodium = computeSize * 120;
-                var amberTotFat = computeSize * 17.5;
-                var amberSatFat = computeSize * 5;
-                var amberSugar = computeSize * 22.5;
-                var amberSodium = computeSize * 600;
-                var redTotFat = computeSize * 21;
-                var redSatFat = computeSize * 6;
-                var redSugar = computeSize * 27;
-                var redSodium = computeSize * 720;
-
-                // Point System
-                var green = 1,
-                    amber = 2,
-                    red = 3;
-
-                // Food Grade Evaluation
-                var pointsTotFat = 0,
-                    pointsSatFat = 0,
-                    pointsSugar = 0,
-                    pointsSodium = 0;
-                // Calculated Total Fat Evaluation
-                if (calcTotFat <= greenTotFat) {
-                    pointsTotFat += green;
-                } else if (calcTotFat <= amberTotFat) {
-                    pointsTotFat += amber;
-                } else if (calcTotFat <= redTotFat) {
-                    pointsTotFat += red;
-                } else {
-                    pointsTotFat += 0;
-                }
-                // Calculated Saturated Fat Evaluation
-                if (calcSatFat <= greenSatFat) {
-                    pointsSatFat += green;
-                } else if (calcSatFat <= amberSatFat) {
-                    pointsSatFat += amber;
-                } else if (calcSatFat <= redSatFat) {
-                    pointsSatFat += red;
-                } else {
-                    pointsSatFat += 0;
-                }
-                // Calculated Sugar Evaluation
-                if (calcSugar <= greenSugar) {
-                    pointsSugar += green;
-                } else if (calcSugar <= amberSugar) {
-                    pointsSugar += amber;
-                } else if (calcSugar <= redSugar) {
-                    pointsSugar += red;
-                } else {
-                    pointsSugar += 0;
-                }
-                // Calculated Sodium Evaluation
-                if (calcSodium <= greenSodium) {
-                    pointsSodium += green;
-                } else if (calcSodium <= amberSodium) {
-                    pointsSodium += amber;
-                } else if (calcSodium <= redSodium) {
-                    pointsSodium += red;
-                } else {
-                    pointsSodium += 0;
-                }
-                // alert("Total Fat: " + pointsTotFat + "\n" + "Sat Fat: " + pointsSatFat + "\n" + "Sugar: " + pointsSugar +
-                //     "\n" + "Sodium: " + pointsSodium);
-                // Food Color Evaluation
-                var totalPoints = pointsTotFat + pointsSatFat + pointsSugar + pointsSodium;
-                var color = null;
-                if (totalPoints <= 0) {
-                    color = 'gray';
-                } else if (totalPoints <= 6) {
-                    color = 'green';
-                } else if (totalPoints <= 9) {
-                    color = 'amber';
-                } else if (totalPoints <= 12) {
-                    color = 'red';
-                } else {
-                    color = null;
-                }
-
-                // Display Results
-                $('#calcKcal').val(calcKcal);
-                $('#calcTotFat').val(calcTotFat);
-                $('#calcSatFat').val(calcSatFat);
-                $('#calcSugar').val(calcSugar);
-                $('#calcSodium').val(calcSodium);
-                $('#grade').val(totalPoints);
-                $('#color').val(color);
+                pointsTotFat += 0;
             }
+            // Calculated Saturated Fat Evaluation
+            if (calcSatFat <= greenSatFat) {
+                pointsSatFat += green;
+            } else if (calcSatFat <= amberSatFat) {
+                pointsSatFat += amber;
+            } else if (calcSatFat <= redSatFat) {
+                pointsSatFat += red;
+            } else {
+                pointsSatFat += 0;
+            }
+            // Calculated Sugar Evaluation
+            if (calcSugar <= greenSugar) {
+                pointsSugar += green;
+            } else if (calcSugar <= amberSugar) {
+                pointsSugar += amber;
+            } else if (calcSugar <= redSugar) {
+                pointsSugar += red;
+            } else {
+                pointsSugar += 0;
+            }
+            // Calculated Sodium Evaluation
+            if (calcSodium <= greenSodium) {
+                pointsSodium += green;
+            } else if (calcSodium <= amberSodium) {
+                pointsSodium += amber;
+            } else if (calcSodium <= redSodium) {
+                pointsSodium += red;
+            } else {
+                pointsSodium += 0;
+            }
+            // alert("Total Fat: " + pointsTotFat + "\n" + "Sat Fat: " + pointsSatFat + "\n" + "Sugar: " + pointsSugar +
+            //     "\n" + "Sodium: " + pointsSodium);
+            // Food Color Evaluation
+            var totalPoints = pointsTotFat + pointsSatFat + pointsSugar + pointsSodium;
+            var color = null;
+            if (totalPoints <= 0) {
+                color = 'gray';
+            } else if (totalPoints <= 6) {
+                color = 'green';
+            } else if (totalPoints <= 9) {
+                color = 'amber';
+            } else if (totalPoints <= 12) {
+                color = 'red';
+            } else {
+                color = null;
+            }
+
+            // Display Results
+            $('#calcKcal').val(calcKcal);
+            $('#calcTotFat').val(calcTotFat);
+            $('#calcSatFat').val(calcSatFat);
+            $('#calcSugar').val(calcSugar);
+            $('#calcSodium').val(calcSodium);
+            $('#grade').val(totalPoints);
+            $('#color').val(color);
+
         }
     </script>
 </x-admin.layout>

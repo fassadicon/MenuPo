@@ -22,6 +22,9 @@ class ConfirmPaymentTableController extends Controller
         $purchases = Purchase::where('created_at', Carbon::yesterday())
             ->where('claimStatus', 0)
             ->where('type', 0)
+            ->whereHas('payment', function($query) {
+                $query->where('paymentStatus', 'unpaid');
+            })
             ->get()
             ->load('orders', 'orders.food', 'parent', 'student', 'admin', 'payment');
         foreach ($purchases as $purchase) {
@@ -33,16 +36,6 @@ class ConfirmPaymentTableController extends Controller
         if ($request->ajax()) {
             return DataTables::of($purchases)
                 ->addIndexColumn()
-                ->addColumn('status', function ($row) {
-                    $status = Payment::where('id', $row->payment_id)->first();
-                    if ($status->paymentStatus == 'paid') {
-                        $btn = ' <a href="" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Confirm" class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i></a>';
-                        return $btn;
-                    }
-                    $btn = ' <a href="" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Confirm" class="btn btn-warning btn-sm"><i class="bi bi-hourglass-split"></i></a>';
-                    return $btn;
-                })
-                ->rawColumns(['status'])
                 ->make(true);
         }
         $adminNotifs = Adminnotif::get();
