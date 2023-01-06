@@ -246,6 +246,8 @@
                     $('.sideBar').load(location.href + " .sideBar");
                     $('.subTotal').load(location.href + " .subTotal");
                     $('.checkout').load(location.href + " .checkout");
+                    $('.itemCount').load(location.href + " .itemCount");
+                    
 
 
                 }
@@ -277,6 +279,7 @@
                     $('.sideBar').load(location.href + " .sideBar");
                     $('.subTotal').load(location.href + " .subTotal");
                     $('.checkout').load(location.href + " .checkout");
+                    $('.itemCount').load(location.href + " .itemCount");
 
                 }
             })
@@ -306,6 +309,7 @@
                     $('.sideBar').load(location.href + " .sideBar");
                     $('.subTotal').load(location.href + " .subTotal");
                     $('.checkout').load(location.href + " .checkout");
+                    $('.itemCount').load(location.href + " .itemCount");
 
                 }
             })
@@ -335,6 +339,7 @@
                     $('.sideBar').load(location.href + " .sideBar");
                     $('.subTotal').load(location.href + " .subTotal");
                     $('.checkout').load(location.href + " .checkout");
+                    $('.itemCount').load(location.href + " .itemCount");
 
                 }
             })
