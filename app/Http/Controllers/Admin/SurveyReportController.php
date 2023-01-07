@@ -42,7 +42,7 @@ class SurveyReportController extends Controller
     public function surveyTable(Request $request)
     {
         // Initialize DataTable Values
-        $surveys = Survey::all();
+        $surveys = Survey::orderBy('created_at', 'desc')->get();
         foreach ($surveys as $survey) {
             $survey['created_at_formatted'] = Carbon::parse($survey->created_at)->format('M d, Y');
         }

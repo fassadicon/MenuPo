@@ -248,12 +248,12 @@
                 </div>
                 {{-- Other Food Items Table --}}
                 <div class="tab-pane fade" id="othersTableTab" role="tabpanel" aria-labelledby="othersTableTab">
-                     <div align="left"><a href="javascript:void(0)" class="btn btn-success mb-2"
-                                id="addMenuItemBtn">Add
-                                Other Food Items</a>
-                        </div>
+                    <div align="left"><a href="javascript:void(0)" class="btn btn-success mb-2"
+                            id="addMenuItemBtn">Add
+                            Other Food Items</a>
+                    </div>
                     <div class="col-12">
-                       
+
                         <table class="table table-hover" id="othersTable">
                             <thead>
                                 <tr>
@@ -652,6 +652,7 @@
         highlight: true,
         minLength: 1,
         items: 5,
+        showHintOnFocus: false,
         source: function(query, process) {
             return $.get("{{ url('/autocomplete-search-foods') }}", {
                 query: query
@@ -659,12 +660,12 @@
                 return process(data);
             });
         },
-        updater: function(item) {
-            $.get("{{ url('admin/menu/') }}" + '/' + item.name + '/getCurrentStock', function(data) {
-                $('#stockAddMenu').val(data);
-            });
-            return item;
-        }
+        // updater: function(item) {
+        //     $.get("{{ url('admin/menu/') }}" + '/' + item.name + '/getCurrentStock', function(data) {
+        //         $('#stockAddMenu').val(data);
+        //     });
+        //     return item;
+        // }
     });
 
     // DataTables
@@ -1041,7 +1042,82 @@
             ]
         });
 
-        // DataTable Buttons
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        // Remove Item in the Menu
+        $('body').on('click', '.removeMenuItemBtn', function(e) {
+            e.preventDefault();
+            var menuIDtest = $(this).data('id');
+            // var url = "{{ url('admin/menu') }}" + '/' + menuIDtest + '/removeMenuItem';
+            Swal.fire({
+                title: 'Confirm removal of menu item?',
+                showCancelButton: true,
+                showCloseButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Yes, Delete',
+                allowOutsideClick: false
+            }).then(function(result) {
+                if (result.value) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ url('admin/menu') }}" + '/' + menuIDtest +
+                            '/removeMenuItem',
+                        success: function(response) {
+                            console.log(response);
+                            cookedMealsTable.ajax.reload();
+                            snacksTable.ajax.reload();
+                            beveragesTable.ajax.reload();
+                            othersTable.ajax.reload();
+                            pastasTable.ajax.reload();
+                            Swal.fire('Deleted successfully!');
+                        },
+                        error: function(error) {
+                            Swal.fire('Deletion unsuccessful!');
+                        }
+                    });
+                }
+            });
+            // $('.confirmDeleteMenuBtn').on('click', function(id) {
+            //     $.ajax({
+            //         type: "DELETE",
+            //         url: "{{ url('admin/menu') }}" + '/' + id + '/removeMenuItem',
+            //         success: function(response) {
+            //             console.log(response);
+            //             cookedMealsTable.ajax.reload();
+            //             snacksTable.ajax.reload();
+            //             beveragesTable.ajax.reload();
+            //             othersTable.ajax.reload();
+            //             pastasTable.ajax.reload();
+            //             console.log(response);
+            //         },
+            //         error: function(error) {
+            //             console.log(error);
+            //         }
+            //     });
+            // });
+        });
+        // $('.confirmDeleteMenuBtn').on('click', function(e, menuIDtest) {
+        //     e.preventDefault();
+        //     $.ajax({
+        //         type: "DELETE",
+        //         url: "{{ url('admin/menu') }}" + '/' + menuIDtest + '/removeMenuItem',
+        //         success: function(response) {
+        //             console.log(response);
+        //             cookedMealsTable.ajax.reload();
+        //             snacksTable.ajax.reload();
+        //             beveragesTable.ajax.reload();
+        //             othersTable.ajax.reload();
+        //             pastasTable.ajax.reload();
+        //             console.log(response);
+        //         },
+        //         error: function(error) {
+        //             console.log(error);
+        //         }
+        //     });
+        // });
         // Update Menu Item Details Modal
         $('body').on('click', '#editMenuItemDetailsDTBtn', function() {
             var id = $(this).data('id');
@@ -1124,9 +1200,18 @@
             });
         });
 
-
-
-
+        $('#nameAddMenu').on('blur', function() {
+            $.get("{{ url('admin/menu/') }}" + '/' + $('#nameAddMenu').val() + '/getCurrentStock',
+                function(data) {
+                    console.log(data);
+                    $('#stockAddMenu').val(data);
+                    if (data <= 10 && data != '') {
+                        Swal.fire(
+                            $('#nameAddMenu').val() + ' ' + 'is less than 10!'
+                        );
+                    }
+                });
+        });
         // --- ADD MENU ITEM MODAL ---
         // Show Menu Item Modal
         $('body').on('click', '#addMenuItemBtn', function() {
@@ -1137,6 +1222,7 @@
             // - Add Stock if wanted
             if ($('#addStockNo').is(':checked')) {
                 $('#addMenuAddStock').prop('disabled', true);
+                $('#addMenuAddStock').val('');
             } else {
                 $('#addMenuAddStock').prop('disabled', false);
             }
@@ -1144,6 +1230,12 @@
             if ($('#statusPermanent').is(':checked')) {
                 $('#displayedAt').prop('disabled', true);
                 $('#removedAt').prop('disabled', true);
+                $('#displayedAt').val('')
+                    .attr('type', 'text')
+                    .attr('type', 'date');
+                $('#removedAt').val('')
+                    .attr('type', 'text')
+                    .attr('type', 'date');
             } else {
                 $('#displayedAt').prop('disabled', false);
                 $('#removedAt').prop('disabled', false);
@@ -1189,13 +1281,14 @@
                     pastasTable.ajax.reload();
                     $('#addMenuModal').modal('hide');
                     $('#addMenuModal form')[0].reset();
-                    console.log(response);
                     Swal.fire(
                         'Food Item Added in the Menu'
                     );
                 },
                 error: function(error) {
-                    console.log(error);
+                    Swal.fire(
+                        'Invalid Menu Entry!'
+                    );
                 }
             });
         });

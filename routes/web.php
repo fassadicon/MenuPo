@@ -118,6 +118,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Update Food Item Detail Button
     Route::get('/menu/{id}/editFoodDetails', [MenuController::class, 'editFoodDetails']);
     Route::post('/menu/updateMenuItem', [MenuController::class, 'updateMenuItem'])->name('menu.updateMenuItem');
+    Route::delete('/menu/{id}/removeMenuItem', [MenuController::class, 'removeMenuItem'])->name('menu.removeMenuItem');
 
 
     // PREVIEW SECTION

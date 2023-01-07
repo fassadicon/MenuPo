@@ -15,6 +15,7 @@ use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables as DataTables;
 
 class MenuController extends Controller
@@ -56,7 +57,7 @@ class MenuController extends Controller
                     // Update Stock Quantity
                     $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="updateMenuItemDetailsBtn" class="btn btn-info btn-sm" id="editMenuItemDetailsDTBtn"><i class="bi bi-pencil-square"></i></a>';
                     // Remove from the Menu
-                    $btn = $btn . ' <a href="/admin/foods/' . $row->id . '/delete" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="removeMenuItemBtn delete btn btn-danger btn-sm"><i class="bi bi-dash-circle"></i></a>';
+                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="removeMenuItemBtn delete btn btn-danger btn-sm"><i class="bi bi-dash-circle"></i></a>';
                     return $btn;
                 })
                 ->addColumn('count', function ($row) {
@@ -510,5 +511,13 @@ class MenuController extends Controller
     public function getMenuItemDetails($id)
     {
         return Menu::where('id', $id)->first()->load('food');
+    }
+
+    public function removeMenuItem($id) {
+        $menu = Menu::find($id)->delete();
+        if($menu){
+            Alert::success('Successfully Deleted!');
+            return true;
+        }
     }
 }
