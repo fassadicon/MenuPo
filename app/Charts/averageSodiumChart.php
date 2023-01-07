@@ -18,7 +18,7 @@ class averageSodiumChart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-            ->setTitle('Average Daily Sodium')
+            ->setHeight(355)
             ->addData('Average Sodium', [
                 round(Purchase::whereBetween('created_at', ['2022-08-01', '2022-11-30'])
                 ->avg('totalSodium') / 1000, 2), 

@@ -18,6 +18,7 @@ class averageTotalFatChart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
+            ->setHeight(355)
             ->addData('Average Total Fat', [
                 round(Purchase::whereBetween('created_at', ['2022-08-01', '2022-11-30'])
                 ->avg('totalTotFat')), 

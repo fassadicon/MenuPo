@@ -18,7 +18,7 @@ class averageSaturatedFatChart
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         return $this->chart->barChart()
-            ->setTitle('Average Daily Saturated Fat')
+            ->setHeight(355)
             ->addData('Average Saturated Fat', [
                 round(Purchase::whereBetween('created_at', ['2022-08-01', '2022-11-30'])
                 ->avg('totalSatFat'), 2), 

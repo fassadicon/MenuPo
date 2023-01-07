@@ -20,7 +20,7 @@
             {{ $bmiCount3rdQtrPieChart->script() }}
         </div>
         <div class="col-3">
-            <h1>BMI Classification Count 4th Qtr</h1>
+            <h1>BMI Classification Count</h1>
             {!! $bmiCount4thQtrPieChart->container() !!}
             <script src="{{ $bmiCount4thQtrPieChart->cdn() }}"></script>
             {{ $bmiCount4thQtrPieChart->script() }}

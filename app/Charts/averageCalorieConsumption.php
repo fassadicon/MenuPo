@@ -19,7 +19,7 @@ class averageCalorieConsumption
 
        
         return $this->chart->barChart()
-        ->setHeight(400)
+        ->setHeight(355)
         ->addData('Average Calorie', [
             round(Purchase::whereBetween('created_at', ['2022-08-01', '2022-11-30'])
             ->avg('totalKcal')), 

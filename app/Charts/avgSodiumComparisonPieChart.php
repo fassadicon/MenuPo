@@ -18,7 +18,7 @@ class avgSodiumComparisonPieChart
     public function build(): \ArielMejiaDev\LarapexCharts\RadialChart
     {
         return $this->chart->radialChart()
-        ->setHeight(400)
+        ->setHeight(382)
         ->addData([
             round((Purchase::whereHas('student', function ($query) {
                 $query->where('sex', 'M')->whereBetween('birthDate', [Carbon::now()->subYear(9), Carbon::now()->subYear(6)]);
