@@ -6,7 +6,7 @@
 @props(['stock'])
 
 
-  <div class="max-w-xs md:h-fit h-72 mx-1 mb-2 rounded-lg shadow-lg p-4">
+  <div class="max-w-xs md:h-fit h-fit mx-1 mb-2 rounded-lg shadow-lg p-4">
     <div class="relative h-48 flex mb-2">
       <img class="w-full h-full" src="{{ $food->image ? asset($food->image) : asset('storage/admin/userNoImage.png') }}"
       alt="Image" />

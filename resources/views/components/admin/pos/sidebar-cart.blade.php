@@ -1,15 +1,15 @@
 @props(['studentID']);
 
 
-<form class="w-1/3 h-2/3 mt-20 mr-4 border-2 border-solid rounded-xl shadow"
+<form class="w-1/3 h-2/3 mt-20 mr-4 bg-gradient-to-tl from-yellow-100 via-yellow-300 to-yellow-500 border-2 border-solid rounded-xl shadow"
     action="/admin/pos/payment/{{ $studentID }}" method="POST">
     @csrf
     <div class="p-4">
-        <p class="text-xl font-bold">Cart Summary</p>
-        <p class="itemCount text-lg">Items: {{ Cart::count() }}</p>
+        <p class="text-xl mb-0 font-bold">Cart Summary</p>
+        <p class="itemCount mb-0 text-lg">Items: {{ Cart::count() }}</p>
     </div>
 
-    <div class="sideBar h-80 overflow-y-scroll p-2">
+    <div class="sideBar h-96  overflow-y-scroll p-2">
         @php
             $item = Cart::content();
             
@@ -20,43 +20,33 @@
                 $price = $val->price * $val->qty;
                 $totalAmount = Cart::priceTotal();
             @endphp
-            <div class="flex mt-3">
-                <div class="w-48 flex mr-8 items-center">
-                    <img src="{{ $val->options->image ? asset($val->options->image ) : asset('storage/admin/userNoImage.png') }}""
-                    alt="Image" width="60"
-                        class="rounded-full ">
-
-                    <div class="flex flex-col ml-3">
-                        <span class="md:text-md font-medium text-black">{{ $val->name }}</span>
-                        <span class="text-xs font-light text-gray-400">{{ '#' . $val->id }}</span>
+            <div class="flex shadow-lg bg-zinc-50 mb-2 border-t-2 border-l-2 border-r-4 border-b-4 border-solid border-gray-800 rounded-lg">
+                <div class="w-full h-28 flex">
+                    <img class="m-4 rounded-full" src="{{ $val->options->image ? asset($val->options->image ) : asset('storage/admin/userNoImage.png') }}""
+                    alt="Image">
+                    <div class="">
+                        <p class="text-lg mb-0 font-bold break-words">{{$val->name}}</p>
+                        <p class="text-sm mb-0 break-words">Qty: {{$val->qty}}</p>
+                        <p>Price: {{$val->price * $val->qty}}</p>
                     </div>
-
+                   
                 </div>
-
-                <div class="flex justify-center items-center">
+                <div class="w-12 h-28 text-center md:w-20">
+                    
                     @if ($val->id != 2)
-                        <div class="w-20 mr-4 flex ">
-                            <button class="minusQty font-semibold " id="minus<%=count++%>" value="{{ $val->id }}"
-                                name="{{ $val->id }}"><i class="fa-solid fa-minus rounded-full p-1 bg-red-400 text-gray-50 "></i></button>
-                            <span class="text-l text-black px-2 mx-2">{{ $val->qty }}</span>
-                            <button class="addQty font-semibold" id="add<%=count++%>" value="{{ $val->id }}"
-                                name="{{ $val->id }}"><i class="fa-solid fa-plus rounded-full p-1 bg-yellow-400 text-gray-50 "></i></button>
-                        </div>
-
-                        <div class="pr-4 flex">
-                            <span class="text-m font-medium text-black">{{ '₱' . $price . '.00' }}</span>
-                            {{-- @livewire('order-summ-price', ['food_id' => $val->id, 'price' => $price]); --}}
-                        </div>
-
-                        <div>
-                            <button type="submit" class="font-semibold text-black" id="del<%=count++%>"
-                                value="{{ $val->id }}" name="rem-btn"><i class="fa-solid fa-xmark text-gray-400"></i></button>
-                        </div>
+                        <button class="w-full h-8 mt-1" id="del<%=count++%>" value="{{$val->id}}"><i class="fa-solid fa-xmark text-gray-400"></i></button>
+                        <button class="w-full h-8 mt-1" id="minus<%=count++%>" value="{{$val->id}}"><i class="fa-solid fa-minus rounded-full p-1 bg-red-400 text-gray-50 "></i></button>
+                        <button class="w-full h-8 mt-1" id="add<%=count++%>" value="{{$val->id}}"><i class="fa-solid fa-plus rounded-full p-1 bg-yellow-400 text-gray-50 "></i></button>
+                    @else
+                        <button class="w-full h-8 mt-1"></button>
+                        <button class="w-full h-8 mt-1"></button>
+                        <button class="w-full h-8 mt-1"></button>
                     @endif
+                   
                 </div>
             </div>
         @endforeach
-    </div>
+        </div>
 
     <div class="subTotal h-40 p-2">
         <div class="space-x-60">

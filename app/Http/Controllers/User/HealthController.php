@@ -336,7 +336,7 @@ class HealthController extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream('SNDR'.'-'.$student->lastName.', ' .$student->firstName);
+        $dompdf->stream('SNDR'.'-'.$student->lastName.', ' .$student->firstName . ' ' .  \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString());
 
         return redirect()->back();
     }
