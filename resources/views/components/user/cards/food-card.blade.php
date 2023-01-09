@@ -6,7 +6,7 @@
 @props(['stock'])
 
 
-  <div class="max-w-xs md:h-fit h-72 mx-1 mb-2 rounded-lg shadow-lg p-4">
+  <div class="max-w-xs md:h-fit h-fit mx-1 mb-2 rounded-lg shadow-lg p-4">
     <div class="relative h-48 flex mb-2">
       <img class="w-full h-full" src="{{ $food->image ? asset($food->image) : asset('storage/admin/userNoImage.png') }}"
       alt="Image" />
@@ -17,14 +17,14 @@
       @php
         if($food->grade > 0  && $food->grade < 6)
         {
-          echo '<span class="absolute px-4 py-0.5 text-sm bg-green-500 rounded-full text-red-50">Healthy</span>';
+          echo '<span class="absolute px-4 py-0.5 bg-white rounded-full text-red-50"><i class=" text-green-500 text-2xl fa-solid fa-bookmark"></i></span>';
         }
         elseif($food->grade > 5  && $food->grade < 10)
         {
-          echo '<span class="absolute px-4 py-0.5 text-sm bg-yellow-500 rounded-full text-red-50">Moderately Healthy</span>';
+          echo '<span class="absolute px-4 py-0.5 text-sm bg-white rounded-full text-red-50"><i class=" text-yellow-500 text-2xl fa-solid fa-bookmark"></i></span>';
         }
         else{
-          echo '<span class="absolute px-4 py-0.5 text-sm bg-red-500 rounded-full text-red-50">Not healthy</span>';
+          echo '<span class="absolute px-4 py-0.5 text-sm bg-white rounded-full text-red-50"><i class=" text-red-500 text-2xl fa-solid fa-bookmark"></i></span>';
         }
       @endphp
 
@@ -41,7 +41,7 @@
 
     {{-- Restrict Button --}}
     <input type="hidden" name="stud_id" id="anak-id" value="{{$anak->id}}">
-    <button class="button-sec bg-blue-400" id="restrict<%=count++%>" type="submit" name="addtorestrict" value="{{$food->id}}" data-bs-toggle="tooltip" data-bs-placement="top">
+    <button class="button-sec bg-red-500" id="restrict<%=count++%>" type="submit" name="addtorestrict" value="{{$food->id}}" data-bs-toggle="tooltip" data-bs-placement="top">
       <i class="fa-solid fa-ban fa-xl"></i>
     </button>
    

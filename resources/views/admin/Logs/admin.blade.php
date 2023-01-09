@@ -1,5 +1,7 @@
 <x-admin.layout :notifs="$adminNotifs">
-   
+
+    <h1 class="h3">Admin Logs</h1>
+    <a href="/admin/admins" class="btn btn-primary mb-2"><i class="fas fa-user-cog"></i>&nbsp;Admin Account Management</a>
     <table class="table table-bordered table-sm" id="logsTable">
 
         <thead>

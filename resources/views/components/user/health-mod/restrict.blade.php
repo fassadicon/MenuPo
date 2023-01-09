@@ -5,7 +5,7 @@
 
 <div class="w-80 h-80 mx-4 mb-2 rounded-lg shadow-lg">
     <div class="relative flex mb-2">
-      <img class="w-full h-48" src="{{ $restrict->image ? asset('storage/' . $restrict->image) : asset('storage/admin/userNoImage.png') }}""
+      <img class="w-full h-48" src="{{ $restrict->image ? asset($restrict->image) : asset('storage/admin/userNoImage.png') }}""
       alt="Image" />
 
     @php

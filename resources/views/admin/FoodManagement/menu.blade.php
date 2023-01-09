@@ -150,6 +150,7 @@
 
                                 </tfoot>
                             </table>
+                            <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                         </div>
 
 
@@ -183,6 +184,7 @@
 
                             </tfoot>
                         </table>
+                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                     </div>
                 </div>
                 {{-- Snacks Table --}}
@@ -213,6 +215,7 @@
 
                             </tfoot>
                         </table>
+                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                     </div>
                 </div>
                 {{-- Beverages Table --}}
@@ -244,6 +247,7 @@
 
                             </tfoot>
                         </table>
+                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                     </div>
                 </div>
                 {{-- Other Food Items Table --}}
@@ -275,6 +279,7 @@
 
                             </tfoot>
                         </table>
+                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                     </div>
                 </div>
             </div>

@@ -29,7 +29,7 @@ class POSController extends Controller
         $adminNotifs = Adminnotif::get();
 
         foreach($foods as $fud){
-            if($fud->food->stock < 40){
+            if($fud->food->stock < 10){
                 Alert::warning('Warning', 'Some items has less than 10 in stock.');
                 break;
             }

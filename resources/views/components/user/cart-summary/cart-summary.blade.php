@@ -8,13 +8,13 @@
         <div class="text-center mb-2">
             <p class="text-2xl pt-8 text-primary font-bold text-decoration-none">Cart Summary</p>
         </div>
-        <a href="/user/menu/{{$anak->id}}" class="md:hidden block w-24 mx-auto mt-2 mb-4 md:my-4 text-sm text-gray-50 hover:text-primary"><i class="fa-solid fa-arrow-left fa-lg"></i> Go Back</a>
+        <a href="/user/menu/{{$anak->id}}" class=" block w-24 mx-auto mt-2 mb-4 md:my-4 text-sm text-gray-50 hover:text-primary"><i class="fa-solid fa-arrow-left fa-lg"></i> Go Back</a>
         <div class="w-10/12 h-3/4 mx-auto md:w-2/3 md:flex">
-            <div class="h-3/4 justify-center bg-zinc-50  p-8 overflow-y-scroll md:w-2/3 md:h-full">
+            <div class="h-3/4 justify-center bg-zinc-50 rounded-lg bg-gradient-to-tl from-yellow-100 via-yellow-300 to-yellow-500  p-8 overflow-y-scroll md:w-2/3 md:h-full">
                 @foreach ($items as $val)
-                    <div class="flex shadow-lg rounded-lg">
+                    <div class="flex shadow-lg bg-zinc-50 mb-2 border-t-2 border-l-2 border-r-4 border-b-4 border-solid border-gray-800 rounded-lg">
                         <div class="w-full h-28 flex">
-                            <img class="m-4 rounded-full w-20 h-20" src="{{ $val->options->image ? asset('storage/' . $val->options->image ) : asset('storage/admin/userNoImage.png') }}""
+                            <img class="m-4 rounded-full w-20 h-20" src="{{ $val->options->image ? asset($val->options->image ) : asset('storage/admin/userNoImage.png') }}""
                             alt="Image">
                             <div class="">
                                 <div class="">
@@ -43,36 +43,40 @@
                     </div>
                 @endforeach
             </div>
-            <form class="relative h-1/4 bg-zinc-50 shadow md:ml-4 md:h-80 md:w-1/3" action="/user/payment" method="POST">
+            <form class="relative h-1/4 bg-zinc-50 shadow bg-gradient-to-tl from-yellow-100 via-yellow-300 to-yellow-500 rounded-lg md:ml-4 md:h-80 md:w-1/3" action="/user/payment" method="POST">
                 @csrf
                 <div >
                     <div class="hidden md:block subtotal h-40 items-end w-full mt-2">
-                        <span class="text-xl font-bold p-4">Payment Details</span>
+                        <span class="text-xl text-secondary font-bold p-4">Payment Details</span>
     
                         <div class="subtotal h-8 mt-8 items-end w-full p-4 ">
-                            <span class="text-lg">Parent Name:</span>
+                            <span class="text-lg text-secondary font-semibold">Parent Name:</span>
                             <span class="text-lg font-bold float-right">{{$parent->firstName}} {{$parent->lastName}}</span>
                         </div>
     
                         <div class="subtotal h-8 items-end w-full p-4">
-                            <span class="text-lg">Student Name: </span>
+                            <span class="text-lg text-secondary font-semibold">Student Name: </span>
                             <span class="text-lg font-bold float-right">{{$anak->firstName.' '.$anak->lastName}}</span>
                             <input type="hidden" name="anak_id" id="anak_id" value="{{$anak->id}}">
                         </div>
                     </div>
                     <div class="subtotal h-8 items-end w-full p-4">
-                        <span class="text-lg">Payment Option:</span>
+                        <span class="text-lg text-secondary font-semibold">Payment Option:</span>
                         <span class="text-lg font-bold float-right">GCash</span>
                     </div>
                     <div class="subtotal h-8 items-end w-full p-4">
-                        <span class="text-lg">Total Amount:</span>
+                        <span class="text-lg text-secondary font-semibold">Total Amount:</span>
                         <span class="text-lg font-bold float-right">{{Cart::priceTotal()}}</span>
                     </div>
+                    
                     <div class="absolute button w-full bottom-0 mx-auto text-center mb-2">
-                        <button type="submit" class="button-sec bg-primary">Check Out</button>
+                        @php
+                            if(Cart::count() != 0){
+                                echo "<button type='submit' class='button-sec text-sm bg-zinc-50 text-secondary font-semibold'>Check Out</button>";
+                            }
+                        @endphp
                     </div>
                 </div>
             </form>
         </div>
     </div>
-   

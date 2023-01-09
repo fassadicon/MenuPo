@@ -1,5 +1,5 @@
 <x-admin.layout :notifs='$adminNotifs'>
-    <h1>HEHEHEHEEH</h1>
+    <h1 class="h3">Mass Update BMI</h1>
   <div class="card">
     <form method="POST" action="{{ route('students.updateBMI') }}" enctype="multipart/form-data">
       @csrf

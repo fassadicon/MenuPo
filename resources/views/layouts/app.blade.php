@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <p class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('admin/assets/img/favicon-32x32.png') }}" alt="">
+                    <img src="{{ asset('images/school-images/logo-32x32.png') }}" alt="">
                     <h6 class="login-header">{{ config('app.name', 'MenuPo') }}</h6>
                 </p>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

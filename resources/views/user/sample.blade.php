@@ -1,58 +1,28 @@
-<x-user.layout :studs="$students" :notifs="$notifications">
+<x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
+<br><br><br><br>
 
-<div class="container px-4 mx-auto ">
-    <br><br><br>
-    <br><br><br>
-    <div class="h-screen flex w-full">
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $calChart->container() !!}
-        </div>
-
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $fatChart->container() !!}
-        </div>
-
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $satFatChart->container() !!}
+    <div class="h-screen">
+        <div class="relative w-64 h-96 mx-auto md:w-80 overflow-visible shadow-lg rounded-md bg-zinc-50">
+            <i class="absolute left-1 -top-1 text-green-500 text-4xl fa-solid fa-bookmark"></i></span>
+            <div class="m-4 h-52 bg-red-500 rounded-md">
+                <img class="h-full w-full" src="https://www.slimmingeats.com/blog/wp-content/uploads/2010/04/spaghetti-bolognese-36.jpg" alt="">
+            </div>
+            <div class="py-4 px-4">
+              <h2 class="text-2xl font-bold leading-tight">Product title</h2>
+              <p class="text-sm text-gray-700">Product description and details</p>
+            </div>
+            <div class="border-t p-4 flex justify-between items-center">
+                <div>
+                    <span class="text-2xl font-bold">$499.49</span>
+                </div>
+                <div class="flex">
+                    <i class="fa-solid mx-4 text-yellow-500 text-3xl fa-cart-plus"></i>
+                    <i class="fa-solid text-red-500 text-3xl fa-circle-xmark"></i>
+                </div>
+              
+            </div>
         </div>
     </div>
-    <div class="h-screen flex">
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $sodiumChart->container() !!}
-        </div>
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $sugarChart->container() !!}
-        </div>
-    </div>
-    
-
-
-</div>
-
-{{-- Calorie Chart --}}
-<script src="{{ $calChart->cdn() }}"></script>
-
-{{ $calChart->script() }}
-
-{{-- Fat Chart Chart --}}
-<script src="{{ $fatChart->cdn() }}"></script>
-
-{{ $fatChart->script() }}
-
-{{-- SatFat Chart Chart --}}
-<script src="{{ $satFatChart->cdn() }}"></script>
-
-{{ $satFatChart->script() }}
-
-{{-- Sugar Chart Chart --}}
-<script src="{{ $sugarChart->cdn() }}"></script>
-
-{{ $sugarChart->script() }}
-
-{{-- Sodium Chart Chart --}}
-<script src="{{ $sodiumChart->cdn() }}"></script>
-
-{{ $sodiumChart->script() }}
 
 
 </x-user.layout>

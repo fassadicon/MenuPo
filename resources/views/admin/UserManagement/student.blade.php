@@ -7,6 +7,7 @@
         BMI</a>
     <a href="/admin/students/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Student
         Accounts</a>
+        {{-- <a href="/admin/logs/studentAccount" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Student Changes Logs</a> --}}
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
         <table class="table table-hover table-sm" id="foodTable">
@@ -49,7 +50,10 @@
             <tfoot>
             </tfoot>
         </table>
+        <a href="/admin/logs/studentAccount" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Student Changes Logs</a>
+    <a href="/admin/logs/bmiChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;BMI Changes Logs</a>
     </div>
+    
 
     {{-- Student Data Modal --}}
     <div class="modal fade" id="viewStudentInfoModal" tabindex="-1" aria-labelledby="viewStudentInfoModal"
