@@ -17,14 +17,14 @@
       @php
         if($food->grade > 0  && $food->grade < 6)
         {
-          echo '<span class="absolute px-4 py-0.5 text-sm bg-green-500 rounded-full text-red-50">Healthy</span>';
+          echo '<span class="absolute px-4 py-0.5 bg-white rounded-full text-red-50"><i class=" text-green-500 text-2xl fa-solid fa-bookmark"></i></span>';
         }
         elseif($food->grade > 5  && $food->grade < 10)
         {
-          echo '<span class="absolute px-4 py-0.5 text-sm bg-yellow-500 rounded-full text-red-50">Moderately Healthy</span>';
+          echo '<span class="absolute px-4 py-0.5 text-sm bg-white rounded-full text-red-50"><i class=" text-yellow-500 text-2xl fa-solid fa-bookmark"></i></span>';
         }
         else{
-          echo '<span class="absolute px-4 py-0.5 text-sm bg-red-500 rounded-full text-red-50">Not healthy</span>';
+          echo '<span class="absolute px-4 py-0.5 text-sm bg-white rounded-full text-red-50"><i class=" text-red-500 text-2xl fa-solid fa-bookmark"></i></span>';
         }
       @endphp
 

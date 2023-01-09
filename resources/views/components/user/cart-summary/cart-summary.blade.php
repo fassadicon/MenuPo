@@ -68,8 +68,13 @@
                         <span class="text-lg text-secondary font-semibold">Total Amount:</span>
                         <span class="text-lg font-bold float-right">{{Cart::priceTotal()}}</span>
                     </div>
+                    
                     <div class="absolute button w-full bottom-0 mx-auto text-center mb-2">
-                        <button type="submit" class="button-sec text-sm bg-zinc-50 text-secondary font-semibold">Check Out</button>
+                        @php
+                            if(Cart::count() != 0){
+                                echo "<button type='submit' class='button-sec text-sm bg-zinc-50 text-secondary font-semibold'>Check Out</button>";
+                            }
+                        @endphp
                     </div>
                 </div>
             </form>
