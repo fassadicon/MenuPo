@@ -8,9 +8,10 @@ use App\Models\Menu;
 use App\Models\Admin;
 
 use App\Models\Order;
-use App\Models\Purchase;
+use App\Models\Foodlog;
 
 // use DataTables;
+use App\Models\Purchase;
 use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -105,13 +106,22 @@ class FoodController extends Controller
         $foodCredentials = $request->safe()->merge(['updated_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')])->toArray();
         if ($request->hasFile('image'))
             $foodCredentials['image'] = $request->file('image')->store('admin/foods', 'public');
+        $foodLog = Foodlog::where('id', $food->id)->first();
+        Foodlog::create([
+            'food_id' => $food->id,
+            'description' => 'added stock',
+            'start' => $foodLog->start,
+            'add' =>  $request->stock - $food->stock,
+            'end' => $request->stock - $foodLog->end,
+            'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+        ]);
         $food->update($foodCredentials);
-        
+
         Alert::success($food->name . " Updated Successfully");
         return redirect('/admin/foods');
     }
 
-    public function delete ($id)
+    public function delete($id)
     {
         $food = Food::where('id', $id)->first();
 
@@ -120,7 +130,7 @@ class FoodController extends Controller
         return redirect()->back();
     }
 
-    public function trash (Request $request)
+    public function trash(Request $request)
     {
         // Initialize DataTable Values
         $foods = Food::onlyTrashed()->get()->load('admin');

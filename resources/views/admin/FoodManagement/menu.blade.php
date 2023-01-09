@@ -353,7 +353,7 @@
                     <input type="number" name="calcKcal" id="calcSodium"
                         class="border border-gray-200 rounded p-2 w-full" disabled>
                 </div>
-                <div class="col-12">
+                {{-- <div class="col-12">
                     <a id="updateFoodInfo" href="javascript:void(0)" style="background-color: gray; border: none;"
                         class="btn btn-info" role="link" aria-disabled="true" disabled>Edit Info</a>
                     <a class="btn btn-primary" id="updatePreviewMenuStock" disabled><i
@@ -362,7 +362,7 @@
                             class="fas fa-calendar-alt"></i>&nbsp;Update Date</a>
                     <a class="btn btn-danger" id="removePreviewMenu" disabled><i
                             class="fas fa-minus-circle"></i>&nbsp;Remove</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
