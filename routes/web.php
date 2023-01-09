@@ -209,6 +209,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Parent Account Management
     Route::get('/guardians', [GuardianController::class, 'index'])->name('guardians.index');
     Route::get('/guardians/{id}/view', [GuardianController::class, 'view'])->name('guardian.view');
+    Route::get('/guardians/{fullName}/exists', [GuardianController::class, 'checkIfExists']);
     Route::get('/guardians/create', [GuardianController::class, 'create']);
     Route::post('/guardians/store', [GuardianController::class, 'store']);
     Route::get('/guardians/{guardian}/edit', [GuardianController::class, 'edit']);
