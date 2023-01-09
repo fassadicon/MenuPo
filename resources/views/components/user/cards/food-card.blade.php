@@ -41,7 +41,7 @@
 
     {{-- Restrict Button --}}
     <input type="hidden" name="stud_id" id="anak-id" value="{{$anak->id}}">
-    <button class="button-sec bg-blue-400" id="restrict<%=count++%>" type="submit" name="addtorestrict" value="{{$food->id}}" data-bs-toggle="tooltip" data-bs-placement="top">
+    <button class="button-sec bg-red-500" id="restrict<%=count++%>" type="submit" name="addtorestrict" value="{{$food->id}}" data-bs-toggle="tooltip" data-bs-placement="top">
       <i class="fa-solid fa-ban fa-xl"></i>
     </button>
    
