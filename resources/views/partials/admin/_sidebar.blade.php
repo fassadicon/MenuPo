@@ -299,7 +299,7 @@
                 <span>Daily Sales Report</span>
             </a>
         </li><!-- End Completed Orders Nav -->
-        <li class="nav-heading">Logs</li>
+        {{-- <li class="nav-heading">Logs</li>
         <li class="nav-item">
             <a href="/admin/logs/adminAccount" class="nav-link collapsed" id="sidebarLink">
                 <i class="fas fa-user-tie"></i>
@@ -335,7 +335,7 @@
                 <i class="bi bi-menu-button-wide-fill"></i>
                 <span>Menu Changes</span>
             </a>
-        </li><!-- End Completed Orders Nav -->
+        </li><!-- End Completed Orders Nav --> --}}
         {{-- <li class="nav-heading">Nutritional Report</li>
         <li class="button-dropdown">
             <a href="javascript:void(0)" class="nav-link collapsed dropdown-toggle">

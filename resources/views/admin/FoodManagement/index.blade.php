@@ -6,6 +6,7 @@
         <a href="/admin/foods/create" class="btn btn-success mb-2"><i class="fas fa-plus-circle"></i>&nbsp;Create Food
             Item</a>
         <a href="/admin/foods/trash" class="btn btn-warning mb-2"><i class="fas fa-trash"></i>&nbsp;Archived Food Item</a>
+    <a href="/admin/logs/foodItems" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Food Changes Logs</a>
         <table class="table table-hover table-sm" id="foodTable">
 
             <thead>

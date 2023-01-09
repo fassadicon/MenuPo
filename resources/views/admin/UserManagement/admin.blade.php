@@ -4,6 +4,8 @@
         Account</a>
     <a href="/admin/admins/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Admin
         Accounts</a>
+
+        <a href="/admin/logs/adminAccount" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Admin Changes Logs</a>
     {{-- DATABLE --}}
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}

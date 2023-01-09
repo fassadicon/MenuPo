@@ -1,5 +1,6 @@
 <x-admin.layout :notifs="$adminNotifs">
-   
+    <h1 class="h3">BMI Changes Logs</h1>
+    <a href="/admin/students/importUpdateBMI" class="btn btn-primary mb-2"><i class="fas fa-weight"></i>&nbsp;Mass Update BMI</a>
   <table class="table table-bordered table-sm" id="logsTable">
 
       <thead>

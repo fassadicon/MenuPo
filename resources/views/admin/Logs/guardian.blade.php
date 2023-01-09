@@ -1,5 +1,6 @@
 <x-admin.layout :notifs="$adminNotifs">
-   
+    <h1 class="h3">Parent Account Changes Logs</h1>
+    <a href="/admin/guardians" class="btn btn-primary mb-2"><i class="fas fa-user-friends"></i>&nbsp;Parent Account Management</a>
   <table class="table table-bordered table-sm" id="logsTable">
 
       <thead>
