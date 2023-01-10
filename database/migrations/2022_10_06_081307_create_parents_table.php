@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('birthDate');
             $table->integer('status')->length(1);
             $table->string('image')->nullable();
+            $table->string('fullName')->nullable();
             // Logs
             $table->timestamps();
             $table->softDeletes();

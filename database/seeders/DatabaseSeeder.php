@@ -627,7 +627,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 3,
                 'created_by' => 2,
                 'image' => 'admin/parents/1.png',
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Karen Dela Cruz Reyes'
             ],
             [
                 'firstName' => 'Byron James',
@@ -641,12 +642,13 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 6,
                 'created_by' => 2,
                 'image' => 'admin/parents/2.png',
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Byron James Regalado Ramos'
             ],
             [
                 'firstName' => 'Emmanuel',
                 'lastName' => 'Salao',
-                'middleName' => 'Noveno Cruz',
+                'middleName' => 'Noveno',
                 'sex' => 'M',
                 'address' => 'San Mateo, Rizal',
                 'birthDate' => '1982-10-21',
@@ -655,7 +657,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 7,
                 'created_by' => 2,
                 'image' => 'admin/parents/3.png',
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Emmanuel Noveno Salao'
             ],
             [
                 'firstName' => 'Charlene',
@@ -669,7 +672,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 8,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Charlene Sarinas Dimaranan'
             ],
             [
                 'firstName' => 'Marianne',
@@ -683,7 +687,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 9,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Marianne Cruz Dela Vera'
             ],
             [
                 'firstName' => 'Karlos',
@@ -697,7 +702,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 10,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Karlos Mercado Espin'
             ],
             [
                 'firstName' => 'Veronica',
@@ -711,7 +717,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 11,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Veronica Marcayda Asilo'
             ],
             [
                 'firstName' => 'Luzviminda',
@@ -725,7 +732,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 12,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Luzviminda Martin Olivares'
             ],
             [
                 'firstName' => 'Joseph',
@@ -739,7 +747,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 13,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => 'Jr'
+                'suffix' => 'Jr',
+                'fullName' => 'Joseph Felix Madrigal'
             ],
             [
                 'firstName' => 'Kim',
@@ -753,7 +762,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 14,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Kim Sarmiento Dela Cruz'
             ],
             [
                 'firstName' => 'George',
@@ -767,7 +777,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 15,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'George Sevillo Navarro'
             ],
             [
                 'firstName' => 'Maricris',
@@ -781,7 +792,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 16,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Maricris Deseo Marcayda'
             ],
             [
                 'firstName' => 'Harnan',
@@ -795,7 +807,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 17,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Harnan Rautela Singh'
             ],
             [
                 'firstName' => 'Romina',
@@ -809,7 +822,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 18,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Romina Alatiit Fernandez'
             ],
             [
                 'firstName' => 'Arnold',
@@ -823,7 +837,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 19,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => 'II'
+                'suffix' => 'II',
+                'fullName' => 'Arnold Magnaye Bantayan'
             ],
             [
                 'firstName' => 'Katherine',
@@ -837,7 +852,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 20,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Katherine Sison Hicana'
             ],
             [
                 'firstName' => 'Marielle',
@@ -851,7 +867,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 21,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Marielle Rodriguez Delavera'
             ],
             [
                 'firstName' => 'Julius Cesar',
@@ -865,7 +882,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 22,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Julis Cesar Mabano Fugen'
             ],
             [
                 'firstName' => 'Mariaella',
@@ -879,7 +897,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 23,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Mariaella Sison Magnaye'
             ],
             [
                 'firstName' => 'Marco',
@@ -893,7 +912,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 24,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'marco Dimaculangan Urdaneta'
             ],
             [
                 'firstName' => 'Jayzelle',
@@ -907,7 +927,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 25,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Jayzelle Fernandez Ramos'
             ],
             [
                 'firstName' => 'Herman',
@@ -921,7 +942,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 26,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Herman Dela Mira Somera'
             ],
             [
                 'firstName' => 'Francis Adrian',
@@ -935,7 +957,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 27,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Francis Adrian Delavera Santos'
             ],
             [
                 'firstName' => 'Veronica',
@@ -949,7 +972,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 28,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Veronica Reyes Matheran'
             ],
             [
                 'firstName' => 'Angela',
@@ -963,7 +987,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 29,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Angela Jimenez Martinez'
             ],
             [
                 'firstName' => 'Joseeph',
@@ -977,7 +1002,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 30,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Joseeph Oliveros Yuzon'
             ],
             [
                 'firstName' => 'Raquel',
@@ -991,7 +1017,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 31,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Raquel Lacampuenga Camiling'
             ],
             [
                 'firstName' => 'Oliver James',
@@ -1005,7 +1032,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 32,
                 'created_by' => 2,
                 'image' => null,
-                'suffix' => null
+                'suffix' => null,
+                'fullName' => 'Oliver James Hernandez Ramos'
             ],
           
         ];
@@ -9816,7 +9844,7 @@ class DatabaseSeeder extends Seeder
         ];
         Survey::insert($surveys);
 
-        DB::table('foodlogs')->delete();
+        // DB::table('foodlogs')->delete();
         // $foodLogs = [
         //     [
         //         'id' => 1,

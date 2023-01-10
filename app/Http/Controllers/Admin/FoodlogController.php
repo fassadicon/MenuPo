@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use App\Models\Food;
+use App\Models\Menu;
+use App\Models\Admin;
 use App\Models\Foodlog;
+use App\Models\Purchase;
 use App\Models\Adminnotif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +17,72 @@ class FoodlogController extends Controller
     public function index()
     {
         $adminNotifs = Adminnotif::get();
-        $foodIDs = Foodlog::select('food_id')->distinct()->pluck('food_id')->toArray();
+
+        $cookedMeals = Menu::with('food')
+            // WHERE (`STATUS` = 'Temporary' and DATE(`expiring_at`) >= 'TODAY') or (`STATUS` = 'Default' and `expiring_at` IS NULL)
+            ->where(function ($query) {
+                $query->where('status', 1)
+                    ->whereDate('displayed_at', Carbon::today()->format('Y-m-d'))
+                    ->whereDate('removed_at', '>', Carbon::today()->format('Y-m-d'));
+            })
+            ->orWhere(function ($query) {
+                $query->where('status', 0)
+                    ->whereNull('displayed_at')
+                    ->whereNull('removed_at');
+            })
+            // WHERE `menus`.`food_id` = `foods`.`id` and `TYPE` like '%Cooked Meal%') and
+            // get distinct food id 
+            ->orderBy('id', 'DESC')
+            // ->groupBy('food_id')
+            ->latest()
+            ->get()
+            ->unique('food_id');
+        // dd($cookedMeals[10]->food_id);
+        $foodIDs = array();
+        foreach ($cookedMeals as $cookedMeal) {
+            array_push(
+                $foodIDs,
+                $cookedMeal->food_id
+            );
+            // Foodlog::create([
+            //     'food_id' => $cookedMeal->food_id,
+            //     'description' => 'start_menu',
+            //     'start' => $cookedMeal->food->stock,
+            //     'end' => 0,
+            //     'sold' => 0,
+            //     'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+            // ]);
+            if (Foodlog::where('food_id', $cookedMeal->food_id)->exists() == false) {
+                Foodlog::create([
+                    'food_id' => $cookedMeal->food_id,
+                    'description' => 'start_menu',
+                    'start' => $cookedMeal->food->stock,
+                    'end' => 0,
+                    'sold' => 0,
+                    'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+                ]);
+            }
+            // } else {
+            //     $logDate = Foodlog::where('food_id', $cookedMeal->food_id)->first();
+            //     if ($logDate->created_at != Carbon::today()) {
+            //         $food = Food::where('id', $cookedMeal->food_id)->first();
+            //         // dd($food);
+            //         Foodlog::create([
+            //             'food_id' => $food->id,
+            //             'description' => 'start_menu',
+            //             'start' => $food->stock,
+            //             'end' => 0,
+            //             'sold' => 0,
+            //             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+            //         ]);
+            //     }
+            // }
+        }
+        // dd($food);
+        // dd(Foodlog::all());
+
+        // $foodIDs = array();
+        // $foodIDs = Foodlog::select('food_id')->distinct()->pluck('food_id')->toArray();
 
 
         $foodNames = array();
@@ -76,6 +144,23 @@ class FoodlogController extends Controller
             $totalAmount += $amountLog;
         }
 
-        return view('admin.Logs.dailyFoodReport', compact('adminNotifs', 'foodNames', 'starts', 'ends', 'adds', 'solds', 'amounts', 'totalAmount'));
+        $purchases = array();
+        foreach ($foodIDs as $foodID) {
+            array_push(
+                $purchases,
+                Purchase::with('order')
+                        ->whereHas('payment', function ($query) {
+                            $query->where('paymentStatus', 'paid');
+                        })
+                        ->whereHas('order', function ($query) use ($foodID) {
+                            $query->where('food_id', 'like', $foodID);
+                        })->count()
+            );
+        }
+
+        return view('admin.Logs.dailyFoodReport', compact(
+            'adminNotifs', 'foodNames', 'starts', 'ends', 'adds', 'solds', 'amounts', 'totalAmount',
+        
+        ));
     }
 }
