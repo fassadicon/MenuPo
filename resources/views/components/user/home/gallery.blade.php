@@ -15,7 +15,7 @@
                   Information and announcements are located here. this will be your guid through accessing the canteen of Buestra Senra De Aranzazu Parochial School
                 </p>
                 <div class="relative flex">
-                  <button class="button-sec my-4">
+                  <button class="button-sec my-4 text-lg font-bold">
                      <a href="#">
                        Read More
                      </a>

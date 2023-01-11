@@ -373,7 +373,7 @@
                       </div>
 
                       <div class="my-4"></div>
-                      <div class="restriction flex flex-row overflow-x-auto">
+                      <div class="restriction flex flex-row overflow-x-scroll">
                         {{-- @if (sizeof($restricts) == 0) --}}
                           @foreach ($restricts as $restrict)
                             @foreach ($restrict as $res)
@@ -400,15 +400,16 @@
           <div class="my-4"></div>
 
           <!-- Experience and education -->
-          <div class="bg-white h-1/3 p-3 shadow-xl rounded-sm">
+          <div class="bg-white h-96 p-3 shadow-xl rounded-sm">
               <div class="bg-white">
-                  <div class='overflow-x-auto h-96 w-full'>
-                      <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                          <span clas="text-green-500">
-                            <i class="fa-solid fa-list-radio"></i>
-                          </span>
-                          <span class="tracking-wide font-bold">Order History</span>
-                      </div>
+                  <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                      <span clas="text-green-500">
+                        <i class="fa-solid fa-list-radio"></i>
+                      </span>
+                      <span class="tracking-wide font-bold">Order History</span>
+                  </div>
+                  <div class='overflow-x-auto h-80 w-full'>
+                      
                       <table class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300'>
                           <thead class="bg-secondary">
                               <tr class="text-white text-left">
@@ -458,8 +459,7 @@
                       </table>
                   </div>
               </div>
-                      
-      
+                    
               <!-- End of Experience and education grid -->
               
           </div>

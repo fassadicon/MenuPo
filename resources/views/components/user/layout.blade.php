@@ -502,8 +502,9 @@
                       </div>
                       
                       <div class="del-all">
-                        <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
-                        
+                        @if ($notifs != null)
+                          <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
+                        @endif
                       </div>
                   </ul>
                 </li>
@@ -519,7 +520,7 @@
                             echo '<li><a href="/users/survey">Survey</a></li>';
                         }
                     @endphp --}}
-                    @if ($isSurveyAvail == 1)
+                    @if ($isSurveyAvail != 1)
                       <li><a href="/users/survey">Survey</a></li>
                     @endif
                     {{-- <li><a href="/users/survey">Survey</a></li> --}}
@@ -547,7 +548,7 @@
                @if ($notifs != null)
                 <i class="fa-solid fa-circle text-red-700"></i>
                @endif
-                <ul class="absolute bg-white p-3 w-80  -left-52 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
+                <ul class="absolute bg-white p-3 w-80  -left-60 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
                    <h3 class="text-xl">Notifications</h3>
                    <div class="h-96 overflow-y-scroll" >
                       @if ($notifs == null)
@@ -562,8 +563,9 @@
                     </div>
                     
                     <div class="del-all">
-                      <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
-                      
+                      @if ($notifs != null)
+                        <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
+                      @endif
                     </div>
                 </ul>
               </li>

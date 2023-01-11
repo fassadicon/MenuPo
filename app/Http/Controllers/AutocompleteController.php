@@ -44,15 +44,8 @@ class AutocompleteController extends Controller
   public function getParent(Request $request)
   {
     $query = $request->get('query');
-    $id = Guardian::where('firstName', 'LIKE', '%' . $query . '%')->pluck('id');
-    $firstName = Guardian::where('firstName', 'LIKE', '%' . $query . '%')->pluck('firstName');
-    $middleName = Guardian::where('firstName', 'LIKE', '%' . $query . '%')->pluck('middleName');
-    $lastName = Guardian::where('firstName', 'LIKE', '%' . $query . '%')->pluck('lastName');
-    $length = count($firstName);
-    $fullName = array();
-    for ($i = 0; $i < $length; $i++) {
-      $fullName[$i] = $firstName[$i] . ' ' . $middleName[$i] . ' ' . $lastName[$i] . ' ID:' . $id[$i];
-    }
+
+    $fullName = Guardian::where('fullName', 'LIKE', '%' . $query . '%')->pluck('fullName');
     return response()->json($fullName);
   }
 }
