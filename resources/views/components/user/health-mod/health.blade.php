@@ -373,7 +373,7 @@
                       </div>
 
                       <div class="my-4"></div>
-                      <div class="restriction flex flex-row overflow-x-auto">
+                      <div class="restriction flex flex-row overflow-x-scroll">
                         {{-- @if (sizeof($restricts) == 0) --}}
                           @foreach ($restricts as $restrict)
                             @foreach ($restrict as $res)

@@ -26,7 +26,7 @@
         else{
           echo '<i class="absolute left-1 -top-1 text-red-500 text-4xl fa-solid fa-bookmark"></i></span>';
         }
-      @endphp
+    @endphp
     
     <div class="m-4 h-52 bg-red-500 rounded-md">
       <img class="w-full h-full" src="{{ $food->image ? asset($food->image) : asset('storage/admin/userNoImage.png') }}"
@@ -59,7 +59,7 @@
             
           
           @else
-            <span class="text-lg text-red-400 bg-gray-50 rounded-full"><i class="fa-solid fa-circle-info fa-lg"></i> This is restricted</span>
+            <span class="text-sm md:text-lg text-red-400 bg-gray-50 rounded-full"><i class="fa-solid fa-circle-info fa-lg"></i> This is restricted</span>
           @endif
             
         </div>
