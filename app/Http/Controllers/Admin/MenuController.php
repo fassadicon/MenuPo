@@ -55,9 +55,9 @@ class MenuController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     // Update Stock Quantity
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="updateMenuItemDetailsBtn" class="btn btn-info btn-sm" id="editMenuItemDetailsDTBtn"><i class="bi bi-pencil-square"></i></a>';
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip" title="Update Menu Item" data-id="' . $row->id . '" data-original-title="updateMenuItemDetailsBtn" class="btn btn-info btn-sm" id="editMenuItemDetailsDTBtn"><i class="bi bi-pencil-square"></i></a>';
                     // Remove from the Menu
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="removeMenuItemBtn delete btn btn-danger btn-sm"><i class="bi bi-dash-circle"></i></a>';
+                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip" title="Remove from Menu" data-id="' . $row->id . '" data-original-title="Delete" class="removeMenuItemBtn delete btn btn-danger btn-sm"><i class="bi bi-dash-circle"></i></a>';
                     return $btn;
                 })
                 ->addColumn('count', function ($row) {

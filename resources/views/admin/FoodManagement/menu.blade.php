@@ -360,7 +360,8 @@
                 </div>
                 <div class="col-12">
                     <a id="updateFoodInfo" href="javascript:void(0)" style="background-color: gray; border: none;"
-                        class="btn btn-info" role="link" aria-disabled="true" disabled>Edit Info</a>
+                        class="btn btn-info" role="link" aria-disabled="true" disabled><i
+                             class="bi bi-pencil-square"></i>&nbsp;Edit Info</a>
                     <a class="btn btn-primary" id="updatePreviewMenuStock" disabled><i
                             class="fas fa-plus"></i>&nbsp;Add Stock</a>
                     <a class="btn btn-warning" id="updatePreviewMenuDate" disabled><i
