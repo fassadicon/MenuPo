@@ -29,6 +29,7 @@ use App\Charts\UserCharts\SodiumChart;
 use App\Charts\UserCharts\CalorieChart;
 use App\Charts\UserCharts\HealthCharts;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -39,6 +40,7 @@ class HomeController extends Controller
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
 
+        $isSurveyAvail = 0;
         $now = Carbon::now();
         $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
         $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
@@ -46,10 +48,11 @@ class HomeController extends Controller
         $survey = Survey::where('parent_id', $parent[0]->id)
             ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
             
-        if(!empty($survey)){
+        if(sizeOf($survey) != 0){
             $isSurveyAvail = 1;
         }
         
+
         //For checking and changing the payment status.
         $purchases =  Purchase::where('parent_id', $parent[0]->id)->with('payment')->get();
 
@@ -91,6 +94,7 @@ class HomeController extends Controller
                 
             }
         }
+
 
         $image = DB::select('SELECT * FROM posts');
         return view('user.home', [
