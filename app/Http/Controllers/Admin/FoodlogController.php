@@ -144,23 +144,40 @@ class FoodlogController extends Controller
             $totalAmount += $amountLog;
         }
 
+        $items = array();
         $purchases = array();
+        
         foreach ($foodIDs as $foodID) {
             array_push(
+                $items,
+                Food::where('id', '$foodID')->get(['name'])->value('name')
+            );
+
+            Purchase::with('order')
+            ->whereHas('payment', function ($query) {
+                $query->where('paymentStatus', 'paid');
+            })
+            ->whereHas('order', function ($query) use ($foodID) {
+                $query->where('food_id', 'like', $foodID);
+            })
+            ->whereDate('')
+            ->count();
+            array_push(
                 $purchases,
-                Purchase::with('order')
-                        ->whereHas('payment', function ($query) {
-                            $query->where('paymentStatus', 'paid');
-                        })
-                        ->whereHas('order', function ($query) use ($foodID) {
-                            $query->where('food_id', 'like', $foodID);
-                        })->count()
+               0
             );
         }
 
         return view('admin.Logs.dailyFoodReport', compact(
-            'adminNotifs', 'foodNames', 'starts', 'ends', 'adds', 'solds', 'amounts', 'totalAmount',
-        
+            'adminNotifs',
+            'foodNames',
+            'starts',
+            'ends',
+            'adds',
+            'solds',
+            'amounts',
+            'totalAmount',
+            'items'
         ));
     }
 }

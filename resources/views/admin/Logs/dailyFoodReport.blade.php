@@ -1,7 +1,7 @@
 <x-admin.layout :notifs="$adminNotifs">
     <h1 class="h3">Daily Report</h1>
     <div class="row">
-        <div class="col-9">
+        <div class="col-7">
             <table class="table-bordered table">
                 <thead>
                     <tr>
@@ -34,7 +34,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-3">
+        <div class="col-5">
             <table class="table-bordered table">
                 <thead>
                     <tr>
