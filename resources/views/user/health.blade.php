@@ -24,7 +24,7 @@
         });
         Swal.fire({
         title: 'Are you sure?',
-        text: "You want to unrestrict this item? Unrestricting this item means the student can order this item in the canteen.",
+        text: "Unrestricting this item will allow it to be shown again in the menu.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

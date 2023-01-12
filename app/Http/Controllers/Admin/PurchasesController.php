@@ -92,11 +92,11 @@ class PurchasesController extends Controller
     {
         // Initialize Datatable Values
 
-        $purchases = Purchase::with('orders', 'orders.food', 'parent', 'student', 'admin', 'payment')
-            ->where('claimStatus', 1)
-            ->orderBy('id')
-            ->orderBy('updated_at', 'DESC')
-            ->get();
+        $purchases = Purchase::where('claimStatus', 1)
+            ->latest('updated_at')
+            ->get()
+            ->load('orders', 'orders.food', 'parent', 'student', 'admin', 'payment');
+
         foreach ($purchases as $purchase) {
             $purchase['served_by_name'] = Admin::where('id', $purchase->served_by)->first();
             $purchase['created_at_formatted'] = Carbon::parse($purchase->created_at)->format('M d, Y');

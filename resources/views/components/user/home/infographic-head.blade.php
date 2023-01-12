@@ -45,7 +45,7 @@
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">See and explore the Philippine Food Composition Table library, the basis of nutritional information provided in the menu.</p>
-                      <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
+                      <button class="button-sec px-3 py-1 font-bold text-sm opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
               </a>
@@ -63,7 +63,7 @@
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">Learn more about the UK Food Traffic Light System that determines the nutritional value of a food item</p>
-                    <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
+                    <button class="button-sec px-3 py-1 font-bold text-sm opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
               </a>
@@ -81,7 +81,7 @@
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">Explore more about the DepEd Order No. 13, s.2017 that aims to improve nutritional intervention in schools</p>
-                    <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
+                    <button class="button-sec px-3 py-1 font-bold text-sm opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
               </a>
@@ -99,7 +99,7 @@
                   </div>
                   <div class="h-1/2">
                     <p class="text-white pb-4 opacity-0 transition duration-300 group-hover:opacity-100">See more about how to be a good parent in guiding your child to a healthier diet.</p>
-                    <button class="button-sec px-3 py-1 font-semibold opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
+                    <button class="button-sec px-3 py-1 font-bold text-sm opacity-0 transition duration-300 group-hover:opacity-100">Read More</button>
                   </div>
                 </div>
               </a>

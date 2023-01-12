@@ -273,13 +273,14 @@
 
             <!-- Experience and education -->
             <div class="bg-white p-3 shadow-xl rounded-sm">
+                <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                    <span clas="text-green-500">
+                      <i class="fa-solid fa-list-radio"></i>
+                    </span>
+                    <span class="tracking-wide font-bold">Order History</span>
+                </div>
                 <div class="h-96 bg-white overflow-y-scroll">
-                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                        <span clas="text-green-500">
-                          <i class="fa-solid fa-list-radio"></i>
-                        </span>
-                        <span class="tracking-wide font-bold">Order History</span>
-                    </div>
+                    
                     <div class='overflow-x-auto w-full'>
                         <table class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300'>
                             <thead class="bg-secondary">

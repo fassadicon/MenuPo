@@ -1,58 +1,12 @@
-<x-user.layout :studs="$students" :notifs="$notifications">
+<x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
+<br><br><br><br>
 
-<div class="container px-4 mx-auto ">
-    <br><br><br>
-    <br><br><br>
-    <div class="h-screen flex w-full">
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $calChart->container() !!}
-        </div>
-
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $fatChart->container() !!}
-        </div>
-
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $satFatChart->container() !!}
-        </div>
+    <div class="h-screen">
+        <div class="relative rounded-md shadow-sm">
+            <input  class="form-input py-3 px-4 block w-full leading-5 rounded-md transition duration-150 ease-in-out border-gray-300 focus:outline-none focus:border-gray-500" placeholder="placeholder">
+            <label class="absolute inset-y-0 left-0 pl-3 pt-2 text-gray-500 pointer-events-none">Label</label>
+          </div>
     </div>
-    <div class="h-screen flex">
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $sodiumChart->container() !!}
-        </div>
-        <div class="h-5/6 w-1/3 bg-zinc-50 rounded-lg p-4 mx-2">
-            {!! $sugarChart->container() !!}
-        </div>
-    </div>
-    
-
-
-</div>
-
-{{-- Calorie Chart --}}
-<script src="{{ $calChart->cdn() }}"></script>
-
-{{ $calChart->script() }}
-
-{{-- Fat Chart Chart --}}
-<script src="{{ $fatChart->cdn() }}"></script>
-
-{{ $fatChart->script() }}
-
-{{-- SatFat Chart Chart --}}
-<script src="{{ $satFatChart->cdn() }}"></script>
-
-{{ $satFatChart->script() }}
-
-{{-- Sugar Chart Chart --}}
-<script src="{{ $sugarChart->cdn() }}"></script>
-
-{{ $sugarChart->script() }}
-
-{{-- Sodium Chart Chart --}}
-<script src="{{ $sodiumChart->cdn() }}"></script>
-
-{{ $sodiumChart->script() }}
 
 
 </x-user.layout>

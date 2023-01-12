@@ -62,6 +62,7 @@ class POSController extends Controller
         $payment = new Payment;
         $payment->method = "Walk-in";
         $payment->referenceNo = str_pad(mt_rand(1,99999999),8,'0',STR_PAD_LEFT);
+        $payment->paymentStatus = "paid";
         $payment->save();
         
         $purchase = new Purchase;

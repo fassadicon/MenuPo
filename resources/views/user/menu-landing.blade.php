@@ -9,7 +9,7 @@
         
         <x-user.menu-landing.anaks :students="$students" />
         <div class="flex justify-center">
-            <button class="button-sec"><a href="/user/home">Go Back</a></button>
+            <button class="button-sec w-48 text-lg font-bold"><a href="/user/home">Go Back</a></button>
         </div>
     </div>
 </div>   

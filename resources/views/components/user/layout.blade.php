@@ -502,8 +502,9 @@
                       </div>
                       
                       <div class="del-all">
-                        <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
-                        
+                        @if ($notifs != null)
+                          <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
+                        @endif
                       </div>
                   </ul>
                 </li>
@@ -519,7 +520,7 @@
                             echo '<li><a href="/users/survey">Survey</a></li>';
                         }
                     @endphp --}}
-                    @if ($isSurveyAvail == 1)
+                    @if ($isSurveyAvail != 1)
                       <li><a href="/users/survey">Survey</a></li>
                     @endif
                     {{-- <li><a href="/users/survey">Survey</a></li> --}}
@@ -542,33 +543,35 @@
             
             <!-- Mobile menu icon -->
             <div class="flex relative-group ml-auto md:hidden">
-              {{-- <li class="allNotifs flex relative group">
+              <li class="allNotifs flex relative group">
                 <a href="#" class="hover:text-black"><i class="fa-solid fa-envelope fa-fw fa-xl"></i></a>
-                <i class="fa-solid fa-chevron-down fa-2xs pt-3"></i>
-                <ul class="absolute bg-white p-3 w-80 h-96 overflow-y-scroll -left-60 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
+               @if ($notifs != null)
+                <i class="fa-solid fa-circle text-red-700"></i>
+               @endif
+                <ul class="absolute bg-white p-3 w-80  -left-60 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50"> 
                    <h3 class="text-xl">Notifications</h3>
-                   <div class="">
+                   <div class="h-96 overflow-y-scroll" >
                       @if ($notifs == null)
                         <div class="if-null text-center">
                             <p>No notifications</p>
                         </div>
                       @else
                         @foreach ($notifs as $notif)
-                          <x-user.notif-modal.notif-modal :notif="$notif" />
+                            <x-user.notif-modal.notif-modal :notif="$notif" />
                         @endforeach
                       @endif
-                   </div>
-        
+                    </div>
+                    
                     <div class="del-all">
-                      <button class="deleteAll text-red-500">
-                        <span>Delete all</span>
-                      </button>
+                      @if ($notifs != null)
+                        <button class="deleteAll h-10 w-full bg-primary rounded mt-3 text-lg focus:outline-none font-bold text-secondary hover:bg-secondary hover:text-primary ">Delete All</button>
+                      @endif
                     </div>
                 </ul>
-              </li> --}}
+              </li>
             </div>
             <button id="mobile-icon" onclick="changeMyColor()" class="md:hidden w-12 h-12 mx-2 border-4 rounded-full hover:border-blue-600">
-              <img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="w-11 h-11  rounded-full bg-cover"> <i onclick="changeIcon(this)" class="fa-solid fa-bars invisible"></i>
+              <img src="https://i.guim.co.uk/img/media/62440e68daccfd54725dbe638b60c54e0359202d/0_704_4000_2398/master/4000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=47fe00c7ca5afc59737d8e3fb506c768" class="w-11 h-11  rounded-full bg-cover"> <i onclick="changeIcon(this)" class="fa-solid fa-bars invisible"></i>
             </button> 
             
             </div>
@@ -577,7 +580,7 @@
           <div class="md:hidden flex justify-center mt-1 w-full">
             <div id="mobile-menu" class="mobile-menu absolute z-50 top-23 w-3/4"> <!-- add hidden here later -->
               <ul class="mobile-nav bg-gradient-to-tl from-yellow-100 via-yellow-300 to-yellow-500 shadow-lg leading-9 font-bold h-screen">
-                <li class="hover:text-primary pl-4 flex pt-2 pb-1 px-2"><a href="#" class="block pl-7 uppercase"><img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="w-12 h-12 rounded-full border-4 border-gray-50 mr-4 inline">{{auth()->user()->guardian->firstName}} {{auth()->user()->guardian->lastName}}</a></li>
+                <li class="hover:text-primary pl-4 flex pt-2 pb-1 px-2"><a href="#" class="block pl-7 uppercase"><img src="https://i.guim.co.uk/img/media/62440e68daccfd54725dbe638b60c54e0359202d/0_704_4000_2398/master/4000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=47fe00c7ca5afc59737d8e3fb506c768" class="w-12 h-12 rounded-full border-4 border-gray-50 mr-4 inline">{{auth()->user()->guardian->firstName}} {{auth()->user()->guardian->lastName}}</a></li>
                 <li class="mobile-li group   hover:text-primary py-1 pl-4"><a href="/user/home" class="block pl-7"><i class="fa-solid fa-house-user fa-fw text-white mr-4 group-hover:text-primary"></i></i>Home</a></li>
                 <li class="mobile-li group  hover:text-primary py-1 pl-4"><a href="/user/menu-landing" class="block pl-7"><i class="fa-solid fa-bars fa-fw text-white mr-4 group-hover:text-primary"></i></i>Menu</a></li>
                 <li class="group  hover:text-gray-800 py-1">

@@ -294,7 +294,7 @@
 
         Swal.fire({
         title: 'Are you sure?',
-        text: "You want to restrict this item? Restricting this item means the student cannot order it in the canteen.",
+        text: "This means that you are restricting your child to order this item in the menu.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',

@@ -85,14 +85,14 @@ class StudentController extends Controller
             'Q1BMI' => round($request->weight / pow($request->height / 100, 2), 2)
         ]);
         $student = $request->safe()->merge([
+            'parent_id' => Guardian::where('fullName', $request->parent)->get(['id'])->value('id'),
             'status' => 1,
             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         ])->except(['parent', 'weight', 'height']);
         $student['bmi_id'] = $BMI->id;
         if ($request->hasFile('image'))
             $student['image'] = $request->file('image')->store('admin/students', 'public');
-        $parentName = $request->parent;
-        $student['parent_id'] = substr($parentName, strpos($parentName, ":") + 1);
+ 
         $studentID = Student::latest()->get(['id'])->value('id') + 1;
 
         // GENERATE QR
@@ -154,15 +154,13 @@ class StudentController extends Controller
             'Q1BMI' => round($request->weight / pow($request->height / 100, 2), 2)
         ]);
         $studentCredentials = $request->safe()->merge([
+            'parent_id' => Guardian::where('fullName', $request->parent)->get(['id'])->value('id'),
             'status' => 1,
             'updated_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         ])->except(['parent', 'weight', 'height']);
         if ($request->hasFile('image'))
             $studentCredentials['image'] = $request->file('image')->store('admin/students', 'public');
-        $prevParentID = Student::where('id', (int)$student->id)->get(['parent_id'])->value('parent_id');
-        $prevParent = Guardian::where('id', $prevParentID)->first();
-        $prevParentName = $prevParent->firstName . ' ' . $prevParent->middleName . ' ' . $prevParent->lastName;
-        $prevParentName == $request->parent ? $studentCredentials['parent_id'] = $prevParent->id : $studentCredentials['parent_id'] = substr($request->parent, strpos($request->parent, ":") + 1);
+      
         $student->update($studentCredentials);
         Alert::success('Success', 'Account of ' . $student->firstName . ' ' . $student->lastName . ' Updated Successfully');
         return redirect('/admin/students');

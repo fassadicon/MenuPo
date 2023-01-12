@@ -24,7 +24,7 @@ class UpdateStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'parent' =>  'required|string|max:255',
+            'parent' =>  'required|string|max:255|exists:parents,fullName',
             'LRN' => 'required|numeric',
             'grade' => 'required|numeric|max:6',
             'section' => 'required|string|max:255',

@@ -63,6 +63,15 @@ class GuardianController extends Controller
         return response()->json($guardian);
     }
 
+    public function checkIfExists($fullName)
+    {
+        if (Guardian::where('fullName', $fullName)->exists()) {
+            return Guardian::where('fullName', $fullName)->pluck('fullName');
+        } else {
+            return null;
+        }
+    }
+
     // Show Create Form
     public function create()
     {
