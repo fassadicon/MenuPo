@@ -193,25 +193,25 @@
                         extend: "csv",
                         text: "",
                         className: "fred bi bi-filetype-csv",
-                        title: "Food Items"
+                        title: "Parent Accounts"
                     },
                     {
                         extend: "excel",
                         text: "",
                         className: "fred bi bi bi-filetype-xlsx",
-                        title: "Food Items"
+                        title: "Parent Accounts"
                     },
                     {
                         extend: "pdf",
                         text: "",
                         className: "fred bi bi-filetype-pdf",
-                        title: "Food Items"
+                        title: "Parent Accounts"
                     },
                     {
                         extend: "print",
                         text: "",
                         className: "fred bi bi-printer",
-                        title: "Food Items"
+                        title: "Parent Accounts"
                     },
                     {
                         extend: "colvis",
