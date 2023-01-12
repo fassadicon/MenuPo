@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Food;
 use App\Models\Menu;
 use App\Models\Admin;
+use App\Models\Order;
 use App\Models\Foodlog;
 use App\Models\Purchase;
 use App\Models\Adminnotif;
@@ -144,29 +145,78 @@ class FoodlogController extends Controller
             $totalAmount += $amountLog;
         }
 
-        $items = array();
-        $purchases = array();
-        
-        foreach ($foodIDs as $foodID) {
-            array_push(
-                $items,
-                Food::where('id', '$foodID')->get(['name'])->value('name')
-            );
-
-            Purchase::with('order')
+        $items = ['Rice Meals', 'Pastas/Porridges', 'Snacks', 'Beverages', 'Others'];
+        $purchases = Purchase::with('order')
             ->whereHas('payment', function ($query) {
                 $query->where('paymentStatus', 'paid');
             })
-            ->whereHas('order', function ($query) use ($foodID) {
-                $query->where('food_id', 'like', $foodID);
-            })
-            ->whereDate('')
-            ->count();
-            array_push(
-                $purchases,
-               0
-            );
+            ->whereDate('updated_at', Carbon::today())
+            ->get();
+        
+        // dd($purchases);a
+        $cashs = array();
+        $sumCookedMeals = 0;
+        $sumPastas = 0;
+        $sumSnacks = 0;
+        $sumBevs = 0;
+        $sumOthers = 0;
+        $totalAmountByType = 0;
+        foreach ($purchases as $purchase) {
+            $orderCookedMealAmount = Order::where('purchase_id', $purchase->id)
+            ->whereHas('food', function($query) {
+                $query->where('type', 3);
+            })->get(['amount'])->value('amount');
+            $sumCookedMeals += $orderCookedMealAmount;
+
+            $orderPastaAmount = Order::where('purchase_id', $purchase->id)
+            ->whereHas('food', function($query) {
+                $query->where('type', 4);
+            })->get(['amount'])->value('amount');
+            $sumPastas += $orderPastaAmount;
+
+            $orderSnackAmount = Order::where('purchase_id', $purchase->id)
+            ->whereHas('food', function($query) {
+                $query->where('type', 2);
+            })->get(['amount'])->value('amount');
+            $sumSnacks += $orderSnackAmount;
+
+            $orderBevAmount = Order::where('purchase_id', $purchase->id)
+            ->whereHas('food', function($query) {
+                $query->where('type', 1);
+            })->get(['amount'])->value('amount');
+            $sumBevs += $orderBevAmount;
+
+            $orderOtherAmount = Order::where('purchase_id', $purchase->id)
+            ->whereHas('food', function($query) {
+                $query->where('type', 0);
+            })->get(['amount'])->value('amount');
+            $sumOthers += $orderOtherAmount;
         }
+        array_push($cashs, $sumCookedMeals);
+        array_push($cashs, $sumPastas);
+        array_push($cashs, $sumSnacks);
+        array_push($cashs, $sumBevs);
+        array_push($cashs, $sumOthers);
+        // dd($cashs);
+        foreach ($cashs as $cash) {
+            $totalAmountByType += $cash;
+        }
+        $chips = [0, 0, 0, 0, 0];
+        $total = $cashs;
+        // foreach ($foodIDs as $foodID) {
+
+            
+
+        //     array_push(
+        //         $purchases,
+        //        0
+        //     );
+
+        //     array_push(
+        //         $chips,
+        //        0
+        //     );
+        // }
 
         return view('admin.Logs.dailyFoodReport', compact(
             'adminNotifs',
@@ -177,7 +227,11 @@ class FoodlogController extends Controller
             'solds',
             'amounts',
             'totalAmount',
-            'items'
+            'items',
+            'cashs',
+            'chips',
+            'total',
+            'totalAmountByType'
         ));
     }
 }

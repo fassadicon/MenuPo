@@ -18,7 +18,7 @@ class MonthlySalesChart
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
         return $this->chart->lineChart()
-            ->setHeight(650)
+            ->setHeight(300)
             ->addData('Total Sales', [
                 round(Purchase::whereBetween('created_at', ['2022-07-01', '2022-07-31'])->sum('totalAmount')),
                 round(Purchase::whereBetween('created_at', ['2022-08-01', '2022-08-31'])->sum('totalAmount')),
@@ -94,7 +94,7 @@ class MonthlySalesChart
                 })->whereHas('food', function ($query) {
                     $query->where('type', 3);
                 })->sum('amount')
-               
+
             ])
             ->addData('Snacks Sales', [
                 Order::whereHas('purchase', function ($query) {

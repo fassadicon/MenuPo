@@ -5933,7 +5933,7 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => Carbon::yesterday()->format('Y-m-d'),
                 'displayed_at' => Carbon::today()->format('Y-m-d'),
-                'removed_at' => '2022-11-18',
+                'removed_at' => Carbon::tomorrow()->format('Y-m-d'),
                 'created_by' => 2
             ],
             [
@@ -5941,7 +5941,7 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => Carbon::yesterday()->format('Y-m-d'),
                 'displayed_at' => Carbon::today()->format('Y-m-d'),
-                'removed_at' => '2022-11-18',
+                'removed_at' => Carbon::tomorrow()->format('Y-m-d'),
                 'created_by' => 2
             ],
             [
@@ -5949,7 +5949,7 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => Carbon::yesterday()->format('Y-m-d'),
                 'displayed_at' => Carbon::today()->format('Y-m-d'),
-                'removed_at' => '2022-11-18',
+                'removed_at' => Carbon::tomorrow()->format('Y-m-d'),
                 'created_by' => 2
             ],
             [
@@ -5957,7 +5957,7 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => Carbon::yesterday()->format('Y-m-d'),
                 'displayed_at' => Carbon::today()->format('Y-m-d'),
-                'removed_at' => '2022-11-18',
+                'removed_at' => Carbon::tomorrow()->format('Y-m-d'),
                 'created_by' => 2
             ],
             [
@@ -5965,7 +5965,16 @@ class DatabaseSeeder extends Seeder
                 'status' => 1,
                 'created_at' => Carbon::yesterday()->format('Y-m-d'),
                 'displayed_at' => Carbon::today()->format('Y-m-d'),
-                'removed_at' => '2022-11-18',
+                'removed_at' => Carbon::tomorrow()->format('Y-m-d'),
+                'created_by' => 2
+            ],
+            // Rice
+            [
+                'food_id' => 2,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
                 'created_by' => 2
             ]
         ];
