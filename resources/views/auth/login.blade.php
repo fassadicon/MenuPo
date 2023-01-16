@@ -6,7 +6,8 @@
         <div class="layoutLogin">
           <div class="col col-main">
             
-            <img id="forSchoolLogo" class="lg:transform lg:scale-125 w-48 md:w-48" src="{{ asset('storage/admin/school-images/school-logo.png') }}" />
+            <img id="forSchoolLogo" class="lg:transform lg:scale-125 w-48 md:w-48" src="{{  asset('images/school-images/school-logo.png') }}"
+            alt="Image" />
             <h1 class="column-head">Nuestra Señora De Aranzazu Parochial School</h1>
             <h6 class="column-text">Elementary School Food Ordering System</h6>
             {{-- <h6 class="column-text">Canteen Ordering System</h6> --}}

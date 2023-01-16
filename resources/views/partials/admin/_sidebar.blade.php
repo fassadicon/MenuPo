@@ -195,37 +195,51 @@
                 </li>
             </ul>
         </li><!-- End User Management Nav --> --}}
+        <li class="nav-heading">Accounts</li>
+        <li class="button-dropdown">
+            <a href="javascript:void(0)" class="nav-link collapsed dropdown-toggle">
+                <i class="fa-solid fa-border-all"></i> Account Management <i class="fas fa-chevron"></i>
+            </a>
+            <ul class="dropdown-menu">
+              @if (auth()->user()->role == 2)
+                    <li class="nav-item">
+                        <a href="/admin/admins" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                            <i class="fas fa-user-cog"></i></i><span>Admin</span>
+                        </a>
+                    </li>
+                    @endif
+                    <li class="nav-item">
+                        <a href="/admin/guardians" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                            <i class="fas fa-user-alt"></i><span>Parents</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/students" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                            <i class="fas fa-user-graduate"></i><span>Students</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/imports" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                            <i class="fa-solid fa-people-roof"></i><span>Mass Creation</span>
+                        </a>
+                    </li>
+                    @if (auth()->user()->role == 2)
+                    <li class="nav-item">
+                        <a href="/admin/imports/adminAccounts" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                            <i class="fas fa-users-cog"></i><span>Mass Admin Creation</span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </li>
 
-        <li class="nav-heading">Accounts Management</li>
-        @if (auth()->user()->role == 2)
-            <li>
-                <a href="/admin/admins" class="nav-link collapsed" id="sidebarLink">
-                    <i class="fas fa-user-cog"></i></i><span>Admin</span>
-                </a>
-            </li>
-        @endif
-        <li>
-            <a href="/admin/guardians" class="nav-link collapsed" id="sidebarLink">
-                <i class="fas fa-user-alt"></i><span>Parents</span>
-            </a>
-        </li>
-        <li>
-            <a href="/admin/students" class="nav-link collapsed" id="sidebarLink">
-                <i class="fas fa-user-graduate"></i><span>Students</span>
-            </a>
-        </li>
-        <li>
-            <a href="/admin/imports" class="nav-link collapsed" id="sidebarLink">
-                <i class="fa-solid fa-people-roof"></i><span>Mass Creation</span>
-            </a>
-        </li>
-        @if (auth()->user()->role == 2)
-            <li>
-                <a href="/admin/imports/adminAccounts" class="nav-link collapsed" id="sidebarLink">
-                    <i class="fas fa-users-cog"></i><span>Mass Admin Creation</span>
-                </a>
-            </li>
-        @endif
+        {{-- <li class="nav-item">
+          <a href="/admin/reports/bmi" class="dropdown-link nav-link collapsed" id="sidebarLink">
+              <i class="fab fa-nutritionix"></i>
+              <span>BMI</span>
+          </a>
+      </li><!-- End Completed Orders Nav --> --}}
+
         <li class="nav-heading">Food Item Management</li>
 
         <li class="nav-item">
