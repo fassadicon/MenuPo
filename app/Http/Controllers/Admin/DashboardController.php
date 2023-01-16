@@ -2,40 +2,46 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Adminnotif;
 use App\Models\Menuplanner;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
         $adminNotifs = Adminnotif::get();
+        $now = Carbon::now();
+        $start = $now->startOfWeek(Carbon::MONDAY);
+        $end = $now->endOfWeek(Carbon::FRIDAY);
+        $weekStartDate = $now->copy()->startOfWeek();
+        $weekEndDate = $now->copy()->endOfWeek();
+        $test = array();
+        $test[0] = $weekStartDate->format('Y-m-d');
+        for ($i = 1; $i < 5; $i++) {
+            $test[$i] = $weekStartDate->addDay()->format('Y-m-d');
+        }
 
-        // $Monday = Menuplanner::whereDate('menuDate', '2023-01-09')->get();
-        // $Tuesday = Menuplanner::whereDate('menuDate', '2023-01-10')->get();
-        // $Wednesday = Menuplanner::whereDate('menuDate', '2023-01-11')->get();
-        // $Thursday = Menuplanner::whereDate('menuDate', '2023-01-12')->get();
-        // $Friday = Menuplanner::whereDate('menuDate', '2023-01-13')->get();
+        // dd($test);
+        $Mondays = Menuplanner::whereDate('menuDate', $test[0])->first()->load('admin', 'admin_updated');
+        $Tuesdays = Menuplanner::whereDate('menuDate', $test[1])->first();
+        $Wednesdays = Menuplanner::whereDate('menuDate', $test[2])->first();
+        $Thursdays = Menuplanner::whereDate('menuDate', $test[3])->first();
+        $Fridays = Menuplanner::whereDate('menuDate', $test[4])->first();
 
-        // return view('admin.dashboard', [
-        //     'adminNotifs' => $adminNotifs,
-        //     'Monday' => $Monday,
-        //     'Tuesday' => $Tuesday,
-        //     'Wednesday' => $Wednesday,
-        //     'Thursday' => $Thursday,
-        //     'Friday' => $Friday
-        // ]);
-
-        $Mondays = Menuplanner::whereDate('menuDate', '2023-01-09')->get();
-        $Tuesdays = Menuplanner::whereDate('menuDate', '2023-01-10')->get();
-        $Wednesdays = Menuplanner::whereDate('menuDate', '2023-01-11')->get();
-        $Thursdays = Menuplanner::whereDate('menuDate', '2023-01-12')->get();
-        $Fridays = Menuplanner::whereDate('menuDate', '2023-01-13')->get();
+        // dd($Mondays);
+        
         return view(
             'admin.dashboard',
             compact('Mondays', 'Tuesdays', 'adminNotifs', 'Wednesdays', 'Thursdays', 'Fridays')
         );
+    }
+
+    public function update(Request $request) {
+        
     }
 }

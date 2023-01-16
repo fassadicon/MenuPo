@@ -15,9 +15,6 @@ class MenuplannerController extends Controller
         $Wednesday = Menuplanner::whereDate('menuDate', '2023-01-11')->get();
         $Thursday = Menuplanner::whereDate('menuDate', '2023-01-12')->get();
         $Friday = Menuplanner::whereDate('menuDate', '2023-01-13')->get();
-        return view(
-            'admin.dashboard',
-            compact('Monday', 'Tuesday', '', 'Wednesday', 'Thursday', 'Friday')
-        );
+        return view('admin.dashboard',compact('Monday', 'Tuesday', '', 'Wednesday', 'Thursday', 'Friday'));
     }
 }

@@ -9935,6 +9935,7 @@ class DatabaseSeeder extends Seeder
                 'menuDate' => '2023-01-9',
                 'created_at' => '2023-01-6',
                 'created_by' => 1,
+                'updated_by' => 2
             ],
             [
                 'id' => 2,
@@ -9942,6 +9943,7 @@ class DatabaseSeeder extends Seeder
                 'menuDate' => '2023-01-10',
                 'created_at' => '2023-01-6',
                 'created_by' => 1,
+                'updated_by' => 2
             ],
             [
                 'id' => 3,
@@ -9949,6 +9951,7 @@ class DatabaseSeeder extends Seeder
                 'menuDate' => '2023-01-11',
                 'created_at' => '2023-01-6',
                 'created_by' => 1,
+                'updated_by' => 2
             ],
             [
                 'id' => 4,
@@ -9956,6 +9959,7 @@ class DatabaseSeeder extends Seeder
                 'menuDate' => '2023-01-12',
                 'created_at' => '2023-01-6',
                 'created_by' => 1,
+                'updated_by' => 2
             ],
             [
                 'id' => 5,
@@ -9963,6 +9967,7 @@ class DatabaseSeeder extends Seeder
                 'menuDate' => '2023-01-13',
                 'created_at' => '2023-01-6',
                 'created_by' => 1,
+                'updated_by' => 2
             ],
         ];
         Menuplanner::insert($menuplanners);
