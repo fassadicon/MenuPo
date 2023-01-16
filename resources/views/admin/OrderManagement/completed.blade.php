@@ -192,10 +192,6 @@
                     type: "GET",
                     url: "{{ route('completed.completedOrders') }}",
                 },
-                // Footer Sorting
-                initComplete: function() {
-
-                },
                 columns: [{ //0
                         data: 'id',
                         name: 'id'
@@ -283,10 +279,14 @@
                         }
                     },
                     { // 14
+                        // data: 'created_at',
+                        // name: 'created_at',
                         data: 'created_at_formatted',
                         name: 'created_at_formatted',
                     },
                     { // 15
+                        // data: 'updated_at',
+                        // name: 'updated_at',
                         data: 'updated_at_formatted',
                         name: 'updated_at_formatted',
                     },
@@ -305,21 +305,11 @@
                         orderable: false,
                         searchable: false
                     }
-                    // {
-                    //     data: 'checkbox',
-                    //     name: 'checkbox',
-                    //     orderable: false,
-                    //     searchable: false
-                    // },
                 ],
                 columnDefs: [{
                         "defaultContent": "-",
                         "targets": "_all"
                     },
-                    //   {
-                    //      target: 3,
-                    //      visible: false,
-                    //   },
                     {
                         target: 4,
                         visible: false,
@@ -348,26 +338,6 @@
                         target: 12,
                         visible: false,
                     },
-
-                    //   {
-                    //      target: 12,
-                    //      visible: false,
-                    //   },
-                    //   {
-                    //      target: 13,
-                    //      visible: false,
-                    //      searchable: false,
-                    //   },
-                    // {
-                    //     target: 14,
-                    //     visible: false,
-                    //     searchable: false,
-                    // },
-                    //   {
-                    //      target: 15,
-                    //      visible: false,
-                    //      searchable: false,
-                    //   },
                     {
                         targets: -1,
                         data: null,

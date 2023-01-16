@@ -31,22 +31,42 @@ class Admin extends Model
 
     public function parent()
     {
-        return $this->hasOne(Parent::class, 'created_by', 'id');
+        return $this->hasOne(Guardian::class, 'created_by', 'id');
     }
 
     public function parents()
     {
-        return $this->hasMany(Parent::class, 'created_by', 'id');
+        return $this->hasMany(Guardian::class, 'created_by', 'id');
     }
 
     public function parent_updated()
     {
-        return $this->hasOne(Parent::class, 'updated_by', 'id');
+        return $this->hasOne(Guardian::class, 'updated_by', 'id');
     }
 
     public function parents_updated()
     {
-        return $this->hasMany(Parent::class, 'updated_by', 'id');
+        return $this->hasMany(Guardian::class, 'updated_by', 'id');
+    }
+
+    public function menuplanner()
+    {
+        return $this->hasOne(Menuplanner::class, 'created_by', 'id');
+    }
+
+    public function menuplanners()
+    {
+        return $this->hasMany(Menuplanner::class, 'created_by', 'id');
+    }
+
+    public function menuplanner_updated()
+    {
+        return $this->hasOne(Menuplanner::class, 'updated_by', 'id');
+    }
+
+    public function menuplanners_updated()
+    {
+        return $this->hasMany(Menuplanner::class, 'updated_by', 'id');
     }
 
     public function getActivitylogOptions(): LogOptions

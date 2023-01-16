@@ -84,8 +84,8 @@
                       name: 'id'
                   },
                   {
-                      data: 'event',
-                      data: 'event',
+                      data: 'description',
+                      data: 'description',
                   },
                   {
                       data: 'model_id',

@@ -12,7 +12,7 @@
 {{-- New  --}}
 
 
-  <div class="relative w-64 h-96 mx-auto md:w-80 overflow-visible shadow-lg rounded-md bg-zinc-50">
+  <div class="relative w-64 h-fit mx-auto md:w-80 overflow-visible shadow-lg rounded-md bg-zinc-50">
     {{-- For the bookmark color --}}
     @php
         if($food->grade > 0  && $food->grade < 6)

@@ -486,9 +486,9 @@
                 })
             });
 
-            $('body').on('click', '.archiveBtn', function() {
-                Swal.fire('Archived');
-            });
+            // $('body').on('click', '.archiveBtn', function() {
+            //     Swal.fire('Archived');
+            // });
         });
     </script>
     <hr class="mx-4 my-4">
