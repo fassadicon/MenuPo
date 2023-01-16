@@ -9982,6 +9982,46 @@ class DatabaseSeeder extends Seeder
                 'created_by' => 1,
                 'updated_by' => 2
             ],
+            [
+                'id' => 6,
+                'items' => 'pasok',
+                'menuDate' => '2023-01-09',
+                'created_at' =>  '2023-01-09',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+            [
+                'id' => 7,
+                'items' => 't',
+                'menuDate' => '2023-01-10',
+                'created_at' =>  '2023-01-10',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+            [
+                'id' => 8,
+                'items' => 'te',
+                'menuDate' => '2023-01-11',
+                'created_at' =>  '2023-01-11',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+            [
+                'id' => 9,
+                'items' => 'tes',
+                'menuDate' => '2023-01-12',
+                'created_at' =>  '2023-01-12',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+            [
+                'id' => 10,
+                'items' => 'test',
+                'menuDate' => '2023-01-13',
+                'created_at' =>  '2023-01-13',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
         ];
         Menuplanner::insert($menuplanners);
     }

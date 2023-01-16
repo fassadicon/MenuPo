@@ -45,6 +45,12 @@ class DashboardController extends Controller
     }
 
     public function update(Request $request) {
+        $Mondays = Menuplanner::where('id', $request->ids[0])->update(['items' => $request->foodLists[0]]);
+        $Tuesdays = Menuplanner::where('id', $request->ids[1])->update(['items' => $request->foodLists[1]]);
+        $Wednesdays = Menuplanner::where('id', $request->ids[2])->update(['items'=> $request->foodLists[2]]);
+        $Thursdays = Menuplanner::where('id', $request->ids[3])->update(['items' => $request->foodLists[3]]);
+        $Fridays = Menuplanner::where('id', $request->ids[4])->update(['items'=> $request->foodLists[4]]);
         
+        return $request->ids;
     }
 }

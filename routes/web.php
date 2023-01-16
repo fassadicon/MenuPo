@@ -80,6 +80,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->middleware('admin')->group(function () {
     // Show Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::post('/dashboard/updateWeeklyMenuPlan', [DashboardController::class, 'update']);
 
     // <----------- FOOD CONTROLLER -----------> //
     // Show Food Management Section

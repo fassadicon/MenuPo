@@ -22,10 +22,11 @@
                                 </span>
                             </div>
                             <div class='overflow-x-auto w-full'>
-                                <table
+                                <table id="menuPlannertTbl"
                                     class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300'>
                                     <thead class="bg-blue-800">
                                         <tr class="text-white">
+                                            <th hidden>ID</th>
                                             <th class="font-semibold text-sm uppercase px-6 py-4"> Day </th>
                                             <th class="font-semibold text-sm uppercase px-6 py-4"> Meal Items </th>
                                             <th class="font-semibold text-sm uppercase px-6 py-4"> Added By </th>
@@ -34,8 +35,10 @@
                                     </thead>
                                     <tbody>
                                         <tr class="divide-y divide-gray-200">
+                                            <td class="id-list" hidden>{{ $Mondays->id }}</td>
                                             <td>Monday</td>
-                                            <td><input type="text" value="{{ $Mondays->items }}"></td>
+                                            <td><input type="text" value="{{ $Mondays->items }}" class="food-list">
+                                            </td>
                                             <td>{{ $Mondays->admin->firstName . ' ' . $Mondays->admin->lastName }}</td>
                                             <td>{{ $Mondays->updated_at == null ? $Mondays->created_at->format('Y-m-d') : $Mondays->updated_at->format('Y-m-d') }}
                                             </td>
@@ -43,8 +46,10 @@
                                             </td>
                                         </tr>
                                         <tr class="divide-y  divide-gray-200">
+                                            <td class="id-list" hidden>{{ $Tuesdays->id }}</td>
                                             <td>Tuesday</td>
-                                            <td><input type="text" value="{{ $Tuesdays->items }}"></td>
+                                            <td><input type="text" value="{{ $Tuesdays->items }}" class="food-list">
+                                            </td>
                                             <td>{{ $Tuesdays->admin->firstName . ' ' . $Tuesdays->admin->lastName }}
                                             </td>
                                             <td>{{ $Tuesdays->updated_at == null ? $Tuesdays->created_at->format('Y-m-d') : $Tuesdays->updated_at->format('Y-m-d') }}
@@ -53,8 +58,10 @@
                                             </td>
                                         </tr>
                                         <tr class="divide-y  divide-gray-200">
+                                            <td class="id-list" hidden>{{ $Wednesdays->id }}</td>
                                             <td>Wednesday</td>
-                                            <td><input type="text" value="{{ $Wednesdays->items }}"></td>
+                                            <td><input type="text" value="{{ $Wednesdays->items }}"
+                                                    class="food-list"></td>
                                             <td>{{ $Wednesdays->admin->firstName . ' ' . $Wednesdays->admin->lastName }}
                                             </td>
                                             <td>{{ $Wednesdays->updated_at == null ? $Wednesdays->created_at->format('Y-m-d') : $Wednesdays->updated_at->format('Y-m-d') }}
@@ -63,8 +70,10 @@
                                             </td>
                                         </tr>
                                         <tr class="divide-y  divide-gray-200">
+                                            <td class="id-list" hidden>{{ $Thursdays->id }}</td>
                                             <td>Thursday</td>
-                                            <td><input type="text" value="{{ $Thursdays->items }}"></td>
+                                            <td><input type="text" value="{{ $Thursdays->items }}"
+                                                    class="food-list"></td>
                                             <td>{{ $Thursdays->admin->firstName . ' ' . $Thursdays->admin->lastName }}
                                             </td>
                                             <td>{{ $Thursdays->updated_at == null ? $Thursdays->created_at->format('Y-m-d') : $Thursdays->updated_at->format('Y-m-d') }}
@@ -73,8 +82,10 @@
                                             </td>
                                         </tr>
                                         <tr class="divide-y  divide-gray-200">
+                                            <td class="id-list" hidden>{{ $Fridays->id }}</td>
                                             <td>Friday</td>
-                                            <td><input type="text" value="{{ $Fridays->items }}"></td>
+                                            <td><input type="text" value="{{ $Fridays->items }}" class="food-list">
+                                            </td>
                                             <td>{{ $Fridays->admin->firstName . ' ' . $Fridays->admin->lastName }}</td>
                                             <td>{{ $Fridays->updated_at == null ? $Fridays->created_at->format('Y-m-d') : $Fridays->updated_at->format('Y-m-d') }}
                                             </td>
@@ -141,9 +152,39 @@
 
     </section>
     <script>
-        $('.edit').click(function() {
-            alert('hi');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
+
+
+        $('.edit').click(function(e) {
+            e.preventDefault();
+        });
+
+        $('.save').click(function(e) {
+            e.preventDefault();
+            var test = [];
+            var ids = [];
+            $('#menuPlannertTbl .food-list').each(function() {
+                test.push($(this).val());
+            });
+            $('#menuPlannertTbl .id-list').each(function() {
+                ids.push($(this).text());
+            });
+            $.ajax({
+                type: "POST",
+                url: "{{ url('admin/dashboard/updateWeeklyMenuPlan') }}",
+                data: {
+                    foodLists: test,
+                    ids: ids
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+            });
+        })
 
 
         const monthAndYear = document.getElementById("monthAndYear");
@@ -160,7 +201,8 @@
         selectYear.onchange = jump;
         selectMonth.onchange = jump;
         btnPrevious.onclick = previous;
-        btnNext.onclick = next;
+        btnNext.onclick =
+            next;
 
         const today = new Date();
         let currentYear = today.getFullYear();
@@ -242,7 +284,8 @@
                     } else {
                         const cell = document.createElement("td");
                         const cellText = document.createTextNode(date);
-                        if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
+                        if (date === today.getDate() && year === today.getFullYear() && month === today
+                            .getMonth()) {
                             cell.classList.add("bg-info");
                         } // color today's date
                         cell.appendChild(cellText);
@@ -258,6 +301,7 @@
         generate_thead();
         generate_select_months();
         generate_select_years(1990, 2030);
-        showCalendar(currentMonth, currentYear);
+        showCalendar(currentMonth,
+            currentYear);
     </script>
 </x-admin.layout>
