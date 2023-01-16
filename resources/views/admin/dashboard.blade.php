@@ -32,57 +32,61 @@
                                             <th class="font-semibold text-sm uppercase px-6 py-4"> Date Modified </th>
                                             <th class="font-semibold text-sm uppercase px-6 py-4"> Updated By </th>
                                     </thead>
-                                    <tbody class="divide-y  divide-gray-200">
-                                        <td>Monday</td>
-                                        <td><input type="text" value="{{ $Mondays->items }}" class="h-50" disabled></td>
-                                        <td>{{ $Mondays->admin->firstName . ' ' . $Mondays->admin->lastName }}</td>
-                                        <td>{{ $Mondays->updated_at == null ? $Mondays->created_at->format('Y-m-d') : $Mondays->updated_at->format('Y-m-d') }}
-                                        </td>
-                                        <td>{{ $Mondays->admin_updated->firstName . ' ' . $Mondays->admin_updated->lastName }}
-                                        </td>
-                                    </tbody>
-                                    <tbody class="divide-y  divide-gray-200">
-                                        <td>Tuesday</td>
-                                        <td><input type="text" value="{{ $Tuesdays->items }}" disabled></td>
-                                        <td>{{ $Tuesdays->admin->firstName . ' ' . $Tuesdays->admin->lastName }}</td>
-                                        <td>{{ $Tuesdays->updated_at == null ? $Tuesdays->created_at->format('Y-m-d') : $Tuesdays->updated_at->format('Y-m-d') }}
-                                        </td>
-                                        <td>{{ $Tuesdays->admin_updated->firstName . ' ' . $Tuesdays->admin_updated->lastName }}
-                                        </td>
-                                    </tbody>
-                                    <tbody class="divide-y  divide-gray-200">
-                                        <td>Wednesday</td>
-                                        <td><input type="text" value="{{ $Wednesdays->items }}" disabled></td>
-                                        <td>{{ $Wednesdays->admin->firstName . ' ' . $Wednesdays->admin->lastName }}
-                                        </td>
-                                        <td>{{ $Wednesdays->updated_at == null ? $Wednesdays->created_at->format('Y-m-d') : $Wednesdays->updated_at->format('Y-m-d') }}
-                                        </td>
-                                        <td>{{ $Wednesdays->admin_updated->firstName . ' ' . $Wednesdays->admin_updated->lastName }}
-                                        </td>
-                                    </tbody>
-                                    <tbody class="divide-y  divide-gray-200">
-                                        <td>Thursday</td>
-                                        <td><input type="text" value="{{ $Thursdays->items }}" disabled></td>
-                                        <td>{{ $Thursdays->admin->firstName . ' ' . $Thursdays->admin->lastName }}</td>
-                                        <td>{{ $Thursdays->updated_at == null ? $Thursdays->created_at->format('Y-m-d') : $Thursdays->updated_at->format('Y-m-d') }}
-                                        </td>
-                                        <td>{{ $Thursdays->admin_updated->firstName . ' ' . $Thursdays->admin_updated->lastName }}
-                                        </td>
-                                    </tbody>
-                                    <tbody class="divide-y  divide-gray-200">
-                                        <td>Friday</td>
-                                        <td><input type="text" value="{{ $Fridays->items }}" disabled></td>
-                                        <td>{{ $Fridays->admin->firstName . ' ' . $Fridays->admin->lastName }}</td>
-                                        <td>{{ $Fridays->updated_at == null ? $Fridays->created_at->format('Y-m-d') : $Fridays->updated_at->format('Y-m-d') }}
-                                        </td>
-                                        <td>{{ $Fridays->admin_updated->firstName . ' ' . $Fridays->admin_updated->lastName }}
-                                        </td>
+                                    <tbody>
+                                        <tr class="divide-y divide-gray-200">
+                                            <td>Monday</td>
+                                            <td><input type="text" value="{{ $Mondays->items }}"></td>
+                                            <td>{{ $Mondays->admin->firstName . ' ' . $Mondays->admin->lastName }}</td>
+                                            <td>{{ $Mondays->updated_at == null ? $Mondays->created_at->format('Y-m-d') : $Mondays->updated_at->format('Y-m-d') }}
+                                            </td>
+                                            <td>{{ $Mondays->admin_updated->firstName . ' ' . $Mondays->admin_updated->lastName }}
+                                            </td>
+                                        </tr>
+                                        <tr class="divide-y  divide-gray-200">
+                                            <td>Tuesday</td>
+                                            <td><input type="text" value="{{ $Tuesdays->items }}"></td>
+                                            <td>{{ $Tuesdays->admin->firstName . ' ' . $Tuesdays->admin->lastName }}
+                                            </td>
+                                            <td>{{ $Tuesdays->updated_at == null ? $Tuesdays->created_at->format('Y-m-d') : $Tuesdays->updated_at->format('Y-m-d') }}
+                                            </td>
+                                            <td>{{ $Tuesdays->admin_updated->firstName . ' ' . $Tuesdays->admin_updated->lastName }}
+                                            </td>
+                                        </tr>
+                                        <tr class="divide-y  divide-gray-200">
+                                            <td>Wednesday</td>
+                                            <td><input type="text" value="{{ $Wednesdays->items }}"></td>
+                                            <td>{{ $Wednesdays->admin->firstName . ' ' . $Wednesdays->admin->lastName }}
+                                            </td>
+                                            <td>{{ $Wednesdays->updated_at == null ? $Wednesdays->created_at->format('Y-m-d') : $Wednesdays->updated_at->format('Y-m-d') }}
+                                            </td>
+                                            <td>{{ $Wednesdays->admin_updated->firstName . ' ' . $Wednesdays->admin_updated->lastName }}
+                                            </td>
+                                        </tr>
+                                        <tr class="divide-y  divide-gray-200">
+                                            <td>Thursday</td>
+                                            <td><input type="text" value="{{ $Thursdays->items }}"></td>
+                                            <td>{{ $Thursdays->admin->firstName . ' ' . $Thursdays->admin->lastName }}
+                                            </td>
+                                            <td>{{ $Thursdays->updated_at == null ? $Thursdays->created_at->format('Y-m-d') : $Thursdays->updated_at->format('Y-m-d') }}
+                                            </td>
+                                            <td>{{ $Thursdays->admin_updated->firstName . ' ' . $Thursdays->admin_updated->lastName }}
+                                            </td>
+                                        </tr>
+                                        <tr class="divide-y  divide-gray-200">
+                                            <td>Friday</td>
+                                            <td><input type="text" value="{{ $Fridays->items }}"></td>
+                                            <td>{{ $Fridays->admin->firstName . ' ' . $Fridays->admin->lastName }}</td>
+                                            <td>{{ $Fridays->updated_at == null ? $Fridays->created_at->format('Y-m-d') : $Fridays->updated_at->format('Y-m-d') }}
+                                            </td>
+                                            <td>{{ $Fridays->admin_updated->firstName . ' ' . $Fridays->admin_updated->lastName }}
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <button class="btn btn-secondary print">Print</button>
                             <button class="btn btn-primary edit">Edit</button>
-                            <button class="btn btn-primary save">Save</button>
+                            <button class="btn btn-success save">Save</button>
                         </div>
                         <!-- End of Experience and education grid -->
                     </div>
@@ -137,7 +141,11 @@
 
     </section>
     <script>
-        $('body')
+        $('.edit').click(function() {
+            alert('hi');
+        });
+
+
         const monthAndYear = document.getElementById("monthAndYear");
         const btnPrevious = document.getElementById('previous');
         const btnNext = document.getElementById('next');
