@@ -3,21 +3,22 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
+use App\Models\Bmi;
 use App\Models\Food;
 use App\Models\Menu;
 use App\Models\User;
 use App\Models\Admin;
-use App\Models\Bmi;
-use App\Models\Foodlog;
 use App\Models\Order;
+use App\Models\Survey;
+use App\Models\Foodlog;
 use App\Models\Payment;
 use App\Models\Philfct;
-use App\Models\Survey;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Student;
 use App\Models\Guardian;
-use App\Models\Menuplanner;
 use App\Models\Purchase;
+use App\Models\Menuplanner;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -9928,44 +9929,56 @@ class DatabaseSeeder extends Seeder
         Survey::insert($surveys);
 
         DB::table('menuplanners')->delete();
+
+        $now = Carbon::now();
+        $start = $now->startOfWeek(CarbonInterface::MONDAY);
+        $end = $now->endOfWeek(CarbonInterface::SUNDAY);
+        $weekStartDate = $now->startOfWeek();
+        $weekEndDate = $now->copy()->endOfWeek();
+        $test = array();
+        $test[0] = $weekStartDate->format('Y-m-d');
+        for ($i = 1; $i < 5; $i++) {
+            $test[$i] = $weekStartDate->addDay()->format('Y-m-d');
+        }
+
         $menuplanners = [
             [
                 'id' => 1,
                 'items' => 'Hotdog, Itlog',
-                'menuDate' => '2023-01-9',
-                'created_at' => '2023-01-6',
+                'menuDate' => $test[0],
+                'created_at' =>  $test[0],
                 'created_by' => 1,
                 'updated_by' => 2
             ],
             [
                 'id' => 2,
                 'items' => 'Goto, Lumpia',
-                'menuDate' => '2023-01-10',
-                'created_at' => '2023-01-6',
+                'menuDate' => $test[1],
+                'created_at' =>  $test[1],
                 'created_by' => 1,
                 'updated_by' => 2
             ],
             [
                 'id' => 3,
                 'items' => 'Menudo, Sinigang',
-                'menuDate' => '2023-01-11',
-                'created_at' => '2023-01-6',
+                'menuDate' => $test[2],
+                'created_at' =>  $test[2],
                 'created_by' => 1,
                 'updated_by' => 2
             ],
             [
                 'id' => 4,
                 'items' => 'Barbeque, Tinola',
-                'menuDate' => '2023-01-12',
-                'created_at' => '2023-01-6',
+                'menuDate' => $test[3],
+                'created_at' =>  $test[3],
                 'created_by' => 1,
                 'updated_by' => 2
             ],
             [
                 'id' => 5,
                 'items' => 'Carbonara, Fried Chicken',
-                'menuDate' => '2023-01-13',
-                'created_at' => '2023-01-6',
+                'menuDate' => $test[4],
+                'created_at' =>  $test[4],
                 'created_by' => 1,
                 'updated_by' => 2
             ],
