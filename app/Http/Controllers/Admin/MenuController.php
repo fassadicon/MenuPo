@@ -55,9 +55,9 @@ class MenuController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     // Update Stock Quantity
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="updateMenuItemDetailsBtn" class="btn btn-info btn-sm" id="editMenuItemDetailsDTBtn"><i class="bi bi-pencil-square"></i></a>';
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip" title="Update Menu Item" data-id="' . $row->id . '" data-original-title="updateMenuItemDetailsBtn" class="btn btn-info btn-sm" id="editMenuItemDetailsDTBtn"><i class="bi bi-pencil-square"></i></a>';
                     // Remove from the Menu
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="removeMenuItemBtn delete btn btn-danger btn-sm"><i class="bi bi-dash-circle"></i></a>';
+                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip" title="Remove from Menu" data-id="' . $row->id . '" data-original-title="Delete" class="removeMenuItemBtn delete btn btn-danger btn-sm"><i class="bi bi-dash-circle"></i></a>';
                     return $btn;
                 })
                 ->addColumn('count', function ($row) {
@@ -422,7 +422,7 @@ class MenuController extends Controller
 
     public function updateMenuItem(Request $request)
     {
-        // dd($request);
+        $foodID = Menu::where('id', $request->id)->get(['food_id'])->value('food_id');
         $menuItem = Menu::where('id', $request->id)->first();
         if ($request->status == 1) {
             if ($request->displayed_at != NULL && $request->removed_at == NULL) {
@@ -441,13 +441,21 @@ class MenuController extends Controller
             $prevStock = Food::where('id', $foodID)->get(['stock'])->value('stock');
             $newAddedStock = $prevStock + $addedStock;
             Food::where('id', $foodID)->update(['stock' => $newAddedStock]);
+            activity('Menu')
+                ->performedOn(Menu::where('id', $request->id)->firstOrFail())
+                ->causedBy(Admin::where('user_id', auth()->user())->get(['id'])->value('id'))
+                ->withProperties([
+                    'attributes' => ['addedStock' => $addedStock, 'stock' => $newAddedStock], 'old' => ['prevStock' => $prevStock]
+                ])
+                ->log('added stock in ' . Food::where('id', $foodID)->get(['name'])->value('name'));
         }
+
         Foodlog::create([
             'food_id' => $foodID,
             'description' => 'added stock',
             'start' => $prevStock,
             'add' => $addedStock,
-            'end' => $newAddedStock ,
+            'end' => $newAddedStock,
             'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
         ]);
         $menuItem->status = $request->status;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use App\Models\Bmi;
 use App\Models\Food;
+use App\Models\Menu;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Student;
@@ -37,7 +38,7 @@ class LogsController extends Controller
         $adminNotifs = Adminnotif::get();
         return view('admin.Logs.admin', compact('logs', 'adminNotifs'));
     }
-    
+
     public function guardianLogs(Request $request)
     {
         $logs = Activity::where('log_name', 'Guardian')->get();
@@ -114,7 +115,7 @@ class LogsController extends Controller
     {
         $logs = Activity::where('log_name', 'Menu')->get();
         foreach ($logs as $log) {
-            $log['model_id'] = $log->subject_id . ' - ' . Food::where('id', $log->subject_id)->get(['name'])->value('name');
+            $log['model_id'] = 'Menu ID: ' . $log->subject_id . ' - ' . Food::where('id', Menu::where('id', $log->subject_id)->get(['food_id'])->value('food_id'))->get(['name'])->value('name');
             $admin = Admin::where('user_id',  $log->causer->id)->first();
             $log['action_by'] = $admin->firstName . ' ' . $admin->lastName;
         }

@@ -16,6 +16,7 @@ use App\Models\Survey;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Student;
 use App\Models\Guardian;
+use App\Models\Menuplanner;
 use App\Models\Purchase;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -9926,18 +9927,49 @@ class DatabaseSeeder extends Seeder
         ];
         Survey::insert($surveys);
 
-        // DB::table('foodlogs')->delete();
-        // $foodLogs = [
-        //     [
-        //         'id' => 1,
-        //         'food_id' => 60,
-        //         'description' => 'SAMPLE',
-        //         'start' => 1,
-        //         'end' => 1,
-        //         'sold' => 1,
-        //         'created_by' => 1
-        //     ]
-        // ];
-        // Foodlog::insert($foodLogs);
+        DB::table('menuplanners')->delete();
+        $menuplanners = [
+            [
+                'id' => 1,
+                'items' => 'Hotdog, Itlog',
+                'menuDate' => '2023-01-9',
+                'created_at' => '2023-01-6',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+            [
+                'id' => 2,
+                'items' => 'Goto, Lumpia',
+                'menuDate' => '2023-01-10',
+                'created_at' => '2023-01-6',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+            [
+                'id' => 3,
+                'items' => 'Menudo, Sinigang',
+                'menuDate' => '2023-01-11',
+                'created_at' => '2023-01-6',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+            [
+                'id' => 4,
+                'items' => 'Barbeque, Tinola',
+                'menuDate' => '2023-01-12',
+                'created_at' => '2023-01-6',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+            [
+                'id' => 5,
+                'items' => 'Carbonara, Fried Chicken',
+                'menuDate' => '2023-01-13',
+                'created_at' => '2023-01-6',
+                'created_by' => 1,
+                'updated_by' => 2
+            ],
+        ];
+        Menuplanner::insert($menuplanners);
     }
 }

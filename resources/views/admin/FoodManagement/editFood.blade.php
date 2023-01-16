@@ -66,7 +66,7 @@
                         Image
                     </label>
                     <input type="file" class="border border-gray-200 rounded p-2 w-full" name="image" />
-                    <img src="{{ $food->image ? asset('storage/' . $food->image) : asset('admin/assets/img/no-image.png') }}"
+                    <img src="{{ $food->image ? URL::asset($food->image) : asset('admin/assets/img/no-image.png') }}"
                         alt="" width="300px" height="300px" />
                     @error('image')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

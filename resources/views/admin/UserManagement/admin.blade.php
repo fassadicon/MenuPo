@@ -1,11 +1,11 @@
 <x-admin.layout :notifs='$adminNotifs'>
     <h1 class="h3">Staff Account Management</h1>
-    <a href="/admin/admins/create" class="btn btn-success mb-2"><i class="fas fa-user-times"></i>&nbsp;Create Admin
+    <a href="/admin/admins/create" class="btn btn-success mb-2" title="Create an Admin Account"><i class="fas fa-user-times"></i>&nbsp;Create Admin
         Account</a>
-    <a href="/admin/admins/trash" class="btn btn-warning mb-2"><i class="fas fa-user-times"></i>&nbsp;Archived Admin
+    <a href="/admin/admins/trash" class="btn btn-warning mb-2" title="Archived Admin Accounts"><i class="fas fa-user-times"></i>&nbsp;Archived Admin
         Accounts</a>
 
-        <a href="/admin/logs/adminAccount" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Admin Changes Logs</a>
+        <a href="/admin/logs/adminAccount" class="btn btn-info mb-2" title="Admin Logs"><i class="fas fa-file-alt"></i>&nbsp;Admin Changes Logs</a>
     {{-- DATABLE --}}
     <div class="container">
         {{-- <div align="left"><a href="/admin/foods/create" class="btn btn-success mb-2">Create Parent Account</a></div> --}}
@@ -187,25 +187,25 @@
                         extend: "csv",
                         text: "",
                         className: "fred bi bi-filetype-csv",
-                        title: "Food Items"
+                        title: "Admin Accounts"
                     },
                     {
                         extend: "excel",
                         text: "",
                         className: "fred bi bi bi-filetype-xlsx",
-                        title: "Food Items"
+                        title: "Admin Accounts"
                     },
                     {
                         extend: "pdf",
                         text: "",
                         className: "fred bi bi-filetype-pdf",
-                        title: "Food Items"
+                        title: "Admin Accounts"
                     },
                     {
                         extend: "print",
                         text: "",
                         className: "fred bi bi-printer",
-                        title: "Food Items"
+                        title: "Admin Accounts"
                     },
                     {
                         extend: "colvis",

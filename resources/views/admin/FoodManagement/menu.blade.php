@@ -150,7 +150,8 @@
 
                                 </tfoot>
                             </table>
-                            <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
+                            <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i
+                                    class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                         </div>
 
 
@@ -184,7 +185,8 @@
 
                             </tfoot>
                         </table>
-                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
+                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i
+                                class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                     </div>
                 </div>
                 {{-- Snacks Table --}}
@@ -215,7 +217,8 @@
 
                             </tfoot>
                         </table>
-                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
+                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i
+                                class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                     </div>
                 </div>
                 {{-- Beverages Table --}}
@@ -247,7 +250,8 @@
 
                             </tfoot>
                         </table>
-                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
+                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i
+                                class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                     </div>
                 </div>
                 {{-- Other Food Items Table --}}
@@ -279,7 +283,8 @@
 
                             </tfoot>
                         </table>
-                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
+                        <a href="/admin/logs/menuChanges" class="btn btn-info mb-2"><i
+                                class="fas fa-file-alt"></i>&nbsp;Menu Changes Logs</a>
                     </div>
                 </div>
             </div>
@@ -360,7 +365,8 @@
                 </div>
                 {{-- <div class="col-12">
                     <a id="updateFoodInfo" href="javascript:void(0)" style="background-color: gray; border: none;"
-                        class="btn btn-info" role="link" aria-disabled="true" disabled>Edit Info</a>
+                        class="btn btn-info" role="link" aria-disabled="true" disabled><i
+                             class="bi bi-pencil-square"></i>&nbsp;Edit Info</a>
                     <a class="btn btn-primary" id="updatePreviewMenuStock" disabled><i
                             class="fas fa-plus"></i>&nbsp;Add Stock</a>
                     <a class="btn btn-warning" id="updatePreviewMenuDate" disabled><i
@@ -1305,7 +1311,7 @@
             var id = cookedMealsTable.row(this).data().id;
             $.get("{{ url('admin/menu/') }}" + '/' + id + '/preview', function(data) {
                 if (data.image != null) {
-                    $('#imageFood').attr('src', "{{ asset('storage/') }}" + '/' + data.image);
+                    $('#imageFood').attr('src', "{{ url('') }}" + '/' + data.image);
                 } else {
                     console.log('No Image');
                 }

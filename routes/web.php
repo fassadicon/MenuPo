@@ -42,6 +42,7 @@ use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\DownloadReportsController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
+use App\Http\Controllers\Admin\PDFQRController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
 
 /*
@@ -288,6 +289,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Food Logs
     Route::get('/logs/foodMovements', [FoodlogController::class, 'index']);
     Route::get('/logs/download-dailyStockSales-report', [DownloadReportsController::class, 'download_dailyStockSales_report']);
+
+    // PDF QRs
+    Route::get('/PDFQR', [PDFQRController::class, 'index']);
 });
 
 Route::get('/autocomplete-search', [AutocompleteController::class, 'autocompleteSearch']);
