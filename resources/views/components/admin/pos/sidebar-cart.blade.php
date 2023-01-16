@@ -9,10 +9,9 @@
         <p class="itemCount mb-0 text-lg">Items: {{ Cart::count() }}</p>
     </div>
 
-    <div class="sideBar h-96  overflow-y-scroll p-2">
+    <div class="sideBar h-96 overflow-y-auto p-2">
         @php
             $item = Cart::content();
-            
         @endphp
 
         @foreach ($item as $val)
@@ -46,7 +45,7 @@
                 </div>
             </div>
         @endforeach
-        </div>
+    </div>
 
     <div class="subTotal h-40 p-2">
         <div class="space-x-60">

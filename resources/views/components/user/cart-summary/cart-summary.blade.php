@@ -10,7 +10,7 @@
         </div>
         <a href="/user/menu/{{$anak->id}}" class=" block w-24 mx-auto mt-2 mb-4 md:my-4 text-sm text-secondary hover:text-primary"><i class="fa-solid fa-arrow-left fa-lg"></i> Go Back</a>
         <div class="w-10/12 h-3/4 mx-auto md:w-2/3 md:flex">
-            <div class="h-3/4 justify-center bg-zinc-50 rounded-lg overflow-y-scroll md:w-2/3 md:h-full">
+            <div class="h-3/4 justify-center bg-zinc-50 rounded-lg overflow-y-auto md:w-2/3 md:h-full">
                 @foreach ($items as $val)
                     <div class="w-full flex shadow-lg bg-zinc-50 mb-2 rounded-lg">
                         <div class="w-full h-28 flex">
