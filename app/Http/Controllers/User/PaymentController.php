@@ -184,29 +184,20 @@ class PaymentController extends Controller
 
     public function receipt_new(Purchase $purchase){
 
+
         $parent = Guardian::where('user_id', auth()->id())->get();
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
         
-        // $now = Carbon::now();
-        // $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
-        // $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
-
-        // $survey = Survey::where('parent_id', $parent[0]->id)
-        //     ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
-
-        // if(!empty($survey)){
-        //     $isSurveyAvail = 1;
-        // }
-
         $items = DB::select('SELECT * FROM orders WHERE purchase_id = ?', [$purchase->id]);
         $item_array = array();
+        
         foreach($items as $item){
             $food = Food::findorfail($item->id);
             array_push($item_array, $food);
         }
-    
+
         return view('user.receipt2', [
             'items' => $items,
             'item_array' => $item_array,
