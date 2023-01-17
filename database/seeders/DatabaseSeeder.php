@@ -9928,7 +9928,7 @@ class DatabaseSeeder extends Seeder
         ];
         Survey::insert($surveys);
 
-        DB::table('menuplanners')->delete();
+       
 
         $now = Carbon::now();
         $start = $now->startOfWeek(CarbonInterface::MONDAY);
@@ -9940,7 +9940,8 @@ class DatabaseSeeder extends Seeder
         for ($i = 1; $i < 5; $i++) {
             $test[$i] = $weekStartDate->addDay()->format('Y-m-d');
         }
-
+        
+        DB::table('menuplanners')->delete();
         $menuplanners = [
             [
                 'id' => 1,

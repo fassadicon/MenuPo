@@ -186,122 +186,138 @@
             });
         })
 
+        $('document').ready(function() {
 
-        const monthAndYear = document.getElementById("monthAndYear");
-        const btnPrevious = document.getElementById('previous');
-        const btnNext = document.getElementById('next');
-        const thead = document.getElementById("calendarhead");
-        const tbody = document.getElementById("calendar-body");
-        const selectMonth = document.getElementById("month");
-        const selectYear = document.getElementById("year");
+            let passMonth = '';
+            let passYear = '';
 
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const monthAndYear = document.getElementById("monthAndYear");
+            const btnPrevious = document.getElementById('previous');
+            const btnNext = document.getElementById('next');
+            const thead = document.getElementById("calendarhead");
+            const tbody = document.getElementById("calendar-body");
+            const selectMonth = document.getElementById("month");
+            const selectYear = document.getElementById("year");
 
-        selectYear.onchange = jump;
-        selectMonth.onchange = jump;
-        btnPrevious.onclick = previous;
-        btnNext.onclick =
-            next;
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-        const today = new Date();
-        let currentYear = today.getFullYear();
-        let currentMonth = today.getMonth();
+            selectYear.onchange = jump;
+            selectMonth.onchange = jump;
+            btnPrevious.onclick = previous;
+            btnNext.onclick =
+                next;
 
-        function generate_thead() {
-            for (let i = 0; i < days.length; i++) {
-                const th = document.createElement('th');
-                th.innerHTML = days[i];
-                thead.append(th);
-            }
-        }
+            const today = new Date();
+            let currentYear = today.getFullYear();
+            let currentMonth = today.getMonth();
 
-        function generate_select_months() {
-            for (let i = 0; i < months.length; i++) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.innerHTML = months[i];
-                selectMonth.append(option);
-            }
-        }
-
-        function generate_select_years(start, end) {
-            for (let i = start; i <= end; i++) {
-                const option = document.createElement("option");
-                option.value = i;
-                option.innerHTML = i;
-                selectYear.append(option);
-            }
-        }
-
-        function next() {
-            currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
-            currentMonth = (currentMonth + 1) % 12;
-            showCalendar(currentMonth, currentYear);
-        }
-
-        function previous() {
-            currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
-            currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-            showCalendar(currentMonth, currentYear);
-        }
-
-        function jump() {
-            currentYear = parseInt(selectYear.value);
-            currentMonth = parseInt(selectMonth.value);
-            showCalendar(currentMonth, currentYear);
-        }
-
-        /* check how many days in a month code from https://dzone.com/articles/determining-number-days-month */
-        function daysInMonth(iMonth, iYear) {
-            return 32 - new Date(iYear, iMonth, 32).getDate();
-        }
-
-        function showCalendar(month, year) {
-            const firstDay = (new Date(year, month)).getDay();
-
-            // clearing all previous cells
-            tbody.innerHTML = "";
-            // filing data about month and in the page via DOM.
-            monthAndYear.innerHTML = months[month] + " " + year;
-            selectYear.value = year;
-            selectMonth.value = month;
-
-            // creating all cells
-            let date = 1;
-            for (let i = 0; i < 6; i++) {
-                // creates a table row
-                let row = document.createElement("tr");
-                //creating individual cells, filing them up with data.
-                for (let j = 0; j < 7; j++) {
-                    if (i === 0 && j < firstDay) {
-                        const cell = document.createElement("td");
-                        const cellText = document.createTextNode("-");
-                        cell.appendChild(cellText);
-                        row.appendChild(cell);
-                    } else if (date > daysInMonth(month, year)) {
-                        break;
-                    } else {
-                        const cell = document.createElement("td");
-                        const cellText = document.createTextNode(date);
-                        if (date === today.getDate() && year === today.getFullYear() && month === today
-                            .getMonth()) {
-                            cell.classList.add("bg-info");
-                        } // color today's date
-                        cell.appendChild(cellText);
-                        row.appendChild(cell);
-                        date++;
-                    }
+            function generate_thead() {
+                for (let i = 0; i < days.length; i++) {
+                    const th = document.createElement('th');
+                    th.innerHTML = days[i];
+                    thead.append(th);
                 }
-                // appending each row into calendar body.
-                tbody.appendChild(row);
             }
-        }
 
-        generate_thead();
-        generate_select_months();
-        generate_select_years(1990, 2030);
-        showCalendar(currentMonth,
-            currentYear);
+            function generate_select_months() {
+                for (let i = 0; i < months.length; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.innerHTML = months[i];
+                    selectMonth.append(option);
+                }
+            }
+
+            function generate_select_years(start, end) {
+                for (let i = start; i <= end; i++) {
+                    const option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    selectYear.append(option);
+                }
+            }
+
+            function next() {
+                currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+                currentMonth = (currentMonth + 1) % 12;
+                showCalendar(currentMonth, currentYear);
+            }
+
+            function previous() {
+                currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
+                currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+                showCalendar(currentMonth, currentYear);
+            }
+
+            function jump() {
+                currentYear = parseInt(selectYear.value);
+                currentMonth = parseInt(selectMonth.value);
+                showCalendar(currentMonth, currentYear);
+            }
+
+            /* check how many days in a month code from https://dzone.com/articles/determining-number-days-month */
+            function daysInMonth(iMonth, iYear) {
+                return 32 - new Date(iYear, iMonth, 32).getDate();
+            }
+
+            function showCalendar(month, year) {
+
+                passMonth = selectMonth.value;
+                passYear = year;
+
+                const firstDay = (new Date(year, month)).getDay();
+
+                // clearing all previous cells
+                tbody.innerHTML = "";
+                // filing data about month and in the page via DOM.
+                monthAndYear.innerHTML = months[month] + " " + year;
+                selectYear.value = year;
+                selectMonth.value = month;
+
+                // creating all cells
+                let date = 1;
+                for (let i = 0; i < 6; i++) {
+                    // creates a table row
+                    let row = document.createElement("tr");
+                    //creating individual cells, filing them up with data.
+                    for (let j = 0; j < 7; j++) {
+                        if (i === 0 && j < firstDay) {
+                            const cell = document.createElement("td");
+                            const cellText = document.createTextNode("-");
+                            cell.appendChild(cellText);
+                            row.appendChild(cell);
+                        } else if (date > daysInMonth(month, year)) {
+                            break;
+                        } else {
+                            const cell = document.createElement("td");
+                            const cellText = document.createTextNode(date);
+                            if (date === today.getDate() && year === today.getFullYear() && month === today
+                                .getMonth()) {
+                                cell.classList.add("bg-info");
+                            } // color today's date
+                            cell.appendChild(cellText);
+                            row.appendChild(cell);
+                            date++;
+                        }
+                    }
+                    // appending each row into calendar body.
+                    tbody.appendChild(row);
+                }
+            }
+
+            generate_thead();
+            generate_select_months();
+            generate_select_years(1990, 2030);
+            showCalendar(currentMonth,
+                currentYear);
+
+            $('#calendar-body td').click(function(e) {
+                e.preventDefault();
+                console.log($(this).text());
+                console.log(passMonth);
+                console.log(passYear);
+            });
+        });
     </script>
 </x-admin.layout>
