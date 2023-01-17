@@ -4944,7 +4944,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id' => 17,
-                'name' => 'Zesto Grape Flavor',
+                'name' => 'Zesto Grape ',
                 'calcKcal' => 90,
                 'calcTotFat' => 0.2,
                 'calcSatFat' => 0,
@@ -4964,7 +4964,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id' => 18,
-                'name' => 'Zesto Guava Flavor',
+                'name' => 'Zesto Guava ',
                 'calcKcal' => 92,
                 'calcTotFat' => 0.6,
                 'calcSatFat' => 0.3,
