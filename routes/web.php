@@ -42,6 +42,7 @@ use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\DownloadReportsController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
+use App\Http\Controllers\Admin\MenuplannerController;
 use App\Http\Controllers\Admin\PDFQRController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
 
@@ -80,7 +81,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->middleware('admin')->group(function () {
     // Show Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::post('/dashboard/updateWeeklyMenuPlan', [DashboardController::class, 'update']);
+
+    // Menu Planner
+    Route::get('/menuplan', [MenuplannerController::class, 'index']);
+    Route::post('/menuplan/update', [MenuplannerController::class, 'update']);
 
     // <----------- FOOD CONTROLLER -----------> //
     // Show Food Management Section
