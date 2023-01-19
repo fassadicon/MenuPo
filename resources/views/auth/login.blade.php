@@ -54,11 +54,9 @@
                             <span class="button__text">{{ __('Login') }}</span>
                             <i class="button__icon fas fa-chevron-right"></i>
                         </button>
-                        @if (Route::has('password.request'))
-                            <a id="forgot-pass" class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                        @endif			
+                        <a id="forgot-pass" class="btn btn-link" href="/change-password-request">
+                            {{ __('Forgot Your Password?') }}
+                        </a>		
                     </form>
                 </div>
                 <div class="screen__background">
