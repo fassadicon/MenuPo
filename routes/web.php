@@ -15,14 +15,16 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PDFQRController;
+use App\Http\Controllers\User\FooterController;
 use App\Http\Controllers\User\HealthController;
+
+// User Controllers
 use App\Http\Controllers\User\SurveyController;
 use App\Http\Controllers\AutocompleteController;
 
-// User Controllers
 use App\Http\Controllers\User\NewPostController;
 use App\Http\Controllers\User\PaymentController;
-
 use App\Http\Controllers\User\UserAccController;
 use App\Http\Controllers\Admin\FoodlogController;
 use App\Http\Controllers\Admin\ReportsController;
@@ -42,7 +44,6 @@ use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\DownloadReportsController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
-use App\Http\Controllers\Admin\PDFQRController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
 
 /*
@@ -357,6 +358,8 @@ Route::middleware('user')->group(function () {
     //Receipt
     Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
 
+
+
     // Route::get('/pos', [POSController::class, 'index']);
     // Route::post('/add-to-cart', [POSController::class, 'addtocart']);
     // Route::post('/update-cart-add', [POSController::class, 'add']);
@@ -372,3 +375,6 @@ Route::middleware('user')->group(function () {
     // Sample
     Route::get('sample', [HomeController::class, 'sample']);
 });
+    //Footer Links
+    Route::get('/terms-and-conditions', [FooterController::class, 'termsAndCondi']);
+    Route::get('/privacy-statement', [FooterController::class, 'privacyStatement']);
