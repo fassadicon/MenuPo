@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('items')->nullable();
             $table->date('menuDate');
             $table->timestamps();
-            $table->foreignId('created_by')->constrained('admins');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('admins');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('updated_by')->references('id')->on('admins');
         });
