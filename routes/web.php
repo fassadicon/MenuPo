@@ -15,7 +15,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\PDFQRController;
 use App\Http\Controllers\User\FooterController;
 use App\Http\Controllers\User\HealthController;
 
