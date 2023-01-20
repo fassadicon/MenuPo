@@ -22,7 +22,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add Menu Item</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-square-xmark fa-xl text-white"></i></button>
                 </div>
                 <div class="modal-body">
                     <span id="titleError"></span>
@@ -34,8 +34,8 @@
                     <input type="date" class="form-control" id="end" name="end"> --}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="button-sec bg-red-400" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="saveBtn" class="button-sec bg-green-400">Save changes</button>
                 </div>
             </div>
         </div>
