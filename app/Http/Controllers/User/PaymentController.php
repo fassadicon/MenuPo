@@ -21,31 +21,32 @@ use Illuminate\Support\Facades\Redirect;
 class PaymentController extends Controller
 {
     public $totKcal, $totfat, $totsatfat, $totsugar, $totsodium;
-    
-    public function index(Request $request){
-        
+
+    public function index(Request $request)
+    {
+
         $items = Cart::content();
         $parent = Guardian::where('user_id', auth()->id())->get();
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
-        
+
         $now = Carbon::now();
         $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
         $weekEndDate = $now->endOfWeek()->format('Y-m-d H:i');
 
         $survey = Survey::where('parent_id', $parent[0]->id)
             ->whereBetween('created_at', [$weekStartDate, $weekEndDate])->get();
-        if(!empty($survey)){
+        if (!empty($survey)) {
             $isSurveyAvail = 1;
         }
 
         $totalPrice = Cart::priceTotal();
         $totalPricePayment = $totalPrice * 100;
 
-        
+
         //For total calories
-        foreach($items as $item){
+        foreach ($items as $item) {
             $food = Food::findOrFail($item->id);
             $this->totKcal += $food->calcKcal;
             $this->totfat += $food->calcTotFat;
@@ -53,7 +54,7 @@ class PaymentController extends Controller
             $this->totsugar += $food->calcSugar;
             $this->totsodium += $food->calcSodium;
             $qty = $food->stock;
-            DB::update('UPDATE foods SET stock = ? WHERE id = ?', [$qty-$item->qty, $food->id]);
+            DB::update('UPDATE foods SET stock = ? WHERE id = ?', [$qty - $item->qty, $food->id]);
         }
         // Paymongo Payment API
         $ch = curl_init();
@@ -62,18 +63,18 @@ class PaymentController extends Controller
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $certificate_location);
 
         curl_setopt_array($ch, [
-        CURLOPT_URL => "https://api.paymongo.com/v1/links",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => "{\"data\":{\"attributes\":{\"amount\":$totalPricePayment,\"description\":\"Payment for Menu-Po:NSDAPS's Canteen\",\"remarks\":\"sample\"}}}",
-        CURLOPT_HTTPHEADER => [
-            "accept: application/json",
-            "authorization: Basic c2tfdGVzdF9Ec2dNUldYWHZ1VHdCYVpzdjc3blJVUVc6",
-            "content-type: application/json"
+            CURLOPT_URL => "https://api.paymongo.com/v1/links",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "{\"data\":{\"attributes\":{\"amount\":$totalPricePayment,\"description\":\"Payment for Menu-Po:NSDAPS's Canteen\",\"remarks\":\"sample\"}}}",
+            CURLOPT_HTTPHEADER => [
+                "accept: application/json",
+                "authorization: Basic c2tfdGVzdF9Ec2dNUldYWHZ1VHdCYVpzdjc3blJVUVc6",
+                "content-type: application/json"
             ],
         ]);
 
@@ -95,7 +96,7 @@ class PaymentController extends Controller
         $payment->referenceNo = $reference_num;
         $payment->paymentStatus = $payment_status;
         $payment->save();
-        
+
         $purchase = new Purchase;
         $purchase->parent_id = $parent[0]->id;
         $purchase->student_id = $request->get('anak_id');
@@ -109,7 +110,7 @@ class PaymentController extends Controller
         $purchase->served_by = 1;
         $purchase->save();
 
-        foreach($items as $item){
+        foreach ($items as $item) {
             $food = Food::findOrFail($item->id);
             $order = new Order;
             $order->purchase_id = $purchase->id;
@@ -182,21 +183,24 @@ class PaymentController extends Controller
     //     ]);
     // }
 
-    public function receipt_new(Purchase $purchase){
+    public function receipt_new(Purchase $purchase)
+    {
 
 
         $parent = Guardian::where('user_id', auth()->id())->get();
 
         $notifications = DB::select('SELECT * FROM notifications WHERE parent_id = ?', [$parent[0]->id]);
         $student = DB::select('SELECT * FROM students WHERE parent_id = ?', [$parent[0]->id]);
-        
+      
         $items = DB::select('SELECT * FROM orders WHERE purchase_id = ?', [$purchase->id]);
         $item_array = array();
-        
-        foreach($items as $item){
-            $food = Food::findorfail($item->id);
+
+        foreach ($items as $item) {
+            $food = Food::findorfail($item->food_id);
             array_push($item_array, $food);
         }
+
+      
 
         return view('user.receipt2', [
             'items' => $items,
@@ -206,6 +210,4 @@ class PaymentController extends Controller
             'isSurveyAvail' => 0
         ]);
     }
-
-    
 }
