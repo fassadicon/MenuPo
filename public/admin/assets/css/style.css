@@ -1903,3 +1903,89 @@ footer .bottom-details{
     color: #000 !important;
 
 }
+
+/* Clock */
+
+
+
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background: var(--background);
+    transition: .2s ease-in-out;
+    margin-bottom: 20px;
+    transition: .2s ease-in-out;
+    font-family: 'Share Tech Mono', monospace;
+    
+}
+.clock {
+  width: 360px;
+  height: 120px;
+  
+}
+.date {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+.date, .hr, .min, .sec, .colon {
+  color: var(--text);
+  text-shadow: 0 0 10px var(--shadow-1), 0 0 15px var(--shadow-2), 0 0 20px var(--shadow-2);
+}
+.hr, .min, .sec, .colon {
+  width: 20%;
+  float: left;
+  text-align: center;
+  font-size: 4rem;
+}
+.toggle-btn {
+  width: 40px;
+  height: 25px;
+  border-radius: 25px;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  background: var(--toggle);
+}
+.toggle-btn .control {
+  width: 19px;
+  height: 19px;
+  border-radius: 25px;
+  position: relative;
+  top: 3px;
+  background: var(--toggle-control);
+}
+.dark .toggle-btn .control {
+  float: right;
+  right: 3px;
+}
+.light .toggle-btn .control {
+  left: 3px;
+}
+.toggle-btn .light-txt, .toggle-btn .dark-txt {
+  position: absolute;
+  top: -100%;
+}
+.toggle-btn .light-txt {
+  left: -80%;
+  color: var(--light-txt);
+  
+}
+.toggle-btn .dark-txt {
+  left: 80%;
+  color: var(--dark-txt);
+}
+
+/* Open and Close */
+
+.open-display {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background: var(--background);
+    transition: .2s ease-in-out;
+    margin-bottom: 20px;
+    transition: .2s ease-in-out;
+    
+}
