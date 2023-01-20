@@ -385,3 +385,10 @@ Route::middleware('user')->group(function () {
     //Footer Links
     Route::get('/terms-and-conditions', [FooterController::class, 'termsAndCondi']);
     Route::get('/privacy-statement', [FooterController::class, 'privacyStatement']);
+
+    //Change Password Login Side
+    Route::get('/change-password-request', [FooterController::class, 'changePasswordRequest']);
+    Route::get('/send-otp-password', [FooterController::class, 'sendOtpPassword']);
+    Route::get('/change-password', [FooterController::class, 'changePassword']);
+
+
