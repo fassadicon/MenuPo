@@ -215,6 +215,7 @@
                     center: 'title',
                     right: 'month, basicWeek, basicDay',
                 },
+                height: 650,
                 events: item,
                 allDayDefault: true,
                 selectable: true,
