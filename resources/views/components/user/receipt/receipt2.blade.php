@@ -1,7 +1,4 @@
 
-
-
-
 @props(['items'])
 @props(['item_array'])
 

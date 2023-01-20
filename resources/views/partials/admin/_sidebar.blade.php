@@ -25,6 +25,14 @@
             </a>
         </li><!-- End Scanner Nav -->
 
+        
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/admin/menuplan/" title="Scan Student QR Code here" id="sidebarLink">
+              <i class="fa-solid fa-qrcode"></i>
+              <span>Menu Planner</span>
+          </a>
+      </li><!-- End Scanner Nav -->
+
         {{-- <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
     <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -292,7 +300,7 @@
         <li class="nav-item">
             <a href="/admin/reports/compositions" class="nav-link collapsed" title="Most Bought Items in the Canteen" id="sidebarLink">
                 <i class="fas fa-chart-pie"></i>
-                <span>Menu and Order Composition</span>
+                <span>Order Composition</span>
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
@@ -307,12 +315,13 @@
                 <span>Sales</span>
             </a>
         </li><!-- End Completed Orders Nav -->
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="/admin/logs/foodMovements" class="nav-link collapsed" title="Daily Sales Report" id="sidebarLink">
                 <i class="fas fa-clipboard-list"></i>
                 <span>Daily Sales Report</span>
             </a>
-        </li><!-- End Completed Orders Nav -->
+        </li> --}}
+        <!-- End Completed Orders Nav -->
         {{-- <li class="nav-heading">Logs</li>
         <li class="nav-item">
             <a href="/admin/logs/adminAccount" class="nav-link collapsed" id="sidebarLink">

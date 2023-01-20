@@ -15,14 +15,15 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\FooterController;
 use App\Http\Controllers\User\HealthController;
+
+// User Controllers
 use App\Http\Controllers\User\SurveyController;
 use App\Http\Controllers\AutocompleteController;
 
-// User Controllers
 use App\Http\Controllers\User\NewPostController;
 use App\Http\Controllers\User\PaymentController;
-
 use App\Http\Controllers\User\UserAccController;
 use App\Http\Controllers\Admin\FoodlogController;
 use App\Http\Controllers\Admin\ReportsController;
@@ -42,6 +43,7 @@ use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\DownloadReportsController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
+use App\Http\Controllers\Admin\MenuplannerController;
 use App\Http\Controllers\Admin\PDFQRController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
 
@@ -80,7 +82,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->middleware('admin')->group(function () {
     // Show Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::post('/dashboard/updateWeeklyMenuPlan', [DashboardController::class, 'update']);
+
+    // Menu Planner
+    Route::get('/menuplan', [MenuplannerController::class, 'index']);
+    Route::post('/menuplan/update', [MenuplannerController::class, 'store']);
+    Route::patch('/menuplan/update/{id}', [MenuplannerController::class, 'update'])->name('calendar.update');
+    Route::patch('/menuplan/updateDuration/{id}', [MenuplannerController::class, 'update'])->name('calendar.updateDuration');
+    Route::delete('menuplan/destroy/{id}', [MenuplannerController::class, 'destroy'])->name('calendar.destroy');
 
     // <----------- FOOD CONTROLLER -----------> //
     // Show Food Management Section
@@ -357,6 +365,8 @@ Route::middleware('user')->group(function () {
     //Receipt
     Route::get('/user/receipt/{purchase}', [PaymentController::class, 'receipt_new']);
 
+
+
     // Route::get('/pos', [POSController::class, 'index']);
     // Route::post('/add-to-cart', [POSController::class, 'addtocart']);
     // Route::post('/update-cart-add', [POSController::class, 'add']);
@@ -372,3 +382,13 @@ Route::middleware('user')->group(function () {
     // Sample
     Route::get('sample', [HomeController::class, 'sample']);
 });
+    //Footer Links
+    Route::get('/terms-and-conditions', [FooterController::class, 'termsAndCondi']);
+    Route::get('/privacy-statement', [FooterController::class, 'privacyStatement']);
+
+    //Change Password Login Side
+    Route::get('/change-password-request', [FooterController::class, 'changePasswordRequest']);
+    Route::get('/send-otp-password', [FooterController::class, 'sendOtpPassword']);
+    Route::get('/change-password', [FooterController::class, 'changePassword']);
+
+

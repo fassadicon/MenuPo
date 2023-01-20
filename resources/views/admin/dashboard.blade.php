@@ -5,6 +5,7 @@
     
     <p>Dashboard</p>
 
+<<<<<<< HEAD
     {{-- CLOCK --}}
     
     <div class='clock-container'>
@@ -392,4 +393,6 @@
         showCalendar(currentMonth,
             currentYear);
     </script>
+=======
+>>>>>>> 6ca78519736a8530c9e0522292cfac29e0a08345
 </x-admin.layout>

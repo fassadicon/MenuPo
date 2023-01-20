@@ -4944,7 +4944,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id' => 17,
-                'name' => 'Zesto Grape Flavor',
+                'name' => 'Zesto Grape ',
                 'calcKcal' => 90,
                 'calcTotFat' => 0.2,
                 'calcSatFat' => 0,
@@ -4964,7 +4964,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id' => 18,
-                'name' => 'Zesto Guava Flavor',
+                'name' => 'Zesto Guava ',
                 'calcKcal' => 92,
                 'calcTotFat' => 0.6,
                 'calcSatFat' => 0.3,
@@ -9928,7 +9928,7 @@ class DatabaseSeeder extends Seeder
         ];
         Survey::insert($surveys);
 
-        DB::table('menuplanners')->delete();
+       
 
         $now = Carbon::now();
         $start = $now->startOfWeek(CarbonInterface::MONDAY);
@@ -9940,89 +9940,90 @@ class DatabaseSeeder extends Seeder
         for ($i = 1; $i < 5; $i++) {
             $test[$i] = $weekStartDate->addDay()->format('Y-m-d');
         }
-
-        $menuplanners = [
-            [
-                'id' => 1,
-                'items' => 'Hotdog, Itlog',
-                'menuDate' => $test[0],
-                'created_at' =>  $test[0],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 2,
-                'items' => 'Goto, Lumpia',
-                'menuDate' => $test[1],
-                'created_at' =>  $test[1],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 3,
-                'items' => 'Menudo, Sinigang',
-                'menuDate' => $test[2],
-                'created_at' =>  $test[2],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 4,
-                'items' => 'Barbeque, Tinola',
-                'menuDate' => $test[3],
-                'created_at' =>  $test[3],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 5,
-                'items' => 'Carbonara, Fried Chicken',
-                'menuDate' => $test[4],
-                'created_at' =>  $test[4],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 6,
-                'items' => 'pasok',
-                'menuDate' => '2023-01-09',
-                'created_at' =>  '2023-01-09',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 7,
-                'items' => 't',
-                'menuDate' => '2023-01-10',
-                'created_at' =>  '2023-01-10',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 8,
-                'items' => 'te',
-                'menuDate' => '2023-01-11',
-                'created_at' =>  '2023-01-11',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 9,
-                'items' => 'tes',
-                'menuDate' => '2023-01-12',
-                'created_at' =>  '2023-01-12',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 10,
-                'items' => 'test',
-                'menuDate' => '2023-01-13',
-                'created_at' =>  '2023-01-13',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-        ];
-        Menuplanner::insert($menuplanners);
+        
+        DB::table('menuplanners')->delete();
+        // $menuplanners = [
+        //     [
+        //         'id' => 1,
+        //         'items' => 'Hotdog, Itlog',
+        //         'menuDate' => $test[0],
+        //         'created_at' =>  $test[0],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 2,
+        //         'items' => 'Goto, Lumpia',
+        //         'menuDate' => $test[1],
+        //         'created_at' =>  $test[1],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 3,
+        //         'items' => 'Menudo, Sinigang',
+        //         'menuDate' => $test[2],
+        //         'created_at' =>  $test[2],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 4,
+        //         'items' => 'Barbeque, Tinola',
+        //         'menuDate' => $test[3],
+        //         'created_at' =>  $test[3],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 5,
+        //         'items' => 'Carbonara, Fried Chicken',
+        //         'menuDate' => $test[4],
+        //         'created_at' =>  $test[4],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 6,
+        //         'items' => 'pasok',
+        //         'menuDate' => '2023-01-09',
+        //         'created_at' =>  '2023-01-09',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 7,
+        //         'items' => 't',
+        //         'menuDate' => '2023-01-10',
+        //         'created_at' =>  '2023-01-10',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 8,
+        //         'items' => 'te',
+        //         'menuDate' => '2023-01-11',
+        //         'created_at' =>  '2023-01-11',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 9,
+        //         'items' => 'tes',
+        //         'menuDate' => '2023-01-12',
+        //         'created_at' =>  '2023-01-12',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 10,
+        //         'items' => 'test',
+        //         'menuDate' => '2023-01-13',
+        //         'created_at' =>  '2023-01-13',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        // ];
+        // Menuplanner::insert($menuplanners);
     }
 }
