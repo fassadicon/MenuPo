@@ -9942,88 +9942,88 @@ class DatabaseSeeder extends Seeder
         }
         
         DB::table('menuplanners')->delete();
-        $menuplanners = [
-            [
-                'id' => 1,
-                'items' => 'Hotdog, Itlog',
-                'menuDate' => $test[0],
-                'created_at' =>  $test[0],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 2,
-                'items' => 'Goto, Lumpia',
-                'menuDate' => $test[1],
-                'created_at' =>  $test[1],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 3,
-                'items' => 'Menudo, Sinigang',
-                'menuDate' => $test[2],
-                'created_at' =>  $test[2],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 4,
-                'items' => 'Barbeque, Tinola',
-                'menuDate' => $test[3],
-                'created_at' =>  $test[3],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 5,
-                'items' => 'Carbonara, Fried Chicken',
-                'menuDate' => $test[4],
-                'created_at' =>  $test[4],
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 6,
-                'items' => 'pasok',
-                'menuDate' => '2023-01-09',
-                'created_at' =>  '2023-01-09',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 7,
-                'items' => 't',
-                'menuDate' => '2023-01-10',
-                'created_at' =>  '2023-01-10',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 8,
-                'items' => 'te',
-                'menuDate' => '2023-01-11',
-                'created_at' =>  '2023-01-11',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 9,
-                'items' => 'tes',
-                'menuDate' => '2023-01-12',
-                'created_at' =>  '2023-01-12',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-            [
-                'id' => 10,
-                'items' => 'test',
-                'menuDate' => '2023-01-13',
-                'created_at' =>  '2023-01-13',
-                'created_by' => 1,
-                'updated_by' => 2
-            ],
-        ];
-        Menuplanner::insert($menuplanners);
+        // $menuplanners = [
+        //     [
+        //         'id' => 1,
+        //         'items' => 'Hotdog, Itlog',
+        //         'menuDate' => $test[0],
+        //         'created_at' =>  $test[0],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 2,
+        //         'items' => 'Goto, Lumpia',
+        //         'menuDate' => $test[1],
+        //         'created_at' =>  $test[1],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 3,
+        //         'items' => 'Menudo, Sinigang',
+        //         'menuDate' => $test[2],
+        //         'created_at' =>  $test[2],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 4,
+        //         'items' => 'Barbeque, Tinola',
+        //         'menuDate' => $test[3],
+        //         'created_at' =>  $test[3],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 5,
+        //         'items' => 'Carbonara, Fried Chicken',
+        //         'menuDate' => $test[4],
+        //         'created_at' =>  $test[4],
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 6,
+        //         'items' => 'pasok',
+        //         'menuDate' => '2023-01-09',
+        //         'created_at' =>  '2023-01-09',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 7,
+        //         'items' => 't',
+        //         'menuDate' => '2023-01-10',
+        //         'created_at' =>  '2023-01-10',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 8,
+        //         'items' => 'te',
+        //         'menuDate' => '2023-01-11',
+        //         'created_at' =>  '2023-01-11',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 9,
+        //         'items' => 'tes',
+        //         'menuDate' => '2023-01-12',
+        //         'created_at' =>  '2023-01-12',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        //     [
+        //         'id' => 10,
+        //         'items' => 'test',
+        //         'menuDate' => '2023-01-13',
+        //         'created_at' =>  '2023-01-13',
+        //         'created_by' => 1,
+        //         'updated_by' => 2
+        //     ],
+        // ];
+        // Menuplanner::insert($menuplanners);
     }
 }

@@ -13,15 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('menuplanners', function (Blueprint $table) {
+        // Schema::create('menuplanners', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('items')->nullable();
+        //     $table->date('menuDate');
+        //     $table->timestamps();
+        //     $table->unsignedBigInteger('created_by')->nullable();
+        //     $table->foreign('created_by')->references('id')->on('admins');
+        //     $table->unsignedBigInteger('updated_by')->nullable();
+        //     $table->foreign('updated_by')->references('id')->on('admins');
+        // });
+
+         Schema::create('menuplanners', function (Blueprint $table) {
             $table->id();
-            $table->string('items')->nullable();
-            $table->date('menuDate');
+            $table->string('foodName');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->foreign('created_by')->references('id')->on('admins');
-            $table->unsignedBigInteger('updated_by')->nullable();
-            $table->foreign('updated_by')->references('id')->on('admins');
         });
     }
 

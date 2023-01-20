@@ -300,7 +300,7 @@
         <li class="nav-item">
             <a href="/admin/reports/compositions" class="nav-link collapsed" title="Most Bought Items in the Canteen" id="sidebarLink">
                 <i class="fas fa-chart-pie"></i>
-                <span>Menu and Order Composition</span>
+                <span>Order Composition</span>
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
@@ -315,12 +315,13 @@
                 <span>Sales</span>
             </a>
         </li><!-- End Completed Orders Nav -->
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="/admin/logs/foodMovements" class="nav-link collapsed" title="Daily Sales Report" id="sidebarLink">
                 <i class="fas fa-clipboard-list"></i>
                 <span>Daily Sales Report</span>
             </a>
-        </li><!-- End Completed Orders Nav -->
+        </li> --}}
+        <!-- End Completed Orders Nav -->
         {{-- <li class="nav-heading">Logs</li>
         <li class="nav-item">
             <a href="/admin/logs/adminAccount" class="nav-link collapsed" id="sidebarLink">

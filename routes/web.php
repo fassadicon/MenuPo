@@ -85,7 +85,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Menu Planner
     Route::get('/menuplan', [MenuplannerController::class, 'index']);
-    Route::post('/menuplan/update', [MenuplannerController::class, 'update']);
+    Route::post('/menuplan/update', [MenuplannerController::class, 'store']);
+    Route::patch('/menuplan/update/{id}', [MenuplannerController::class, 'update'])->name('calendar.update');
+    Route::patch('/menuplan/updateDuration/{id}', [MenuplannerController::class, 'update'])->name('calendar.updateDuration');
+    Route::delete('menuplan/destroy/{id}', [MenuplannerController::class, 'destroy'])->name('calendar.destroy');
 
     // <----------- FOOD CONTROLLER -----------> //
     // Show Food Management Section
