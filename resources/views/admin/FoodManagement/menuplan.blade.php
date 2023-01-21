@@ -13,6 +13,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css " rel="stylesheet"
+        type="text/css" media="print" />
     <p>Menu Planner</p>
 
 
@@ -183,9 +187,13 @@
                 </div>
             </div> --}}
         </div>
+        <button class="printBtn btn btn-info">
+            Print
+        </button>
         <div class="container">
             <div class="row">
                 <div class="col-12">
+
                     <div id='calendar'></div>
                 </div>
             </div>
@@ -202,6 +210,18 @@
     </script>
     <script>
         $('document').ready(function() {
+
+
+            $('.printBtn').on('click', function() {
+                // $("#calendar").print();
+                window.print();
+
+                
+
+                
+            });
+
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -275,7 +295,8 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
-                                url: "{{ route('calendar.updateDuration', '') }}" + '/' + id,
+                                url: "{{ route('calendar.updateDuration', '') }}" +
+                                    '/' + id,
                                 type: "PATCH",
                                 dataType: 'json',
                                 data: {

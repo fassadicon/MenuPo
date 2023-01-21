@@ -1623,7 +1623,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 1,
                 'created_by' => 2,
                 'QR' => 'admin/merges/1Reyes.png',
-                'image' => 'admin/students/1.png'
+                'image' => 'admin/students/1.png',
+                'fullName' => 'Karina Dela Cruz Reyes'
             ],
             [
                 'grade' => 4,
@@ -1640,7 +1641,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 1,
                 'created_by' => 2,
                 'QR' => 'admin/merges/2Reyes.png',
-                'image' => 'admin/students/2.png'
+                'image' => 'admin/students/2.png',
+                'fullName' => 'Queenierich Dela Cruz Reyes'
             ],
             [
                 'grade' => 4,
@@ -1657,7 +1659,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 2,
                 'created_by' => 2,
                 'QR' => 'admin/merges/3Ramos.png',
-                'image' => 'admin/students/3.png'
+                'image' => 'admin/students/3.png',
+                'fullName' => 'Aaron James Fernandez Ramos'
             ],
             [
                 'grade' => 4,
@@ -1674,7 +1677,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 3,
                 'created_by' => 2,
                 'QR' => 'admin/merges/4Salao.png',
-                'image' => 'admin/students/4.png'
+                'image' => 'admin/students/4.png',
+                'fullName' => 'Jessica Marie Joy Sy Salao'
             ],
             [
                 'grade' => 4,
@@ -1691,7 +1695,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 4,
                 'created_by' => 2,
                 'QR' => 'admin/merges/5Dimaranan.png',
-                'image' => 'admin/students/5.png'
+                'image' => 'admin/students/5.png',
+                'fullName' => 'Rachelle Marianne Sarinas Dimaranan'
             ],
             [
                 'grade' => 4,
@@ -1708,7 +1713,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 5,
                 'created_by' => 2,
                 'QR' => 'admin/merges/6Dela Vera.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Jessie Rayye Cruz Dela Vera'
             ],
             [
                 'grade' => 4,
@@ -1725,7 +1731,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 6,
                 'created_by' => 2,
                 'QR' => 'admin/merges/7Espin.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Lance Joseph Morales Espin'
             ],
             [
                 'grade' => 4,
@@ -1742,7 +1749,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 7,
                 'created_by' => 2,
                 'QR' => 'admin/merges/8Asilo.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Rachelle Trixielyn Marcayda Asilo'
             ],
             [
                 'grade' => 4,
@@ -1759,7 +1767,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 7,
                 'created_by' => 2,
                 'QR' => 'admin/merges/9Asilo.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Robert Tristan Marcayda Asilo'
             ],
             [
                 'grade' => 4,
@@ -1776,7 +1785,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 8,
                 'created_by' => 2,
                 'QR' => 'admin/merges/10Olivares.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Genevive Rozarie Martin Olivares'
             ],
             [
                 'grade' => 4,
@@ -1793,7 +1803,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 9,
                 'created_by' => 2,
                 'QR' => 'admin/merges/11Madrigal.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Arachelle Merci Colmenares Madrigal'
             ],
             [
                 'grade' => 4,
@@ -1810,7 +1821,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 10,
                 'created_by' => 2,
                 'QR' => 'admin/merges/12Dela Cruz.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Kimberly Joyzel Sarmiento Dela Cruz'
             ],
             [
                 'grade' => 4,
@@ -1827,7 +1839,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 6,
                 'created_by' => 2,
                 'QR' => 'admin/merges/13Martinez.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Madelaine Espin Martinez'
             ],
             [
                 'grade' => 4,
@@ -1844,7 +1857,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 11,
                 'created_by' => 2,
                 'QR' => 'admin/merges/14Navarro.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Dainsleif Morales Navarro'
             ],
             [
                 'grade' => 4,
@@ -1861,7 +1875,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 11,
                 'created_by' => 2,
                 'QR' => 'admin/merges/15Katipunan.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Angela Vivienne Navarro Katipunan'
             ],
             [
                 'grade' => 4,
@@ -1878,7 +1893,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 11,
                 'created_by' => 2,
                 'QR' => 'admin/merges/16Escuvania.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Mauro Ezekiel Navarro Escuvania'
             ],
             [
                 'grade' => 4,
@@ -1895,7 +1911,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 3,
                 'created_by' => 2,
                 'QR' => 'admin/merges/17Arias.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Eva Angela Solis Arias'
             ],
             [
                 'grade' => 4,
@@ -1912,7 +1929,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 12,
                 'created_by' => 2,
                 'QR' => 'admin/merges/18Marcayda.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Pauline Amelincx Deseo Marcayda'
             ],
             [
                 'grade' => 4,
@@ -1929,7 +1947,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 13,
                 'created_by' => 2,
                 'QR' => 'admin/merges/19Singh.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Nandita Banna Naligas Singh'
             ],
             [
                 'grade' => 4,
@@ -1946,7 +1965,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 14,
                 'created_by' => 2,
                 'QR' => 'admin/merges/20Fernandez.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Roxanna Guinevere Alatiit Fernandez'
             ],
             [
                 'grade' => 4,
@@ -1963,7 +1983,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 15,
                 'created_by' => 2,
                 'QR' => 'admin/merges/21Bantayan.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Arnold Oliveros Bantayan'
             ],
             [
                 'grade' => 4,
@@ -1980,7 +2001,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 16,
                 'created_by' => 2,
                 'QR' => 'admin/merges/22Hicana.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Esfefania Christine Sison Hicana'
             ],
             [
                 'grade' => 4,
@@ -1997,7 +2019,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 17,
                 'created_by' => 2,
                 'QR' => 'admin/merges/23Delavera.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Margaret Rozanne Delavera Rodriguez'
             ],
             [
                 'grade' => 4,
@@ -2014,7 +2037,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 17,
                 'created_by' => 2,
                 'QR' => 'admin/merges/24Magnaye.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Marielle Charlize Delavera Magnaye'
             ],
             [
                 'grade' => 4,
@@ -2031,7 +2055,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 18,
                 'created_by' => 2,
                 'QR' => 'admin/merges/25Fugen.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Berlin Germany Alipala Fugen'
             ],
             [
                 'grade' => 2,
@@ -2048,7 +2073,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 19,
                 'created_by' => 4,
                 'QR' => 'admin/merges/26Magnaye.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Arzhelle Darwyn Sison Magnaye'
             ],
             [
                 'grade' => 2,
@@ -2065,7 +2091,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 20,
                 'created_by' => 4,
                 'QR' => 'admin/merges/27Urdaneta.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Majara Jonaella Mae Lacampuenga Urdaneta'
             ],
             [
                 'grade' => 2,
@@ -2082,7 +2109,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 21,
                 'created_by' => 4,
                 'QR' => 'admin/merges/28Ramos.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Jozelle Barbie Fernandez Ramos'
             ],
             [
                 'grade' => 2,
@@ -2099,7 +2127,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 22,
                 'created_by' => 4,
                 'QR' => 'admin/merges/29Somera.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Marc Christian Angelo Gandivanez Somera'
             ],
             [
                 'grade' => 2,
@@ -2116,7 +2145,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 23,
                 'created_by' => 4,
                 'QR' => 'admin/merges/30Santos.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Lara Belle Polaris Santos'
             ],
             [
                 'grade' => 2,
@@ -2133,7 +2163,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 24,
                 'created_by' => 4,
                 'QR' => 'admin/merges/31Matheran.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Vyronne Gabriel Reyes Matheran'
             ],
             [
                 'grade' => 2,
@@ -2150,7 +2181,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 25,
                 'created_by' => 4,
                 'QR' => 'admin/merges/32Martinez.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Sorrian James Jimenez Martinez'
             ],
             [
                 'grade' => 2,
@@ -2167,7 +2199,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 26,
                 'created_by' => 4,
                 'QR' => 'admin/merges/33Yuzon.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Tee Jay Oliveros Yuzon'
             ],
             [
                 'grade' => 2,
@@ -2184,7 +2217,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 27,
                 'created_by' => 4,
                 'QR' => 'admin/merges/34Camiling.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Nahida Rose Lacampuenga Camiling'
             ],
             [
                 'grade' => 2,
@@ -2201,7 +2235,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 28,
                 'created_by' => 4,
                 'QR' => 'admin/merges/35Ramos.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Luis Ragvindr Santillares Ramos'
             ],
             
 
