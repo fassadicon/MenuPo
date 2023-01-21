@@ -346,7 +346,7 @@ jQuery(document).ready(function (e) {
 
 // Clock
 
-// execute function clock()
+
 clock();
 
 // execute function clock() every 1 second
