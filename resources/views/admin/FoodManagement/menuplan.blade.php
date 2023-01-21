@@ -6,7 +6,7 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script> --}}
-
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -17,7 +17,6 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet" type="text/css" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css " rel="stylesheet"
         type="text/css" media="print" />
-    <p>Menu Planner</p>
 
 
     <!-- Modal -->
@@ -26,7 +25,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add Menu Item</h5>
-                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-square-xmark fa-xl text-white"></i></button>
+                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"><i
+                            class="fa-solid fa-square-xmark fa-xl text-white"></i></button>
                 </div>
                 <div class="modal-body">
                     <span id="titleError"></span>
@@ -48,179 +48,62 @@
 
     <section class="survey-card h-fit">
         <div class="header-page">
-            <p><i class="fab fa-nutritionix fa-xl"></i>Weekly Planner</p>
+            <p><i class="fab fa-nutritionix fa-xl"></i>Menu Planner <span> <a href=""
+                        class="printBtn btn btn-info">Print</a></span></p>
+
         </div>
-        <hr class="mx-4 my-4">
-        {{-- Added Sugar --}}
-        <div class="row-top row">
-            {{-- <div class="col-8">
-                <div class="container">
-                    <h1 class="text-center"><strong>Menu Plan for Week <span class="text-yellow-500"> [num]</span> of
-                            <span class="text-yellow-500">[Month]</span></strong></h1>
-                    <div class="bg-white p-3 shadow-xl rounded-sm">
-                        <div class="h-96 bg-white overflow-auto">
-                            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                                <span clas="text-green-500">
-                                    <i class="fa-solid fa-list-radio"></i>
-                                </span>
-                            </div>
-                            <div class='overflow-x-auto w-full'>
-                                <table id="menuPlannertTbl"
-                                    class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300'>
-                                    <thead class="bg-blue-800">
-                                        <tr class="text-white">
-                                            <th hidden>ID</th>
-                                            <th class="font-semibold text-sm uppercase px-6 py-4"> Day </th>
-                                            <th class="font-semibold text-sm uppercase px-6 py-4"> Meal Items </th>
-                                            <th class="font-semibold text-sm uppercase px-6 py-4"> Added By </th>
-                                            <th class="font-semibold text-sm uppercase px-6 py-4"> Date Modified </th>
-                                            <th class="font-semibold text-sm uppercase px-6 py-4"> Updated By </th>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="divide-y divide-gray-200">
-                                            <td class="id-list" hidden>{{ $Mondays->id }}</td>
-                                            <td>Monday</td>
-                                            <td><input type="text" value="{{ $Mondays->items }}" class="food-list">
-                                            </td>
-                                            <td>{{ $Mondays->admin->firstName . ' ' . $Mondays->admin->lastName }}</td>
-                                            <td>{{ $Mondays->updated_at == null ? $Mondays->created_at->format('Y-m-d') : $Mondays->updated_at->format('Y-m-d') }}
-                                            </td>
-                                            <td>{{ $Mondays->admin_updated->firstName . ' ' . $Mondays->admin_updated->lastName }}
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-y  divide-gray-200">
-                                            <td class="id-list" hidden>{{ $Tuesdays->id }}</td>
-                                            <td>Tuesday</td>
-                                            <td><input type="text" value="{{ $Tuesdays->items }}" class="food-list">
-                                            </td>
-                                            <td>{{ $Tuesdays->admin->firstName . ' ' . $Tuesdays->admin->lastName }}
-                                            </td>
-                                            <td>{{ $Tuesdays->updated_at == null ? $Tuesdays->created_at->format('Y-m-d') : $Tuesdays->updated_at->format('Y-m-d') }}
-                                            </td>
-                                            <td>{{ $Tuesdays->admin_updated->firstName . ' ' . $Tuesdays->admin_updated->lastName }}
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-y  divide-gray-200">
-                                            <td class="id-list" hidden>{{ $Wednesdays->id }}</td>
-                                            <td>Wednesday</td>
-                                            <td><input type="text" value="{{ $Wednesdays->items }}"
-                                                    class="food-list"></td>
-                                            <td>{{ $Wednesdays->admin->firstName . ' ' . $Wednesdays->admin->lastName }}
-                                            </td>
-                                            <td>{{ $Wednesdays->updated_at == null ? $Wednesdays->created_at->format('Y-m-d') : $Wednesdays->updated_at->format('Y-m-d') }}
-                                            </td>
-                                            <td>{{ $Wednesdays->admin_updated->firstName . ' ' . $Wednesdays->admin_updated->lastName }}
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-y  divide-gray-200">
-                                            <td class="id-list" hidden>{{ $Thursdays->id }}</td>
-                                            <td>Thursday</td>
-                                            <td><input type="text" value="{{ $Thursdays->items }}"
-                                                    class="food-list"></td>
-                                            <td>{{ $Thursdays->admin->firstName . ' ' . $Thursdays->admin->lastName }}
-                                            </td>
-                                            <td>{{ $Thursdays->updated_at == null ? $Thursdays->created_at->format('Y-m-d') : $Thursdays->updated_at->format('Y-m-d') }}
-                                            </td>
-                                            <td>{{ $Thursdays->admin_updated->firstName . ' ' . $Thursdays->admin_updated->lastName }}
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-y  divide-gray-200">
-                                            <td class="id-list" hidden>{{ $Fridays->id }}</td>
-                                            <td>Friday</td>
-                                            <td><input type="text" value="{{ $Fridays->items }}" class="food-list">
-                                            </td>
-                                            <td>{{ $Fridays->admin->firstName . ' ' . $Fridays->admin->lastName }}</td>
-                                            <td>{{ $Fridays->updated_at == null ? $Fridays->created_at->format('Y-m-d') : $Fridays->updated_at->format('Y-m-d') }}
-                                            </td>
-                                            <td>{{ $Fridays->admin_updated->firstName . ' ' . $Fridays->admin_updated->lastName }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <button class="btn btn-secondary print">Print</button>
-                            <button class="btn btn-primary edit">Edit</button>
-                            <button class="btn btn-success save">Save</button>
-                        </div>
-                        <!-- End of Experience and education grid -->
-                    </div>
-                </div>
-            </div> --}}
-            {{-- <div class="col-4">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 space-x-4 p-2 ml-4">
-                            <button class="button-sec">Create Weekly Planner</button>
-                            <button class="button-sec text-white bg-green-800">Download Current Weekly Plan</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="container col-sm-4 col-md-7 col-lg-4 mt-2">
-                                <div class="card">
-                                    <h3 class="card-header" id="monthAndYear"></h3>
-                                    <table class="table table-bordered table-responsive-sm text-center" id="calendar">
-                                        <thead id="calendarhead"></thead>
-                                        <tbody id="calendar-body"></tbody>
-                                    </table>
-
-                                    <div class="form-inline mx-4 space-x-60">
-                                        <button class="button-sec bg-white mr-4" id="previous"><i
-                                                class="fa-solid fa-angles-left fa-lg"></i></button>
-                                        <button class="button-sec bg-white" id="next"><i
-                                                class="fa-solid fa-angles-right fa-lg"></i></button>
-                                    </div>
-
-                                    <br />
-
-                                    <form class="form-inline">
-                                        <label class="lead mr-2 ml-2" for="month">Jump To: </label>
-                                        <select class="form-control col-sm-4" name="month" id="month"></select>
-                                        <select class="form-control col-sm-4" name="year" id="year"></select>
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div> --}}
-        </div>
-        <button class="printBtn btn btn-info">
-            Print
-        </button>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-
-                    <div id='calendar'></div>
-                </div>
-            </div>
-        </div>
-
-
-        <hr class="mx-4 my-4">
-        <br>
-
 
     </section>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <div id='calendar'></div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.js"
+        integrity="sha512-/fgTphwXa3lqAhN+I8gG8AvuaTErm1YxpUjbdCvwfTMyv8UZnFyId7ft5736xQ6CyQN4Nzr21lBuWWA9RTCXCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
     <script>
         $('document').ready(function() {
 
-
             $('.printBtn').on('click', function() {
-                // $("#calendar").print();
+                $('#calendar').show();
                 window.print();
-
-                
-
-                
             });
 
+            var routeFindPhilFCT = "{{ url('/autocomplete-search') }}";
+            $('#title').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1,
+                items: 5,
+                source: function(query, process) {
+                    return $.get(routeFindPhilFCT, {
+                        query: query
+                    }, function(data) {
+                        console.log(data)
+                        return process(data);
+                    });
+                },
+                afterSelect: function(item) {
+                    let servingSize = $('#servingSize').val();
+                    computeGrade(item, servingSize);
+                    return item;
+                }
+                // updater: function(item) {
+                //     computeGrade(item);
+                //     return item;
+                // }
+            });
 
             $.ajaxSetup({
                 headers: {
