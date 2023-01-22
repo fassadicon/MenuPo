@@ -6,7 +6,7 @@
 
         <li id="nav-item-logo" class="nav-item">
             <a href="/" class="logo d-flex align-items-center">
-                <img src="{{ asset('admin/assets/img/favicon-32x32.png') }}" alt="">
+                <img src="{{ asset('admin/assets/img/logo-512x512.png') }}" alt="">
                 <span class="d-none d-lg-block">Menu<span id="span-primary">Po</span></span>
             </a>
         </li><!-- End Logo -->

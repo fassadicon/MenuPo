@@ -7,8 +7,8 @@
       <meta name="csrf-token" content="{{ csrf_token() }}" /> 
 
       <!-- Favicons -->
-      <link href="img/favicon/favicon.ico" rel="icon">
-      <link href="img/favicon/apple-touch-icon.ico" rel="apple-touch-icon">
+      <link href="{{ asset('admin/assets/img/logo-512x512.png') }}" rel="icon">
+      <link href="{{ asset('admin/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
       <title>
         Welcome
       </title>
@@ -68,129 +68,393 @@
 
       <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
       <style>
-      .gradient {
-          background: linear-gradient(270deg, #ffc300 0%, white 100%)
-        }
-  
-      .gradient2 {
-          background: linear-gradient(0deg, #ffc300 0%, #ebcc34 100%)
+
+      :root {
+          scroll-behavior: smooth;
+          --primary: #ffc300;
+          --primaryLight: #ffe799;
+          --primaryDark: #e6b000;
+          --secondary: #213559;
+          --secondaryLight: #374968;
       }
-        
+      .gradient {
+        background: linear-gradient(270deg, #ffc300 0%, white 100%)
+      }
+
+      .gradient2 {
+        background: linear-gradient(0deg, #ffc300 0%, #ebcc34 100%)
+      }
+
       .mobile-menu {
       left: -200%;
       transition: 0.5s;
       }
-  
+
       .mobile-menu.active {
       left: 0;
       }
-  
+
       .mobile-menu ul li ul {
       display: none;
       }
-  
+
       .mobile-menu ul li:hover ul {
       display: block;
       }
-  
+
       .blueColor {
-        border-color: #1565c0;
+      border-color: #1565c0;
       }
 
       .landing-image{
-          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('user/assets/img/landing-bg.jpg') }}") no-repeat center center fixed; 
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: cover;
-        }
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('images/school-images/canteen-pic.jpg') }}") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
 
       .swiper-slide {
-        position: relative;
-        display: inline-block; /* <= shrinks container to image size */
-        transition: transform 150ms ease-in-out;
+      position: relative;
+      display: inline-block; /* <= shrinks container to image size */
+      transition: transform 150ms ease-in-out;
       }
 
       .swiper-slide svg {
-        position: absolute;
-        bottom: -0.1rem;
-        left: 0;
+      position: absolute;
+      bottom: -0.1rem;
+      left: 0;
       }
 
       .swiper-logo {
-        position: absolute;
-        bottom: 15px;
-        margin-left: 0;
-        left: 45%;
-        z-index: 100;
+      position: absolute;
+      bottom: 15px;
+      margin-left: 0;
+      left: 45%;
+      z-index: 100;
       }
 
       #to-top {
-        display: inline-block;
-        background-color: #FF9800;
-        width: 50px;
-        height: 50px;
-        text-align: center;
-        border-radius: 4px;
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        transition: background-color .3s, 
-          opacity .5s, visibility .5s;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
+      display: inline-block;
+      background-color: #FF9800;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      border-radius: 4px;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      transition: background-color .3s, 
+        opacity .5s, visibility .5s;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1000;
       }
       #to-top::after {
-        content: "\f077";
-        font-family: FontAwesome;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 2em;
-        line-height: 50px;
-        color: #fff;
+      content: "\f077";
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 2em;
+      line-height: 50px;
+      color: #fff;
       }
       #to-top:hover {
-        cursor: pointer;
-        background-color: #333;
+      cursor: pointer;
+      background-color: #333;
       }
       #to-top:active {
-        background-color: #555;
+      background-color: #555;
       }
       #to-top.show {
-        opacity: 1;
-        visibility: visible;
+      opacity: 1;
+      visibility: visible;
       }
 
       @media (max-width: 768px){
-        .swiper-logo{
-          left: 30%;
-        }
+      .swiper-logo{
+        left: 30%;
+      }
       }
 
-      </style>
+      .mobile-nav{
+      border-top-right-radius: 80px;
+      }
+
+      .button-hero {
+      background: #FBCA1F;
+      font-family: inherit;
+      padding: 0.6em 1.3em;
+      font-weight: 900;
+      font-size: 18px;
+      border: 3px solid black;
+      border-radius: 0.4em;
+      box-shadow: 0.1em 0.1em;
+      }
+
+      .button-hero:hover {
+      transform: translate(-0.05em, -0.05em);
+      box-shadow: 0.15em 0.15em;
+      }
+
+      .button-hero:active {
+      transform: translate(0.05em, 0.05em);
+      box-shadow: 0.
+
+      05em 0.05em;
+      }
+
+
+      .mobile-li:hover {
+        color: var(--primary);
+        margin-right: 0%;
+        background: #f6f9ff;
+        -webkit-transition: background-color 0.3s linear;
+        -moz-transition: background-color 0.3s linear;
+        -o-transition: background-color 0.3s linear;
+        transition: background-color 0.3s linear;
+        -webkit-border-radius: 40px 0px 0px 40px;
+        -moz-border-radius: 40px 0px 0px 40px;
+        border-radius: 40px 0px 0px 40px;
+      }
+
+      .mobile-nav li{
+      -webkit-border-radius: 40px 0px 0px 40px;
+        -moz-border-radius: 40px 0px 0px 40px;
+        border-radius: 40px 0px 0px 40px;
+      }
+
+      .button-sec {
+      background: var(--primary);
+      font-family: inherit;
+      padding: 0.6em 1.3em;
+      font-weight: 500;
+      font-size: 14px;
+      border: 3px solid black;
+      border-radius: 0.4em;
+      box-shadow: 0.1em 0.1em;
+      }
+
+      .button-sec:hover {
+      transform: translate(-0.05em, -0.05em);
+      box-shadow: 0.15em 0.15em;
+      }
+
+      .button-sec:active {
+      transform: translate(0.05em, 0.05em);
+      box-shadow: 0.05em 0.05em;
+      }
+
+      .menu-landing {
+      border-top-right-radius: 80px !important;
+      }
+
+
+      /* WEBKIT RESIZING BROWSER */
+
+      @media only screen and (max-width: 640px) {
+      .menu-landing {
+        transform: scale(0.8, 0.8);
+        -ms-transform: scale(0.8, 0.8); /* IE 9 */
+        -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+        -o-transform: scale(0.8, 0.8); /* Opera */
+        -moz-transform: scale(0.8, 0.8); /* Firefox */
+      }
+      }
+
+      @media only screen and (max-width: 640px) {
+      .section-hero {
+        transform: scale(0.8, 0.8);
+        -ms-transform: scale(0.8, 0.8); /* IE 9 */
+        -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+        -o-transform: scale(0.8, 0.8); /* Opera */
+        -moz-transform: scale(0.8, 0.8); /* Firefox */
+      }
+
+      .school-logo{
+        transform: scale(0.8, 0.8);
+        -ms-transform: scale(0.8, 0.8); /* IE 9 */
+        -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+        -o-transform: scale(0.8, 0.8); /* Opera */
+        -moz-transform: scale(0.8, 0.8); /* Firefox */
+      }
+
+
+      .button-sec{
+        transform: scale(0.8, 0.8);
+        -ms-transform: scale(0.8, 0.8); /* IE 9 */
+        -webkit-transform: scale(0.8, 0.8); /* Safari and Chrome */
+        -o-transform: scale(0.8, 0.8); /* Opera */
+        -moz-transform: scale(0.8, 0.8); /* Firefox */
+      }
+
+      
+      }
+
+      .button-sec{
+        transform: scale(0.9, 0.9);
+        -ms-transform: scale(0.9, 0.9); /* IE 9 */
+        -webkit-transform: scale(0.9, 0.9); /* Safari and Chrome */
+        -o-transform: scale(0.9, 0.9); /* Opera */
+        -moz-transform: scale(0.9, 0.9); /* Firefox */
+      }
+
+      .cart-menu
+      {
+        transform: scale(1.4, 1.4);
+        -ms-transform: scale(1.4, 1.4); /* IE 9 */
+        -webkit-transform: scale(1.4, 1.4); /* Safari and Chrome */
+        -o-transform: scale(1.4, 1.4); /* Opera */
+        -moz-transform: scale(1.4, 1.4); /* Firefox */
+      }
+
+
+      .menu-sticky .button-hero
+      {
+        transform: scale(1.4, 1.4);
+        -ms-transform: scale(1.4, 1.4); /* IE 9 */
+        -webkit-transform: scale(1.4, 1.4); /* Safari and Chrome */
+        -o-transform: scale(1.4, 1.4); /* Opera */
+        -moz-transform: scale(1.4, 1.4); /* Firefox */
+      }
+
+      /* Sticky Menu */
+
+      .menu-sticky {
+        position: absolute;
+        right: 5.8rem;
+        width: 240px;
+      /*   background: red; */
+      }
+
+      .menu-sticky .card {
+        position: fixed;
+        top: calc(100vh - 5rem);
+        padding: 0.5rem;
+        right: 5.4rem;
+        background-color: transparent;
+        padding-bottom: 1.4rem;
+        text-align: center;
+        font-weight: bold;
+        z-index: 999;
+        width: 92%;
+        transform: translateY(-2em);
+        
+      } 
+
+      @media only screen and (max-width: 640px) {
+      .menu-sticky .card{
+        transform: scale(0.6, 0.6);
+        -ms-transform: scale(0.6, 0.6); /* IE 9 */
+        -webkit-transform: scale(0.6, 0.6); /* Safari and Chrome */
+        -o-transform: scale(0.6, 0.6); /* Opera */
+        -moz-transform: scale(0.6, 0.6); /* Firefox */
+      }
+
+      .menu-sticky{
+        left: -1.5rem; 
+        right: 0 !important;
+      }
+
+      .menu-sticky .card{
+        top: calc(100vh - 6rem);
+        right: 6.6rem;
+      }
+      }
+
+      /* preloader */
+
+      #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: var(--color-white);
+      transition: all 0.6s ease-out;
+      width: 100%;
+      height: 100vh;
+      }
+      #preloader:before, #preloader:after {
+      content: "";
+      position: absolute;
+      border: 4px solid #FFC300;
+      border-radius: 50%;
+      -webkit-animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      }
+      #preloader:after {
+      -webkit-animation-delay: -0.5s;
+      animation-delay: -0.5s;
+      }
+
+      @-webkit-keyframes animate-preloader {
+      0% {
+      width: 10px;
+      height: 10px;
+      top: calc(50% - 5px);
+      left: calc(50% - 5px);
+      opacity: 1;
+      }
+      100% {
+      width: 72px;
+      height: 72px;
+      top: calc(50% - 36px);
+      left: calc(50% - 36px);
+      opacity: 0;
+      }
+      }
+
+      @keyframes animate-preloader {
+      0% {
+      width: 10px;
+      height: 10px;
+      top: calc(50% - 5px);
+      left: calc(50% - 5px);
+      opacity: 1;
+      }
+      100% {
+      width: 72px;
+      height: 72px;
+      top: calc(50% - 36px);
+      left: calc(50% - 36px);
+      opacity: 0;
+      }
+      }
+
+
+      /* Cart add minus remove */
+      .cart-sum-top,
+      .card-sum-bot{
+        border-radius: 14px;
+      }
+
+
+
+
+
+
+
+
+</style>
     </head>
     <body class="bg-white">
 
       {{-- Sweet alert for non-livewire components --}}
       {{-- @include('sweetalert::alert') --}}
     
-      <header class="fixed top-0 z-50 h-20 w-screen sm:h-15 bg-primary">
+      <header class="fixed top-0 z-50 h-20 w-screen sm:h-15 bg-gradient-to-l from-yellow-100 via-yellow-300 to-yellow-500">
         <nav class="relative px-2">
           
           <div class="container mx-auto flex justify-between space-y-6 items-center">
               <a class="toggleColour text-secondary no-underline hover:no-underline font-bold text-2xl flex lg:text-4xl" 
               href="#"
               >
-              <img class="h-10 fill-current align-middle" width="50.502" src="{{ asset('storage/admin/school-images/logo-32X32.png') }}">
-              <img class="h-12 fill-current align-left" width="50.502" src="{{ asset('storage/admin/school-images/school-logo.png') }}">
+              <img class="h-10 mt-4 fill-current align-middle" width="50.502" src="{{ asset('images/school-images/logo-512X512.png') }}">
+              <img class="h-12 mt-4 fill-current align-left" width="50.502" src="{{ asset('images/school-images/school-logo.png') }}">
             </a>
-             
-    
-              <ul class="hidden md:flex space-x-6 leading-9 font-bold text-secondary">
-                <li><a href="/user/home" class="hover:text-white">Home</a></li> 
-                <li><a href="/user/menu-landing" class="hover:text-white">Menu</a></li>
-              </ul>
+
+     
 
 
     
@@ -223,48 +487,15 @@
                 </ul>
               </li> --}}
             </div>
-            <button id="mobile-icon" onclick="changeMyColor()" class="md:hidden w-12 h-12 mx-2 border-4 rounded-full hover:border-blue-600">
-              <img src="{{ asset('storage/admin/user-home/parentImage.png') }}" class="rounded-full"> <i onclick="changeIcon(this)" class="fa-solid fa-bars invisible"></i>
-            </button> 
+            <button class="button-sec"><a href="/user/home" class="block uppercase">Back</a></li></ul>
             
             </div>
           
           <!-- Mobile menu -->
           <div class="md:hidden flex justify-center mt-3 w-full">
-            <div id="mobile-menu" class="mobile-menu absolute z-50 top-23 w-3/4"> <!-- add hidden here later -->
-              <ul class="bg-gray-100 shadow-lg leading-9 font-bold h-screen">
-                <li class="border-b-2 border-gray-200 hover:bg-primary hover:text-white pl-4 flex py-2 px-2"><a href="#" class="block pl-7 uppercase"><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-12 h-12 rounded-full border-4 border-gray-50 mr-4 inline">Sample</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="{{ url('test') }}" class="block pl-7"><i class="fa-solid fa-house-user fa-fw text-primary mr-4 group-hover:text-white"></i></i>Home</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="/users/menu" class="block pl-7"><i class="fa-solid fa-bars fa-fw text-primary mr-4 group-hover:text-white"></i></i>Menu</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white">
-                  <a href="#" class="block pl-11"><i class="fa-solid fa-school fa-fw text-primary mr-4 group-hover:text-white"></i>Student<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
-                  
-                  <!-- Submenu starts -->
-                  <ul class="bg-white text-gray-800 w-full">
-                    {{-- @foreach ($studs as $student)
-                      <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="/users/health/{{$student->id}}><img src="{{ asset('user/assets/img/avatar/user-dp.png') }}" class="w-8 h-8 rounded-full border-4 border-primary mr-4 inline">{{$student->stud_FN}}</a></li>
-                    @endforeach --}}
-                  </ul>
-                  <!-- Submenu ends -->
-                </li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white">
-                  <a href="#" class="block pl-11"><i class="fa-solid fa-user fa-fw text-primary mr-4 group-hover:text-white"></i>Account<i class="fa-solid fa-chevron-down fa-2xs pt-4"></i></a> 
-                  
-                  <!-- Submenu starts -->
-                  <ul class="bg-white text-gray-800 w-full">
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="/users/user-account">Account Info</a></li>
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="#">Dashboard</a></li>
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="#">Billing</a></li>
-                    <li class="text-sm leading-8 font-normal hover:bg-slate-200"><a class="block pl-16" href="#">Forms</a></li>
-                  </ul>
-                  <!-- Submenu ends -->
-                </li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-gear fa-fw text-primary mr-4 group-hover:text-white"></i>Settings</a></li>
-                <li class="group border-b-2 border-white hover:bg-primary hover:text-white pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-address-book fa-fw text-primary mr-4 group-hover:text-white"></i>Contact</a></li>
-                <li class="group border-b-2 border-white hover:bg-red-600 hover:text-white pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-right-from-bracket fa-fw text-red-600 mr-4 group-hover:text-white"></i>Log Out</a></li>
-              </ul> 
-              
-              </div>
+             
+                
+
           </div>
     
         </nav>
@@ -277,9 +508,9 @@
   
   
       <!--Footer-->
-    <footer class="flex flex-col items-center justify-between p-10 border-t-4 border-t-primary bg-white sm:flex-row">
+      <footer class="footer flex flex-col items-center justify-between p-10 border-t-4 border-t-primary bg-white sm:flex-row">
     
-        <p class="text-sm text-gray-600">© 2022 School Name | <a href="#" class="text-blue-600">Terms of Use</a> | <a href="#" class="text-blue-600">Privacy Statement</a></p>
+        <p class="text-sm text-gray-600">© 2022 School Name | <a href="/terms-and-conditions" class="text-primary">Terms of Use</a> | <a href="/privacy-statement" class="text-primary">Privacy Statement</a></p>
     
         <div class="flex -mx-2">
           <p class="text-sm text-gray-600">Contact Us at: 09613326890 (email: sample@gmail.com) or visit us at: School Address
