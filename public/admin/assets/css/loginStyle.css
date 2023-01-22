@@ -584,4 +584,46 @@ footer .bottom-details .bottom_text{
   font-weight: 600;
 }
 
+/* Dropdown adjustment */
+.dropdown-menu{
+  background-color: var(--primary) !important;
+  padding: 4px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
 
+}
+
+@media only screen and (max-width: 640px) {
+ .button-sec{
+  width: 300px !important;
+}
+.dropdown-menu{
+  width: 300px !important;
+}
+
+}
+
+
+.dropdown-item{
+  color: black !important;
+  text-transform: capitalize !important;
+}
+
+.dropdown-menu:hover{
+  background-color: var(--primaryLight)!important;
+}
+
+.dropdown-item:hover{
+  background-color: var(--primaryLight)!important;
+}
+
+.upper-container{
+  top: 6.5em;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 999;
+  width: fit-content;
+  
+}
