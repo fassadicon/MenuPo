@@ -156,25 +156,25 @@
                         extend: "csv",
                         text: "",
                         className: "fred bi bi-filetype-csv",
-                        title: "Food Items"
+                        title: "Completed Orders"
                     },
                     {
                         extend: "excel",
                         text: "",
                         className: "fred bi bi bi-filetype-xlsx",
-                        title: "Food Items"
+                        title: "Completed Orders"
                     },
                     {
                         extend: "pdf",
                         text: "",
                         className: "fred bi bi-filetype-pdf",
-                        title: "Food Items"
+                        title: "Completed Orders"
                     },
                     {
                         extend: "print",
                         text: "",
                         className: "fred bi bi-printer",
-                        title: "Food Items"
+                        title: "Completed Orders"
                     },
                     {
                         extend: "colvis",
