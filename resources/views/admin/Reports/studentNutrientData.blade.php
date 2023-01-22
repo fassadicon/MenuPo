@@ -345,6 +345,7 @@
                         <button class="btn btn-warning" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                             data-bs-dismiss="modal">Back</button>
                         <button class="btn btn-primary" id="indivBtn">Generate</button>
+                        <button class="btn btn-primary" id="indivDownload">Download</button>
                     </div>
                 </div>
             </div>
@@ -533,6 +534,12 @@
                         console.log(error.responseJSON.message);
                     },
                 });
+            })
+
+            //Individual Download
+            $('#indivDownload').click(function() {
+                var fullName = $('#studentName').val();
+                window.location.href = "nutrient/generateByIndiv/download/"+fullName;
             })
 
             $('.sectionBtn').click(function() {
