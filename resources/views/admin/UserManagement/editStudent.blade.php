@@ -165,23 +165,13 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-                {{-- recoveryEmail --}}
-                <div class="mb-6">
-                    <label for="BMI" class="inline-block text-lg mb-2"> BMI</label>
-                    <input type="number" class="border border-gray-200 rounded p-2 w-full" name="BMI"
-                        placeholder="" value="{{ $student->bmi->Q1BMI }}" />
-
-                    @error('BMI')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
                 {{-- Image --}}
                 <div class="mb-6">
                     <label for="image" class="inline-block text-lg mb-2">
                         Image
                     </label>
                     <input type="file" class="border border-gray-200 rounded p-2 w-full" name="image" />
-                    <img src="{{ $student->image ? asset('storage/' . $student->image) : asset('admin/assets/img/no-image.png') }}"
+                    <img src="{{ $student->image ? asset('storage/' . $student->image) : asset('admin/userNoImage.png') }}"
                         alt="" width="300px" height="300px" />
                     @error('image')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

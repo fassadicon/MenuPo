@@ -27,11 +27,11 @@ class AdminController extends Controller
             abort(404);
         }
         // Get Admin Accounts
-        $admins = Admin::with('user')->get();
+        $admins = Admin::with('user')->get()->except([auth()->id(), 1]);
         foreach ($admins as $admin) {
             // $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
             $admin->created_by == null ? $admin['created_by_name'] = null : $admin['created_by_name'] = Admin::where('id', $admin->created_by)->first();
-            $admin->updated_by == null ? $admin['updated_by_name'] = 'N/A' : $admin['updated_by_name'] = Admin::where('id', $admin->updated_by)->first();
+            $admin->updated_by == null ? $admin['updated_by_name'] = null : $admin['updated_by_name'] = Admin::where('id', $admin->updated_by)->first();
             $admin['created_at_formatted'] = Carbon::parse($admin->created_at)->format('M d, Y');
             $admin['updated_at_formatted'] = Carbon::parse($admin->updated_at)->format('M d, Y');
         }

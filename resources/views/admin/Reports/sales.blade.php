@@ -1,7 +1,7 @@
 <x-admin.layout :notifs='$adminNotifs'>
     <section class="survey-card">
         <div class="header-page">
-            <p><i class="fab fa-nutritionix fa-xl"></i>Students' Nutrient Data Intake</p>
+            <p><i class="fab fa-nutritionix fa-xl"></i>Sales Reports</p>
         </div>
         <hr class="mx-4 my-4">
         {{-- Tabs --}}

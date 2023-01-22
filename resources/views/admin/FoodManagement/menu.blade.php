@@ -1144,8 +1144,10 @@
                     $("#statusUpdatePermanent").prop("checked", false);
                     $("#statusUpdateTemporary").prop("checked", true);
                     $('#updateDateYes').prop("checked", false);
-                    $('#updateDateNo').prop("checked", false);
+                    $('#updateDateNo').prop("checked", true);
                 } else {
+                    $('#currentDisplayedAt').val('');
+                    $('#currentRemovedAt').val('');
                     $("#statusUpdatePermanent").prop("checked", true);
                     $("#statusUpdateTemporary").prop("checked", false);
                 }
@@ -1155,6 +1157,7 @@
         $('#updateMenuModal').on("click", function() {
             // - Add Stock if wanted
             if ($('#addStockUpdateNo').is(':checked')) {
+                $('#updateMenuAddStock').val('');
                 $('#updateMenuAddStock').prop('disabled', true);
             } else {
                 $('#updateMenuAddStock').prop('disabled', false);
@@ -1166,6 +1169,7 @@
                 $('#updateDateYes').prop("checked", false);
                 $('#updateDateNo').prop("checked", false);
             } else {
+              
                 // If user want to change date
                 if ($('#updateDateNo').is(':checked')) {
                     $('#updateDisplayedAt').prop('disabled', true);
@@ -1184,7 +1188,7 @@
             let status = $('input[name="statusUpdate"]:checked').val();
             let displayed_at = $('#updateDisplayedAt').val();
             let removed_at = $('#updateRemovedAt').val();
-
+            // if ()
             $.ajax({
                 type: "POST",
                 url: "{{ route('menu.updateMenuItem') }}",

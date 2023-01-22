@@ -79,11 +79,20 @@ class StudentController extends Controller
 
     public function store(StoreStudentRequest $request)
     {
-        $BMI = Bmi::create([
-            'Q1Height' => $request->height,
-            'Q1Weight' => $request->weight,
-            'Q1BMI' => round($request->weight / pow($request->height / 100, 2), 2)
-        ]);
+        if ($request->height != null && $request->weight != null) {
+            $BMI = Bmi::create([
+                'Q1Height' => $request->height,
+                'Q1Weight' => $request->weight,
+                'Q1BMI' => round($request->weight / pow($request->height / 100, 2), 2)
+            ]);
+        } else {
+            $BMI = Bmi::create([
+                'Q1Height' => null,
+                'Q1Weight' => null,
+                'Q1BMI' => null
+            ]);
+        }
+
         $student = $request->safe()->merge([
             'parent_id' => Guardian::where('fullName', $request->parent)->get(['id'])->value('id'),
             'status' => 1,

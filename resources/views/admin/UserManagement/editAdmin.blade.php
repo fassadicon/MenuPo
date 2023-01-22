@@ -104,15 +104,7 @@
                             @enderror
                         </div>
                         {{-- Sex --}}
-                        <div class="mb-6">
-                            <label for="address" class="inline-block text-lg mb-2">Address</label>
-                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="address"
-                                placeholder="Example: M, F" value="{{ $admin->address }}" />
-
-                            @error('sex')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
+                        
                     </div>
 
                 </div>
@@ -129,6 +121,15 @@
                     <img src="{{ $admin->image ? asset('storage/' . $admin->image) : asset('storage/admin/userNoImage.png') }}"
                         alt="" width="300px" height="300px" />
                     @error('image')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-6">
+                    <label for="address" class="inline-block text-lg mb-2">Address</label>
+                    <input type="text" class="border border-gray-200 rounded p-2 w-full" name="address"
+                        placeholder="Example: M, F" value="{{ $admin->address }}" />
+
+                    @error('sex')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>

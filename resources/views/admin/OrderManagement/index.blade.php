@@ -34,7 +34,8 @@
                             <input type="text" id="parentName" class="border border-gray-200 rounded p-2 w-full"
                                 readonly disabled>
                             <label for="totalAmount">Total Amount: </label>
-                            <input type="text" id="totalAmount" class="border border-gray-200 rounded p-2 w-full">
+                            <input type="text" id="totalAmount" class="border border-gray-200 rounded p-2 w-full"
+                                readonly disabled>
                         </div>
                         <div class="col-12 table-responsive">
                             <table class="table table-borderless" width="100%" cellspacing="0">
@@ -145,49 +146,113 @@
             url: "{{ url('admin/orders/scanner') }}" + '/' + id + '/view',
             // data: content;
             success: function(data) {
-                var trHTML1 = '';
-                var total = 0.00;
-                $('#purchaseTable').html('');
-                // $('#orderTable').html('');
-                console.log(data);
-                if (data.purchase.length == 0) {
+                // var trHTML1 = '';
+                // var total = 0.00;
+                // $('#purchaseTable').html('');
+                // // $('#orderTable').html('');
+                // console.log(data);
+                // if (data.purchase.length == 0) {
+                //     Swal.fire({
+                //         title: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
+                //         icon: "warning",
+                //         html: '<a href="/admin/pos/' + id +
+                //             '"class=\'btn btn-success\'>Yes</a>',
+                //         showCancelButton: true,
+                //         showConfirmButton: false
+                //     });
+                // }
+                // $.each(data.purchase, function() {
+                //     // $('#purchaseID').val(this.id);
+                //     $('#parentName').val(this.parent.firstName + ' ' + this.parent
+                //         .lastName);
+                //     $('#studentName').val(this.student.firstName + ' ' + this.student
+                //         .lastName);
+                //     total += this.totalAmount;
+                //     // console.log(this.id)
+                //     $.each(this.orders, function(i, value) {
+                //         trHTML1 += '<tr><td>' + value.food.name +
+                //             '</td><td>' + value.quantity +
+                //             '</td><td>' + value.amount + '</td></tr>';
+                //     });
+                // });
+                // $('#totalAmount').val('PHP ' + total);
+                // $('#purchaseTable').append(trHTML1);
+
+                $('#purchaseID').val('');
+                $('#parentName').val('');
+                $('#studentName').val('');
+                $('#totalAmount').val('');
+                $('#purchaseTable').children('tr').remove();
+                if (data.code == 1) {
+                    var trHTML1 = '';
+                    var total = 0.00;
+                    $('#purchaseTable').html('');
+                    // $('#orderTable').html('');
+                    console.log(data);
+                    if (data.purchase.length == 0) {
+                        $('#studentID').val('');
+                        Swal.fire({
+                            title: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
+                            icon: "warning",
+                            html: '<a href="/admin/pos/' + id +
+                                '"class=\'btn btn-success\'>Yes</a>',
+                            showCancelButton: true,
+                            showConfirmButton: false
+                        });
+                        $('.completeBtn').prop("disabled", true);
+                    } else {
+                        $.each(data.purchase, function() {
+                            // $('#purchaseID').val(this.id);
+                            $('#parentName').val(this.parent.firstName + ' ' + this.parent
+                                .lastName);
+                            $('#studentName').val(this.student.firstName + ' ' + this
+                                .student
+                                .lastName);
+                            total += this.totalAmount;
+                            // console.log(this.id)
+                            $.each(this.orders, function(i, value) {
+                                trHTML1 += '<tr><td>' + value.food.name +
+                                    '</td><td>' + value.quantity +
+                                    '</td><td>' + value.amount + '</td></tr>';
+                            });
+                        });
+                        $('#totalAmount').val('PHP ' + total);
+                        $('#purchaseTable').append(trHTML1);
+                        $('.completeBtn').prop("disabled", false);
+                    }
+
+                } else if (data.code == 2) {
+                    $('#studentID').val('');
                     Swal.fire({
-                        title: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
+                        title: 'Student does not exist!',
                         icon: "warning",
-                        html: '<a href="/admin/pos/' + id +
-                            '"class=\'btn btn-success\'>Yes</a>',
-                        showCancelButton: true,
                         showConfirmButton: false
                     });
-                }
-                $.each(data.purchase, function() {
-                    // $('#purchaseID').val(this.id);
-                    $('#parentName').val(this.parent.firstName + ' ' + this.parent
-                        .lastName);
-                    $('#studentName').val(this.student.firstName + ' ' + this.student
-                        .lastName);
-                    total += this.totalAmount;
-                    // console.log(this.id)
-                    $.each(this.orders, function(i, value) {
-                        trHTML1 += '<tr><td>' + value.food.name +
-                            '</td><td>' + value.quantity +
-                            '</td><td>' + value.amount + '</td></tr>';
+                    $('.completeBtn').prop("disabled", true);
+                } else if (data.code == 3) {
+                    Swal.fire({
+                        title: 'Please scan QR or input ID',
+                        icon: "warning",
+                        showConfirmButton: false
                     });
-                });
-                $('#totalAmount').val('PHP ' + total);
-                $('#purchaseTable').append(trHTML1);
+                    $('.completeBtn').prop("disabled", true);
+                }
             },
             error: function(error) {
+                // Swal.fire({
+                //     title: 'The student have no order/s for today. Do you want to proceed to Walk-in Order?',
+                //     text: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
+                //     icon: "warning",
+                //     html: '<button type="button" role="button" tabindex="0" class="bg-dark text-white rounded py-2 px-4 hover:bg-black">' +
+                //         'No' + '</button>' +
+                //         '<button type="button" role="button" tabindex="0" class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">' +
+                //         'Yes' + '</button>',
+                //     showCancelButton: true,
+                //     showConfirmButton: false
+                // });
                 Swal.fire({
-                    title: 'The student have no order/s for today. Do you want to proceed to Walk-in Order?',
-                    text: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
-                    icon: "warning",
-                    html: '<button type="button" role="button" tabindex="0" class="bg-dark text-white rounded py-2 px-4 hover:bg-black">' +
-                        'No' + '</button>' +
-                        '<button type="button" role="button" tabindex="0" class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">' +
-                        'Yes' + '</button>',
-                    showCancelButton: true,
-                    showConfirmButton: false
+                    title: 'Invalid QR Code',
+                    icon: "warning"
                 });
             }
         });
@@ -244,6 +309,12 @@
             url: "{{ url('admin/orders/scanner') }}" + '/' + id + '/view',
             // data: content;
             success: function(data) {
+              
+                $('#purchaseID').val('');
+                $('#parentName').val('');
+                $('#studentName').val('');
+                $('#totalAmount').val('');
+                $('#purchaseTable').children('tr').remove();
                 if (data.code == 1) {
                     var trHTML1 = '';
                     var total = 0.00;
@@ -251,6 +322,7 @@
                     // $('#orderTable').html('');
                     console.log(data);
                     if (data.purchase.length == 0) {
+                        $('#studentID').val('');
                         Swal.fire({
                             title: "The student have no order/s for today. Do you want to proceed to Walk-in Order?",
                             icon: "warning",
@@ -282,17 +354,20 @@
                     }
 
                 } else if (data.code == 2) {
+                    $('#studentID').val('');
                     Swal.fire({
                         title: 'Student does not exist!',
                         icon: "warning",
                         showConfirmButton: false
                     });
+                    $('.completeBtn').prop("disabled", true);
                 } else if (data.code == 3) {
                     Swal.fire({
                         title: 'Please scan QR or input ID',
                         icon: "warning",
                         showConfirmButton: false
                     });
+                    $('.completeBtn').prop("disabled", true);
                 }
             },
             error: function(error) {

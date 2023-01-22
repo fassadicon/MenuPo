@@ -44,7 +44,7 @@
                     <div class="col-7">
                         <div class="mb-6">
                             <label for="section" class="inline-block text-lg mb-2">Section</label>
-                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="section"
+                            <input type="text" id="section" class="border border-gray-200 rounded p-2 w-full" name="section"
                                 placeholder="Example: Sampaguita, Rosas, etc." value="{{ old('section') }}" />
 
                             @error('section')
@@ -197,32 +197,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     <script src=""></script>
     <script type="text/javascript">
-        var routeFindPhilFCT = "{{ url('/autocomplete-search-parents') }}";
-        $('#parent').typeahead({
-            hint: true,
-            highlight: true,
-            minLength: 1,
-            items: 5,
-            source: function(query, process) {
-                return $.get(routeFindPhilFCT, {
-                    query: query
-                }, function(data) {
-                    return process(data);
-                });
-            },
-        });
+        $('document').ready(function() {
+            var routeFindPhilFCT = "{{ url('/autocomplete-search-parents') }}";
+            $('#parent').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1,
+                items: 5,
+                source: function(query, process) {
+                    return $.get(routeFindPhilFCT, {
+                        query: query
+                    }, function(data) {
+                        console.log(data);
+                        return process(data);
+                    });
+                },
+            });
 
-        var count = 0;
-        $('#parent').on('blur', function() {
-            $.get("{{ url('admin/guardians/') }}" + '/' + $('#parent').val() + '/exists',
-                function(data) {
-                    if (data == '' && count % 2 == 0) {
-                        Swal.fire(
-                            'Invalid Parent Name!'
-                        );
-                        count++;
-                    }
-                });
+            var routeFindSection = "{{ url('/autocomplete-search-sections') }}";
+            $('#section').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1,
+                items: 5,
+                source: function(query, process) {
+                    return $.get(routeFindSection, {
+                        query: query
+                    }, function(data) {
+                        return process(data);
+                    });
+                },
+            });
+
+            // var count = 0;
+            // $('#parent').on('blur', function() {
+            //     $.get("{{ url('admin/guardians/') }}" + '/' + $('#parent').val() + '/exists',
+            //         function(data) {
+            //             if ((data == '' || data == null) && count % 3 == 0) {
+            //                 Swal.fire(
+            //                     'Invalid Parent Name!'
+            //                 );
+            //                 count++;
+            //             }
+            //         });
+            // })
         })
     </script>
 </x-admin.layout>

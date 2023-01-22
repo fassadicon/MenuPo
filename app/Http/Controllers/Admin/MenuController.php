@@ -437,8 +437,15 @@ class MenuController extends Controller
 
         $foodID = Menu::where('id', $request->id)->get(['food_id'])->value('food_id');
         $addedStock = $request->addedStock;
+        $prevStock = Food::where('id', $foodID)->get(['stock'])->value('stock');
+        
+        if ($addedStock == '') {
+            $addedStock = 0;
+            $newAddedStock = $prevStock;
+        }
+
         if ($addedStock != NULL && $addedStock > 0) {
-            $prevStock = Food::where('id', $foodID)->get(['stock'])->value('stock');
+
             $newAddedStock = $prevStock + $addedStock;
             Food::where('id', $foodID)->update(['stock' => $newAddedStock]);
             activity('Menu')
