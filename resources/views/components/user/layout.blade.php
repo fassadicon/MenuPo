@@ -452,7 +452,7 @@
               <a class="toggleColour text-secondary no-underline hover:no-underline font-bold text-2xl flex lg:text-4xl" 
               href="#"
               >
-              <img class="h-10 mt-4 fill-current align-middle" width="50.502" src="{{ asset('images/school-images/logo-512X512.png') }}">
+              <img class="h-10 mt-4 fill-current align-middle" width="50.502" src="{{ asset('images/school-images/logo-512x512.png') }}">
               <img class="h-12 mt-4 fill-current align-left" width="50.502" src="{{ asset('images/school-images/school-logo.png') }}">
             </a>
              
@@ -513,7 +513,7 @@
                   <i class="fa-solid fa-chevron-down fa-2xs pt-3 hidden"></i>
                   <!-- Submenu starts -->
                   <ul class="absolute bg-white p-3 w-52 top-6 transform scale-0 group-hover:scale-100 transition duration-150 ease-in-out origin-top shadow-lg z-50 right-0">
-                    <li class="text-sm hover:bg-slate-100 leading-8"><a href="/user/user-account">Account Info</a></li>
+                    <li class="text-sm hover:bg-slate-100 leading-8"><a href="/user/user-account">Account Profile</a></li>
                     {{-- @php
                         $currentTime = \Carbon\Carbon::now('Asia/Singapore')->toTimeString();
                         if($currentTime > '12:42:00' && $currentTime < '12:44:00'){
@@ -521,12 +521,9 @@
                         }
                     @endphp --}}
                     @if ($isSurveyAvail != 1)
-                      <li><a href="/users/survey">Survey</a></li>
+                      <li class="text-sm hover:bg-slate-100 leading-8"><a href="/users/survey">Survey</a></li>
                     @endif
                     {{-- <li><a href="/users/survey">Survey</a></li> --}}
-                    <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Billing</a></li>
-                    <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Forms</a></li>
-                    <li class="text-sm hover:bg-slate-100 leading-8"><a href="#">Settings</a></li>
                     <li class="text-sm hover:bg-slate-100 leading-8 mt-6"><a href="{{ route('logout') }}" class="bg-secondaryLight px-5 py-1 rounded-3xl font-bold hover:bg-red-600 text-white hidden md:flex" onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -635,7 +632,7 @@
       <!--Footer-->
     <footer class="footer flex flex-col items-center justify-between p-10 border-t-4 border-t-primary bg-white sm:flex-row">
     
-        <p class="text-sm text-gray-600">© 2022 Nuestra Seniora De Aranzazu Parochial School | <a href="/terms-and-conditions" class="text-primary">Terms of Use</a> | <a href="/privacy-statement" class="text-primary">Privacy Statement</a></p>
+        <p class="text-sm text-gray-600">@ 2022 MenuPo | <a href="/terms-and-conditions" class="text-primary">Terms of Use</a> | <a href="/privacy-statement" class="text-primary">Privacy Statement</a></p>
     
         <div class="flex -mx-2">
           <p class="text-sm text-gray-600">Contact Us at: 09613326890 (email: menupo22@gmail.com) or visit us at: San Mateo, Philippines
