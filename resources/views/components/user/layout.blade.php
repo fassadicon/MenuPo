@@ -611,7 +611,7 @@
                 </li>
                 <li class="mobile-li group  hover:text-primary py-1 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-gear fa-fw text-white mr-4 group-hover:text-primary"></i>Settings</a></li>
                 <li class="mobile-li group  hover:text-primary py-1 pl-4"><a href="#" class="block pl-7"><i class="fa-solid fa-address-book fa-fw text-white mr-4 group-hover:text-primary"></i>Contact</a></li>
-                <li class="mobile-li group  hover:text-primary py-1 pl-4"><a hhref="{{ route('logout') }}" class="block pl-7" onclick="event.preventDefault();
+                <li class="mobile-li group  hover:text-primary py-1 pl-4"><a href="{{ route('logout') }}" class="block pl-7" onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();"><i class="fa-solid fa-right-from-bracket fa-fw text-red-600 mr-4 group-hover:text-primary"></i>{{ __('Logout') }}</a><form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
               </form></li>
