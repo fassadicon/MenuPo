@@ -61,7 +61,7 @@ use App\Http\Controllers\Admin\StudentNutrientReportController;
 
 Route::get('/', function () {
     // return Activity::where()->last();
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/linkstorage', function () {
@@ -294,6 +294,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('/reports/nutrient/generateByIndiv', [GenerateReportController::class, 'indiv']);
     Route::post('/reports/nutrient/generate', [GenerateReportController::class, 'section']);
     Route::post('/reports/nutrient/generateByGrade', [GenerateReportController::class, 'grade']);
+
+    Route::get('/reports/nutrient/generateByIndiv/download/{name}', [DownloadReportsController::class, 'download_individual_report']);
     // Route::patch('/reports/update/{id}', [MenuplannerController::class, 'update'])->name('calendar.update');
 
     // Logs

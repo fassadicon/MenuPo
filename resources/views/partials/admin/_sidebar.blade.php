@@ -19,19 +19,15 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/admin/orders/scanner" title="Scan Student QR Code here" id="sidebarLink">
+            <a class="nav-link collapsed" href="/admin/orders/scanner" title="Scan Student QR Code here"
+                id="sidebarLink">
                 <i class="fa-solid fa-qrcode"></i>
                 <span>Scanner</span>
             </a>
         </li><!-- End Scanner Nav -->
 
-        
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/admin/menuplan/" title="Scan Student QR Code here" id="sidebarLink">
-              <i class="fa-solid fa-qrcode"></i>
-              <span>Menu Planner</span>
-          </a>
-      </li><!-- End Scanner Nav -->
+
+
 
         {{-- <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -209,31 +205,32 @@
                 <i class="fa-solid fa-border-all"></i> Account Management <i class="fas fa-chevron"></i>
             </a>
             <ul class="dropdown-menu">
-              @if (auth()->user()->role == 2)
+                @if (auth()->user()->role == 2)
                     <li class="nav-item">
                         <a href="/admin/admins" class="dropdown-link nav-link collapsed" id="sidebarLink">
                             <i class="fas fa-user-cog"></i></i><span>Admin</span>
                         </a>
                     </li>
-                    @endif
+                @endif
+                <li class="nav-item">
+                    <a href="/admin/guardians" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                        <i class="fas fa-user-alt"></i><span>Parents</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/students" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                        <i class="fas fa-user-graduate"></i><span>Students</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/imports" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                        <i class="fa-solid fa-people-roof"></i><span>Mass Creation</span>
+                    </a>
+                </li>
+                @if (auth()->user()->role == 2)
                     <li class="nav-item">
-                        <a href="/admin/guardians" class="dropdown-link nav-link collapsed" id="sidebarLink">
-                            <i class="fas fa-user-alt"></i><span>Parents</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/admin/students" class="dropdown-link nav-link collapsed" id="sidebarLink">
-                            <i class="fas fa-user-graduate"></i><span>Students</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/admin/imports" class="dropdown-link nav-link collapsed" id="sidebarLink">
-                            <i class="fa-solid fa-people-roof"></i><span>Mass Creation</span>
-                        </a>
-                    </li>
-                    @if (auth()->user()->role == 2)
-                    <li class="nav-item">
-                        <a href="/admin/imports/adminAccounts" class="dropdown-link nav-link collapsed" id="sidebarLink">
+                        <a href="/admin/imports/adminAccounts" class="dropdown-link nav-link collapsed"
+                            id="sidebarLink">
                             <i class="fas fa-users-cog"></i><span>Mass Admin Creation</span>
                         </a>
                     </li>
@@ -260,9 +257,15 @@
                 <span>Food Items</span>
             </a>
         </li><!-- End Profile Page Nav -->
-
         <li class="nav-item">
-            <a href="/admin/menu" class="nav-link collapsed" href="pages-faq.html" title="Menu Management" id="sidebarLink">
+            <a class="nav-link collapsed" href="/admin/menuplan/" title="Scan Student QR Code here" id="sidebarLink">
+                <i class="fa-solid fa-qrcode"></i>
+                <span>Menu Planner</span>
+            </a>
+        </li><!-- End Scanner Nav -->
+        <li class="nav-item">
+            <a href="/admin/menu" class="nav-link collapsed" href="pages-faq.html" title="Menu Management"
+                id="sidebarLink">
                 <i class="fa-solid fa-bars-progress"></i>
                 <span>Menu Management</span>
             </a>
@@ -271,13 +274,15 @@
         <li class="nav-heading">Order Management</li>
 
         <li class="nav-item">
-            <a href="/admin/orders/pendings" class="nav-link collapsed" title="For Orders to be Claimed Today" id="sidebarLink">
+            <a href="/admin/orders/pendings" class="nav-link collapsed" title="For Orders to be Claimed Today"
+                id="sidebarLink">
                 <i class="fa-solid fa-person-circle-exclamation"></i>
                 <span>To Claim Orders</span>
             </a>
         </li><!-- End Paid/To Claim Nav -->
         <li class="nav-item">
-            <a href="/admin/orders/paymentConfirmationTable" class="nav-link collapsed" title="Unpaid Orders" id="sidebarLink">
+            <a href="/admin/orders/paymentConfirmationTable" class="nav-link collapsed" title="Unpaid Orders"
+                id="sidebarLink">
                 <i class="fas fa-money-bill"></i>
                 <span>Pending Payment Orders</span>
             </a>
@@ -298,14 +303,16 @@
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
-            <a href="/admin/reports/compositions" class="nav-link collapsed" title="Most Bought Items in the Canteen" id="sidebarLink">
+            <a href="/admin/reports/compositions" class="nav-link collapsed" title="Most Bought Items in the Canteen"
+                id="sidebarLink">
                 <i class="fas fa-chart-pie"></i>
                 <span>Order Composition</span>
             </a>
         </li><!-- End Completed Orders Nav -->
         <li class="nav-item">
-            <a href="/admin/reports/nutrientConsumption" class="nav-link collapsed" title="Nutritional Reports" id="sidebarLink">
-              <i class="fas fa-chevron"></i></i>
+            <a href="/admin/reports/nutrientConsumption" class="nav-link collapsed" title="Nutritional Reports"
+                id="sidebarLink">
+                <i class="fas fa-chevron"></i></i>
                 <span>Nutritional Report</span>
             </a>
         </li><!-- End Completed Orders Nav -->

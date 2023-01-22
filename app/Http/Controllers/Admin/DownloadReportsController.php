@@ -3921,4 +3921,141 @@ class DownloadReportsController extends Controller
 
         return redirect()->back();
     }
+
+    public function download_individual_report(Request $request, $name){
+        $findSection = $name;
+
+        $BMIstatus = 0;
+
+        $Q1BMI = Bmi::whereHas('student', function ($query) use ($findSection) {
+            $query->where('section', $findSection);
+        })->get(['Q1BMI'])->value('Q1BMI');
+
+        if ($Q1BMI < 18.5) {
+            $BMIstatus = 'Underweight';
+        } else if ($Q1BMI >= 18.5 && $Q1BMI < 25) {
+            $BMIstatus = 'Normal weight';
+        } else if ($Q1BMI >= 25 && $Q1BMI < 29.9) {
+            $BMIstatus = 'Overweight';
+        } else if ($Q1BMI >= 30) {
+            $BMIstatus = 'Obese';
+        }
+
+        $caloriesConsumed = round((Purchase::whereHas('student', function ($query) use ($findSection) {
+            $query->where('fullName', $findSection);
+        })->avg('totalKcal') * 100) / 1778, 1);
+        $caloriesConsumedLeft = 100 - $caloriesConsumed;
+
+
+        $html = '
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <style>
+            h2{
+                text-align: center;
+            }
+            th{
+                width: 100px;
+            }
+            tr{
+                text-align: center;
+            }
+            td{
+                height: 40px;
+            }
+            table{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+              }
+        </style>
+        <body>
+           
+            <div>
+                <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
+                <h2> <u> Individual Report </u> </h2>
+                <h3> <u> Name: '. $name.' </u> </h2>
+                <table class="border-2 border-solid">
+                    <tr> 
+                        <th colspan="10">Average Kcal</th>
+                        <th colspan="10">Average Total Fat</th>
+                        <th colspan="10">Average Saturated Fat</th>
+                        <th colspan="10">Average Sugar</th>
+                        <th colspan="10">Average Sodium</th>
+                    </tr>
+
+                    <tr>
+                    
+                        <td colspan="10">' .$avgKcal = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('fullName', $findSection);
+                        })->avg('totalKcal'), 2). '</td>
+                        <td colspan="10">'.$avgTotFat = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('fullName', $findSection);
+                        })->avg('totalTotFat'), 2).'</td>
+                        <td colspan="10">'.$avgSatFat = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('fullName', $findSection);
+                        })->avg('totalSatFat'), 2).'</td>
+                        <td colspan="10">'.$avgSugar = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('fullName', $findSection);
+                        })->avg('totalSugar'), 2).'</td>
+                        <td colspan="10">'.$avgSodium = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('fullName', $findSection);
+                        })->avg('totalSodium'), 2).'</td>
+
+                    </tr>
+                </table>
+            </div>
+
+<br><br>
+
+            <div>
+                <table class="border-2 border-solid">
+                    <tr> 
+                        <th colspan="10">BMI Status</th>
+                        <th colspan="10">Average KCal Consumed</th>
+                        <th colspan="10">Average KCal left to consume</th>
+                    </tr>
+
+                    <tr> 
+                        <td colspan="10">'.$BMIstatus.'</td>
+                        <td colspan="10">'.$caloriesConsumed.'</td>
+                        <td colspan="10">'.$caloriesConsumedLeft.'</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+
+            
+
+            
+        </body>
+        </html>
+        
+        ';
+ 
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream('Individual Report-'.$name.'-'. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString());
+
+        return redirect()->back();
+    }
 }
