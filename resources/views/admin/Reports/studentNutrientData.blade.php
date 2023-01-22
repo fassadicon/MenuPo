@@ -394,6 +394,7 @@
                         <button class="btn btn-warning" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                             data-bs-dismiss="modal">Back</button>
                         <button class="sectionBtn">Generate</button>
+                        <button class="btn btn-primary" id="sectionDownload">Download</button>
                     </div>
                 </div>
             </div>
@@ -452,6 +453,7 @@
                         <button class="btn btn-warning" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                             data-bs-dismiss="modal">Back</button>
                         <button class="gradeBtn">Generate</button>
+                        <button class="btn btn-primary" id="gradeDownload">Download</button>
                     </div>
                 </div>
             </div>
@@ -571,6 +573,12 @@
                 });
             })
 
+            //Section Download
+            $('#sectionDownload').click(function() {
+                var section = $('#sectionName').val();
+                window.location.href = "nutrient/generate/download/"+section;
+            })
+
             $('.gradeBtn').click(function() {
                 var grade = $('#gradeLevel').val();
                 $.ajax({
@@ -598,6 +606,12 @@
                         console.log(error.responseJSON.message);
                     },
                 });
+            })
+
+            //Grade Download
+            $('#gradeDownload').click(function() {
+                var gradeLevel = $('#gradeLevel').val();
+                window.location.href = "nutrient/generateByGrade/download/"+gradeLevel;
             })
         });
     </script>
