@@ -61,7 +61,7 @@ use App\Http\Controllers\Admin\StudentNutrientReportController;
 
 Route::get('/', function () {
     // return Activity::where()->last();
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/linkstorage', function () {
