@@ -1,5 +1,5 @@
 
-     <section class="px-2 py-12 bg-white md:px-0">
+     <section class="px-2 md:mt-12 py-12 bg-white md:px-0">
         <div class="container md:col-span-2 items-center max-w-screen-xl px-8 mx-auto xl:px-5">
           <div class="flex flex-wrap items-center sm:-mx-3">
             <div class="flex w-full md:w-1/2 md:px-3">
@@ -14,13 +14,7 @@
                 <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">
                   Information and announcements are located here. this will be your guid through accessing the canteen of Buestra Senra De Aranzazu Parochial School
                 </p>
-                <div class="relative flex">
-                  <button class="button-sec my-4 text-lg font-bold">
-                     <a href="#">
-                       Read More
-                     </a>
-                   </button>
-                </div>
+               
               </div>
             </div>
    

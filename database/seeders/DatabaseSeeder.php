@@ -6205,6 +6205,110 @@ class DatabaseSeeder extends Seeder
                 'removed_at' => null,
                 'created_by' => 2
             ],
+            [
+                'food_id' => 61,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 62,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 63,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 37,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 64,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 65,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 66,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 67,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 68,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 69,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 70,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 71,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
+            [
+                'food_id' => 72,
+                'status' => 0,
+                'created_at' => Carbon::yesterday()->format('Y-m-d'),
+                'displayed_at' => null,
+                'removed_at' => null,
+                'created_by' => 2
+            ],
             // Temporary COoked Meals
             [
                 'food_id' => 7,

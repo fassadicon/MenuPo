@@ -4015,7 +4015,7 @@ class DownloadReportsController extends Controller
                 </table>
             </div>
 
-<br><br>
+        <br><br>
 
             <div>
                 <table class="border-2 border-solid">
@@ -4035,9 +4035,6 @@ class DownloadReportsController extends Controller
 
             <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
 
-            
-
-            
         </body>
         </html>
         
@@ -4055,6 +4052,318 @@ class DownloadReportsController extends Controller
 
         // Output the generated PDF to Browser
         $dompdf->stream('Individual Report-'.$name.'-'. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString());
+
+        return redirect()->back();
+    }
+
+    public function download_section_report(Request $request, $section){
+
+        $findSection = $section;
+
+
+        $underweight = 0;
+        $normal = 0;
+        $overweight = 0;
+        $obese = 0;
+
+        $Q1BMIs = Bmi::whereHas('student', function ($query) use ($findSection) {
+            $query->where('section', $findSection);
+        })->get(['Q1BMI'])->toArray();
+        foreach ($Q1BMIs as $BMI) {
+            if ($BMI['Q1BMI'] < 18.5) {
+                $underweight++;
+            } else if ($BMI['Q1BMI'] >= 18.5 && $BMI['Q1BMI'] < 25) {
+                $normal++;
+            } else if ($BMI['Q1BMI'] >= 25 && $BMI['Q1BMI'] < 29.9) {
+                $overweight++;
+            } else if ($BMI['Q1BMI'] >= 30) {
+                $obese++;
+            }
+        }
+
+        $caloriesConsumed = round((Purchase::whereHas('student', function ($query) use ($findSection) {
+            $query->where('section', $findSection);
+        })->avg('totalKcal') * 100) / 1778, 1);
+        $caloriesConsumedLeft = 100 - $caloriesConsumed;
+
+        $html = '
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <style>
+            h2{
+                text-align: center;
+            }
+            th{
+                width: 100px;
+            }
+            tr{
+                text-align: center;
+            }
+            td{
+                height: 40px;
+            }
+            table{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+              }
+        </style>
+        <body>
+           
+            <div>
+                <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
+                <h2> <u> By Section Report </u> </h2>
+                <h3> <u> Section: '. $section.' </u> </h2>
+                <table class="border-2 border-solid">
+                    <tr> 
+                        <th colspan="10">Average Kcal</th>
+                        <th colspan="10">Average Total Fat</th>
+                        <th colspan="10">Average Saturated Fat</th>
+                        <th colspan="10">Average Sugar</th>
+                        <th colspan="10">Average Sodium</th>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">' .$avgKcal = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('section', $findSection);
+                        })->avg('totalKcal'), 2). '</td>
+                        <td colspan="10">'.$avgTotFat = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('section', $findSection);
+                        })->avg('totalTotFat'), 2).'</td>
+                        <td colspan="10">'.$avgSatFat = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('section', $findSection);
+                        })->avg('totalSatFat'), 2).'</td>
+                        <td colspan="10">'.$avgSugar = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('section', $findSection);
+                        })->avg('totalSugar'), 2).'</td>
+                        <td colspan="10">'.$avgSodium = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('section', $findSection);
+                        })->avg('totalSodium'), 2).'</td>
+
+                    </tr>
+                </table>
+            </div>
+
+            <br><br>
+
+            <div>
+                <table class="border-2 border-solid">
+                    <tr> 
+                        <th colspan="10">No. of Underweights</th>
+                        <th colspan="10">No. of Normal</th>
+                        <th colspan="10">No. of Overweights</th>
+                        <th colspan="10">No. of Obese</th>
+                    </tr>
+
+                    <tr> 
+                        <td colspan="10">'.$underweight.'</td>
+                        <td colspan="10">'.$normal.'</td>
+                        <td colspan="10">'.$overweight.'</td>
+                        <td colspan="10">'.$obese.'</td>
+                    </tr>
+                </table>
+            </div>
+
+            <br><br>
+
+            <div>
+                <table class="border-2 border-solid">
+                    <tr> 
+                        <th colspan="10">No. of Underweights</th>
+                        <th colspan="10">No. of Normal</th>
+                    </tr>
+
+                    <tr> 
+                        <td colspan="10">'.$caloriesConsumed.'</td>
+                        <td colspan="10">'.$caloriesConsumedLeft.'</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+
+        </body>
+        </html>
+        
+        ';
+ 
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream('By Section Report-'.$section.'-'. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString());
+
+        return redirect()->back();
+    }
+
+    public function download_grade_report(Request $request, $grade){
+
+        $findSection = $grade;
+
+
+        $underweight = 0;
+        $normal = 0;
+        $overweight = 0;
+        $obese = 0;
+
+        $Q1BMIs = Bmi::whereHas('student', function ($query) use ($findSection) {
+            $query->where('grade', $findSection);
+        })->get(['Q1BMI'])->toArray();
+        foreach ($Q1BMIs as $BMI) {
+            if ($BMI['Q1BMI'] < 18.5) {
+                $underweight++;
+            } else if ($BMI['Q1BMI'] >= 18.5 && $BMI['Q1BMI'] < 25) {
+                $normal++;
+            } else if ($BMI['Q1BMI'] >= 25 && $BMI['Q1BMI'] < 29.9) {
+                $overweight++;
+            } else if ($BMI['Q1BMI'] >= 30) {
+                $obese++;
+            }
+        }
+
+        $caloriesConsumed = round((Purchase::whereHas('student', function ($query) use ($findSection) {
+            $query->where('grade', $findSection);
+        })->avg('totalKcal') * 100) / 1778, 1);
+        $caloriesConsumedLeft = 100 - $caloriesConsumed;
+
+        $html = '
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <style>
+            h2{
+                text-align: center;
+            }
+            th{
+                width: 100px;
+            }
+            tr{
+                text-align: center;
+            }
+            td{
+                height: 40px;
+            }
+            table{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+              }
+        </style>
+        <body>
+           
+            <div>
+                <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
+                <h2> <u> By Grade Report </u> </h2>
+                <h3> <u> Grade: '. $grade.' </u> </h2>
+                <table class="border-2 border-solid">
+                    <tr> 
+                        <th colspan="10">Average Kcal</th>
+                        <th colspan="10">Average Total Fat</th>
+                        <th colspan="10">Average Saturated Fat</th>
+                        <th colspan="10">Average Sugar</th>
+                        <th colspan="10">Average Sodium</th>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">' .$avgKcal = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('grade', $findSection);
+                        })->avg('totalKcal'), 2). '</td>
+                        <td colspan="10">'.$avgTotFat = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('grade', $findSection);
+                        })->avg('totalTotFat'), 2).'</td>
+                        <td colspan="10">'.$avgSatFat = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('grade', $findSection);
+                        })->avg('totalSatFat'), 2).'</td>
+                        <td colspan="10">'.$avgSugar = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('grade', $findSection);
+                        })->avg('totalSugar'), 2).'</td>
+                        <td colspan="10">'.$avgSodium = round(Purchase::whereHas('student', function ($query) use ($findSection) {
+                            $query->where('grade', $findSection);
+                        })->avg('totalSodium'), 2).'</td>
+
+                    </tr>
+                </table>
+            </div>
+
+            <br><br>
+
+            <div>
+                <table class="border-2 border-solid">
+                    <tr> 
+                        <th colspan="10">No. of Underweights</th>
+                        <th colspan="10">No. of Normal</th>
+                        <th colspan="10">No. of Overweights</th>
+                        <th colspan="10">No. of Obese</th>
+                    </tr>
+
+                    <tr> 
+                        <td colspan="10">'.$underweight.'</td>
+                        <td colspan="10">'.$normal.'</td>
+                        <td colspan="10">'.$overweight.'</td>
+                        <td colspan="10">'.$obese.'</td>
+                    </tr>
+                </table>
+            </div>
+
+            <br><br>
+
+            <div>
+                <table class="border-2 border-solid">
+                    <tr> 
+                        <th colspan="10">No. of Underweights</th>
+                        <th colspan="10">No. of Normal</th>
+                    </tr>
+
+                    <tr> 
+                        <td colspan="10">'.$caloriesConsumed.'</td>
+                        <td colspan="10">'.$caloriesConsumedLeft.'</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h5>Retrieved on: '. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString() .' </h5>
+
+        </body>
+        </html>
+        
+        ';
+ 
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream('By Grade Report-'.$grade.'-'. \Carbon\Carbon::now('Asia/Singapore')->toDateTimeString());
 
         return redirect()->back();
     }

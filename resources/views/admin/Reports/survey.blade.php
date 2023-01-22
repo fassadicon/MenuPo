@@ -9,8 +9,9 @@
         <div class="card-body">
             <div class="row">
                 {{-- Start of Card --}}
+                
                 <div class="row-parent row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="card-survey card_red text-center">
                             {{-- Canteen Rating Pie Chart --}}
                             {!! $ratingChart->container() !!}
@@ -20,50 +21,45 @@
                             {{ $ratingChart->script() }}
 
                         </div>
+                        {{-- Rating average Card --}}
+                        <div class="row-parent row">
+                            
+                        </div>
+                    <div class="col-sm-2">
+                        
+                        <div class="col-sm-2">
+                            <div class="card-survey card_red text-center">
+                                <h1>Rating Average Card</h1>
+                                <h1 class="h1" id="ratingCard">{{ $averageRating }}</h1>
+                            </div>
                     </div>
-                    
-                    {{-- Rating average Card --}}
-                    <div class="col-sm-6">
-                        <div class="row-top row">
-                            <div class="col-sm-6">
-                                <div class="card-survey card_red text-center">
-                                    <h1>Rating Average Card</h1>
-                                    <h1 class="h1" id="ratingCard">{{ $averageRating }}</h1>
-                                </div>
-                            </div>
+                    <hr class="mx-2 my-2">
+                    <div class="col-sm-2">
+                        <div class="card-survey card_red text-center">
+                            <h1>Most Suggested Food</h1>
+                            <br>
+                            <h1 class="card-list" id="mostSuggestedFoodsCard">
+                                @foreach ($mostSuggestedFoods as $mostSuggestedFood)
+                                    <li>{{ $mostSuggestedFood }}</li>
+                                @endforeach
+                            </h1>
                         </div>
-                        {{-- Most suggested Food --}}
+                    </div>
 
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="card-survey card_red text-center">
-                                    <h1>Most Suggested Food</h1>
-                                    <br>
-                                    <h1 class="card-list" id="mostSuggestedFoodsCard">
-                                        @foreach ($mostSuggestedFoods as $mostSuggestedFood)
-                                            <li>{{ $mostSuggestedFood }}</li>
-                                        @endforeach
-                                    </h1>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                </div>
+                <div class="col-9">
+                    <div class="card-survey card_red text-center">
+                        {!! $suggestionChart->container() !!}
+
+                        <script src="{{ $suggestionChart->cdn() }}"></script>
+
+                        {{ $suggestionChart->script() }}
                     </div>
                 </div>
                 {{-- Start of Card --}}
-                <div class="col-12">
-                    <div class="row-mid row">
-                        {{-- Most suggested Meals --}}
-                        <div class="col-12">
-                            <div class="card-survey card_red text-center">
-                                {!! $suggestionChart->container() !!}
-    
-                                <script src="{{ $suggestionChart->cdn() }}"></script>
-    
-                                {{ $suggestionChart->script() }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <hr class="mx-4 my-4">
+                <br>
               
                 <div class="row">
                     <div class="column-table col-12">

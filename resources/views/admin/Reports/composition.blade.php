@@ -84,28 +84,28 @@
             {{-- Grading 3 ROW --}}
             <div class="col-3">
                 <div class="row">
-                    <div class="col-1">
-                        <div class="card-survey card_red">
+                    <div class="col-3">
+                        <div class="card-survey card_red text-center">
                         <h1> <strong>Average Food Grade of Food Items</strong> </h1>
-                        <h1>{{round($averageFoodListGrade, 2)}}</h1>
+                        <h1 style="font-size: 1.40rem">{{round($averageFoodListGrade, 2)}}</h1>
                         </div>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-1">
-                        <div class="card-survey card_red">
+                        <div class="card-survey card_red text-center">
                         <h1><strong> Average Food Grade of Menu Items</strong></h1>
-                        <h1>{{round($averageMenuGrade, 2)}}</h1>
+                        <h1 style="font-size: 1.40rem">{{round($averageMenuGrade, 2)}}</h1>
                         </div>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-1">
-                        <div class="card-survey card_red">
+                        <div class="card-survey card_red text-center">
                         <h1><strong>Average Food Grade of Bought Items</strong> </h1>
-                        <h1>{{round($averageBoughtGrade, 2)}}</h1>
+                        <h1 style="font-size: 1.40rem">{{round($averageBoughtGrade, 2)}}</h1>
                         </div>
                     </div>
                 </div>

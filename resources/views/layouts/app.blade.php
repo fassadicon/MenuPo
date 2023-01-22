@@ -97,9 +97,9 @@
         <footer id="footer" class="footer">
             <div class="bottom-details">
               <div class="bottom_text">
-                <span class="copyright_text">© 2022 School Name | <a id="bottomLink" href="/terms-and-conditions"> Terms of Use </a> | <a id="bottomLink" href="/privacy-statement"> Privacy Statement </a></span>
+                <span class="copyright_text">@ 2022 MenuPo | <a id="bottomLink" href="/terms-and-conditions"> Terms of Use </a> | <a id="bottomLink" href="/privacy-statement"> Privacy Statement </a></span>
                 <span class="policy_terms">
-                  <a href="#">Contact Us at: 09613326890 (email: sample@gmail.com)</a>
+                  <p>Contact Us at: 09613326890 (email: menupo2022@gmail.com) or visit us at San Mateo, Philippines</p>
                   
                 </span>
               </div>

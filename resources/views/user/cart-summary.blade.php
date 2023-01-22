@@ -1,7 +1,7 @@
 
 
 <x-user.layout :studs="$students" :notifs="$notifications" :isSurveyAvail="$isSurveyAvail">
-
+    @include('sweetalert::alert')
     <br>
     <x-user.cart-summary.cart-summary :anak="$anak" :parent="$parent"/>
 
