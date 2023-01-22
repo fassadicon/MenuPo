@@ -4121,7 +4121,7 @@ class DownloadReportsController extends Controller
            
             <div>
                 <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
-                <h2> <u> Individual Report </u> </h2>
+                <h2> <u> By Section Report </u> </h2>
                 <h3> <u> Section: '. $section.' </u> </h2>
                 <table class="border-2 border-solid">
                     <tr> 
@@ -4277,7 +4277,7 @@ class DownloadReportsController extends Controller
            
             <div>
                 <h2> <u> Nuestra Seniora De Aranzazu Parochial School </u> </h2>
-                <h2> <u> Individual Report </u> </h2>
+                <h2> <u> By Grade Report </u> </h2>
                 <h3> <u> Grade: '. $grade.' </u> </h2>
                 <table class="border-2 border-solid">
                     <tr> 
