@@ -49,12 +49,13 @@
     <section class="survey-card h-fit">
         <div class="header-page">
             <p><i class="fab fa-nutritionix fa-xl"></i>Menu Planner <span> <a href=""
-                        class="printBtn btn btn-info">Print</a></span></p>
+                        class="printBtn btn btn-info">Print</a></span> <span><a href="" id="implementMenuBtn"
+                        class="btn btn-warning">Implement</a></span></p>
 
         </div>
 
     </section>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -80,7 +81,7 @@
                 window.print();
             });
 
-            var routeFindPhilFCT = "{{ url('/autocomplete-search') }}";
+            var routeFindPhilFCT = "{{ url('/autocomplete-search-foods') }}";
             $('#title').typeahead({
                 hint: true,
                 highlight: true,
@@ -93,16 +94,7 @@
                         console.log(data)
                         return process(data);
                     });
-                },
-                afterSelect: function(item) {
-                    let servingSize = $('#servingSize').val();
-                    computeGrade(item, servingSize);
-                    return item;
                 }
-                // updater: function(item) {
-                //     computeGrade(item);
-                //     return item;
-                // }
             });
 
             $.ajaxSetup({
@@ -291,6 +283,20 @@
 
             $("#menuPlanModal").on("hidden.bs.modal", function() {
                 $('#saveBtn').unbind();
+            });
+
+            $('#implementMenuBtn').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('calendar.implement') }}",
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
             });
         })
     </script>

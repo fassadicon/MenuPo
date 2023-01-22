@@ -2,8 +2,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    
-    <p>Dashboard</p>
 
     {{-- CLOCK --}}
     
@@ -90,10 +88,4 @@
         </div>
     </div>
     {{-- End of CARDS --}}
-
-<<<<<<< HEAD
-   
-=======
-
->>>>>>> 9512db059b9a2e8b635e81ff834911ece3918be3
 </x-admin.layout>

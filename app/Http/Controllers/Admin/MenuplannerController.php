@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
+use App\Models\Food;
+use App\Models\Menu;
+use App\Models\Admin;
 use App\Models\Adminnotif;
 use App\Models\Menuplanner;
 use Carbon\CarbonInterface;
@@ -126,6 +129,23 @@ class MenuplannerController extends Controller
         }
         $menuplan->delete();
         return $id;
+    }
+
+    public function implement()
+    {
+        $menuplans = Menuplanner::all();
+
+        foreach ($menuplans as $menuplan) {
+            Menu::create([
+                'food_id' => Food::where('name', $menuplan->foodName)->get(['id'])->value('id'),
+                'displayed_at' => Carbon::parse($menuplan->start_date)->format('Y-m-d'),
+                'removed_at' => Carbon::parse($menuplan->end_date)->format('Y-m-d'),
+                'status' => 1,
+                'created_by' => Admin::where('user_id', auth()->id())->get(['id'])->value('id')
+            ]);
+        }
+
+        // return Food::where('name', $menuplans[0]->foodName)->get(['id'])->value('id');
     }
 
     // public function export()

@@ -90,6 +90,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::patch('/menuplan/update/{id}', [MenuplannerController::class, 'update'])->name('calendar.update');
     Route::patch('/menuplan/updateDuration/{id}', [MenuplannerController::class, 'update'])->name('calendar.updateDuration');
     Route::delete('menuplan/destroy/{id}', [MenuplannerController::class, 'destroy'])->name('calendar.destroy');
+    Route::post('menuplan/implement', [MenuplannerController::class, 'implement'])->name('calendar.implement');
 
 
     // Generate Report
