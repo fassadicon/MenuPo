@@ -296,6 +296,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('/reports/nutrient/generateByGrade', [GenerateReportController::class, 'grade']);
 
     Route::get('/reports/nutrient/generateByIndiv/download/{name}', [DownloadReportsController::class, 'download_individual_report']);
+    Route::get('/reports/nutrient/generate/download/{section}', [DownloadReportsController::class, 'download_section_report']);
+    Route::get('/reports/nutrient/generateByGrade/download/{grade}', [DownloadReportsController::class, 'download_grade_report']);
     // Route::patch('/reports/update/{id}', [MenuplannerController::class, 'update'])->name('calendar.update');
 
     // Logs
