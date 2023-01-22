@@ -9,6 +9,7 @@
         <div class="card-body">
             <div class="row">
                 {{-- Start of Card --}}
+                
                 <div class="row-parent row">
                     <div class="col-4">
                         <div class="card-survey card_red text-center">
@@ -22,10 +23,24 @@
                         </div>
                     </div>
                     
+                    <div class="col-6">
+                        <div class="row-parent row">
+                            {{-- Most suggested Meals --}}
+                            <div class="col-12">
+                                <div class="card-survey card_red text-center">
+                                    {!! $suggestionChart->container() !!}
+        
+                                    <script src="{{ $suggestionChart->cdn() }}"></script>
+        
+                                    {{ $suggestionChart->script() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {{-- Rating average Card --}}
-                    <div class="col-sm-6">
-                        <div class="row-top row">
-                            <div class="col-sm-6">
+                    <div class="col-1">
+                        <div class="row-parent row">
+                            <div class="col-sm-1">
                                 <div class="card-survey card_red text-center">
                                     <h1>Rating Average Card</h1>
                                     <h1 class="h1" id="ratingCard">{{ $averageRating }}</h1>
@@ -35,7 +50,7 @@
                         {{-- Most suggested Food --}}
 
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-1">
                                 <div class="card-survey card_red text-center">
                                     <h1>Most Suggested Food</h1>
                                     <br>
@@ -48,22 +63,11 @@
                             </div>
                         </div>
                     </div>
+                    
+                    
                 </div>
                 {{-- Start of Card --}}
-                <div class="col-12">
-                    <div class="row-mid row">
-                        {{-- Most suggested Meals --}}
-                        <div class="col-12">
-                            <div class="card-survey card_red text-center">
-                                {!! $suggestionChart->container() !!}
-    
-                                <script src="{{ $suggestionChart->cdn() }}"></script>
-    
-                                {{ $suggestionChart->script() }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
               
                 <div class="row">
                     <div class="column-table col-12">
