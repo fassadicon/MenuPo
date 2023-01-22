@@ -2,7 +2,6 @@
 /public/build
 /public/hot
 /vendor
-!*/vendor/laravel/ui/auth-backend/AuthenticatesUsers.php
 .env
 .env.backup
 .phpunit.result.cache
