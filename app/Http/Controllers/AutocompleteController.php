@@ -48,4 +48,25 @@ class AutocompleteController extends Controller
     $fullName = Guardian::where('fullName', 'LIKE', '%' . $query . '%')->pluck('fullName');
     return response()->json($fullName);
   }
+
+  public function getStudent(Request $request)
+  {
+    $query = $request->get('query');
+
+    $fullName = Student::where('fullName', 'LIKE', '%' . $query . '%')->pluck('fullName');
+    return response()->json($fullName);
+  }
+
+  public function getSection(Request $request)
+  {
+    $query = $request->get('query');
+
+    // $section = Student::where('section', 'LIKE', '%' . $query . '%')->pluck('section');
+
+    $section = array();
+    $section[0] = 'Rizal';
+    $section[1] = 'Sampaguita';
+    
+    return response()->json($section);
+  }
 }

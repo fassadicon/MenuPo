@@ -43,6 +43,7 @@ use App\Http\Controllers\Admin\MenuSuggestionController;
 use App\Http\Controllers\Admin\DownloadReportsController;
 use App\Http\Controllers\Admin\CompositionsReportController;
 use App\Http\Controllers\Admin\ConfirmPaymentTableController;
+use App\Http\Controllers\Admin\GenerateReportController;
 use App\Http\Controllers\Admin\MenuplannerController;
 use App\Http\Controllers\Admin\PDFQRController;
 use App\Http\Controllers\Admin\StudentNutrientReportController;
@@ -89,6 +90,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::patch('/menuplan/update/{id}', [MenuplannerController::class, 'update'])->name('calendar.update');
     Route::patch('/menuplan/updateDuration/{id}', [MenuplannerController::class, 'update'])->name('calendar.updateDuration');
     Route::delete('menuplan/destroy/{id}', [MenuplannerController::class, 'destroy'])->name('calendar.destroy');
+
+
+    // Generate Report
 
     // <----------- FOOD CONTROLLER -----------> //
     // Show Food Management Section
@@ -285,6 +289,12 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/reports/bmi', [BMIReportController::class, 'index']);
     Route::get('/reports/download-bmi-report', [DownloadReportsController::class, 'download_bmi_report']);
 
+// GENERATE REPORTS
+    Route::post('/reports/nutrient/generateByIndiv', [GenerateReportController::class, 'indiv']);
+    Route::post('/reports/nutrient/generate', [GenerateReportController::class, 'section']);
+    Route::post('/reports/nutrient/generateByGrade', [GenerateReportController::class, 'grade']);
+    // Route::patch('/reports/update/{id}', [MenuplannerController::class, 'update'])->name('calendar.update');
+
     // Logs
     // Route::get('/logs/adminAccount', [LogsController::class, 'adminLogs']);
     Route::get('/logs/adminAccount', [LogsController::class, 'adminLogs'])->name('adminLogsTable');
@@ -307,6 +317,8 @@ Route::get('/autocomplete-search', [AutocompleteController::class, 'autocomplete
 Route::get('/autocomplete-search-foods', [AutocompleteController::class, 'autocompleteSearchFoods']);
 Route::get('/getPhilFCTFood/{name}/view', [AutocompleteController::class, 'getPhilFCTFood']);
 Route::get('/autocomplete-search-parents', [AutocompleteController::class, 'getParent']);
+Route::get('/autocomplete-search-students', [AutocompleteController::class, 'getStudent']);
+Route::get('/autocomplete-search-sections', [AutocompleteController::class, 'getSection']);
 // Route::get('/check-philfct/{name}/view', [AutocompleteController::class, 'checkPhilFCTitem']);
 // END OF ALL ADMIN ROUTES
 

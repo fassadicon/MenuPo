@@ -97,7 +97,8 @@
                 <div class="mb-6">
                     <label for="calcKcal" class="inline-block text-lg mb-2">calcKcal</label>
                     <input id="calcKcal" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcKcal" placeholder="In grams (g)" step=".01" value="{{ old('calcKcal') }}" />
+                        name="calcKcal" placeholder="In grams (g)" step=".01" value="{{ old('calcKcal') }}"
+                        readonly />
 
                     @error('calcKcal')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -107,8 +108,8 @@
                 <div class="mb-6">
                     <label for="calcTotFat" class="inline-block text-lg mb-2">calcTotFat</label>
                     <input id="calcTotFat" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcTotFat" placeholder="In grams (g)" step=".01"
-                        value="{{ old('calcTotFat') }}" />
+                        name="calcTotFat" placeholder="In grams (g)" step=".01" value="{{ old('calcTotFat') }}"
+                        readonly />
 
                     @error('calcTotFat')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -118,8 +119,8 @@
                 <div class="mb-6">
                     <label for="calcSatFat" class="inline-block text-lg mb-2">calcSatFat</label>
                     <input id="calcSatFat" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSatFat" placeholder="In grams (g)" step=".01"
-                        value="{{ old('calcSatFat') }}" />
+                        name="calcSatFat" placeholder="In grams (g)" step=".01" value="{{ old('calcSatFat') }}"
+                        readonly />
 
                     @error('calcSatFat')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -129,8 +130,8 @@
                 <div class="mb-6">
                     <label for="calcSugar" class="inline-block text-lg mb-2">calcSugar</label>
                     <input id="calcSugar" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSugar" placeholder="In grams (g)" step=".01"
-                        value="{{ old('calcSugar') }}" />
+                        name="calcSugar" placeholder="In grams (g)" step=".01" value="{{ old('calcSugar') }}"
+                        readonly />
 
                     @error('calcSugar')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -140,8 +141,8 @@
                 <div class="mb-6">
                     <label for="calcSodium" class="inline-block text-lg mb-2">calcSodium</label>
                     <input id="calcSodium" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="calcSodium" placeholder="In grams (g)" step=".01"
-                        value="{{ old('calcSodium') }}" />
+                        name="calcSodium" placeholder="In grams (g)" step=".01" value="{{ old('calcSodium') }}"
+                        readonly />
 
                     @error('calcSodium')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -151,7 +152,8 @@
                 <div class="mb-6">
                     <label for="grade" class="inline-block text-lg mb-2">grade</label>
                     <input id="grade" type="number" class="border border-gray-200 rounded p-2 w-full"
-                        name="grade" placeholder="In grams (g)" step=".01" value="{{ old('grade') }}" />
+                        name="grade" placeholder="In grams (g)" step=".01" value="{{ old('grade') }}"
+                        readonly />
 
                     @error('grade')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -185,7 +187,7 @@
                 return $.get(routeFindPhilFCT, {
                     query: query
                 }, function(data) {
-                    console.log(data)
+                    // console.log(data)
                     return process(data);
                 });
             },
@@ -200,14 +202,72 @@
             // }
         });
 
-        $('body').on('change', '#servingSize', function() {
+        $('#name').on('change', function() {
             var name = $('#name').val();
-            $.get("{{ url('getPhilFCTFood/') }}" + '/' + name + '/view', function(data) {
-                let servingSize = $('#servingSize').val();
-                computeGrade(data.food, servingSize);
-            })
+            if (name == '') {
+                $('#calcKcal').val('');
+                $('#calcTotFat').val('');
+                $('#calcSatFat').val('');
+                $('#calcSugar').val('');
+                $('#calcSodium').val('');
+                $('#grade').val('');
+                $('#color').val('');
+            } else {
+                $.get("{{ url('getPhilFCTFood/') }}" + '/' + name + '/view', function(data) {
+                    let servingSize = $('#servingSize').val();
+                    if (data.food == null) {
+                        $('#calcKcal').val('');
+                        $('#calcTotFat').val('');
+                        $('#calcSatFat').val('');
+                        $('#calcSugar').val('');
+                        $('#calcSodium').val('');
+                        $('#grade').val('');
+                        $('#color').val('');
+                    } else {
+                        computeGrade(data.food, servingSize);
+                    }
+                });
+            }
         });
 
+        $('body').on('change', '#servingSize', function() {
+            var name = $('#name').val();
+            if (name == '') {
+                $('#calcKcal').val('');
+                $('#calcTotFat').val('');
+                $('#calcSatFat').val('');
+                $('#calcSugar').val('');
+                $('#calcSodium').val('');
+                $('#grade').val('');
+                $('#color').val('');
+            } else {
+                $.get("{{ url('getPhilFCTFood/') }}" + '/' + name + '/view', function(data) {
+                    let servingSize = $('#servingSize').val();
+                    if (servingSize == '') {
+                        $('#calcKcal').val('');
+                        $('#calcTotFat').val('');
+                        $('#calcSatFat').val('');
+                        $('#calcSugar').val('');
+                        $('#calcSodium').val('');
+                        $('#grade').val('');
+                        $('#color').val('');
+                    } else {
+                        if (data.food == null) {
+                            $('#calcKcal').val('');
+                            $('#calcTotFat').val('');
+                            $('#calcSatFat').val('');
+                            $('#calcSugar').val('');
+                            $('#calcSodium').val('');
+                            $('#grade').val('');
+                            $('#color').val('');
+                        } else {
+                            computeGrade(data.food, servingSize);
+                        }
+                    }
+
+                });
+            }
+        });
 
         function computeGrade(result, servingSize) {
             // Getting Base Nutritional Details per 100 g 

@@ -1623,7 +1623,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 1,
                 'created_by' => 2,
                 'QR' => 'admin/merges/1Reyes.png',
-                'image' => 'admin/students/1.png'
+                'image' => 'admin/students/1.png',
+                'fullName' => 'Karina Dela Cruz Reyes'
             ],
             [
                 'grade' => 4,
@@ -1640,7 +1641,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 1,
                 'created_by' => 2,
                 'QR' => 'admin/merges/2Reyes.png',
-                'image' => 'admin/students/2.png'
+                'image' => 'admin/students/2.png',
+                'fullName' => 'Queenierich Dela Cruz Reyes'
             ],
             [
                 'grade' => 4,
@@ -1657,7 +1659,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 2,
                 'created_by' => 2,
                 'QR' => 'admin/merges/3Ramos.png',
-                'image' => 'admin/students/3.png'
+                'image' => 'admin/students/3.png',
+                'fullName' => 'Aaron James Fernandez Ramos'
             ],
             [
                 'grade' => 4,
@@ -1674,7 +1677,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 3,
                 'created_by' => 2,
                 'QR' => 'admin/merges/4Salao.png',
-                'image' => 'admin/students/4.png'
+                'image' => 'admin/students/4.png',
+                'fullName' => 'Jessica Marie Joy Sy Salao'
             ],
             [
                 'grade' => 4,
@@ -1691,7 +1695,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 4,
                 'created_by' => 2,
                 'QR' => 'admin/merges/5Dimaranan.png',
-                'image' => 'admin/students/5.png'
+                'image' => 'admin/students/5.png',
+                'fullName' => 'Rachelle Marianne Sarinas Dimaranan'
             ],
             [
                 'grade' => 4,
@@ -1708,7 +1713,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 5,
                 'created_by' => 2,
                 'QR' => 'admin/merges/6Dela Vera.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Jessie Rayye Cruz Dela Vera'
             ],
             [
                 'grade' => 4,
@@ -1725,7 +1731,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 6,
                 'created_by' => 2,
                 'QR' => 'admin/merges/7Espin.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Lance Joseph Morales Espin'
             ],
             [
                 'grade' => 4,
@@ -1742,7 +1749,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 7,
                 'created_by' => 2,
                 'QR' => 'admin/merges/8Asilo.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Rachelle Trixielyn Marcayda Asilo'
             ],
             [
                 'grade' => 4,
@@ -1759,7 +1767,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 7,
                 'created_by' => 2,
                 'QR' => 'admin/merges/9Asilo.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Robert Tristan Marcayda Asilo'
             ],
             [
                 'grade' => 4,
@@ -1776,7 +1785,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 8,
                 'created_by' => 2,
                 'QR' => 'admin/merges/10Olivares.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Genevive Rozarie Martin Olivares'
             ],
             [
                 'grade' => 4,
@@ -1793,7 +1803,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 9,
                 'created_by' => 2,
                 'QR' => 'admin/merges/11Madrigal.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Arachelle Merci Colmenares Madrigal'
             ],
             [
                 'grade' => 4,
@@ -1810,7 +1821,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 10,
                 'created_by' => 2,
                 'QR' => 'admin/merges/12Dela Cruz.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Kimberly Joyzel Sarmiento Dela Cruz'
             ],
             [
                 'grade' => 4,
@@ -1827,7 +1839,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 6,
                 'created_by' => 2,
                 'QR' => 'admin/merges/13Martinez.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Madelaine Espin Martinez'
             ],
             [
                 'grade' => 4,
@@ -1844,7 +1857,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 11,
                 'created_by' => 2,
                 'QR' => 'admin/merges/14Navarro.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Dainsleif Morales Navarro'
             ],
             [
                 'grade' => 4,
@@ -1861,7 +1875,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 11,
                 'created_by' => 2,
                 'QR' => 'admin/merges/15Katipunan.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Angela Vivienne Navarro Katipunan'
             ],
             [
                 'grade' => 4,
@@ -1878,7 +1893,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 11,
                 'created_by' => 2,
                 'QR' => 'admin/merges/16Escuvania.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Mauro Ezekiel Navarro Escuvania'
             ],
             [
                 'grade' => 4,
@@ -1895,7 +1911,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 3,
                 'created_by' => 2,
                 'QR' => 'admin/merges/17Arias.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Eva Angela Solis Arias'
             ],
             [
                 'grade' => 4,
@@ -1912,7 +1929,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 12,
                 'created_by' => 2,
                 'QR' => 'admin/merges/18Marcayda.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Pauline Amelincx Deseo Marcayda'
             ],
             [
                 'grade' => 4,
@@ -1929,7 +1947,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 13,
                 'created_by' => 2,
                 'QR' => 'admin/merges/19Singh.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Nandita Banna Naligas Singh'
             ],
             [
                 'grade' => 4,
@@ -1946,7 +1965,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 14,
                 'created_by' => 2,
                 'QR' => 'admin/merges/20Fernandez.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Roxanna Guinevere Alatiit Fernandez'
             ],
             [
                 'grade' => 4,
@@ -1963,7 +1983,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 15,
                 'created_by' => 2,
                 'QR' => 'admin/merges/21Bantayan.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Arnold Oliveros Bantayan'
             ],
             [
                 'grade' => 4,
@@ -1980,7 +2001,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 16,
                 'created_by' => 2,
                 'QR' => 'admin/merges/22Hicana.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Esfefania Christine Sison Hicana'
             ],
             [
                 'grade' => 4,
@@ -1997,7 +2019,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 17,
                 'created_by' => 2,
                 'QR' => 'admin/merges/23Delavera.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Margaret Rozanne Delavera Rodriguez'
             ],
             [
                 'grade' => 4,
@@ -2014,7 +2037,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 17,
                 'created_by' => 2,
                 'QR' => 'admin/merges/24Magnaye.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Marielle Charlize Delavera Magnaye'
             ],
             [
                 'grade' => 4,
@@ -2031,7 +2055,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 18,
                 'created_by' => 2,
                 'QR' => 'admin/merges/25Fugen.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Berlin Germany Alipala Fugen'
             ],
             [
                 'grade' => 2,
@@ -2048,7 +2073,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 19,
                 'created_by' => 4,
                 'QR' => 'admin/merges/26Magnaye.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Arzhelle Darwyn Sison Magnaye'
             ],
             [
                 'grade' => 2,
@@ -2065,7 +2091,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 20,
                 'created_by' => 4,
                 'QR' => 'admin/merges/27Urdaneta.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Majara Jonaella Mae Lacampuenga Urdaneta'
             ],
             [
                 'grade' => 2,
@@ -2082,7 +2109,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 21,
                 'created_by' => 4,
                 'QR' => 'admin/merges/28Ramos.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Jozelle Barbie Fernandez Ramos'
             ],
             [
                 'grade' => 2,
@@ -2099,7 +2127,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 22,
                 'created_by' => 4,
                 'QR' => 'admin/merges/29Somera.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Marc Christian Angelo Gandivanez Somera'
             ],
             [
                 'grade' => 2,
@@ -2116,7 +2145,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 23,
                 'created_by' => 4,
                 'QR' => 'admin/merges/30Santos.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Lara Belle Polaris Santos'
             ],
             [
                 'grade' => 2,
@@ -2133,7 +2163,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 24,
                 'created_by' => 4,
                 'QR' => 'admin/merges/31Matheran.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Vyronne Gabriel Reyes Matheran'
             ],
             [
                 'grade' => 2,
@@ -2150,7 +2181,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 25,
                 'created_by' => 4,
                 'QR' => 'admin/merges/32Martinez.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Sorrian James Jimenez Martinez'
             ],
             [
                 'grade' => 2,
@@ -2167,7 +2199,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 26,
                 'created_by' => 4,
                 'QR' => 'admin/merges/33Yuzon.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Tee Jay Oliveros Yuzon'
             ],
             [
                 'grade' => 2,
@@ -2184,7 +2217,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 27,
                 'created_by' => 4,
                 'QR' => 'admin/merges/34Camiling.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Nahida Rose Lacampuenga Camiling'
             ],
             [
                 'grade' => 2,
@@ -2201,7 +2235,8 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 28,
                 'created_by' => 4,
                 'QR' => 'admin/merges/35Ramos.png',
-                'image' => null
+                'image' => null,
+                'fullName' => 'Luis Ragvindr Santillares Ramos'
             ],
             
 
@@ -4565,6 +4600,7 @@ class DatabaseSeeder extends Seeder
                 'sugar' => 0,
                 'sodium' => 61
             ]
+    
         ];
         Philfct::insert($philfcts);
 
@@ -4625,20 +4661,20 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'Spaghetti',
-                'calcKcal' => 83,
-                'calcTotFat' => 1,
-                'calcSatFat' => 0.35,
-                'calcSugar' => 2.9,
-                'calcSodium' => 277,
+                'calcKcal' => 393,
+                'calcTotFat' => 9.3,
+                'calcSatFat' => 0,
+                'calcSugar' => 33.3,
+                'calcSodium' => 1.3,
                 'description' => 'Filipino sweet style spaghetti',
                 'type' => 4,
                 'price' => 50,
-                'servingSize' => 100,
+                'servingSize' => 206,
                 'philfct_id' => 2,
                 'created_by' => 2,
                 'updated_by' => 3,
                 'stock' => 40,
-                'grade' => 4,
+                'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
                 'image' => 'admin/foodsImg/spaghetti.jpg'
             ],
@@ -4745,20 +4781,20 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 7,
                 'name' => 'Fried Chicken',
-                'calcKcal' => null,
-                'calcTotFat' => null,
-                'calcSatFat' => null,
-                'calcSugar' => null,
-                'calcSodium' => null,
+                'calcKcal' => 62,
+                'calcTotFat' => 0.1,
+                'calcSatFat' => 0,
+                'calcSugar' => 0,
+                'calcSodium' => 0.13,
                 'description' => '1 pc fried chicken with 1 cup rice',
                 'type' => 3,
                 'price' => 40,
-                'servingSize' => 100,
+                'servingSize' => 205,
                 'philfct_id' => 3,
                 'created_by' => 2,
                 'updated_by' => 3,
                 'stock' => 40,
-                'grade' => null,
+                'grade' => 4,
                 'created_at' => Carbon::today()->format('Y-m-d'),
                 'image' => 'admin/foodsImg/fried-chicken.jpg'
             ],
@@ -5345,20 +5381,20 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 37,
                 'name' => 'Champorado',
-                'calcKcal' => 97,
+                'calcKcal' => 19,
                 'calcTotFat' => 0.2,
-                'calcSatFat' => 0.11,
-                'calcSugar' => 4.8,
-                'calcSodium' => 13,
+                'calcSatFat' => 0,
+                'calcSugar' => 5.2,
+                'calcSodium' => 0,
                 'description' => 'Champorado w/ milk',
                 'type' => 4,
                 'price' => 20,
-                'servingSize' => 100,
+                'servingSize' => 108.93,
                 'philfct_id' => 17,
                 'created_by' => 2,
                 'updated_by' => 3,
                 'stock' => 40,
-                'grade' => 4,
+                'grade' => 6,
                 'created_at' => Carbon::today()->format('Y-m-d'),
                 'image' => 'admin/foodsImg/champorado.jpg'
             ],
@@ -5821,6 +5857,246 @@ class DatabaseSeeder extends Seeder
                 'grade' => 5,
                 'created_at' => Carbon::today()->format('Y-m-d'),
                 'image' => 'admin/foodsImg/soybean-drink.jpeg'
+            ],
+            [
+                'id' => 61,
+                'name' => 'Ampalaya with Egg',
+                'calcKcal' => 126,
+                'calcTotFat' => 8.8,
+                'calcSatFat' => 0,
+                'calcSugar' => 0,
+                'calcSodium' => 0.03,
+                'description' => 'Ampalaya with Egg',
+                'type' => 3,
+                'price' => 25,
+                'servingSize' => 141.34,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 5,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/ampalaya-egg.jpg'
+            ],
+            [
+                'id' => 62,
+                'name' => 'Spare Ribs BBQ',
+                'calcKcal' => 364,
+                'calcTotFat' => 16.1,
+                'calcSatFat' => 0,
+                'calcSugar' => 1.14,
+                'calcSodium' => 1.14,
+                'description' => 'Spare Ribs Broiled',
+                'type' => 3,
+                'price' => 50,
+                'servingSize' => 135.66,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 8,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/spareribs-bbq.jpg'
+            ],
+            [
+                'id' => 63,
+                'name' => 'Molu Soup',
+                'calcKcal' => 540,
+                'calcTotFat' => 308,
+                'calcSatFat' => 27.9,
+                'calcSugar' => 0,
+                'calcSodium' => 1.14,
+                'description' => 'Pancit Molo',
+                'type' => 4,
+                'price' => 40,
+                'servingSize' => 161.02,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 8,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/molu-soup.jpg'
+            ],
+            [
+                'id' => 64,
+                'name' => 'Fish Tofu',
+                'calcKcal' => 98,
+                'calcTotFat' => 3.7,
+                'calcSatFat' => 0,
+                'calcSugar' => 0.4,
+                'calcSodium' => 0.6,
+                'description' => 'Isda Tokwa',
+                'type' => 3,
+                'price' => 35,
+                'servingSize' => 98.63,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 5,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/fish-tofu.jpg'
+            ],
+            [
+                'id' => 65,
+                'name' => 'Chicken Curry',
+                'calcKcal' => 44,
+                'calcTotFat' => 1.3,
+                'calcSatFat' => 0,
+                'calcSugar' => 0.1,
+                'calcSodium' => 0,
+                'description' => 'Chicken Curry',
+                'type' => 3,
+                'price' => 50,
+                'servingSize' => 127.89,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 4,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/chicken-curry.jpg'
+            ],
+            [
+                'id' => 66,
+                'name' => 'Lechon Paksiw',
+                'calcKcal' => 203,
+                'calcTotFat' => 18.1,
+                'calcSatFat' => 0,
+                'calcSugar' => 2.56,
+                'calcSodium' => 1.14,
+                'description' => 'Lechon Paksiw',
+                'type' => 3,
+                'price' => 50,
+                'servingSize' => 113.44,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 5,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/lechon-paksiw.jpg'
+            ],
+            [
+                'id' => 67,
+                'name' => 'Gata Tilapia',
+                'calcKcal' => 798,
+                'calcTotFat' => 76.3,
+                'calcSatFat' => 0,
+                'calcSugar' => 0.7,
+                'calcSodium' => 1.3,
+                'description' => 'Coconut Milk Fish',
+                'type' => 3,
+                'price' => 50,
+                'servingSize' => 92.36,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 5,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/gata-tilapia.jpg'
+            ],
+            [
+                'id' => 68,
+                'name' => 'Batchoy',
+                'calcKcal' => 533,
+                'calcTotFat' => 46.2,
+                'calcSatFat' => 0,
+                'calcSugar' => 0,
+                'calcSodium' => 0.6,
+                'description' => 'La Paz Batchoy',
+                'type' => 4,
+                'price' => 40,
+                'servingSize' => 301,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 5,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/bathcoy.jpg'
+            ],
+            [
+                'id' => 69,
+                'name' => 'Pork Chop Steak',
+                'calcKcal' => 490,
+                'calcTotFat' => 40.6,
+                'calcSatFat' => 0,
+                'calcSugar' => 1.3,
+                'calcSodium' => 1.14,
+                'description' => 'Pork Steak',
+                'type' => 3,
+                'price' => 50,
+                'servingSize' => 80,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 5,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/pork-steak.jpg'
+            ],
+            [
+                'id' => 70,
+                'name' => 'Adobo Pusit',
+                'calcKcal' => 102,
+                'calcTotFat' => 1.32,
+                'calcSatFat' => 0,
+                'calcSugar' => 0,
+                'calcSodium' => 1.14,
+                'description' => 'Inadobong Pusit',
+                'type' => 3,
+                'price' => 45,
+                'servingSize' => 159,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 4,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/adobong-pusit.jpg'
+            ],
+            [
+                'id' => 71,
+                'name' => 'Gata Laing',
+                'calcKcal' => 205,
+                'calcTotFat' => 19.1,
+                'calcSatFat' => 0,
+                'calcSugar' => 0,
+                'calcSodium' => 1,
+                'description' => 'Laing with Coconut Milk',
+                'type' => 3,
+                'price' => 50,
+                'servingSize' => 173,
+                'philfct_id' => null,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 5,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/spareribs-bbq.jpg'
+            ],
+            [
+                'id' => 72,
+                'name' => 'Beef with Mushroom',
+                'calcKcal' => 211,
+                'calcTotFat' => 6.6,
+                'calcSatFat' => 0,
+                'calcSugar' => 2,
+                'calcSodium' => 3.6,
+                'description' => 'Beef with Mushrooms',
+                'type' => 3,
+                'price' => 50,
+                'servingSize' => 185,
+                'philfct_id' => 71,
+                'created_by' => 2,
+                'updated_by' => 3,
+                'stock' => 40,
+                'grade' => 5,
+                'created_at' => Carbon::today()->format('Y-m-d'),
+                'image' => 'admin/foodsImg/beef-mushroom.jpg'
             ]
 
 

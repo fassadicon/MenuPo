@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('restriction')->nullable();
             $table->string('image')->nullable();
             $table->string('QR')->nullable();
+            $table->string('fullName')->nullable();
             // Logs
             $table->timestamps(); 
             $table->softDeletes();
