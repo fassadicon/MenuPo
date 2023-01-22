@@ -232,7 +232,7 @@
     function checkOffset() {
     if($(menuSticky).offset().top + $(menuSticky).height() 
                                            >= $(footer).offset().top - 10)
-        $(menuSticky).css('position', 'fixed');
+        $(menuSticky).css('position', 'absolute');
     if($(document).scrollTop() + window.innerHeight < $(footer).offset().top)
         $(menuSticky).css('position', 'fixed'); // restore when you scroll up
         // menuSticky.style.height = `${ footer.offsetTop - 0 }px`;
