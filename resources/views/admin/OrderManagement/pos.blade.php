@@ -159,7 +159,7 @@
         {{-- Rice Meals --}}
         <x-admin.cards.card-tabs.card-tab-riceMeal>
             @foreach ($foods as $food)
-                @if ($food->food->type == 3)
+                @if ($food->food->type == 3 && $food->food->stock != 0)
                     <x-admin.pos.pos-foodcard :food="$food->food" :stock="$food->food->stock" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
@@ -168,7 +168,7 @@
         {{-- Pasta & Porridge Meals --}}
         <x-admin.cards.card-tabs.card-tab-pasta>
             @foreach ($foods as $food)
-                @if ($food->food->type == 4)
+                @if ($food->food->type == 4 && $food->food->stock != 0)
                     <x-admin.pos.pos-foodcard :food="$food->food" :stock="$food->food->stock" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
@@ -176,7 +176,7 @@
 
         <x-admin.cards.card-tabs.card-tab-fried>
             @foreach ($foods as $food)
-                @if ($food->food->type == 2)
+                @if ($food->food->type == 2 && $food->food->stock != 0)
                     <x-admin.pos.pos-foodcard :food="$food->food" :stock="$food->food->stock" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
@@ -184,7 +184,7 @@
 
         <x-admin.cards.card-tabs.card-tab-drinks>
             @foreach ($foods as $food)
-                @if ($food->food->type == 1)
+                @if ($food->food->type == 1 && $food->food->stock != 0)
                     <x-admin.pos.pos-foodcard :food="$food->food" :stock="$food->food->stock" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
@@ -192,7 +192,7 @@
 
         <x-admin.cards.card-tabs.card-tab-snacks>
             @foreach ($foods as $food)
-                @if ($food->food->type == 0)
+                @if ($food->food->type == 0 && $food->food->stock != 0)
                     <x-admin.pos.pos-foodcard :food="$food->food" :stock="$food->food->stock" :studentID="$studentID" :student="$student"/>
                 @endif
             @endforeach
