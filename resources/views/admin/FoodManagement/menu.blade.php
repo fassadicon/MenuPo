@@ -741,6 +741,15 @@
                 {
                     data: 'food.stock',
                     name: 'food.stock',
+                    render: function(data, type, row) {
+                        let color = 'black';
+                        if (data <= 10) {
+                            color = 'red';
+                        } else {
+                            color = 'black';
+                        }
+                        return '<span style="color:' + color + '">' + data + '</span>';
+                    }
                 },
                 {
                     data: 'action',
@@ -1169,7 +1178,7 @@
                 $('#updateDateYes').prop("checked", false);
                 $('#updateDateNo').prop("checked", false);
             } else {
-              
+
                 // If user want to change date
                 if ($('#updateDateNo').is(':checked')) {
                     $('#updateDisplayedAt').prop('disabled', true);
