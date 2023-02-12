@@ -30,8 +30,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <p class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/school-images/logo-32x32.png') }}" alt="">
-                    <h6 class="login-header">{{ config('app.name', 'MenuPo') }}</h6>
+                    <img src="{{ asset('images/school-images/logo-512x512.png') }}" width="40" height="40" alt="">
+                    <h6 class="login-header">MenuPo</h6>
                 </p>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -66,9 +66,9 @@
                             @endif --}}
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                                <button id="navbarDropdown" class="nav-link dropdown-toggle button-sec" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}Options
+                                </button>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -97,9 +97,9 @@
         <footer id="footer" class="footer">
             <div class="bottom-details">
               <div class="bottom_text">
-                <span class="copyright_text">© 2022 School Name | <a id="bottomLink" href="/terms-and-conditions"> Terms of Use </a> | <a id="bottomLink" href="/privacy-statement"> Privacy Statement </a></span>
+                <span class="copyright_text">@ 2022 MenuPo | <a id="bottomLink" href="/terms-and-conditions"> Terms of Use </a> | <a id="bottomLink" href="/privacy-statement"> Privacy Statement </a></span>
                 <span class="policy_terms">
-                  <a href="#">Contact Us at: 09613326890 (email: sample@gmail.com)</a>
+                  <p>Contact Us at: 09613326890 (email: menupo2022@gmail.com) or visit us at San Mateo, Philippines</p>
                   
                 </span>
               </div>
