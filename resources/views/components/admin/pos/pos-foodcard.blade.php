@@ -34,6 +34,7 @@
 
   <div class="py-2 px-4 text-left">
     <h2 class="text-2xl font-bold leading-tight">{{$food->name}}</h2>
+    <p class="text-red-600">Stock: {{$food->stock}}</p>
   </div>
 
   <div class="border-t py-2 px-4 flex justify-between items-center">
